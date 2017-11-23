@@ -1,0 +1,9 @@
+		    <tr class="{sys_class}" style="{style_tr}">
+		        <td width="100" style="padding:8px ;">						        
+		        	{actions}					
+		        </td>
+		        <td align="left">{deviceid}</td>
+		        <td align="left">{devicetime}</td>
+		        <td align="left">{speed}</td>                
+		        <td align="left">{address}</td>
+		    </tr>

@@ -1,0 +1,87 @@
+<table class="mainTable">
+    <tr>
+        <td style="padding:10px;">
+
+            <div style="color:SteelBlue; font-size:20; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades generales</div>
+            <table border="0">
+                <tr>
+                    <td>                       
+                        {name}
+                    </td>        
+                    <td colspan="2">
+                        {responsable_fisico_id}
+                    </td>        
+                </tr>          
+                <tr>
+                    <td>
+                    	{bastidor}
+                    </td>        
+                    <td>
+                        {fechaAdquisicion}
+                    </td>        
+                    <td>
+    			        {placas}                    
+		            </td>        
+                </tr>          
+            </table>
+			<br>
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Opciones del motor</a></li>
+					<li  class="form"><a href="#tabs-2">Propiedades adicionales</a></li>
+					{files_title}
+				</ul>
+				<div id="tabs-1" class="form">
+				     <table border="0" width="100%" class="form">
+				        <tr>
+				            <td>{transmision}</td>        
+				            <td>{tipoCombustible}</td>        
+				            <td>{emisionesCO2}</td>        
+				        </tr>          
+				        <tr>
+				            <td>{caballosPotencia}</td>        
+				            <td>{fechaAdquisicion}</td>        
+				            <td>{valorCoche}</td>        
+				        </tr>          
+				    </table>			
+				</div>
+				<div id="tabs-2"  class="form">
+
+				    <table border="0"  width="100%">
+				        <tr>
+				            <td>{numAsientos}</td>        
+				            <td>{numPuertas}</td>        
+				            <td>{color}</td>        
+				        </tr>          
+				        <tr>
+				            <td>{image}</td>        
+				            <td>{telefono}		</td>        
+				            <td>  </td>        
+				        </tr>          
+				        <tr>
+				            <td>
+				                <img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">
+				            </td>        
+				            <td colspan="2">
+				                 {file_id}                                             
+				            </td>        
+				        </tr>        				        
+				    </table>
+				</div>
+				{files_description}
+			</div>
+
+
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>        
+
+
+
+        
+        </td>
+    </tr>
+</table>
+

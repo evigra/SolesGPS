@@ -1,0 +1,98 @@
+<div style="z-index:100000000; width:100%; position: fixed;   top: 0;   right: 0;">       
+    <table width="100%">
+        <tr>
+            <td style="padding-left:15px;">
+                {system_menu}   
+            </td>             
+            <td align="right" style="color:white; padding:4px 0px 0px 15px; ">            
+                <table>
+                    <tr style = "padding: 0px 5px 0px 5px;">
+                        <td  style="color:white; padding: 0px 5px 0px 5px; ">
+                            {system_company} 
+                        </td>
+                        <td style="color:white; padding: 0px 5px 0px 5px; cursor:pointer;"> 
+                            {system_img} 
+                        </td>
+                        <td  style="color:white; padding: 0px 5px 0px 5px; ">    
+                            {system_user}
+                        </td>
+                        <td  style="color:white; padding: 0px 5px 0px 5px;"> 
+                        	<a href="&sys_action=cerrar_sesion">
+                            	<img class= "imgBox" src="../sitio_web/img/shutDown.png" title="Cerrar Sesion" width="30px" height="30px">   
+                            </a>	
+                        </td>
+                    </tr>
+                </table>                    
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<table border="0" width="100%" height="100%">
+    <tr height="40px" style="background-color:black;">
+    	<td colspan="4" >
+        </td>               
+    </tr>
+    <tr>
+        <td width="200" style="background-color:#373737; color:white padding-left:10px;">
+            <table  width="100%" height="100%">
+                <tr>
+                    <td style="padding-top:5px; padding-bottom:5px;" valign="top" align="center" height="10">
+                        {system_logo}                        
+                    </td>
+                </tr>
+                <tr>
+                    <td  valign="top" height="10">
+                        {system_submenu}
+                    </td>
+                </tr>
+                <tr>    
+                    <td id="system_submenu2" valign="bottom" align="left">
+                        <div id="system_submenu2" style="height:100%;">
+                            {system_submenu2}
+                        </div>
+                    </td>
+                </tr>
+            </table>    
+        </td>
+        <td colspan="3" valign="top">{system_module}</td>        
+    </tr>        
+    <tr>    
+        <td height="25" colspan="2" id="pie">
+            SolesGPS.com :: Soluciones Satelitales
+        </td>        
+        <td height="25" align="right">
+            Created by EVIGRA
+        </td>        
+        
+    </tr>    
+</table>
+
+<div id="setting" title="Ajustes de Usuario" style="background-color:#373737;">
+    <table width="100%" >
+        <tr style="height: 50px;">
+            <td>
+                <font size="3" style="color:SteelBlue;">
+                    Usuario: {system_user}
+                </font>
+            </td> 
+            <td align="right">
+                <font id="update_settings">
+                    Actualizar
+                </font>
+            </td>
+        </tr>		        
+        <tr style="height: 50px;">
+            <td>
+                <font size="2" style="color:SteelBlue;">
+                    Elegir Empresa
+                </font>
+            </td> 
+            <td>
+                <!--<input type="text" name="setting_company" id="setting_company">-->
+                {companys}
+            </td> 
+        </tr>      
+    </table>
+</div>

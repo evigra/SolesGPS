@@ -1,0 +1,44 @@
+.titulos
+{
+	/*border: 2px solid green;*/
+}
+
+.titulos h3
+{
+	color: 		#0174DF;
+	font-size: 	30px;
+	font-weight:	550;
+	letter-spacing: 1px;
+}
+
+.titulos h3 span{
+	color:		#0B0B61;
+	font-size: 	30px;
+	font-weight:	700;
+	letter-spacing: 1px;
+	}
+
+.cellText
+{
+	width :		60%; 
+	padding: 	8px; 
+	font-size: 	15px; 
+	color: 		#2E2E2E;
+}
+
+.cellLine
+{
+	background-color: #DEDEDE;
+	/*border: 1 px solid green;*/
+	padding: 	1px;
+	margin-left:	5px;		
+}
+
+.cellImage
+{
+	width : 	40%; 
+	padding: 	8px;
+}
+.divSat span {
+		background: url(../../modulos/webFeatures/img/sat.png) no-repeat 7px 37px;
+	}

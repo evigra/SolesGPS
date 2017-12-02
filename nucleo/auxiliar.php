@@ -97,7 +97,16 @@
 
 		    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
 		    		{
-		    			$eval="$"."this->$field"."_obj			=new {$value["class_name"]}();";
+		    			$eval="
+		    			
+							if (class_exists('{$value["class_name"]}')) {
+								$"."this->$field"."_obj			=new {$value["class_name"]}();
+							}		    			
+							else
+							{
+								#$"."this->__PRINT_R(\"No existe la clase {$value["class_name"]}\");
+							}
+		    			";
 
 						if(@eval($eval)===false)	
 							echo ""; #$eval; ---------------------------								        			
@@ -885,6 +894,9 @@
 					    	}
 
 					    	#$this->__PRINT_R($valor);
+					    	
+					    	
+					    	
 					        $words["$campo"]  ="					        	
 					        	<input id=\"auto_$campo\" type=\"text\"  $attr name=\"auto_$campo\" title=\"$description\" value=\"$label\" class=\"formulario {$this->sys_name}\"  placeholder=\"{$valor["holder"]}\"><br>$titulo
 					        	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\" type=\"hidden\">
@@ -893,6 +905,7 @@
 									{		
 										source:\"{$valor["source"]}\",
 										dataType: \"jsonp\",
+										
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 										{	
 											$(\"input#$campo\").val(ui.item.clave);					

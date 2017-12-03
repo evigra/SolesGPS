@@ -624,7 +624,7 @@
 								AND del IS NULL
 						";				    	
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
-						#echo "<br><br>$comando_sql";
+						
 						#$this->__PRINT_R($devicegeofence_data);
 												
 				    	if($respueta=="DENTRO")
@@ -643,9 +643,9 @@
 										tipo		='GEOFENCES',
 										status		=1
 								";
-								#echo "<br>DENTRO INS :: $comando_sql";
+								echo "<br>###### DENTRO GEOFENCE :: {$row["name"]}";
 								$this->__EXECUTE($comando_sql);
-
+								echo "<br><br>$comando_sql";
 								$option_mail=array(
 									"to"		=>$row["geofence_in"],
 									#"bbc"		=>$row["geofence_email_in"],
@@ -701,6 +701,7 @@
 										AND alertid={$row["aid"]}
 										AND tipo ='GEOFENCES'
 								";
+								echo "<br>###### AFUERA GEOFENCE :: {$row["name"]}";
 								#echo "<br>AFUERA UPD :: $comando_sql";
 								$this->__EXECUTE($comando_sql);
 								

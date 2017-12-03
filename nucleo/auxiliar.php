@@ -704,6 +704,17 @@
 			return $return;
 		} 		
 		##############################################################################
+		public function __PRE_DELETE()
+    	{
+			# ENVIA UN ARRAY AL METODO SAVE
+			# DE LAS VARIABLES DECLARADAS EN EL MODELO 
+			# $this->sys_fields
+			
+			
+			$this->__DELETE($data);
+    	}
+
+		##############################################################################
 		public function __PRE_SAVE()
     	{
 			# ENVIA UN ARRAY AL METODO SAVE

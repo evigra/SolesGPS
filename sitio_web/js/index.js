@@ -1432,6 +1432,7 @@ styles:
     	{
             $(".sys_report").click(function()
             {
+            	var enviar		=true;
             	var data        =$(this).attr("data");               
             	var variables	=serializar_url(data);
             	var path		="";
@@ -1441,10 +1442,12 @@ styles:
 						$("#"+ivariables).val(variables[ivariables]);
 					else
 						path=path+"&"+ivariables+"="+variables[ivariables];
-							
+					
+					if(variables[ivariables]=="delete")							
+						enviar = confirm("Borrar datos");							
 				}	
-				if(path!="")	$("form").attr({"action":path});	
-				$("form").submit(); 	        
+				if(path!="")	$("form").attr({"action":path});					
+				if(enviar==true)	$("form").submit(); 	        
 			});
 		}	    
         if($(".sys_order").length>0)

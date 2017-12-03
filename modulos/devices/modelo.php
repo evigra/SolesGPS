@@ -206,7 +206,6 @@
 			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "users",
-			    #"class_path"        => "modulos/users/modelo.php",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_fisico_id",
 			    "class_field_m"    	=> "id",			    
@@ -338,7 +337,7 @@
 				)			
 			";		
 			
-			$option["color"]["orange"]	="$"."row[\"status\"]=='Inactiva'";
+			$option["color"]["red"]	="$"."row[\"status\"]=='Inactiva'";
 			
 			
 			

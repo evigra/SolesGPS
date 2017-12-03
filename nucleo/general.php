@@ -77,6 +77,10 @@
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	            
 				}							
+				if(@$this->sys_vpath==$this->sys_name."/" AND $this->sys_section=="delete")
+				{
+					$this->__PRE_DELETE();					
+				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
 

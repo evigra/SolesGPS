@@ -1,7 +1,7 @@
 <?php
 	include('basededatos.php');
-	require_once('class.phpmailer.php');
-	require_once('class.smtp.php');
+	#require_once('class.phpmailer.php');
+	#require_once('class.smtp.php');
 	
 	class auxiliar extends basededatos 
 	{   
@@ -79,12 +79,6 @@
 				}	
 			}	
     	}  
-    	/*
-    	public function __FIND_FIELDS($id=NULL)
-    	{
-    	
-    	}
-    	*/
 		public function __FIND_FIELDS($id=NULL)
 		{
 		 	# ASIGNA EL ROW CON EL $id enviado
@@ -96,6 +90,7 @@
 		    	{
 		    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
 		    		{			    			
+
 		   	    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")		   	    		
 		   	    		if(!isset($this->sys_temporal))
 						{
@@ -106,7 +101,7 @@
 									if (!isset($"."this->$field"."_obj	)) 
 									{
 										$"."option_obj					=array();
-										$"."option_obj[\"temporal\"]	=\"{$value["class_name"]}\";
+										$"."option_obj[\"temporal\"]	=\"AUXILIAR :: FIND_FIELDS {$value["class_name"]}\";
 										
 										$"."this->$field"."_obj			=new {$value["class_name"]}($"."option_obj);
 									}	
@@ -804,7 +799,7 @@
 				    		
 								$eval.="
 									$"."option_obj						=array();
-									$"."option_obj[\"temporal\"]		=\"$campo\";
+									$"."option_obj[\"temporal\"]		=\"AUXILIAR :: INPUT Relation $campo\";
 								
 									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
 									
@@ -1011,7 +1006,7 @@
 								{
 									$eval.="
 										$"."option_obj					=array();
-										$"."option_obj[\"temporal\"]	=\"$campo\";
+										$"."option_obj[\"temporal\"]	=\"AUXILIAR :: INPUT Class $campo\";
 									
 										$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
 										$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";

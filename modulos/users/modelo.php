@@ -1,9 +1,4 @@
 <?php
-	#if(file_exists("../device/modelo.php")) 
-	#require_once("../device/modelo.php");
-	#if(file_exists("device/modelo.php")) 
-	#require_once("device/modelo.php");
-	
 	class users extends general
 	{   
 		##############################################################################	
@@ -53,7 +48,7 @@
 			    "type"              => "file",
 			    "relation"          => "one2many",
 			    "class_name"       	=> "files",
-			    "class_path"        => "modulos/files/modelo.php",
+			    #"class_path"        => "modulos/files/modelo.php",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
 			),
@@ -94,7 +89,7 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-			
+			/*			
 			"usergroup_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "input",
@@ -104,7 +99,8 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "user_id",
 			    "value"             => "",			    
-			),			
+			),
+			*/			
 			"devices_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "checkbox",
@@ -125,8 +121,8 @@
 		public function __CONSTRUCT()
 		{
 			#echo "<br>USER :: CONSTRUC INI";
-			$this->files_obj		=new files(array("temporal"=>"AUX_DEVICE"));
-			$this->menu_obj			=new menu(array("temporal"=>"AUX_DEVICE"));
+			$this->files_obj		=new files(array("temporal"=>"USERS :: CONSTRUCT Files"));
+			$this->menu_obj			=new menu(array("temporal"=>"USERS :: CONSTRUCT Menu"));
 
 			
 			#@$_SESSION["user"]["l18n"]="es_MX";
@@ -230,8 +226,7 @@
     	    	else							$return=$data_user["data"];
     	    }
 			return $return;
-		}		
-    			
+		}		    			
 	
 		public function users($option=NULL)		
     	{	
@@ -247,12 +242,7 @@
 			if(!isset($option["where"]))
 				$option["where"]="and users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]}";
 			
-			#$option["echo"]="USERS -> users()";
-			
 			$return =$this->__VIEW_REPORT($option);    				
-			
-			#$this->__PRINT_R($return);
-			
 			return $return;
 		}				
 	}

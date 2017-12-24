@@ -1,7 +1,7 @@
 <?php
 	include("nucleo/sesion.php");
 
-	$company_obj	=new company();
+	$company_obj	=new company(array("temporal"=>"INDEX RAIZ"));
 	
 	if(isset($company_obj->request["setting_company"]))
 	{

@@ -12,22 +12,15 @@
 		##############################################################################
 		var $sys_fields_l18n	=NULL;
 		public function __CONSTRUCT($option=NULL)
-		{  	
-		
+		{  			
 			if($option == NULL)							$option							=array();			
 			if(!is_array($option))						$option							=array();
-
-
-			
 			
 			if(isset($option["object"]))				$this->sys_object				=$option["object"];			
 			if(isset($option["name"]))					$this->sys_name					=$option["name"];
 			if(isset($option["table"]))					$this->sys_table				=$option["table"];
-			if(isset($option["temporal"]))				
-			{
-														$this->sys_temporal				=$option["temporal"];
-														$this->sys_name					=$this->sys_temporal;
-			}													
+			if(isset($option["temporal"]))				$this->sys_temporal				=$option["temporal"];
+
 			
 			if(!isset($_SESSION))						@$_SESSION						=array();
 			if(!isset($_SESSION["user"]))				@$_SESSION["user"]				=array();
@@ -43,7 +36,6 @@
 
 			if($this->sys_name!="general")
 			{   
-			
 			
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
@@ -87,19 +79,7 @@
 					$this->__PRE_DELETE();					
 				}							
 				
-				$this->__FIND_FIELDS(@$this->sys_primary_id);
-				$data_print=array(
-					"Lugar"				=>"GENERAL::CONSTRUCTOR()",
-					"sys_object"		=>$this->sys_object,
-					"sys_name"			=>$this->sys_name,
-					"sys_temporal"		=>@$this->sys_temporal,								
-				);
-
-				
-				if(isset($this->sys_temporal))
-				{			
-					#$this->__PRINT_R($data_print);
-				}	
+				$this->__FIND_FIELDS(@$this->sys_primary_id);				
 			}	
 		}
 		public function __BROWSE($option=array())
@@ -216,7 +196,7 @@
 								
 								$eval="
 									$"."option_obj					=array();
-									$"."option_obj[\"temporal\"]	=\"$campo\";							
+									$"."option_obj[\"temporal\"]	=\"GENERAL :: BROWSE $campo\";							
 								
 									$"."obj_$campo   				=new {$valor["class_name"]}($"."option_obj);
 									
@@ -381,6 +361,14 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+			$data_print=array(
+				"Lugar"			=>"GENERAL :: SAVE()",
+				"sys_object"	=>$this->sys_object,
+				"sys_temporal"	=>@$this->sys_temporal,
+				"valor"	=>@$datas,
+			);
+    		$this->__PRINT_R($data_print);
+    	
     		$fields	="";
     		$return	="";    		
     		
@@ -407,21 +395,19 @@
 	    				if(isset($this->sys_fields["$campo"]["relation"]) AND @$this->sys_fields["$campo"]["relation"]=="many2one")
 	    				{	    
 							$data_print=array(
-								"Lugar"			=>"SAVE()",
+								"Lugar"			=>"GENERAL :: SAVE2()",
 								"sys_object"	=>$this->sys_object,
 								"field"			=>$campo,
-								"sys_temporal"	=>@$this->sys_temporal,								
+								"sys_temporal"	=>@$this->sys_temporal,
+								"valor"	=>@$valor,
 							);
 				    		#$this->__PRINT_R($data_print);
-
-
-
 
 	    					$eval="";
 				    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")
 				    		if(!isset($this->sys_temporal))
 				    		{	    				
-				    			$this->__PRINT_R($valor);
+				    			#$this->__PRINT_R($data_print);
 				    			/*
 								$eval.="
 									$"."$campo"."_obj						=array();
@@ -464,8 +450,8 @@
 							/*
 							*/
 							
-							if(@eval(@$eval)===false)	
-								$this->__PRINT_R($eval); 
+							#if(@eval(@$eval)===false)	
+							#		$this->__PRINT_R($eval); 
 		    				
 		    			}	
 	    			}	

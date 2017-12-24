@@ -12,10 +12,6 @@
 			"type"		=>"mysql",
 		);
 		#*/
-		public function __CONSTRUCT()
-		{  
-			
-	    }				
 		function abrir_conexion()
 		{
 			if($this->OPHP_database["type"]=="mysql")	        	

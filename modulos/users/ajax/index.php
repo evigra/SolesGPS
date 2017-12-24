@@ -1,6 +1,6 @@
 <?php
 	require_once("../../../nucleo/sesion.php");
-	/*	
+	#/*	
 	$objeto					=new users(array("temporal"=>"AUX_USERS"));
 	$option					=array("where"=>array());
 	
@@ -33,8 +33,8 @@
 	echo json_encode($data_json);	
 	
 	
-	*/
-	#/*		
+	#*/
+	/*		
 	$objeto				=new general(array("temporal"=>"AUX_DEVICE"));
 	
 	

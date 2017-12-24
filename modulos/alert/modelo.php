@@ -73,21 +73,25 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################
-
-        
 		public function __CONSTRUCT()
 		{
 			#$this->menu_obj=new menu();
 			parent::__CONSTRUCT();
-
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		$datas["company_id"]    =$_SESSION["company"]["id"];
     	    $alert_id				=parent::__SAVE($datas,$option);
-    	    
-
-		}						
+   		}						
+		public function __BROWSE($option=array())
+    	{    	
+			if(!is_array($option))    		$option					=array();
+			if(!isset($option["where"]))    $option["where"]		=array();
+			
+			$option["where"][]				="company_id={$_SESSION["company"]["id"]}";    		
+				    	
+    		return parent::__BROWSE($option);
+    	}   		
 	}
 ?>
 

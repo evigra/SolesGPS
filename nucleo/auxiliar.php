@@ -94,22 +94,42 @@
 			{
 		    	foreach($this->sys_fields as $field =>$value)
 		    	{
-
 		    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
-		    		{
-		    			$eval="
-		    			
-							if (class_exists('{$value["class_name"]}')) {
-								$"."this->$field"."_obj			=new {$value["class_name"]}();
-							}		    			
-							else
-							{
-								#$"."this->__PRINT_R(\"No existe la clase {$value["class_name"]}\");
-							}
-		    			";
+		    		{			    			
+		   	    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")		   	    		
+		   	    		if(!isset($this->sys_temporal))
+						{
+							#$this->__PRINT_R(@$this->sys_temporal);	    			
+							$eval="		    			
+								if (class_exists('{$value["class_name"]}')) 
+								{
+									if (!isset($"."this->$field"."_obj	)) 
+									{
+										$"."option_obj					=array();
+										$"."option_obj[\"temporal\"]	=\"{$value["class_name"]}\";
+										
+										$"."this->$field"."_obj			=new {$value["class_name"]}($"."option_obj);
+									}	
+								}		    			
+								else
+								{
+									$"."this->__PRINT_R(\"No existe la clase {$value["class_name"]}\");
+								}
+							";
 
-						if(@eval($eval)===false)	
-							echo ""; #$eval; ---------------------------								        			
+							if(@eval($eval)===false)	
+								echo ""; #$eval; ---------------------------								        			
+							/*	
+							$array	=array(
+								"sys_object"=>$this->sys_object, 
+								"field"=>$field, 
+								"relation"=>$value["relation"], 
+								"option_obj"=>$option_obj,
+								"temporal"=>$this->sys_temporal
+							);
+							#$this->__PRINT_R($array);
+							*/	
+						}		
 		    		}			        		
 		    	}
 			}
@@ -147,16 +167,18 @@
 					    			{
 					    			
 										$eval="
-											$"."option=array();
-											$class_echo
-											$"."option[\"where\"]=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
-											$"."$field=$"."this->$field"."_obj->__BROWSE($"."option);
-											$"."this->sys_fields[\"$field\"][\"values\"]=\"\";
-											$"."this->sys_fields[\"$field\"][\"values\"]=$"."$field"."[\"data\"];
+											if(isset($"."this->$field"."_obj))
+											{
+												$"."option=array();
+												$class_echo
+												$"."option[\"where\"]=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
+												$"."$field	=$"."this->$field"."_obj->__BROWSE($"."option);
+												$"."this->sys_fields[\"$field\"][\"values\"]=\"\";
+												$"."this->sys_fields[\"$field\"][\"values\"]=$"."$field"."[\"data\"];
+											}	
 										";
-										#$this->__PRINT_R($eval);
 										if(@eval(@$eval)===false)	
-											$this->__PRINT_R($eval);
+											echo "";#$this->__PRINT_R($eval);
 									}		
 					    		}
 					    	}	
@@ -166,11 +188,8 @@
 					    {
 					    	$value		=str_replace('"', '\"', $value);  
 					    	#$value	=htmlentities($value);
-					    	
-					    	
-					    
+
 					        $eval	="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
-					        #$this->__PRINT_R($eval);
 							if(@eval($eval)===false)	
 								echo ""; #$eval; ---------------------------					
 					    }
@@ -198,15 +217,12 @@
 			$words["system_message"]				="";
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
-
-			#$this->__PRINT_R($this->__SAVE_JS);
 			
 			#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->request["sys_action"]=="__SAVE" AND ($this->request["sys_section"]=="create" OR $this->request["sys_section"]=="write"))
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
-		        #$this->__PRINT_R(@$this->__SAVE_JS);
 			}
 			
 			if(array_key_exists("user",$_SESSION))
@@ -266,7 +282,6 @@
 			$iorder									="";			
 			$title									=@$this->sys_fields[$font]["title"];
 			
-			#$this->__PRINT_R($this->sys_fields_l18n);
 						
         	if(isset($this->sys_fields_l18n) AND is_array($this->sys_fields_l18n) AND isset($this->sys_fields_l18n["$font"]))	
         	{			        	
@@ -474,9 +489,7 @@
 						</div>
 					";
 				}
-				$words["system_submenu"]	    		=$submenu_html;
-			
-				#$this->__PRINT_R($words);
+				$words["system_submenu"]	    		=$submenu_html;			
 			}			
 			return $words;
 		} 
@@ -548,7 +561,6 @@
 							}							
 						";
 					}	
-					#$this->__PRINT_R($eval);
 					#eval($eval);
 				    if(@eval($eval)===false)	
 				    	echo ""; #$eval; ---------------------------					
@@ -675,12 +687,6 @@
 			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
 				$boSend =  @mail($option["to"], $option["title"], $option["html"], $headers);
 
-			/*
-			if(!$boSend) 
-			{
-				throw new Exception('Email fail');
-			} 
-			*/			
 		}		
 		##############################################################################
 		public function __REPLACE($str,$words)
@@ -722,6 +728,7 @@
 			# $this->sys_fields
 
 			$fields	=$this->__FIELDS();		
+    		
     					
 			$opcion=array(
 				"message"=>"DATOS GUARDADOS",
@@ -754,6 +761,8 @@
 			# ASIGNANDO UNICAMENTE LAS DECLARADAS EN EL MODELO 
 			# $this->sys_fields
 			
+
+			
 			foreach($this->sys_fields as $campo=>$valor)
 			{
 				if(!isset($this->request["$campo"]))		$this->request["$campo"]="";
@@ -776,9 +785,50 @@
 			        if(!isset($valor["source"]))	   	$valor["source"]		="";
 			        if(!isset($valor["holder"]))	   	$valor["holder"]		="";
 			        if(!isset($valor["attr"]))	   		$valor["attr"]			="";
+
+		        	if(isset($valor["relation"]))
+		        	{
+				    	if($valor["relation"]=="many2one")
+				    	{
+				    		$eval="";
+							$data_print=array(
+								"Lugar"			=>"INPUT()",
+								"sys_object"	=>$this->sys_object,
+								"field"			=>$campo,
+								"sys_temporal"	=>@$this->sys_temporal,								
+							);
+				    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")
+				    		if(!isset($this->sys_temporal))
+				    		{
+				    			#$this->__PRINT_R($data_print);
+				    		
+								$eval.="
+									$"."option_obj						=array();
+									$"."option_obj[\"temporal\"]		=\"$campo\";
+								
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
+									
+									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
+									
+									$"."$campo"."_option				=array();
+									$"."$campo"."_option[\"where\"]		=array();
+									
+									$"."id   							={$_SESSION["company"]["id"]};
+									
+									$"."$campo"."_option[\"where\"][]	=\"company_id='$"."id'\";
+									$"."$campo"."_data					=$"."this->$campo"."_obj->__BROWSE($"."$campo"."_option);																	
+								";	
+								if(@eval($eval)===false)	
+									echo ""; #$eval; ---------------------------								        							    	
+							}		
+				    	}		        	
+		        	}
+
+
 			        
-			        if(!is_array($valor["value"]))
+			        #if(!is_array($valor["value"]))
 			        {
+			        
 			        	if(!isset($valor["description"]))	$valor["description"]="";
 			        	
 			        	$description	=$valor["description"];
@@ -807,6 +857,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        	
+					    	if(!is_array($valor["value"]))
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\"  type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        $words["$campo"]  ="<input id=\"$campo\" title=\"$description\" type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario  {$this->sys_name}\"><br>$titulo";
 					    } 
@@ -826,16 +877,43 @@
 					        //$words["$campo"]  ="<input id=\"$campo\" type=\"checkbox\" name=\"$campo\" class=\"formulario\"><br>$titulo";
 					        $checked="";
 					        if($valor["value"]==1) $checked="checked";
-
-					    	$words["$campo"]  = 
-					        "<div class=\"checkbox-2\">
-		    					<input type=\"checkbox\" id=\"$campo"."c\" $attr title=\"$description\" $checked value=\"1\" name=\"$campo\" />
-		    				 <label for=\"$campo"."c\">".""."</label>
-							</div>
-							$titulo
+					        
+					        if(!is_array($valor["value"]))
+							$html_campo="
+								<div class=\"checkbox-2\">
+									<input type=\"checkbox\" id=\"$campo"."c\" $attr title=\"$description\" $checked value=\"1\" name=\"$campo\" />
+									<label for=\"$campo"."c\">".""."</label>
+								</div>
+								$titulo							
 							";
+							$eval="																									
+								if(isset(	$"."$campo"."_data		))
+								{									
+									$"."html_campo=\"\";
 
+									foreach($"."$campo"."_data[\"data\"] as $"."many2one_field => $"."many2one_value)	
+									{
+										$"."many2one_label			=$"."many2one_value[\"name\"];
+										$"."many2one_id				=$"."many2one_value[\"id\"];
+										
+										$"."html_campo	.=\"
+											<div style=\\\"float:left;  width: 200px; overflow: auto; \\\">
+												<div class=\\\"checkbox-2\\\">
+													<input type=\\\"checkbox\\\" id=\\\"$campo"."[$"."many2one_id]\\\"  title=\\\"description\\\" value=\\\"1\\\" name=\\\"$campo"."[$"."many2one_id]\\\" />
+													<label for=\\\"$campo"."[$"."many2one_id]\\\">"."</label>													
+												</div>
+												$"."many2one_label
+											</div>
+										\";									
+									}										
+									$"."html_campo	.=\"<div style=\\\"clear: both;\\\"></div>\";				
+								}
+							";	
 
+							if(@eval($eval)===false)	
+								echo "";#$this->__PRINT_R($eval); #---------------------------								        							    	
+							
+							$words["$campo"]  = @$html_campo;
 					    }      
 					    if($valor["type"]=="file")	
 					    {
@@ -903,8 +981,6 @@
 					    		
 					    		}
 					    	}
-
-					    	#$this->__PRINT_R($valor);
 					    	
 					    	
 					    	
@@ -931,30 +1007,36 @@
 							if(isset($valor["relation"]) AND $valor["relation"]=="one2many")
 							{
 								$eval="";
-								$eval.="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();									
-									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
-								";	
-								if(isset($valor["template_title"]));
+								if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")
 								{
 									$eval.="
-										$"."option[\"template_title\"]		=	\"". $valor["template_title"] ."\";
-										$"."option[\"template_body\"]		=	\"". $valor["template_body"] ."\";
+										$"."option_obj					=array();
+										$"."option_obj[\"temporal\"]	=\"$campo\";
+									
+										$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
+										$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
+									";	
+									if(isset($valor["template_title"]));
+									{
+										$eval.="
+											$"."option[\"template_title\"]		=	\"". $valor["template_title"] ."\";
+											$"."option[\"template_body\"]		=	\"". $valor["template_body"] ."\";
+										";
+									}
+									if(array_key_exists("template_search",$valor) AND $valor["template_search"]!="")
+									{																	
+										$eval.="$"."option[\"template_search\"]		=	\"{$valor["template_search"]}\";";
+									}
+									if(array_key_exists("template_create",$valor) AND $valor["template_create"]!="")
+									{									
+										$eval.="$"."option[\"template_create\"]		=	\"". $valor["template_create"] ."\";";
+									}	
+									$eval.="
+										$"."data			=	$"."this->$campo"."_obj->reporte($"."option);
 									";
-								}
-								if(array_key_exists("template_search",$valor) AND $valor["template_search"]!="")
-								{																	
-									$eval.="$"."option[\"template_search\"]		=	\"{$valor["template_search"]}\";";
-								}
-								if(array_key_exists("template_create",$valor) AND $valor["template_create"]!="")
-								{									
-									$eval.="$"."option[\"template_create\"]		=	\"". $valor["template_create"] ."\";";
-								}	
-								$eval.="
-									$"."data			=	$"."this->$campo"."_obj->reporte($"."option);
-								";
-								if(@eval($eval)===false)	
-									echo ""; #$eval; ---------------------------								        			
+									if(@eval($eval)===false)	
+										echo ""; #$eval; ---------------------------								        			
+								}		
 							}			        		
 					    	$words["$campo"]  =$data["html"];
 					    }					    
@@ -1035,9 +1117,6 @@
 		    if(is_null($option))	$option=array();
 		    if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
 		    
-		    
-		    #$this->__PRINT_R($data);		    
-		    
 		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
 		    $return="
                 <div id=\"base_{$option["name"]}\" style=\"position:relative; height:100%; width:100%;\">
@@ -1098,7 +1177,6 @@
 							
 							$json				=$this->__JSON_AUTOCOMPLETE($this->sys_fields[$field]);							
 							
-							$this->__PRINT_R($this->sys_fields[$field]);	
 							if(@$json[0]->label!="Sin resultados para ")		$row["auto_$field"]	=@$json[0]->label;
 							else												$row["auto_$field"]	="";
 							*/
@@ -1204,7 +1282,6 @@
                     
                     $row = array_merge($actions, $row);
                     $row = array_merge($colors, $row);
-                    #$this->__PRINT_R($this->sys_fields_l18n);
                     
 				    if(@$html_template=="")  
 				    {
@@ -1291,7 +1368,6 @@
 					}			    		
 		    	}	
 
-				#$this->__PRINT_R($return["data"]);    
 				$view_title="";
 		    	if(isset($option["template_title"]))    
 		    	{
@@ -1300,7 +1376,6 @@
 		    	    
 		    	    if(isset($option["title"]))
 		    	    {
-		    	    	#$this->__PRINT_R($option["title"]);
 			    	    $view_title	    =$this->__REPLACE($view_title,$option["title"]);
 			    	}    		    	    
 		    	}    
@@ -1345,7 +1420,6 @@
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
 		    		$this->words					=$this->__INPUT($this->words,$this->sys_fields); 
 
-					#$this->__PRINT_R($this->words);
 
 					$view_search					=$this->words["module_body"];
 		    		$this->words["module_body"]		="";
@@ -1702,10 +1776,7 @@
 			#echo "<br> DENTRO pointInPolygon";
 			#$point="70 40";
 			#$polygon = array("-50 30","50 70","100 50","80 10","110 -10","110 -30","-20 -50","-30 -40","10 -10","-10 10","-30 -20","-50 30");
-			
-			#$this->__PRINT_R($point);
-			#$this->__PRINT_R($polygon);
-			
+						
 			$this->pointOnVertex = $pointOnVertex;
 
 			// Transformar la cadena de coordenadas en matrices con valores "x" e "y"
@@ -1775,9 +1846,9 @@
 		function pointStringToCoordinates($pointString) 
 		{
 			$pointString=trim($pointString);
-			#$this->__PRINT_R($pointString);
+
 			$coordinates = explode(" ", $pointString);
-			#$this->__PRINT_R($coordinates);
+
 			return array("x" => $coordinates[0], "y" => $coordinates[1]);
 		}		
 	}  	

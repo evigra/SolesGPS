@@ -127,7 +127,7 @@
 			    "value"             => "",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
+			    #"class_path"        => "modulos/company/modelo.php",
 			    "class_field_o"    	=> "company_id",
 			    "class_field_m"    	=> "id",
 			    			    

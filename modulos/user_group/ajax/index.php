@@ -5,7 +5,7 @@
     require_once("../../files/modelo.php");
 	require_once("../modelo.php");
 
-	$objeto				=new user();	
+	$objeto				=new user(array("temporal"=>"AUX_DEVICE"));
 	$option				=array();
 	
 	if(@$_GET["term"]!="")

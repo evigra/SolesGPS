@@ -46,6 +46,7 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			#/*
 			"files_id"	    =>array(
 			    "title"             => "Imagen",
 			    "showTitle"         => "si",
@@ -56,6 +57,7 @@
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
 			),
+			#*/
 			"img_files_id"	    =>array(
 			    "title"             => "Imagen",
 			    "showTitle"         => "si",
@@ -71,17 +73,20 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),						
-
+			#/*
 			"company_id"	    =>array(
 			    "title"             => "Compania",
 			    "showTitle"         => "si",
 			    "type"              => "input",
+			    /*
 			    "relation"          => "one2many",
 			    "class_name"       	=> "company",
 			    "class_path"        => "modulos/company/modelo.php",
 			    "class_field_o"    	=> "company_id",
 			    "class_field_m"    	=> "id",
-			),						
+			    */
+			),
+			#*/						
 			"salt"	    		=>array(
 			    "title"             => "Compania",
 			    "showTitle"         => "si",
@@ -89,26 +94,27 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			
 			"usergroup_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "input",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "user_group",
-			    "class_path"        => "modulos/user_group/modelo.php",
+			    #"class_path"        => "modulos/user_group/modelo.php",
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "user_id",
 			    "value"             => "",			    
-			),
+			),			
 			"devices_ids"	    	=>array(
 			    "title"             => "Permisos",
-			    "type"              => "input",
-			    #"relation"          => "one2many",			    
-			    #"class_name"       	=> "devices",
-			    #"class_path"        => "modulos/devices/modelo.php",
-			    #"class_field_o"    	=> "id",
-			    #"class_field_m"    	=> "responsable_fisico_id",
+			    "type"              => "checkbox",
+			    "relation"          => "many2one",
+			    "class_name"       	=> "devices",
+			    "class_field_o"    	=> "responsable_fisico_id",
+			    #"class_field_m"    	=> "",
 			    "value"             => "",			    
 			),
+			
 			
 		);				
 		##############################################################################	
@@ -119,10 +125,8 @@
 		public function __CONSTRUCT()
 		{
 			#echo "<br>USER :: CONSTRUC INI";
-			$this->files_obj		=new files();
-			$this->menu_obj			=new menu();
-			#$this->device_obj		=new device();
-			#$this->usergroup_obj	=new user_group();
+			$this->files_obj		=new files(array("temporal"=>"AUX_DEVICE"));
+			$this->menu_obj			=new menu(array("temporal"=>"AUX_DEVICE"));
 
 			
 			#@$_SESSION["user"]["l18n"]="es_MX";
@@ -134,6 +138,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		#$this->__PRINT_R($datas);	
     		## GUARDAR USUARIO
     	    $datas["company_id"]    	=$_SESSION["company"]["id"];
     	    $datas["hashedPassword"]	="ef38a22ac8e75f7f3a6212dbfe05273365333ef53e34c14c";
@@ -141,11 +146,13 @@
     	    if(isset($datas["password"]))
 	    	    $datas["password"]		=md5($datas["password"]);
     	    
+    	    
     	    $files_id					=$this->files_obj->__SAVE();    	    
+    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
 
     	    $user_id=parent::__SAVE($datas,$option);
-    	    
+
     	    #echo "<br>USUARIO=$user_id<br>";
     	    ## GUARDAR PERFILES DE USUARIO
     	    $usergroup_datas=array();
@@ -177,6 +184,7 @@
 					$this->usergroup_ids_obj->__SAVE($usergroup_save);
 			    }	
 			}    
+
 		}		
 		
 		public function __FIND_FIELDS($id=NULL)

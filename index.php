@@ -16,9 +16,7 @@
 	$_SESSION["module"]							=array(
 		"name"=>"$path"
 	);				   	    			
-	
-	#$company_obj->__PRINT_R(strpos($_REQUEST["sys_vpath"], "/"+1));
-	
+		
 	$aux_REQUEST["sys_vpath"]					=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
 	
 	

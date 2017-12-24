@@ -33,7 +33,7 @@
 	if(@file_exists("../../../../nucleo/general.php")) 	require_once("../../../../nucleo/general.php");
 
 	
-    $objeto	=new general(); 
+    $objeto	=new general(array("temporal"=>"AUX_DEVICE"));
     
     
 	$comando_sql="

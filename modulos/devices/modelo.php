@@ -246,13 +246,13 @@
 		);				
 		##############################################################################	
 		##  Metodos	
-		##############################################################################&sys_action=__SAVE
+		##############################################################################
 
 
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files();	
+			$this->files_obj	=new files(array("temporal"=>"AUX_DEVICE"));
 			parent::__CONSTRUCT();
 		}
 				
@@ -265,6 +265,8 @@
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
+
+			$this->__PRINT_R("LALO");
 
     		parent::__SAVE($datas,$option);
 		}		

@@ -1,8 +1,9 @@
 <?php
 	require_once("../../../nucleo/sesion.php");
 	require_once("../../../nucleo/general.php");
+
 	
-	$objeto				=new general();		
+	$objeto				=new general(array("temporal"=>"AUX_DEVICE"));
 	
 	$retun=array();
 	$comando_sql        ="

@@ -155,7 +155,7 @@
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files();
+			$this->files_obj	=new files(array("temporal"=>"AUX_DEVICE"));
 			parent::__CONSTRUCT();
 		}
 

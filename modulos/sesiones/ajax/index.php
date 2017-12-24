@@ -4,6 +4,6 @@
 	require_once("../modelo.php");
 	#require_once("../../compamodelo.php");
 
-	$objeto				=new sesion();    
+	$objeto				=new sesion(array("temporal"=>"AUX_DEVICE"));
 	$objeto->__UPDATE();
 ?>

@@ -2,7 +2,7 @@
     require_once("../../../nucleo/general.php");
 	require_once("../modelo.php");
 
-	$objeto				=new positions();
+	$objeto				=new positions(array("temporal"=>"AUX_DEVICE"));
 	
 	$comando_sql        ="
 	    SELECT * FROM position 

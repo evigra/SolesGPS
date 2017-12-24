@@ -12,18 +12,22 @@
 		##############################################################################
 		var $sys_fields_l18n	=NULL;
 		public function __CONSTRUCT($option=NULL)
-		{  
-			
+		{  	
 		
-			if($option == NULL)							$option							=array();
+			if($option == NULL)							$option							=array();			
 			if(!is_array($option))						$option							=array();
+
+
 			
-			if(isset($option["object"]))				$this->sys_object				=$option["object"];
+			
+			if(isset($option["object"]))				$this->sys_object				=$option["object"];			
 			if(isset($option["name"]))					$this->sys_name					=$option["name"];
 			if(isset($option["table"]))					$this->sys_table				=$option["table"];
-			
-			
-			#$this->__PRINT_R($_SESSION);
+			if(isset($option["temporal"]))				
+			{
+														$this->sys_temporal				=$option["temporal"];
+														$this->sys_name					=$this->sys_temporal;
+			}													
 			
 			if(!isset($_SESSION))						@$_SESSION						=array();
 			if(!isset($_SESSION["user"]))				@$_SESSION["user"]				=array();
@@ -37,10 +41,10 @@
 			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;
 			if(!isset($this->sys_table))         		$this->sys_table				= $this->sys_object;
 
-			
 			if($this->sys_name!="general")
-			{
-                
+			{   
+			
+			
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			
@@ -68,6 +72,7 @@
 				";
 				eval($eval);							
 			
+
 			
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
@@ -83,8 +88,18 @@
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
+				$data_print=array(
+					"Lugar"				=>"GENERAL::CONSTRUCTOR()",
+					"sys_object"		=>$this->sys_object,
+					"sys_name"			=>$this->sys_name,
+					"sys_temporal"		=>@$this->sys_temporal,								
+				);
 
 				
+				if(isset($this->sys_temporal))
+				{			
+					#$this->__PRINT_R($data_print);
+				}	
 			}	
 		}
 		public function __BROWSE($option=array())
@@ -146,8 +161,7 @@
 							{
 								$select		    .=", $campo as $title";
 							}				
-							$sys_order	=$campo;	
-													
+							$sys_order	=$campo;														
 						}
 						else
 						{
@@ -194,36 +208,38 @@
 						
 						if(@$this->sys_fields[$campo]["relation"]=="one2many")
 						{
-							
-							$class_field_o			=$valor["class_field_o"];
-							$class_field_m			=$valor["class_field_m"];
-							$class_field_l			=$valor["class_field_l"];
-							
-							$eval="
-								$"."obj_$campo   				=new {$valor["class_name"]}();
+							if(!isset($this->sys_temporal) AND $this->sys_temporal!="")
+							{							
+								$class_field_o			=$valor["class_field_o"];
+								$class_field_m			=$valor["class_field_m"];
+								$class_field_l			=$valor["class_field_l"];
 								
-								$"."option_$campo=array(
-									\"where\"=>array(
-										\"$class_field_l LIKE '%{$busqueda}%'\"
-									)
-								);									
-								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								$eval="
+									$"."option_obj					=array();
+									$"."option_obj[\"temporal\"]	=\"$campo\";							
 								
-								$"."busqueda=\"\";
-								foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
-								{									
-									if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_o\"];
-									else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_o\"];
-								}															
-							";
-							#$this->__PRINT_R($eval);
-							eval($eval);										
+									$"."obj_$campo   				=new {$valor["class_name"]}($"."option_obj);
+									
+									$"."option_$campo=array(
+										\"where\"=>array(
+											\"$class_field_l LIKE '%{$busqueda}%'\"
+										)
+									);									
+									$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+									
+									$"."busqueda=\"\";
+									foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
+									{									
+										if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_o\"];
+										else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_o\"];
+									}															
+								";
+								eval($eval);										
 
-							$option["where"][]="$class_field_m IN ($busqueda)";			
+								$option["where"][]="$class_field_m IN ($busqueda)";			
+							}	
 						}
-						else	$option["where"][]="$campo LIKE '%$busqueda%'";	
-						
-						#$this->__PRINT_R($option["where"]);
+						else	$option["where"][]="$campo LIKE '%$busqueda%'";							
 					}
 					
 				}	
@@ -312,7 +328,6 @@
     		#$total 	            = $this->__EXECUTE($this->sys_sql,$option_conf);
     		$total 	            = $this->__EXECUTE($this->sys_sql);
 			
-            #$this->__PRINT_R($total);
                         
             $subtotal			=count($total);
             #echo $subtotal;
@@ -339,8 +354,6 @@
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
    			#echo "<br><br>OPTIONS<<<<<<<<<<<<<<<<<<<<<br>";
-   			#$this->__PRINT_R($option);
-   			#$this->__PRINT_R($return["data"]);
 			if(is_array(@$return["data"][0]))
 			{
 				foreach($return["data"][0] as $campo => $title)
@@ -368,27 +381,99 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		#echo "<br>INI __SAVE ";
     		$fields	="";
-    		$return	="";
-    		
-			#$this->__PRINT_R($datas);    		
+    		$return	="";    		
     		
     		if(!isset($option) OR is_null($option))	$option=array();
 			
 			if(!array_key_exists("message",$option))   
 				$option["message"]="DATOS GUARDADOS";
-			
-    		#echo "<br>__SAVE :: ". $this->__PRINT_R($this->sys_fields);
+				
+			#$this->__PRINT_R($datas);
+		
     		foreach($datas as $campo=>$valor)
     		{
     			if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
     			{
+    				
     				if(!is_array($valor))	
-	    				$fields	.="$campo='$valor',";
+    				{
+    					if(!in_array(@$this->sys_fields["$campo"]["relation"],array("many2one","one2many")))
+		    				$fields	.="$campo='$valor',";
+	    			}	
+	    			#/*
+	    			else 
+	    			{
+	    				if(isset($this->sys_fields["$campo"]["relation"]) AND @$this->sys_fields["$campo"]["relation"]=="many2one")
+	    				{	    
+							$data_print=array(
+								"Lugar"			=>"SAVE()",
+								"sys_object"	=>$this->sys_object,
+								"field"			=>$campo,
+								"sys_temporal"	=>@$this->sys_temporal,								
+							);
+				    		#$this->__PRINT_R($data_print);
+
+
+
+
+	    					$eval="";
+				    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")
+				    		if(!isset($this->sys_temporal))
+				    		{	    				
+				    			$this->__PRINT_R($valor);
+				    			/*
+								$eval.="
+									$"."$campo"."_obj						=array();
+									$"."$campo"."_obj[\"temporal\"]			=\"$campo\";
+									
+									if(!isset($"."this->$campo"."_obj))
+									{
+										$"."this->$campo"."_obj					=new {$this->sys_fields["$campo"]["class_name"]}($"."$campo"."_obj);
+										$"."this->$campo"."_obj->sys_module		=\"{$this->sys_fields["$campo"]["class_name"]}\";              
+									}
+									$"."$campo"."_option					=array();
+									$"."$campo"."_option[\"where\"]			=array();
+									
+									$"."id   								={$_SESSION["company"]["id"]};
+									
+									$"."$campo"."_option[\"where\"][]		=\"company_id='$"."id'\";
+									$"."$campo"."_data						=$"."this->$campo"."_obj->__BROWSE($"."$campo"."_option);
+								";	
+								*/
+								if($this->sys_fields["$campo"]["type"]=="checkbox")
+								{
+									#$this->__PRINT_R("BBB");
+									/*
+									$eval.="									
+										foreach($"."$campo"."_data[\"data\"] as $"."field_data)
+										{									
+											$"."field_data_index						=\"{$this->sys_fields["$campo"]["class_field_o"]}\";
+											$"."field_data[$"."field_data_index]		=$"."this->sys_primary_id;
+											
+											$"."this->$campo"."_obj->sys_primary_id		=$"."field_data[$"."this->$campo"."_obj->sys_primary_field];
+				
+											$"."this->__PRINT_R($"."field_data);
+											$"."this->$campo"."_obj->__SAVE($"."field_data);
+										}									
+									";
+									*/	
+
+								}									
+							}
+							/*
+							*/
+							
+							if(@eval(@$eval)===false)	
+								$this->__PRINT_R($eval); 
+		    				
+		    			}	
+	    			}	
+	    			#*/
     			}
     		}    		
-    		#echo "<br>__SAVE :: ". $this->__PRINT_R($fields);
+
+    		
     		if($fields!="")
     		{
     			$SAVE_JS="";
@@ -397,13 +482,11 @@
                 if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
                 {
                     #echo "ENTRO {$this->sys_object}";
-                	$insert=1;
+                	$insert			=1;
                 	$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
                 	$SAVE_JS="
-                		$(\"input[system!='yes']\").each(function(){
-                		
-                			$(this).val(\"\");
-                			
+                		$(\"input[system!='yes']\").each(function(){                		
+                			$(this).val(\"\");                			
                 		})
                 	";                	
                 }	
@@ -416,8 +499,8 @@
 				#$option_conf["close"]	=1;
     			$this->__EXECUTE($this->sys_sql,$option);
 
-				#if(isset($option["echo"]))
-		        #	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
+				if(isset($option["echo"]))
+		        	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
     			
 
     			unset($option["open"]);
@@ -431,7 +514,6 @@
     			$this->__SAVE_HTML	=$data_message["html"];
     			$this->__SAVE_JS	=$data_message["js"] . $SAVE_JS;
     			    			
-    			#$this->__PRINT_R($this->__SAVE_JS);
     			
     			$option["close"]=1;
     			
@@ -443,7 +525,7 @@
     			    #echo "ENTRO {$this->sys_object}";
     				$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
     				unset($option["close"]);
-    				#echo "<br>__SAVE :: ". $this->__PRINT_R($data);
+
     				$this->sys_primary_id=$data[0]["ID"];
     			}	
     			$return=@$this->sys_primary_id;

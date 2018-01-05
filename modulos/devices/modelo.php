@@ -280,7 +280,7 @@
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
 
-			$this->__PRINT_R("LALO");
+			#$this->__PRINT_R("LALO");
 
     		parent::__SAVE($datas,$option);
 		}		

@@ -1,4 +1,4 @@
-<?php	
+<?php		
 	if(!isset($_SESSION))
 	{
 		$usuarios_sesion						="PHPSESSID";
@@ -12,6 +12,7 @@
 		} 
 		*/		
 	}
+	
 	if(isset($_SESSION))
 	{
 		if(@$_GET["sys_action"]=="cerrar_sesion")
@@ -21,7 +22,8 @@
 			Header ("Location: $destino");			
 		}	
 	}	
-	
+
+
 	if(@file_exists("nucleo/general.php"))				require_once("nucleo/general.php");		
 	if(@file_exists("../nucleo/general.php")) 			require_once("../nucleo/general.php");
 	if(@file_exists("../../nucleo/general.php"))		require_once("../../nucleo/general.php");
@@ -44,5 +46,6 @@
 		if(file_exists("../../../modulos/{$modulo["clase"]}/modelo.php")) 		require_once("../../../modulos/{$modulo["clase"]}/modelo.php");
 		#if(file_exists("../../../../modulos/{$modulo["clase"]}/modelo.php")) 	require_once("../../../../modulos/{$modulo["clase"]}/modelo.php");
 	}
+	#$objeto->__PRINT_R($_SESSION);
 
 ?>	

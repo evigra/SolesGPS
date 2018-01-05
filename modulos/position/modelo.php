@@ -341,7 +341,7 @@
             			$speed_start				=$row["devicetime"];
             			$speed_end					="0000-00-00 00:00:00";
             	
-            			$row_new["speed"]			=$row["speed"]*1.852;
+            			#$row_new["speed"]			=$row["speed"]*1.852;
             		}	
             	}   
             	$comando_sql_complemento="";         	            	

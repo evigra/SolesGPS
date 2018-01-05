@@ -20,11 +20,12 @@
 			if(isset($option["name"]))					$this->sys_name					=$option["name"];
 			if(isset($option["table"]))					$this->sys_table				=$option["table"];
 			if(isset($option["temporal"]))				$this->sys_temporal				=$option["temporal"];
-
 			
 			if(!isset($_SESSION))						@$_SESSION						=array();
 			if(!isset($_SESSION["user"]))				@$_SESSION["user"]				=array();
     		if(!isset($_SESSION["user"]["huso_h"]))		@$_SESSION["user"]["huso_h"]	=6;
+    		
+    		if(!isset($_SESSION["object"]))				@$_SESSION["object"]			=array();
     		
     		$_SESSION["user"]["huso_h"]	=6;								
     		
@@ -34,9 +35,10 @@
 			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;
 			if(!isset($this->sys_table))         		$this->sys_table				= $this->sys_object;
 
+			$this->__REQUEST();
+			
 			if($this->sys_name!="general")
 			{   
-			
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			
@@ -48,8 +50,6 @@
 			
 				$this->sys_date								=date("Y-m-d H:i:s");
 				$this->sys_date2							=date("Y-m-d");
-
-				$this->__REQUEST();
 						
 				$eval="
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
@@ -63,7 +63,6 @@
 					}	
 				";
 				eval($eval);							
-			
 
 			
 				$this->__FIND_FIELD_ID();		
@@ -196,9 +195,21 @@
 								
 								$eval="
 									$"."option_obj					=array();
-									$"."option_obj[\"temporal\"]	=\"GENERAL :: BROWSE $campo\";							
+									$"."option_obj[\"temporal\"]	=\"GENERAL :: BROWSE $campo\";
 								
-									$"."obj_$campo   				=new {$valor["class_name"]}($"."option_obj);
+									if(!array_key_exists(\"$campo"."_obj\",	$"."_SESSION[\"object\"]))
+									{																		
+										$"."_SESSION[\"object\"][\"$campo"."_obj\"]	=new {$valor["class_name"]}($"."option_obj);																		
+									}									
+									#$"."this->__PRINT_R($"."_SESSION[\"object\"][\"$campo"."_obj\"]);
+									
+									$"."obj_$campo   				=$"."_SESSION[\"object\"][\"$campo"."_obj\"]
+								";
+								$this->__PRINT_R($eval);
+								eval($eval);										
+
+									/*
+									$"."obj_$campo   				=$"."this->sys_objects[\"$campo"."_obj\"];
 									
 									$"."option_$campo=array(
 										\"where\"=>array(
@@ -212,9 +223,9 @@
 									{									
 										if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_o\"];
 										else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_o\"];
-									}															
-								";
-								eval($eval);										
+									}	
+									*/
+
 
 								$option["where"][]="$class_field_m IN ($busqueda)";			
 							}	
@@ -367,7 +378,7 @@
 				"sys_temporal"	=>@$this->sys_temporal,
 				"valor"	=>@$datas,
 			);
-    		$this->__PRINT_R($data_print);
+    		#$this->__PRINT_R($data_print);
     	
     		$fields	="";
     		$return	="";    		
@@ -407,17 +418,23 @@
 				    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")
 				    		if(!isset($this->sys_temporal))
 				    		{	    				
-				    			#$this->__PRINT_R($data_print);
-				    			/*
+				    			
+				    			#/*
 								$eval.="
 									$"."$campo"."_obj						=array();
-									$"."$campo"."_obj[\"temporal\"]			=\"$campo\";
+									$"."$campo"."_obj[\"temporal\"]			=\"$campo\";									
+
+									if(!array_key_exists(\"$campo"."_obj\",	$"."_SESSION[\"object\"]))
+									{																											
+										$"."_SESSION[\"object\"][\"$campo"."_obj\"]	=new {$this->sys_fields["$campo"]["class_name"]}($"."option_obj);
+									}									
 									
-									if(!isset($"."this->$campo"."_obj))
-									{
-										$"."this->$campo"."_obj					=new {$this->sys_fields["$campo"]["class_name"]}($"."$campo"."_obj);
-										$"."this->$campo"."_obj->sys_module		=\"{$this->sys_fields["$campo"]["class_name"]}\";              
-									}
+									$"."this->$campo"."_obj					=$"."_SESSION[\"object\"][\"$campo"."_obj\"];
+									
+									/*
+									$"."this->$campo"."_obj					=$"."_SESSION[\"object\"][\"$campo"."_obj\"];
+									$"."this->$campo"."_obj->sys_module		=\"{$this->sys_fields["$campo"]["class_name"]}\";              
+
 									$"."$campo"."_option					=array();
 									$"."$campo"."_option[\"where\"]			=array();
 									
@@ -425,8 +442,10 @@
 									
 									$"."$campo"."_option[\"where\"][]		=\"company_id='$"."id'\";
 									$"."$campo"."_data						=$"."this->$campo"."_obj->__BROWSE($"."$campo"."_option);
+									*/
 								";	
-								*/
+								#*/
+								$this->__PRINT_R($eval);
 								if($this->sys_fields["$campo"]["type"]=="checkbox")
 								{
 									#$this->__PRINT_R("BBB");
@@ -443,15 +462,15 @@
 											$"."this->$campo"."_obj->__SAVE($"."field_data);
 										}									
 									";
-									*/	
+									#*/	
 
 								}									
 							}
 							/*
 							*/
 							
-							#if(@eval(@$eval)===false)	
-							#		$this->__PRINT_R($eval); 
+							if(@eval(@$eval)===false)	
+									$this->__PRINT_R($eval); 
 		    				
 		    			}	
 	    			}	

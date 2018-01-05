@@ -18,7 +18,7 @@
 		var	$jquery						="";
 		var	$jquery_aux					="";	
 		var $sys_html     		      	="sitio_web/html/";
-		var $serv_error					=array("pruebas.solesgps.com","localhost");    				    				
+		var $serv_error					=array("pruebas.solesgps.com","localhost");
 		
 		var $sys_date           		=""; 
 				
@@ -34,6 +34,7 @@
    
 		public function __SESSION()
 		{  
+			#$this->__PRINT_R($_SESSION);
 			$redireccionar= "<script>window.location=\"../webHome/\";</script>";
 			if(is_array($_SESSION))
 			{
@@ -50,7 +51,7 @@
 			{
 				$_SESSION=array();
 				$_SESSION["user"]="Invitado";
-				echo $redireccionar;
+				#echo $redireccionar;
 				exit();
 			}
 			
@@ -89,31 +90,32 @@
 		    	foreach($this->sys_fields as $field =>$value)
 		    	{
 		    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
+		    		#if(isset($value["relation"]))
 		    		{			    			
-
 		   	    		#if(!isset($this->sys_temporal) AND @$this->sys_temporal!="")		   	    		
 		   	    		if(!isset($this->sys_temporal))
 						{
 							#$this->__PRINT_R(@$this->sys_temporal);	    			
 							$eval="		    			
-								if (class_exists('{$value["class_name"]}')) 
-								{
-									if (!isset($"."this->$field"."_obj	)) 
-									{
+								if(class_exists('{$value["class_name"]}')) 
+								{										
+									if(!array_key_exists(\"$field"."_obj\",	$"."_SESSION[\"object\"]))
+									{																												
 										$"."option_obj					=array();
 										$"."option_obj[\"temporal\"]	=\"AUXILIAR :: FIND_FIELDS {$value["class_name"]}\";
-										
-										$"."this->$field"."_obj			=new {$value["class_name"]}($"."option_obj);
+									
+										$"."_SESSION[\"object\"][\"$field"."_obj\"]	=new {$value["class_name"]}($"."option_obj);																		
 									}	
+									$"."this->$field"."_obj				=$"."_SESSION[\"object\"][\"$field"."_obj\"];								
 								}		    			
 								else
 								{
 									$"."this->__PRINT_R(\"No existe la clase {$value["class_name"]}\");
 								}
 							";
-
-							if(@eval($eval)===false)	
-								echo ""; #$eval; ---------------------------								        			
+							#$this->__PRINT_R($eval);
+							#if(@eval($eval)===false)	
+							#	echo ""; #$eval; ---------------------------								        			
 							/*	
 							$array	=array(
 								"sys_object"=>$this->sys_object, 
@@ -514,9 +516,7 @@
 		    		$selected="selected";
 		    	$vOption = $vOption."<option value=\"".$data["id"]."\"  $selected >".$data["id"]." :: ".$data["razonSocial"]."</option>";		    	
 		    }
-
 			$vRespuesta = "	<select id = \"setting_company\" system=\"yes\" name = \"setting_company\">".$vOption."</select>";
-
 			return $vRespuesta;
 		} 
 
@@ -798,20 +798,26 @@
 				    			#$this->__PRINT_R($data_print);
 				    		
 								$eval.="
-									$"."option_obj						=array();
-									$"."option_obj[\"temporal\"]		=\"AUXILIAR :: INPUT Relation $campo\";
-								
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
+									$"."option_obj							=array();
+									$"."option_obj[\"temporal\"]			=\"AUXILIAR :: INPUT Relation $campo\";
 									
-									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
+									if(!array_key_exists(\"$campo"."_obj\",	$"."_SESSION[\"object\"]))
+									{	
+										$"."this->__PRINT_R(\"SE CREA OBJETO INPUT  $campo"."_obj\");								
+										$"."_SESSION[\"object\"][\"$campo"."_obj\"]	=new {$valor["class_name"]}($"."option_obj);																			
+									}
 									
-									$"."$campo"."_option				=array();
-									$"."$campo"."_option[\"where\"]		=array();
+									$"."this->$campo"."_obj					=$"."_SESSION[\"object\"][\"$campo"."_obj\"];								
+									$"."this->$campo"."_obj->sys_module		=\"{$valor["class_name"]}\";
 									
-									$"."id   							={$_SESSION["company"]["id"]};
+									$"."$campo"."_option					=array();
+									$"."$campo"."_option[\"where\"]			=array();
 									
-									$"."$campo"."_option[\"where\"][]	=\"company_id='$"."id'\";
-									$"."$campo"."_data					=$"."this->$campo"."_obj->__BROWSE($"."$campo"."_option);																	
+									$"."id   								={$_SESSION["company"]["id"]};
+									
+									$"."$campo"."_option[\"where\"][]		=\"company_id='$"."id'\";
+									$"."$campo"."_data						=$"."this->$campo"."_obj->__BROWSE($"."$campo"."_option);																	
+
 								";	
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        							    	
@@ -1007,8 +1013,14 @@
 									$eval.="
 										$"."option_obj					=array();
 										$"."option_obj[\"temporal\"]	=\"AUXILIAR :: INPUT Class $campo\";
+																		
+										if(!array_key_exists(\"$campo"."_obj\",	$"."_SESSION[\"object\"]))
+										{									
+											$"."_SESSION[\"object\"][\"$campo"."_obj\"]	=new {$value["class_name"]}($"."option_obj);																			
+										}										
+										$"."this->$campo"."_obj			=$"."_SESSION[\"object\"][\"$valor"."_obj\"];
 									
-										$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_obj);
+										
 										$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
 									";	
 									if(isset($valor["template_title"]));

@@ -51,6 +51,7 @@
 			    #"class_path"        => "modulos/files/modelo.php",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
+			    "object"            => "",
 			),
 			#*/
 			"img_files_id"	    =>array(
@@ -89,7 +90,7 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-			/*			
+			#/*			
 			"usergroup_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "input",
@@ -99,18 +100,20 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "user_id",
 			    "value"             => "",			    
+			    "object"            => "",
 			),
-			*/			
+			#*/			
+			/*
 			"devices_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "checkbox",
 			    "relation"          => "many2one",
 			    "class_name"       	=> "devices",
 			    "class_field_o"    	=> "responsable_fisico_id",
-			    #"class_field_m"    	=> "",
 			    "value"             => "",			    
+			    "object"            => "",
 			),
-			
+			*/
 			
 		);				
 		##############################################################################	
@@ -124,6 +127,7 @@
 			$this->files_obj		=new files(array("temporal"=>"USERS :: CONSTRUCT Files"));
 			$this->menu_obj			=new menu(array("temporal"=>"USERS :: CONSTRUCT Menu"));
 
+			#$this->__PRINT_R($_SESSION);
 			
 			#@$_SESSION["user"]["l18n"]="es_MX";
 			#$_SESSION["user"]["l18n"]="en";
@@ -141,8 +145,7 @@
     	    $datas["salt"]				="000000000000000000000000000000000000000000000000";
     	    if(isset($datas["password"]))
 	    	    $datas["password"]		=md5($datas["password"]);
-    	    
-    	    
+    	        	    
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    

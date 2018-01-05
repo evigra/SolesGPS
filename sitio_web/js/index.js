@@ -744,6 +744,22 @@ styles:
     	else								item["ba"]  =0;
     	if(item["al"])						item["al"]  =item["al"];
     	else								item["al"]  =0;
+    	
+		//if(item["ot"]["battery"])			item["ga"]  =item["ot"]["battery"];
+		var gas;
+    	if(item["ot"]["io3"])				
+    	{
+    		gas								=item["ot"]["io3"];
+    		item["ga"]  					=parseInt(gas.substring(0,3));
+    		
+    		//item["ga"]  					gas.substring(1,3);
+    	}	
+    	else								item["ga"]  =0;
+		
+		
+		
+    	//if(item["ot"]["io3"])				item["ga"]  =item["ot"]["io3"];
+    	//else								item["ga"]  =0;
 
     	if(item["ot"]["ip"])				item["ip"]  =item["ot"]["ip"];
     	else								item["ip"]  =undefined;
@@ -769,7 +785,7 @@ styles:
         var vel=item["sp"]*item["ts"]*12/10-110;  // 
         $("path.velocidad").attr({"transform":"rotate("+ vel +" 250 250)"});
         
-        var alt=item["al"]*12/40-15;
+        var alt=item["ga"]*12/10-38;
         $("path.altitude").attr({"transform":"rotate("+ alt +" 250 250)"});            
 
         $("#millas").html(item["mi"]);

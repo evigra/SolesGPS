@@ -209,6 +209,7 @@
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_fisico_id",
 			    "class_field_m"    	=> "id",			    
+			    "object"            => "",
 			),
 			#*/
 			"placas"	    		=>array(
@@ -263,7 +264,7 @@
 			);
 			#if(isset($this->sys_temporal))
 			{			
-				$this->__PRINT_R($data_print);
+				#$this->__PRINT_R($data_print);
 			}	
 			
 			

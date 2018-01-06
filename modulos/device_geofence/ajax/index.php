@@ -3,7 +3,7 @@
     require_once("../../../nucleo/general.php");
 	require_once("../modelo.php");
 
-	$objeto				=new geofences(array("temporal"=>"AUX_DEVICE"));
+	$objeto				=new geofences();
 	$data_obj			=$objeto->geofence();
 	$geofences="";
 	foreach($data_obj["data"] as $geofence)

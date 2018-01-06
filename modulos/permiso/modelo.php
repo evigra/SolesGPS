@@ -66,7 +66,7 @@
         
 		public function __CONSTRUCT()
 		{
-			$this->menu_obj=new menu(array("temporal"=>"AUX_DEVICE"));
+			$this->menu_obj=new menu();
 			parent::__CONSTRUCT();
 		}
    		public function __SAVE($datas=NULL,$option=NULL)

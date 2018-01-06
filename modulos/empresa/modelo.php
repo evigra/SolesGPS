@@ -114,7 +114,7 @@
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files(array("temporal"=>"AUX_DEVICE"));
+			$this->files_obj	=new files();	
 			parent::__CONSTRUCT();
 		}
 				

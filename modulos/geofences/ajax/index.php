@@ -3,7 +3,7 @@
     #require_once("../../../nucleo/general.php");
 	#require_once("../modelo.php");
 
-	$objeto				=new geofences(array("temporal"=>"AUX_DEVICE"));
+	$objeto				=new geofences();
 	
 	$option["where"]	=array();
 	$option["where"][]	="(hidden is null or hidden in (0,'0'))";

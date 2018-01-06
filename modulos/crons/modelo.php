@@ -187,7 +187,7 @@
 				$cronshistory_data["date"]		=@$this->sys_date;				
 								
 				$eval="
-					$"."objeto		=new {$row["class"]}(array(\"temporal\"=>\"AUX_DEVICE\"));
+					$"."objeto		=new {$row["class"]}();
 					{$row["codigo"]}
 				";
 				#echo "<br><br><br>$eval";
@@ -205,7 +205,7 @@
 				}
 				else
 				{
-					$this->cronshistory_obj	=new crons_history(array("temporal"=>"AUX_DEVICE"));
+					$this->cronshistory_obj	=new crons_history();
 					$this->cronshistory_obj->__SAVE($cronshistory_data);
 					#echo "<br><br>".$this->sys_date . " :: " . $cronshistory_data["resume"];				
 				}

@@ -3,7 +3,7 @@
     require_once("../../../nucleo/general.php");
 	require_once("../modelo.php");
 
-	$objeto				=new position(array("temporal"=>"AUX_DEVICE"));
+	$objeto				=new position();
 	
 	
 	if(array_key_exists("id",$_SESSION["user"]) AND $_SESSION["user"]["id"]!="")

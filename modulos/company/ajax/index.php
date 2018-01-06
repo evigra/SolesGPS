@@ -2,7 +2,7 @@
     require_once("../../../nucleo/general.php");
 	require_once("../modelo.php");
 
-	$objeto				=new company(array("temporal"=>"AUX_DEVICE"));
+	$objeto				=new company();	
 	$option				=array();
 	
 	$option["where"]=	array("razonSocial LIKE '%{$_GET["term"]}%'");

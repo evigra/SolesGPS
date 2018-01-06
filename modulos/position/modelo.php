@@ -341,7 +341,7 @@
             			$speed_start				=$row["devicetime"];
             			$speed_end					="0000-00-00 00:00:00";
             	
-            			#$row_new["speed"]			=$row["speed"]*1.852;
+            			$row_new["speed"]			=$row["speed"]*1.852;
             		}	
             	}   
             	$comando_sql_complemento="";         	            	
@@ -624,7 +624,7 @@
 								AND del IS NULL
 						";				    	
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
-						
+						#echo "<br><br>$comando_sql";
 						#$this->__PRINT_R($devicegeofence_data);
 												
 				    	if($respueta=="DENTRO")
@@ -643,9 +643,9 @@
 										tipo		='GEOFENCES',
 										status		=1
 								";
-								echo "<br>###### DENTRO GEOFENCE :: {$row["name"]}";
+								#echo "<br>DENTRO INS :: $comando_sql";
 								$this->__EXECUTE($comando_sql);
-								echo "<br><br>$comando_sql";
+
 								$option_mail=array(
 									"to"		=>$row["geofence_in"],
 									#"bbc"		=>$row["geofence_email_in"],
@@ -701,7 +701,6 @@
 										AND alertid={$row["aid"]}
 										AND tipo ='GEOFENCES'
 								";
-								echo "<br>###### AFUERA GEOFENCE :: {$row["name"]}";
 								#echo "<br>AFUERA UPD :: $comando_sql";
 								$this->__EXECUTE($comando_sql);
 								

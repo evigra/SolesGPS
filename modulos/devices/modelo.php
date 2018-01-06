@@ -206,10 +206,10 @@
 			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "users",
+			    #"class_path"        => "modulos/users/modelo.php",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_fisico_id",
 			    "class_field_m"    	=> "id",			    
-			    "object"            => "",
 			),
 			#*/
 			"placas"	    		=>array(
@@ -247,27 +247,14 @@
 		);				
 		##############################################################################	
 		##  Metodos	
-		##############################################################################
+		##############################################################################&sys_action=__SAVE
 
 
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files(array("temporal"=>"DEVICES :: CONSTRUCT New Files()"));
+			$this->files_obj	=new files();	
 			parent::__CONSTRUCT();
-			
-			$data_print=array(
-				"Lugar"				=>"DEVICES :: CONSTRUCT",
-				"sys_object"		=>$this->sys_object,
-				"sys_name"			=>$this->sys_name,
-				"sys_temporal"		=>@$this->sys_temporal,								
-			);
-			#if(isset($this->sys_temporal))
-			{			
-				#$this->__PRINT_R($data_print);
-			}	
-			
-			
 		}
 				
 
@@ -279,8 +266,6 @@
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
-
-			#$this->__PRINT_R("LALO");
 
     		parent::__SAVE($datas,$option);
 		}		
@@ -353,7 +338,7 @@
 				)			
 			";		
 			
-			$option["color"]["red"]	="$"."row[\"status\"]=='Inactiva'";
+			$option["color"]["orange"]	="$"."row[\"status\"]=='Inactiva'";
 			
 			
 			

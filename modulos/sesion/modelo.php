@@ -122,8 +122,8 @@
 
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->obj_user   		=new users(array("temporal"=>"AUX_DEVICE"));;
-    		$this->obj_company   	=new company(array("temporal"=>"AUX_DEVICE"));;
+    		$this->obj_user   		=new users();
+    		$this->obj_company   	=new company();
     		
     	    
     		$this->words["mensaje_sesion"]	= 	"

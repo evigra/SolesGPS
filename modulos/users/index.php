@@ -1,6 +1,6 @@
 <?php	
 	$objeto											=new users();
-	#$objeto->device_obj								=new devices();
+	$objeto->device_obj								=new devices();
 
 	#$objeto->__SESSION();
 	
@@ -40,7 +40,7 @@
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     	$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html();
-    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user();
+    	$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user();
     }	
     elseif($objeto->sys_section=="write")
 	{
@@ -64,7 +64,7 @@
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     	$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html(@$objeto->sys_fields["usergroup_ids"]["values"]);
-    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user($objeto->sys_primary_id);
+    	$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user($objeto->sys_primary_id);
     	
     	if(isset($objeto->sys_fields["files_id"]["value"]))    	
 	    	$objeto->words["img_files_id"]	            =$objeto->files_obj->__GET_FILE($objeto->sys_fields["files_id"]["value"]);

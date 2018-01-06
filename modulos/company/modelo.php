@@ -155,7 +155,7 @@
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files(array("temporal"=>"AUX_DEVICE"));
+			$this->files_obj	=new files();
 			parent::__CONSTRUCT();
 		}
 
@@ -172,7 +172,7 @@
     		if(is_null($option))	$option=array();
     		    		
 			$option["select"]	=array(
-				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"		=>"img_files_id",
+				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"	=>"img_files_id",
 				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"	=>"img_files_id_med",				
 			    "company.*",			    
 			);			

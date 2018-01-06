@@ -2,7 +2,7 @@
     require_once("../../../nucleo/general.php");
 	require_once("../modelo.php");
 
-	$objeto				=new menu(array("temporal"=>"AUX_DEVICE"));
+	$objeto				=new menu();	
 	$option				=array();
 	
 	$option["where"]=	array(

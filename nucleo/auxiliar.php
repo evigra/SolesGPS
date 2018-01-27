@@ -500,7 +500,20 @@
 
 			$vRespuesta = "	<select id = \"setting_company\" system=\"yes\" name = \"setting_company\">".$vOption."</select>";
 
-			return $vRespuesta;
+			$permisos=$_SESSION["group"];
+			$return="";
+			foreach($permisos as $permiso)
+			{
+				if($permiso["menu_id"]==$this->request["sys_menu"] AND $permiso["nivel"]<=10)
+				{
+					$return=$vRespuesta;
+				}
+			}
+
+
+
+
+			return $return;
 		} 
 
         ##############################################################################

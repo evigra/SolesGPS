@@ -67,7 +67,9 @@
     	            {$img}
     	        </font>
     	    ";
-    	    return $return;
+
+
+    	    return  $return;
     	}
     	
 		public function __FILE_CSS($data)

@@ -927,10 +927,6 @@ styles:
 					}
 					labels[device_id].set('position', posicion);
 
-
-					
-
-
 					
 					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator") 
 					{	        

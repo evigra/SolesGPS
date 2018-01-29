@@ -1,19 +1,27 @@
 <?php
     require_once("../../../nucleo/sesion.php");
-    require_once("../../../nucleo/general.php");
-    require_once("../../../modulos/position/modelo.php");
-	require_once("../modelo.php");
+    #require_once("../../../nucleo/general.php");
+    #require_once("../../../modulos/position/modelo.php");
+	#require_once("../modelo.php");
 
 	$objeto				=new map_stop();
 	
 	if($_POST["device_active"]>0)
 		$option["where"][]	="deviceid = {$_POST["device_active"]}";
 
-	$option["where"][]	="devicetime>='{$_POST["start"]} 00:00:01'";
-	$option["where"][]	="devicetime<='{$_POST["end"]} 23:59:59'";
+
+
+	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$_POST["start"]} 00:00:01'";
+	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$_POST["end"]} 23:59:59'";
 
 	
-	$option["select"]	=array("deviceid","devicetime","image","course");
+	$option["select"]	=array(
+		"deviceid",
+		"DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)" => "devicetime",
+		"image",
+		"course",
+		"placas"
+	);
 	$option["limit"]	="1000";
 	
 	#$option["echo"]		="POSITION";
@@ -36,6 +44,7 @@
     	#if(!isset($data["speed"]))				$data["speed"]				="";
         if(!isset($data["longitud"]))			$data["longitud"]			="";
         if(!isset($data["latitud"]))			$data["latitud"]			="";
+        if(!isset($data["placas"]))				$data["placas"]				="";
         if(!isset($data["NUMERO_REGISTROS"]))	$data["NUMERO_REGISTROS"]	="";
 
     	$txt_streetview="";
@@ -43,20 +52,7 @@
     	{
     		$txt_streetview="if(device_active=={$data["deviceId"]}) execute_streetMap(v); ";
     	}	
-/*
-	        var v 	=
-            {
-                se:\"historyMap\",
-                de:\"{$_POST["device_active"]}\",
-                da:\"{$data["date"]}\",
-                la:\"{$data["latitude"]}\",
-                lo:\"{$data["longitude"]}\",
-                ti:\"{$data["time"]}\",
-                hi:\"{$data["start"]}\",
-                hf:\"{$data["end"]}\",
-                im:\"stop\"
-            }; 
-*/	
+
         $ajax.="			        
 			var v 	=
 			{
@@ -71,6 +67,7 @@
 				im:\"{$data["image"]}\",								
 				na:\"{$data["name"]}\",
 				co:{$data["course"]}, 				
+				pl:\"{$data["placas"]}\", 				
 				ad:\"{$data["address"]}\"
 			};
               

@@ -14,7 +14,7 @@
 	$option["where"][]	="1.852* speed >={$_POST["tiempo"]}";
 
 	
-	$option["select"]	=array("deviceid","DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)"=>"devicetime","image","course");
+	$option["select"]	=array("deviceid","placas","DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)"=>"devicetime","image","course");
 	$option["limit"]	="1000";
 	
 	$option["echo"]		="POSITION";
@@ -37,6 +37,7 @@
     	if(!isset($data["speed"]))				$data["speed"]				="";
         if(!isset($data["longitud"]))			$data["longitud"]			="";
         if(!isset($data["latitud"]))			$data["latitud"]			="";
+        if(!isset($data["placas"]))				$data["placas"]				="";
         if(!isset($data["NUMERO_REGISTROS"]))	$data["NUMERO_REGISTROS"]	="";
 
     	$txt_streetview="";
@@ -57,7 +58,8 @@
                 sp:\"{$data["speed"]}\",
 				im:\"{$data["image"]}\",								
 				na:\"{$data["name"]}\",
-				co:{$data["course"]}, 				
+				co:{$data["course"]}, 			
+				pl:\"{$data["placas"]}\", 	
 				ad:\"{$data["address"]}\"
 			};
               

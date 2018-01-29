@@ -48,6 +48,9 @@
 	{
 		var contentString = '<div id="contentIW"> \
 								<table> \
+									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td> '+vehicle["na"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> IDENTIFICADOR	</th>  <td> '+vehicle["pl"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> &nbsp;	</th>  <td>	</td> 	</tr> \
 									<tr> <th align=\"left\"> FECHA	</th>  <td> '+vehicle["da"]+'	</td> 	</tr> \
 									<tr> <th align=\"left\"> VELOCIDAD </th> <td> '+vehicle["sp"]+'</td> 	</tr> \
 								</table> \

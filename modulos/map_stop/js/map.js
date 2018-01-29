@@ -48,12 +48,15 @@
 	{
 		var contentString = '<div id="contentIW"> \
 								<table> \
+									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td> '+vehicle["na"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> IDENTIFICADOR	</th>  <td> '+vehicle["pl"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> &nbsp;	</th>  <td>	</td> 	</tr> \
 									<tr> <th align=\"left\"> FECHA	</th>  <td> '+vehicle["da"]+'	</td> 	</tr> \
 									<tr> <th align=\"left\"> TIEMPO </th> <td> '+vehicle["ti"]+'</td> 	</tr> \
-									<tr> <th align=\"left\"> INICIO </th> <td> '+vehicle["hi"]+'</td> 	</tr> \
-									<tr> <th align=\"left\"> FIN </th> <td> '+vehicle["hf"]+'</td> 	</tr> \
+									<tr> <th align=\"left\"> &nbsp;	</th>  <td>	</td> 	</tr> \
+									<tr> <th align=\"left\"> INICIO </th> <th align=\"left\"> FIN </th> 	</tr> \
+									<tr> <td> '+vehicle["hi"]+'</td> <td> '+vehicle["hf"]+'</td> 	</tr> \
 								</table> \
-								<img id=\"imgFace\" src=\"../sitio_web/img/timer.png\"/> \
 							</div>';
 
 		var infowindow = map_info({content: contentString});

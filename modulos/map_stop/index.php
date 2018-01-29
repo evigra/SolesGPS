@@ -1,6 +1,6 @@
 <?php
-	require_once("modulos/position/modelo.php");
-	require_once("modelo.php");
+	#require_once("modulos/position/modelo.php");
+	#require_once("modelo.php");
 
 	$objeto										=new map_stop();
 	$objeto->__SESSION();

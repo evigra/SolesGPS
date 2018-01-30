@@ -88,6 +88,19 @@
     	    
 
 		}						
+		public function __BROWSE($option=NULL)
+    	{
+    		
+    		if(is_null($option)) 			$option					=array();
+    		
+    		if(!isset($option["where"])) 	$option["where"]		=array();
+    		
+    		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
+    		
+    		#$option["echo"]			="Alert";
+    		
+    		return parent::__BROWSE($option);
+		}
 	}
 ?>
 

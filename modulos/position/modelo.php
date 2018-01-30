@@ -192,6 +192,48 @@
 				$this->send_mail($option);				
 			}						
 		}
+		public function cron_retraso_mayor()
+    	{			    		
+			$comando_sql="
+				SELECT * FROM V_ULTIMOREPORTE 
+				WHERE 1=1
+					AND tipo_vehiculo='GPS'
+					AND reporto_hace>'05:00:00'
+			";
+			$position_data 		=$this->__EXECUTE($comando_sql);
+			
+			#$this->__PRINT_R($position_data);
+			if(count($position_data)>0)
+			{								
+				$comando_sql		="INSERT INTO logs SET text='RETARDO DE ". count($position_data) ."'";
+				$this->__EXECUTE($comando_sql);
+				
+				$devices_tr			="<tr><td>Status</td><td>Dispositivo</td><td>Empresa</td><td>Tiempo</td></tr>";			
+				
+				foreach($position_data as $row)
+				{
+					echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
+					$devices_tr		.="<tr><td><img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\"></td><td>{$row["NOMBRE"]}</td><td>{$row["EMPRESA"]}</td><td>{$row["REPORTO_HACE"]}</td><td>{$row["TELEFONO"]}</td></tr>";
+				}
+				$mensaje   = "
+					<html>
+						<body>
+							CRONS RETRASO
+							<table>	$devices_tr </table>
+						</body>	
+					</html>				
+				";								
+				$this->sys_date					=date("Y-m-d H:i:s");
+				$option=array(
+					"to"	=>"evigra@gmail.com, daniel.dazaet@gmail.com,judith.avi03@gmail.com",
+					"title"	=>"SOLESGPS ".$this->date." :: Dispositivos Retrasados",										
+					"html"	=>"$mensaje",			
+				);				
+				$this->send_mail($option);				
+			}						
+		}
+
+
 		public function cron_delete_position()
     	{			    		
 			$comando_sql="
@@ -545,9 +587,10 @@
 			else $logo="";
 			
 			$return   = "			
-				<div style=\"width:100%;\">
+				<div style=\"width:100%; background-color:#aaa;\">
+					<br><br>
 					<center>																				
-						<table style=\"margin:5px; background-color:#aaa;\">									
+						<table style=\"margin:5px; background-color:#fff;\">									
 							$logo
 							<tr><td><b>Dispositivo</b></td>		<td>{$position["dispo"]}</td>		<td><b>Identificador</b></td>	<td>{$position["placas"]}</td></tr>
 							<tr><td><b>Localizacion</b></td>	<td>{$localizacion}</td>			<td><b>Velocidad</b></td>		<td>{$position["speed"]}</td></tr>
@@ -561,7 +604,8 @@
 								</td>
 							</tr>
 						</table>									
-					</center>		
+					</center>
+					<br><br>&nbsp;		
 				</div>									
 			";								
 			return $return;

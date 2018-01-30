@@ -474,6 +474,7 @@
 
 		public function __COMPANYS()
 		{ 
+			
 			$option_conf=array();
 
 			$option_conf["open"]	=1;
@@ -502,9 +503,12 @@
 
 			$permisos=$_SESSION["group"];
 			$return="";
+
+
+			
 			foreach($permisos as $permiso)
 			{
-				if($permiso["menu_id"]==$this->request["sys_menu"] AND $permiso["nivel"]<=10)
+				if($permiso["menu_id"]==$_SESSION["sys"]["menu"] AND $permiso["nivel"]<=10)
 				{
 					$return=$vRespuesta;
 				}

@@ -605,9 +605,9 @@
 			        				</a>
 								</td>
 							</tr>
-						</table>
-						©2017 Soluciones Satelitales :: SOLESGPS. Todos los derechos reservados.<br>
-						Este mensaje fue generado por un sistema automatizado. Por favor, no respondas a este mensaje.															
+						</table>						
+						Este mensaje fue generado por un sistema automatizado. Por favor, no respondas a este mensaje.<br>
+						©2017 Soluciones Satelitales :: SolesGPS. Todos los derechos reservados.<br>
 					</center>
 					<br><br>&nbsp;		
 				</div>									

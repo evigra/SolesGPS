@@ -449,7 +449,8 @@
             			$descripcion	="
 		        			Esta es una alerta por exceso de velocidad
 		        			$aux_descripcion
-            			";            			            			            			
+            			";        
+            			    			            			            			
 						$comando_sql="
 							$PRE_comando_sql
 							descripcion='{$descripcion}',
@@ -571,8 +572,8 @@
     		
     		$position["speed"]	=$position["speed"]*1.852;
     		
-			$nombre_fichero 	= "http://maps.googleapis.com/maps/api/streetview?size=600x300&location={$position["latitude"]},{$position["longitude"]}";			
-			$img_streetview= "<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"$nombre_fichero\"><br>";
+			$nombre_fichero 	= "";			
+			$img_streetview= "";
 	
 			$localizacion="";
 			if($position["address"]!="")	$localizacion=$position["address"];
@@ -598,12 +599,15 @@
 							<tr>
 								<td colspan=\"4\">
 									<a href=\"{$position["sistema_web"]}$ruta\">
-									$img_streetview
-			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\">		
+									<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/streetview?size=600x300&location={$position["latitude"]},{$position["longitude"]}\"><br>
+			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\"><br>
+			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x300&maptype=hybrid&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\">				
 			        				</a>
 								</td>
 							</tr>
-						</table>									
+						</table>
+						©2017 Soluciones Satelitales :: SOLESGPS. Todos los derechos reservados.<br>
+						Este mensaje fue generado por un sistema automatizado. Por favor, no respondas a este mensaje.															
 					</center>
 					<br><br>&nbsp;		
 				</div>									

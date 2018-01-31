@@ -96,6 +96,7 @@
     		if(!isset($option["where"])) 	$option["where"]		=array();
     		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
+    		$option["order"]		="fechaevento DESC";
     		
     		#$option["echo"]			="Alert";
     		

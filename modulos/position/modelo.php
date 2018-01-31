@@ -607,7 +607,8 @@
 							</tr>
 						</table>						
 						Este mensaje fue generado por un sistema automatizado. Por favor, no respondas a este mensaje.<br>
-						©2017 Soluciones Satelitales :: SolesGPS. Todos los derechos reservados.<br>
+						©2017 <a href=\"http://solesgps.com\">Soluciones Satelitales :: SolesGPS</a>. Todos los derechos reservados.<br>
+						Localiza tus unidades desde $349 Mensuales (+ IVA)
 					</center>
 					<br><br>&nbsp;		
 				</div>									

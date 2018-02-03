@@ -671,7 +671,7 @@
 						";				    	
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 						#echo "<br><br>$comando_sql";
-						$this->__PRINT_R(array($respueta,count($devicegeofence_data),$devicegeofence_data,$comando_sql));
+						#$this->__PRINT_R(array($respueta,count($devicegeofence_data),$devicegeofence_data,$comando_sql));
 												
 				    	if($respueta=="DENTRO")
 				    	{   		        		
@@ -765,7 +765,7 @@
 										opcion_id	='$opcion_id',
 										color		='$color'
 									";				
-								#$this->__EXECUTE($comando_sql);
+								$this->__EXECUTE($comando_sql);
 								echo "<br>GEOCERCA -> $comando_sql";
 							}
 				    	}  

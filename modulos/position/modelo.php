@@ -682,7 +682,7 @@
 								$comando_sql="
 									INSERT INTO devices_geofences SET 
 										deviceid	={$position["dev_id"]}, 
-										geofenceid	={$row["id"]}, 
+										geofenceid	={$row["gid"]}, 
 										alertid		={$row["aid"]},  
 										time		='{$position["devicetime"]}',
 										positionid	='{$position["pos_id"]}',
@@ -732,7 +732,7 @@
 										time_end='{$position["devicetime"]}', 
 										del=1 
 									WHERE 1=1
-										and deviceid={$position["dev_id"]} 
+										AND deviceid={$position["dev_id"]} 
 										AND geofenceid={$row["gid"]} 
 										AND alertid={$row["aid"]}
 										AND tipo ='GEOFENCES'

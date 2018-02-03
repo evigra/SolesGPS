@@ -383,7 +383,7 @@
             			$speed_start				=$row["devicetime"];
             			$speed_end					="0000-00-00 00:00:00";
             	
-            			$row_new["speed"]			=$row["speed"]*1.852;
+            			#$row_new["speed"]			=$row["speed"]*1.852;
             		}	
             	}   
             	$comando_sql_complemento="";         	            	
@@ -558,9 +558,6 @@
 			
 			$mensaje   = $this->position_description($position,$option);
 			
-			
-			
-			
 			$option["html"]	=$mensaje;
 			
 			$this->send_mail($option);
@@ -674,7 +671,7 @@
 						";				    	
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 						#echo "<br><br>$comando_sql";
-						#$this->__PRINT_R($devicegeofence_data);
+						$this->__PRINT_R(array($respueta,count($devicegeofence_data),$devicegeofence_data,$comando_sql));
 												
 				    	if($respueta=="DENTRO")
 				    	{   		        		
@@ -715,13 +712,13 @@
 										geofence_id	={$row["gid"]},  										
 										fechaEvento	='{$position["devicetime"]}', 
 										asunto		='ENTRADA A GEOCERCA',
-										descripcion='{$descripcion}',
+										descripcion	='{$descripcion}',
 										menu_id		='$menu_id',
 										submenu_id	='$submenu_id',
 										opcion_id	='$opcion_id',
 										color		='$color'
 									";		
-								#$this->__EXECUTE($comando_sql);
+								$this->__EXECUTE($comando_sql);
 								echo "<br>GEOCERCA -> $comando_sql";
 							}    					
 				    		$return.="{$row["name"]}";
@@ -970,17 +967,7 @@
 				    	else if($respueta=="AFUERA")
 				    	{        		        		
 							if(count($devicegeofence_data)>0)
-							{
-								$comando_sql	="INSERT INTO devices_geofences SET 
-									deviceid	={$position["dev_id"]}, 
-									geofenceid	={$row["gid"]}, 
-									time		='{$position["devicetime"]}', 
-									alertid		={$row["aid"]},  
-									positionid	='{$position["pos_id"]}',
-									tipo		='TRAVEL',
-									status		=0
-								";
-								
+							{								
 								$comando_sql	="UPDATE devices_geofences SET 
 										time_end='{$position["devicetime"]}', 
 										del=1 

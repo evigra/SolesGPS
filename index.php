@@ -1,6 +1,25 @@
 <?php
 	include("nucleo/sesion.php");
-
+    
+	#$objeto->__PRINT_R($_REQUEST);
+    if(@$_REQUEST["setting_company"]>0)
+    {
+		$comando_sql="
+			SELECT 
+				admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
+				admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0) as img_files_id_med, c.*		
+			FROM company c WHERE id={$_REQUEST["setting_company"]}
+		";		
+		$modulos 		=$objeto->__EXECUTE($comando_sql);    
+			
+		#$objeto->__PRINT_R($modulos);
+		
+		foreach($modulos as $modulo)
+		{
+			$_SESSION["company"]					=$modulo;
+		}
+	}	
+	/*
 	$company_obj	=new company();
 	
 	if(isset($company_obj->request["setting_company"]))
@@ -9,7 +28,7 @@
 		$data_company							=$company_obj->companys($option_company);						
 		$_SESSION["company"]					=$data_company["data"][0];				   	    			
 	} 
-
+	*/
 	$path										=$_GET["sys_vpath"];
 	$vpath2										="modulos/$path"."index.php";
 	

@@ -253,7 +253,7 @@
 		}
 		public function cron_log_block()
     	{			    		
-			$comando_sql="
+			$comando_sql="	
 				DELETE FROM DATABASECHANGELOGLOCK
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
@@ -667,7 +667,7 @@
 							WHERE 1=1
 								AND deviceid	={$position["dev_id"]} 
 								AND geofenceid	={$row["gid"]}
-								AND alertid		={$row["aid"]}  
+								AND alertid		={$row["aid"]}
 								AND STATUS		='1' 						
 								AND tipo		='GEOFENCES'
 								AND del IS NULL
@@ -689,6 +689,7 @@
 										alertid		={$row["aid"]},  
 										time		='{$position["devicetime"]}',
 										positionid	='{$position["pos_id"]}',
+										company_id	={$row["company_id"]},
 										tipo		='GEOFENCES',
 										status		=1
 								";
@@ -720,7 +721,7 @@
 										opcion_id	='$opcion_id',
 										color		='$color'
 									";		
-								$this->__EXECUTE($comando_sql);
+								#$this->__EXECUTE($comando_sql);
 								echo "<br>GEOCERCA -> $comando_sql";
 							}    					
 				    		$return.="{$row["name"]}";
@@ -730,17 +731,6 @@
 				    		#echo "AFUERA >>>>>>>>> <br>";							
 							if(count($devicegeofence_data)>0)
 							{
-								$comando_sql	="INSERT INTO devices_geofences SET 
-									deviceid	={$position["dev_id"]}, 
-									geofenceid	={$row["id"]}, 
-									time		='{$position["devicetime"]}', 
-									alertid		={$row["aid"]},  
-									positionid	='{$position["pos_id"]}',
-									tipo		='GEOFENCES',
-									status		=0
-								";
-								#echo "<br>AFUERA INS :: $comando_sql";
-								
 								$comando_sql	="UPDATE devices_geofences SET 
 										time_end='{$position["devicetime"]}', 
 										del=1 
@@ -778,7 +768,7 @@
 										opcion_id	='$opcion_id',
 										color		='$color'
 									";				
-								$this->__EXECUTE($comando_sql);
+								#$this->__EXECUTE($comando_sql);
 								echo "<br>GEOCERCA -> $comando_sql";
 							}
 				    	}  

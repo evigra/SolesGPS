@@ -36,7 +36,8 @@
 					$compania					
 					d.company_id=c.id,
 				groups g
-			where 	1=1				
+			where 	1=1
+				AND (d.bloqueo is NULL OR d.bloqueo =0)
 				AND (		
 					(
 						responsable_fisico_id={$_SESSION["user"]["id"]}
@@ -51,7 +52,7 @@
 					)
 				)					
 		";
-		#echo $comando_sql;
+		echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	
 		#https://www.facebook.com/foro.militar.esp/videos/vb.993885607353760/1039612849447702/?type=2&theater
 		

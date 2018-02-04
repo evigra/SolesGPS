@@ -53,6 +53,18 @@
 			    	"0"		=>	"Inactiva",
 			    ),	
 			),
+			"bloqueo"	    =>array(
+			    "title"             => "Bloqueo",
+			    "showTitle"         => "si",
+			    "type"              => "select",
+			    "default"           => "",
+			    "value"             => "",
+			    "source"			=>array(			    	
+			    	"0"		=>	"Inactiva",
+			    	"1"		=>	"Activa",
+			    ),	
+			),
+
 			"dataId"	    =>array(
 			    "title"             => "Clave Datos",
 			    "showTitle"         => "si",

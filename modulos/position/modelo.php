@@ -735,6 +735,7 @@
 										AND deviceid={$position["dev_id"]} 
 										AND geofenceid={$row["gid"]} 
 										AND alertid={$row["aid"]}
+										AND time_end is NULL
 										AND tipo ='GEOFENCES'
 								";
 								#echo "<br>AFUERA UPD :: $comando_sql";

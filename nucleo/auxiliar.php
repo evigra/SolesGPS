@@ -1714,7 +1714,8 @@
 			// Checar si el punto se encuentra exactamente en un vértice
 			if ($this->pointOnVertex == true and $this->pointOnVertex($point, $vertices) == true) 
 			{
-				return "vertice";
+				#return "vertice";
+				return "DENTRO";
 			}
 
 			// Checar si el punto está adentro del poligono o en el borde
@@ -1727,14 +1728,16 @@
 				$vertex2 = $vertices[$i];
 				if ($vertex1['y'] == $vertex2['y'] and $vertex1['y'] == $point['y'] and $point['x'] > min($vertex1['x'], $vertex2['x']) and $point['x'] < max($vertex1['x'], $vertex2['x'])) 
 				{ // Checar si el punto está en un segmento horizontal
-					return "BORDE";
+					#return "BORDE";
+					return "DENTRO";
 				}
 				if ($point['y'] > min($vertex1['y'], $vertex2['y']) and $point['y'] <= max($vertex1['y'], $vertex2['y']) and $point['x'] <= max($vertex1['x'], $vertex2['x']) and $vertex1['y'] != $vertex2['y']) 
 				{
 					$xinters = ($point['y'] - $vertex1['y']) * ($vertex2['x'] - $vertex1['x']) / ($vertex2['y'] - $vertex1['y']) + $vertex1['x'];
 					if ($xinters == $point['x']) 
 					{ // Checar si el punto está en un segmento (otro que horizontal)
-						return "BORDE";
+						#return "BORDE";
+						return "DENTRO";
 					}
 					if ($vertex1['x'] == $vertex2['x'] || $point['x'] <= $xinters) 
 					{

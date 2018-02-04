@@ -9,6 +9,8 @@
         
         CreateMap(iZoom,iMap,coordinates,object); 
         status_device();
+        
+        ajax_positions_now("../modulos/geofences/ajax/index.php",100);
 
 		$(".select_devices").click(function()
 		{		    

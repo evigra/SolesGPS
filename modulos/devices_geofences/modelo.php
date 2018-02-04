@@ -20,27 +20,20 @@
 			    "value"             => "",
 			),			
 			"time"	    =>array(
-			    "title"             => "Evento",
+			    "title"             => "Entrada",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),
 			"time_end"	    =>array(
-			    "title"             => "Descripcion",
+			    "title"             => "Salida",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-			"asunto"	    =>array(
-			    "title"             => "Asunto",
-			    "showTitle"         => "si",
-			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
-			),
-			"device_id"	=>array(
+			"deviceid"	=>array(
 			    "title"             => "Dispositivo",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
@@ -51,10 +44,10 @@
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "devices",
 			    "class_field_l"    	=> "name",				# Label
-			    "class_field_o"    	=> "device_id",
+			    "class_field_o"    	=> "deviceid",
 			    "class_field_m"    	=> "id",			    
 			),
-			"geofence_id"	=>array(
+			"geofenceid"	=>array(
 			    "title"             => "Geocerca",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
@@ -65,7 +58,7 @@
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "geofences",
 			    "class_field_l"    	=> "name",				# Label
-			    "class_field_o"    	=> "geofence_id",
+			    "class_field_o"    	=> "geofenceid",
 			    "class_field_m"    	=> "id",			    
 			),
 			
@@ -96,7 +89,7 @@
     		if(!isset($option["where"])) 	$option["where"]		=array();
     		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
-    		$option["order"]		="fechaevento DESC";
+    		#$option["order"]		="fechaevento DESC";
     		
     		#$option["echo"]			="Alert";
     		

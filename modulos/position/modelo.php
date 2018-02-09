@@ -680,46 +680,76 @@
 							if(count($devicegeofence_data)==0)
 							{
 								$comando_sql="
-									INSERT INTO devices_geofences SET 
-										deviceid	={$position["dev_id"]}, 
-										geofenceid	={$row["gid"]}, 
-										alertid		={$row["aid"]},  
-										time		='{$position["devicetime"]}',
-										positionid	='{$position["pos_id"]}',
-										company_id	={$row["company_id"]},
-										tipo		='GEOFENCES',
-										status		=1
-								";
-								#echo "<br>DENTRO INS :: $comando_sql";
-								$this->__EXECUTE($comando_sql);
+									select * from devices_geofences 
+									WHERE 1=1
+										AND deviceid	={$position["dev_id"]} 
+										AND geofenceid	={$row["gid"]}
+										AND alertid		={$row["aid"]}
+										AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
+										AND STATUS		='1' 						
+										AND tipo		='GEOFENCES'
 
-								$option_mail=array(
-									"to"		=>$row["geofence_in"],
-									#"bbc"		=>$row["geofence_email_in"],
-									"title"		=>"SOLESGPS ".$this->date2." :: Entrada a Geocercas"
-								);
-								$position["geofence"]=$row["name"];
-								$this->mail_position($position,$option_mail);
+								";				    	
+								$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 
-				    			$descripcion	="
-									Esta es una alerta ingreso a geocerca
-									$aux_descripcion
-				    			";            			            																			
-								$comando_sql	="
-									INSERT INTO alert SET
-										company_id	={$position["company_id"]},
-										device_id	='{$position["dev_id"]}',  
-										geofence_id	={$row["gid"]},  										
-										fechaEvento	='{$position["devicetime"]}', 
-										asunto		='ENTRADA A GEOCERCA',
-										descripcion	='{$descripcion}',
-										menu_id		='$menu_id',
-										submenu_id	='$submenu_id',
-										opcion_id	='$opcion_id',
-										color		='$color'
-									";		
-								$this->__EXECUTE($comando_sql);
-								echo "<br>GEOCERCA -> $comando_sql";
+								if(count($devicegeofence_data)==0)
+								{
+									$comando_sql="
+										INSERT INTO devices_geofences SET 
+											deviceid	={$position["dev_id"]}, 
+											geofenceid	={$row["gid"]}, 
+											alertid		={$row["aid"]},  
+											time		='{$position["devicetime"]}',
+											positionid	='{$position["pos_id"]}',
+											company_id	={$row["company_id"]},
+											tipo		='GEOFENCES',
+											status		=1
+									";									
+									$this->__EXECUTE($comando_sql);
+									$option_mail=array(
+										"to"		=>$row["geofence_in"],
+										#"bbc"		=>$row["geofence_email_in"],
+										"title"		=>"SOLESGPS ".$this->date2." :: Entrada a Geocercas"
+									);
+									$position["geofence"]=$row["name"];
+									$this->mail_position($position,$option_mail);
+
+									$descripcion	="
+										Esta es una alerta ingreso a geocerca
+										$aux_descripcion
+									";            			            																			
+									$comando_sql	="
+										INSERT INTO alert SET
+											company_id	={$position["company_id"]},
+											device_id	='{$position["dev_id"]}',  
+											geofence_id	={$row["gid"]},  										
+											fechaEvento	='{$position["devicetime"]}', 
+											asunto		='ENTRADA A GEOCERCA',
+											descripcion	='{$descripcion}',
+											menu_id		='$menu_id',
+											submenu_id	='$submenu_id',
+											opcion_id	='$opcion_id',
+											color		='$color'
+										";		
+									$this->__EXECUTE($comando_sql);
+									echo "<br>GEOCERCA -> $comando_sql";
+									
+								}
+								else
+								{
+									$comando_sql	="UPDATE devices_geofences SET 
+											time_end is NULL, 
+											del is NULL 
+										WHERE 1=1
+											AND deviceid={$position["dev_id"]} 
+											AND geofenceid={$row["gid"]} 
+											AND alertid={$row["aid"]}
+											AND tipo ='GEOFENCES'
+											AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
+									";
+									$this->__EXECUTE($comando_sql);
+								}
+								
 							}    					
 				    		$return.="{$row["name"]}";
 				    	}

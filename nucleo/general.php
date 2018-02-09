@@ -11,37 +11,54 @@
 		##  Metodos	
 		##############################################################################
 		var $sys_fields_l18n	=NULL;
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT($option=array())
 		{  
-			
+			if(!isset($this->sys_fields)) 				$this->sys_fields				= array();			
 		
-			if($option == NULL)							$option							=array();
-			if(!is_array($option))						$option							=array();
-			
-			if(isset($option["object"]))				$this->sys_object				=$option["object"];
-			if(isset($option["name"]))					$this->sys_name					=$option["name"];
-			if(isset($option["table"]))					$this->sys_table				=$option["table"];
-			
-			
-			#$this->__PRINT_R($_SESSION);
-			
+			if(!isset($option)) 						$option							= array();
+			if(!is_array($option)) 						$option							= array();						
+					
 			if(!isset($_SESSION))						@$_SESSION						=array();
 			if(!isset($_SESSION["user"]))				@$_SESSION["user"]				=array();
     		if(!isset($_SESSION["user"]["huso_h"]))		@$_SESSION["user"]["huso_h"]	=6;
-    		
+    		if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]		="es_MX";
+
     		$_SESSION["user"]["huso_h"]	=6;								
-    		
-			if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]		="es_MX";
-						
+
+			$this->sys_date								=date("Y-m-d H:i:s");
+			$this->sys_date2							=date("Y-m-d");
+
+
+
+			if(isset($option["object"]))				$this->sys_object				=$option["object"];
+			if(isset($option["name"]))					$this->sys_name					=$option["name"];
+			if(isset($option["table"]))					$this->sys_table				=$option["table"];
+			if(isset($option["memory"]))				$this->sys_memory				=$option["memory"];
+			if(isset($option["class_one"]))				$this->class_one				=$option["class_one"];
+			if(isset($option["table"]))					$this->sys_table				=$option["table"];
+			
+			if(isset($option["sys_enviroments"]))		$this->sys_enviroments			=$option["sys_enviroments"];
+
+			if(!isset($this->sys_enviroments)) 			$this->sys_enviroments			= "PRODUCTION";			
 			if(!isset($this->sys_object)) 				$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;
 			if(!isset($this->sys_table))         		$this->sys_table				= $this->sys_object;
+			if(!isset($this->sys_module))         		$this->sys_module               ="modulos/".$this->sys_object."/";		
 
+			if($this->sys_enviroments=="DEVELOPER")
+			{
+				error_reporting(-1);
+				ini_set('display_errors',1);
+			}
+			elseif($this->sys_enviroments=="PRODUCTION")
+			{
+				ini_set('display_errors',0);
+			}
+			
 			
 			if($this->sys_name!="general")
 			{
                 
-				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			
 				if(file_exists($this->sys_l18n . @$_SESSION["user"]["l18n"].".php"))
@@ -50,8 +67,6 @@
 				}	
 				@include("nucleo/l18n/" . @$_SESSION["user"]["l18n"].".php");
 			
-				$this->sys_date								=date("Y-m-d H:i:s");
-				$this->sys_date2							=date("Y-m-d");
 
 				$this->__REQUEST();
 						
@@ -71,11 +86,15 @@
 			
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
-				if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
+				if(@$this->sys_vpath==$this->sys_object."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
 				{
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	            
+				}
+				else
+				{
+					#$this->__IMPORT()
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);

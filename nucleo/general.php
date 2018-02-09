@@ -13,7 +13,7 @@
 		var $sys_fields_l18n	=NULL;
 		public function __CONSTRUCT($option=array())
 		{  
-			if(!isset($this->sys_fields)) 				$this->sys_fields				= $this->sys_fields;			
+			if(!isset($this->sys_fields)) 				$this->sys_fields				= array();			
 		
 			if(!isset($option)) 						$option							= array();
 			if(!is_array($option)) 						$option							= array();						
@@ -48,11 +48,11 @@
 			if($this->sys_enviroments=="DEVELOPER")
 			{
 				error_reporting(-1);
-				ini_set('display_errors',1)
+				ini_set('display_errors',1);
 			}
 			elseif($this->sys_enviroments=="PRODUCTION")
 			{
-				ini_set('display_errors',0)
+				ini_set('display_errors',0);
 			}
 			
 			

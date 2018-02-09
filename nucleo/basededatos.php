@@ -118,19 +118,28 @@
 			$return="";
 			if(is_array($datas))
 			{
+				
 			    foreach($datas as $data)
 			    {
 			    	$icon="";
+					$title="";
 			    	$action=0;
-			        foreach($data as $etiqueta =>$titulo)
+			    	$titulo="";
+					$sys_input="";
+			        foreach($data as $etiqueta =>$valor)
 			        {					       
 			        	if($etiqueta=="icon") 	
 			        	{
-			        		$icon="$titulo";
+			        		$icon="$valor";
 			        	}		
 			        	elseif($etiqueta=="text") 	
 			        	{
-			        		$text="$titulo";
+			        		$titulo="$valor";
+			        		$text="true";
+			        	}		    	
+			        	elseif($etiqueta=="title") 	
+			        	{
+			        		$title="$valor";		        		
 			        	}		    	
 			        	else
 			        	{
@@ -142,16 +151,25 @@
 			        			if($etiqueta=="kanban") 	$icon="ui-icon-newwin";			        		
 			        			if($etiqueta=="action") 	$icon="ui-icon-document";
 			        			if($etiqueta=="cancel") 	$icon="ui-icon-close";
-
-								$script_id="";			
-
+			        			
+			        			if($etiqueta=="import") 	$icon="ui-icon ui-icon-arrowthickstop-1-s";
 			        						        			
 			        			if(in_array($etiqueta,array("create","write","report","kanban")))	
 			        			{
 			        				$text="false";
 			        				$action="1";
-			        				$script_id="$(\"#sys_id_{$this->sys_object}\").val(\"\");";      			
 			        			}
+			        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanban")))	
+			        			{
+			        				$text="true";
+			        				$action="1";
+			        			}			        			
+			        			elseif(in_array(substr($etiqueta,0,5),array("write")))	
+			        			{
+			        				$text="true";
+			        				$action="1";
+			        			}			        			
+			        			
 			        			else
 			        			{
 					    			if(in_array($etiqueta,array("action")))	
@@ -161,7 +179,11 @@
 			        				$text="true";			        			
 			        			}
 			        		}
-			        		if(@$action=="1")	$font_id="$etiqueta"."_{$this->sys_object}";
+			        		if(@$action=="1")	
+			        		{
+			        			$font_id	="$etiqueta"."_{$this->sys_name}";
+			        			$funcion_id	="execute"."_{$this->sys_name}";
+			        		}	
 			        		else				$font_id="$etiqueta";
 			        		
 			        		$value="$etiqueta";
@@ -169,18 +191,21 @@
 							{			        	
 								$titulo		=$this->sys_view_l18n["$etiqueta"];
 							}			        	
+							if($titulo=="")	$titulo=$valor;
 							
 			        	}
 			        }	
-			        if($value=="action")    $sys_input="$(\"#sys_action_{$this->sys_object}\").val(\"__SAVE\");";
+			        if($value=="action")    $sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        else					
 			        {
-			        	$sys_input="
-			        		$(\"#sys_section_{$this->sys_object}\").val(\"$value\");
-			        		$(\"#sys_id_{$this->sys_object}\").val(\"\");
-			        		$(\"input.{$this->sys_object}\").val(\"\");
+			        	$sys_input.="
+							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
+			        		$(\"#sys_section_{$this->sys_name}\").val(\"$value\");
+			        		$(\"#sys_id_{$this->sys_name}\").val(\"\");
+			        		$(\"input.{$this->sys_name}\").val(\"\");
 			        	";
-			        }
+			        }	
+			        
 		        	$script="
 							$(\"#$font_id\").button({
 								icons: {	primary: \"$icon\" },
@@ -190,16 +215,137 @@
 					if(@$action=="1")
 					{				
 						$script.="
-							$(\"#$font_id\").click(function(){
-									$sys_input
-									
-									$(\"form\").submit();																										
+							$(\"#$font_id\").click(function()
+							{								
+								var enviar	=true;									
+								$sys_input
+								
+								$(\".sys_filter\").val(\"\");
+								
+								if($(this).attr(\"id\")==\"action_{$this->sys_name}\") 								
+								{									
+									enviar	=false;	
+									if(typeof submit_{$this->sys_name} === 'function') 								
+									{															
+										enviar	=submit_{$this->sys_name}();
+									}									
+									else
+									{
+										enviar	=true;		
+
+									}								
+									if($(\"[class*='required'][class*='{$this->sys_name}']\").length>0)
+									{				
+										$(\"[class*='required'][class*='{$this->sys_name}']\").each(function(){
+											if(   $(this).val()==\"\"   )
+											{
+
+												enviar=false;	
+											}										
+										});	
+										var form=\"Favor de verificar los campos faltantes</font>\";								
+										
+									}
+
 								}
-							);		        	
+								
+								if(enviar==true)	$(\"form\").submit();
+								else 
+								{
+										$(\"#message\")
+										.html(form)
+										.dialog({
+											width:\"400\",
+											modal: true,
+										});
+
+								}							
+									
+							});		 
 			        	";
-		        	}		        	
+		        	}
+					if($etiqueta=="import")
+					{
+						$script.="
+							$(\"#$font_id\").click(function()
+							{									
+								var form=\"Archivo CSV <input id=\\\"import_csv_{$this->sys_name}\\\"  name=\\\"import_csv_{$this->sys_name}\\\" type=\\\"file\\\" class=\\\"formulario\\\"><font id=\\\"upload_import\\\">Cargar</font>\";								
+								$(\"#message\")
+								.html(form)
+								.dialog({
+									width:\"400\",
+									modal: true,
+								});
+								var datos={		
+									type: 'POST',													
+									async: true,
+									cache: false,
+									contentType: false,
+									enctype: 'multipart/form-data',
+									processData: false,
+								};
+																
+								$(\"#upload_import\")
+									.button()
+									.click(function()
+									{
+										$(\"#message\")
+											.dialog(\"destroy\")
+											.hide();										
+								
+										var formData = new FormData($(\"form\")[0]);
+										
+										var subiendo=datos;
+										
+										subiendo.url		='../sitio_web/ajax/general.php&seccion_import=subiendo_archivo&sys_name={$this->sys_name}&date=".date("YmdHis")."';
+										subiendo.data		=formData;
+										subiendo.success	=function (response) 
+										{			
+											var obj = $.parseJSON( response);
+											
+										
+											$(\"#message\")
+											.attr({\"title\":\"Estado del sistema\"})
+											.html(obj.mensaje)
+											.dialog({
+												width:\"400\",
+												modal: true,
+											});				
+
+											var preparar=datos;
+											preparar.url		='../sitio_web/ajax/general.php&seccion_import=preparar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."';										
+											preparar.success	=function (response) 
+											{
+												var html=$(\"#message\").html() + response;											
+												$(\"#message\").html(html);												
+												
+												var cargar=datos;
+												cargar.url		='../sitio_web/ajax/general.php&seccion_import=cargar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."&name='+obj.name;										
+												cargar.success	=function (response) 
+												{
+													var html=$(\"#message\").html() + response;											
+													$(\"#message\").html(html);												
+																										
+													var actualizar=datos;
+													actualizar.url		='../sitio_web/ajax/general.php&seccion_import=actualizando_datos&sys_name={$this->sys_name}&date=".date("YmdHis")."';										
+													actualizar.success	=function (response) 
+													{
+														$(\"#import_pendiente\").html(response);												
+													};											
+													$.ajax(actualizar);														
+												};											
+												$.ajax(cargar);																									
+											};											
+											$.ajax(preparar);	
+										};
+										$.ajax(subiendo);	
+									});									
+							});		        	
+			        	";						
+					}		
+		        	
 			        $return .="
-			        	<font id=\"$font_id\">$titulo</font>
+			        	<font id=\"$font_id\" title=\"$title\">$titulo</font>
 			        	<script>
 			        		$script
 			        	</script>

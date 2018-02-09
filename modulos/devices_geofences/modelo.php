@@ -144,6 +144,8 @@
     		#$option["where"][]									="time_end>time";
     		#$option["where"][]									="TIMEDIFF(time_end,time) >'00:02:00'"; 
     		
+			$option["template_title"]		=	$objeto->sys_module."html/report_title";
+			$option["template_body"]		=	$objeto->sys_module."html/report_body";
      		
     		#$option["order"]		="fechaevento DESC";
     		return parent::__VIEW_REPORT($option);

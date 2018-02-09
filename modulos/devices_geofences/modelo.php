@@ -94,15 +94,15 @@
     		
     		if(is_null($option)) 			$option					=array();
     		
-    		#if(!isset($option["select"])) 	$option["select"]		=array();
+    		if(!isset($option["select"])) 	$option["select"]		=array();
     		if(!isset($option["where"])) 	$option["where"]		=array();
-    		#if(!isset($option["group"])) 	$option["group"]		="time";
+    		if(!isset($option["group"])) 	$option["group"]		="time";
     		
     		#$option["order"]		="fechaevento DESC";
     		
     		#$option["select"]["DISTINCT(time)"]					="time";
-    		#$option["select"][]									="*";
-    		#$option["select"]["TIMEDIFF(time_end,time)"]		="diferencia";
+    		$option["select"][]									="*";
+    		$option["select"]["TIMEDIFF(time_end,time)"]		="diferencia";
     		/*
     		$option["select"][]									="time_end";
     		
@@ -114,39 +114,14 @@
     		
     		$option["where"][]									="company_id='{$_SESSION["company"]["id"]}'";
     		$option["where"][]									="time_end>time";
-    		#$option["where"][]									="TIMEDIFF(time_end,time) >'00:02:00'"; 
+    		$option["where"][]									="TIMEDIFF(time_end,time) >'00:02:00'"; 
     		
     		
-    		#$option["echo"]			="Alert";
+    		$option["echo"]			="Alert";
     		
     		#$option["order"]		="fechaevento DESC";
     		return parent::__BROWSE($option);
 		}
-
-		public function __REP_GENERAL($option=NULL)
-    	{
-    		
-    		if(is_null($option)) 			$option					=array();
-    		
-    		#if(!isset($option["select"])) 	$option["select"]		=array();
-    		if(!isset($option["where"])) 	$option["where"]		=array();
-    		#if(!isset($option["group"])) 	$option["group"]		="time";
-    		
-    		#$option["order"]		="fechaevento DESC";
-    		
-    		#$option["select"]["DISTINCT(time)"]					="time";
-    		#$option["select"][]									="*";
-    		#$option["select"]["TIMEDIFF(time_end,time)"]		="diferencia";
-    		
-    		#$option["where"][]									="company_id='{$_SESSION["company"]["id"]}'";
-    		#$option["where"][]									="time_end>time";
-    		#$option["where"][]									="TIMEDIFF(time_end,time) >'00:02:00'"; 
-    		
-     		
-    		#$option["order"]		="fechaevento DESC";
-    		return parent::__VIEW_REPORT($option);
-		}
-
 	}
 ?>
 

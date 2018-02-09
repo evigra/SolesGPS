@@ -531,7 +531,7 @@
 			{
 				if(!($valor=="" OR $valor=="undefined"))
 				{					
-					#if(!is_array($valor)) $valor=htmlentities($valor);
+					if(!is_array($valor)) $valor=htmlentities($valor);
 					
 					$this->request["$campo"]		=$valor;										
 					if(is_array($valor))

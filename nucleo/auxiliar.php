@@ -1027,7 +1027,9 @@
 		{
 		    if(is_null($option))	$option=array();
 		    if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
-	    
+		    
+		    
+		    #$this->__PRINT_R($data);		    
 		    
 		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
 		    $return="
@@ -1054,54 +1056,50 @@
 			
 			if(is_array($data))
 			{
-			    foreach($data as $row_id => $row)			
+			    foreach($data as $row)			
 			    {
-					foreach(@$this->sys_fields as $field=>$fieldvalue)			
-					{	
-						
-						if(@$fieldvalue["type"]!="autocomplete" AND @$fieldvalue["relation"]=="one2many")
+					foreach($row as $field=>$fieldvalue)			
+					{								
+						if($this->sys_primary_field==$field)
 						{
-							if(isset($fieldvalue["class_field_o"]) AND isset($fieldvalue["class_field_l"]))
-							{	
-								$class_field_o			=$fieldvalue["class_field_o"];
-								$class_field_m			=$fieldvalue["class_field_m"];
-								$class_field_l			=$fieldvalue["class_field_l"];
-								
-								$row_class_field_m   	=$row["$class_field_m"];
-								
-								$eval="
-									$"."obj_$field   				=new {$fieldvalue["class_name"]}();
-									
-									$"."option_$field=array(
-										\"where\"=>array(
-											\"$class_field_o='{$row_class_field_m}'\"
-										)
-									);									
-									$"."data_$field					=$"."obj_$field"."->__BROWSE($"."option_$field);								
-									$"."row[\"$class_field_l\"]		=$"."data_$field"."[\"data\"][0][\"$class_field_l\"];								
-								";
-								eval($eval);
-							}
-						}
-					}
-					#$this->__PRINT_R($row);
-					
-					if(is_array($row))
-					{	
-						foreach($row as $field=>$fieldvalue)			
-						{		
-							#$this->sys_fields[$field]["value"]=$fieldvalue;
-									
-							if(@$this->sys_fields[$field]["type"]=="autocomplete")
-							{
-								$this->sys_fields[$field]["value"]=$fieldvalue;
-								
-								$json				=$this->__JSON_AUTOCOMPLETE($this->sys_fields[$field]);							
-								if(@$json[0]->label!="Sin resultados para ")		$row["auto_$field"]	=@$json[0]->label;
-								else												$row["auto_$field"]	="";
-							}	
-						}			    
-					}	
+							$this->__FIND_FIELDS($fieldvalue);												
+						}									
+						if(@$this->sys_fields[$field]["type"]=="select")
+						{										
+							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
+						}						
+						if(@$this->sys_fields[$field]["type"]=="autocomplete")
+						{					
+							
+					    	if(isset($this->sys_fields[$field]["class_field_l"]))
+					    	{					    		
+					    		if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
+					    		{
+					    			$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+								}
+								else $row[$field]="";
+							}				
+							else $row[$field]="";
+			
+							if(isset($this->sys_fields[$field]["values"][0]))
+								$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+							else $row[$field]="";
+							
+							
+							/*
+							$this->sys_fields[$field]["value"]=$fieldvalue;
+							
+							$json				=$this->__JSON_AUTOCOMPLETE($this->sys_fields[$field]);							
+							
+							$this->__PRINT_R($this->sys_fields[$field]);	
+							if(@$json[0]->label!="Sin resultados para ")		$row["auto_$field"]	=@$json[0]->label;
+							else												$row["auto_$field"]	="";
+							*/
+						}	
+						
+						
+						
+					}			    
                     if($class=="odd")   
                     {
                     	$class="even";
@@ -1116,72 +1114,32 @@
                     $actions				=array();
                     $colors					=array();
                     if(substr(@$this->request["sys_action"],0,5)!="print")	              
-	                    $actions["class"]		=$class;
+	                    $actions["sys_class"]		=$class;
 	                else    
 	                    $actions["style_tr"]	=$style;
                     
-                    if(isset($this->sys_memory) AND $this->sys_memory!="")
-					{
-						
-						
-						$show	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-contact\"></font>";	
-						$write	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-pencil\"></font>";
-						$delete	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-trash\"></font>";
-						$check	="";
-					}				
-					else	
-					{			
-						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
-						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
-						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
-						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
-					}	
+                    				
+                    $show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
+                    $write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
+                    $delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
+                    $check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
                     
                     if(!is_null($option))
                     {
                     	if(!isset($option["actions"]))				$option["actions"]=array();	
-                    	
-                    	if($option["actions"]=="false")
-                    	{
-                    		$option["actions"]			=array();		
-                       		$option["actions"]["show"]	="1==0";
-	                		$option["actions"]["write"]	="1==0";
-	                		$option["actions"]["delete"]="1==0";
-	                		$option["actions"]["check"]	="1==0";	
-                    	}
-                    	else
-                    	{
-		                	if(!isset($option["actions"]["show"]))		$option["actions"]["show"]	="1==1";
-		                	if(!isset($option["actions"]["write"]))		$option["actions"]["write"]	="1==1";
-		                	if(!isset($option["actions"]["delete"]))	$option["actions"]["delete"]="1==1";
-		                	if(!isset($option["actions"]["check"]))		$option["actions"]["check"]	="1==1";
-                    	}           
-
-						
-
-	                	if($option["actions"]["show"]=="true")			$option["actions"]["show"]	="1==1";
-	                	elseif($option["actions"]["show"]=="false")		$option["actions"]["show"]	="1==0";
-	                	if($option["actions"]["write"]=="true")			$option["actions"]["write"]	="1==1";
-	                	elseif($option["actions"]["write"]=="false")	$option["actions"]["write"]	="1==0";
-	                	if($option["actions"]["delete"]=="true")		$option["actions"]["delete"]="1==1";
-	                	elseif($option["actions"]["delete"]=="false")	$option["actions"]["delete"]="1==0";
-	                	if($option["actions"]["check"]=="true")			$option["actions"]["check"]	="1==1";
-	                	elseif($option["actions"]["check"]=="false")	$option["actions"]["check"]	="1==0";
-                    	
-                    	
-                    	         	
+                    	if(!isset($option["actions"]["show"]))		$option["actions"]["show"]	="1==1";
+                    	if(!isset($option["actions"]["write"]))		$option["actions"]["write"]	="1==1";
+                    	if(!isset($option["actions"]["delete"]))	$option["actions"]["delete"]="1==1";
+                    	if(!isset($option["actions"]["check"]))		$option["actions"]["check"]	="1==1";
                     	$eval="
-                    		if({$option["actions"]["show"]}) 						$"."show='$show';
-                    		else													$"."show='';
-                    		
-                    		if({$option["actions"]["write"]}) 						$"."write='$write';
-                    		else													$"."write='';
-                    		
-                    		if({$option["actions"]["delete"]}) 						$"."delete='$delete';
-                    		else													$"."delete='';
-                    		                    		
-                    		if({$option["actions"]["check"]}) 						$"."check='$check';
-                    		else													$"."check='';                    		
+                    		if({$option["actions"]["show"]}) 	$"."show='$show';
+                    		else								$"."show='';
+                    		if({$option["actions"]["write"]}) 	$"."write='$write';
+                    		else								$"."write='';
+                    		if({$option["actions"]["delete"]}) 	$"."delete='$delete';
+                    		else								$"."delete='';                    		
+                    		if({$option["actions"]["check"]}) 	$"."check='$check';
+                    		else								$"."check='';                    		
                     	";
                     	$eval_color="";
                     	if(!isset($option["color"]))				$option["color"]=array();
@@ -1189,21 +1147,15 @@
                     	if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
                     	
                     	foreach($option["color"] as $color => $filter)
-                    	{							
-							
-							
-							#$this->__PRINT_R("echo ". $option["color"]["$color"] .";");
-							#if(substr($row["trabajador_puesto_id"],1,6) != substr($row["sustituto_puesto_id"],1,6))
-							#$this->__PRINT_R(substr($row["trabajador_puesto_id"],0,6) ."!=". substr($row["sustituto_puesto_id"],0,6));
-							
+                    	{
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
                     	
                     	$eval.=$eval_color;
-                    	#$this->__PRINT_R($eval); #$eval; ---------------------------					
+                    	#echo "$eval";
                     	if(@eval($eval)===false)	
-				    		echo ""; #$eval; ---------------------------					
+				    	echo ""; #$eval; ---------------------------					
 				    	
 				    	
 
@@ -1243,10 +1195,9 @@
 						$actions["actions"]		="";
 					}                   
                     
-					#if(is_array($row))			
-						$row = array_merge($actions, $row);					
-                    #if(is_array($row))			
-						$row = array_merge($colors, $row);
+                    $row = array_merge($actions, $row);
+                    $row = array_merge($colors, $row);
+                    #$this->__PRINT_R($this->sys_fields_l18n);
                     
 				    if(@$html_template=="")  
 				    {
@@ -1283,44 +1234,18 @@
     	##############################################################################        
 		public function __VIEW_REPORT($option)
 		{
-			
-			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
-			
-			#$this->__PRINT_R($option);
 			$return=array();
 		    $view_title="";
-			if(isset($this->sys_memory) AND isset($template_option["class_field"]))
-			{	
-				$campo									=$template_option["class_field"];
-				#unset($_SESSION["SAVE"][$this->class_one]);
-				#$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]);
-				
-				if(isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
-				{						
-					$campo				=$template_option["class_field"];
-					#$this->__PRINT_R(    $_SESSION["SAVE"][$this->class_one]["$campo"]);	
-					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
-					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
-					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
-					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
-				}
-			}
 		    if(is_array($option))
 		    {
-				$inicio=0;	
-				if(isset($option["total"]) AND $option["total"]>=0)		$return["total"]	=$option["total"];
-				else													$return["total"]	=0;
-				if(isset($option["inicio"]) AND $option["inicio"]>0)	$inicio				=$option["inicio"];
-				else													$inicio				=0;
-				if(isset($option["fin"]) AND $option["fin"]>0)			$fin				=$option["fin"];
-				else													$fin				=0;
+				if(isset($option["total"]))		$return["total"]	=$option["total"];
+				if(isset($option["inicio"]))	$inicio				=$option["inicio"];
+				if(isset($option["fin"]))		$fin				=$option["fin"];
 		    	
 		        $sys_order="";
 		        $sys_torder="";
-		    	if(!isset($option["name"]))    					$name		=@$this->sys_name;
-		    	else											$name		=$option["name"];
-				
-				$this->sys_name=$name;		
+		    	if(!isset($option["name"]))    	$name	=@$this->sys_name;
+		    	else							$name	=$option["name"];
 		    	
 		    	if(isset($this->request["sys_page_$name"]))		$sys_page	=$this->request["sys_page_$name"];
 		    	else											$sys_page	=1;
@@ -1331,90 +1256,89 @@
 		    	
 		    	if(isset($this->request["sys_row_$name"]))	    $sys_row	=$this->request["sys_row_$name"];
 		    	else                                            $sys_row	=50;
-				
-				if($sys_row=="")								$sys_row	=50;
 
-		    	$option["sys_page_$name"]           			=$sys_page;		        		        
+		    	$option["sys_page_$name"]           =$sys_page;		        		        				
+				$option["name"]                 =$name;
 				
-		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
+		    	if(isset($option["data"]))          
+		    	{
+		    		$return["data"] =$option["data"];	
+		    	}	
 		    	else
 		    	{			    		
-		    	    $option["name"]                 			=$name;
-		    	   
-		    		$browse 									=$this->__BROWSE($option);		 
+		    	    #$option["name"]                 =$name;
+		    		$browse 						=$this->__BROWSE($option);		    			    		
 
-					if(isset($this->sys_memory) AND isset($template_option["class_field"]))
-					{												
-						
-						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
-					}
-					
-					if(count($browse["data"])<=0)
-					{							
-						$browse["data"]=array();				
-					}								
-					
-					##################################
-					
 		    		$return["data"]					= $browse["data"];
 		    		$option["title"]				= @$browse["title"];
-					$option["title_pdf"]			= @$browse["title_pdf"];
 		    		
 		    		if(isset($browse["total"]))		
 		    		{
 						$return["total"]				= $browse["total"];	
 						
-						$inicio				            = @$browse["inicio"] + 1;
-						$aux_fin                        = @$inicio + @$sys_row -1;
+						$inicio				            = $browse["inicio"] + 1;
+						$aux_fin                        = $inicio + $sys_row -1;
 						
 						if($aux_fin<$return["total"])   $fin    =$aux_fin;
 						else                            $fin    =$return["total"];
 					}			    		
 		    	}	
 
-				#######################								
-				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);			
-				#$this->__PRINT_R($view_title_data);
-				$view_title			=$view_title_data["view_title"];
-				$view_title_pdf		=$view_title_data["view_title_pdf"];
-								
+				#$this->__PRINT_R($return["data"]);    
+				$view_title="";
+		    	if(isset($option["template_title"]))    
+		    	{
+		    	    $view_title     =$this->__TEMPLATE($option["template_title"]);		    	    
+		    	    $view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);
+		    	    
+		    	    if(isset($option["title"]))
+		    	    {
+		    	    	#$this->__PRINT_R($option["title"]);
+			    	    $view_title	    =$this->__REPLACE($view_title,$option["title"]);
+			    	}    		    	    
+		    	}    
 		    	$view_create	="";
 		    	$button_create	="";
-				###########################
 		    	if(isset($option["template_create"]) AND $option["template_create"] !="")
 		    	{
 					$this->words               	=	$this->__INPUT($this->words,$this->sys_fields);
 		    
-					$eval="
-						if(isset($"."this->sys_id_{$this->sys_name}))
-							$"."clave_id	=$"."this->sys_id_{$this->sys_name};
-					";
-					
-					eval($eval);
-			
 		    		$view_create		=	$this->__REPLACE($this->__VIEW_CREATE($option["template_create"]),$this->words);
 					$view_create="
             			<div id=\"create_$name\" title=\"Crear Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
 	            			$view_create
 	            			<script>
+	            				$(\"font#create_$name\").click(function()
+	            				{
+	            					$(\"div#create_$name\").dialog({
+	            						open: function(event, ui){
+											var dialog = $(this).closest('.ui-dialog');
+											if(dialog.length > 0)
+											{
+												$('.ui-autocomplete.ui-front').zIndex(dialog.zIndex()+1);
+											}
+										},
+	            						width:\"700px\"
+	            					});
+	            				});
 	            			</script>
             			</div>
 					";		    	    
 					$button_create="
 						<td width=\"15\" align=\"center\">
-							<font id=\"create_$name\" active=\"$name\" class=\"ui-button show_form\">Formulario</font>
+							<font id=\"create_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-document\"></font>
 						</td>	
 					";					
 		    	}    
 
 		    	$view_search="";
 		    	$button_search="";
-				#######################
 		    	if(isset($option["template_search"]) AND $option["template_search"] !="")    
 		    	{		    		
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
 		    		$this->words					=$this->__INPUT($this->words,$this->sys_fields); 
 
+					#$this->__PRINT_R($this->words);
 
 					$view_search					=$this->words["module_body"];
 		    		$this->words["module_body"]		="";
@@ -1449,7 +1373,6 @@
 					";		    	    
 		    	}    
                 $view_body="";
-				##############################
 		    	if(isset($option["template_body"]))
 		    	{    
 		    	    $template       =$option["template_body"];
@@ -1458,37 +1381,25 @@
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;
 
-					if(isset($return["data_0"]))
-					{
-						$view_body		=$this->__VIEW_KANBAN2($template,$return["data_0"],$option_kanban);
-						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data_0"],$option_kanban);
-						unset($return["data_0"]);
-					}	
-					else
-					{	
-						$view_body		=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
-						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
-					}
-					#$this->__PRINT_R($return);
-					if($view_body_pdf=="")	$view_body_pdf=$view_body;
-					
-					$return["pdf"]	="
-						<table width=\"100%\" border=\"1\" style=\"background-color:#fff; \">								
-							$view_title_pdf
-							$view_body_pdf
-						</table>					
-					";
+		    	    $view_body=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 		    	}    
-                #if(isset($inicio) AND $return["total"]>0)
+                if(isset($inicio) AND $return["total"]>0)
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
                 	else
                 	{	
-						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
-				
-                		#<div id=\"report_$name\" style=\"height:35px; width:100%; \" class=\"ui-widget-header\">
-						
-						
+                		$html_filter="";
+                		if(isset($option["section_filter"]) )
+                		{ 
+                			$html_filter="
+											<input style=\"paddin:8px; height:23px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\"  placeholder=\"Filtrar reporte\">													
+										</td>
+										<td width=\"30\">
+											<font id=\"sys_search_$name\" class=\"sys_seach\"> </font>                		
+                			";
+                		}
+                		if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
+                		
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\">
@@ -1503,10 +1414,7 @@
 											</table>
 										</td>
 										<td>											
-											<input style=\"paddin:8px; height:23px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
-										</td>
-										<td width=\"30\">
-											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
+										$html_filter
 										</td>
 										
 										<td align=\"right\">
@@ -1517,13 +1425,13 @@
 						if(@$this->request["sys_action"]!="print_pdf")	
 						{
 							if(@!$this->request["sys_row_$name"]) $this->request["sys_row_$name"]=50; 	
-							$array=array(1,20,50,100,200,500);
-							$option_select="";
+							$array				=array(1,20,50,100,200,500);
+							$option_select		="";
 							foreach($array as $index)
 							{
 								$selected		="";	
 								if($index==$this->request["sys_row_$name"]) 	$selected="selected";
-								$option_select.="<option value=\"$index\" $selected>$index</option>";
+								$option_select	.="<option value=\"$index\" $selected>$index</option>";
 							}							
 							
 							$view_head.="
@@ -1531,177 +1439,74 @@
 												$option_select		
 											</select>
 							";
-						}					
-						#3141005662
+						}				
 						$view_head.="	
-										</td>
-										<td  width=\"20\" align=\"center\" >
-											<font action=\"-\" name=\"$name\" class=\"page ui-button\">Anterior</font>
-										</td>										
-										<td width=\"20\" align=\"center\" >
-											<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
-										</td>
+						
+										<td  width=\"30\" align=\"center\" >
+											<font action=\"-\" name=\"$name\" class=\"page\"> Anterior </font>
+										</td>						
+										<td width=\"30\" align=\"center\" style=\" padding-right:8px;\">
+											<font action=\"+\" name=\"$name\" class=\"page\"> Siguiente </font>
+										</td>								
 									</tr>
 								</table>		
 								
 							</div>                
                 		";
                 	}
-					#
-										
-					if(!isset($option["header"]))	
-						$option["header"]		="true";					
-										
-					if(@$option["header"]!="true")		$view_head="";
-										
-					$return["title"]=$view_title;
-					
-
-					#0133 32084420  CESAR JIMENES  32084444
-					$button_create_js="";
-					if(isset($template_option))	
-					{
-						#$this->__PRINT_R($template_option);
-						
-						$button_create_js="
-							if($(\"font#create_$name\").length>0)
-							{	
-	            				$(\"font#create_$name\").click(function()
-	            				{
-	            					$(\"div#create_$name\").dialog({
-	            						open: function(event, ui){
-											var dialog = $(this).closest('.ui-dialog');
-										},
-										buttons: {
-											\"Aceptar\": function() {													
-												var options={};
-												options[\"class_one\"]			=\"{$template_option["class_one"]}\";
-												options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
-												options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
-												options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
-												
-											
-											
-												many2one_post(options);
-											},
-											\"Cancelar\": function() {
-												$( this ).dialog(\"close\");
-											}
-										},										
-	            						width:\"700px\"
-	            					});
-	            				});
-							}						
-						";
-						
-					}				
-					
-					
-					$return["report"]="
-						$view_head
-						<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;\">
-							<table width=\"100%\" style=\"background-color:#fff; \">
-							$view_title
-							$view_body
-							</table>
-						</div>		
-						<script>
-								$button_create_js
-								sys_report_memory();
-												
-								$(\"#sys_search_$name\")
-									.button({
-										icons: {	primary: \"ui-icon-search\" },
-										text: false
-									})
-									.click(function(){
-										$(\"#sys_action_$name\").val(\"seach\");
-										$(\"#sys_page_$name\").val(1);	
-										$(\"form\").submit();
-									}
-								);							
-								$(\"#sys_rows_$name\").change(function(){
-								
-									$(\"#sys_row_$name\").val(  $(\"#sys_rows_$name\").val()      );
-									$(\"#sys_page_$name\").val(1);
-									$(\"form\").submit(); 									
-								});								
-								$(\".page[action='-'][name='$name']\").button({
-									icons: {	primary: \"ui-icon-triangle-1-w\" },
-									text: false
-								});
-								$(\".page[action='+'][name='$name']\").button({
-									icons: {	primary: \"ui-icon-triangle-1-e\" },
-									text: false
-								});
-							
-								$(\".page\").click(function(){
-									var action      	=$(this).attr(\"action\");						    
-									var sys_page    	=$(\"#sys_page_$name\").val();
-									var sys_page2		=sys_page;
-									if(action==\"-\")
-									{	
-										if($inicio > $(\"#sys_row_$name\").val())
-										{	
-											sys_page--;
-										}	
-									}	
-									else
-									{				
-										if($fin < {$return["total"]})
-										{	
-											sys_page++;
-										}	
-									}			
-									if(sys_page!=sys_page2)
-									{	
-										$(\"#sys_page_$name\").val(sys_page);
-										$(\"form\").submit(); 
-									}	
-								});	
-						</script>
-					";
-					
+                	#<div id=\"base_$name\" style=\" width:100%; height:-moz-calc(100% - 300px);\">
 					$view="
-						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc;\">
-						{$return["report"]}
-						</div>		
+						<div id=\"base_$name\" class=\"base_report\" style=\"height:100%; width:100%; \">
+							$view_head
+							<div id=\"div_$name\" class=\"div_report\" style=\"width:100%; overflow-y:auto; overflow-x:hidden;\">
+								<table width=\"100%\"  style=\"background-color:#fff;\">
+								$view_title
+								$view_body							
+								</table>
 					";
-
 					if(@$this->request["sys_action"]!="print_pdf")	
 					{
 						$view.="
-							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
-							<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
-							<input name=\"sys_page_$name\" id=\"sys_page_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_page\">
-							<input name=\"sys_row_$name\" id=\"sys_row_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_row\">
+								<input name=\"sys_order_$name\" id=\"sys_order_$name\" type=\"hidden\" value=\"$sys_order\">		
+								<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" type=\"hidden\" value=\"$sys_torder\">
+								<input name=\"sys_page_$name\" id=\"sys_page_$name\" type=\"hidden\" value=\"$sys_page\">
+								<input name=\"sys_row_$name\" id=\"sys_row_$name\" type=\"hidden\" value=\"$sys_row\">
 						";
 					}				
+					$view.="
+							</div>
+						</div>		
+					";
 					$filter_autocomplete="";
-					if(isset($this->sys_fields) AND is_array($this->sys_fields))
+
+					if(isset($option["section_filter"]) AND is_array($option["section_filter"]))
 					{
-						foreach($this->sys_fields as $campo=>$valor)
-						{        								
+						foreach($this->sys_filter[$option["filter"]] as $campo=>$valor)
+						{        				
+							if(is_int($campo))	$campo=$valor;
+										
 							if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 							{	
 								$filter_autocomplete.="
-									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\");											
+									var filter=filter_html(\"$campo\",\"$valor\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\");											
 									$(\"#filter_fields_$name\").append(filter);
 								";
 							}							
 						}	
-					}									
+					}					
 					
 					if(@$this->request["sys_action"]!="print_pdf")	
 					{				
+						$section_filter=@$option["section_filter"];
+					
+					
 						$view.="
 							$view_search
 							$view_create
-							<script>					
+							<script>		
 								if($(\"#sys_filter_$name\").length>0)        
 								{
-									$filter_autocomplete
-								
+									$filter_autocomplete							
 									$( function() 
 									{
 										function split( val ) {
@@ -1711,11 +1516,10 @@
 										{
 											return split( term ).pop();
 										}
-
 										$(\"#sys_filter_$name\" )								
 										.on( \"keydown\", function( event ) 
 										{
-											if( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( \"instance\" ).menu.active ) 
+											if ( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( \"instance\" ).menu.active ) 
 											{												
 												event.preventDefault();
 											}
@@ -1724,7 +1528,7 @@
 										{
 											source: function( request, response ) 
 											{
-												$.getJSON( \"../sitio_web/ajax/filter_autocomplete.php?class={$this->sys_object}\", {
+												$.getJSON( \"../sitio_web/ajax/filter_autocomplete.php?section_filter=$section_filter&class={$this->sys_object}\", {
 												term: extractLast( request.term )
 												}, response );
 											},
@@ -1739,18 +1543,16 @@
 											},
 											focus: function() 
 											{
-												// prevent value inserted on focus
 												return false;
 											},
 											select: function( event, ui ) 
 											{
 												var filter=filter_html(ui.item.field,ui.item.title,ui.item.term,\"$name\");											
 												$(\"#filter_fields_$name\").append(filter);
-												
+																								
 												this.value = \"\";
-												////$(\"form\").submit(); 
 												return false;
-											}											
+											}
 										})
 										.autocomplete( \"instance\" )._renderItem = function( ul, item ) 
 										{
@@ -1758,8 +1560,58 @@
 											.append( \"<div> Buscar <b>\" + item.term + \"</b> en la columna <b><font size=\\\"1\\\"> \" + item.title + \" </font></b></div>\" )
 											.appendTo( ul );
 										}									
-									} );
+									 });
 								}
+								
+								
+								
+								
+								$(\"#sys_search_$name\")
+									.button({
+										icons: {	primary: \"ui-icon-search\" },
+										text: true
+									})
+									.click(function(){
+										$(\"#sys_action_$name\").val(\"seach\");
+										$(\"#sys_page_$name\").val(1);	
+										$(\"form\").submit();
+									}
+								);
+							
+							
+							
+								$(\"#sys_rows_$name\").change(function(){
+									$(\"#sys_row_$name\").val(    $(this).val()   );
+									$(\"#sys_page_$name\").val(1);
+									$(\"form\").submit(); 
+								});
+								$(\"font.page[action='-']\").button({
+									icons: {	primary: \"ui-icon-triangle-1-w\" },
+									text: false
+								});								
+								$(\"font.page[action='+']\").button({
+									icons: {	primary: \"ui-icon-triangle-1-e\" },
+									text: false
+								});								
+								
+								$(\".page[name='$name']\").click(function(){
+									var action      	=$(this).attr(\"action\");						    
+									var sys_page    	=$(\"#sys_page_$name\").val();
+									
+									if(action==\"-\")   
+									{
+										if($inicio > $(\"#sys_rows_$name\").val() )
+											sys_page--;
+									}	
+									else                
+									{
+										if({$return["total"]} > $fin)
+											sys_page++;
+									}	
+						
+									$(\"#sys_page_$name\").val(sys_page);
+									$(\"form\").submit(); 
+								});				
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
@@ -1768,8 +1620,27 @@
 					}
 					$return["html"]	=$view;
 				}	
+				else
+				{
+					$view="
+							<div id=\"report_$name\" style=\"height:35px; width:100%; \" class=\"ui-widget-header\">
+								<table width=\"100%\" height=\"100%\">
+									<tr>
+										<td align=\"center\">
+											<b>No se encontraron registros</b>
+										</td>								
+									</tr>
+								</table>		
+								
+							</div>                					
+					";				
+					$view	=$this->__VIEW_INPUTSECTION($view);
+					$return["html"]	=$view;
+				}
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";
+		    
+		    #$return["html"]	=$this->__VIEW_INPUTSECTION($return["html"]);
 		    
 		    return $return;
 		}   

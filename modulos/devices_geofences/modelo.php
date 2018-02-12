@@ -117,7 +117,7 @@
     		$option["where"][]									="TIMEDIFF(time_end,time) >'00:02:00'"; 
     		
     		
-    		#$option["echo"]			="Alert";
+    		$option["echo"]			="Alert";
     		
     		#$option["order"]		="fechaevento DESC";
     		return parent::__BROWSE($option);

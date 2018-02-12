@@ -84,6 +84,29 @@
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }	
+    elseif($objeto->sys_section=="report_especifico")
+    {
+		# TITULO DEL MODULO
+    	$module_title                	=	"Reporte de ";
+
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
+    	$module_right=array(
+			array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			#array("kanban"=>"Kanban"),
+			#array("report"=>"Reporte"),
+	    );
+	    
+	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
+		$option     					=	array();
+		#$option["template_title"]		=	$objeto->sys_module."html/report_title";
+		#$option["template_body"]		=	$objeto->sys_module."html/report_body";
+		
+		$option["order"]				="id DESC";
+		$data										= $objeto->__REP_GENERAL();
+		$objeto->words["module_body"]				=$data["html"];
+
+    }
 
     else
     {
@@ -102,19 +125,17 @@
 		$option     					=	array();
 		$option["template_title"]		=	$objeto->sys_module."html/report_title";
 		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-	
-	
+		
 		$option["order"]="id DESC";
 		$data								=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]	=	$data["html"];	
     }
-    
-    
+
     	$module_left=array(
-		    array("report_pendiente"=>"Pend",	"icon"=>"ui-icon-help"),
-		    array("report_cancelados"=>"",	"icon"=>"ui-icon-closethick"),
-		    array("report_aprovados"=>"",	"icon"=>"ui-icon-check"),
+		    array("report_especifico"	=>"R Esp.", 	"title"=>"Reporte Especifico"),
+		    array("report_general"		=>"R Gral.", 	"title"=>"Reporte General"),
 		);	    
+    
     
     
 	$objeto->words["module_title"]	=	"$module_title Avisos";

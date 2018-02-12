@@ -4,8 +4,6 @@
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
-		#$this->sys_enviroments			= "PRODUCTION";
-		#$this->sys_enviroments			= "DEVELOPER";						
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",

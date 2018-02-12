@@ -111,9 +111,9 @@
     
     
     	$module_left=array(
-		    array("report_pendiente"=>"","icon"=>"ui-icon-help", "title"=>"Pendientes"),
-		    array("report_cancelados"=>"","icon"=>"ui-icon-closethick", "title"=>"Cancelados"),
-		    array("report_aprovados"=>"","icon"=>"ui-icon-check", "title"=>"Aprobados"),
+		    array("report_pendiente"=>"Pend",	"icon"=>"ui-icon-help"),
+		    array("report_cancelados"=>"",	"icon"=>"ui-icon-closethick"),
+		    array("report_aprovados"=>"",	"icon"=>"ui-icon-check"),
 		);	    
     
     

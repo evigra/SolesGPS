@@ -1069,8 +1069,7 @@
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
 						}						
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
-						{					
-							
+						{												
 					    	if(isset($this->sys_fields[$field]["class_field_l"]))
 					    	{					    		
 					    		if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
@@ -1267,6 +1266,7 @@
 		    	else
 		    	{			    		
 		    	    #$option["name"]                 =$name;
+####--------------------------------------------------------------------------------------------------------
 		    		$browse 						=$this->__BROWSE($option);		    			    		
 
 		    		$return["data"]					= $browse["data"];
@@ -1380,7 +1380,7 @@
 		    	    if(isset($option["actions"]))	$option_kanban["actions"]	=$option["actions"];
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;
-
+###------------------------------------------------------------------------------------------------
 		    	    $view_body=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 		    	}    
                 if(isset($inicio) AND $return["total"]>0)

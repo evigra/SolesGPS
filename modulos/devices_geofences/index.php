@@ -84,6 +84,114 @@
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }	
+    elseif($objeto->sys_section=="report_hoy")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_HOY();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte Actual de";
+    }
+    elseif($objeto->sys_section=="report_hoy_total")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_HOY_TOTAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Suma Actual de";
+    }
+
+    elseif($objeto->sys_section=="report_semana_actual")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte Semanal de ";
+    }
+    
+    elseif($objeto->sys_section=="report_semana_actual_total")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_SEMANA_TOTAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Suma Semanal de ";
+    }    
+    elseif($objeto->sys_section=="report_semana_anterior")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_SEMANA_ANTERIOR();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte Semanal Anterior ";
+    }
+    elseif($objeto->sys_section=="report_semana_anterior_total")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_SEMANA_ANTERIOR_TOTAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte Semanal Anterior ";
+    }
+
+    elseif($objeto->sys_section=="report_general")
+    {
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_GENERAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte de General de ";
+    }
 
     else
     {
@@ -109,13 +217,24 @@
 		$objeto->words["module_body"]	=	$data["html"];	
     }
     
+    	$module_left=array(
+		    array("report_hoy"=>"",				"icon"=>"ui-icon-calendar", 	"title"=>"Hoy", 			"text"=>"false"),
+		    array("report_semana_actual"=>"",	"icon"=>"ui-icon-calculator", 	"title"=>"Semana Actual", 	"text"=>"false"),
+		    array("report_semana_anterior"=>"",	"icon"=>"ui-icon-copy", 		"title"=>"Semana Anterior", "text"=>"false"),
+		);	    
+
+    	$module_center=array(
+		    array("report_hoy_total"=>"",				"icon"=>"ui-icon-calendar", 	"title"=>"Totales Hoy", 			"text"=>"false"),
+		    array("report_semana_actual_total"=>"",		"icon"=>"ui-icon-calculator", 	"title"=>"Totales Semana Actual", 	"text"=>"false"),
+		    array("report_semana_anterior_total"=>"",	"icon"=>"ui-icon-copy", 		"title"=>"Totales Semana Anterior", "text"=>"false"),
+		);	    
     
     
-	$objeto->words["module_title"]	=	"$module_title Avisos";
+	$objeto->words["module_title"]	=	"$module_title Geocercas";
 	
 	# CARGANDO LOS BOTONES LA LA VISTA
 	$objeto->words["module_left"]  	=	$objeto->__BUTTON($module_left);
-	$objeto->words["module_center"]	=	$module_center;
+	$objeto->words["module_center"]	=	$objeto->__BUTTON($module_center);
 	$objeto->words["module_right"]	=	$objeto->__BUTTON($module_right);;
 		
 

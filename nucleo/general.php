@@ -337,6 +337,7 @@
    			#echo "<br><br>OPTIONS<<<<<<<<<<<<<<<<<<<<<br>";
    			#$this->__PRINT_R($option);
    			#$this->__PRINT_R($return["data"]);
+   			#$html_title=array();
 			if(is_array(@$return["data"][0]))
 			{
 				foreach($return["data"][0] as $campo => $title)

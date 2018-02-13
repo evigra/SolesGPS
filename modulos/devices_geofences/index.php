@@ -177,7 +177,7 @@
 		$module_title								="Reporte Semanal Anterior ";
     }
 
-    elseif($objeto->sys_section=="report_general")
+    else
     {
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -193,29 +193,6 @@
 		$module_title								="Reporte de General de ";
     }
 
-    else
-    {
-		# TITULO DEL MODULO
-    	$module_title                	=	"Reporte de ";
-
-		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			#array("kanban"=>"Kanban"),
-			#array("report"=>"Reporte"),
-	    );
-	    
-	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
-		$option     					=	array();
-		$option["template_title"]		=	$objeto->sys_module."html/report_title";
-		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-	
-	
-		$option["order"]="id DESC";
-		$data								=$objeto->__VIEW_REPORT($option);
-		$objeto->words["module_body"]	=	$data["html"];	
-    }
     
     	$module_left=array(
 		    array("report_hoy"=>"",				"icon"=>"ui-icon-calendar", 	"title"=>"Hoy", 			"text"=>"false"),

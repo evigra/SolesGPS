@@ -271,7 +271,11 @@
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
+			if(!isset($option["select"]))					$option["select"]=array();
 			
+
+			$option["select"][]								="*";
+			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
 
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";

@@ -192,6 +192,12 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de General de ";
     }
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
 
     
     	$module_left=array(

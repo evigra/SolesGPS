@@ -1,0 +1,158 @@
+<div class="fondo_formulario">
+	{trabajador_departamento_id}
+	{trabajador_departamento}
+	{trabajador_dependencia}
+	{estatus}
+	
+	{trabajador_puesto_id}	
+	{trabajador_puesto_id_1}	
+	
+    <table border="0"  width="100%" >
+        <tr>
+            <td width="50%" valign="top">
+				<div class="subtitulo">TRABAJADOR </div>    
+				<table border="0"  width="100%">
+					<tr>
+						<td colspan="2"   width="20%">
+							{trabajador_clave}
+						</td>                	
+						<td colspan="7" align="right">
+							{che_plaza}
+						</td>                	
+						
+					</tr>   
+					<tr>
+						<td colspan="9">
+							{trabajador_nombre}
+						</td>               
+					
+					</tr>   
+					
+				</table>    		
+            </td>                	
+            <td valign="top">
+				<div class="subtitulo">Plaza Actual</div>    
+				<table border="0"  width="100%">
+					<tr>
+						<td colspan="2" width="20%">
+							{trabajador_plaza} 
+						</td>
+						<td colspan="2" width="20%">
+							{turno} 
+						</td>						
+						<td colspan="5">
+							{trabajador_horario}
+						</td>
+					</tr>    
+					<tr>			
+						<td colspan="9">
+							{trabajador_puesto} 
+						</td>
+
+					</tr>          							
+					<tr>      
+						<td>{sueldo}</td>        
+						<td>{b2}</td>
+						<td>{b3}</td>
+						<td>{b4}</td>
+						<td>{b5}</td>
+						<td>{b6}</td>
+						<td>{b7}</td>
+						<td>{b8}</td>
+						<td>{b9}</td>
+					</tr>          
+				</table> 
+				<div class="diferente" >
+					<div class="subtitulo">Plaza Diferente</div>  
+					<table border="0"  width="100%">				
+						<tr>
+							<td colspan="2" width="20%">
+								{trabajador_plaza_1} 
+							</td>
+							<td colspan="2" width="20%">
+								{turno_1} 
+							</td>						
+							<td colspan="5">
+								{trabajador_horario_1}
+							</td>
+						</tr>    
+						<tr>			
+							<td colspan="9">
+								{trabajador_puesto_1} 
+							</td>
+
+						</tr>          							
+						<tr>      
+							<td>{sueldo_1}</td>        
+							<td>{b2_1}</td>
+							<td>{b3_1}</td>
+							<td>{b4_1}</td>
+							<td>{b5_1}</td>
+							<td>{b6_1}</td>
+							<td>{b7_1}</td>
+							<td>{b8_1}</td>
+							<td>{b9_1}</td>
+						</tr>          
+					</table>    		
+				</div>  
+				
+            </td>                	
+        </tr>
+        <tr> 
+            <td colspan="2">				
+				<table border="0"  width="100%">
+					<tr><td width="50">{che_pago}</td>		<td>{d_pago}</td><td></td>		<td width="20">{incidencia}</td> <td width="50">{proceso}</td></tr>	
+					<tr><td width="50">{che_descuento}</td>	<td>{d_descuento}</td><td></td><td>{del}</td><td>{al}</td></tr>	
+					<tr><td width="50">{che_reintegro}</td>	<td>{d_reintegro}</td><td></td><td rowspan="3" colspan="3">{motivo}</td></tr>	
+					<tr><td width="50">{che_exclusion}</td>	<td>{d_exclusion}</td></tr>	
+					<tr><td width="50">{che_ajuste}</td>	<td>{d_ajuste}</td>	</tr>	
+				</table>    		
+				
+			</td>
+		</tr>		
+        <tr> 
+            <td colspan="2">
+			
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Conceptos Fijos</a></li>
+					<li  class="form"><a href="#tabs-2">Historicos Acumulados</a></li>
+					<li  class="form"><a href="#tabs-3">Conceptos por 1 vez</a></li>
+				</ul>
+				<div id="tabs-1" class="form">
+					{fijos_ids}
+				</div>		
+				<div id="tabs-2" class="form">
+					{historicos_ids}
+				</div>
+				<div id="tabs-3" class="form">
+					{conceptos_ids}
+				</div>
+			</div>
+
+
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script> 			
+			
+			
+			
+			
+
+
+
+
+				
+				
+
+    		
+            </td>                	
+            <td>
+				<div id="REPORT"></div>
+            </td>                	
+        </tr>   
+	</table>
+	
+</div>

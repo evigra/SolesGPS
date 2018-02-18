@@ -1,28 +1,48 @@
 <?php
 	include('basededatos.php');
-	require_once('class.phpmailer.php');
-	require_once('class.smtp.php');
+	#require_once('class.phpmailer.php');
+	#require_once('class.smtp.php');
 	
 	class auxiliar extends basededatos 
 	{   
 		##############################################################################	
 		##  PROPIEDADES
 		##############################################################################
-		var $request					=array();	# este arrat recibe las variables del POST		
-		var $sys_true					=array(1,"1","true", "si");
-		var $sys_false				    =array(0,"0","false", "no");
-		var $sys_section	   		 	="";
-		var $sys_action		   		 	="";
-		var $html						="";
-		var $sitio_web					="";		
-		var	$jquery						="";
-		var	$jquery_aux					="";	
-		var $sys_html     		      	="sitio_web/html/";
-		var $serv_error					=array("pruebas.solesgps.com","localhost");    				    				
+		var $request			=array();	# este arrat recibe las variables del POST		
+		var $sys_true			=array(1,"1","true", "si");
+		var $sys_import			=array(
+									"type"		=>"replace",
+									"fields"	=>",",
+									"enclosed"	=>"\"",
+									"lines"		=>"\\n",
+									"ignore"	=>"1",
+								);
+		var $sys_false		    =array(0,"0","false", "no");
+		var $sys_modules	    =array("historico","menu","user_group", "group","modulos","permiso","sesion");
+		var $sys_section	    ="";
+		var $sys_action		    ="";
+		var $html				="";
+		var $sitio_web			="";		
+		var	$jquery				="";
+		var	$jquery_aux			="";	
+		var $sys_html           ="sitio_web/html/";
 		
-		var $sys_date           		=""; 
-				
-		var $words=array(
+		var $sys_date; 
+		var $sys_object; 
+		var $sys_name; 
+		var $sys_table; 
+		var $sys_memory			=""; 
+		
+		var $__PRINT			="";
+		var $__PRINT_OPTION		=array();
+		var $__PRINT_JS			="";
+		
+		var $sys_historico;
+		
+		
+		
+		
+		var $words              =array(
 		    "html_head_title"           => "ESTE ES EL TITULO DE LA VENTANA :: words[html_head_title]",
 		    "html_head_description"     => "ESTA ES LA DESCRIPCION OCULTA DEL MODULO :: words[html_head_description]",		
 		);
@@ -90,84 +110,90 @@
 		 	# ASIGNA EL ROW CON EL $id enviado
 		 	# DE LAS VARIABLES DECLARADAS EN EL MODELO 
 			# $this->sys_fields
-			if(isset($this->sys_fields) AND is_array($this->sys_fields))
-			{
-		    	foreach($this->sys_fields as $field =>$value)
-		    	{
+				if(isset($this->sys_fields) AND is_array($this->sys_fields))
+				{
+					foreach($this->sys_fields as $field =>$value)
+					{					
+						if(isset($value["relation"]))
+						{														
+							if($value["relation"]=="one2many")
+							{
+								$eval="
+									$"."option=array(\"name\"=>\"$field"."_obj\");
+									$"."this->$field"."_obj			=new {$value["class_name"]}($"."option);
+								";
+								if(@eval($eval)===false)	
+									echo "$eval"; #$eval; ---------------------------								        			
+							}		
+							if($value["relation"]=="many2one")
+							{
+								
+								if(@$this->request["sys_action_" . $this->sys_object ]=="__clean_session")
+									unset($_SESSION["SAVE"][$this->sys_object]);			
+								#if(@$this->request["sys_action_" . $this->sys_object ]=="__SAVE")
+								#	unset($_SESSION["SAVE"][$this->sys_object][$field]);			
+								
+								
+								if($this->sys_section!="write")
+								{
+									#$this->__PRINT_R($this->request);
+									
+									#unset($_SESSION["SAVE"][$this->sys_object]);			
+									#$this->__PRINT_R($_SESSION["SAVE"]);	
+								}															
+							}			        									
+						}			        		
+					}
+				}
 
-		    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
-		    		{
-		    			$eval="$"."this->$field"."_obj			=new {$value["class_name"]}();";
+				
+				if(isset($id) and $id>0)
+				{
+					#if(@$this->request["sys_action"]!="__SAVE")
+					{
+						$option_conf=array();
+						
+						$option_conf["open"]	=1;
+						$option_conf["close"]	=1;
 
-						if(@eval($eval)===false)	
-							echo ""; #$eval; ---------------------------								        			
-		    		}			        		
-		    	}
-			}
-
-			
-		    if(isset($id) and $id>0)
-		    {
-		    		
-		        #if(@$this->request["sys_action"]!="__SAVE")
-		        {
-					$option_conf=array();
-					
-					$option_conf["open"]	=1;
-					$option_conf["close"]	=1;
-
-		            $sql    	="SELECT * FROM {$this->sys_table} WHERE {$this->sys_primary_field}='{$id}'";
-			        $datas   	= $this->__EXECUTE("$sql",$option_conf);
-			        
-			        if(@is_array($datas[0]))
-			        {
-			        	foreach($this->sys_fields as $field =>$value)
-			        	{			        	
-			        		if(isset($value["type"]) AND $value["type"]!="class")	
-			        		{
-					    		if(isset($value["relation"]) AND $value["relation"]=="one2many")
-					    		{
-					    			$class_echo="";
-					    			if(isset($value["class_echo"]))   $class_echo="
-										if(in_array($"."_SERVER[\"SERVER_NAME\"],$"."this->serv_error))
-											$"."option[\"echo\"]=\"CLASS {$value["class_name"]}\";
+						$sql    	="SELECT * FROM {$this->sys_table} WHERE {$this->sys_primary_field}='{$id}'";
+						$datas   	= $this->__EXECUTE("$sql",$option_conf);
+						
+						#$this->__PRINT_R($datas);
+						
+						if(@is_array($datas[0]))
+						{
+							foreach($this->sys_fields as $field =>$value)
+							{			        	
+								if(isset($value["type"]) AND $value["type"]!="class")	
+								{
+									if(isset($value["relation"]) AND $value["relation"]=="one2many")
+									{
 										
-					    			";
-					    		
-					    			if(isset($value["class_field_m"]))
-					    			{
-					    			
 										$eval="
 											$"."option=array();
-											$class_echo
+											#$"."option[\"echo\"]=array(\"CLASS {$value["class_name"]}\");
 											$"."option[\"where\"]=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
 											$"."$field=$"."this->$field"."_obj->__BROWSE($"."option);
 											$"."this->sys_fields[\"$field\"][\"values\"]=\"\";
 											$"."this->sys_fields[\"$field\"][\"values\"]=$"."$field"."[\"data\"];
-										";
-										#$this->__PRINT_R($eval);
-										if(@eval(@$eval)===false)	
-											$this->__PRINT_R($eval);
-									}		
-					    		}
-					    	}	
-			        	}
-			        	
-					    foreach($datas[0] as $field =>$value)
-					    {
-					    	$value		=str_replace('"', '\"', $value);  
-					    	#$value	=htmlentities($value);
-					    	
-					    	
-					    
-					        $eval	="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
-					        #$this->__PRINT_R($eval);
-							if(@eval($eval)===false)	
-								echo ""; #$eval; ---------------------------					
-					    }
-			        }
-			    }    
-			}	
+										";										
+										if(@eval($eval)===false)	
+											$this->__PRINT_R("$eval"); #$eval; ---------------------------								        			
+									}
+								}	
+							}
+							
+							foreach($datas[0] as $field =>$value)
+							{
+								$eval="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
+								if(@eval($eval)===false)	
+									echo ""; #$eval; ---------------------------					
+							}
+						}
+					}    
+				}	
+			
     	}
 		##############################################################################	
 		##  METODOS	
@@ -734,16 +760,31 @@
     	
 			$this->__VARS();
 			$datas		=$this->sys_fields;
+			
+			#$this->__PRINT_R($datas);
+			
 			$return		=array();
     		foreach($datas as $campo=>$valor)
     		{
-    			if(isset($valor["value"]) and $valor["value"]!="")
-    			{
-    				$return[$campo]=$valor["value"];
-    			}
+    			#if(isset($valor["value"]) and $valor["value"]!="")
+				if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
+				{	
+					$return[$campo]=$_SESSION["SAVE"][$this->sys_object][$campo]["data"];
+					#$this->__PRINT_R($_SESSION["SAVE"][$this->sys_object]);
+				}
+				else				
+				{					
+					if(isset($valor["request"]))
+					{
+						$return[$campo]=$valor["request"];
+					}					
+				}			
     		}    		
+			
+			#$this->__PRINT_R($return);
     		return $return;
     	}
+
     	##############################################################################    
 		public function __VARS()
 		{	
@@ -754,9 +795,43 @@
 			foreach($this->sys_fields as $campo=>$valor)
 			{
 				if(!isset($this->request["$campo"]))		$this->request["$campo"]="";
-				else $this->sys_fields["$campo"]["value"]	=$this->request["$campo"];
+				else
+				{	
+					$this->sys_fields["$campo"]["value"]	=$this->request["$campo"];
+					$this->sys_fields["$campo"]["request"]	=$this->request["$campo"];
+				}	
 			}		
 		}    
+		public function __VALOR($valor=NULL)
+		{				    
+			$style="";
+			if(is_array($valor["style"]))
+			{
+				foreach($valor["style"] as $attr => $val_attr)
+				{
+					if(@is_array($val_attr))
+					{						
+						$eval_attr="";	
+						foreach($val_attr as $field_attr => $eval_field)
+						{		
+								
+							if($attr=="background-color")	$eval_attr.="if({$eval_field})	$"."style.=\"background-color:$field_attr;\";";
+							elseif($attr=="border")			$eval_attr.="if({$eval_field})	$"."style.=\"border: 1px solid $field_attr; \";";
+							elseif($attr=="font-size")		$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
+							else							$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
+							
+							#$eval_attr.="$"."this->__PRINT_R(\"$eval_field\");
+						}
+					}
+				}	
+				
+				eval($eval_attr);
+			}
+			if($this->sys_section=="create" AND is_array(@$valor["create"]))	$style	.=$this->__VALOR($valor["create"]);
+			if($this->sys_section=="write" AND is_array(@$valor["write"]))		$style	.=$this->__VALOR($valor["write"]);
+
+			return $style;		
+		}
 
     	##############################################################################    
 		public function __INPUT($words=NULL, $fields=NULL)
@@ -770,24 +845,29 @@
 			        if(!isset($valor["showTitle"]))	    $valor["showTitle"]		="si";
 			        if(!isset($valor["title"]))	    	$valor["title"]			="";
 			        if(!isset($valor["value"]))	    	$valor["value"]			="";
-			        if(!isset($valor["source"]))	   	$valor["source"]		="";
-			        if(!isset($valor["holder"]))	   	$valor["holder"]		="";
+			        if(!isset($valor["source"]))	   	$valor["source"]		="";			        
 			        if(!isset($valor["attr"]))	   		$valor["attr"]			="";
-			        
+					if(!isset($valor["style"]))	   		$valor["style"]			="";
+					
+					if($this->sys_section=="create")	$valor["value"]			="";
+
+					$class="$campo ";
+					$style="style=\"" . $this->__VALOR($valor) . "\""; 				
+								        
 			        if(!is_array($valor["value"]))
 			        {
-			        	if(!isset($valor["description"]))	$valor["description"]="";
-			        	
-			        	$description	=$valor["description"];
-			        	
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
+			        		#$this->__PRINT_R($valor["attr"]);
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
-			        			$attr.=" $attr_field='$attr_value'";
+								if($attr_value=="required")		$class.=" required ";
+								else	
+									$attr.=" $attr_field='$attr_value'";
 			        		}			        	
 			        	}			        				        	
+						$titulo					="&nbsp;";		
 					    if(in_array($valor["showTitle"],$this->sys_true))	
 					    {			        
 					    	if(is_array($this->sys_fields_l18n) AND isset($this->sys_fields_l18n["$campo"]))	
@@ -795,25 +875,53 @@
 					    		$valor["title"]		=$this->sys_fields_l18n["$campo"];
 					    	}	
 
-
 							if($valor["type"]=="txt")	$titulo					="{$valor["title"]}";			        	
-							else						$titulo					="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]}</font><br>";			        	
+							else						$titulo					="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]} </font>";
 					    	
 					    }	
-					    else                                				$titulo					="";
+					    
+
 					    
 					    if($valor["type"]=="input")	
-					    {			        	
-					        #$words["$campo"]  ="$titulo<input id=\"$campo\"  type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
-					        $words["$campo"]  ="<input id=\"$campo\" title=\"$description\" type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario  {$this->sys_name}\"><br>$titulo";
+					    {			        						        
+					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					    } 
 					    if($valor["type"]=="date")	
 					    {
+							#$this->__PRINT_R($this->sys_fields[$campo]);			
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        $words["$campo"]  ="
-					        	<input id=\"$campo\" type=\"text\" name=\"$campo\" title=\"$description\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\"><br>$titulo
+					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 			        			<script>
-									$(\"input#$campo\").datepicker({dateFormat:\"yy-mm-dd\"});
+									$(\"input#$campo".".{$this->sys_name}\").datepicker({dateFormat:\"yy-mm-dd\"});
+					        	</script>			            	
+					        	";
+					    } 
+					    if($valor["type"]=="multidate")	
+					    {
+					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
+					        $js_multidate="";
+							if(@$this->request["sys_section_".$this->sys_name]=="write")
+							{
+								$valores_multidate=explode(",",$valor["value"]);
+								$days_value="";
+								foreach($valores_multidate as $day)
+								{
+									$day=trim($day);
+									if($days_value=="")	$days_value="'$day'";
+									else				$days_value.=", '$day'";
+								}
+								
+								$js_multidate="addDates: [$days_value]";
+					        }
+					        $words["$campo"]  ="
+					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
+			        			<script>
+									$(\"input#$campo".".{$this->sys_name}\").multiDatesPicker(
+									{
+										dateFormat: \"yy-mm-dd\",
+										$js_multidate
+									});
 					        	</script>			            	
 					        	";
 					    } 
@@ -823,40 +931,40 @@
 					        //$words["$campo"]  ="<input id=\"$campo\" type=\"checkbox\" name=\"$campo\" class=\"formulario\"><br>$titulo";
 					        $checked="";
 					        if($valor["value"]==1) $checked="checked";
-
+							
 					    	$words["$campo"]  = 
-					        "<div class=\"checkbox-2\">
-		    					<input type=\"checkbox\" id=\"$campo"."c\" $attr title=\"$description\" $checked value=\"1\" name=\"$campo\" />
-		    				 <label for=\"$campo"."c\">".""."</label>
-							</div>
-							$titulo
+					        "<div class=\"check-2\">
+		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"$campo\" />
+		    					<label for=\"$campo\">".""."</label>
+							</div>$titulo
+							<br>
 							";
 
 
 					    }      
 					    if($valor["type"]=="file")	
 					    {
-					        $words["$campo"]  ="$titulo<input id=\"$campo\" name=\"$campo\" $attr type=\"file\" class=\"formulario\">";
-					        $words["$campo"]  ="<input id=\"$campo\" title=\"$description\" name=\"$campo\" type=\"file\" class=\"formulario {$this->sys_name}\"  placeholder=\"{$valor["holder"]}\"><br>$titulo";
+					        $words["$campo"]  ="$titulo<input id=\"$campo\" name=\"$campo\" type=\"file\" class=\"formulario\">";
+					        $words["$campo"]  ="<input id=\"$campo\" $attr name=\"$campo\" type=\"file\" class=\"formulario {$this->sys_name} $class\" ><br>$titulo";
 					    }    
 
 					    if($valor["type"]=="font")	
 					    {
-					        $words["$campo"]  ="$titulo<div id=\"$campo\" $attr style=\"height:22px;\"> {$valor["value"]}</div><br>&nbsp;";
+					        $words["$campo"]  ="$titulo<div id=\"$campo\" class=\"{$this->sys_name}\" $attr style=\"height:22px;\"> {$valor["value"]}</div><br>&nbsp;";
 					    } 
 					    if($valor["type"]=="txt")	
-					    {	
+					    {
 					        $words["$campo"]  ="$titulo";
 					    } 
 					    
 					    if($valor["type"]=="textarea")	
 					    {
-					        $words["$campo"]  ="<textarea id=\"$campo\" $attr title=\"$description\" name=\"$campo\" class=\"formulario {$this->sys_name}\" style=\"height:150px;\" placeholder=\"{$valor["holder"]}\">{$valor["value"]}</textarea><br>$titulo";
+							if($attr=="")	$attr="style=\"height:150px;\"";
+					        $words["$campo"]  ="<textarea id=\"$campo\" name=\"$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
 					    } 			           
 					    if($valor["type"]=="password")	
-					    {
-					        $words["$campo"]  ="$titulo<input type=\"password\" $attr id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario\">";
-					        $words["$campo"]  ="<input type=\"password\" title=\"$description\" id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\"><br>$titulo";
+					    {					        
+					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo";
 					    }    
 					    if($valor["type"]=="select")	
 					    {
@@ -868,7 +976,7 @@
 					        	if($valor["value"]==$value) $selected="selected";
 					        	$options.="<option value=\"$value\" $selected>$text</option>";			            
 					        }			            
-						        $words["$campo"]  ="<select id=\"$campo\" $attr title=\"$description\" name=\"$campo\"  class=\"formulario {$this->sys_name}\">
+						        $words["$campo"]  ="<select id=\"$campo\" $style name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
 					        		$options
 					        	</select><br>$titulo
 					        ";
@@ -876,7 +984,6 @@
 					    if($valor["type"]=="autocomplete")	
 					    {
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
-					    	
 					    	
 					    	
 					    	$json=$this->__JSON_AUTOCOMPLETE($valor);
@@ -888,98 +995,234 @@
 					    	else										$fields["$campo"]["value"]		=@$json[0]->clave;
 					    	
 					    	$label	=$fields["auto_$campo"]["value"];
-					    	#$label	=$value["value"]["0"][  $value["class_field_l"]  ];
-
-					    	
-										    	
-					    	if(isset($fields["$campo"]["class_field_l"]))
+							
+							
+							
+					    	if(isset($this->sys_fields["$campo"]["class_field_l"]))
 					    	{
-					    		if(isset($fields["$campo"]["values"]) AND count($fields["$campo"]["values"])>0)
+								#$this->__PRINT_R($this->sys_fields["$campo"]);	
+					    		if(isset($this->sys_fields["$campo"]["values"]) AND count($this->sys_fields["$campo"]["values"])>0)
 					    		{
-					    			$label=$fields["$campo"]["values"][0][$fields["$campo"]["class_field_l"]];
-					    		
+					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];									
 					    		}
 					    	}
-
-					    	#$this->__PRINT_R($valor);
+							
+							if(isset($valor["vars"]))	$vars	=$valor["vars"];
+							else						$vars	="";
+					    
 					        $words["$campo"]  ="					        	
-					        	<input id=\"auto_$campo\" type=\"text\"  $attr name=\"auto_$campo\" title=\"$description\" value=\"$label\" class=\"formulario {$this->sys_name}\"  placeholder=\"{$valor["holder"]}\"><br>$titulo
-					        	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\" type=\"hidden\">
+					        	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+					        	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 					        	<script type=\"\">
-									$(\"input#auto_$campo\").autocomplete(
+									
+									$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 									{		
-										source:\"{$valor["source"]}\",
+										source:\"{$valor["source"]}$vars\",
 										dataType: \"jsonp\",
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
-										{	
-											$(\"input#$campo\").val(ui.item.clave);					
-											$(\"input#auto_$campo\").val(ui.item.label);										
+										{												
+											if(typeof auto_$campo === 'function') 								
+											{																
+												auto_$campo(ui);
+											}									
+											else
+											{
+											
+												$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
+												$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+											}
 										}				
 									});				            	
 					        	</script>
 					        ";
-					    }    
+					    }  
+						#/*
+					    if($valor["type"]=="form")	
+					    {					    
+							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
+							{								
+								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
+								
+								$campo_many					=$valor["class_field_o"];
+								$value_many					=$this->sys_fields["$campo_many"]["value"];								
+								
+								if($this->sys_section=="create" AND $this->request["sys_action_".$this->sys_object] == "__SAVE")
+									$value_many=0;	
+								
+								$option=array(
+									"class_one"				=>$this->sys_name,
+									"class_one_id"			=>$value_many,
+								
+									"class_field"			=>$campo,
+									"class_field_id"		=>"",
+									"class_field_value"		=>$valor,
+									"words"					=>$words,
+									"view"					=>"html",
+									
+								);								
+								#$this->__PRINT_R($option);
+								$words						=$this->__MANY2ONE($option);
+								#$this->__PRINT_R($option);
+							}
+						}	
+						#*/
 					    if($valor["type"]=="class")	
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="one2many")
 							{
 								$eval="";
-								$eval.="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();									
+								$eval="
+									$"."this->$campo				=new {$valor["class_name"]}();									
 									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
 								";	
-								if(isset($valor["template_title"]));
-								{
-									$eval.="
-										$"."option[\"template_title\"]		=	\"". $valor["template_title"] ."\";
-										$"."option[\"template_body\"]		=	\"". $valor["template_body"] ."\";
-									";
-								}
-								if(array_key_exists("template_search",$valor) AND $valor["template_search"]!="")
-								{																	
-									$eval.="$"."option[\"template_search\"]		=	\"{$valor["template_search"]}\";";
-								}
-								if(array_key_exists("template_create",$valor) AND $valor["template_create"]!="")
-								{									
-									$eval.="$"."option[\"template_create\"]		=	\"". $valor["template_create"] ."\";";
-								}	
-								$eval.="
-									$"."data			=	$"."this->$campo"."_obj->reporte($"."option);
-								";
+								$eval="
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
+								";	
+								
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
 							}			        		
-					    	$words["$campo"]  =$data["html"];
+					    	#$words["$campo"]  =$data["html"];
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
-					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
+					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
 					    }    
 					    if($valor["type"]=="img")	
 					    {
-					        $words["$campo"]  ="$titulo<img id=\"$campo\" name=\"$campo\" src=\"{$valor["value"]}\">";
+					        $words["$campo"]  ="$titulo<img id=\"$campo\" name=\"$campo\" $attr src=\"{$valor["value"]}\">";
 					    }    
 					}
 			        
 			    }
 			}    
 			else $words="ERROR :: No se asigno el array de campos $"."this->sys_fields";
+
+			
 			return $words;
 		}   		
+    	##############################################################################    
+		public function __MANY2ONE($option)		
+		{
+			#unset($_SESSION["SAVE"]["personal_calculo"]	);	
+			#$_SESSION["SAVE"]=array();
+			
+			#$this->__PRINT_R($option);	
+			$class_id			=@$option["class_id"];
+			$class_one			=$option["class_one"];
+			$class_one_id		=$option["class_one_id"];
+			
+			$campo				=$option["class_field"];
+			$class_field_id		=$option["class_field_id"];
+			$valor				=$option["class_field_value"];
+			
+			$words				=$option["words"];                                                                                                                                                                                                                                                          
+			$index				=$option["view"];
+			
+						
+			if(isset($option["json"]))
+			{
+				$json	=$option["json"];						
+			}
+						
+			$eval="
+				$"."option_$campo		=array(				
+					\"memory\"			=>\"$campo\",
+					\"class_one\"		=>\"$class_one\",
+				);
+			
+				$"."this->$campo"."_obj									=new {$valor["class_name"]}($"."option_$campo);
+								
+				if(isset($"."json))
+				{								
+					$"."sys_primary_field	=$"."this->$campo"."_obj->sys_primary_field;
+			
+					if(isset($"."class_id) AND $"."class_id>0)
+						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+					
+					#$"."this->__PRINT_R($"."json);
+					$"."this->$campo"."_obj->__SAVE($"."json);
+				}
+				
+				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
+				
+				$"."this->$campo"."_obj->words[\"many2one_form\"]		=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
+				$"."this->$campo"."_obj->words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
+												
+				$"."this->$campo"."_obj->words[\"many2one_report_id\"]	=$"."campo;
+								
+				if(isset($"."words[\"html_head_js\"]))								
+					$"."words[\"html_head_js\"] 						.= $"."this->$campo"."_obj->words[\"html_head_js\"];
+								
+				$"."option_report										=array();				
+				
+				$"."option_report[\"where\"]							=array(
+					\"{$valor["class_field_m"]}='$class_one_id'\"
+				);
+				
+				$"."option_report[\"template_title\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_title\";
+				$"."option_report[\"template_body\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_body\";
+				$"."option_report[\"template_create\"]	                = $"."this->$campo"."_obj->sys_module . \"html/create\";
+				$"."option_report[\"template_option\"]	                = $"."option;
+				
+				$"."option_report[\"name\"]	                			= '$campo';
+				
+				
+				$"."report_procedure									=$"."this->$campo"."_obj->__VIEW_REPORT($"."option_report	);
+
+				$"."this->$campo"."_obj->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
+				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->$campo"."_obj->words);									
+			";				
+			
+			eval($eval);	
+			
+			return $words;
+		}
+    	##############################################################################    
+		public function __REPORT_MANY2ONE_JS($data)
+		{
+			$js="";	
+			foreach($data as $row)
+			{
+				$js.="var row=new Array();";
+				foreach($row as $field=>$value)
+				{
+					$js.="
+						row[\"$field\"]	=\"$value\";
+					";
+				}
+			}
+			
+			
+			$js="
+				var object=\"". $this->sys_name ."\";
+				if(many2one_data[object]==undefined)	many2one_data[object]=new Array();			
+				$js
+				many2one_data[object].push(row);	
+			";
+			return $js;
+		}
     	##############################################################################    
 		public function __INPUT_TYPE($type=NULL, $fields=NULL)
 		{
 			if(is_null($fields))
 			{
 				foreach($this->sys_fields as $field=>$value)
-					$this->sys_fields[$field]["type"]=$type;
+				{					
+					if(!in_array(@$this->sys_fields[$field]["type"],array("hidden","textarea","","primary key")))											
+					{	
+						$this->sys_fields[$field]["type"]="input";			    						
+						$this->sys_fields[$field]["attr"]=array("readonly"=>"readonly");			    					
+					}
+				}
 			}				
 			else
 			{
 				foreach($fields as $field)
-					$this->sys_fields[$field]["type"]=$type;
+					$this->sys_fields[$field]["attr"]=array("readonly"=>"readonly");			    
 			}
 		}
+    	##############################################################################    
     	##############################################################################    
 		public function __VIEW_OPTION($data)
 		{
@@ -1018,7 +1261,29 @@
 				<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
 				<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 				<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
-			";			
+			";		
+			
+			
+			if(isset($this->sys_memory) AND $this->sys_memory!="")
+			{	
+				
+				$this->words["many2one_button"]="
+					<font id=\"{$this->sys_name}\">ACEPTAR</font>				
+					<font id=\"{$this->sys_name}\">CANCELAR</font>	<br>			<br>
+					<script>
+						$(\"font#{$this->sys_name}\")
+							.button()
+							.click(function(){						
+								var options={
+									\"object\":\"{$this->sys_name}\",
+									\"class_one\":\"{$this->sys_object}\",
+								}
+								many2one_post(options);
+							});						
+					</script>					
+				";		
+		
+			}			
 			return $view;
 		}    	
 
@@ -1027,9 +1292,7 @@
 		{
 		    if(is_null($option))	$option=array();
 		    if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
-		    
-		    
-		    #$this->__PRINT_R($data);		    
+	    
 		    
 		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
 		    $return="
@@ -1056,7 +1319,7 @@
 			
 			if(is_array($data))
 			{
-			    foreach($data as $row)			
+			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
 					{								
@@ -1084,16 +1347,6 @@
 								$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
 							else $row[$field]="";
 							
-							
-							/*
-							$this->sys_fields[$field]["value"]=$fieldvalue;
-							
-							$json				=$this->__JSON_AUTOCOMPLETE($this->sys_fields[$field]);							
-							
-							$this->__PRINT_R($this->sys_fields[$field]);	
-							if(@$json[0]->label!="Sin resultados para ")		$row["auto_$field"]	=@$json[0]->label;
-							else												$row["auto_$field"]	="";
-							*/
 						}	
 						
 						
@@ -1118,27 +1371,68 @@
 	                    $actions["style_tr"]	=$style;
                     
                     				
-                    $show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
-                    $write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
-                    $delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
-                    $check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
+                    if(isset($this->sys_memory) AND $this->sys_memory!="")
+					{
+						
+						
+						$show	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-contact\"></font>";	
+						$write	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-pencil\"></font>";
+						$delete	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-trash\"></font>";
+						$check	="";
+					}				
+					else	
+					{			
+						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
+						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
+						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
+						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
+					}	
                     
                     if(!is_null($option))
                     {
                     	if(!isset($option["actions"]))				$option["actions"]=array();	
-                    	if(!isset($option["actions"]["show"]))		$option["actions"]["show"]	="1==1";
-                    	if(!isset($option["actions"]["write"]))		$option["actions"]["write"]	="1==1";
-                    	if(!isset($option["actions"]["delete"]))	$option["actions"]["delete"]="1==1";
-                    	if(!isset($option["actions"]["check"]))		$option["actions"]["check"]	="1==1";
+                    	
+                    	if($option["actions"]=="false")
+                    	{
+                    		$option["actions"]			=array();		
+                       		$option["actions"]["show"]	="1==0";
+	                		$option["actions"]["write"]	="1==0";
+	                		$option["actions"]["delete"]="1==0";
+	                		$option["actions"]["check"]	="1==0";	
+                    	}
+                    	else
+                    	{
+		                	if(!isset($option["actions"]["show"]))		$option["actions"]["show"]	="1==1";
+		                	if(!isset($option["actions"]["write"]))		$option["actions"]["write"]	="1==1";
+		                	if(!isset($option["actions"]["delete"]))	$option["actions"]["delete"]="1==1";
+		                	if(!isset($option["actions"]["check"]))		$option["actions"]["check"]	="1==1";
+                    	}           
+
+						
+
+	                	if($option["actions"]["show"]=="true")			$option["actions"]["show"]	="1==1";
+	                	elseif($option["actions"]["show"]=="false")		$option["actions"]["show"]	="1==0";
+	                	if($option["actions"]["write"]=="true")			$option["actions"]["write"]	="1==1";
+	                	elseif($option["actions"]["write"]=="false")	$option["actions"]["write"]	="1==0";
+	                	if($option["actions"]["delete"]=="true")		$option["actions"]["delete"]="1==1";
+	                	elseif($option["actions"]["delete"]=="false")	$option["actions"]["delete"]="1==0";
+	                	if($option["actions"]["check"]=="true")			$option["actions"]["check"]	="1==1";
+	                	elseif($option["actions"]["check"]=="false")	$option["actions"]["check"]	="1==0";
+                    	
+                    	
+                    	         	
                     	$eval="
-                    		if({$option["actions"]["show"]}) 	$"."show='$show';
-                    		else								$"."show='';
-                    		if({$option["actions"]["write"]}) 	$"."write='$write';
-                    		else								$"."write='';
-                    		if({$option["actions"]["delete"]}) 	$"."delete='$delete';
-                    		else								$"."delete='';                    		
-                    		if({$option["actions"]["check"]}) 	$"."check='$check';
-                    		else								$"."check='';                    		
+                    		if({$option["actions"]["show"]}) 						$"."show='$show';
+                    		else													$"."show='';
+                    		
+                    		if({$option["actions"]["write"]}) 						$"."write='$write';
+                    		else													$"."write='';
+                    		
+                    		if({$option["actions"]["delete"]}) 						$"."delete='$delete';
+                    		else													$"."delete='';
+                    		                    		
+                    		if({$option["actions"]["check"]}) 						$"."check='$check';
+                    		else													$"."check='';                    		
                     	";
                     	$eval_color="";
                     	if(!isset($option["color"]))				$option["color"]=array();
@@ -1146,15 +1440,21 @@
                     	if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
                     	
                     	foreach($option["color"] as $color => $filter)
-                    	{
+                    	{							
+							
+							
+							#$this->__PRINT_R("echo ". $option["color"]["$color"] .";");
+							#if(substr($row["trabajador_puesto_id"],1,6) != substr($row["sustituto_puesto_id"],1,6))
+							#$this->__PRINT_R(substr($row["trabajador_puesto_id"],0,6) ."!=". substr($row["sustituto_puesto_id"],0,6));
+							
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
                     	
                     	$eval.=$eval_color;
-                    	#echo "$eval";
+                    	#$this->__PRINT_R($eval); #$eval; ---------------------------					
                     	if(@eval($eval)===false)	
-				    	echo ""; #$eval; ---------------------------					
+				    		echo ""; #$eval; ---------------------------					
 				    	
 				    	
 
@@ -1233,18 +1533,44 @@
     	##############################################################################        
 		public function __VIEW_REPORT($option)
 		{
+			
+			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
+			
+			#$this->__PRINT_R($option);
 			$return=array();
 		    $view_title="";
+			if(isset($this->sys_memory) AND isset($template_option["class_field"]))
+			{	
+				$campo									=$template_option["class_field"];
+				#unset($_SESSION["SAVE"][$this->class_one]);
+				#$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]);
+				
+				if(isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
+				{						
+					$campo				=$template_option["class_field"];
+					#$this->__PRINT_R(    $_SESSION["SAVE"][$this->class_one]["$campo"]);	
+					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
+					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
+					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
+					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
+				}
+			}
 		    if(is_array($option))
 		    {
-				if(isset($option["total"]))		$return["total"]	=$option["total"];
-				if(isset($option["inicio"]))	$inicio				=$option["inicio"];
-				if(isset($option["fin"]))		$fin				=$option["fin"];
+				$inicio=0;	
+				if(isset($option["total"]) AND $option["total"]>=0)		$return["total"]	=$option["total"];
+				else													$return["total"]	=0;
+				if(isset($option["inicio"]) AND $option["inicio"]>0)	$inicio				=$option["inicio"];
+				else													$inicio				=0;
+				if(isset($option["fin"]) AND $option["fin"]>0)			$fin				=$option["fin"];
+				else													$fin				=0;
 		    	
 		        $sys_order="";
 		        $sys_torder="";
-		    	if(!isset($option["name"]))    	$name	=@$this->sys_name;
-		    	else							$name	=$option["name"];
+		    	if(!isset($option["name"]))    					$name		=@$this->sys_name;
+		    	else											$name		=$option["name"];
+				
+				$this->sys_name=$name;		
 		    	
 		    	if(isset($this->request["sys_page_$name"]))		$sys_page	=$this->request["sys_page_$name"];
 		    	else											$sys_page	=1;
@@ -1255,90 +1581,90 @@
 		    	
 		    	if(isset($this->request["sys_row_$name"]))	    $sys_row	=$this->request["sys_row_$name"];
 		    	else                                            $sys_row	=50;
-
-		    	$option["sys_page_$name"]           =$sys_page;		        		        				
-				$option["name"]                 =$name;
 				
-		    	if(isset($option["data"]))          
-		    	{
-		    		$return["data"] =$option["data"];	
-		    	}	
+				if($sys_row=="")								$sys_row	=50;
+
+		    	$option["sys_page_$name"]           			=$sys_page;		        		        
+				
+		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
 		    	else
 		    	{			    		
-		    	    #$option["name"]                 =$name;
-####--------------------------------------------------------------------------------------------------------
-		    		$browse 						=$this->__BROWSE($option);		    			    		
+		    	    $option["name"]                 			=$name;
+		    	   
+		    		$browse 									=$this->__BROWSE($option);		 
 
+					if(isset($this->sys_memory) AND isset($template_option["class_field"]))
+					{												
+						
+						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
+					}
+					
+					if(count($browse["data"])<=0)
+					{							
+						$browse["data"]=array();				
+					}								
+					
+					##################################
+					
 		    		$return["data"]					= $browse["data"];
 		    		$option["title"]				= @$browse["title"];
+					$option["title_pdf"]			= @$browse["title_pdf"];
 		    		
 		    		if(isset($browse["total"]))		
 		    		{
 						$return["total"]				= $browse["total"];	
 						
-						$inicio				            = $browse["inicio"] + 1;
-						$aux_fin                        = $inicio + $sys_row -1;
+						$inicio				            = @$browse["inicio"] + 1;
+						$aux_fin                        = @$inicio + @$sys_row -1;
 						
 						if($aux_fin<$return["total"])   $fin    =$aux_fin;
 						else                            $fin    =$return["total"];
 					}			    		
 		    	}	
 
-				#$this->__PRINT_R($return["data"]);    
-				$view_title="";
-		    	if(isset($option["template_title"]))    
-		    	{
-		    	    $view_title     =$this->__TEMPLATE($option["template_title"]);		    	    
-		    	    $view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);
-		    	    
-		    	    if(isset($option["title"]))
-		    	    {
-		    	    	#$this->__PRINT_R($option["title"]);
-			    	    $view_title	    =$this->__REPLACE($view_title,$option["title"]);
-			    	}    		    	    
-		    	}    
+				#######################								
+				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);			
+				#$this->__PRINT_R($view_title_data);
+				$view_title			=$view_title_data["view_title"];
+				$view_title_pdf		=$view_title_data["view_title_pdf"];
+								
 		    	$view_create	="";
 		    	$button_create	="";
+				###########################
 		    	if(isset($option["template_create"]) AND $option["template_create"] !="")
 		    	{
 					$this->words               	=	$this->__INPUT($this->words,$this->sys_fields);
 		    
+					$eval="
+						if(isset($"."this->sys_id_{$this->sys_name}))
+							$"."clave_id	=$"."this->sys_id_{$this->sys_name};
+					";
+					
+					eval($eval);
+			
 		    		$view_create		=	$this->__REPLACE($this->__VIEW_CREATE($option["template_create"]),$this->words);
 					$view_create="
             			<div id=\"create_$name\" title=\"Crear Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
 	            			$view_create
 	            			<script>
-	            				$(\"font#create_$name\").click(function()
-	            				{
-	            					$(\"div#create_$name\").dialog({
-	            						open: function(event, ui){
-											var dialog = $(this).closest('.ui-dialog');
-											if(dialog.length > 0)
-											{
-												$('.ui-autocomplete.ui-front').zIndex(dialog.zIndex()+1);
-											}
-										},
-	            						width:\"700px\"
-	            					});
-	            				});
 	            			</script>
             			</div>
 					";		    	    
 					$button_create="
 						<td width=\"15\" align=\"center\">
-							<font id=\"create_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-document\"></font>
+							<font id=\"create_$name\" active=\"$name\" class=\"ui-button show_form\">Formulario</font>
 						</td>	
 					";					
 		    	}    
 
 		    	$view_search="";
 		    	$button_search="";
+				#######################
 		    	if(isset($option["template_search"]) AND $option["template_search"] !="")    
 		    	{		    		
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
 		    		$this->words					=$this->__INPUT($this->words,$this->sys_fields); 
 
-					#$this->__PRINT_R($this->words);
 
 					$view_search					=$this->words["module_body"];
 		    		$this->words["module_body"]		="";
@@ -1373,6 +1699,7 @@
 					";		    	    
 		    	}    
                 $view_body="";
+				##############################
 		    	if(isset($option["template_body"]))
 		    	{    
 		    	    $template       =$option["template_body"];
@@ -1380,26 +1707,38 @@
 		    	    if(isset($option["actions"]))	$option_kanban["actions"]	=$option["actions"];
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;
-###------------------------------------------------------------------------------------------------
-		    	    $view_body=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
+
+					if(isset($return["data_0"]))
+					{
+						$view_body		=$this->__VIEW_KANBAN2($template,$return["data_0"],$option_kanban);
+						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data_0"],$option_kanban);
+						unset($return["data_0"]);
+					}	
+					else
+					{	
+						$view_body		=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
+						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
+					}
+					#$this->__PRINT_R($return);
+					if($view_body_pdf=="")	$view_body_pdf=$view_body;
+					
+					$return["pdf"]	="
+						<table width=\"100%\" border=\"1\" style=\"background-color:#fff; \">								
+							$view_title_pdf
+							$view_body_pdf
+						</table>					
+					";
 		    	}    
-                if(isset($inicio) AND $return["total"]>0)
+                #if(isset($inicio) AND $return["total"]>0)
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
                 	else
                 	{	
-                		$html_filter="";
-                		if(isset($option["section_filter"]) )
-                		{ 
-                			$html_filter="
-											<input style=\"paddin:8px; height:23px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\"  placeholder=\"Filtrar reporte\">													
-										</td>
-										<td width=\"30\">
-											<font id=\"sys_search_$name\" class=\"sys_seach\"> </font>                		
-                			";
-                		}
-                		if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
-                		
+						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
+				
+                		#<div id=\"report_$name\" style=\"height:35px; width:100%; \" class=\"ui-widget-header\">
+						
+						
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\">
@@ -1414,7 +1753,10 @@
 											</table>
 										</td>
 										<td>											
-										$html_filter
+											<input style=\"paddin:8px; height:23px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
+										</td>
+										<td width=\"30\">
+											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
 										</td>
 										
 										<td align=\"right\">
@@ -1425,13 +1767,13 @@
 						if(@$this->request["sys_action"]!="print_pdf")	
 						{
 							if(@!$this->request["sys_row_$name"]) $this->request["sys_row_$name"]=50; 	
-							$array				=array(1,20,50,100,200,500);
-							$option_select		="";
+							$array=array(1,20,50,100,200,500);
+							$option_select="";
 							foreach($array as $index)
 							{
 								$selected		="";	
 								if($index==$this->request["sys_row_$name"]) 	$selected="selected";
-								$option_select	.="<option value=\"$index\" $selected>$index</option>";
+								$option_select.="<option value=\"$index\" $selected>$index</option>";
 							}							
 							
 							$view_head.="
@@ -1439,74 +1781,177 @@
 												$option_select		
 											</select>
 							";
-						}				
+						}					
+						#3141005662
 						$view_head.="	
-						
-										<td  width=\"30\" align=\"center\" >
-											<font action=\"-\" name=\"$name\" class=\"page\"> Anterior </font>
-										</td>						
-										<td width=\"30\" align=\"center\" style=\" padding-right:8px;\">
-											<font action=\"+\" name=\"$name\" class=\"page\"> Siguiente </font>
-										</td>								
+										</td>
+										<td  width=\"20\" align=\"center\" >
+											<font action=\"-\" name=\"$name\" class=\"page ui-button\">Anterior</font>
+										</td>										
+										<td width=\"20\" align=\"center\" >
+											<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
+										</td>
 									</tr>
 								</table>		
 								
 							</div>                
                 		";
                 	}
-                	#<div id=\"base_$name\" style=\" width:100%; height:-moz-calc(100% - 300px);\">
-					$view="
-						<div id=\"base_$name\" class=\"base_report\" style=\"height:100%; width:100%; \">
-							$view_head
-							<div id=\"div_$name\" class=\"div_report\" style=\"width:100%; overflow-y:auto; overflow-x:hidden;\">
-								<table width=\"100%\"  style=\"background-color:#fff;\">
-								$view_title
-								$view_body							
-								</table>
+					#
+										
+					if(!isset($option["header"]))	
+						$option["header"]		="true";					
+										
+					if(@$option["header"]!="true")		$view_head="";
+										
+					$return["title"]=$view_title;
+					
+
+					#0133 32084420  CESAR JIMENES  32084444
+					$button_create_js="";
+					if(isset($template_option))	
+					{
+						#$this->__PRINT_R($template_option);
+						
+						$button_create_js="
+							if($(\"font#create_$name\").length>0)
+							{	
+	            				$(\"font#create_$name\").click(function()
+	            				{
+	            					$(\"div#create_$name\").dialog({
+	            						open: function(event, ui){
+											var dialog = $(this).closest('.ui-dialog');
+										},
+										buttons: {
+											\"Aceptar\": function() {													
+												var options={};
+												options[\"class_one\"]			=\"{$template_option["class_one"]}\";
+												options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
+												options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
+												options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
+												
+											
+											
+												many2one_post(options);
+											},
+											\"Cancelar\": function() {
+												$( this ).dialog(\"close\");
+											}
+										},										
+	            						width:\"700px\"
+	            					});
+	            				});
+							}						
+						";
+						
+					}				
+					
+					
+					$return["report"]="
+						$view_head
+						<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;\">
+							<table width=\"100%\" style=\"background-color:#fff; \">
+							$view_title
+							$view_body
+							</table>
+						</div>		
+						<script>
+								$button_create_js
+								sys_report_memory();
+												
+								$(\"#sys_search_$name\")
+									.button({
+										icons: {	primary: \"ui-icon-search\" },
+										text: false
+									})
+									.click(function(){
+										$(\"#sys_action_$name\").val(\"seach\");
+										$(\"#sys_page_$name\").val(1);	
+										$(\"form\").submit();
+									}
+								);							
+								$(\"#sys_rows_$name\").change(function(){
+								
+									$(\"#sys_row_$name\").val(  $(\"#sys_rows_$name\").val()      );
+									$(\"#sys_page_$name\").val(1);
+									$(\"form\").submit(); 									
+								});								
+								$(\".page[action='-'][name='$name']\").button({
+									icons: {	primary: \"ui-icon-triangle-1-w\" },
+									text: false
+								});
+								$(\".page[action='+'][name='$name']\").button({
+									icons: {	primary: \"ui-icon-triangle-1-e\" },
+									text: false
+								});
+							
+								$(\".page\").click(function(){
+									var action      	=$(this).attr(\"action\");						    
+									var sys_page    	=$(\"#sys_page_$name\").val();
+									var sys_page2		=sys_page;
+									if(action==\"-\")
+									{	
+										if($inicio > $(\"#sys_row_$name\").val())
+										{	
+											sys_page--;
+										}	
+									}	
+									else
+									{				
+										if($fin < {$return["total"]})
+										{	
+											sys_page++;
+										}	
+									}			
+									if(sys_page!=sys_page2)
+									{	
+										$(\"#sys_page_$name\").val(sys_page);
+										$(\"form\").submit(); 
+									}	
+								});	
+						</script>
 					";
+					
+					$view="
+						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc;\">
+						{$return["report"]}
+						</div>		
+					";
+
 					if(@$this->request["sys_action"]!="print_pdf")	
 					{
 						$view.="
-								<input name=\"sys_order_$name\" id=\"sys_order_$name\" type=\"hidden\" value=\"$sys_order\">		
-								<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" type=\"hidden\" value=\"$sys_torder\">
-								<input name=\"sys_page_$name\" id=\"sys_page_$name\" type=\"hidden\" value=\"$sys_page\">
-								<input name=\"sys_row_$name\" id=\"sys_row_$name\" type=\"hidden\" value=\"$sys_row\">
+							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
+							<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
+							<input name=\"sys_page_$name\" id=\"sys_page_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_page\">
+							<input name=\"sys_row_$name\" id=\"sys_row_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_row\">
 						";
 					}				
-					$view.="
-							</div>
-						</div>		
-					";
 					$filter_autocomplete="";
-
-					if(isset($option["section_filter"]) AND is_array($option["section_filter"]))
+					if(isset($this->sys_fields) AND is_array($this->sys_fields))
 					{
-						foreach($this->sys_filter[$option["filter"]] as $campo=>$valor)
-						{        				
-							if(is_int($campo))	$campo=$valor;
-										
+						foreach($this->sys_fields as $campo=>$valor)
+						{        								
 							if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 							{	
 								$filter_autocomplete.="
-									var filter=filter_html(\"$campo\",\"$valor\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\");											
+									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\");											
 									$(\"#filter_fields_$name\").append(filter);
 								";
 							}							
 						}	
-					}					
+					}									
 					
 					if(@$this->request["sys_action"]!="print_pdf")	
 					{				
-						$section_filter=@$option["section_filter"];
-					
-					
 						$view.="
 							$view_search
 							$view_create
-							<script>		
+							<script>					
 								if($(\"#sys_filter_$name\").length>0)        
 								{
-									$filter_autocomplete							
+									$filter_autocomplete
+								
 									$( function() 
 									{
 										function split( val ) {
@@ -1516,10 +1961,11 @@
 										{
 											return split( term ).pop();
 										}
+
 										$(\"#sys_filter_$name\" )								
 										.on( \"keydown\", function( event ) 
 										{
-											if ( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( \"instance\" ).menu.active ) 
+											if( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( \"instance\" ).menu.active ) 
 											{												
 												event.preventDefault();
 											}
@@ -1528,7 +1974,7 @@
 										{
 											source: function( request, response ) 
 											{
-												$.getJSON( \"../sitio_web/ajax/filter_autocomplete.php?section_filter=$section_filter&class={$this->sys_object}\", {
+												$.getJSON( \"../sitio_web/ajax/filter_autocomplete.php?class={$this->sys_object}\", {
 												term: extractLast( request.term )
 												}, response );
 											},
@@ -1543,16 +1989,18 @@
 											},
 											focus: function() 
 											{
+												// prevent value inserted on focus
 												return false;
 											},
 											select: function( event, ui ) 
 											{
 												var filter=filter_html(ui.item.field,ui.item.title,ui.item.term,\"$name\");											
 												$(\"#filter_fields_$name\").append(filter);
-																								
+												
 												this.value = \"\";
+												////$(\"form\").submit(); 
 												return false;
-											}
+											}											
 										})
 										.autocomplete( \"instance\" )._renderItem = function( ul, item ) 
 										{
@@ -1560,58 +2008,8 @@
 											.append( \"<div> Buscar <b>\" + item.term + \"</b> en la columna <b><font size=\\\"1\\\"> \" + item.title + \" </font></b></div>\" )
 											.appendTo( ul );
 										}									
-									 });
+									} );
 								}
-								
-								
-								
-								
-								$(\"#sys_search_$name\")
-									.button({
-										icons: {	primary: \"ui-icon-search\" },
-										text: true
-									})
-									.click(function(){
-										$(\"#sys_action_$name\").val(\"seach\");
-										$(\"#sys_page_$name\").val(1);	
-										$(\"form\").submit();
-									}
-								);
-							
-							
-							
-								$(\"#sys_rows_$name\").change(function(){
-									$(\"#sys_row_$name\").val(    $(this).val()   );
-									$(\"#sys_page_$name\").val(1);
-									$(\"form\").submit(); 
-								});
-								$(\"font.page[action='-']\").button({
-									icons: {	primary: \"ui-icon-triangle-1-w\" },
-									text: false
-								});								
-								$(\"font.page[action='+']\").button({
-									icons: {	primary: \"ui-icon-triangle-1-e\" },
-									text: false
-								});								
-								
-								$(\".page[name='$name']\").click(function(){
-									var action      	=$(this).attr(\"action\");						    
-									var sys_page    	=$(\"#sys_page_$name\").val();
-									
-									if(action==\"-\")   
-									{
-										if($inicio > $(\"#sys_rows_$name\").val() )
-											sys_page--;
-									}	
-									else                
-									{
-										if({$return["total"]} > $fin)
-											sys_page++;
-									}	
-						
-									$(\"#sys_page_$name\").val(sys_page);
-									$(\"form\").submit(); 
-								});				
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
@@ -1620,30 +2018,38 @@
 					}
 					$return["html"]	=$view;
 				}	
-				else
-				{
-					$view="
-							<div id=\"report_$name\" style=\"height:35px; width:100%; \" class=\"ui-widget-header\">
-								<table width=\"100%\" height=\"100%\">
-									<tr>
-										<td align=\"center\">
-											<b>No se encontraron registros</b>
-										</td>								
-									</tr>
-								</table>		
-								
-							</div>                					
-					";				
-					$view	=$this->__VIEW_INPUTSECTION($view);
-					$return["html"]	=$view;
-				}
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";
 		    
-		    #$return["html"]	=$this->__VIEW_INPUTSECTION($return["html"]);
-		    
 		    return $return;
 		}   
+		public function __VIEW_TEMPLATE_TITLE($option)
+		{
+			#$this->__PRINT_R($option);
+			$return=array("view_title"=>"","view_title_pdf"=>"");	
+			if(isset($option["template_title"]))    
+			{
+				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
+				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
+				
+				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
+				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
+								
+				if(isset($option["title"]))
+				{
+					$return["view_title"]	    =$this->__REPLACE($view_title,$option["title"]);
+				}    		    	    
+				if(isset($option["title_pdf"]))
+				{
+					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$option["title_pdf"]);
+				}    		    	    
+				
+			} 
+			#$this->__PRINT_R($view_title);
+			return $return;
+			#return $view_title;
+		} 			
+		
     	##############################################################################        
 		public function __MESSAGE($message,$option=NULL)
 		{

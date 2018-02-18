@@ -16,6 +16,29 @@
 		{  
 			
 	    }				
+		public function __NIVEL_SESION($nivel)
+		{  
+			$return=false;
+			
+			$menu_activo=@$_SESSION["sys"]["menu"];
+			
+			if(is_array(@$_SESSION["group"]))
+			{	
+				foreach(@$_SESSION["group"] as $datos)
+				{
+					#if($datos["menu_id"]==$menu_activo AND $datos["nivel"]<=$nivel) 
+					#	$return=true;
+			
+					$eval="
+						if($"."datos[\"menu_id\"]==$"."menu_activo AND $"."datos[\"nivel\"]$nivel) 
+							$"."return=true;				
+					";
+					eval($eval);
+				}		
+			}		
+			return $return;
+		}    	
+	    
 		function abrir_conexion()
 		{
 			if($this->OPHP_database["type"]=="mysql")	        	

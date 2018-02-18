@@ -30,6 +30,7 @@
 	var points_route			="";
 	
 	var isimulacion				=1;
+	var row						={};
 
 
 	/*
@@ -37,6 +38,192 @@
   	### FUNCIONES ESTANDAR
 	##################################################################
 	*/
+	function many2one_get(options)
+	{								
+		class_one		=options["class_one"];
+		class_one_id	=options["class_one_id"];
+		
+		class_field		=options["class_field"];
+		class_field_id	=options["class_field_id"];
+		
+		class_many		=options["class_many"];
+		object			=options["object"];
+				
+		row["sys_action"]="__SAVE";
+		var options_row={
+			"class_one":		class_one, 	
+			"class_one_id":		class_one_id, 	
+			"class_field":		class_field, 
+			"class_field_id":	class_field_id, 			
+		};				
+		$.ajax(
+		{				
+			cache:			false,				
+			type: 			"GET",  				
+			url: 			"../sitio_web/ajax/many2one_get.php",
+			data:			{"many2one_json":JSON.stringify(options_row)},														
+			success:  function(res)
+			{	
+				$("#script").html(res);
+				
+			},		
+		});			
+	}	
+	function many2one_post(options)
+	{	
+		class_one		=options["class_one"];
+		class_one_id	=options["class_one_id"];
+		class_field		=options["class_field"];
+		class_field_id	=options["class_field_id"];
+		class_id		=options["id"];
+		class_many		=options["class_many"];
+		object			=options["object"];		
+				
+		var require="";				
+		$("." + class_field).each(function()
+		{
+			var id			=$(this).attr("id");			
+
+			row[id]		=$(this).val();	 			
+			
+			if($(this).val()== "")
+			{				
+				if($("#"+id+"[class*='require']").length>0)
+				{						
+					require="require";
+				}			
+			}		
+		});
+		
+		
+		if(require=="")		
+		{	
+			$("div#create_"+ class_field +" ."+class_field).val("");
+						
+			row["sys_action"]="__SAVE";
+			
+			var options_row={
+				"class_one":		class_one, 	
+				"class_one_id":		class_one_id, 	
+				"class_field":		class_field, 			
+				"class_field_id":	class_field_id, 
+				"class_id":			class_id, 
+				"class_many":		class_many,									
+				"objet":			object, 												
+				"row":				row, 
+			};		
+			
+			$.ajax(
+			{				
+				cache:			false,				
+				type: 			"GET",  				
+				url: 			"../sitio_web/ajax/many2one.php",
+				data:			{"many2one_json":JSON.stringify(options_row)},														
+				success:  function(res)
+				{										
+					$("#base_"+class_field).html(res);					
+				},		
+			});						
+		}	
+		else
+		{
+			alert("Verifica que los cambos no esten vacios");	
+		}	
+	}	
+	function many2one_report(object, template)
+	{				
+		if($("td[id='"+ object+"']").html()==undefined)
+		{				
+			$.ajax(
+			{				
+				cache:false,
+				dataType:"html",
+				type: "POST",  
+				url: "../"+ template+"report_title.html",
+				success:  function(res)
+				{											
+					$("table[id='"+ object+"']").append(res);
+				},		
+			});
+			$.ajax(
+			{				
+				cache:false,
+				dataType:"html",
+				type: "POST",  
+				url: "../"+ template+"report_body.html",
+				success:  function(res)
+				{						
+					$("table[id='"+ object+"']").append(res);
+				},		
+			});
+			
+		}		
+		
+	}	
+		function sys_report_memory()
+		{	
+			if($(".sys_report_memory").length>0) 
+			{
+				$(".sys_report_memory").click(function()
+				{					
+					
+					var class_field_id			=$(this).attr("class_field_id"); 
+					var id						=$(this).attr("id"); 
+					
+					var class_field				=$(this).attr("class_field"); 
+					
+					var data        			=$(this).attr("data");               
+					var variables				=serializar_url(data);
+					
+					var class_one 				=$(this).attr("class_one");     
+
+					var options					={};				
+					options["class_one"]		=class_one;
+					//options["class_one_id"]		=class_one_id;
+					options["class_field"]		=class_field;
+					options["class_field_id"]	=class_field_id;
+					options["id"]				=id;
+					
+					options["object"]			=class_one;
+					options["class_many"]		=class_one;						
+										
+					many2one_get(options);
+					
+					
+					
+					$("div#create_"+ class_field).dialog({
+						open: function(event, ui){
+							var dialog = $(this).closest('.ui-dialog');
+						},
+						buttons: {
+							"Aceptar": function() {
+								
+									many2one_post(options);
+							},
+							"Cancelar": function() {
+								$( this ).dialog("close");
+							}
+						},										
+						width:"700px"
+					});				
+					
+				
+					for(ivariables in variables)
+					{
+						var input="";
+						if($("input#"+ivariables).length>0) {}
+						else	
+						{	
+							input="<input id=\""+ivariables+"\" name=\""+ivariables+"\" type=\"hidden\">";						
+							$("form").append(input);
+						}			
+					}	
+
+				});
+			}	   		
+		}	
+
+
 	function render(origen, destino,diferencia)
 	{			
 			destino.height(1);

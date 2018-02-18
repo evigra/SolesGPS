@@ -11,32 +11,64 @@
 		##  Metodos	
 		##############################################################################
 		var $sys_fields_l18n	=NULL;
-		public function __CONSTRUCT($option=NULL)
-		{  
+		public function __CONSTRUCT($option=array())
+		{  	
+			if(!isset($this->sys_fields))			$this->sys_fields=array();
 			
-		
-			if($option == NULL)							$option							=array();
-			if(!is_array($option))						$option							=array();
-			
-			if(isset($option["object"]))				$this->sys_object				=$option["object"];
-			if(isset($option["name"]))					$this->sys_name					=$option["name"];
-			if(isset($option["table"]))					$this->sys_table				=$option["table"];
-			
-			
-			#$this->__PRINT_R($_SESSION);
-			
-			if(!isset($_SESSION))						@$_SESSION						=array();
-			if(!isset($_SESSION["user"]))				@$_SESSION["user"]				=array();
-    		if(!isset($_SESSION["user"]["huso_h"]))		@$_SESSION["user"]["huso_h"]	=6;
-    		
-    		$_SESSION["user"]["huso_h"]	=6;								
-    		
-			if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]		="es_MX";
+			if(!isset($option))						$option=Array();
+			if(!is_array($option))					$option=Array();
 						
-			if(!isset($this->sys_object)) 				$this->sys_object				= get_class($this);
-			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;
-			if(!isset($this->sys_table))         		$this->sys_table				= $this->sys_object;
+			if(!isset($_SESSION))
+				@$_SESSION							=array();
 
+			if(!isset($_SESSION["user"]))
+				@$_SESSION["user"]					=array();
+    		if(!isset($_SESSION["user"]["huso_h"]))
+   				@$_SESSION["user"]["huso_h"]		=5;
+				
+			if(!isset($_SESSION["user"]["l18n"])) 
+				@$_SESSION["user"]["l18n"]			="es_MX";
+			
+			@$_SESSION["user"]["huso_h"]		=6;
+			
+			$this->sys_date							=date("Y-m-d H:i:s");
+			$this->sys_date2						=date("Y-m-d");
+						
+			$nuevafecha								= strtotime ( '-7 hour' , strtotime ( $this->sys_date ) ) ;
+			$this->sys_date 						= date ( 'Y-m-d H:i:s' , $nuevafecha );
+			 
+			
+			if(!is_array($option)) 					$option=array();
+			
+			
+			if(isset($option["object"])) 			$this->sys_object				=$option["object"];
+			if(isset($option["name"])) 				$this->sys_name					=$option["name"];
+			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
+			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
+			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
+
+			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
+			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
+			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
+			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
+			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
+			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
+					
+			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
+			
+			if($this->sys_enviroments=="DEVELOPER")
+			{	
+				error_reporting(-1);
+				ini_set('display_errors', 1);				
+			}
+			else if($this->sys_enviroments=="TESTING")	
+			{
+				ini_set('display_errors', 0);
+			}				
+			else if($this->sys_enviroments=="PRODUCTION")	
+			{
+				ini_set('display_errors', 0);
+			}				
 			
 			if($this->sys_name!="general")
 			{
@@ -365,90 +397,219 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		#echo "<br>INI __SAVE ";
-    		$fields	="";
-    		$return	="";
-    		
-			#$this->__PRINT_R($datas);    		
-    		
-    		if(!isset($option) OR is_null($option))	$option=array();
 			
-			if(!array_key_exists("message",$option))   
-				$option["message"]="DATOS GUARDADOS";
 			
-    		#echo "<br>__SAVE :: ". $this->__PRINT_R($this->sys_fields);
-    		foreach($datas as $campo=>$valor)
-    		{
-    			if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
-    			{
-    				if(!is_array($valor))	
-	    				$fields	.="$campo='$valor',";
-    			}
-    		}    		
-    		#echo "<br>__SAVE :: ". $this->__PRINT_R($fields);
-    		if($fields!="")
-    		{
-    			$SAVE_JS="";
-    			$fields				=substr($fields,0,strlen($fields)-1);
-    			$insert=0;	
-                if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
-                {
-                    #echo "ENTRO {$this->sys_object}";
-                	$insert=1;
-                	$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
-                	$SAVE_JS="
-                		$(\"input[system!='yes']\").each(function(){
-                		
-                			$(this).val(\"\");
-                			
-                		})
-                	";                	
-                }	
-                else $this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_primary_field}='{$this->sys_primary_id}'";
+			#echo ">>>>>>>>>>>>>>>>>>>>>>>";
+			#$this->__PRINT_R($datas);
+			
+			
+			if(!isset($this->sys_memory) OR $this->sys_memory=="")
+			{	
+				###########################################################	
+				##################  REAL ##################################
+				###########################################################		
+				$fields			="";
+				$return			="";
+				$many2one		=array();
+				
+				if(!isset($option) OR is_null($option))	$option=array();
+				
+				if(!array_key_exists("message",$option))   
+					$option["message"]="DATOS GUARDADOS";
+								
+				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
+				{
+					$data_anterior=$this->__BROWSE($this->sys_primary_id);				
+				}		
+				foreach($datas as $campo=>$valor)
+				{					
+					if(is_array($valor))
+					{
+						$many2one["$campo"]=$valor;						
+					}				
+					if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
+					{
+						#if(count(@$this->sys_fields["$campo"])>1 and $valor!="")
+						if(count(@$this->sys_fields["$campo"])>1 )
+						{
+							if(!is_array($valor))	
+								$fields	.="$campo='$valor',";
+						}
+					}
+					else
+					{
+						#if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
+						if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
+						{
+							if(!is_array($valor))	
+							{									
+								if($data_anterior[0][$campo]!=$valor)		
+									@$modificados.=" 
+										<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
+									";
+								$fields	.="$campo='$valor',";
+							}	
+						}
+					}	
+				}    
 
-				#$option_conf=array();
+				#echo "<br>__SAVE :: ". $this->__PRINT_R($fields);
+				if($fields!="")
+				{
+					$SAVE_JS="";
+					$fields				=substr($fields,0,strlen($fields)-1);
+					$insert=0;					
+					
+					$user_id			=@$_SESSION["user"]["id"];
+					$user_name			=@$_SESSION["user"]["name"];
+									
+					$data_historico="
+						tabla='$this->sys_table',
+						objeto='$this->sys_object',
+						user_id='$user_id',
+						user_name='$user_name',
+						fecha='$this->sys_date',
+						remote_addr='{$_SERVER["REMOTE_ADDR"]}',												
+					";
+					
+					if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
+					{
+						$insert=1;
+						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
+						$this->__PRINT_JS.="
+							$(\"input[system!='yes']\").each(function(){                		
+								$(this).val(\"\");                			
+							})
+						";            
+						$data_historicos="descripcion='<font>$user_name</font> <b>CREO</b> El registro'";					
+						#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>CREO</b> El registro'";					
+					}	
+					else 
+					{	
+						$this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_primary_field}='{$this->sys_primary_id}'";					
+						if(@$modificados!="")
+						{
+							$data_historicos="descripcion='<font>$user_name</font> <b>MODIFICO</b> los valores $modificados'";	
+							#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>MODIFICO</b> los valores $modificados'";	
+						}	
+					}	
 
+					$option["open"]	=1;
+					#$option_conf["close"]	=1;
+					$this->__EXECUTE($this->sys_sql,$option);
+					
+					#$this->__PRINT_R($this->sys_sql);
+					
+					if(@$this->OPHP_conexion->error=="")
+					{					
+						unset($option["open"]);
+									
+						$this->__PRINT="Datos guardados correctamente";
+											
+						
+						$option["close"]=1;
+						
+						if($insert==1)
+						{
+							#$option_conf["open"]	=1;
+							$option["close"]	=1;
+						
+							#echo "ENTRO {$this->sys_object}";
+							$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
+							unset($option["close"]);
+							#echo "<br>__SAVE :: ". $this->__PRINT_R($data);
+							$this->sys_primary_id=$data[0]["ID"];
+						}	
+						$return=@$this->sys_primary_id;
+						
+						#$this->__PRINT_R($many2one);
+						foreach($many2one as $campo =>$valores)	
+						{										
+							$valor_campo	=$this->sys_fields["$campo"];
+							
+							$eval="								
+								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();		
+								$"."class_field_m										=$"."valor_campo[\"class_field_m\"];
+											
+								foreach($"."valores as $"."valor)
+								{	
+									if(!(isset(    $"."valor_campo[$"."class_field_m]     ) AND $"."valor_campo[$"."class_field_m]==\"\"))								
+										$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
+									
+									$"."primary_field					=$"."this->$campo"."_obj->sys_primary_field;
+									
+									if(isset($"."valor[$"."primary_field]) AND  $"."valor[$"."primary_field]>0	)
+									{										
+										$"."this->$campo"."_obj->sys_primary_id		=$"."valor[$"."primary_field];	
+									}	
+									else
+									{	
+										$"."this->$campo"."_obj->sys_primary_id		=\"\";
+									}
+									$"."this->$campo"."_obj->__SAVE($"."valor);		
+								}	
+							";
+							eval($eval);														
+							unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
+						}
+						
+						if(!in_array($this->sys_table,$this->sys_modules))
+						{	
+							if(!isset($data_historicos))	
+							{
+								$data_historicos="";								
+							}
+							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave=$this->sys_primary_id	";						
+								#$$this->__PRINT_R($comando_sql	);
+							if(@$data_historicos!="")
+							{	
+								$this->__EXECUTE($comando_sql);					
+							}	
+						}					
+					}						
+				}				
+				#echo "<br>FIN __SAVE $return";
+				return $return;
+			}
+			else
+			{
+				###########################################################	
+				##################  MEMORIA ###############################
+				###########################################################
+				if(isset($datas["class_one"]))
+				{						
+					$class_one		=$datas["class_one"];
+					$class_field	=$datas["class_field"];
+					
+					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]))
+					{	
+						$_SESSION["SAVE"]=array(
+							"$class_one"	=>array(						
+								"$class_field"	=> array()
+							)
+						);
+					}				
 
-				$option["open"]	=1;
-				#$option_conf["close"]	=1;
-    			$this->__EXECUTE($this->sys_sql,$option);
+					$valor_campo	=$this->sys_fields[$this->sys_primary_field]["value"];
+	
+					$row														=$datas["row"];				
 
-				#if(isset($option["echo"]))
-		        #	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
-    			
-
-    			unset($option["open"]);
-    			
-    			
-    			if($this->__MESSAGE_EXECUTE!="")    $this->__SAVE_MESSAGE   =$this->__MESSAGE_EXECUTE;
-    			else                                $this->__SAVE_MESSAGE   =$option["message"];
-    			
-    			$data_message						=$this->__MESSAGE($this->__SAVE_MESSAGE,$option);
-    			
-    			$this->__SAVE_HTML	=$data_message["html"];
-    			$this->__SAVE_JS	=$data_message["js"] . $SAVE_JS;
-    			    			
-    			#$this->__PRINT_R($this->__SAVE_JS);
-    			
-    			$option["close"]=1;
-    			
-    			if($insert==1)
-    			{
-					#$option_conf["open"]	=1;
-					$option["close"]	=1;
-    			
-    			    #echo "ENTRO {$this->sys_object}";
-    				$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
-    				unset($option["close"]);
-    				#echo "<br>__SAVE :: ". $this->__PRINT_R($data);
-    				$this->sys_primary_id=$data[0]["ID"];
-    			}	
-    			$return=@$this->sys_primary_id;
-    		}
-    		
-    		#echo "<br>FIN __SAVE $return";
-    		return $return;
-    		
+					if(!isset($row[$this->sys_primary_field]))		$row[$this->sys_primary_field]=@$this->sys_primary_id;
+					
+					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"]=array();
+					
+					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
+					{
+						$active_id		=$datas["class_field_id"];						
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
+					}
+					else	$_SESSION["SAVE"]["$class_one"][$class_field]["data"][]	=	$row;
+	
+					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
+			
+				}		
+			}
     	}
     	##############################################################################	   	
 		public function __EXECUTE($comando_sql, $option=array("open"=>1,"close"=>1))

@@ -267,6 +267,8 @@
 			
 			$this->files_obj	=new files();	
 			parent::__CONSTRUCT();
+			
+			#$this->__PRINT_R($_SESSION);
 		}
 				
 

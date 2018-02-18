@@ -268,9 +268,9 @@
    		public function CRON_DELETE()
     	{
 			$comando_sql="
-				DELETE g.* FROM devices_devices as g WHERE g.id IN ( 
+				DELETE g.* FROM devices_geofences as g WHERE g.id IN ( 
 					SELECT * FROM (
-						SELECT gd.id FROM devices_devices as gd
+						SELECT gd.id FROM devices_geofences as gd
 						GROUP BY gd.time, gd.deviceid, gd.geofenceid
 						HAVING count(gd.id)>1
 					) as o

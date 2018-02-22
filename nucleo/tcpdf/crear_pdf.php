@@ -47,7 +47,7 @@ print_r($_SESSION);
 echo "/<pre>";
 */
 	$pdf->SetCreator(PDF_CREATOR);
-	$pdf->SetAuthor('99064616 Eduardo Vizcaino Granados');
+	$pdf->SetAuthor('CEO ISC Eduardo Vizcaino Granados');
 	#$pdf->SetTitle($_SESSION["pdf"]["title"]);
 	#$pdf->SetTitle('algo');
 	#$pdf->SetSubject($_SESSION["pdf"]["subject"]);
@@ -79,8 +79,8 @@ echo "/<pre>";
 	#$_SESSION["pdf"]["PDF_MARGIN_TOP"]=
 	
 	#$_SESSION["pdf"]["HEADER"]["height"]
-	if(isset($_SESSION["pdf"]["HEADER"]))
-		$pdf->SetMargins(PDF_MARGIN_LEFT, $_SESSION["pdf"]["PDF_MARGIN_TOP"], PDF_MARGIN_RIGHT);
+####	if(isset($_SESSION["pdf"]["HEADER"]))
+####		$pdf->SetMargins(PDF_MARGIN_LEFT, $_SESSION["pdf"]["PDF_MARGIN_TOP"], PDF_MARGIN_RIGHT);
 	#$pdf->SetMargins(PDF_MARGIN_LEFT, 31, PDF_MARGIN_RIGHT);
 	
 	if(isset($_SESSION["pdf"]["PAGE"]))

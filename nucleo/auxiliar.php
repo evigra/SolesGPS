@@ -258,13 +258,13 @@
 			
 			if(@$this->request["sys_action"]=="print_pdf")
 		    {
-		    	
-		    	$_SESSION["pdf"]	=array(		    					
-					"title"		=>$this->words["module_title"],
-					"subject"	=>$this->words["html_head_title"],				
-					"template"	=>$template,
-					"template"	=>$this->words["module_body"],
-		    	);
+		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
+				
+				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=$this->words["module_title"];
+				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
+				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				=$this->words["module_body"];
+
+
 				#$_SESSION["html"]	="<table><tr><td>Eduardo Vizcaino</td></tr></table><table><tr><td>granados</td></tr></table>";
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				$path				.="../$url";

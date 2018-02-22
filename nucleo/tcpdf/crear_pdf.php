@@ -34,7 +34,11 @@
 
 // Include the main TCPDF library (search for installation path).
 #$html=$_RECUEST[""];
-	require_once('tcpdf_include.php');
+	if(@file_exists("tcpdf_include.php")) 			require_once('tcpdf_include.php');
+	if(@file_exists("../tcpdf_include.php")) 		require_once('../tcpdf_include.php');
+	if(@file_exists("../../tcpdf_include.php")) 	require_once('../../tcpdf_include.php');
+	if(@file_exists("../../../tcpdf_include.php")) 	require_once('../../../tcpdf_include.php');
+	
 #include('nucleo/tcpdf/tcpdf_include.php');
 
 // create new PDF document
@@ -44,7 +48,7 @@
 		$_SESSION["pdf"]["PDF_PAGE_FORMAT"], 
 		true, 'UTF-8', false
 	);
-	$pdf = new TCPDF();
+	
 
 // set document information
 /*

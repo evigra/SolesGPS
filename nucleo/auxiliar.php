@@ -263,6 +263,7 @@
 					"title"		=>$this->words["module_title"],
 					"subject"	=>$this->words["html_head_title"],				
 					"template"	=>$template,
+					"template"	=>$this->words["module_body"],
 		    	);
 				#$_SESSION["html"]	="<table><tr><td>Eduardo Vizcaino</td></tr></table><table><tr><td>granados</td></tr></table>";
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
@@ -277,13 +278,22 @@
     	}
     	 
         ##############################################################################
-		public function __REPORT_TITLES($sys_order,$sys_torder,$font,$name)
+		public function __REPORT_TITLES($option)
 		{  
+			
+			#$this->__PRINT_R($option);
+			$sys_order	=$option["sys_order"];
+			$sys_torder	=$option["sys_torder"];
+			$font		=$option["font"];
+			$name		=$option["name"];
+			
+		
 
 			$iorder									="";			
 			$title									=@$this->sys_fields[$font]["title"];
 			
-			#$this->__PRINT_R($this->sys_fields_l18n);
+			#$this->__PRINT_R($this->sys_fields[$font] . "$font");
+			#$this->__PRINT_R($option);
 						
         	if(isset($this->sys_fields_l18n) AND is_array($this->sys_fields_l18n) AND isset($this->sys_fields_l18n["$font"]))	
         	{			        	
@@ -292,8 +302,8 @@
 						
 			if($sys_order==@$this->request["sys_order_$name"])
 			{
-			     if($sys_torder=="ASC") 			$iorder 						="<font class=\"ui-icon ui-icon-carat-1-n\"></font>";
-			     else                   			$iorder 						="<font class=\"ui-icon ui-icon-carat-1-s\"></font>";
+			     if($sys_torder=="ASC") 			$iorder 						="<font class=\"ui-icon ui-icon-caret-1-n\"></font>";
+			     else                   			$iorder 						="<font class=\"ui-icon ui-icon-caret-1-s\"></font>";
 			}
 
 			$base="";
@@ -308,37 +318,30 @@
 					</div>
 				";
 			}
-			if(@$this->request["sys_action"]=="print_pdf")
+			else if(@$option["option"]=="pdf")
 		    {
-				return "
-					<div name=\"title_$name\" style=\"width:10px;\">
-						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>
-					</div>
+				#$this->__PRINT_R(	$this->request["sys_action"]);
+				return "					
+						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					
 				";
 			}			
 			else
 			{
+				#$this->__PRINT_R($title);
+				#<div class=\"report_title_action report_title_inactive\">	
 				return "
-					<div name=\"title_$name\" style=\"position:static; overflow:hidden; height:40px;\">
-						<div class=\"\" style=\"position:absolute; top:0px; left:0px; width:250px; height:40px; overflow:hidden;\">	
-						<table width=\"100%\">
-							<tr>
-								<td height=\"40\"><b><font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font><b></td> 
-								<td>$iorder</td>
-							</tr>
-							<tr>
-								<td colspan=\"2\"> 
-									<input id=\"sys_filter_$name\" class=\"formulario\"> 
-								</td>
-							</tr>
-							
-						</table>
+					<div name=\"title_$name\">
+						<div class=\"report_title_action\">
+							<table width=\"100%\" class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">
+								<tr>
+									<td height=\"40\"><b><font>$title</font></b></td> 
+									<td>$iorder</td>
+								</tr>
+							</table>
 						</div>
 					</div>
-				";
-			
-			}
-
+				";			
+			}			
 		}	
 		public function __MENU($words)
 		{  			
@@ -888,12 +891,17 @@
 					    } 
 					    if($valor["type"]=="date")	
 					    {
-							#$this->__PRINT_R($this->sys_fields[$campo]);			
+					    	$js_auto="";
+					    	#if(isset($this->sys_memory) AND $this->sys_memory!="")
+					    		#$js_auto=", appendTo: \"#\"";
+							$this->__PRINT_R($this->sys_fields[$campo]);			
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        $words["$campo"]  ="
 					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 			        			<script>
-									$(\"input#$campo".".{$this->sys_name}\").datepicker({dateFormat:\"yy-mm-dd\"});
+									$(\"input#$campo".".{$this->sys_name}\").datepicker({
+										dateFormat:\"yy-mm-dd\" $js_auto
+									});
 					        	</script>			            	
 					        	";
 					    } 
@@ -1006,6 +1014,9 @@
 					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];									
 					    		}
 					    	}
+					    	$js_auto="";
+					    	if(isset($this->sys_memory) AND $this->sys_memory!="")
+					    		$js_auto="appendTo: \"div#create_{$this->sys_name}\",";
 							
 							if(isset($valor["vars"]))	$vars	=$valor["vars"];
 							else						$vars	="";
@@ -1019,6 +1030,7 @@
 									{		
 										source:\"{$valor["source"]}$vars\",
 										dataType: \"jsonp\",
+										$js_auto
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 										{												
 											if(typeof auto_$campo === 'function') 								
@@ -1123,6 +1135,7 @@
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];						
+				
 			}
 						
 			$eval="
@@ -1257,12 +1270,14 @@
 			$sys_action		="";
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
-			$view.="
-				<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
-				<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
-				<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
-			";		
-			
+			if(@$this->request["sys_action"]!="print_pdf")	
+			{
+				$view.="
+					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
+					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
+					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
+				";		
+			}
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")
 			{	
@@ -1345,12 +1360,8 @@
 			
 							if(isset($this->sys_fields[$field]["values"][0]))
 								$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-							else $row[$field]="";
-							
+							else $row[$field]="";							
 						}	
-						
-						
-						
 					}			    
                     if($class=="odd")   
                     {
@@ -1671,32 +1682,36 @@
 		    		
 		    	    $view_search     				=$this->__TEMPLATE($option["template_search"]);		    	    
 		    	    $view_search					=str_replace("<td>", "<td class=\"title\">", $view_search);
+		    	    
+					if(@$this->request["sys_action"]!="print_pdf")	
+					{
 		    	    		    	    
-					$view_search="
-            			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
-	            			$view_search
-	            			<script>
-	            				$(\"font#search_$name\").click(function()
-	            				{
-	            					$(\"div#search_$name\").dialog({
-	            						open: function(event, ui){
-											var dialog = $(this).closest('.ui-dialog');
-											if(dialog.length > 0)
-											{
-												$('.ui-autocomplete.ui-front').zIndex(dialog.zIndex()+1);
-											}
-										},
-	            						width:\"700px\"
-	            					});
-	            				});
-	            			</script>	            			
-            			</div>
-					";		    	    
-					$button_search="
-						<td width=\"25\" align=\"center\">
-							<font id=\"search_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-search\"></font>
-						</td>	
-					";		    	    
+						$view_search="
+		        			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
+			        			$view_search
+			        			<script>
+			        				$(\"font#search_$name\").click(function()
+			        				{
+			        					$(\"div#search_$name\").dialog({
+			        						open: function(event, ui){
+												var dialog = $(this).closest('.ui-dialog');
+												if(dialog.length > 0)
+												{
+													$('.ui-autocomplete.ui-front').zIndex(dialog.zIndex()+1);
+												}
+											},
+			        						width:\"700px\"
+			        					});
+			        				});
+			        			</script>	            			
+		        			</div>
+						";		    	    
+						$button_search="
+							<td width=\"25\" align=\"center\">
+								<font id=\"search_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-search\"></font>
+							</td>	
+						";		    	    
+					}	
 		    	}    
                 $view_body="";
 				##############################
@@ -1732,18 +1747,21 @@
                 #if(isset($inicio) AND $return["total"]>0)
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
-                	else
+                	elseif(@$this->request["sys_action"]!="print_pdf")	
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
                 		#<div id=\"report_$name\" style=\"height:35px; width:100%; \" class=\"ui-widget-header\">
-						
-						
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\">
 									<tr>
 										<td width=\"10\"></td>
+						";
+						
+						if(@$this->request["sys_action"]!="print_pdf")	
+						{
+							$view_head.="						
 										$button_search
 										$button_create
 										<td width=\"1\">
@@ -1758,6 +1776,10 @@
 										<td width=\"30\">
 											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
 										</td>
+							";
+						
+						}
+						$view_head.="						
 										
 										<td align=\"right\">
 											<b> $inicio - $fin / {$return["total"]}</b>
@@ -1809,7 +1831,9 @@
 
 					#0133 32084420  CESAR JIMENES  32084444
 					$button_create_js="";
-					if(isset($template_option))	
+					
+
+					if(isset($template_option) AND @$this->request["sys_action"]!="print_pdf")	
 					{
 						#$this->__PRINT_R($template_option);
 						
@@ -1855,6 +1879,10 @@
 							$view_body
 							</table>
 						</div>		
+					";						
+					if(@$this->request["sys_action"]!="print_pdf")		
+					
+					$return["report"].="
 						<script>
 								$button_create_js
 								sys_report_memory();

@@ -64,7 +64,7 @@
 
     		    							
 		
-		$objeto->__GENERAR_PDF();
+		#$objeto->__GENERAR_PDF();
 
 		
     	$module_title								="Modificar ";
@@ -120,66 +120,6 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte Especifico de ";
     }    
-    elseif($objeto->sys_section=="report_general")
-    {
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);
-
-		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_GENERAL();		
-		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte General de ";
-    }
-    elseif($objeto->sys_section=="report_pendiente")
-    {
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);
-
-		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_PENDIENTE();
-		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte de Pendientes de ";
-    }
-    elseif($objeto->sys_section=="report_aprovados")
-    {
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);
-
-		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_APROVADO();
-		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Aprovados de ";
-    }
-    elseif($objeto->sys_section=="report_cancelados")
-    {
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);
-
-		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_CANCELADOS();
-		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte de Cancelados de ";
-    }    
     else
     {
 		#BOTONES SECCION DERECHA
@@ -191,8 +131,8 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$option["template_title"]	                = $objeto->sys_module . "html/report_estatus_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_estatus_body";
+		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
+		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 				
 		$data										= $objeto->__REPORTE($option);		
@@ -203,7 +143,7 @@
 
 
     
-	$objeto->words["module_title"]              ="$module_title Calculo";
+	$objeto->words["module_title"]              ="$module_title Movimiento";
 	
 	
 	

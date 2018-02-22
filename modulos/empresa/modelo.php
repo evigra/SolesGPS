@@ -129,23 +129,6 @@
     	{
     		if(is_null($option))	$option=array();
 			#$option["echo"]   =array("EMPRESA");
-			$option["select"]   =array(
-				"e.*",
-				"
-					CASE 
-						WHEN cliente=1 	THEN 'SI'
-						ELSE ''
-					END
-				"=>"cliente",
-				"
-					CASE 
-						WHEN proveedor=1 	THEN 'SI'
-						ELSE ''
-					END
-				"=>"proveedor",
-				
-			);
-			$option["from"]     ="empresa e";
 			
 			if(!isset($option["where"]))    $option["where"]    =array();
 			

@@ -86,6 +86,20 @@
 				$this->sys_date2							=date("Y-m-d");
 
 				$this->__REQUEST();
+				
+		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
+				
+				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=$this->words["module_title"];
+				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
+				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				=$template;
+				
+				if(!isset($_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]))	$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]	="P";   	# (P=portrait, L=landscape)
+				if(!isset($_SESSION["pdf"]["PDF_UNIT"]))				$_SESSION["pdf"]["PDF_UNIT"]				="mm";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
+				if(!isset($_SESSION["pdf"]["PDF_PAGE_FORMAT"]))			$_SESSION["pdf"]["PDF_PAGE_FORMAT"]			="A4";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
+				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
+				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
+				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
+				
 						
 				$eval="
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
@@ -136,31 +150,31 @@
     			);
     		}
     		
-	    	if(!isset($option["name"]))    	$name	=@$this->sys_name;
-	    	else							$name	=$option["name"];
+	    	if(!isset($option["name"]))    					$name							=@$this->sys_name;
+	    	else											$name							=$option["name"];
             
-			if(isset($this->request["sys_order_$name"]))     $option["sys_order_$name"]    =$this->request["sys_order_$name"];
-			if(isset($this->request["sys_torder_$name"]))    $option["sys_torder_$name"]   =$this->request["sys_torder_$name"];
+			if(isset($this->request["sys_order_$name"]))	$option["sys_order_$name"]		=$this->request["sys_order_$name"];
+			if(isset($this->request["sys_torder_$name"]))	$option["sys_torder_$name"]		=$this->request["sys_torder_$name"];
     		
     		
-    		if(!isset($option["sys_torder_$name"])) 	    $sys_torder="ASC";
+    		if(!isset($option["sys_torder_$name"]))			$sys_torder						="ASC";
     		else
     		{
-    		    if($option["sys_torder_$name"]=="ASC")      $sys_torder="DESC";
-    		    else                                        $sys_torder="ASC";
+    		    if($option["sys_torder_$name"]=="ASC")      $sys_torder						="DESC";
+    		    else                                        $sys_torder						="ASC";
     		}
     		
     		if(!isset($option["select"])) 	
     		{
-    			$select="{$this->sys_table}.*";
-    			
+    			$select="*";
     		}    		
     		else							
     		{
     			if(is_array($option["select"]))
     			{
-    				$select		="";
-    				$html_title	=array();
+    				$select				="";
+    				$html_title			=array();
+					$html_title_clean	=array();
     				foreach($option["select"] as $campo => $title)
     				{
     					$font		=$title;
@@ -191,7 +205,17 @@
 						}
 						if(!isset($html_title["$title"]))	
 						{
-							$html_title["$title"]	=$this->__REPORT_TITLES($sys_order,$sys_torder,$font,$name);
+							$option_report_titles=array(
+								"sys_order"		=>"$sys_order",
+								"sys_torder"	=>"$sys_torder",
+								"sys_order"		=>"$sys_order",
+								"font"			=>"$campo",
+								"name"			=>"$name",
+							);
+							$html_title["$title"]				=$this->__REPORT_TITLES($option_report_titles);
+							
+							$option_report_titles["option"]		="pdf";
+							$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
 						}	
     				}    			
     			}
@@ -199,7 +223,7 @@
     			{
     				$select=$option["select"];
     			}	
-    		}	
+    		}		
     		#####################
     		if(!isset($option["from"]))	$from=	$this->sys_table;
     		else						$from=	$option["from"];
@@ -208,12 +232,10 @@
     		
     		
 			##   FILTER AUTOCOMPLETE ######
-			if(isset($option["filter"]) AND is_array($option["filter"]))
+			if(isset($this->sys_fields) AND is_array($this->sys_fields))
 			{
-				foreach($option["filter"] as $campo=>$valor)
-				{        	
-					if(is_int($campo))	$campo=$valor;
-											
+				foreach($this->sys_fields as $campo=>$valor)
+				{        								
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
 						if(!isset($option["where"]))    $option["where"]=array();		
@@ -379,11 +401,50 @@
 					else					$sys_order	=$title;    						
 
 					if(!isset($html_title["$campo"]))	
-					{
-						$html_title["$campo"]	=$this->__REPORT_TITLES($sys_order,$sys_torder,$sys_order,$name);
+					{						
+						$option_report_titles=array(
+							"sys_order"		=>"$sys_order",
+							"sys_torder"	=>"$sys_torder",						
+							"font"			=>"$campo",
+							"name"			=>"$name",
+						);
+						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);
+						
+						$option_report_titles["option"]		="pdf";
+						$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
+							
 					}	
 				}    			
 			}
+			if(!is_array(@$html_title))
+			{
+				$return["data_0"][0]=array();	
+				foreach($this->sys_fields as $campo => $value)
+				{	
+					$return["data_0"][0]["$campo"]="";
+					if(isset($value["title"]))	$font		=$value["title"];					
+					else 						$font		=$campo;
+					
+					if(is_string($campo))	$sys_order	=$campo;									
+					else					$sys_order	=$title;    						
+
+					if(!isset($html_title["$campo"]))	
+					{						
+						$option_report_titles=array(
+							"sys_order"		=>"$sys_order",
+							"sys_torder"	=>"$sys_torder",
+							"font"			=>"$campo",
+							"name"			=>"$name",
+						);
+						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);
+						
+					}	
+
+				}	
+				
+			}	
+   			
+   			
    			
    			if(isset($html_title))	$return["title"]	= $html_title;
     		if($id!="")				$return				=$return["data"];
@@ -551,16 +612,14 @@
 							";
 							eval($eval);														
 							unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
+							
+							
 						}
 						
 						if(!in_array($this->sys_table,$this->sys_modules))
 						{	
-							if(!isset($data_historicos))	
-							{
-								$data_historicos="";								
-							}
+							if(!isset($data_historicos))	$data_historicos="";								
 							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave=$this->sys_primary_id	";						
-								#$$this->__PRINT_R($comando_sql	);
 							if(@$data_historicos!="")
 							{	
 								$this->__EXECUTE($comando_sql);					
@@ -577,7 +636,8 @@
 				##################  MEMORIA ###############################
 				###########################################################
 				if(isset($datas["class_one"]))
-				{						
+				{		
+					
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
 					
@@ -608,6 +668,7 @@
 	
 					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 			
+					#$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 				}		
 			}
     	}
@@ -621,15 +682,17 @@
     	
     		$return=array();    		    		
     		
+    		if(@$this->sys_sql=="") 		$this->sys_sql=$comando_sql;
+    		
 	   		if(is_array($option))
     		{
     			#echo "<br>RESULTADO ABIERTO $comando_sql ";    			
     			#if(!isset($option["open"]))	$option["open"]=1;    		
+    			
 
 				if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
 
-    		
     			if(isset($option["open"]))	
     			{    			
     				$this->abrir_conexion();
@@ -665,8 +728,10 @@
 			{			
 				while($datos = $resultado->fetch_assoc())
 				{			
+				
 					foreach($datos as $field =>$value)
 					{
+					
 						if(is_string($field) AND !is_null($field))
 						{
 							#$value 					= html_entity_decode($value);

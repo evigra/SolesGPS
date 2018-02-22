@@ -3389,7 +3389,58 @@ class TCPDF {
 	 * It is automatically called by AddPage() and could be overwritten in your own inherited class.
 	 * @public
 	 */
-	public function Header() {
+	public function Header() 
+	{
+// text on bottom
+		#$this->Cell(30, 0, 'Top-BottomLALLO', 1, $ln=0, 'C', 0, '', 0, false, 'T', 'B');
+		#$this->Cell(30, 0, 'Center-Bottom', 1, $ln=0, 'C', 0, '', 0, false, 'C', 'B');
+		#$this->Cell(30, 0, 'Bottom-Bottom', 1, $ln=0, 'C', 0, '', 0, false, 'B', 'B');
+		
+		$header_alto				=20;
+		$header_ancho				=30;
+		
+		$hoja_horizontal_ancho		=297; 
+		$hoja_horizontal_alto		=210; 
+						
+		$margen_horizontal			=14;
+		$margen_vertical			=10;
+					
+		$hoja_ancho					=$hoja_horizontal_ancho;
+		$hoja_alto					=$hoja_horizontal_alto;
+						
+		$ancho						=$hoja_ancho - ($margen_horizontal*2);
+		$alto						=$hoja_alto - ($margen_vertical*2);
+				
+		$left						=$margen_horizontal;
+		$top						=$margen_vertical;
+		
+		$this->SetXY($left, $top);
+		
+		
+		#$this->Cell($ancho, $alto, "", 1, $ln=0, 'C', 0, '', 0, false, 'T', 'T');		
+		#$this->SetXY($left, $top);
+		/*
+		$this->Cell($ancho, $header_alto, "ARRIBA", 1, $ln=0, 'L', 0, '', 0, false, 'T', 'T');
+		
+		
+		$this->SetXY($left, $top);
+		$this->Cell($ancho, $header_alto, "CENTRADO", 0, $ln=0, 'R', 0, '', 0, false, 'T', 'C');	
+		$this->SetXY($left, $top);
+		$this->Cell($ancho, $header_alto, "ABAJO", 0, $ln=0, 'C', 0, '', 0, false, 'T', 'B');		
+		*/
+		if(isset($_SESSION["pdf"]["HEADER"]))
+		{
+			$html=$_SESSION["pdf"]["HEADER"]["body"];
+			$this->writeHTML($html, true, false, true, false, '');		
+		}	
+		
+		// output the HTML content
+		
+		
+
+		#$this->Cell(30, 0, 'Baseline-Bottom', 1, $ln=0, 'C', 0, '', 0, false, 'L', 'B');
+		#$this->Cell(30, 0, 'Descent-Bottom', 1, $ln=0, 'C', 0, '', 0, false, 'D', 'B');		
+		/*
 		if ($this->header_xobjid === false) {
 			// start a new XObject Template
 			$this->header_xobjid = $this->startTemplate($this->w, $this->tMargin);
@@ -3459,6 +3510,7 @@ class TCPDF {
 			// reset header xobject template at each page
 			$this->header_xobjid = false;
 		}
+		*/
 	}
 
 	/**

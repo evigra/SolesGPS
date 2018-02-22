@@ -1,25 +1,35 @@
-	function calculo_cptosfijos()
+	function auto_item_id(ui)
 	{
-		var total=0;
+		$("input#item_id").val(ui.item.clave);					
+		$("input#auto_item_id").val(ui.item.label);
 		
-		if(!isNaN(parseFloat($("#con.personal_cptosfijos").val())))		total=total+parseFloat($("#con.personal_cptosfijos").val());		
+		var vende 	=$("input#venta").val();
+		var compra 	=$("input#compra").val();
+
+		var lista=1;
 		
-		if(!isNaN(parseFloat($("#imp.personal_cptosfijos").val())))		total=total+parseFloat($("#imp.personal_cptosfijos").val());		
+		if(compra>0) 	lista=compra;
+		if(vende>0) 	lista=vende;
+
+		$("input#precio").val(ui.item["vende"+lista]);					
+		subtotal();
+	}
+	function subtotal()
+	{
+		var cantidad 			=$("input#cantidad").val();
+		var precio 				=$("input#precio").val();
+		var descuento 			=$("input#descuento").val();										
 		
-		if(!isNaN(parseFloat($("#uni.personal_cptosfijos").val())))		total=total+parseFloat($("#uni.personal_cptosfijos").val());		
-				
-		
-		total=parseInt(Math.round(total*100))/100;								
-		
-		//total=parseInt(parseFloat(total*100))/100;		
-		$("input#cif.personal_cptosfijos").val(total);
-	}	
+		var subtotal_articulo 	= (cantidad * precio) - descuento;
+												
+		$("input#subtotal").val(subtotal_articulo);
+	}		
 	$(document).ready(function()
 	{	
-		$("input.personal_cptosfijos").focusout(function() 
-		{		
-			calculo_cptosfijos();
-		});
+		
+	
+		
+		
 		
 			
 	});	

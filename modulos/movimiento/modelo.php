@@ -15,11 +15,11 @@
 			    "value"             => "",			    
 			),
 			"empresa_id"	=>array(
-			    "title"             => "Cliente",
+			    "title"             => "Empresa",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/cliente/ajax/autocomplete.php",
+			    "source"           	=> "../modulos/empresa/ajax/autocomplete.php",
 			    "value"             => "",			    
 			    
 			    "relation"          => "one2many",			    
@@ -28,6 +28,7 @@
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    
 			),			
+
 			"movimientos_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -42,7 +43,28 @@
 			    "class_field_m"    	=> "movimiento_id",				
 				#"class_field_l"    	=> "horario",	
 			),
-			
+			"tipo"	    =>array(
+			    "title"             => "Tipo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+			"compra"	    =>array(
+			    "title"             => "Lista de compra",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+			"venta"	    =>array(
+			    "title"             => "Lista de venta",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+
 			
 				
 		);				
@@ -62,14 +84,15 @@
     		
     		## GUARDAR USUARIO
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
-			$datas["registro"]=$this->sys_date;
+			#$datas["registro"]=$this->sys_date;
 			#$option["echo"]=$datas["total"];
     		
     	    $return= parent::__SAVE($datas,$option);
+    	    #$this->__PRINT_R($this->sys_sql);
     	    #$this->__PRINT_R($datas);
     	    return $return;
     	    
-    	    #$this->__PRINT_R($this->sys_sql);
+    	    
 		}
 		#*/		
    		public function __GENERAR_PDF()
@@ -359,8 +382,8 @@
    		public function __REPORTE($option="")
     	{			
 			if($option=="")	$option=array();			
-			$option["template_title"]	                = $this->sys_module . "html/report_estatus_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_estatus_body";
+			$option["template_title"]	                = $this->sys_module . "html/report_title";
+			$option["template_body"]	                = $this->sys_module . "html/report_body";
 	
 			
 			if(!isset($option["actions"]))	

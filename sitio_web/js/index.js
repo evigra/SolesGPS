@@ -1558,6 +1558,11 @@ styles:
 	    {
 			$("img#excel").click(function()
 			{
+				var url		= location.href;		
+				var arrUrl 	= url.split("/");
+				
+				var clase	=arrUrl[ arrUrl.length -2 ];				
+
 				var variables=getVarsUrl();
 				var str_url="";
 				var sys_action=0;
@@ -1570,7 +1575,7 @@ styles:
 					}	
 					else	str_url+="&"+ivariables+"="+ variables[ivariables];
 				}		        
-				if(sys_action==0)	str_url+="&sys_action=print_excel";
+				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_excel";
 				
 				window.open(str_url);
 		    });	        
@@ -1579,6 +1584,11 @@ styles:
 	    {
 			$("img#pdf").click(function()
 			{
+				var url		= location.href;		
+				var arrUrl 	= url.split("/");
+				
+				var clase	=arrUrl[ arrUrl.length -2 ];				
+
 				var variables=getVarsUrl();
 				var str_url="";
 				var sys_action=0;
@@ -1591,7 +1601,7 @@ styles:
 					}	
 					else	str_url+="&"+ivariables+"="+ variables[ivariables];
 				}		        
-				if(sys_action==0)	str_url+="&sys_action=print_pdf";
+				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_pdf";
 				
 				window.open(str_url);
 		    });	        
@@ -1601,6 +1611,11 @@ styles:
 	    {
 			$("img#print").click(function()
 			{
+				var url		= location.href;		
+				var arrUrl 	= url.split("/");
+				
+				var clase	=arrUrl[ arrUrl.length -2 ];				
+
 				var variables=getVarsUrl();
 				var str_url="";
 				var sys_action=0;
@@ -1613,9 +1628,10 @@ styles:
 					}	
 					else	str_url+="&"+ivariables+"="+ variables[ivariables];
 				}		        
-				if(sys_action==0)	str_url+="&sys_action=print_report";
+				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_report";
 				
 				window.open(str_url);
+
 		    });
 	    }	    
 	   

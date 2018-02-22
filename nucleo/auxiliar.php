@@ -1270,7 +1270,8 @@
 			$sys_action		="";
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
-			if(@$this->request["sys_action"]!="print_pdf")	
+			#if(@$this->request["sys_action"]!="print_pdf")	
+			if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 			{
 				$view.="
 					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
@@ -1683,7 +1684,7 @@
 		    	    $view_search     				=$this->__TEMPLATE($option["template_search"]);		    	    
 		    	    $view_search					=str_replace("<td>", "<td class=\"title\">", $view_search);
 		    	    
-					if(@$this->request["sys_action"]!="print_pdf")	
+					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 					{
 		    	    		    	    
 						$view_search="
@@ -1747,7 +1748,7 @@
                 #if(isset($inicio) AND $return["total"]>0)
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
-                	elseif(@$this->request["sys_action"]!="print_pdf")	
+                	elseif(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
@@ -1758,8 +1759,8 @@
 									<tr>
 										<td width=\"10\"></td>
 						";
-						
-						if(@$this->request["sys_action"]!="print_pdf")	
+						if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+						#if(@$this->request["sys_action"]!="print_pdf")	
 						{
 							$view_head.="						
 										$button_search
@@ -1786,7 +1787,8 @@
 										</td>								
 										<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
 						";
-						if(@$this->request["sys_action"]!="print_pdf")	
+						if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+						#if(@$this->request["sys_action"]!="print_pdf")	
 						{
 							if(@!$this->request["sys_row_$name"]) $this->request["sys_row_$name"]=50; 	
 							$array=array(1,20,50,100,200,500);
@@ -1833,7 +1835,9 @@
 					$button_create_js="";
 					
 
-					if(isset($template_option) AND @$this->request["sys_action"]!="print_pdf")	
+					#if(isset($template_option) AND @$this->request["sys_action"]!="print_pdf")
+					
+					if(isset($template_option) AND !(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
 					{
 						#$this->__PRINT_R($template_option);
 						
@@ -1880,7 +1884,8 @@
 							</table>
 						</div>		
 					";						
-					if(@$this->request["sys_action"]!="print_pdf")		
+					#if(@$this->request["sys_action"]!="print_pdf")		
+					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
 					
 					$return["report"].="
 						<script>
@@ -1970,7 +1975,8 @@
 						}	
 					}									
 					
-					if(@$this->request["sys_action"]!="print_pdf")	
+					#if(@$this->request["sys_action"]!="print_pdf")
+					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
 					{				
 						$view.="
 							$view_search

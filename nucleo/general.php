@@ -11,6 +11,8 @@
 		##  Metodos	
 		##############################################################################
 		var $sys_fields_l18n	=NULL;
+		var $sys_enviroments	="PRODUCTION";
+		
 		public function __CONSTRUCT($option=array())
 		{  	
 			if(!isset($this->sys_fields))			$this->sys_fields=array();

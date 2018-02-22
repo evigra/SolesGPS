@@ -1,5 +1,5 @@
 <?php
-#include("../sesion.php");
+#	include("../sesion.php");
 	$usuarios_sesion						="PHPSESSID";
 	session_name($usuarios_sesion);
 	session_start();
@@ -38,7 +38,13 @@
 #include('nucleo/tcpdf/tcpdf_include.php');
 
 // create new PDF document
-	$pdf = new TCPDF($_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], $_SESSION["pdf"]["PDF_UNIT"], $_SESSION["pdf"]["PDF_PAGE_FORMAT"], true, 'UTF-8', false);
+	$pdf = new TCPDF(
+		$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], 
+		$_SESSION["pdf"]["PDF_UNIT"], 
+		$_SESSION["pdf"]["PDF_PAGE_FORMAT"], 
+		true, 'UTF-8', false
+	);
+	$pdf = new TCPDF();
 
 // set document information
 /*
@@ -48,7 +54,7 @@ echo "/<pre>";
 */
 	$pdf->SetCreator(PDF_CREATOR);
 	$pdf->SetAuthor('CEO ISC Eduardo Vizcaino Granados');
-	#$pdf->SetTitle($_SESSION["pdf"]["title"]);
+	$pdf->SetTitle($_SESSION["pdf"]["title"]);
 	#$pdf->SetTitle('algo');
 	#$pdf->SetSubject($_SESSION["pdf"]["subject"]);
 	#$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
@@ -117,7 +123,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // reset pointer to the last page
 	$pdf->lastPage();
 
-	if(!isset($_SESSION["pdf"]["save_name"]))$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
+	if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
 //Close and output PDF document
 	$pdf->Output($_SESSION["pdf"]["save_name"], 'I');

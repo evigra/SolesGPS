@@ -79,18 +79,18 @@ echo "/<pre>";
 	#$_SESSION["pdf"]["PDF_MARGIN_TOP"]=
 	
 	#$_SESSION["pdf"]["HEADER"]["height"]
-####	if(isset($_SESSION["pdf"]["HEADER"]))
-####		$pdf->SetMargins(PDF_MARGIN_LEFT, $_SESSION["pdf"]["PDF_MARGIN_TOP"], PDF_MARGIN_RIGHT);
+	if(isset($_SESSION["pdf"]["HEADER"]))
+		$pdf->SetMargins(PDF_MARGIN_LEFT, $_SESSION["pdf"]["PDF_MARGIN_TOP"], PDF_MARGIN_RIGHT);
 	#$pdf->SetMargins(PDF_MARGIN_LEFT, 31, PDF_MARGIN_RIGHT);
 	
-###	if(isset($_SESSION["pdf"]["PAGE"]))
-###		$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
+	if(isset($_SESSION["pdf"]["PAGE"]))
+		$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
 
 // set auto page breaks
 	#$pdf->SetAutoPageBreak(TRUE, 10);
 
 // set image scale factor
-###	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 /*
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {

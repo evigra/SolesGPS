@@ -64,6 +64,7 @@
 			),
 			"geofenceid"	=>array(
 			    "title"             => "Geocerca",
+			    "title_filter"      => "Geocerca",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",

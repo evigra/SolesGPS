@@ -22,7 +22,7 @@
 	$date = strtotime(date("Y-m-d"));
 
 	$first = date('Y-m-d',strtotime('monday -7 days'));
-	$last = date('Y-m-d',strtotime('Sunday -7 days'));
+	$last = date('Y-m-d',strtotime('Sunday'));
 
 	echo date('Y-m-d', $first);
 	echo '<br>';

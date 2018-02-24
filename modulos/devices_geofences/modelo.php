@@ -9,6 +9,7 @@
 				"name"=>"Entrada",
 			)		
 		);		
+		var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
@@ -128,10 +129,14 @@
 			
 
 			$option["order"]="id desc";
-			$option["echo"]="id desc";
+		
+			$option["echo"]="__REPORT_HOY";
 
 			
-			return $this->__VIEW_REPORT($option);
+			$return =$this->__VIEW_REPORT($option);
+			$this->__PRINT_R($this->sys_sql);
+			return $return;
+			
 		}				
    		public function __REPORT_HOY_TOTAL($option=NULL)
     	{

@@ -684,13 +684,13 @@
     			#if(!isset($option["open"]))	$option["open"]=1;    		
     			
 
-				if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
+				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
 
     			if(isset($option["open"]))	
     			{    			
     				$this->abrir_conexion();
-    				if(isset($option["e_open"])  AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
+    				if(isset($option["e_open"])  AND $this->sys_enviroments	=="DEVELOPER")
     					echo "<br><b>CONECCION ABIERTA</b><br>$comando_sql<br>{$option["e_open"]}";    				
     			}	
     		}
@@ -699,7 +699,8 @@
 			if(is_object($this->OPHP_conexion)) 
 			{
 				$resultado	= @$this->OPHP_conexion->query($comando_sql);
-				if(isset($this->OPHP_conexion->error) AND $this->OPHP_conexion->error!="" AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
+				
+				if(isset($this->OPHP_conexion->error) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
 				{					
 					echo "
 						<div class=\"echo\" style=\"display:none;\" title=\"Error\">
@@ -713,7 +714,7 @@
 			else
 			{
 				$resultado=array();
-				if(in_array($_SERVER["SERVER_NAME"],$this->serv_error))				
+				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
 					echo "<div class=\"echo\" style=\"display:none;\" title=\"Coneccion\">Error en la conecion</div>";
 			}	
 

@@ -154,7 +154,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_TOTAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Suma Semanal ($first al $last) de ";
+		$module_title								="Suma Semanal ($first al $last)";
     }    
     elseif($objeto->sys_section=="report_semana_anterior")
     {

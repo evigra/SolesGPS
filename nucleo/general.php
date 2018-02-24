@@ -269,8 +269,8 @@
 								$"."busqueda=\"\";
 								foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
 								{									
-									if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_o\"];
-									else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_o\"];
+									if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_m\"];
+									else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_m\"];
 								}															
 							";
 

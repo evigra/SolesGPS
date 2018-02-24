@@ -13,12 +13,13 @@
 		#$objeto->__PRINT_R($data_field["title"]);
 		
 		if(@$data_field["title_filter"]!="")
-			$data_json[]=array("field"=>"$field", "title"=>"{$data_field["title_filter"]}", "term"=>"{$_REQUEST["term"]}", "value"=>"$field LIKE '{$_REQUEST["term"]}'");
+			$data_json[]=array(
+				"field"=>"$field", 
+				"title"=>"{$data_field["title_filter"]}", 
+				"term"=>"{$_REQUEST["term"]}", 
+				"value"=>"Buscar '{$_REQUEST["term"]}' en el campo '{$data_field["title_filter"]}'");
 	}
 	echo json_encode($data_json);
-	
-	
-
 	
 	#$objeto->__PRINT_R($objeto->sys_fields);
 

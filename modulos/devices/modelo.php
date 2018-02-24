@@ -7,9 +7,7 @@
 		##  Propiedades	
 		##############################################################################
 		var $sys_filter		=array(
-			"devices"=>array(
-				"name"=>"",
-			)		
+				"name"=>"d.name",		
 		);
 		var $sys_fields		=array(
 				"id"	    =>array(
@@ -357,7 +355,7 @@
 			
 			
 			$return =$this->__VIEW_REPORT($option);			
-			#$this->__PRINT_R($return);			
+			#$this->__PRINT_R($this->sys_sql);			
 			return	$return; 
     	
 		}		

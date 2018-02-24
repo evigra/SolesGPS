@@ -240,6 +240,11 @@
 				{        								
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
+						$campo_aux=$campo;
+						if(isset($this->sys_filter[$campo]))
+						{
+							$campo_aux=$this->sys_filter[$campo];
+						}
 						if(!isset($option["where"]))    $option["where"]=array();		
 
 						$busqueda					=$this->request["sys_filter_{$this->sys_name}_{$campo}"];
@@ -273,9 +278,11 @@
 
 							$option["where"][]="$class_field_m IN ($busqueda)";			
 						}
-						else	$option["where"][]="$campo LIKE '%$busqueda%'";	
+						else
+							
+						$option["where"][]="$campo_aux LIKE '%$busqueda%'";	
 						
-
+						#$this->__PRINT_R($option["where"]);
 					}
 					
 				}	

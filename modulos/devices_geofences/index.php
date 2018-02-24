@@ -21,8 +21,8 @@
     
 	$date = strtotime(date("Y-m-d"));
 
-	$first = date('Y-m-d',strtotime('last Sunday -7 days'));
-	$last = date('Y-m-d',strtotime('next Saturday -7 days'));
+	$first = date('Y-m-d',strtotime('monday -7 days'));
+	$last = date('Y-m-d',strtotime('Sunday -7 days'));
 
 	echo date('Y-m-d', $first);
 	echo '<br>';

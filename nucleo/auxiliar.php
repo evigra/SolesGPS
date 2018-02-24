@@ -19,6 +19,7 @@
 								);
 		var $sys_false		    =array(0,"0","false", "no");
 		var $sys_modules	    =array("historico","menu","user_group", "group","modulos","permiso","sesion");
+		var $sys_print	    	=array("print_report","print_excel","print_pdf");
 		var $sys_section	    ="";
 		var $sys_action		    ="";
 		var $html				="";
@@ -38,9 +39,7 @@
 		var $__PRINT_JS			="";
 		
 		var $sys_historico;
-		
-		
-		
+			
 		
 		var $words              =array(
 		    "html_head_title"           => "ESTE ES EL TITULO DE LA VENTANA :: words[html_head_title]",
@@ -1271,7 +1270,12 @@
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
 			#if(@$this->request["sys_action"]!="print_pdf")	
-			if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+
+
+			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
+			
+			
+			#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 			{
 				$view.="
 					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
@@ -1658,8 +1662,6 @@
 					$view_create="
             			<div id=\"create_$name\" title=\"Crear Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
 	            			$view_create
-	            			<script>
-	            			</script>
             			</div>
 					";		    	    
 					$button_create="
@@ -1684,7 +1686,9 @@
 		    	    $view_search     				=$this->__TEMPLATE($option["template_search"]);		    	    
 		    	    $view_search					=str_replace("<td>", "<td class=\"title\">", $view_search);
 		    	    
-					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+		    	    if(!in_array(@$this->request["sys_action"],$this->sys_print))	
+		    	    
+					#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 					{
 		    	    		    	    
 						$view_search="
@@ -1739,7 +1743,7 @@
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
 					$return["pdf"]	="
-						<table width=\"100%\" border=\"1\" style=\"background-color:#fff; \">								
+						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000;\">								
 							$view_title_pdf
 							$view_body_pdf
 						</table>					
@@ -1748,7 +1752,11 @@
                 #if(isset($inicio) AND $return["total"]>0)
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
-                	elseif(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+                	
+                	
+
+                	
+                	elseif(!in_array(@$this->request["sys_action"],$this->sys_print))	
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
@@ -1759,8 +1767,7 @@
 									<tr>
 										<td width=\"10\"></td>
 						";
-						if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
-						#if(@$this->request["sys_action"]!="print_pdf")	
+						if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 						{
 							$view_head.="						
 										$button_search
@@ -1787,8 +1794,7 @@
 										</td>								
 										<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
 						";
-						if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
-						#if(@$this->request["sys_action"]!="print_pdf")	
+						if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 						{
 							if(@!$this->request["sys_row_$name"]) $this->request["sys_row_$name"]=50; 	
 							$array=array(1,20,50,100,200,500);
@@ -1834,10 +1840,7 @@
 					#0133 32084420  CESAR JIMENES  32084444
 					$button_create_js="";
 					
-
-					#if(isset($template_option) AND @$this->request["sys_action"]!="print_pdf")
-					
-					if(isset($template_option) AND !(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
+					if(isset($template_option) AND !in_array(@$this->request["sys_action"],$this->sys_print))
 					{
 						#$this->__PRINT_R($template_option);
 						
@@ -1874,18 +1877,23 @@
 						
 					}				
 					
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+						$return["report"]="
+							$view_head
+							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;\">
+						";
 					
-					$return["report"]="
-						$view_head
-						<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;\">
-							<table width=\"100%\" style=\"background-color:#fff; \">
+					$return["report"].="						
+							<table width=\"100%\" style=\"background-color:#fff; color:#000; \">
 							$view_title
 							$view_body
 							</table>
-						</div>		
-					";						
-					#if(@$this->request["sys_action"]!="print_pdf")		
-					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
+					";
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
+						$return["report"].="							
+							</div>		
+						";						
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					
 					$return["report"].="
 						<script>
@@ -1944,14 +1952,20 @@
 								});	
 						</script>
 					";
-					
-					$view="
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc;\">
-						{$return["report"]}
-						</div>		
-					";
+						";		
 
-					if(@$this->request["sys_action"]!="print_pdf")	
+					$view.="{$return["report"]}";
+
+
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+						$view.="						
+						</div>		
+						";
+
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{
 						$view.="
 							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
@@ -1974,9 +1988,7 @@
 							}							
 						}	
 					}									
-					
-					#if(@$this->request["sys_action"]!="print_pdf")
-					if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{				
 						$view.="
 							$view_search

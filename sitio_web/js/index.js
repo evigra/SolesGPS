@@ -1552,7 +1552,7 @@ styles:
 	        $("div#setting").dialog({
 	        	width:"700px"
 	        });
-	    
+
 	    });
 	    if($("img#excel").length>0)
 	    {
@@ -1563,21 +1563,12 @@ styles:
 				
 				var clase	=arrUrl[ arrUrl.length -2 ];				
 
-				var variables=getVarsUrl();
-				var str_url="";
-				var sys_action=0;
-				for(ivariables in variables)
-				{
-					if(ivariables=="sys_action")	
-					{
-						sys_action=1;
-						str_url+="&"+ivariables+"=print_excel";
-					}	
-					else	str_url+="&"+ivariables+"="+ variables[ivariables];
-				}		        
-				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_excel";
-				
-				window.open(str_url);
+				$("form")
+					.attr("target","_blank")
+					.attr("action","&sys_action=print_excel")
+					.submit();
+				$("form").attr("action","");
+					
 		    });	        
 	    }	    
 	    if($("img#pdf").length>0)
@@ -1589,21 +1580,13 @@ styles:
 				
 				var clase	=arrUrl[ arrUrl.length -2 ];				
 
-				var variables=getVarsUrl();
-				var str_url="";
-				var sys_action=0;
-				for(ivariables in variables)
-				{
-					if(ivariables=="sys_action")	
-					{
-						sys_action=1;
-						str_url+="&"+ivariables+"=print_pdf";
-					}	
-					else	str_url+="&"+ivariables+"="+ variables[ivariables];
-				}		        
-				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_pdf";
-				
-				window.open(str_url);
+				$("form")
+					.attr("target","_blank")
+					.attr("action","&sys_action=print_pdf")
+					.submit();
+				$("form")
+					.attr("action","")
+					.removeAttr("target");
 		    });	        
 	    }	    
 
@@ -1616,21 +1599,13 @@ styles:
 				
 				var clase	=arrUrl[ arrUrl.length -2 ];				
 
-				var variables=getVarsUrl();
-				var str_url="";
-				var sys_action=0;
-				for(ivariables in variables)
-				{
-					if(ivariables=="sys_action")	
-					{
-						sys_action=1;
-						str_url+="&"+ivariables+"=print_report";
-					}	
-					else	str_url+="&"+ivariables+"="+ variables[ivariables];
-				}		        
-				if(sys_action==0)	str_url+="&sys_section="+ $("input#sys_section_"+clase).val() +"&sys_action=print_report";
-				
-				window.open(str_url);
+				$("form")
+					.attr("target","_blank")
+					.attr("action","&sys_action=print_report")
+					.submit();
+				$("form")
+					.attr("action","")
+					.removeAttr("target");
 
 		    });
 	    }	    

@@ -101,7 +101,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_HOY();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Actual de";
+		$module_title								="Reporte Actual";
     }
     elseif($objeto->sys_section=="report_hoy_total")
     {
@@ -116,7 +116,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_HOY_TOTAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Suma Actual de";
+		$module_title								="Suma Actual";
     }
 
     elseif($objeto->sys_section=="report_semana_actual")
@@ -135,7 +135,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Semana ($first al $last) de ";
+		$module_title								="Semana ($first al $last)";
     }
     
     elseif($objeto->sys_section=="report_semana_actual_total")

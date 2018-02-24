@@ -166,8 +166,9 @@
 			
 			#$option["echo"]="id desc";
 
-			
-			return $this->__VIEW_REPORT($option);
+			$return =$this->__VIEW_REPORT($option);
+			#$this->__PRINT_R($this->sys_sql);
+			return $return;
 		}				
 
    		public function __REPORT_SEMANA_ACTUAL($option=NULL)
@@ -187,7 +188,10 @@
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
 			
 			$option["order"]="id desc";
-			return $this->__VIEW_REPORT($option);
+			$return =$this->__VIEW_REPORT($option);
+			$this->__PRINT_R($this->sys_sql);
+			return $return;
+
 		}				
    		public function __REPORT_SEMANA_TOTAL($option=NULL)
     	{

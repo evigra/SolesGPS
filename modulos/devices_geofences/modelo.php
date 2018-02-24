@@ -87,8 +87,8 @@
 		public function __CONSTRUCT()
 		{
 			#$this->menu_obj=new menu();
+			$this->__PRINT_R($this->request);
 			parent::__CONSTRUCT();
-
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{

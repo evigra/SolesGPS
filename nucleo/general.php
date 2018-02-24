@@ -236,10 +236,16 @@
 			##   FILTER AUTOCOMPLETE ######
 			if(isset($this->sys_fields) AND is_array($this->sys_fields))
 			{
+				
 				foreach($this->sys_fields as $campo=>$valor)
 				{        								
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
+						if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
+							$this->request["sys_where_{$this->sys_name}_{$campo}"]=" LIKE ";
+						
+						$sys_where	=$this->request["sys_where_{$this->sys_name}_{$campo}"];	
+						
 						$campo_aux=$campo;
 						if(isset($this->sys_filter[$campo]))
 						{
@@ -261,7 +267,7 @@
 								
 								$"."option_$campo=array(
 									\"where\"=>array(
-										\"$class_field_l LIKE '%{$busqueda}%'\"
+										\"$class_field_l $sys_where '%{$busqueda}%'\"
 									)
 								);									
 								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);
@@ -280,7 +286,7 @@
 						}
 						else
 							
-						$option["where"][]="$campo_aux LIKE '%$busqueda%'";	
+						$option["where"][]="$campo_aux $sys_where '%$busqueda%'";	
 						
 						#$this->__PRINT_R($option["where"]);
 					}

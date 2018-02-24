@@ -457,11 +457,21 @@
 
 	function filter_html(field,title,term,name)
 	{			
+		var select="\
+			<select id=\"sys_where_" + name +"_" + field + "\" name=\"sys_where_" + name +"_" + field + "\">\
+				<option value=\"LIKE\">Contiene</option>\
+				<option value=\"=\">Es igual a</option>\
+				<option value=\">\">Mayor</option>\
+				<option value=\">\">Menor</option>\
+			</select>\
+		";	
+	
 		var filter="\
-			<td id=\"" + field + "_" + term + "\" valign=\"middle\">\
+			<td id=\"" + field + "_" + term + "\" class=\"total\" valign=\"middle\">\
 				<table height=\"28\">\
 					<tr>\
 						<td style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\">" + title + "</td>\
+						<td style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\"><div id=\"" + field + "_" + term + "\">" + select + "</div></td>\
 						<td style=\"background-color:#aaa; padding-left:5px;\">" + term + "</td>\
 						<td id=\"" + field + "_" + term + "\" class=\"filter_close\" style=\"background-color:#aaa;  padding-right:5px;\"><font class=\"ui-icon ui-icon-close\"></font></td>\
 					</tr>\
@@ -470,7 +480,12 @@
 				<script>\
 					$(\"td#" + field + "_" + term + ".filter_close\").click(function()\
 					{\
-						$(\"td#" + field + "_" + term + "\").remove();\
+						$(\"td#" + field + "_" + term + ".total\").remove();\
+					});\
+					////$(\"div#" + field + "_" + term + "\").hide();\
+					$(\"td#" + field + "_" + term + "\").click(function() {\
+						if(	$(\"div#" + field + "_" + term + "\").is(':visible')  ) 	$(\"div#" + field + "_" + term + "\").hide();\
+						else $(\"div#" + field + "_" + term + "\").show();\
 					});\
 				</script>\
 			</td>\

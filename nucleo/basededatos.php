@@ -255,35 +255,29 @@
 									else
 									{
 										enviar	=true;		
-
 									}								
 									if($(\"[class*='required'][class*='{$this->sys_name}']\").length>0)
 									{				
 										$(\"[class*='required'][class*='{$this->sys_name}']\").each(function(){
 											if(   $(this).val()==\"\"   )
 											{
-
 												enviar=false;	
 											}										
 										});	
 										var form=\"Favor de verificar los campos faltantes</font>\";								
-										
 									}
-
 								}
 								
 								if(enviar==true)	$(\"form\").submit();
 								else 
 								{
-										$(\"#message\")
-										.html(form)
-										.dialog({
-											width:\"400\",
-											modal: true,
-										});
-
+									$(\"#message\")
+									.html(form)
+									.dialog({
+										width:\"400\",
+										modal: true,
+									});
 								}							
-									
 							});		 
 			        	";
 		        	}

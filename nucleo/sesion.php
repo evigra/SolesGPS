@@ -1,10 +1,10 @@
 <?php	
 	if(!isset($_SESSION))
 	{
-	
+		ini_set('display_errors', 0);
 		$usuarios_sesion						="PHPSESSID";
 		session_name($usuarios_sesion);
-		session_start();
+		@session_start();
 		session_cache_limiter('nocache,private');	
 		
 		/*

@@ -463,17 +463,17 @@
 					<tr>\
 						<td style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\">" + title + "</td>\
 						<td style=\"background-color:#aaa; padding-left:5px;\">" + term + "</td>\
-						<td class=\"filter_close\" style=\"background-color:#aaa;  padding-right:5px;\"><font class=\"ui-icon ui-icon-close\"></font></td>\
+						<td id=\"" + field + "_" + term + "\" class=\"filter_close\" style=\"background-color:#aaa;  padding-right:5px;\"><font class=\"ui-icon ui-icon-close\"></font></td>\
 					</tr>\
 				</table>\
 				<input class=\"sys_filter\" type=\"hidden\"id=\"sys_filter_" + name +"_" + field + "\"  name=\"sys_filter_" + name +"_" + field + "\" value=\"" + term + "\">\
+				<script>\
+					$(\"td#" + field + "_" + term + ".filter_close\").click(function()\
+					{\
+						$(\"td#" + field + "_" + term + "\").remove();\
+					});\
+				</script>\
 			</td>\
-			<script>\
-				$(\"#" + field + "_" + term + "\").click(function()\
-				{\
-					$(this).remove();\
-				});\
-			</script>\
 		";
 		return filter;
 	}

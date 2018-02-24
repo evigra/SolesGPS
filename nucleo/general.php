@@ -276,7 +276,7 @@
 
 							eval($eval);										
 
-							$option["where"][]="$class_field_m IN ($busqueda)";			
+							$option["where"][]="$class_field_o IN ($busqueda)";			
 						}
 						else
 							

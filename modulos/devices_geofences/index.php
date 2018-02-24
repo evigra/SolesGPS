@@ -17,6 +17,18 @@
         
     $module_title	="";
     $template		="system";
+    
+    
+	$date = strtotime(date("Y-m-d"));
+
+	$first = strtotime('last Sunday -7 days');
+	$last = strtotime('next Saturday -7 days');
+
+	echo date('Y-m-d', $first);
+	echo '<br>';
+	echo date('Y-m-d', $last);
+    
+    
     if($objeto->sys_section=="create")
 	{
 		# TITULO DEL MODULO
@@ -128,7 +140,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Semanal de ";
+		$module_title								="Reporte Semanal ($first - $last) de ";
     }
     
     elseif($objeto->sys_section=="report_semana_actual_total")

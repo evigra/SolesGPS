@@ -9,7 +9,7 @@
 				"name"=>"Entrada",
 			)		
 		);		
-		var $sys_enviroments	="DEVELOPER";
+		#var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
@@ -194,7 +194,7 @@
 			
 			$option["order"]="id desc";
 			$return =$this->__VIEW_REPORT($option);
-			$this->__PRINT_R($this->sys_sql);
+			#$this->__PRINT_R($this->sys_sql);
 			return $return;
 
 		}				

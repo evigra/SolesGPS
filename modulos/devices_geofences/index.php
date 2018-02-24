@@ -229,7 +229,7 @@
 		);	    
     
     
-	$objeto->words["module_title"]	=	"$module_title Geocercas";
+	$objeto->words["module_title"]	=	"$module_title";
 	
 	# CARGANDO LOS BOTONES LA LA VISTA
 	$objeto->words["module_left"]  	=	$objeto->__BUTTON($module_left);

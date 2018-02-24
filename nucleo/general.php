@@ -268,14 +268,14 @@
 									else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_o\"];
 								}															
 							";
-							#$this->__PRINT_R($eval);
+
 							eval($eval);										
 
 							$option["where"][]="$class_field_m IN ($busqueda)";			
 						}
 						else	$option["where"][]="$campo LIKE '%$busqueda%'";	
 						
-						#$this->__PRINT_R($option["where"]);
+
 					}
 					
 				}	
@@ -364,7 +364,7 @@
     		#$total 	            = $this->__EXECUTE($this->sys_sql,$option_conf);
     		$total 	            = $this->__EXECUTE($this->sys_sql);
 			
-            #$this->__PRINT_R($total);
+
                         
             $subtotal			=count($total);
             #echo $subtotal;
@@ -390,10 +390,7 @@
    			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
-   			#echo "<br><br>OPTIONS<<<<<<<<<<<<<<<<<<<<<br>";
-   			#$this->__PRINT_R($option);
-   			#$this->__PRINT_R($return["data"]);
-   			#$html_title=array();
+
 			if(is_array(@$return["data"][0]))
 			{
 				foreach($return["data"][0] as $campo => $title)
@@ -461,10 +458,7 @@
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
 			
-			
-			#echo ">>>>>>>>>>>>>>>>>>>>>>>";
-			#$this->__PRINT_R($datas);
-			
+		
 			
 			if(!isset($this->sys_memory) OR $this->sys_memory=="")
 			{	
@@ -516,7 +510,6 @@
 					}	
 				}    
 
-				#echo "<br>__SAVE :: ". $this->__PRINT_R($fields);
 				if($fields!="")
 				{
 					$SAVE_JS="";
@@ -561,7 +554,7 @@
 					#$option_conf["close"]	=1;
 					$this->__EXECUTE($this->sys_sql,$option);
 					
-					#$this->__PRINT_R($this->sys_sql);
+
 					
 					if(@$this->OPHP_conexion->error=="")
 					{					
@@ -580,12 +573,11 @@
 							#echo "ENTRO {$this->sys_object}";
 							$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
 							unset($option["close"]);
-							#echo "<br>__SAVE :: ". $this->__PRINT_R($data);
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
 						$return=@$this->sys_primary_id;
 						
-						#$this->__PRINT_R($many2one);
+
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
@@ -670,7 +662,7 @@
 	
 					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 			
-					#$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
+
 				}		
 			}
     	}

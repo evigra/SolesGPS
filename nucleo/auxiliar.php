@@ -135,10 +135,6 @@
 								
 								if($this->sys_section!="write")
 								{
-									#$this->__PRINT_R($this->request);
-									
-									#unset($_SESSION["SAVE"][$this->sys_object]);			
-									#$this->__PRINT_R($_SESSION["SAVE"]);	
 								}															
 							}			        									
 						}			        		
@@ -157,8 +153,6 @@
 
 						$sql    	="SELECT * FROM {$this->sys_table} WHERE {$this->sys_primary_field}='{$id}'";
 						$datas   	= $this->__EXECUTE("$sql",$option_conf);
-						
-						#$this->__PRINT_R($datas);
 						
 						if(@is_array($datas[0]))
 						{
@@ -215,14 +209,11 @@
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
 
-			#$this->__PRINT_R($this->__SAVE_JS);
 			
-			#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->request["sys_action"]=="__SAVE" AND ($this->request["sys_section"]=="create" OR $this->request["sys_section"]=="write"))
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
-		        #$this->__PRINT_R(@$this->__SAVE_JS);
 			}
 			
 			if(array_key_exists("user",$_SESSION))
@@ -280,7 +271,6 @@
 		public function __REPORT_TITLES($option)
 		{  
 			
-			#$this->__PRINT_R($option);
 			$sys_order	=$option["sys_order"];
 			$sys_torder	=$option["sys_torder"];
 			$font		=$option["font"];
@@ -290,9 +280,6 @@
 
 			$iorder									="";			
 			$title									=@$this->sys_fields[$font]["title"];
-			
-			#$this->__PRINT_R($this->sys_fields[$font] . "$font");
-			#$this->__PRINT_R($option);
 						
         	if(isset($this->sys_fields_l18n) AND is_array($this->sys_fields_l18n) AND isset($this->sys_fields_l18n["$font"]))	
         	{			        	
@@ -319,15 +306,12 @@
 			}
 			else if(@$option["option"]=="pdf")
 		    {
-				#$this->__PRINT_R(	$this->request["sys_action"]);
 				return "					
 						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					
 				";
 			}			
 			else
 			{
-				#$this->__PRINT_R($title);
-				#<div class=\"report_title_action report_title_inactive\">	
 				return "
 					<div name=\"title_$name\">
 						<div class=\"report_title_action\">
@@ -495,7 +479,6 @@
 				}
 				$words["system_submenu"]	    		=$submenu_html;
 			
-				#$this->__PRINT_R($words);
 			}			
 			return $words;
 		} 
@@ -584,7 +567,7 @@
 							}							
 						";
 					}	
-					#$this->__PRINT_R($eval);
+
 					#eval($eval);
 				    if(@eval($eval)===false)	
 				    	echo ""; #$eval; ---------------------------					
@@ -763,7 +746,7 @@
 			$this->__VARS();
 			$datas		=$this->sys_fields;
 			
-			#$this->__PRINT_R($datas);
+
 			
 			$return		=array();
     		foreach($datas as $campo=>$valor)
@@ -772,7 +755,7 @@
 				if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 				{	
 					$return[$campo]=$_SESSION["SAVE"][$this->sys_object][$campo]["data"];
-					#$this->__PRINT_R($_SESSION["SAVE"][$this->sys_object]);
+
 				}
 				else				
 				{					
@@ -783,7 +766,7 @@
 				}			
     		}    		
 			
-			#$this->__PRINT_R($return);
+
     		return $return;
     	}
 
@@ -822,7 +805,7 @@
 							elseif($attr=="font-size")		$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
 							else							$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
 							
-							#$eval_attr.="$"."this->__PRINT_R(\"$eval_field\");
+
 						}
 					}
 				}	
@@ -861,7 +844,7 @@
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
-			        		#$this->__PRINT_R($valor["attr"]);
+
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
 								if($attr_value=="required")		$class.=" required ";
@@ -893,7 +876,7 @@
 					    	$js_auto="";
 					    	#if(isset($this->sys_memory) AND $this->sys_memory!="")
 					    		#$js_auto=", appendTo: \"#\"";
-							$this->__PRINT_R($this->sys_fields[$campo]);			
+
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        $words["$campo"]  ="
 					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
@@ -1007,7 +990,7 @@
 							
 					    	if(isset($this->sys_fields["$campo"]["class_field_l"]))
 					    	{
-								#$this->__PRINT_R($this->sys_fields["$campo"]);	
+
 					    		if(isset($this->sys_fields["$campo"]["values"]) AND count($this->sys_fields["$campo"]["values"])>0)
 					    		{
 					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];									
@@ -1071,9 +1054,8 @@
 									"view"					=>"html",
 									
 								);								
-								#$this->__PRINT_R($option);
+
 								$words						=$this->__MANY2ONE($option);
-								#$this->__PRINT_R($option);
 							}
 						}	
 						#*/
@@ -1118,7 +1100,6 @@
 			#unset($_SESSION["SAVE"]["personal_calculo"]	);	
 			#$_SESSION["SAVE"]=array();
 			
-			#$this->__PRINT_R($option);	
 			$class_id			=@$option["class_id"];
 			$class_one			=$option["class_one"];
 			$class_one_id		=$option["class_one_id"];
@@ -1152,7 +1133,6 @@
 					if(isset($"."class_id) AND $"."class_id>0)
 						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
 					
-					#$"."this->__PRINT_R($"."json);
 					$"."this->$campo"."_obj->__SAVE($"."json);
 				}
 				
@@ -1459,16 +1439,11 @@
                     	{							
 							
 							
-							#$this->__PRINT_R("echo ". $option["color"]["$color"] .";");
-							#if(substr($row["trabajador_puesto_id"],1,6) != substr($row["sustituto_puesto_id"],1,6))
-							#$this->__PRINT_R(substr($row["trabajador_puesto_id"],0,6) ."!=". substr($row["sustituto_puesto_id"],0,6));
-							
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
                     	
                     	$eval.=$eval_color;
-                    	#$this->__PRINT_R($eval); #$eval; ---------------------------					
                     	if(@eval($eval)===false)	
 				    		echo ""; #$eval; ---------------------------					
 				    	
@@ -1512,7 +1487,6 @@
                     
                     $row = array_merge($actions, $row);
                     $row = array_merge($colors, $row);
-                    #$this->__PRINT_R($this->sys_fields_l18n);
                     
 				    if(@$html_template=="")  
 				    {
@@ -1552,19 +1526,15 @@
 			
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			
-			#$this->__PRINT_R($option);
 			$return=array();
 		    $view_title="";
 			if(isset($this->sys_memory) AND isset($template_option["class_field"]))
 			{	
 				$campo									=$template_option["class_field"];
-				#unset($_SESSION["SAVE"][$this->class_one]);
-				#$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]);
 				
 				if(isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
 					$campo				=$template_option["class_field"];
-					#$this->__PRINT_R(    $_SESSION["SAVE"][$this->class_one]["$campo"]);	
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
@@ -1640,7 +1610,7 @@
 
 				#######################								
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);			
-				#$this->__PRINT_R($view_title_data);
+
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
 								
@@ -1739,7 +1709,7 @@
 						$view_body		=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
-					#$this->__PRINT_R($return);
+
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
 					$return["pdf"]	="
@@ -1841,9 +1811,7 @@
 					$button_create_js="";
 					
 					if(isset($template_option) AND !in_array(@$this->request["sys_action"],$this->sys_print))
-					{
-						#$this->__PRINT_R($template_option);
-						
+					{						
 						$button_create_js="
 							if($(\"font#create_$name\").length>0)
 							{	
@@ -2071,7 +2039,6 @@
 		}   
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
-			#$this->__PRINT_R($option);
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
 			if(isset($option["template_title"]))    
 			{
@@ -2091,7 +2058,7 @@
 				}    		    	    
 				
 			} 
-			#$this->__PRINT_R($view_title);
+
 			return $return;
 			#return $view_title;
 		} 			
@@ -2144,12 +2111,6 @@
 		}    
 		function pointInPolygon($point, $polygon, $pointOnVertex = true) 
 		{
-			#echo "<br> DENTRO pointInPolygon";
-			#$point="70 40";
-			#$polygon = array("-50 30","50 70","100 50","80 10","110 -10","110 -30","-20 -50","-30 -40","10 -10","-10 10","-30 -20","-50 30");
-			
-			#$this->__PRINT_R($point);
-			#$this->__PRINT_R($polygon);
 			
 			$this->pointOnVertex = $pointOnVertex;
 
@@ -2223,9 +2184,7 @@
 		function pointStringToCoordinates($pointString) 
 		{
 			$pointString=trim($pointString);
-			#$this->__PRINT_R($pointString);
 			$coordinates = explode(" ", $pointString);
-			#$this->__PRINT_R($coordinates);
 			return array("x" => $coordinates[0], "y" => $coordinates[1]);
 		}		
 	}  	

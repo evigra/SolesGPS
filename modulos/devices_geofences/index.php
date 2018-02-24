@@ -135,7 +135,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Semanal ($first - $last) de ";
+		$module_title								="Semana ($first al $last) de ";
     }
     
     elseif($objeto->sys_section=="report_semana_actual_total")
@@ -154,10 +154,13 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_TOTAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Suma Semanal ($first - $last) de ";
+		$module_title								="Suma Semanal ($first al $last) de ";
     }    
     elseif($objeto->sys_section=="report_semana_anterior")
     {
+		$first = date('Y-m-d',strtotime('last monday -7 days'));
+		$last = date('Y-m-d',strtotime('last Sunday'));
+
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    #array("create"=>"Crear"),
@@ -169,10 +172,13 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_ANTERIOR();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Semanal Anterior ";
+		$module_title								="Semana Anterior ($first al $last) ";
     }
     elseif($objeto->sys_section=="report_semana_anterior_total")
     {
+		$first = date('Y-m-d',strtotime('last monday -7 days'));
+		$last = date('Y-m-d',strtotime('last Sunday'));
+
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    #array("create"=>"Crear"),
@@ -184,7 +190,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_ANTERIOR_TOTAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Semanal Anterior ";
+		$module_title								="Suma Semanal Anterior ($first al $last)";
     }
 
     else

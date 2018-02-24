@@ -91,8 +91,8 @@
 				
 		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
 				
-				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=$this->words["module_title"];
-				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
+				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=@$this->words["module_title"];
+				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=@$this->words["html_head_title"];
 				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				=$template;
 				
 				if(!isset($_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]))	$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]	="P";   	# (P=portrait, L=landscape)

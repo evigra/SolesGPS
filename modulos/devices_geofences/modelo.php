@@ -5,10 +5,8 @@
 		##  Propiedades	
 		##############################################################################
 		var $sys_filter		=array(
-			"time"=>array(
-				"name"=>"Entrada",
-			)		
-		);		
+				"name"=>"d.name",		
+		);
 		#var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 			"id"	    =>array(
@@ -256,9 +254,9 @@
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
 			
-			$option["order"]="id desc";
-			#$option["echo"]="SEMANA ANTERIOR";
-			return $this->__VIEW_REPORT($option);
+			$return =$this->__VIEW_REPORT($option);
+			$this->__PRINT_R($this->sys_sql);
+			return $return;
 		}				
    		public function __REPORT_SEMANA_ANTERIOR_TOTAL($option=NULL)
     	{

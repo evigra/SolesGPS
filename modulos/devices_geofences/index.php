@@ -20,14 +20,6 @@
     
     
 	$date = strtotime(date("Y-m-d"));
-
-	$first = date('Y-m-d',strtotime('monday -7 days'));
-	$last = date('Y-m-d',strtotime('Sunday'));
-
-	echo date('Y-m-d', $first);
-	echo '<br>';
-	echo date('Y-m-d', $last);
-    
     
     if($objeto->sys_section=="create")
 	{
@@ -129,6 +121,9 @@
 
     elseif($objeto->sys_section=="report_semana_actual")
     {
+		$first = date('Y-m-d',strtotime('monday -7 days'));
+		$last = date('Y-m-d',strtotime('Sunday'));
+
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    #array("create"=>"Crear"),
@@ -145,6 +140,9 @@
     
     elseif($objeto->sys_section=="report_semana_actual_total")
     {
+		$first = date('Y-m-d',strtotime('monday -7 days'));
+		$last = date('Y-m-d',strtotime('Sunday'));
+
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    #array("create"=>"Crear"),
@@ -156,7 +154,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_SEMANA_TOTAL();
 		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Suma Semanal de ";
+		$module_title								="Suma Semanal ($first - $last) de ";
     }    
     elseif($objeto->sys_section=="report_semana_anterior")
     {

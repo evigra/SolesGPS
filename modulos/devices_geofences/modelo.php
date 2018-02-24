@@ -173,6 +173,10 @@
 
    		public function __REPORT_SEMANA_ACTUAL($option=NULL)
     	{
+			$first = date('Y-m-d',strtotime('monday -7 days'));
+			$last = date('Y-m-d',strtotime('Sunday'));
+    	
+    	
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
@@ -182,10 +186,11 @@
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
-			$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),6-WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)))";			
+			#$option["where"][]								="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),6-WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)))";
+			$option["where"][]								="time BETWEEN '$first' AND '$last'";
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico_title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico_body";
 			
 			$option["order"]="id desc";
 			$return =$this->__VIEW_REPORT($option);
@@ -195,6 +200,9 @@
 		}				
    		public function __REPORT_SEMANA_TOTAL($option=NULL)
     	{
+			$first = date('Y-m-d',strtotime('monday -7 days'));
+			$last = date('Y-m-d',strtotime('Sunday'));
+
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
@@ -210,7 +218,8 @@
 			
 			#$option["select"]="devices_geofences.geofenceid, devices_geofences.deviceid, count(devices_geofences.time) as time, count(devices_geofences.time_end) as time_end";
 			
-			$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))+1)";			
+			#$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))+1)";			
+			$option["where"][]								="time BETWEEN '$first' AND '$last'";
 
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";

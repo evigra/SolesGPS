@@ -458,10 +458,10 @@
 	function filter_html(field,title,term,name,where)
 	{			
 		var v_option={
-			"LIKE":	"Contiene", 	
-			"=":	"Es igual a", 	
-			">":	"Mayor", 
-			"<":	"Menor" 			
+			"LIKE":		"Contiene", 	
+			"=":		"Es igual a", 	
+			"mayor":	"Mayor", 
+			"menor":	"Menor" 			
 		};				
 		var t_option="";
 		for(i_option in v_option)
@@ -470,12 +470,6 @@
 			if(where==i_option)		selected="selected";
 			t_option	=t_option + "<option " + selected + " value=\"" + i_option + "\">" + v_option[i_option] + "</option>";
 		}
-		/*
-		
-			
-		
-		//				" + t_option +" 
-		*/
 		var select="\
 			<select id=\"sys_where_" + name +"_" + field + "\" name=\"sys_where_" + name +"_" + field + "\">\
 				" + t_option +" \
@@ -486,7 +480,7 @@
 			<td id=\"" + field + "_" + term + "\" class=\"total\" valign=\"middle\">\
 				<table height=\"28\">\
 					<tr>\
-						<td style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\">" + title + "</td>\
+						<td id=\"" + field + "_" + term + "\" class=\"mostrar\" style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\">" + title + "</td>\
 						<td style=\"background-color:#555; color:#fff; padding-left:5px; padding-right:5px;\"><div id=\"" + field + "_" + term + "\">" + select + "</div></td>\
 						<td style=\"background-color:#aaa; padding-left:5px;\">" + term + "</td>\
 						<td id=\"" + field + "_" + term + "\" class=\"filter_close\" style=\"background-color:#aaa;  padding-right:5px;\"><font class=\"ui-icon ui-icon-close\"></font></td>\
@@ -498,8 +492,8 @@
 					{\
 						$(\"td#" + field + "_" + term + ".total\").remove();\
 					});\
-					////$(\"div#" + field + "_" + term + "\").hide();\
-					$(\"td#" + field + "_" + term + "\").click(function() {\
+					$(\"div#" + field + "_" + term + "\").hide();\
+					$(\"td#" + field + "_" + term + ".mostrar\").click(function() {\
 						if(	$(\"div#" + field + "_" + term + "\").is(':visible')  ) 	$(\"div#" + field + "_" + term + "\").hide();\
 						else $(\"div#" + field + "_" + term + "\").show();\
 					});\

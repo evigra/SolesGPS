@@ -246,6 +246,9 @@
 						
 						$sys_where	=$this->request["sys_where_{$this->sys_name}_{$campo}"];	
 						
+						if($sys_where=="mayor")	$sys_where=">";
+						if($sys_where=="menor")	$sys_where="<";
+						
 						$campo_aux=$campo;
 						if(isset($this->sys_filter[$campo]))
 						{

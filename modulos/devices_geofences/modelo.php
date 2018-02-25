@@ -126,18 +126,13 @@
 			$option["select"]["deviceid"]					="deviceid";
 			$option["select"]["geofenceid"]					="geofenceid";						
 
-			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
-			
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
 			
-
-			$option["order"]="id desc";
-		
-			$option["echo"]="__REPORT_HOY";
-
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="time desc";
 			
 			$return =$this->__VIEW_REPORT($option);
 			#$this->__PRINT_R($this->sys_sql);
@@ -168,8 +163,8 @@
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
-			#$option["order"]="id desc";
-			
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="id desc";			
 			#$option["echo"]="id desc";
 
 			$return =$this->__VIEW_REPORT($option);
@@ -187,8 +182,7 @@
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
 			if(!isset($option["select"]))					$option["select"]=array();
-			
-			
+						
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
@@ -198,7 +192,8 @@
 			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico_body";
 			
-			$option["order"]="id desc";
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="time desc";
 			$return =$this->__VIEW_REPORT($option);
 			#$this->__PRINT_R($this->sys_sql);
 			return $return;
@@ -232,6 +227,10 @@
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="id desc";
+
+
 			#$option["order"]="id desc";
 			
 			#$option["echo"]="id desc";
@@ -245,23 +244,23 @@
     	{
 			$first = date('Y-m-d',strtotime('last monday -7 days'));
 			$last = date('Y-m-d',strtotime('last Sunday'));
-    	
-    	
+    	    	
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
 			if(!isset($option["select"]))					$option["select"]=array();
 
-
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
-
 			
 			$option["where"][]							="time BETWEEN '$first' AND '$last'";			
 
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
-			
+
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="time desc";
+	
 			$return =$this->__VIEW_REPORT($option);
 			#$this->__PRINT_R($this->sys_sql);
 			return $return;
@@ -289,7 +288,8 @@
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 			
-			$option["order"]="id desc";
+			if(!isset($this->request["sys_order_devices_geofences"]))
+				$option["order"]="id desc";
 			#$option["echo"]="SEMANA ANTERIOR";
 			return $this->__VIEW_REPORT($option);
 		}				

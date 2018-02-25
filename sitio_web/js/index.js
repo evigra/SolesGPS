@@ -455,14 +455,29 @@
 		//poligono(geofence,{color:"blue",geofence:"Ocupa fondeport"});	
 	}
 
-	function filter_html(field,title,term,name)
+	function filter_html(field,title,term,name,where)
 	{			
+		var v_option={
+			"LIKE":	"Contiene", 	
+			"=":	"Es igual a", 	
+			">":	"Mayor", 
+			"<":	"Menor" 			
+		};				
+		var t_option="";
+		for(i_option in v_option)
+		{
+			var selected="";
+			if(where==i_option)		selected="selected";
+			t_option	=t_option + "<option " + selected + " value=\"" + i_option + "\">" + v_option[i_option] + "</option>";
+		}
+		/*
+		
+			
+		
+		//				" + t_option +" 
+		*/
 		var select="\
 			<select id=\"sys_where_" + name +"_" + field + "\" name=\"sys_where_" + name +"_" + field + "\">\
-				<option value=\"LIKE\">Contiene</option>\
-				<option value=\"=\">Es igual a</option>\
-				<option value=\">\">Mayor</option>\
-				<option value=\">\">Menor</option>\
 			</select>\
 		";	
 	

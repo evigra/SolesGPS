@@ -1730,6 +1730,7 @@
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
+
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\">

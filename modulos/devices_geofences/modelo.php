@@ -41,6 +41,7 @@
 			),
 			"diferencia"	    =>array(
 			    "title"             => "Tiempo",
+			    "title_filter"      => "Tiempo",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

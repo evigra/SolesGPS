@@ -1949,8 +1949,12 @@
 						{        								
 							if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 							{	
+								if(!isset($this->request["sys_filter_{$this->sys_name}_{$campo}"]))
+									$this->request["sys_filter_{$this->sys_name}_{$campo}"] = "LIKE";
+									
+								$sys_filter=$this->request["sys_filter_{$this->sys_name}_{$campo}"];	
 								$filter_autocomplete.="
-									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\");											
+									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\",\"$sys_filter\");											
 									$(\"#filter_fields_$name\").append(filter);
 								";
 							}							

@@ -478,6 +478,7 @@
 		*/
 		var select="\
 			<select id=\"sys_where_" + name +"_" + field + "\" name=\"sys_where_" + name +"_" + field + "\">\
+				" + t_option +" \
 			</select>\
 		";	
 	

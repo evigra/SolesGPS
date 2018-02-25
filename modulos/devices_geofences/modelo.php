@@ -119,7 +119,13 @@
 			if(!isset($option["where"]))					$option["where"]=array();
 			if(!isset($option["select"]))					$option["select"]=array();
 			
-			$option["select"][]								="*";
+			$option["select"]["id"]							="id";			
+			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";			
+			$option["select"]["time"]						="time";
+			$option["select"]["time_end"]					="time_end";						
+			$option["select"]["deviceid"]					="deviceid";
+			$option["select"]["geofenceid"]					="geofenceid";						
+
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			

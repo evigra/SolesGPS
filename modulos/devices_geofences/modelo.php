@@ -267,6 +267,10 @@
 		}				
    		public function __REPORT_SEMANA_ANTERIOR_TOTAL($option=NULL)
     	{
+			$first = date('Y-m-d',strtotime('last monday -7 days'));
+			$last = date('Y-m-d',strtotime('last Sunday'));
+
+
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
@@ -291,7 +295,7 @@
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="id desc";
 			$return =$this->__VIEW_REPORT($option);
-			$this->__PRINT_R($this->sys_sql);
+			#$this->__PRINT_R($this->sys_sql);
 			return $return;
 		}				
    		public function CRON_DELETE()

@@ -290,8 +290,9 @@
 			
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="id desc";
-			#$option["echo"]="SEMANA ANTERIOR";
-			return $this->__VIEW_REPORT($option);
+			$return =$this->__VIEW_REPORT($option);
+			$this->__PRINT_R($this->sys_sql);
+			return $return;
 		}				
    		public function CRON_DELETE()
     	{

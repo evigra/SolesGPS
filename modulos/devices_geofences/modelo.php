@@ -175,7 +175,7 @@
    		public function __REPORT_SEMANA_ACTUAL($option=NULL)
     	{
 			$first = date('Y-m-d',strtotime('monday -7 days'));
-			$last = date('Y-m-d',strtotime('Sunday'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
     	
     	
 			if(is_null($option)) 							$option=array();	
@@ -202,7 +202,7 @@
    		public function __REPORT_SEMANA_TOTAL($option=NULL)
     	{
 			$first = date('Y-m-d',strtotime('monday -7 days'));
-			$last = date('Y-m-d',strtotime('Sunday'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
@@ -237,7 +237,7 @@
    		public function __REPORT_SEMANA_ANTERIOR($option=NULL)
     	{
 			$first = date('Y-m-d',strtotime('last monday -7 days'));
-			$last = date('Y-m-d',strtotime('last Sunday'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
     	    	
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
@@ -262,7 +262,7 @@
    		public function __REPORT_SEMANA_ANTERIOR_TOTAL($option=NULL)
     	{
 			$first = date('Y-m-d',strtotime('last monday -7 days'));
-			$last = date('Y-m-d',strtotime('last Sunday'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 
 			if(is_null($option)) 							$option=array();	

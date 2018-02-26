@@ -227,7 +227,7 @@
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
-			if(!isset($this->request["sys_order_devices_geofences"]))
+			if(!isset($this->request["sys_order_devices_geofences"]) AND !isset($option["order"]))
 				$option["order"]="id desc";
 			
 			return $this->__VIEW_REPORT($option);
@@ -284,7 +284,8 @@
 			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
 			
-			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
+			if(!isset($option["group"]))
+				$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 			
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="id desc";
@@ -294,33 +295,30 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
     	{
-			$report=$this->__REPORT_SEMANA_ACTUAL($option);    	    
+    		$option["order"]	="geofenceid asc, deviceid asc ";
+			$option["group"]	= "deviceid, geofenceid";
+
+			$report=$this->__REPORT_SEMANA_TOTAL($option);    	    
 			
 			$geocercas=array();
-			foreach($report["data"] as $rows)
+			foreach($report["data"] as $row)
 			{
-				$geofenceid		=$rows["geofenceid"];
-				$deviceid		=$rows["deviceid"];
-				$time			=$rows["time"];
-				$time_end		=$rows["time_end"];
-				
-				if(!isset($geocercas[$geofenceid]))							$geocercas[$geofenceid]							=array();
-				if(!isset($geocercas[$geofenceid][$deviceid]))				$geocercas[$geofenceid][$deviceid]				=array();  
-				if(!isset($geocercas[$geofenceid][$deviceid]["eventos"]))	$geocercas[$geofenceid][$deviceid]["eventos"]	=array();
-				
-				$eventos=array(
-					"inicio"		=>$time,
-					"inicio_end"	=>$time_end,
-					"diferencia"	=>$diferencia,
-				);			
-				
-				$geocercas[$geofenceid][$deviceid]["eventos"][]=$eventos;
-				
+				$geofenceid=$row["geofenceid"];
+				if(!isset($geocercas[$geofenceid]))							
+				{
+					$option_detalle=array(
+						"where"	=> array(
+							"geofenceid='$geofenceid'"
+						)
+					);
+					$report=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+
+					$geocercas[$geofenceid]							=array();				
+															
+				}	
 			}
-			$this->__PRINT_R($geocercas);
-			
 	
-			return $return;
+			return $report;
 		}				
 		
    		public function CRON_DELETE()

@@ -198,6 +198,7 @@
 		}
 		public function __VIEW($template)
 		{ 
+			
 			#/*
 			if (isset($_COOKIE)) 
 			{
@@ -223,7 +224,7 @@
 				    $words							=$this->__MENU($words);
 				    
 				    $words["system_logo"]           ="";
-				    
+						    
 				    if(isset($_SESSION["company"]["razonSocial"]))
 				    {
 					    $words["system_company"]        =$_SESSION["company"]["razonSocial"];
@@ -242,26 +243,32 @@
 			if(!isset($words["system_submenu2"]))  	$words["system_submenu2"]		="";
 			if(!isset($words["html_head_css"]))  	$words["html_head_css"]			="";
 				
-			$words=array_merge($this->words,$words);
-			
+			$words=array_merge($this->words,$words);			
 			$template                   			=$this->__REPLACE($template,$words); 			
 			
 			if(@$this->request["sys_action"]=="print_pdf")
 		    {
 		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
+				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
+				#if(!isset($_SESSION["pdf"]["module_title"]))			$_SESSION["pdf"]["module_title"]			=$this->words["module_title"];
+				#if(!isset($_SESSION["pdf"]["module_subtitle"]))			$_SESSION["pdf"]["module_subtitle"]			=$this->words["module_subtitle"];
+				#if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
+				#if(!isset($_SESSION["pdf"]["template"]))				
 				
-				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=$this->words["module_title"];
-				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
-				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				=$this->words["module_body"];
+				#$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
+				
+				$view	=$this->__TEMPLATE($_SESSION["pdf"]["template"]);
+				$this->words["sys_modulo"]	=$template;
 
+				$_SESSION["pdf"]["template"]=$this->__REPLACE($view,$this->words);
 
-				#$_SESSION["html"]	="<table><tr><td>Eduardo Vizcaino</td></tr></table><table><tr><td>granados</td></tr></table>";
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				$path				.="../$url";
 				
 				header('Location:'.$path);		
 				exit;
 			}
+			#$_SESSION["pdf"]["template"]				=$template;
 			#else	
 			echo $template;	
 		    

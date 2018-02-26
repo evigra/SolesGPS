@@ -119,6 +119,8 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // create some HTML content
 #echo $_SESSION["html"];
 	$html = $_SESSION["pdf"]["template"];
+	#echo $_SESSION["pdf"]["template"];
+	unset($_SESSION["pdf"]["template"]);
 	#$html = "LALO";
 #echo $html;
 // output the HTML content

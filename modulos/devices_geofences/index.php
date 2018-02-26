@@ -121,8 +121,8 @@
 
     elseif($objeto->sys_section=="report_semana_actual")
     {
-		$first = date('Y-m-d',strtotime('monday -7 days'));
-		$last = date('Y-m-d',strtotime('Sunday'));
+			$first = date('Y-m-d',strtotime('monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -140,8 +140,8 @@
     
     elseif($objeto->sys_section=="report_semana_actual_total")
     {
-		$first = date('Y-m-d',strtotime('monday -7 days'));
-		$last = date('Y-m-d',strtotime('Sunday'));
+			$first = date('Y-m-d',strtotime('monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -158,8 +158,8 @@
     }    
     elseif($objeto->sys_section=="report_semana_anterior")
     {
-		$first = date('Y-m-d',strtotime('last monday -7 days'));
-		$last = date('Y-m-d',strtotime('last Sunday'));
+			$first = date('Y-m-d',strtotime('last monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -176,8 +176,8 @@
     }
     elseif($objeto->sys_section=="report_semana_anterior_total")
     {
-		$first = date('Y-m-d',strtotime('last monday -7 days'));
-		$last = date('Y-m-d',strtotime('last Sunday'));
+			$first = date('Y-m-d',strtotime('last monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+7 day' , strtotime ( $first ) ) );			
 
 		#BOTONES SECCION DERECHA
 		$module_right=array(

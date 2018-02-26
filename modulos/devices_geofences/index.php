@@ -206,7 +206,7 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
+		$data										= $objeto->__REPORT_ESPECIAL_SEMANA();
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Semana ($first al $last)";
     }

@@ -229,12 +229,6 @@
 
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="id desc";
-
-
-			#$option["order"]="id desc";
-			
-			#$option["echo"]="id desc";
-
 			
 			return $this->__VIEW_REPORT($option);
 		}				
@@ -298,6 +292,37 @@
 			#$this->__PRINT_R($this->sys_sql);
 			return $return;
 		}				
+   		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
+    	{
+			$report=$this->__REPORT_SEMANA_ACTUAL($option);    	    
+			
+			$geocercas=array();
+			foreach($report["data"] as $rows)
+			{
+				$geofenceid		=$rows["geofenceid"];
+				$deviceid		=$rows["deviceid"];
+				$time			=$rows["time"];
+				$time_end		=$rows["time_end"];
+				
+				if(!isset($geocercas[$geofenceid]))							$geocercas[$geofenceid]							=array();
+				if(!isset($geocercas[$geofenceid][$deviceid]))				$geocercas[$geofenceid][$deviceid]				=array();  
+				if(!isset($geocercas[$geofenceid][$deviceid]["eventos"]))	$geocercas[$geofenceid][$deviceid]["eventos"]	=array();
+				
+				$eventos=array(
+					"inicio"		=>$time,
+					"inicio_end"	=>$time_end,
+					"diferencia"	=>$diferencia,
+				);			
+				
+				$geocercas[$geofenceid][$deviceid]["eventos"][]=$eventos;
+				
+			}
+			$this->__PRINT_R($geocercas);
+			
+	
+			return $return;
+		}				
+		
    		public function CRON_DELETE()
     	{
 			$comando_sql="

@@ -192,6 +192,24 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Suma Semanal Anterior ($first al $last)";
     }
+    elseif($objeto->sys_section=="report_especial_semana")
+    {
+		$first = date('Y-m-d',strtotime('monday -7 days'));
+		$last = date('Y-m-d',strtotime('Sunday'));
+
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_SEMANA_ACTUAL();
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Semana ($first al $last)";
+    }
 
     else
     {
@@ -226,6 +244,7 @@
 		    array("report_hoy_total"=>"",				"icon"=>"ui-icon-calendar", 	"title"=>"Totales Hoy", 			"text"=>"false"),
 		    array("report_semana_actual_total"=>"",		"icon"=>"ui-icon-calculator", 	"title"=>"Totales Semana Actual", 	"text"=>"false"),
 		    array("report_semana_anterior_total"=>"",	"icon"=>"ui-icon-copy", 		"title"=>"Totales Semana Anterior", "text"=>"false"),
+		    array("report_especial_semana"=>"Rep Especial",	"icon"=>"ui-icon-copy", 		"title"=>"Totales Semana Anterior"),
 		);	    
     
     

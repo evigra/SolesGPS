@@ -369,18 +369,13 @@
     			$limit						=" LIMIT {$option["limit"]}";
     		}			
     		
-    		#####################
-    		
+    		#####################    		
     		if(isset($option["total"]))
     			$this->sys_sql					="SELECT count(*) as total FROM $from $where  $group $having";
     		else	
     			$this->sys_sql					="SELECT count(*) as total, $select FROM $from $where  $group $having";
     		
-
-    		#$total 	            = $this->__EXECUTE($this->sys_sql,$option_conf);
     		$total 	            = $this->__EXECUTE($this->sys_sql);
-			
-
                         
             $subtotal			=count($total);
             #echo $subtotal;
@@ -397,15 +392,12 @@
     		}	
 
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
-    		    		
-    		    		
     		
     		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			
    			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
-
 
 			if(is_array(@$return["data"][0]))
 			{
@@ -426,8 +418,7 @@
 						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);
 						
 						$option_report_titles["option"]		="pdf";
-						$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
-							
+						$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);							
 					}	
 				}    			
 			}

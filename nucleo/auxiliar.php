@@ -1281,7 +1281,7 @@
 
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 			{
-				if(in_array($option["input"],$this->sys_true))
+				#if(in_array($option["input"],$this->sys_true))
 				{
 					$view.="
 						<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">

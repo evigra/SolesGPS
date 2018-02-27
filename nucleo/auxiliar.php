@@ -259,6 +259,7 @@
 				
 				$view	=$this->__TEMPLATE($_SESSION["pdf"]["template"]);
 				$this->words["sys_modulo"]	=$template;
+				$this->words["empresa"]		=$_SESSION["company"]["nombre"];
 
 				$_SESSION["pdf"]["template"]=$this->__REPLACE($view,$this->words);
 

@@ -1290,8 +1290,8 @@
 				";
 				if(!isset($option["input"]))	$option["input"]="true";
 				
-				if(in_array(@$option["input"],$this->sys_false))	
-					$view2="";
+				#if(in_array(@$option["input"],$this->sys_false))	
+					#$view2="";
 			}
 			$view.=$view2;
 			

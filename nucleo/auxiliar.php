@@ -1287,7 +1287,7 @@
 					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";		
-				#if(in_array(@$option["input"],$this->sys_false))			$view2="";
+				if(in_array(@$option["input"],$this->sys_false))			$view2="";
 					
 				$view.=$view2;
 					
@@ -1679,6 +1679,8 @@
 		    	$view_search="";
 		    	$button_search="";
 				#######################
+				
+				/*
 		    	if(isset($option["template_search"]) AND $option["template_search"] !="")    
 		    	{		    		
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
@@ -1723,6 +1725,7 @@
 						";		    	    
 					}	
 		    	}    
+		    	#*/
                 $view_body="";
 				##############################
 		    	if(isset($option["template_body"]))

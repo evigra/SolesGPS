@@ -1687,11 +1687,8 @@
 		    	    $view_search     				=$this->__TEMPLATE($option["template_search"]);		    	    
 		    	    $view_search					=str_replace("<td>", "<td class=\"title\">", $view_search);
 		    	    
-		    	    if(!in_array(@$this->request["sys_action"],$this->sys_print))	
-		    	    
-					#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
+		    	    if(!in_array(@$this->request["sys_action"],$this->sys_print))			    	    
 					{
-		    	    		    	    
 						$view_search="
 		        			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737; padding:0px; margin:0px;\">
 			        			$view_search

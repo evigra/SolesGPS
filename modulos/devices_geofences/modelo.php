@@ -313,6 +313,7 @@
 						"input"=>"false",
 						"template_title"=>"false",
 						"height"=>"false",
+						"header"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)

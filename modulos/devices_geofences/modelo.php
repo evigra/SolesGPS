@@ -343,13 +343,11 @@
 			if(!isset($option["where"]))					$option["where"]=array();
 			if(!isset($option["select"]))					$option["select"]=array();
 			
-
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
-
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 			
 			#$option["where"][]							="estatus = 'APROVADO'";
 

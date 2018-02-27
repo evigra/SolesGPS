@@ -693,7 +693,7 @@
 						$return 						= file_get_contents("../../../../".$archivo);		    		    				    			    		
 	    		}
 				if($return=="")	    		
-		    	else	
+		    	
 		    		$return							="<br>NO EXISTE EL ARCHIVO: ".$archivo;
 		    }	
 		    else	$return							="";		    		

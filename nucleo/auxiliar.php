@@ -1270,7 +1270,7 @@
 			
 			return $view;
 		}    	
-		public function __VIEW_INPUTSECTION($view)
+		public function __VIEW_INPUTSECTION($view, $option)
 		{								
 			$sys_section	=@$this->request["sys_section_".$this->sys_name];
 			$sys_action		="";
@@ -1278,18 +1278,16 @@
 		
 			#if(@$this->request["sys_action"]!="print_pdf")	
 
-
+			$view2="";
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
-			
-			
-			#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 			{
-				$view.="
+				$view2="
 					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
 					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";		
 			}
+			$view.=$view2;
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")
 			{	
@@ -1536,7 +1534,7 @@
 					$view	=$this->__REPLACE($view,$actions_lang);
 	        	}                                        			    
 			}    
-			$view =$this->__VIEW_INPUTSECTION($view);
+			$view =$this->__VIEW_INPUTSECTION($view, $option);
 			return $view;
 		}    	
     	##############################################################################    
@@ -1724,6 +1722,9 @@
 		    	    if(isset($option["actions"]))	$option_kanban["actions"]	=$option["actions"];
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;
+		    	    if(!isset($option["input"]))	$option_kanban["input"]		="true";
+		    	    if(isset($option["input"]))		$option_kanban["input"]		=$option["input"];
+		    	    
 
 					if(isset($return["data_0"]))
 					{

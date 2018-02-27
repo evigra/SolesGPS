@@ -1270,13 +1270,15 @@
 			
 			return $view;
 		}    	
-		public function __VIEW_INPUTSECTION($view, $option)
+		public function __VIEW_INPUTSECTION($view, $option=array())
 		{								
 			$sys_section	=@$this->request["sys_section_".$this->sys_name];
 			$sys_action		="";
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
 			#if(@$this->request["sys_action"]!="print_pdf")	
+
+
 
 			$view2="";
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
@@ -1286,6 +1288,8 @@
 					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";
+				if(!isset($option["input"]))	$option["input"]="true";
+				
 				if(in_array(@$option["input"],$this->sys_false))	
 					$view2="";
 			}

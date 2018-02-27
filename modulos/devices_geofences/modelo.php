@@ -298,15 +298,17 @@
     		$option["order"]	="geofenceid asc, deviceid asc ";
 			$option["group"]	= "deviceid, geofenceid";
 			
-			$reportes="";
+			$reportes=array();;
 			$report=$this->__REPORT_SEMANA_TOTAL($option);    	    
 			
 			$geocercas=array();
 			foreach($report["data"] as $row)
 			{
+				$this->__PRINT_R("aaaa");
 				$geofenceid=$row["geofenceid"];
 				if(!isset($geocercas[$geofenceid]))							
 				{
+					$this->__PRINT_R("bbb");
 					$option_detalle=array(
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
@@ -314,9 +316,8 @@
 					);
 					$reporte=$this->__REPORT_SEMANA_TOTAL($option_detalle);
 
-					$reportes.=$reporte["html"];
-					#$geocercas[$geofenceid]							=array();				
-															
+					$reportes["html"].=$reporte["html"];
+					$geocercas[$geofenceid]							=array();																			
 				}	
 			}
 	

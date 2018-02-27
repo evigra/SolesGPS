@@ -310,6 +310,7 @@
 				{
 					$option_detalle=array(
 						"input"=>"false",
+						"title"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)

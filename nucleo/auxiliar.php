@@ -1553,6 +1553,8 @@
 			
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			if(!isset($option["input"])) 			$option["input"]		="true";
+			if(!isset($option["title"])) 			$option["title"]		="true";
+			
 			
 			$return=array();
 		    $view_title="";
@@ -1738,7 +1740,7 @@
 						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
 
-					if($view_body_pdf=="")	$view_body_pdf=$view_body;
+					if($view_body_pdf=="")	$view_body_pdf=$view_body;					
 					
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px; margin:0px;\">								
@@ -1879,6 +1881,8 @@
 							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;  padding:0px; margin:0px;\">
 						";
 					
+					if(in_array($option["title"],$this->sys_false))
+						$view_title="";
 					$return["report"].="						
 							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 							$view_title

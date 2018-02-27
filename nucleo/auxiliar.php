@@ -1287,8 +1287,7 @@
 					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";		
-				if(in_array(@$option["input"],$this->sys_false))
-					$view2="";
+				#if(in_array(@$option["input"],$this->sys_false))			$view2="";
 					
 				$view.=$view2;
 					

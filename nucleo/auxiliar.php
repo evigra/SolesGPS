@@ -1740,7 +1740,7 @@
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
 					$return["pdf"]	="
-						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000;\">								
+						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px;\">								
 							$view_title_pdf
 							$view_body_pdf
 						</table>					

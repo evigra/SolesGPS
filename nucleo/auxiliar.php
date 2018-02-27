@@ -1552,6 +1552,7 @@
 		{
 			
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
+			if(!isset($option["input"])) 	$option["input"]="true";
 			
 			$return=array();
 		    $view_title="";
@@ -1962,12 +1963,15 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{
-						$view.="
-							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
-							<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
-							<input name=\"sys_page_$name\" id=\"sys_page_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_page\">
-							<input name=\"sys_row_$name\" id=\"sys_row_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_row\">
-						";
+						if(in_array(@$option["input"],$this->sys_true))
+						{
+							$view.="
+								<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
+								<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
+								<input name=\"sys_page_$name\" id=\"sys_page_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_page\">
+								<input name=\"sys_row_$name\" id=\"sys_row_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_row\">
+							";
+						}
 					}				
 					$filter_autocomplete="";
 					if(isset($this->sys_fields) AND is_array($this->sys_fields))

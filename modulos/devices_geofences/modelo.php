@@ -317,7 +317,9 @@
 						)
 					);
 					$reporte=$this->__REPORT_SEMANA_TOTAL($option_detalle);
-
+					
+					$this->__PRINT_R($reporte);
+					
 					$reportes["html"].="<br>lalo<br>".$reporte["html"];
 					$geocercas[$geofenceid]							=array();																			
 				}	

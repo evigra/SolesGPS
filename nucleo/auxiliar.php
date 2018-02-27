@@ -1270,7 +1270,7 @@
 			
 			return $view;
 		}    	
-		public function __VIEW_INPUTSECTION($view)
+		public function __VIEW_INPUTSECTION($view, $option)
 		{								
 			$sys_section	=@$this->request["sys_section_".$this->sys_name];
 			$sys_action		="";
@@ -1281,7 +1281,7 @@
 
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 			{
-				#if(in_array($option["input"],$this->sys_true))
+				if(in_array($option["input"],$this->sys_true))
 				{
 					$view.="
 						<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
@@ -1536,7 +1536,7 @@
 					$view	=$this->__REPLACE($view,$actions_lang);
 	        	}                                        			    
 			}    
-			$view =$this->__VIEW_INPUTSECTION($view);
+			$view =$this->__VIEW_INPUTSECTION($view,$option);
 			return $view;
 		}    	
     	##############################################################################    

@@ -321,7 +321,7 @@
 				}	
 			}
 	
-			#return $reportes;
+			return $reportes;
 		}				
 		
    		public function CRON_DELETE()

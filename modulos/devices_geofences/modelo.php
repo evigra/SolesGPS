@@ -187,7 +187,7 @@
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
 			#$option["where"][]								="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),6-WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)))";
-			$option["where"][]								="time BETWEEN '$first' AND '$last'";
+			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
 			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
@@ -220,7 +220,7 @@
 			#$option["select"]="devices_geofences.geofenceid, devices_geofences.deviceid, count(devices_geofences.time) as time, count(devices_geofences.time_end) as time_end";
 			
 			#$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))+1)";			
-			$option["where"][]								="time BETWEEN '$first' AND '$last'";
+			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
 			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
@@ -247,7 +247,7 @@
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
-			$option["where"][]							="time BETWEEN '$first' AND '$last'";			
+			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
 			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
@@ -279,7 +279,7 @@
 			$option["select"]["geofenceid"]					="geofenceid";						
 
 			
-			$option["where"][]							="time BETWEEN '$first' AND '$last'";			
+			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
 			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";

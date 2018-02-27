@@ -309,7 +309,7 @@
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
-						"input"=>"false"
+						"input"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)

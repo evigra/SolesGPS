@@ -2088,7 +2088,7 @@
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
-			if(isset($option["template_title"]) AND !in_array(@$option["template_title"],$this->sys_false)))    
+			if(isset($option["template_title"]) AND !in_array(@$option["template_title"],$this->sys_false))
 			{
 				
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE

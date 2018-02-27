@@ -189,8 +189,8 @@
 			#$option["where"][]								="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),6-WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)))";
 			$option["where"][]								="time BETWEEN '$first' AND '$last'";
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 			
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
@@ -222,8 +222,8 @@
 			#$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))+1)";			
 			$option["where"][]								="time BETWEEN '$first' AND '$last'";
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
@@ -249,8 +249,8 @@
 			
 			$option["where"][]							="time BETWEEN '$first' AND '$last'";			
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
@@ -281,8 +281,8 @@
 			
 			$option["where"][]							="time BETWEEN '$first' AND '$last'";			
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 			
 			if(!isset($option["group"]))
 				$option["group"]	                		= "deviceid, geofenceid, left(time,10)";

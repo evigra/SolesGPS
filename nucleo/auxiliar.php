@@ -664,6 +664,8 @@
 			# DE LA RUTA ENVIADA		
 	    	if(!is_null($form))
 	    	{
+	    		$return="";
+	    		
 	    		$archivo = $form.'.html';
 	    		if(@file_exists($archivo))			    			
 		    		$return 						= file_get_contents($archivo);		    
@@ -675,6 +677,22 @@
 		    		$return 						= file_get_contents("../../../".$archivo);		    		    		
 	    		elseif(@file_exists("../../../../".$archivo))			    			
 		    		$return 						= file_get_contents("../../../../".$archivo);		    		    				    		
+
+	    		if(@$this->request["sys_action"]=="print_pdf")
+	    		{
+	    			$archivo = $form.'_pdf.html';
+					if(@file_exists($archivo))			    			
+						$return 						= file_get_contents($archivo);		    
+					elseif(@file_exists("../".$archivo))			    			
+						$return 						= file_get_contents("../".$archivo);		    		    		
+					elseif(@file_exists("../../".$archivo))			    			
+						$return 						= file_get_contents("../../".$archivo);		    		    		
+					elseif(@file_exists("../../../".$archivo))			    			
+						$return 						= file_get_contents("../../../".$archivo);		    		    		
+					elseif(@file_exists("../../../../".$archivo))			    			
+						$return 						= file_get_contents("../../../../".$archivo);		    		    				    			    		
+	    		}
+				if($return=="")	    		
 		    	else	
 		    		$return							="<br>NO EXISTE EL ARCHIVO: ".$archivo;
 		    }	

@@ -1552,7 +1552,7 @@
 		{
 			
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
-			if(!isset($option["input"])) 	$option["input"]="true";
+			#if(!isset($option["input"])) 			$option["input"]		="true";
 			
 			$return=array();
 		    $view_title="";
@@ -1963,7 +1963,7 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{
-						if(in_array(@$option["input"],$this->sys_true))
+						#if(in_array($option["input"],$this->sys_true))
 						{
 							$view.="
 								<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		

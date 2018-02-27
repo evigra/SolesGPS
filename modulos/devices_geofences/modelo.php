@@ -128,9 +128,9 @@
 
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
-			
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+						
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
 			
@@ -158,9 +158,9 @@
 			
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
-			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
-			
+			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";			
+
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
 			if(!isset($this->request["sys_order_devices_geofences"]))

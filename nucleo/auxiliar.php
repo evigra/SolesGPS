@@ -1948,7 +1948,8 @@
 								});	
 						</script>
 					";
-					if(!isset($option["height"])					$option["height"]="99%";
+					
+					if(!isset($option["height"]))					$option["height"]="99%";
 					
 					$height_render="height:{$option["height"]};";
 					
@@ -1959,7 +1960,7 @@
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
-						";		
+					";		
 
 					$view.="{$return["report"]}";
 

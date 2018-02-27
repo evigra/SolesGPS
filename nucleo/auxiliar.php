@@ -1837,7 +1837,16 @@
 					if(@$option["header"]!="true")		$view_head="";
 										
 					$return["title"]=$view_title;
+
+					if(!isset($option["height"]))					$option["height"]="99%";
 					
+					$height_render="height:{$option["height"]};";
+					$min_height		="min-height: 140px;";
+					if(in_array(@$option["height"],$this->sys_false))
+					{
+						$height_render	="";
+						$min_height		="";
+					}						
 
 					#0133 32084420  CESAR JIMENES  32084444
 					$button_create_js="";
@@ -1880,7 +1889,7 @@
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
 							$view_head
-							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;  padding:0px; margin:0px;\">
+							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">
 						";
 					
 					$return["report"].="						
@@ -1953,13 +1962,6 @@
 						</script>
 					";
 					
-					if(!isset($option["height"]))					$option["height"]="99%";
-					
-					$height_render="height:{$option["height"]};";
-					
-					if(in_array(@$option["height"],$this->sys_false))					
-						$height_render="";
-						
 					
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view="

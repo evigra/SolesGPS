@@ -1554,6 +1554,9 @@
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			if(!isset($option["input"])) 			$option["input"]		="true";
 			if(!isset($option["title"])) 			$option["title"]		="true";
+			if(!isset($option["height"])) 			$option["height"]		="99%";
+			
+			$height_render="height:{$option["height"]};";
 			
 			
 			$return=array();
@@ -1953,10 +1956,15 @@
 						</script>
 					";
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+					{
+						if(in_array($option["height"],$this->sys_false))
+							$height_render="";
+							
+						
 						$view="
-						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
+						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 						";		
-
+					}
 					$view.="{$return["report"]}";
 
 

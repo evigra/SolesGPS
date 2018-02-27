@@ -305,6 +305,7 @@
 			foreach($report["data"] as $row)
 			{
 				$geofenceid=$row["geofenceid"];
+				$this->__PRINT_R($row);
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(

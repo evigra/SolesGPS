@@ -312,7 +312,7 @@
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
-						"template_body"	           		=> $this->sys_module . "html/report_especifico_recinto/body";
+						"template_body"	           		=> $this->sys_module . "html/report_especifico_recinto/body",
 						"input"							=>"false",
 						"template_title"				=>"false",
 						"height"						=>"false",

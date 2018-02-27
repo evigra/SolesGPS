@@ -1689,7 +1689,7 @@
 					{
 		    	    		    	    
 						$view_search="
-		        			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
+		        			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737; padding:0px; margin:0px;\">
 			        			$view_search
 			        			<script>
 			        				$(\"font#search_$name\").click(function()
@@ -1760,7 +1760,7 @@
 
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
-								<table width=\"100%\" height=\"100%\">
+								<table width=\"100%\" height=\"100%\" style=\"padding:0px; margin:0px;\">
 									<tr>
 										<td width=\"10\"></td>
 						";
@@ -1949,7 +1949,7 @@
 					";
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view="
-						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc;\">
+						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 						";		
 
 					$view.="{$return["report"]}";

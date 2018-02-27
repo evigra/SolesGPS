@@ -1270,25 +1270,27 @@
 			
 			return $view;
 		}    	
-		public function __VIEW_INPUTSECTION($view)
+		public function __VIEW_INPUTSECTION($view, $option=array())
 		{								
 			$sys_section	=@$this->request["sys_section_".$this->sys_name];
 			$sys_action		="";
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
 			#if(@$this->request["sys_action"]!="print_pdf")	
-
+			
+			if(!isset($option["input"]))	$option["input"]="true";
 
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
-			
-			
-			#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
-			{
-				$view.="
+			{				
+				$view2="
 					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
 					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";		
+				if(in_array(@$option["input"],$this->sys_false))			$view2="";
+					
+				$view.=$view2;
+					
 			}
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")
@@ -1536,7 +1538,7 @@
 					$view	=$this->__REPLACE($view,$actions_lang);
 	        	}                                        			    
 			}    
-			$view =$this->__VIEW_INPUTSECTION($view);
+			$view =$this->__VIEW_INPUTSECTION($view,$option);
 			return $view;
 		}    	
     	##############################################################################    
@@ -1553,6 +1555,11 @@
 			
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			if(!isset($option["input"])) 			$option["input"]		="true";
+			if(!isset($option["title"])) 			$option["title"]		="true";
+			if(!isset($option["height"])) 			$option["height"]		="99%";
+			
+			$height_render="height:{$option["height"]};";
+			
 			
 			$return=array();
 		    $view_title="";
@@ -1672,6 +1679,8 @@
 		    	$view_search="";
 		    	$button_search="";
 				#######################
+				
+				#/*
 		    	if(isset($option["template_search"]) AND $option["template_search"] !="")    
 		    	{		    		
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
@@ -1716,6 +1725,7 @@
 						";		    	    
 					}	
 		    	}    
+		    	#*/
                 $view_body="";
 				##############################
 		    	if(isset($option["template_body"]))
@@ -1738,7 +1748,7 @@
 						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
 
-					if($view_body_pdf=="")	$view_body_pdf=$view_body;
+					if($view_body_pdf=="")	$view_body_pdf=$view_body;					
 					
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px; margin:0px;\">								
@@ -1879,6 +1889,8 @@
 							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;  padding:0px; margin:0px;\">
 						";
 					
+					if(in_array($option["title"],$this->sys_false))
+						$view_title="";
 					$return["report"].="						
 							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 							$view_title
@@ -1949,10 +1961,15 @@
 						</script>
 					";
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+					{
+						if(in_array($option["height"],$this->sys_false))
+							$height_render="";
+							
+						
 						$view="
-						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"height:99%; width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
+						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 						";		
-
+					}
 					$view.="{$return["report"]}";
 
 

@@ -310,8 +310,6 @@
 				{
 					$option_detalle=array(
 						"input"=>"false",
-						"title"=>"false",
-						"height"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)
@@ -323,7 +321,7 @@
 				}	
 			}
 	
-			return $reportes;
+			#return $reportes;
 		}				
 		
    		public function CRON_DELETE()

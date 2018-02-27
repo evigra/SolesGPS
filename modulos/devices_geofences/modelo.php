@@ -316,7 +316,7 @@
 						"input"							=>"false",
 						"template_title"				=>"false",
 						"height"						=>"false",
-						"header"						=>"20px",
+						"header"						=>"1px",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)

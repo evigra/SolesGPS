@@ -248,9 +248,11 @@
 			
 			if(@$this->request["sys_action"]=="print_pdf")
 		    {
-		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
-				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
-				if(!isset($_SESSION["pdf"]["sys_title"]))				$_SESSION["pdf"]["sys_title"]				=$this->words["module_title"];
+		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]					=array();		    					
+				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]		="sitio_web/html/PDF_FORMATO";
+				#if(!isset($_SESSION["pdf"]["sys_title"]))				
+				
+				$_SESSION["pdf"]["sys_title"]		=$this->words["module_title"];
 				
 				$view	=$this->__TEMPLATE($_SESSION["pdf"]["template"]);
 				

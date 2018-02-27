@@ -1280,15 +1280,15 @@
 
 
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
-			
-			
-			#if(!(@$this->request["sys_action"]=="print_pdf" OR $this->request["sys_action"]=="print_excel"))	
 			{
-				$view.="
-					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
-					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
-					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
-				";		
+				if(in_array($option["input"],$this->sys_true))
+				{
+					$view.="
+						<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
+						<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
+						<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
+					";		
+				}	
 			}
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")

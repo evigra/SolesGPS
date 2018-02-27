@@ -297,7 +297,8 @@
     	{
     		$option["order"]	="geofenceid asc, deviceid asc ";
 			$option["group"]	= "deviceid, geofenceid";
-
+			
+			$reportes="";
 			$report=$this->__REPORT_SEMANA_TOTAL($option);    	    
 			
 			$geocercas=array();
@@ -311,14 +312,15 @@
 							"geofenceid='$geofenceid'"
 						)
 					);
-					$report=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+					$reporte=$this->__REPORT_SEMANA_TOTAL($option_detalle);
 
-					$geocercas[$geofenceid]							=array();				
+					$reportes.=$reporte["html"];
+					#$geocercas[$geofenceid]							=array();				
 															
 				}	
 			}
 	
-			return $report;
+			return $reportes;
 		}				
 		
    		public function CRON_DELETE()

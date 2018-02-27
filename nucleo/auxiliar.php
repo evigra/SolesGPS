@@ -250,6 +250,7 @@
 		    {
 		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
 				if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
+				#if(!isset($_SESSION["pdf"]["template"]))				$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
 				#if(!isset($_SESSION["pdf"]["module_title"]))			$_SESSION["pdf"]["module_title"]			=$this->words["module_title"];
 				#if(!isset($_SESSION["pdf"]["module_subtitle"]))			$_SESSION["pdf"]["module_subtitle"]			=$this->words["module_subtitle"];
 				#if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
@@ -258,10 +259,14 @@
 				#$_SESSION["pdf"]["template"]				="sitio_web/html/PDF_FORMATO";
 				
 				$view	=$this->__TEMPLATE($_SESSION["pdf"]["template"]);
-				$this->words["sys_modulo"]	=$template;
-				$this->words["empresa"]		=$_SESSION["company"]["nombre"];
+				
+				$this->words["sys_empresa"]		=$_SESSION["company"]["nombre"];
+				$this->words["sys_titulo"]		=$_SESSION["pdf"]["sys_titulo"];
+				$this->words["sys_subtitulo"]	=$_SESSION["pdf"]["sys_subtitulo"];
+				$this->words["sys_modulo"]		=$template;
+				
 
-				$_SESSION["pdf"]["template"]=$this->__REPLACE($view,$this->words);
+				$_SESSION["pdf"]["template"]	=$this->__REPLACE($view,$this->words);
 
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				$path				.="../$url";

@@ -1740,7 +1740,7 @@
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
 					$return["pdf"]	="
-						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px;\">								
+						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px; margin:0px;\">								
 							$view_title_pdf
 							$view_body_pdf
 						</table>					
@@ -1759,7 +1759,7 @@
 				
 
                 		$view_head="
-							<div id=\"report_$name\" style=\"height:35px; width:100%;\" class=\"ui-widget-header\">
+							<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\">
 									<tr>
 										<td width=\"10\"></td>
@@ -1875,11 +1875,11 @@
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
 							$view_head
-							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;\">
+							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; min-height: 140px;  padding:0px; margin:0px;\">
 						";
 					
 					$return["report"].="						
-							<table width=\"100%\" style=\"background-color:#fff; color:#000; \">
+							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 							$view_title
 							$view_body
 							</table>

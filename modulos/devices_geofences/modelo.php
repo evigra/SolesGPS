@@ -224,7 +224,9 @@
 
 			if(!isset($option["template_title"]))
 				$option["template_title"]	           	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+				
+			if(!isset($option["template_body"]))	
+				$option["template_body"]	           		= $this->sys_module . "html/report_especifico/body";
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
@@ -310,10 +312,11 @@
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
-						"input"=>"false",
-						"template_title"=>"false",
-						"height"=>"false",
-						"header"=>"false",
+						"template_body"	           		=> $this->sys_module . "html/report_especifico_recinto/body";
+						"input"							=>"false",
+						"template_title"				=>"false",
+						"height"						=>"false",
+						"header"						=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)

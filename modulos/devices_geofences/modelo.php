@@ -128,9 +128,9 @@
 
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
-						
+			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
+			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
 			
@@ -158,9 +158,9 @@
 			
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";			
-
+			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
+			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
+			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
 			if(!isset($this->request["sys_order_devices_geofences"]))
@@ -297,31 +297,28 @@
     	{
     		$option["order"]	="geofenceid asc, deviceid asc ";
 			$option["group"]	= "deviceid, geofenceid";
-			
-			$reportes=array("html"=>"");
+
 			$report=$this->__REPORT_SEMANA_TOTAL($option);    	    
 			
 			$geocercas=array();
 			foreach($report["data"] as $row)
 			{
 				$geofenceid=$row["geofenceid"];
-				#$this->__PRINT_R($row);
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
-						"input"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)
 					);
-					$reporte=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+					$report=$this->__REPORT_SEMANA_TOTAL($option_detalle);
 
-					$reportes["html"].="<br>lalo<br>".$reporte["html"];
-					$geocercas[$geofenceid]							=array();																			
+					$geocercas[$geofenceid]							=array();				
+															
 				}	
 			}
 	
-			#return $reportes;
+			return $report;
 		}				
 		
    		public function CRON_DELETE()
@@ -344,11 +341,13 @@
 			if(!isset($option["where"]))					$option["where"]=array();
 			if(!isset($option["select"]))					$option["select"]=array();
 			
+
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+
+			$option["template_title"]	                = $this->sys_module . "html/report_especifico_title";
+			$option["template_body"]	                = $this->sys_module . "html/report_especifico_body";
 			
 			#$option["where"][]							="estatus = 'APROVADO'";
 

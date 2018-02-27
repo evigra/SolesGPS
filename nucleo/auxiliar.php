@@ -1731,6 +1731,7 @@
 		    	    if(!isset($option["input"]))	$option_kanban["input"]		="true";
 		    	    if(isset($option["input"]))		$option_kanban["input"]		=$option["input"];
 		    	    
+		    	    #$this->__PRINT_R($option_kanban);
 
 					if(isset($return["data_0"]))
 					{
@@ -2087,8 +2088,9 @@
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
-			if(isset($option["template_title"]))    
+			if(isset($option["template_title"]) AND !in_array(@$option["template_title"],$this->sys_false)))    
 			{
+				
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				

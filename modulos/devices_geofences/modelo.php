@@ -222,7 +222,8 @@
 			#$option["where"][]							="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))+1)";			
 			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
+			if(!isset($option["template_title"]))
+				$option["template_title"]	           	    = $this->sys_module . "html/report_especifico/title";
 			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
 			
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
@@ -310,7 +311,7 @@
 				{
 					$option_detalle=array(
 						"input"=>"false",
-						"title"=>"false",
+						"template_title"=>"false",
 						"height"=>"false",
 						"where"	=> array(
 							"geofenceid='$geofenceid'"

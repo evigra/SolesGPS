@@ -320,7 +320,7 @@
 			$data=array();
 			foreach($datas as $rows)
 			{
-				$this->__PRINT_R($rows);					
+#				$this->__PRINT_R($rows);					
 				$gid				=$rows["gid"];
 				$did				=$rows["did"];
 				$diferencia			=$rows["diferencia"];
@@ -341,10 +341,6 @@
 				#$acumulado			=$dt->format('H:i:s'); 			
 				$acumulado="";
 				
-				$data[$gid]=array(
-					"name"			=>$rows["gname"],
-					"time"			=>$acumulado,
-				);
 				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
@@ -360,7 +356,7 @@
 				
 			} 
 			   		
-			$this->__PRINT_R($data);	
+			#$this->__PRINT_R($data);	
 			#return $reportes;
 		}				
 		

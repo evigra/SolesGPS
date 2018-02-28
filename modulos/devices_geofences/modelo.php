@@ -396,7 +396,7 @@
 				{
 					$return.="
 						<tr  style=\"background-color:#ccc; \">
-							<td height=\"30\"><b>{$devices["time"]}</b></td>
+							<td width=\"90\" height=\"30\"><b>{$devices["time"]}</b></td>
 							<td width=\"20\"></td>
 							<td colspan=\"3\"><b>{$devices["name"]}</b></td>
 						</tr>
@@ -416,7 +416,7 @@
 						}
 						$return.="
 							<tr style=\"$class\">
-								<td width=\"80\" height=\"30\">{$eventos["diferencia"]}</td>
+								<td width=\"90\" height=\"30\">{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
 								<td width=\"200\">{$eventos["time"]}</td>
@@ -439,7 +439,7 @@
 				
 			}
 			
-			$return=array("html"=>"<table width=\"520\">$return</table>");
+			$return=array("html"=>"<table >$return</table>");
 			   		
 			#$this->__PRINT_R($data);	
 			return $return;

@@ -365,10 +365,33 @@
 			$return="";
 			foreach($data as $row)
 			{
-				$return.="<tr><td width=\"90\"> {$row["time"]} </td><td colspan=\"2\" width=\"150\"> {$row["name"]} </td></tr>";				
+				$return.="
+					<tr>
+						<td width=\"90\"> {$row["time"]} </td>
+						<td colspan=\"4\" width=\"150\"> {$row["name"]} </td>
+					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
-					$return.="<tr><td>{$devices["time"]}</td><td width=\"20\"></td><td>{$devices["name"]}</td></tr>";
+					$return.="
+						<tr>
+							<td>{$devices["time"]}</td>
+							<td width=\"20\"></td>
+							<td colspan=\"3\">{$devices["name"]}</td>
+					</tr>
+					";
+					foreach($devices["evetos"] as $eventos)
+					{
+					$return.="
+						<tr>
+							<td>{$devices["diferencia"]}</td>
+							<td width=\"20\"></td>
+							<td width=\"20\"></td>
+							<td>{$devices["time"]}</td>
+							<td>{$devices["time_end"]}</td>
+						</tr>
+					";
+					
+					}					
 				}				
 			}
 			

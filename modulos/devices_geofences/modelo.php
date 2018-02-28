@@ -336,18 +336,6 @@
 					);				
 				}
 				
-				
-				$hours_diff = strtotime($data[$gid]["time"])+strtotime($diferencia);
-				$acumulado=date('H:i:s', $hours_diff);				
-
-
-				$dt 				= new DateTime($data[$gid]["time"]);
-				#$dt->add(new DateTime($diferencia));
-				#$acumulado			=$dt->format('H:i:s'); 			
-				#$acumulado="";
-				
-				$data[$gid]["time"]	=$acumulado;
-				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
 					$data[$gid]["devices"][$did]=array();				
@@ -359,6 +347,10 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
+				$hours_diff = strtotime($data[$gid]["time"])+strtotime($diferencia);
+				$acumulado=date('H:i:s', $hours_diff);								
+				$data[$gid]["time"]	=$acumulado;
+				
 				
 			} 
 			   		

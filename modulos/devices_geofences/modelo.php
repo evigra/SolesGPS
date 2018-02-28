@@ -303,6 +303,9 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
     	{    		
+			$first = date('Y-m-d',strtotime('last monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
+
     		$comando_sql		="
 				SELECT g.id as gid, g.name as gname, d.id as did, d.name as dname,  time, time_end, TIMEDIFF(time_end,time) as diferencia 
 				FROM 
@@ -314,7 +317,7 @@
 					AND TIMEDIFF(time_end,time) >'00:03:00' 
 					#AND dg.company_id='{$_SESSION["company"]["id"]}'
 					AND	time BETWEEN '2018-01-19 00:00:00' AND '2018-02-25 23:59:59'
-					AND	time BETWEEN '2018-02-22 00:00:00' AND '2018-02-25 23:59:59'
+					AND	time BETWEEN '$first 00:00:00' AND '$last 23:59:59'
 				ORDER BY geofenceid asc, deviceid asc, time desc
 				LIMIT 50;    
     		";
@@ -344,6 +347,7 @@
 					
 					$return_device =$this->__BROWSE($option);
 
+					$this->__PRINT_R($return_device);
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
 						"time"		=>$return_device["data"][0]["diferencia"],

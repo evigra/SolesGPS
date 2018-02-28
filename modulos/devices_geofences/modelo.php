@@ -347,7 +347,7 @@
 					
 					$return_device =$this->__BROWSE($option);
 
-					$this->__PRINT_R($return_device);
+					$this->__PRINT_R($this->sys_sql);
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
 						"time"		=>$return_device["data"][0]["diferencia"],

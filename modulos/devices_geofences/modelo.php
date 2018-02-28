@@ -314,7 +314,7 @@
 					AND TIMEDIFF(time_end,time) >'00:03:00' 
 					#AND dg.company_id='{$_SESSION["company"]["id"]}'
 					AND	time BETWEEN '2018-01-19 00:00:00' AND '2018-02-25 23:59:59'
-					AND	time BETWEEN '2018-02-19 00:00:00' AND '2018-02-25 23:59:59'
+					AND	time BETWEEN '2018-02-22 00:00:00' AND '2018-02-25 23:59:59'
 				ORDER BY geofenceid asc, deviceid asc, time desc
 				LIMIT 50;    
     		";
@@ -331,17 +331,39 @@
 				$time				=$rows["time"];
 				$time_end			=$rows["time_end"];
 				
+				$option=array("select"=>array(),"where"=>array());
+				$option["select"]["id"]							="id";			
+				$option["select"]["SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(time_end,time))))"]	="diferencia";			
+				$option["select"]["geofenceid"]					="geofenceid";						
+				$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
+				$option["where"][]								="geofenceid='$gid'";
+				
 				if(!isset($data[$gid]))
-				{					
+				{										
+					$option["group"]	                			= "geofenceid";					
+					
+					$return_device =$this->__BROWSE($option);
+
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
-						"time"		=>"00:00:00",
+						"time"		=>$return_device["data"][0]["diferencia"],
 						"devices"	=>array(),
 					);				
 				}
 				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
+					$option=array("select"=>array(),"where"=>array());
+					$option["select"]["id"]							="id";			
+					$option["select"]["SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(time_end,time))))"]	="diferencia";			
+					$option["select"]["geofenceid"]					="geofenceid";						
+			
+					$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
+
+					$option["group"]	                			= "geofenceid";					
+					
+					$return_device =$this->__BROWSE($option);
+				
 					$data[$gid]["devices"][$did]=array(
 						"name"		=>$rows["dname"],
 						"time"		=>"00:00:00",
@@ -355,7 +377,7 @@
 					"time_end"		=>$time_end,
 				);
 				
-				
+				/*
 				$hours_diff 		= strtotime($data[$gid]["time"]) + strtotime($diferencia);
 				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["time"]	=$acumulado;
@@ -363,7 +385,7 @@
 				$hours_diff 		= strtotime($data[$gid]["devices"][$did]["time"]) + strtotime($diferencia);
 				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["devices"][$did]["time"]	=$acumulado;
-				
+				*/
 			} 
 			
 			$return="";

@@ -439,7 +439,7 @@
 				
 			}
 			
-			$return=array("html"=>"<table>$return</table>");
+			$return=array("html"=>"<table width=\"470\">$return</table>");
 			   		
 			#$this->__PRINT_R($data);	
 			return $return;

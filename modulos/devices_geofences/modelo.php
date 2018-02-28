@@ -202,6 +202,10 @@
 			$first = date('Y-m-d',strtotime('monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
 
+			$first = date('Y-m-d',strtotime('last monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
+
+
 			if(is_null($option)) 							$option=array();	
 			if($option=="")									$option=array();			
 			if(!isset($option["where"]))					$option["where"]=array();
@@ -299,8 +303,8 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
     	{    		
-    		$option["order"]	="geofenceid asc, deviceid asc ";
-			$option["group"]	="deviceid, geofenceid";
+    		#$option["order"]	="geofenceid asc, deviceid asc ";
+			#$option["group"]	="deviceid, geofenceid";
 			$option["group"]	="geofenceid";
 			
 			$reportes			=array("html"=>"");

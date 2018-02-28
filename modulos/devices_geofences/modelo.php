@@ -338,19 +338,27 @@
 				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
-					$data[$gid]["devices"][$did]=array();				
+					$data[$gid]["devices"][$did]=array(
+						"name"		=>$rows["dname"],
+						"time"		=>"00:00:00",
+						"eventos"	=>array(),					
+					);				
 				}
 				
-				$data[$gid]["devices"][$did][]=array(
-					"dname"			=>$rows["dname"],
+				$data[$gid]["devices"][$did]["eventos"][]=array(
 					"diferencia"	=>$diferencia,
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
+				
+				
 				$hours_diff = strtotime($data[$gid]["time"])+strtotime($diferencia);
 				$acumulado=date('H:i:s', $hours_diff);								
 				$data[$gid]["time"]	=$acumulado;
 				
+				$hours_diff = strtotime($data[$gid]["devices"][$did]["time"])+strtotime($diferencia);
+				$acumulado=date('H:i:s', $hours_diff);								
+				$data[$gid]["devices"][$did]["time"]	=$acumulado;
 				
 			} 
 			   		

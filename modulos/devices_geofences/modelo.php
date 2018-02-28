@@ -381,8 +381,19 @@
 					";
 					foreach($devices["eventos"] as $eventos)
 					{
+						if($tipo==1)
+						{
+							$class="background-color:#ccc;";
+							$tipo=2
+						}
+						else
+						{
+							$class="background-color:#c5c5c5;";
+							$tipo=1
+						
+						}
 						$return.="
-							<tr>
+							<tr style=\"$class\">
 								<td>{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
@@ -398,6 +409,12 @@
 					";
 					
 				}				
+				$return.="
+					<tr>
+						<td colspan=\"5\">&nbsp;</td>
+					</tr>
+				";
+				
 			}
 			
 			$return=array("html"=>"<table>$return</table>");

@@ -374,7 +374,7 @@
 			
 			}
 			
-			
+			$return="<table>$return</table>";
 			   		
 			#$this->__PRINT_R($data);	
 			return $return;

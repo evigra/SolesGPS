@@ -379,17 +379,17 @@
 							<td colspan=\"3\">{$devices["name"]}</td>
 					</tr>
 					";
-					foreach($devices["evetos"] as $eventos)
+					foreach($devices["eventos"] as $eventos)
 					{
-					$return.="
-						<tr>
-							<td>{$devices["diferencia"]}</td>
-							<td width=\"20\"></td>
-							<td width=\"20\"></td>
-							<td>{$devices["time"]}</td>
-							<td>{$devices["time_end"]}</td>
-						</tr>
-					";
+						$return.="
+							<tr>
+								<td>{$devices["diferencia"]}</td>
+								<td width=\"20\"></td>
+								<td width=\"20\"></td>
+								<td>{$devices["time"]}</td>
+								<td>{$devices["time_end"]}</td>
+							</tr>
+						";
 					
 					}					
 				}				

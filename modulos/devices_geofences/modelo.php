@@ -303,9 +303,6 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($first,$last)
     	{
-    	
-    	    		
-
     		$comando_sql		="
 				SELECT g.id as gid, g.name as gname, d.id as did, d.name as dname,  time, time_end, TIMEDIFF(time_end,time) as diferencia 
 				FROM 
@@ -322,11 +319,9 @@
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			
-			#$this->__PRINT_R($datas);
 			$data=array();
 			foreach($datas as $rows)
 			{
-#				$this->__PRINT_R($rows);					
 				$gid				=$rows["gid"];
 				$did				=$rows["did"];
 				$diferencia			=$rows["diferencia"];
@@ -340,8 +335,6 @@
 				$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 				$option["where"][]								="geofenceid='$gid'";
 				$option["where"][]								="TIMEDIFF(time_end,time) >'00:03:00' ";
-				
-				
 				
 				if(!isset($data[$gid]))
 				{										
@@ -382,14 +375,14 @@
 			foreach($data as $row)
 			{
 				$return.="
-					<tr style=\"background-color:#ddd; color:#000; size:7;\">
+					<tr style=\"background-color:#ccc; color:#000; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
 						<td width=\"440\" align=\"left\" colspan=\"4\"><b>{$row["name"]}</b> </td>
 					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
 					$return.="
-						<tr  style=\"background-color:#ccc; \">
+						<tr  style=\"background-color:#ddd; \">
 							<td width=\"90\" height=\"30\"><b>{$devices["time"]}</b></td>
 							<td width=\"20\"></td>
 							<td width=\"420\" align=\"left\" colspan=\"3\"><b>{$devices["name"]}</b></td>

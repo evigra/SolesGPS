@@ -315,9 +315,9 @@
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			
-			$this->__PRINT_R($datas);
+			#$this->__PRINT_R($datas);
 			$data=array();
-			foreach($datas["data"] as $rows)
+			foreach($datas as $rows)
 			{
 				
 				$gid				=$rows["gid"];

@@ -366,7 +366,7 @@
 			foreach($data as $row)
 			{
 				$return.="
-					<tr style=\"background-color:#ddd; color:#fff;\">
+					<tr style=\"background-color:#ddd; color:#fff; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
 						<td colspan=\"4\" width=\"150\"><b>{$row["name"]}</b> </td>
 					</tr>";				
@@ -383,14 +383,13 @@
 					{
 						if($tipo==1)
 						{
-							$class="background-color:#ccc;";
+							$class="background-color:#E5E5E5;";
 							$tipo=2;
 						}
 						else
 						{
-							$class="background-color:#c5c5c5;";
-							$tipo=1;
-						
+							$class="background-color:#D5D5D5;";
+							$tipo=1;						
 						}
 						$return.="
 							<tr style=\"$class\">

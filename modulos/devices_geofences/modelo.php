@@ -365,7 +365,7 @@
 			$return="";
 			foreach($data as $row)
 			{
-				$return.="<tr><td colspan=\"2\" width=\"90\"> {$row["time"]} </td><td width=\"150\"> {$row["name"]} </td></tr>";				
+				$return.="<tr><td width=\"90\"> {$row["time"]} </td><td colspan=\"2\" width=\"150\"> {$row["name"]} </td></tr>";				
 				foreach($row["devices"] as $devices)
 				{
 					$return.="<tr><td>{$devices["time"]}</td><td width=\"20\"></td><td>{$devices["name"]}</td></tr>";

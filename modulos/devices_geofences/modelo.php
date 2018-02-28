@@ -328,11 +328,13 @@
 				
 				if(!isset($data[$gid]))
 				{
+					
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
 						"time"		=>"00:00:00",
 						"devices"	=>array(),
 					);				
+					$this->__PRINT_R($data);
 				}
 				
 				$dt 				= new DateTime($data[$gid]["time"]);

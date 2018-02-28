@@ -333,6 +333,8 @@
 					);
 					
 					$recinto=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+					
+					
 					$this->__PRINT_R($this->sys_sql);
 					$reportes["html"].="<br><br>".$recinto["html"];
 
@@ -357,9 +359,9 @@
 						
 					);
 					
-					$device=$this->__REPORT_SEMANA_TOTAL($option_detalle);	
-					$this->__PRINT_R($this->sys_sql);
-					$reportes["html"].=$device["html"];
+					#$device=$this->__REPORT_SEMANA_TOTAL($option_detalle);	
+					#$this->__PRINT_R($this->sys_sql);
+					#$reportes["html"].=$device["html"];
 					
 					$geocercas[$geofenceid]							=array();																			
 				}	

@@ -316,14 +316,13 @@
 						"input"							=>"false",
 						"template_title"				=>"false",
 						"height"						=>"false",
-						"header"						=>"1px",
-						"echo"							=>"AAAA",
-						
+						"header"						=>"1px",						
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)
 					);
 					$recinto=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+					$this->__PRINT_R($this->sys_sql);
 					
 					
 					$reportes["html"].="<br><br>".$recinto["html"];

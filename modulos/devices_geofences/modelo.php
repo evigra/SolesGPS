@@ -311,7 +311,8 @@
 					geofences g ON g.id=dg.geofenceid
 				WHERE	1=1 
 					and time BETWEEN '2018-02-19 00:00:00' AND '2018-02-25 23:59:59'
-				ORDER BY geofenceid asc, deviceid asc, time desc;    
+				ORDER BY geofenceid asc, deviceid asc, time desc
+				LIMIT 10;    
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			

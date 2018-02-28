@@ -303,58 +303,67 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
     	{    		
-    		$comando_sql		="
-				SELECT g.id as gid, g.name as gname, d.id as did, d.name as dname,  time, time_end, TIMEDIFF(time_end,time) as diferencia 
-				FROM 
-					devices_geofences dg JOIN 
-					devices d ON d.id=dg.deviceid JOIN
-					geofences g ON g.id=dg.geofenceid
-				WHERE	1=1 
-					and time BETWEEN '2018-02-19 00:00:00' AND '2018-02-25 23:59:59'
-				ORDER BY geofenceid asc, deviceid asc, time desc;    
-    		";
-    		$datas 	            = $this->__EXECUTE($comando_sql);    		
+			$option["group"]	="geofenceid";
 			
-			$data=array();
-			foreach($datas as $rows)
+			$reportes			=array("html"=>"");
+			$report				=$this->__REPORT_SEMANA_TOTAL($option);    	    
+			
+			$geocercas=array();
+			foreach($report["data"] as $row)
 			{
-				$gid				=$rows["gid"];
-				$did				=$rows["did"];
-				$diferencia			=$rows["diferencia"];
-				$time				=$rows["time"];
-				$time_end			=$rows["time_end"];
-				
-				if(!isset($data[$gid]))
+				$geofenceid		=$row["geofenceid"];
+				#if(!isset($geocercas[$geofenceid]))							
 				{
-					$data[$gid]=array(
-						"name"		=>$rows["gname"],
-						"time"		=>"00:00:00",
-						"devices"	=>array(),
-					);				
-				}
-				
-				$dt 				= new DateTime($data[$gid]["time"]);
-				$dt->add(new DateTime($diferencia));
-				$acumulado			=$dt->format('H:i:s'); 			
-				
-				$data[$gid]=array(
-					"name"			=>$rows["gname"],
-					"time"			=>$acumulado,
-				);
-				
-				if(!isset($data[$gid]["devices"][$did]))
-				{
-					$data[$gid]["devices"][$did]=array();				
-				}
-				$data[$gid]["devices"][$did][]=array(
-					"dname"			=>$dname,
-					"diferencia"	=>$diferencia,
-					"time"			=>$time,
-					"time_end"		=>$time_end,
-				);
-			}    		
-			$this->__PRINT_R($data);
-			#return $reportes;
+					$option_detalle=array(
+						"template_body"	           		=> $this->sys_module . "html/report_especifico_geofence/body",
+						"input"							=>"false",
+						"template_title"				=>"false",
+						"height"						=>"false",
+						"header"						=>"1px",						
+						"select"=>array(
+							"id"=>"id",
+							"SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(time_end,time))))"=>"diferencia",
+							"count(time)"				=>"time",
+							"left(time_end,10)"			=>"time_end",
+							"geofenceid"				=>"geofenceid",
+						),
+						"where"	=> array(
+							"geofenceid='$geofenceid'"
+						),
+						"group"							=>"geofenceid",
+					);
+					$recinto=$this->__REPORT_SEMANA_TOTAL($option_detalle);					
+					$reportes["html"].="<br><br>".$recinto["html"];
+
+					$option_detalle=array(
+						"template_body"	           		=> $this->sys_module . "html/report_especifico_device/body",
+						"input"							=>"false",
+						"template_title"				=>"false",
+						"height"						=>"false",
+						"header"						=>"1px",						
+						"select"=>array(
+							"id"=>"id",
+							"SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(time_end,time))))"=>"diferencia",
+							"count(time)"				=>"time",
+							"left(time_end,10)"			=>"time_end",
+							"geofenceid"				=>"geofenceid",
+							"deviceid"					=>"deviceid",
+						),						
+						"where"	=> array(
+							"geofenceid='$geofenceid'"
+						),						
+						"group"							=>"deviceid, geofenceid",									
+					);
+					
+					$device=$this->__REPORT_SEMANA_TOTAL($option_detalle);	
+					#$this->__PRINT_R($this->sys_sql);
+					$reportes["html"].=$device["html"];
+					
+					$geocercas[$geofenceid]							=array();																			
+				}	
+			}
+	
+			return $reportes;
 		}				
 		
    		public function CRON_DELETE()

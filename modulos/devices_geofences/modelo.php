@@ -363,7 +363,7 @@
 				
 					$data[$gid]["devices"][$did]=array(
 						"name"		=>$rows["dname"],
-						"time"		=>=>$return_device["data"][0]["diferencia"],
+						"time"		=>$return_device["data"][0]["diferencia"],
 						"eventos"	=>array(),					
 					);				
 				}

@@ -390,7 +390,7 @@
 				$return.="
 					<tr style=\"background-color:#ddd; color:#000; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
-						<td colspan=\"4\"><b>{$row["name"]}</b> </td>
+						<td width=\"420\" colspan=\"4\"><b>{$row["name"]}</b> </td>
 					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
@@ -398,7 +398,7 @@
 						<tr  style=\"background-color:#ccc; \">
 							<td width=\"90\" height=\"30\"><b>{$devices["time"]}</b></td>
 							<td width=\"20\"></td>
-							<td colspan=\"3\"><b>{$devices["name"]}</b></td>
+							<td width=\"420\" colspan=\"3\"><b>{$devices["name"]}</b></td>
 						</tr>
 					";
 					$tipo=1;

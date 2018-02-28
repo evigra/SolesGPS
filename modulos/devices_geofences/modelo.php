@@ -375,14 +375,14 @@
 			foreach($data as $row)
 			{
 				$return.="
-					<tr style=\"background-color:#ccc; color:#000; size:7;\">
+					<tr style=\"background-color:#bbb; color:#000; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
 						<td width=\"440\" align=\"left\" colspan=\"4\"><b>{$row["name"]}</b> </td>
 					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
 					$return.="
-						<tr  style=\"background-color:#ddd; \">
+						<tr  style=\"background-color:#ccc; \">
 							<td width=\"90\" height=\"30\"><b>{$devices["time"]}</b></td>
 							<td width=\"20\"></td>
 							<td width=\"420\" align=\"left\" colspan=\"3\"><b>{$devices["name"]}</b></td>

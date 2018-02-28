@@ -305,6 +305,7 @@
 			
 			$reportes			=array("html"=>"");
 			$report				=$this->__REPORT_SEMANA_TOTAL($option);    	    
+			$this->__PRINT_R($this->sys_sql);
 			
 			$geocercas=array();
 			foreach($report["data"] as $row)

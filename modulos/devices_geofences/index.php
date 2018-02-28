@@ -194,8 +194,8 @@
     }
     elseif($objeto->sys_section=="report_especial_semana")
     {
-		$first = date('Y-m-d',strtotime('monday -7 days'));
-		$last = date('Y-m-d',strtotime('Sunday'));
+			$first = date('Y-m-d',strtotime('monday -7 days'));
+			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
 
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -206,7 +206,30 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_ESPECIAL_SEMANA();
+		$data										= $objeto->__REPORT_ESPECIAL_SEMANA($first,$last);
+		$objeto->words["reporte"]					=$data["html"];
+		$module_title								="Semana ($first al $last)";
+		
+		
+    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
+    	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+		
+    }
+    elseif($objeto->sys_section=="report_especial_anterior")
+    {
+		$first = date('Y-m-d',strtotime('last monday -7 days'));
+		$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
+
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    #array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+		#CARGANDO VISTA PARTICULAR Y CAMPOS			
+		$data										= $objeto->__REPORT_ESPECIAL_SEMANA($first,$last);
 		$objeto->words["reporte"]					=$data["html"];
 		$module_title								="Semana ($first al $last)";
 		
@@ -246,10 +269,11 @@
 		);	    
 
     	$module_center=array(
-		    array("report_hoy_total"=>"",				"icon"=>"ui-icon-calendar", 	"title"=>"Totales Hoy", 			"text"=>"false"),
-		    array("report_semana_actual_total"=>"",		"icon"=>"ui-icon-calculator", 	"title"=>"Totales Semana Actual", 	"text"=>"false"),
-		    array("report_semana_anterior_total"=>"",	"icon"=>"ui-icon-copy", 		"title"=>"Totales Semana Anterior", "text"=>"false"),
-		    array("report_especial_semana"=>"Rep Especial",	"icon"=>"ui-icon-copy", 		"title"=>"Totales Semana Anterior"),
+		    array("report_hoy_total"=>"",				"icon"=>"ui-icon-calendar", 		"title"=>"Totales Hoy", 			"text"=>"false"),
+		    array("report_semana_actual_total"=>"",		"icon"=>"ui-icon-calculator", 		"title"=>"Totales Semana Actual", 	"text"=>"false"),
+		    array("report_especial_semana"=>"Rep Semanal",	"icon"=>"ui-icon-calculator", 	"title"=>"Reporte Semanal"),
+		    array("report_semana_anterior_total"=>"",	"icon"=>"ui-icon-copy", 			"title"=>"Totales Semana Anterior", "text"=>"false"),
+		    array("report_especial_anterior"=>"Rep Anterior",	"icon"=>"ui-icon-copy", 	"title"=>"Reporte Anterior"),		    
 		);	    
     
     

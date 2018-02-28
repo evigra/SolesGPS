@@ -301,10 +301,10 @@
 			#$this->__PRINT_R($this->sys_sql);
 			return $return;
 		}				
-   		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
-    	{    		
-			$first = date('Y-m-d',strtotime('last monday -7 days'));
-			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
+   		public function __REPORT_ESPECIAL_SEMANA($first,$last)
+    	{
+    	
+    	    		
 
     		$comando_sql		="
 				SELECT g.id as gid, g.name as gname, d.id as did, d.name as dname,  time, time_end, TIMEDIFF(time_end,time) as diferencia 
@@ -316,7 +316,6 @@
 					AND time_end>time
 					AND TIMEDIFF(time_end,time) >'00:03:00' 
 					AND dg.company_id='{$_SESSION["company"]["id"]}'
-					#AND	time BETWEEN '2018-01-19 00:00:00' AND '2018-02-25 23:59:59'
 					AND	time BETWEEN '$first 00:00:00' AND '$last 23:59:59'
 				ORDER BY geofenceid asc, deviceid asc, time desc
 				LIMIT 50;    

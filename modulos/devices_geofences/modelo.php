@@ -307,8 +307,8 @@
 			$geocercas=array();
 			foreach($report["data"] as $row)
 			{
-				$geofenceid=$row["geofenceid"];
-				#$this->__PRINT_R($row);
+				$geofenceid		=$row["geofenceid"];
+				$deviceid		=$row["deviceid"];
 				if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
@@ -317,15 +317,16 @@
 						"template_title"				=>"false",
 						"height"						=>"false",
 						"header"						=>"1px",
+						"echo"							=>"AAAA",
+						
 						"where"	=> array(
 							"geofenceid='$geofenceid'"
 						)
 					);
-					$reporte=$this->__REPORT_SEMANA_TOTAL($option_detalle);
+					$recinto=$this->__REPORT_SEMANA_TOTAL($option_detalle);
 					
-					#$this->__PRINT_R($reporte);
 					
-					$reportes["html"].="<br>lalo<br>".$reporte["html"];
+					$reportes["html"].="<br><br>".$recinto["html"];
 					$geocercas[$geofenceid]							=array();																			
 				}	
 			}

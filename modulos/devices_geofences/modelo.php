@@ -315,10 +315,11 @@
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			
-			/*
+			
 			$data=array();
-			foreach($datas as $rows)
+			foreach($datas["data"] as $rows)
 			{
+				/*
 				$gid				=$rows["gid"];
 				$did				=$rows["did"];
 				$diferencia			=$rows["diferencia"];
@@ -353,8 +354,9 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
+				*/
 			} 
-			*/   		
+			   		
 			$this->__PRINT_R($data);
 			#return $reportes;
 		}				

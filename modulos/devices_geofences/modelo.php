@@ -336,10 +336,15 @@
 					);				
 				}
 				
+				
+				$hours_diff = strtotime($data[$gid]["time"])+strtotime($diferencia);
+				$acumulado=date('H:i:s', $hours_diff);				
+
+
 				$dt 				= new DateTime($data[$gid]["time"]);
 				#$dt->add(new DateTime($diferencia));
 				#$acumulado			=$dt->format('H:i:s'); 			
-				$acumulado="";
+				#$acumulado="";
 				
 				$data[$gid]["time"]	=$acumulado;
 				

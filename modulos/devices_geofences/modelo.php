@@ -384,12 +384,12 @@
 						if($tipo==1)
 						{
 							$class="background-color:#ccc;";
-							$tipo=2
+							$tipo=2;
 						}
 						else
 						{
 							$class="background-color:#c5c5c5;";
-							$tipo=1
+							$tipo=1;
 						
 						}
 						$return.="

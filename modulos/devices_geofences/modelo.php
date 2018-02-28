@@ -310,7 +310,7 @@
 			foreach($report["data"] as $row)
 			{
 				$geofenceid		=$row["geofenceid"];
-				if(!isset($geocercas[$geofenceid]))							
+				#if(!isset($geocercas[$geofenceid]))							
 				{
 					$option_detalle=array(
 						"template_body"	           		=> $this->sys_module . "html/report_especifico_geofence/body",

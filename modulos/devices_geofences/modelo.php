@@ -343,7 +343,7 @@
 					"name"			=>$rows["gname"],
 					"time"			=>$acumulado,
 				);
-				/*
+				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
 					$data[$gid]["devices"][$did]=array();				
@@ -354,7 +354,7 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
-				*/
+				
 			} 
 			   		
 			$this->__PRINT_R($data);

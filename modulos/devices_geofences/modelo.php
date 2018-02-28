@@ -337,9 +337,9 @@
 				}
 				
 				$dt 				= new DateTime($data[$gid]["time"]);
-				$dt->add(new DateTime($diferencia));
-				$acumulado			=$dt->format('H:i:s'); 			
-				#$acumulado="";
+				#$dt->add(new DateTime($diferencia));
+				#$acumulado			=$dt->format('H:i:s'); 			
+				$acumulado="";
 				
 				$data[$gid]["time"]	=$acumulado;
 				

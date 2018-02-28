@@ -207,8 +207,13 @@
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS			
 		$data										= $objeto->__REPORT_ESPECIAL_SEMANA();
-		$objeto->words["module_body"]				=$data["html"];
+		$objeto->words["reporte"]					=$data["html"];
 		$module_title								="Semana ($first al $last)";
+		
+		
+    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
+    	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+		
     }
 
     else

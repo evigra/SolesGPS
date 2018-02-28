@@ -352,11 +352,11 @@
 				);
 				
 				
-				$hours_diff 		= strtotime($data[$gid]["time"])+strtotime($diferencia);
+				$hours_diff 		= strtotime($data[$gid]["time"]) + strtotime($diferencia);
 				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["time"]	=$acumulado;
 				
-				$hours_diff 		= strtotime($data[$gid]["devices"][$did]["time"])+strtotime($diferencia);
+				$hours_diff 		= strtotime($data[$gid]["devices"][$did]["time"]) + strtotime($diferencia);
 				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["devices"][$did]["time"]	=$acumulado;
 				

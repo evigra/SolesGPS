@@ -347,7 +347,6 @@
 					
 					$return_device =$this->__BROWSE($option);
 
-					$this->__PRINT_R($this->sys_sql);
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
 						"time"		=>$return_device["data"][0]["diferencia"],
@@ -357,20 +356,14 @@
 				
 				if(!isset($data[$gid]["devices"][$did]))
 				{
-					$option=array("select"=>array(),"where"=>array());
-					$option["select"]["id"]							="id";			
-					$option["select"]["SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(time_end,time))))"]	="diferencia";			
-					$option["select"]["geofenceid"]					="geofenceid";						
-			
-					$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
-
-					$option["group"]	                			= "geofenceid";					
+					$option["group"]	                			= "geofenceid,deviceid";					
+					$option["where"][]								="deviceid='$did'";
 					
 					$return_device =$this->__BROWSE($option);
 				
 					$data[$gid]["devices"][$did]=array(
 						"name"		=>$rows["dname"],
-						"time"		=>"00:00:00",
+						"time"		=>=>$return_device["data"][0]["diferencia"],
 						"eventos"	=>array(),					
 					);				
 				}

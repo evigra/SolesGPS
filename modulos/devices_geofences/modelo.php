@@ -354,10 +354,10 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
-				$this->__PRINT_R($data);	
+				
 			} 
 			   		
-			
+			$this->__PRINT_R($data);	
 			#return $reportes;
 		}				
 		

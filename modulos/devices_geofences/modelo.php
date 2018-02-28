@@ -312,7 +312,7 @@
 				WHERE	1=1 
 					and time BETWEEN '2018-02-19 00:00:00' AND '2018-02-25 23:59:59'
 				ORDER BY geofenceid asc, deviceid asc, time desc
-				LIMIT 20;    
+				LIMIT 50;    
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			

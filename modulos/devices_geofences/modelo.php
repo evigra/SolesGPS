@@ -319,7 +319,7 @@
 			$data=array();
 			foreach($datas["data"] as $rows)
 			{
-				/*
+				
 				$gid				=$rows["gid"];
 				$did				=$rows["did"];
 				$diferencia			=$rows["diferencia"];
@@ -343,7 +343,7 @@
 					"name"			=>$rows["gname"],
 					"time"			=>$acumulado,
 				);
-				
+				/*
 				if(!isset($data[$gid]["devices"][$did]))
 				{
 					$data[$gid]["devices"][$did]=array();				

@@ -315,7 +315,7 @@
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			
-			
+			$this->__PRINT_R($datas);
 			$data=array();
 			foreach($datas["data"] as $rows)
 			{

@@ -375,16 +375,7 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
-				
-				/*
-				$hours_diff 		= strtotime($data[$gid]["time"]) + strtotime($diferencia);
-				$acumulado			=date('H:i:s', $hours_diff);								
-				$data[$gid]["time"]	=$acumulado;
-				
-				$hours_diff 		= strtotime($data[$gid]["devices"][$did]["time"]) + strtotime($diferencia);
-				$acumulado			=date('H:i:s', $hours_diff);								
-				$data[$gid]["devices"][$did]["time"]	=$acumulado;
-				*/
+
 			} 
 			
 			$return="";
@@ -426,13 +417,7 @@
 								<td width=\"200\">{$eventos["time_end"]}</td>
 							</tr>
 						";					
-					}					
-					$return.="
-						<tr>
-							<td colspan=\"5\">&nbsp;</td>
-						</tr>
-					";
-					
+					}										
 				}				
 				$return.="
 					<tr>

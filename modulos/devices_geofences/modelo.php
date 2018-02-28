@@ -379,6 +379,7 @@
 							<td colspan=\"3\"><b>{$devices["name"]}</b></td>
 						</tr>
 					";
+					$tipo=1;
 					foreach($devices["eventos"] as $eventos)
 					{
 						if($tipo==1)
@@ -393,7 +394,7 @@
 						}
 						$return.="
 							<tr style=\"$class\">
-								<td>{$eventos["diferencia"]}</td>
+								<td height=\"30\">{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
 								<td width=\"200\">{$eventos["time"]}</td>

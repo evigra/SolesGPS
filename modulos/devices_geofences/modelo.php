@@ -383,11 +383,11 @@
 					{
 						$return.="
 							<tr>
-								<td>{$devices["diferencia"]}</td>
+								<td>{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
-								<td>{$devices["time"]}</td>
-								<td>{$devices["time_end"]}</td>
+								<td>{$eventos["time"]}</td>
+								<td>{$eventos["time_end"]}</td>
 							</tr>
 						";
 					

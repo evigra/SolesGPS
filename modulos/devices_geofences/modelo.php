@@ -336,11 +336,12 @@
 					);				
 				}
 				
-				#$dt 				= new DateTime($data[$gid]["time"]);
-				#$dt->add(new DateTime($diferencia));
-				#$acumulado			=$dt->format('H:i:s'); 			
-				$acumulado="";
+				$dt 				= new DateTime($data[$gid]["time"]);
+				$dt->add(new DateTime($diferencia));
+				$acumulado			=$dt->format('H:i:s'); 			
+				#$acumulado="";
 				
+				$data[$gid]["time"]	=$acumulado;
 				
 				if(!isset($data[$gid]["devices"][$did]))
 				{

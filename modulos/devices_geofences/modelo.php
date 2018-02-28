@@ -98,13 +98,11 @@
     	  
 		}						
 		public function __BROWSE($option=NULL)
-    	{
-    		
+    	{    		
     		if(is_null($option)) 			$option					=array();
     		
     		#if(!isset($option["select"])) 	$option["select"]		=array();
-    		if(!isset($option["where"])) 	$option["where"]		=array();
-    		
+    		if(!isset($option["where"])) 	$option["where"]		=array();	
     		
     		$option["where"][]									="company_id='{$_SESSION["company"]["id"]}'";
     		$option["where"][]									="time_end>time";
@@ -333,7 +331,6 @@
 					);
 					
 					$recinto=$this->__REPORT_SEMANA_TOTAL($option_detalle);
-					
 					
 					$this->__PRINT_R($this->sys_sql);
 					$reportes["html"].="<br><br>".$recinto["html"];

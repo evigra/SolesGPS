@@ -349,8 +349,9 @@
 				{
 					$data[$gid]["devices"][$did]=array();				
 				}
+				
 				$data[$gid]["devices"][$did][]=array(
-					"dname"			=>$dname,
+					"dname"			=>$rows["dname"],
 					"diferencia"	=>$diferencia,
 					"time"			=>$time,
 					"time_end"		=>$time_end,

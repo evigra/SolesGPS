@@ -298,33 +298,30 @@
 		}				
    		public function __REPORT_ESPECIAL_SEMANA($option=NULL)
     	{
-    		$reportes=array("html"=>"");
-    	
-    		$option["template_title"]	="false";
-    		$option["template_body"]	=$this->sys_module . "html/report_especifico_recinto/body";
     		
-    		$option["input"]			="false";
-    		$option["height"]			="false";
-    		$option["header"]			="1px";
-    		
-    		$option["where"]			=array(
-				"geofenceid='$geofenceid'"
-			);
-    		
-			$option["group"]			= "deviceid, geofenceid";
-			$option["order"]			="geofenceid asc, deviceid asc ";
+    		$option["order"]	="geofenceid asc, deviceid asc ";
+			$option["group"]	= "deviceid, geofenceid";
 			
+					$option_detalle=array(
+						"template_body"	           		=> $this->sys_module . "html/report_especifico_recinto/body",
+						"input"							=>"false",
+						"template_title"				=>"false",
+						"height"						=>"false",
+						"header"						=>"1px",						
+						"where"	=> array(
+							"geofenceid='$geofenceid'"
+						)
+					);
 
-			
+
+
+
+			$reportes=array("html"=>"");
 			$report=$this->__REPORT_SEMANA_TOTAL($option);    	    
 			
 			$geocercas=array();
-			foreach($report["data"] as $recinto)
+			foreach($report["data"] as $row)
 			{
-				$reportes["html"].="<br><br>".$recinto["html"];
-
-				/*
-				
 				$geofenceid		=$row["geofenceid"];
 				$deviceid		=$row["deviceid"];
 				if(!isset($geocercas[$geofenceid]))							
@@ -343,9 +340,9 @@
 					#$this->__PRINT_R($this->sys_sql);
 					
 					
+					$reportes["html"].="<br><br>".$recinto["html"];
 					$geocercas[$geofenceid]							=array();																			
-				}
-				*/	
+				}	
 			}
 	
 			return $reportes;

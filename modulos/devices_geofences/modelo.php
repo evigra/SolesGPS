@@ -366,14 +366,14 @@
 			foreach($data as $row)
 			{
 				$return.="
-					<tr>
+					<tr style=\"background-color:#ddd; color:#fff;\">
 						<td width=\"90\"> {$row["time"]} </td>
 						<td colspan=\"4\" width=\"150\"> {$row["name"]} </td>
 					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
 					$return.="
-						<tr>
+						<tr  style=\"background-color:#ccc;\">
 							<td>{$devices["time"]}</td>
 							<td width=\"20\"></td>
 							<td colspan=\"3\">{$devices["name"]}</td>
@@ -386,8 +386,8 @@
 								<td>{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
-								<td width=\"100\">{$eventos["time"]}</td>
-								<td width=\"100\">{$eventos["time_end"]}</td>
+								<td width=\"200\">{$eventos["time"]}</td>
+								<td width=\"200\">{$eventos["time_end"]}</td>
 							</tr>
 						";					
 					}					

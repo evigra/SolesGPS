@@ -314,6 +314,7 @@
 					AND TIMEDIFF(time_end,time) >'00:03:00' 
 					AND dg.company_id='{$_SESSION["company"]["id"]}'
 					AND	time BETWEEN '2018-01-19 00:00:00' AND '2018-02-25 23:59:59'
+					AND	time BETWEEN '2018-02-19 00:00:00' AND '2018-02-25 23:59:59'
 				ORDER BY geofenceid asc, deviceid asc, time desc
 				LIMIT 50;    
     		";

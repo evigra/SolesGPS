@@ -370,7 +370,7 @@
 			foreach($data as $row)
 			{
 				$return.="
-					<tr style=\"background-color:#ddd; color:#fff; size:7;\">
+					<tr style=\"background-color:#ddd; color:#000; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
 						<td colspan=\"4\" width=\"150\"><b>{$row["name"]}</b> </td>
 					</tr>";				

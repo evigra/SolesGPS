@@ -352,18 +352,32 @@
 				);
 				
 				
-				$hours_diff = strtotime($data[$gid]["time"])+strtotime($diferencia);
-				$acumulado=date('H:i:s', $hours_diff);								
+				$hours_diff 		= strtotime($data[$gid]["time"])+strtotime($diferencia);
+				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["time"]	=$acumulado;
 				
-				$hours_diff = strtotime($data[$gid]["devices"][$did]["time"])+strtotime($diferencia);
-				$acumulado=date('H:i:s', $hours_diff);								
+				$hours_diff 		= strtotime($data[$gid]["devices"][$did]["time"])+strtotime($diferencia);
+				$acumulado			=date('H:i:s', $hours_diff);								
 				$data[$gid]["devices"][$did]["time"]	=$acumulado;
 				
 			} 
+			
+			$return="";
+			foreach($data as $row)
+			{
+				$return.="<tr><td>{$row["time"]}</td><td>{$row["name"]}</td></tr>";
+				
+				foreach($row["devices"] as $devices)
+				{
+					$return.="<tr><td>{$devices["time"]}</td><td>{$devices["name"]}</td></tr>";
+				}				
+			
+			}
+			
+			
 			   		
-			$this->__PRINT_R($data);	
-			#return $reportes;
+			#$this->__PRINT_R($data);	
+			return $return;
 		}				
 		
    		public function CRON_DELETE()

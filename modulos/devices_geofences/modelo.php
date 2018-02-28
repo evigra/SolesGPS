@@ -365,16 +365,14 @@
 			$return="";
 			foreach($data as $row)
 			{
-				$return.="<tr><td>{$row["time"]}</td><td>{$row["name"]}</td></tr>";
-				
+				$return.="<tr><td> {$row["time"]} </td><td> {$row["name"]} </td></tr>";				
 				foreach($row["devices"] as $devices)
 				{
-					$return.="<tr><td>{$devices["time"]}</td><td>{$devices["name"]}</td></tr>";
+					$return.="<tr><td>{$devices["time"]}</td><td width=\"20\"></td><td>{$devices["name"]}</td></tr>";
 				}				
-			
 			}
 			
-			$return="<table>$return</table>";
+			$return=array("html"=>"<table>$return</table>");
 			   		
 			#$this->__PRINT_R($data);	
 			return $return;

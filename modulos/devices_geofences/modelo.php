@@ -339,6 +339,9 @@
 				$option["select"]["geofenceid"]					="geofenceid";						
 				$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 				$option["where"][]								="geofenceid='$gid'";
+				$option["where"][]								="TIMEDIFF(time_end,time) >'00:03:00' ";
+				
+				
 				
 				if(!isset($data[$gid]))
 				{										

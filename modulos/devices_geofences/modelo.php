@@ -228,7 +228,8 @@
 			if(!isset($option["template_body"]))	
 				$option["template_body"]	           		= $this->sys_module . "html/report_especifico/body";
 			
-			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
+			if(!isset($option["group"]))			
+				$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
 			if(!isset($this->request["sys_order_devices_geofences"]) AND !isset($option["order"]))
 				$option["order"]="id desc";

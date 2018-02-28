@@ -318,8 +318,7 @@
 			#$this->__PRINT_R($datas);
 			$data=array();
 			foreach($datas as $rows)
-			{
-				
+			{				
 				$gid				=$rows["gid"];
 				$did				=$rows["did"];
 				$diferencia			=$rows["diferencia"];
@@ -327,8 +326,7 @@
 				$time_end			=$rows["time_end"];
 				
 				if(!isset($data[$gid]))
-				{
-					
+				{					
 					$data[$gid]=array(
 						"name"		=>$rows["gname"],
 						"time"		=>"00:00:00",
@@ -355,10 +353,10 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
-				
+				$this->__PRINT_R($data);	
 			} 
 			   		
-			$this->__PRINT_R($data);
+			
 			#return $reportes;
 		}				
 		

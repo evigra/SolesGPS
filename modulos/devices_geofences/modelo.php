@@ -315,6 +315,7 @@
     		";
     		$datas 	            = $this->__EXECUTE($comando_sql);    		
 			
+			/*
 			$data=array();
 			foreach($datas as $rows)
 			{
@@ -352,7 +353,8 @@
 					"time"			=>$time,
 					"time_end"		=>$time_end,
 				);
-			}    		
+			} 
+			*/   		
 			$this->__PRINT_R($data);
 			#return $reportes;
 		}				

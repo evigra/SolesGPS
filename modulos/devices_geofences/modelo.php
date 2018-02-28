@@ -390,7 +390,7 @@
 				$return.="
 					<tr style=\"background-color:#ddd; color:#000; size:7;\">
 						<td width=\"90\" height=\"40\"><b>{$row["time"]}</b></td>
-						<td colspan=\"4\" width=\"150\"><b>{$row["name"]}</b> </td>
+						<td colspan=\"4\"><b>{$row["name"]}</b> </td>
 					</tr>";				
 				foreach($row["devices"] as $devices)
 				{
@@ -416,7 +416,7 @@
 						}
 						$return.="
 							<tr style=\"$class\">
-								<td height=\"30\">{$eventos["diferencia"]}</td>
+								<td width=\"80\" height=\"30\">{$eventos["diferencia"]}</td>
 								<td width=\"20\"></td>
 								<td width=\"20\"></td>
 								<td width=\"200\">{$eventos["time"]}</td>
@@ -439,7 +439,7 @@
 				
 			}
 			
-			$return=array("html"=>"<table width=\"470\">$return</table>");
+			$return=array("html"=>"<table width=\"520\">$return</table>");
 			   		
 			#$this->__PRINT_R($data);	
 			return $return;

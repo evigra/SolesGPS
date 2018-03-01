@@ -6,6 +6,7 @@
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
+		var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
@@ -29,7 +30,7 @@
 			    "value"             => "",			    
 			),
 
-			"table"	    =>array(
+			"object"	    =>array(
 			    "title"             => "Modulo",
 			    "showTitle"         => "si",
 			    "type"              => "input",
@@ -73,6 +74,7 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
+    		
     	    $return =NULL;
 			if(@is_array($this->request["files"]))
 			{							
@@ -100,11 +102,12 @@
 					$datas["user_id"]		=$_SESSION["user"]["id"];
 					$datas["fecha"]			=$this->sys_date;
 										
-					$return					=parent::__SAVE($datas,$option);
+					$return					=parent::__SAVE($datas);
 
 					$path					="$uploads_dir/$return.$extencion";
 					#$path					="$uploads_dir/$name";
-
+					
+					$this->__PRINT_R($datas);
 					move_uploaded_file($tmp_name, $path);							
 				}
 			}	

@@ -58,7 +58,7 @@
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
-			if($this->sys_enviroments=="DEVELOPER")
+			if($this->sys_enviroments=="DEVELOPER" AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
 				error_reporting(-1);
 				ini_set('display_errors', 1);				
@@ -67,7 +67,7 @@
 			{
 				ini_set('display_errors', 0);
 			}				
-			else if($this->sys_enviroments=="PRODUCTION")	
+			else if($this->sys_enviroments=="PRODUCTION" )	
 			{
 				ini_set('display_errors', 0);
 			}				

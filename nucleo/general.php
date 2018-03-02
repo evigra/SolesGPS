@@ -397,7 +397,6 @@
     		
     		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
     		{
-    			$this->__PRINT_R($_SERVER["SERVER_NAME"]);
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			}
    			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
@@ -697,7 +696,6 @@
 
 				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
 				{
-					$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
 		        }	
     			if(isset($option["open"]))	
@@ -713,9 +711,9 @@
 			{
 				$resultado	= @$this->OPHP_conexion->query($comando_sql);
 				
-				if(isset($this->OPHP_conexion->error) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
 				{					
-					$this->__PRINT_R($_SERVER["SERVER_NAME"]);
+					#$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 					echo "
 						<div class=\"echo\" style=\"display:none;\" title=\"Error\">
 							{$this->OPHP_conexion->error}

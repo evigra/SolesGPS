@@ -396,8 +396,10 @@
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
     		
     		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
+    		{
+    			$this->__PRINT_R($_SERVER["SERVER_NAME"]);
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
-   			
+   			}
    			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 

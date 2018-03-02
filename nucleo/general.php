@@ -696,8 +696,10 @@
     			
 
 				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
+				{
+					$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
-
+		        }	
     			if(isset($option["open"]))	
     			{    			
     				$this->abrir_conexion();

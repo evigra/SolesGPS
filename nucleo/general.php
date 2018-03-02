@@ -715,6 +715,7 @@
 				
 				if(isset($this->OPHP_conexion->error) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
 				{					
+					$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 					echo "
 						<div class=\"echo\" style=\"display:none;\" title=\"Error\">
 							{$this->OPHP_conexion->error}

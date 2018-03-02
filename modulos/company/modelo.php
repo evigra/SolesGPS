@@ -6,6 +6,7 @@
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
+		var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
@@ -161,7 +162,7 @@
 
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    	    $files_id					=$this->files_obj->__SAVE();    	    
+    	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    		
 
     		parent::__SAVE($datas,$option);

@@ -28,6 +28,10 @@
 		var	$jquery_aux			="";	
 		var $sys_html           ="sitio_web/html/";
 		
+		var $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
+		var $sys_server_error	=array("localhost","developer.solesgps.com");
+
+		
 		var $sys_date; 
 		var $sys_object; 
 		var $sys_name; 

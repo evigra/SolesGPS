@@ -58,7 +58,13 @@
 			    "default"           => "",
 			    "value"             => "",
 			),						
-	
+			"extension"	    =>array(
+			    "title"             => "Fecha",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			),			
 			
 		);				
 		##############################################################################	
@@ -74,13 +80,11 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
-    		
+    		$option["table"]=$datas;
     	    $return =NULL;
 			if(@is_array($this->request["files"]))
 			{							
-				if(is_null($option))	$option=array();
-				if(!array_key_exists("table",$option))		$option["table"]="";
-				
+				if(is_null($option))	$option=array();				
 
 				if(isset($this->request["files"]["error"]) AND $this->request["files"]["error"]==0)
 				{
@@ -92,19 +96,19 @@
 					
 					$vtype					=explode(".",$name);
 					$ctype					=count($vtype) - 1;
-					$extencion				=$vtype[$ctype];
+					$extension				=$vtype[$ctype];
 					
 					$datas["file"]			=$name;
 					$datas["type"]			=$type;
-					$datas["extension"]		=$extencion;
-					$datas["table"]			=$option["table"];
+					$datas["extension"]		=$extension;
+					$datas["object"]		=$option["table"];
 					$datas["company_id"]	=$_SESSION["company"]["id"];
 					$datas["user_id"]		=$_SESSION["user"]["id"];
 					$datas["fecha"]			=$this->sys_date;
 										
 					$return					=parent::__SAVE($datas);
 
-					$path					="$uploads_dir/$return.$extencion";
+					$path					="$uploads_dir/$return.$extension";
 					#$path					="$uploads_dir/$name";
 					
 					$this->__PRINT_R($datas);

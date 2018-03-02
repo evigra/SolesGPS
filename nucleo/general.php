@@ -31,7 +31,7 @@
 			if(!isset($_SESSION["user"]["l18n"])) 
 				@$_SESSION["user"]["l18n"]			="es_MX";
 			
-			@$_SESSION["user"]["huso_h"]		=6;
+			@$_SESSION["user"]["huso_h"]			=6;
 			
 			$this->sys_date							=date("Y-m-d H:i:s");
 			$this->sys_date2						=date("Y-m-d");
@@ -393,7 +393,7 @@
 
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
     		
-    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
+    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			
    			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
@@ -758,7 +758,7 @@
     			if(isset($option["close"]))	
     			{
     				$this->cerrar_conexion();
-    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$this->serv_error))
+    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
     					echo "<br><b>CONECCION CERRADA</b><br>{$option["e_close"]}";
     			}	
     		}

@@ -39,8 +39,10 @@
 			#array("write"=>"Modificar"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
-	    	);
+	    	);	    	
 	    	$objeto->words["module_body"]   =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+	    	
+	    	
 	    	$objeto->words                  =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
 			
@@ -83,6 +85,7 @@
 		$data										=$objeto->companys($option);
 		$objeto->words["module_body"]	=$data["html"];	
     }
+	
 
 	$objeto->words["module_title"]              ="$module_title Compañias";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);

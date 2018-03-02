@@ -60,7 +60,7 @@
 			
 			if($this->sys_enviroments=="DEVELOPER" AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
-				$this->__PRINT_R($_SERVER["SERVER_NAME"]);
+				#$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 				
 				error_reporting(-1);
 				ini_set('display_errors', 1);				

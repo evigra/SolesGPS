@@ -375,7 +375,11 @@
     		if(isset($option["total"]))
     			$this->sys_sql					="SELECT count(*) as total FROM $from $where  $group $having";
     		else	
+    		{
+    			if($select=="*") $select="$from.*"; 
+    				
     			$this->sys_sql					="SELECT count(*) as total, $select FROM $from $where  $group $having";
+    		}	
     		
     		$total 	            = $this->__EXECUTE($this->sys_sql);
                         

@@ -9,8 +9,6 @@
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
 #	$objeto->words["html_head_css"]             =$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
-	#$objeto->sys_section="kanban";
-
     $module_left=array(
         array("action"=>"Guardar"),
         array("cancel"=>"Cancelar"),
@@ -42,16 +40,12 @@
 	    	);	    	
 	    	$objeto->words["module_body"]   =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
 	    	
-	    	
 	    	$objeto->words                  =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-
 			
 			if($objeto->sys_fields["files_id"]["value"]!="")
 	    		$objeto->words["img_files_id"]	=$objeto->__SHOW_FILE($objeto->sys_fields["files_id"]["value"]);
 	    	else	
 	    		$objeto->words["img_files_id"]	="";
-	    	
-    
     }	
 	elseif($objeto->sys_section=="kanban")
 	{
@@ -85,8 +79,6 @@
 		$data										=$objeto->companys($option);
 		$objeto->words["module_body"]	=$data["html"];	
     }
-	
-
 	$objeto->words["module_title"]              ="$module_title Compañias";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             ="";

@@ -47,7 +47,6 @@
 			    "source"            => array(
 			    	"1"=>"Vigente",
 			    	"0"=>"Cancelado"
-			    
 			    ),
 			),
 			"web"	    =>array(
@@ -152,14 +151,12 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
-        
 		public function __CONSTRUCT()
 		{
 			
 			$this->files_obj	=new files();
 			parent::__CONSTRUCT();
 		}
-
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
     	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
@@ -167,7 +164,6 @@
 
     		parent::__SAVE($datas,$option);
 		}		
-
 		public function companys($option=NULL)
     	{
     		if(is_null($option))	$option=array();

@@ -209,8 +209,7 @@
     		if(count($datas)>0)
     		{
 				$data				=$datas[0];			
-				#$this->__PRINT_R($datas);
-				$return ="<img src=\"http://solesgps.com/modulos/files/file/$id.{$data['extension']}\">";
+				$return ="<img width=\"200\" src=\"http://solesgps.com/modulos/files/file/$id.{$data['extension']}\">";
 			}
 			return 	$return;
 		}

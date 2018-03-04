@@ -111,7 +111,7 @@
 					$path					="$uploads_dir/$return.$extension";
 					#$path					="$uploads_dir/$name";
 					
-					$this->__PRINT_R($datas);
+					#$this->__PRINT_R($datas);
 					move_uploaded_file($tmp_name, $path);							
 				}
 			}	

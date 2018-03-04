@@ -25,9 +25,6 @@ div.report_form table tr
 	font-size:			22; 
 	color:				DimGray;
 }
-ui-tabs, ui-widget, ui-widget-content, ui-corner-all{
-	background-color: 		#fff;   
-}
 
 .module_subtitle{
 	color:				SteelBlue; 

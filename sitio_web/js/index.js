@@ -1573,11 +1573,13 @@ styles:
 			);			    
 		}	    
 	    
+
+				$( "#varias_hojas.form" ).tabs();
+
 	    $("font#setting").click(function(){
 	        $("div#setting").dialog({
 	        	width:"700px"
 	        });
-
 	    });
 	    if($("img#excel").length>0)
 	    {

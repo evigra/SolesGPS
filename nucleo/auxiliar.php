@@ -200,6 +200,21 @@
 
 
 		}
+		public function __SHOW_FILE($id)
+		{			
+			$return="";
+			$this->sys_sql		="SELECT * FROM files WHERE id='$id'";
+    		$datas 	            = $this->__EXECUTE($this->sys_sql);
+    		
+    		if(count($datas)>0)
+    		{
+				$data				=$datas[0];			
+				#$this->__PRINT_R($datas);
+				$return ="<img src=\"http://solesgps.com/modulos/files/file/$id.{$data['extension']}\">";
+			}
+			return 	$return;
+		}
+
 		public function __VIEW($template)
 		{ 
 			

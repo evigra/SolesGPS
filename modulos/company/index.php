@@ -47,7 +47,7 @@
 
 			
 			if($objeto->sys_fields["files_id"]["value"]!="")
-	    		$objeto->words["img_files_id"]	=$objeto->files_obj->__GET_FILE($objeto->sys_fields["files_id"]["value"]);
+	    		$objeto->words["img_files_id"]	=$objeto->__SHOW_FILE($objeto->sys_fields["files_id"]["value"]);
 	    	else	
 	    		$objeto->words["img_files_id"]	="";
 	    	

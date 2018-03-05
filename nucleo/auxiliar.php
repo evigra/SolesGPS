@@ -247,7 +247,7 @@
 				    {
 					    $words["system_company"]        =$_SESSION["company"]["razonSocial"];
 					    $words["system_user"]           =$_SESSION["user"]["name"];
-					    #$words["system_logo"]           =@$_SESSION["company"]["img_files_id_med"];
+					    $words["system_logo"]           =$this->__SHOW_FILE($_SESSION["company"]["files_id"]);
 					    $words["system_img"]           	=$this->__HTML_USER();
 					    $words["sys_page"]           	=@$this->request["sys_page"];
 					    $words["companys"]           	=@$this->__COMPANYS();
@@ -275,6 +275,7 @@
 				$view	=$this->__TEMPLATE($_SESSION["pdf"]["template"]);
 				
 				$this->words["sys_empresa"]		=$_SESSION["company"]["nombre"];
+				$this->words["system_logo"]		=$words["system_logo"];
 				$this->words["sys_title"]		=$_SESSION["pdf"]["sys_title"];
 				$this->words["sys_subtitle"]	=$_SESSION["pdf"]["sys_subtitle"];
 				$this->words["sys_modulo"]		=$template;

@@ -1,3 +1,18 @@
+
+	
+ 
+
+    
+    
+  
+   
+    
+   
+                   
+   
+ 
+
+
 	function auto_item_id(ui)
 	{
 		$("input#item_id").val(ui.item.clave);					
@@ -16,16 +31,33 @@
 	}
 	function subtotal()
 	{
-		var cantidad 			=$("input#cantidad").val();
-		var precio 				=$("input#precio").val();
-		var descuento 			=$("input#descuento").val();										
+		var cantidad=0;
+		var precio=0;
+		var descuento=0;
+		var subtotal=0;
 		
-		var subtotal_articulo 	= (cantidad * precio) - descuento;
-												
-		$("input#subtotal").val(subtotal_articulo);
+		if(!isNaN(parseFloat($("#cantidad.movimientos").val())))	
+			cantidad=parseFloat($("#cantidad.movimientos").val());
+			
+		if(!isNaN(parseFloat($("#precio.movimientos").val())))	
+			precio=parseFloat($("#precio.movimientos").val());
+			
+		if(!isNaN(parseFloat($("#descuento.movimientos").val())))	
+			descuento=parseFloat($("#descuento.movimientos").val());
+
+		subtotal=(cantidad*precio)-descuento;
+
+		$("#subtotal.movimientos").val(subtotal);
 	}		
 	$(document).ready(function()
 	{	
+		$("input.movimientos_ids").on('keydown', function (e) 
+		{			
+		    if (e.keyCode == 13) 
+			{						
+				subtotal();							
+			}	
+		});
 		
 	
 		

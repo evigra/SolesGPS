@@ -20,7 +20,7 @@
 			echo "<pre>" . print_r($response) . "</pre>";
 			
 
-			$postvars = array( 'key'=>'25d55ad283aa400af464c76d713c07ad', 'nip'=>'25d55ad283aa400af464','transID'=>$response["data"]["transID"]);
+			$postvars = array( 'key'=>'25d55ad283aa400af464c76d713c07ad', 'nip'=>'25d55ad283aa400af464','transID'=>$response->data->transID);
 			$url = "https://taecel.com/app/api/StatusTXN";
 			
 			curl_setopt($ch,CURLOPT_URL,$url);

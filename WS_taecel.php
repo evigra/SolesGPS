@@ -1,4 +1,5 @@
 <?php
+	echo "LALO";
 	$usuarios_sesion	="EXECUTE_CRONS";
 	$usuarios_sesion	="PHPSESSID";
 	
@@ -9,7 +10,7 @@
 	#if(!isset($_SESSION))
 	require_once("nucleo/sesion.php");	
 
-	echo "LALO";
+	
 
 	$objeto				=new devices();	
 	$objeto->cron_saldo();

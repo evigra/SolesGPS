@@ -1,9 +1,13 @@
 <?php
 			$ch = curl_init();
 
-			$postvars = array( 'key'=>'25d55ad283aa400af464c76d713c07ad', 'nip'=>'25d55ad283aa400af464');
-			$url = "https://taecel.com/app/api/getProducts";
+			#$postvars = array( 'key'=>'25d55ad283aa400af464c76d713c07ad', 'nip'=>'25d55ad283aa400af464');
+			#$url = "https://taecel.com/app/api/getProducts";
 			
+			$postvars = array( 'key'=>'25d55ad283aa400af464c76d713c07ad', 'nip'=>'25d55ad283aa400af464','producto'=>'TEL050','referencia'=>'3121204804');
+			$url = "https://taecel.com/app/api/RequestTXN";
+
+
 			
 			curl_setopt($ch,CURLOPT_URL,$url);
 			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
@@ -16,6 +20,7 @@
 			echo $response;
 
 ?>
+<!--
 <html>
 	<head>
         <script src="sitio_web/js/jquery-1.10.2.js"></script>
@@ -42,7 +47,7 @@
             }			
         });
         //*/
-        ///*
+        /*
         var data_real
 		$.ajax(
 		{
@@ -153,4 +158,4 @@
 */
 	</script>
 </html>
-
+-->

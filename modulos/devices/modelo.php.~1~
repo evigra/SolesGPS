@@ -405,6 +405,55 @@
     		$return							=$this->__BROWSE($option);    		
     		return $return["data"];
     	}			
+		public function cron_saldo()
+    	{    
+    		/*		    		
+			$comando_sql		="
+				SELECT left(d.telefono,10) as referencia, 'TEL050' as producto
+				FROM devices d join company c on c.id=d.company_id  
+				WHERE 1=1 
+					AND 
+					(bloqueo!=1
+					OR bloqueo is NULL)
+					AND c.estatus=1
+					AND d.telcel=1			
+			";
+			$datas	=$this->__EXECUTE($comando_sql);
+			*/
+			#foreach($datas as $row)
+			{	
+				$row=array();
+				$row["producto"]	="TEL050";
+				$row["referencia"]	="3121204804";				
+		
+				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
+			}
+    	}			
+		public function WS_TAECEL($data)
+    	{    		    		
+				$sesion 			=array("key"=>"25d55ad283aa400af464c76d713c07ad", "nip"=>"25d55ad283aa400af464");
+				$url 				="https://taecel.com/app/api/RequestTXN";
+				$vars 				=$sesion
+				#$vars["producto"]	="TEL050";
+				#$vars["referencia"]	="3121204804";				
+				
+				$vars["producto"]	=$data["producto"];
+				$vars["referencia"]	=$data["referencia"];				
+
+
+				$option				=array("url"=>$url,"post"=>$vars);
+				$respuesta1			=json_decode($this->__curl($option));
+				
+				$url 				="https://taecel.com/app/api/StatusTXN";
+				$vars 				=$sesion
+				$vars["transID"]	=$respuesta1->data->transID;
+						
+				$option				=array("url"=>$url,"post"=>$vars);
+				$respuesta2			=json_decode($this->__curl($option));
+				
+				return array($respuesta1,$respuesta2);
+    	}			
+
 		public function devices_html($option=NULL)
     	{
     		$return="";

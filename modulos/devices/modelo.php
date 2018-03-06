@@ -463,11 +463,11 @@
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 
-			#foreach($datas as $row)
+			foreach($datas as $row)
 			{	
-				$row=array();
-				$row["producto"]	="TEL050";
-				$row["referencia"]	="3121204804";				
+				#$row=array();
+				#$row["producto"]	="TEL050";
+				#$row["referencia"]	="3121204804";				
 		
 				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
 			}

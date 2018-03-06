@@ -200,6 +200,23 @@
 
 
 		}
+		public function __curl($option)
+		{
+			$ch = curl_init();
+
+			curl_setopt($ch,CURLOPT_URL,$option["url"]);
+			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+			curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
+			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
+			curl_setopt($ch,CURLOPT_TIMEOUT, 20);
+	
+			$return =curl_exec($ch);
+			curl_close ($ch);
+			
+			return $return;
+		}
+
 		public function __SHOW_FILE($id)
 		{			
 			$return="";

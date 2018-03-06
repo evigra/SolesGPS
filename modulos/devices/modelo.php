@@ -420,9 +420,7 @@
 			$datas	=$this->__EXECUTE($comando_sql);
 			foreach($datas as $row)
 			{			
-				$this->__PRINT_R(
-				$this->WS_TAECEL($row)
-				);
+				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
 			}
     	}			
 		public function WS_TAECEL($data)

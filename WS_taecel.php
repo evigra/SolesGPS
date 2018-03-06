@@ -9,6 +9,8 @@
 	#if(!isset($_SESSION))
 	require_once("nucleo/sesion.php");	
 
+	echo "LALO";
+
 	$objeto				=new devices();	
 	$objeto->cron_saldo();
 	

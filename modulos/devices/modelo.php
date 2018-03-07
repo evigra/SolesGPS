@@ -493,7 +493,7 @@
 
 			foreach($datas as $row)
 			{	
-				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
+				echo "<br>" . print_r( 	$this->WS_TAECEL($row) 		) ;
 			}
     	}
   		  				

@@ -452,14 +452,15 @@
     	{    
 		    		
 			$comando_sql		="
-				SELECT left(d.telefono,10) as referencia, 'TEL050' as producto
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND 
 					(bloqueo!=1
 					OR bloqueo is NULL)
 					AND c.estatus=1
-					AND d.telcel=1			
+					AND d.telcel=1
+					AND(d.recargado is null  OR    DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

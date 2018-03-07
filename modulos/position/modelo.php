@@ -221,7 +221,17 @@
 				foreach($position_data as $row)
 				{
 					echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
-					$devices_tr		.="<tr><td><img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\"></td><td>{$row["NOMBRE"]}</td><td>{$row["EMPRESA"]}</td><td>{$row["REPORTO_HACE"]}</td><td>{$row["TELEFONO"]}</td></tr>";
+					$devices_tr		.="
+						<tr>
+							<td><img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\"></td>
+							<td>{$row["NOMBRE"]}</td>
+							<td>{$row["EMPRESA"]}</td>
+							<td>{$row["REPORTO_HACE"]}</td>
+							<td><a href='tel:{$row["TELEFONO"]}'>{$row["TELEFONO"]}</a></td>
+							
+							
+						</tr>
+					";
 				}
 				$mensaje   = "
 					<html>

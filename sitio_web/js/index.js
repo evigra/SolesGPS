@@ -21,6 +21,7 @@
 	var coordinate_active		=undefined;
 	var simulation_action		="stop";
 	var simulation_time			=100;
+	var simulation_stop			=0;
 	var waypts					=new Array();
 	var devices_all				=new Array();
 	var labels					=new Array();		
@@ -1294,6 +1295,26 @@ styles:
         {        	
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
+	    	
+	    	
+	    	if(vehicle["sp"]>0)	
+	    	{
+	    		simulation_stop=0;
+	    		simulation_time=600;
+	    	}	
+	    	else	
+	    	{
+	    		if(simulation_stop<10)
+	    		{
+	    			simulation_stop=simulation_stop+1;
+	    			simulation_time=300;
+	    		}	
+	    		else
+	    		{
+	    			simulation_time=5;
+	    		}	
+	    	}	
+	    	
 	    	vehicle["se"]		="simulator";
 	    	locationsMap(vehicle); 
 	    	if(section=="historyStreet")			execute_streetMap(vehicle);

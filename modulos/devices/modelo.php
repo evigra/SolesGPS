@@ -473,7 +473,7 @@
 					$comando_sql		="
 						UPDATE devices SET recargado='{$row["actualizado"]}'
 						WHERE 1=1 
-							id='{$row["id"]}'
+							AND id='{$row["id"]}'
 					";
 					$datas	=$this->__EXECUTE($comando_sql);
 

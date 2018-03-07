@@ -232,6 +232,7 @@
 				$option				=array("url"=>$url,"post"=>$vars);
 				$respuesta1			=json_decode($this->__curl($option));
 				
+				
 				$url 				="https://taecel.com/app/api/StatusTXN";
 				$vars 				=$sesion;
 				$vars["transID"]	=$respuesta1->data->transID;
@@ -240,12 +241,13 @@
 				$respuesta2			=json_decode($this->__curl($option));
 				
 				return array(
-					"producto"=>$data["producto"],
+					"producto"	=>$data["producto"],
 					"referencia"=>$data["referencia"],
-					"mensaje1"=>$respuesta1->message,
-					"transID"=>$respuesta1->data->transID,
-					"mensaje2"=>$respuesta2->message,
-					"status"=>$respuesta2->data->status,
+					"mensaje1"	=>$respuesta1->message,
+					"transID"	=>$respuesta1->data->transID,
+					"folio"		=>$respuesta1->data->Folio,
+					"mensaje2"	=>$respuesta2->message,
+					"status"	=>$respuesta2->data->Status,
 				);
     	}			
 

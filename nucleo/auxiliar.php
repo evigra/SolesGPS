@@ -208,8 +208,8 @@
 			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
-			curl_setopt($ch,CURLOPT_TIMEOUT, 20);
+			#curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
+			#curl_setopt($ch,CURLOPT_TIMEOUT, 20);
 	
 			$return =curl_exec($ch);
 			curl_close ($ch);

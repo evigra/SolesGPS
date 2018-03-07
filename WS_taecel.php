@@ -13,6 +13,6 @@
 	
 
 	$objeto				=new devices();	
-	$objeto->cron_saldo();
+	$objeto->prueba_saldo();
 	
 ?>

@@ -465,38 +465,38 @@
 
 			foreach($datas as $row)
 			{	
-				#$row=array();
-				#$row["producto"]	="TEL050";
-				#$row["referencia"]	="3121204804";				
-		
+				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
+			}
+    	}
+		public function prueba_saldo()
+    	{    
+			$datas=array(
+				array("referencia"=>"5555555505", "producto"=>"TEL010"),
+				array("referencia"=>"5555555510", "producto"=>"TEL050"),
+				array("referencia"=>"5555555515", "producto"=>"TEL100"),
+				array("referencia"=>"5555555520", "producto"=>"TEL150"),
+				array("referencia"=>"5555555525", "producto"=>"TEL200"),
+				array("referencia"=>"5555555530", "producto"=>"MOV010"),
+				array("referencia"=>"5555555540", "producto"=>"MOV050"),
+				array("referencia"=>"5555555560", "producto"=>"MOV100"),
+				array("referencia"=>"5555555565", "producto"=>"MOV120"),
+				array("referencia"=>"5555555200", "producto"=>"MOV150"),
+				array("referencia"=>"871235412635", "producto"=>"SKY000", "monto"=>"95"),
+				array("referencia"=>"6589745213", "producto"=>"TMX001", "monto"=>"100"),
+				array("referencia"=>"125478965412365478965230126654", "producto"=>"CFE000", "monto"=>"260"),
+				array("referencia"=>"9854123547", "producto"=>"MEG000", "monto"=>"131"),
+				array("referencia"=>"27458965324125", "producto"=>"DSH000", "monto"=>"103"),
+				array("referencia"=>"4578326541", "producto"=>"IZZ000", "monto"=>"155"),
+				array("referencia"=>"3456987", "producto"=>"MAX000", "monto"=>"177"),
+				
+			);		    		
+
+			foreach($datas as $row)
+			{	
 				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
 			}
     	}
   		  				
-		public function WS_TAECEL($data)
-    	{    		    		
-				$sesion 			=array("key"=>"25d55ad283aa400af464c76d713c07ad", "nip"=>"25d55ad283aa400af464");
-				$url 				="https://taecel.com/app/api/RequestTXN";
-				$vars 				=$sesion;
-				#$vars["producto"]	="TEL050";
-				#$vars["referencia"]	="3121204804";				
-				
-				$vars["producto"]	=$data["producto"];
-				$vars["referencia"]	=$data["referencia"];				
-
-
-				$option				=array("url"=>$url,"post"=>$vars);
-				$respuesta1			=json_decode($this->__curl($option));
-				
-				$url 				="https://taecel.com/app/api/StatusTXN";
-				$vars 				=$sesion;
-				$vars["transID"]	=$respuesta1->data->transID;
-						
-				$option				=array("url"=>$url,"post"=>$vars);
-				$respuesta2			=json_decode($this->__curl($option));
-				
-				return array($respuesta1,$respuesta2);
-    	}			
 		
 	}
 ?>

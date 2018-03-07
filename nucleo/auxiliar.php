@@ -216,6 +216,38 @@
 			
 			return $return;
 		}
+		public function WS_TAECEL($data)
+    	{    		    		
+				$sesion 			=array("key"=>"25d55ad283aa400af464c76d713c07ad", "nip"=>"25d55ad283aa400af464");
+				$url 				="https://taecel.com/app/api/RequestTXN";
+				$vars 				=$sesion;
+				#$vars["producto"]	="TEL050";
+				#$vars["referencia"]	="3121204804";				
+				
+				$vars["producto"]	=$data["producto"];
+				$vars["referencia"]	=$data["referencia"];				
+				if(isset($data["monto"]))
+					$vars["monto"]=$data["monto"];				
+
+				$option				=array("url"=>$url,"post"=>$vars);
+				$respuesta1			=json_decode($this->__curl($option));
+				
+				$url 				="https://taecel.com/app/api/StatusTXN";
+				$vars 				=$sesion;
+				$vars["transID"]	=$respuesta1->data->transID;
+						
+				$option				=array("url"=>$url,"post"=>$vars);
+				$respuesta2			=json_decode($this->__curl($option));
+				
+				return array(
+					"producto"=>$data["producto"],
+					"referencia"=>$data["referencia"],
+					"mensaje1"=>$respuesta1->message,
+					"transID"=>$respuesta1->data->transID,
+					"mensaje2"=>$respuesta2->message,
+					"status"=>$respuesta2->data->status,
+				);
+    	}			
 
 		public function __SHOW_FILE($id)
 		{			

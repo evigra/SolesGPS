@@ -466,7 +466,18 @@
 
 			foreach($datas as $row)
 			{	
-				$this->__PRINT_R( 	$this->WS_TAECEL($row) 		);
+				$respuesta=$this->WS_TAECEL($row);
+				$this->__PRINT_R( 	$respuesta		);
+				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+				{
+					$comando_sql		="
+						UPDATE devices SET recargado='{$row["actualizado"]}'
+						WHERE 1=1 
+							id='{$row["id"]}'
+					";
+					$datas	=$this->__EXECUTE($comando_sql);
+
+				}				
 			}
     	}
 		public function prueba_saldo()

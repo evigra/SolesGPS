@@ -245,7 +245,7 @@
 					"referencia"=>$data["referencia"],
 					"mensaje1"	=>$respuesta1->message,
 					"transID"	=>$respuesta1->data->transID,
-					"folio"		=>$respuesta1->data->Folio,
+					"folio"		=>$respuesta2->data->Folio,
 					"mensaje2"	=>$respuesta2->message,
 					"status"	=>$respuesta2->data->Status,
 				);

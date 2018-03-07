@@ -52,7 +52,7 @@
 					)
 				)					
 		";
-		echo $comando_sql;
+		#echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	
 		#https://www.facebook.com/foro.militar.esp/videos/vb.993885607353760/1039612849447702/?type=2&theater
 		
@@ -123,9 +123,7 @@
 			   		////////				        
 					var v 	={st:\"{$data["estatus"]}\",dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
 					locationsMap(v);				
-					$txt_streetview
-					
-					
+					$txt_streetview			
 				";
 			}
 		}	

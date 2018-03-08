@@ -35,6 +35,14 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"nombre"	    	=>array(
+			    "title"             => "Empresa",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),
+
 			"rfc"	    	=>array(
 			    "title"             => "RFC",
 			    "showTitle"         => "si",
@@ -118,13 +126,13 @@
 			parent::__CONSTRUCT();
 		}
 				
-
+		/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];    	        	    
-    		parent::__SAVE($datas,$option);
+    		return parent::__SAVE($datas,$option);
 		}		
-
+		*/
 		public function __BROWSE($option=NULL)
     	{
     		if(is_null($option))	$option=array();

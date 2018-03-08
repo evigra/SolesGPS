@@ -1708,9 +1708,12 @@
 						else                            $fin    =$return["total"];
 					}			    		
 		    	}	
-
+		    	
+		    	#$this->__PRINT_R($option);	
 				#######################								
-				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);			
+				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
+				
+				#$this->__PRINT_R($view_title_data);	
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
@@ -2157,6 +2160,7 @@
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
+			#$this->__PRINT_R($option);
 			if(isset($option["template_title"]) AND !in_array(@$option["template_title"],$this->sys_false))
 			{
 				

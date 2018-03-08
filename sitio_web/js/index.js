@@ -1304,7 +1304,7 @@ styles:
 	    	}	
 	    	else	
 	    	{
-	    		if(simulation_stop<10)
+	    		if(simulation_stop<20)
 	    		{
 	    			simulation_stop=simulation_stop+1;
 	    			simulation_time=300;

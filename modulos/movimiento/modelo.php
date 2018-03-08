@@ -84,7 +84,8 @@
     		
     		## GUARDAR USUARIO
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
-			#$datas["registro"]=$this->sys_date;
+			$datas["registro"]			=$this->sys_date;
+			$datas["company_id"]		=$_SESSION["company"]["id"];
 			#$option["echo"]=$datas["total"];
     		
     	    $return= parent::__SAVE($datas,$option);

@@ -86,7 +86,7 @@
 		{  
 				$view	=$this->__TEMPLATE("sitio_web/html/menu_seguimiento");
 				
-				$words["a"]		=$_SESSION["seguimiento"];
+				$words["a"]		=$_SESSION["seguimiento_md5"];
 				
 
 				return	$this->__REPLACE($view,$words);

@@ -12,7 +12,7 @@
 	
 	$objeto										=new seguimientos();
 	#$objeto->__SESSION();
-	$objeto->__PRINT_R($_REQUEST);
+	#$objeto->__PRINT_R($_REQUEST);
 	$_SESSION["module"]=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	

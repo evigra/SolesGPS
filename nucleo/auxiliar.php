@@ -82,6 +82,16 @@
 		{  
 
 		}    	
+		public function __MENU_SEGUIMIENTO()
+		{  
+				$view	=$this->__TEMPLATE("sitio_web/html/menu_seguimiento");
+				
+				$words["a"]		=$_SESSION["seguimiento"];
+				
+
+				return	$this->__REPLACE($view,$words);
+		}    	
+
 		public function __FIND_FIELD_ID()
 		{  
 			# BUSCA EL CAMPO y VALOR PRIMARY KEY
@@ -2188,6 +2198,7 @@
     	##############################################################################        
 		public function __MESSAGE($message,$option=NULL)
 		{
+			/*
 			if(is_null($option))	$option=array();
 			
 			if(isset($option["template"]))		$template 	=$option["template"];
@@ -2230,6 +2241,7 @@
 		    
 			
 			return $return;
+			*/
 		}    
 		function pointInPolygon($point, $polygon, $pointOnVertex = true) 
 		{

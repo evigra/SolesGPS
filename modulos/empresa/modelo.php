@@ -6,6 +6,7 @@
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
+		var $sys_enviroments	="DEVELOPER";
 		var $sys_fields		=array(
 				"id"	    =>array(
 			    "title"             => "id",
@@ -122,19 +123,20 @@
 		public function __CONSTRUCT()
 		{
 			
-			$this->files_obj	=new files();	
+			#$this->files_obj	=new files();	
 			parent::__CONSTRUCT();
 		}
 				
-		/*
+		
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];    	        	    
     		return parent::__SAVE($datas,$option);
 		}		
-		*/
+		
 		public function __BROWSE($option=NULL)
     	{
+    		
     		if(is_null($option))	$option=array();
 			#$option["echo"]   =array("EMPRESA");
 			

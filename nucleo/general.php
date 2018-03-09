@@ -490,7 +490,9 @@
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
-					$data_anterior=$this->__BROWSE($this->sys_primary_id);				
+					$option_browse=array();
+					$option_browse["where"]=array("{$this->sys_primary_field}='{$this->sys_primary_id}'");
+					$data_anterior=$this->__BROWSE($option_browse);				
 				}		
 				foreach($datas as $campo=>$valor)
 				{					
@@ -513,8 +515,8 @@
 						if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
 						{
 							if(!is_array($valor))	
-							{									
-								if($data_anterior[0][$campo]!=$valor)		
+							{					
+								if($data_anterior["data"][0][$campo]!=$valor)		
 									@$modificados.=" 
 										<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
 									";

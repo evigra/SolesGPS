@@ -25,6 +25,15 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"attributes"	    	=>array(
+			    "title"             => "atributos",
+			    "title_filter"		=> "Dispositivo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),
+
 			"bastidor"	    	=>array(
 			    "title"             => "Bastidor",
 			    "showTitle"         => "si",
@@ -292,6 +301,7 @@
 			$option["select"]["SEC_TO_TIME(TIMESTAMPDIFF(SECOND, d.lastUpdate, now()))"]		="REPORTO HACE";
 			$option["select"]["lastUpdate"]		="ULTIMO REPORTE";
 			
+			
 			$option["from"]						="device d LEFT JOIN company c ON d.company_id = c.id";
 			
 			$option["where"][]					="dev.company_id NOT IN (1)";
@@ -321,6 +331,7 @@
 			$option["select"]   =array(
 					"distinct(d.id)"																							=>"d_id",
 					"d.*",
+					"md5(d.id)"=>"attributes",					
 					"IF(image!=0,CONCAT('../sitio_web/img/car/vehiculo_',image,'/i225.png'),'../modulos/device/img/cell.png')"	=>"file_id",
 					"IF(vehicle=1,'../modulos/device/img/car.png','../modulos/device/img/cell.png')"							=>"file_id1",
 			);

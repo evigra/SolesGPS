@@ -3,7 +3,7 @@
 	require_once("modelo.php");
 
 	$objeto										=new seguimientos_historico();
-	$objeto->__SESSION();
+	#$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
 	$_SESSION["module"]=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;

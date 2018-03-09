@@ -1,8 +1,8 @@
 <?php
     require_once("../../../nucleo/sesion.php");
-    require_once("../../../nucleo/general.php");
-	require_once("../../../modulos/position/modelo.php");
-	require_once("../modelo.php");
+    #require_once("../../../nucleo/general.php");
+	#require_once("../../../modulos/position/modelo.php");
+	#require_once("../modelo.php");
 		
 	$objeto				=new seguimientos_historico();
 		
@@ -14,6 +14,10 @@
 		"truncate((extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000 ,1)"	=>"milage",
 		"p.attributes"	=>"p_attributes",		
 	);	
+				$option["from"]		="
+					positions p	 	join 
+					devices d 		on p.deviceid=d.id
+				";	
 
 	$option["where"][]	="d.id={$_SESSION["seguimiento_id"]}";
 	$option["limit"]	="1000";
@@ -21,7 +25,7 @@
 
 
 	#$option["echo"]		="POSITION";			
-	$datas				=$objeto->position($option);
+	$datas				=$objeto->__BROWSE($option);
 
 	$ajax="";
     foreach($datas["data"] as $data)

@@ -1,7 +1,8 @@
 <?php
-	require_once("modulos/position/modelo.php");
-	require_once("modelo.php");
-
+	#require_once("modulos/position/modelo.php");
+	#require_once("modelo.php");
+	
+	require_once("nucleo/sesion.php");
 	$objeto										=new seguimientos_historico();
 	#$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
@@ -50,32 +51,10 @@
     	//
     }
     
-    $module_left=array(
-        array(
-        	"id"	=>"year",
-        	"title"	=>"AÑO",
-        	"group"	=>"",
-        ),
-        array(
-        	"id"	=>"month",
-        	"title"	=>"MES",
-        	"group"	=>"",
-        ),
-
-        array(
-        	"id"	=>"day",
-        	"title"	=>"DIA",
-        	"group"	=>"",
-        ),
-    );
         
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO
 	$objeto->words["html_head_css"]              =$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
-	#$files_css=array();
-	#$files_css[]="../{$objeto->sys_module}css/map1";
-	#$files_css[]="../{$objeto->sys_module}css/map2";
-	#$objeto->words["html_head_css"]             =$objeto->__FILE_CSS($files_css);								# ARCHIVOS CSS DEL MODULO
 
 	$objeto->words["system_menu"]           	=$objeto->__MENU_SEGUIMIENTO();    		
 

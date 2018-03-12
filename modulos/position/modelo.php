@@ -1070,7 +1070,9 @@
 					positions p	 	join 
 					devices d 		on p.deviceid=d.id
 				";	
-			$option["where"][]	="d.company_id={$_SESSION["company"]["id"]}";
+			if(isset($_SESSION["company"]["id"]))	
+				$option["where"][]	="d.company_id={$_SESSION["company"]["id"]}";
+			
 			if(!isset($option["order"]))
 				$option["order"]	="date DESC";			
 			

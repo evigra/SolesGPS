@@ -12,7 +12,7 @@
 	
 	$objeto										=new seguimientos();
 	#$objeto->__SESSION();
-	#$objeto->__PRINT_R($_REQUEST);
+
 	$_SESSION["module"]=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
@@ -25,6 +25,8 @@
 	
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
 	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/streetmap");	
+	
+	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields); 
     	    	    
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO
@@ -36,9 +38,9 @@
 	
 	#$objeto->words[""]
 	
-    $objeto->words["html_head_description"] =   "EN LA EMPRESA SOLESGPS, CONTAMOS CON UN MODULO PARA ADMINISTRAR EL REGISTRO DE POSICIONES RECIBIDAS DURANTE EL RASTREO SATELITAL.";
+    $objeto->words["html_head_description"] =   "Solicito su colaboracion, se han robado mi vehiculo.  ";
     $objeto->words["html_head_keywords"]    =   "GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
-    $objeto->words["html_head_title"]           ="SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";
+    $objeto->words["html_head_title"]           ="NECESITO AYUDA :: SE ACABAN DE ROBAR MI VEHICULO";
 
     $objeto->html                               =$objeto->__VIEW_TEMPLATE("front_end", $objeto->words);
     $objeto->__VIEW($objeto->html);

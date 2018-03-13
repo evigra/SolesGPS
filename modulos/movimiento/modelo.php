@@ -453,7 +453,7 @@
    		public function __REPORTE($option="")
     	{			
 			if($option=="")	$option=array();			
-			$option["template_title"]	                = $this->sys_module . "html/report_title";
+			#$option["template_title"]	                = $this->sys_module . "html/report_title";
 			$option["template_body"]	                = $this->sys_module . "html/report_body";
 	
 			

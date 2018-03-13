@@ -2234,10 +2234,8 @@
 			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
 			
 			#if(isset($option["template_title"]))
-			if(isset($option["template_title"]) AND $option["template_title"] != "" AND in_array($option["template_title"],$this->sys_false))
-			{	
-				$this->__PRINT_R(in_array($option["template_title"],$this->sys_false));
-							
+			if(isset($option["template_title"]) AND $option["template_title"] != "")
+			{				
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				

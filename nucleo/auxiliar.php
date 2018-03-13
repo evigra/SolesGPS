@@ -1747,7 +1747,7 @@
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		 
 		    		
-		    		$this->__PRINT_R($browse);
+		    		#$this->__PRINT_R($browse);
 
 					if(isset($this->sys_memory) AND isset($template_option["class_field"]))
 					{												
@@ -1779,13 +1779,16 @@
 		    	}	
 		    	
 		    	#$this->__PRINT_R($option);	
-				#######################								
+				#######################							
+				
+				/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
 				
 					
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
+				*/
 								
 		    	$view_create	="";
 		    	$button_create	="";

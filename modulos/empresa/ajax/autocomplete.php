@@ -33,6 +33,5 @@
 		);				
 	}		
 	echo json_encode($data_json);
-
 ?>
 

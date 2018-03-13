@@ -25,7 +25,6 @@
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
 			    "title_filter"      => "Empresa",	
-			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "source"           	=> "../modulos/empresa/ajax/autocomplete.php",

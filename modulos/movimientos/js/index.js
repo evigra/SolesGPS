@@ -1,18 +1,3 @@
-
-	
- 
-
-    
-    
-  
-   
-    
-   
-                   
-   
- 
-
-
 	function auto_item_id(ui)
 	{
 		$("input#item_id").val(ui.item.clave);					
@@ -23,10 +8,17 @@
 
 		var lista=1;
 		
-		if(compra>0) 	lista=compra;
-		if(vende>0) 	lista=vende;
-
-		$("input#precio").val(ui.item["vende"+lista]);					
+		if(compra>0)
+		{ 	
+			lista=compra;
+			tipo="compra";
+		}
+		if(vende>0)
+		{ 	
+			lista=vende;
+			tipo="vende";
+		}	
+		$("input#precio").val(ui.item[tipo+lista]);					
 		subtotal();
 	}
 	function subtotal()
@@ -50,19 +42,17 @@
 		$("#subtotal.movimientos").val(subtotal);
 	}		
 	$(document).ready(function()
-	{	
-		$("input.movimientos_ids").on('keydown', function (e) 
-		{			
-		    if (e.keyCode == 13) 
-			{						
-				subtotal();							
-			}	
-		});
+	{
 		
-	
-		
-		
-		
+		$("input.movimientos_ids")
+			.focusout(function(){subtotal();})
+			.on('keydown', function (e) 
+			{			
+				if (e.keyCode == 13) 
+				{						
+					subtotal();							
+				}	
+			});
 			
 	});	
 		

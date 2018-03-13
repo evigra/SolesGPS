@@ -1084,8 +1084,10 @@
 					    {
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 					    	
-					    	
+					    	$this->__PRINT_R("1".$valor);
 					    	$json=$this->__JSON_AUTOCOMPLETE($valor);
+					    	
+					    	$this->__PRINT_R("2".$json);
 					    	
 					    	if(isset($this->request["auto_$campo"]))	$fields["auto_$campo"]["value"]	=$this->request["auto_$campo"];
 					    	else										$fields["auto_$campo"]["value"]	=@$json[0]->label;
@@ -1096,7 +1098,7 @@
 					    	$label	=$fields["auto_$campo"]["value"];
 							
 							
-							$this->__PRINT_R("1".$json);
+							
 							#$this->__PRINT_R("1".$label);
 							
 					    	if(isset($this->sys_fields["$campo"]["class_field_l"]))

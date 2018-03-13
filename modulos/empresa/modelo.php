@@ -130,7 +130,10 @@
 		
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
-    	    $datas["company_id"]		=$_SESSION["company"]["id"];    	        	    
+    	    $datas["company_id"]		=$_SESSION["company"]["id"];    
+    	    
+    	    if(!isset($datas["razon_social"]))	$datas["razon_social"]=$datas["nombre"];
+    	    	        	    
     		return parent::__SAVE($datas,$option);
 		}		
 		

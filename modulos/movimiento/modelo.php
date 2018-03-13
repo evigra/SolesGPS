@@ -146,10 +146,14 @@
 			if($this->request["sys_action_movimiento"]=="__SAVE_pagar")
 			{
 				$this->__PRINT_R($this->request);
+								
+				$datas["movimiento_id"]						=$this->sys_primary_id;
+				$datas["tipo"]								="PAG";
 				
+				$this->request["sys_id"]					="";
+				$this->request["sys_id_movimiento"]			="";
+				$this->request["sys_section_movimiento"]	="create";
 				
-				$datas["movimiento_id"]	=$this->sys_primary_id;
-				$datas["tipo"]			="PAG";
 				$this->sys_primary_id	="";
 			}
 			#$option["echo"]=$datas["total"];

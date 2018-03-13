@@ -2234,7 +2234,7 @@
 			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
 			
 			#if(isset($option["template_title"]))
-			if(isset($option["template_title"]) AND in_array($option["template_title"],$this->sys_false))
+			if(isset($option["template_title"]) AND $option["template_title"] != "" AND in_array($option["template_title"],$this->sys_false))
 			{	
 				$this->__PRINT_R(in_array($option["template_title"],$this->sys_false));
 							

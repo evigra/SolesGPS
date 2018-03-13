@@ -14,11 +14,12 @@
 	{
 		foreach($data["data"] as $row)
 		{
-			$data_json				=$row;	
-			$data_json['label']		=$row["nombre"];
-			$data_json['clave']		=$row["id"];
-			$data_json['venta']		=$row["cliente"];
-			$data_json['compra']	=$row["proveedor"];
+			$data_json[]=array(
+				'label'     => $row["nombre"],
+				'clave'		=> $row["id"],
+				'venta'		=> $row["cliente"],
+				'compra'	=> $row["proveedor"],
+			);			
 		}
 	}
 	else

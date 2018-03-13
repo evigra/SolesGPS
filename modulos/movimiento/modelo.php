@@ -145,6 +145,9 @@
 			
 			if($this->request["sys_action_movimiento"]=="__SAVE_pagar")
 			{
+				$this->__PRINT_R($this->request);
+				
+				
 				$datas["movimiento_id"]	=$this->sys_primary_id;
 				$datas["tipo"]			="PAG";
 				$this->sys_primary_id	="";

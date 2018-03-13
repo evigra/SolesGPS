@@ -1095,7 +1095,9 @@
 					    	
 					    	$label	=$fields["auto_$campo"]["value"];
 							
-							$this->__PRINT_R("1".$label);
+							
+							$this->__PRINT_R("1".$json);
+							#$this->__PRINT_R("1".$label);
 							
 					    	if(isset($this->sys_fields["$campo"]["class_field_l"]))
 					    	{
@@ -1104,7 +1106,7 @@
 					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];									
 					    		}
 					    	}
-					    	$this->__PRINT_R("1".$label);
+					    	#$this->__PRINT_R("1".$label);
 					    	$js_auto="";
 					    	if(isset($this->sys_memory) AND $this->sys_memory!="")
 					    		$js_auto="appendTo: \"div#create_{$this->sys_name}\",";

@@ -1767,8 +1767,9 @@
 		    		$option["title"]				= @$browse["title"];
 					$option["title_pdf"]			= @$browse["title_pdf"];
 
-					$view_title						=@$browse["title"];
-					$view_title_pdf					=@$browse["title_pdf"];
+					#$this->__PRINT_R($browse["title"]);
+					#$view_title						=@$browse["title"];
+					#$view_title_pdf					=@$browse["title_pdf"];
 						
 		    		
 		    		if(isset($browse["total"]))		
@@ -1786,14 +1787,14 @@
 		    	#$this->__PRINT_R($option);	
 				#######################							
 				
-				/*	
+				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
 				
 					
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
-				*/
+				#*/
 								
 		    	$view_create	="";
 		    	$button_create	="";
@@ -2230,9 +2231,13 @@
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
 			#$this->__PRINT_R($option);
-			if(isset($option["template_title"]) AND !in_array(@$option["template_title"],$this->sys_false))
-			{
-				
+			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
+			
+			#if(isset($option["template_title"]))
+			if(in_array($option["template_title"],$this->sys_false))
+			{	
+				$this->__PRINT_R(in_array($option["template_title"],$this->sys_false));
+							
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				

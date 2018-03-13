@@ -45,6 +45,13 @@
 		    array("cancel"=>"Cancelar"),
 		);
 
+
+		$module_center=array(
+		    array("action_pagar"=>"PAGAR"),
+		    array("action_abonar"=>"ABONAR"),
+		    array("action_cancelar"=>"CANCELAR"),
+		);
+
 		
 		
 		#BOTONES SECCION DERECHA

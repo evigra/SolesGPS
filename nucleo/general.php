@@ -121,7 +121,8 @@
 			
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
-				if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
+				#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
+				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;

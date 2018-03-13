@@ -9,9 +9,17 @@
 	}
 	$(document).ready(function()
 	{		
-	
-
+		$("#action_pagar").click(function(){
+			$("#sys_action_movimiento").val("__SAVE_pagar");
+			$("form").submit();
+		});
+		$("#action_abonar").click(function(){
+			$("#sys_action_movimiento").val("__SAVE_abonar");
+			$("form").submit();
+		});
+		$("#action_pagar").click(function(){
+			$("#action_cancelar").val("__SAVE_cancelar");
+			$("form").submit();
+		});
     });
-	
-    
     // ###########################################################################

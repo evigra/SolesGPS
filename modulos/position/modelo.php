@@ -155,7 +155,8 @@
 		public function cron_retraso()
     	{			    		
 			$comando_sql="
-				SELECT * FROM V_ULTIMOREPORTE 
+				SELECT v.*, md5(ID) as md5_id 
+				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:05:00'
@@ -175,7 +176,11 @@
 					echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
 					$devices_tr		.="
 						<tr>
-							<td><img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\"></td>
+							<td>
+								<a href=\"http://solesgps.com/seguimientos/&a={$row["md5_id"]}\">
+									<img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\">
+								</a>
+							</td>							
 							<td>{$row["NOMBRE"]}</td>
 							<td>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
@@ -203,7 +208,7 @@
 		public function cron_retraso_mayor()
     	{			    		
 			$comando_sql="
-				SELECT * FROM V_ULTIMOREPORTE 
+				SELECT v.*, md5(ID) as md5_id FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'05:00:00'
@@ -221,9 +226,14 @@
 				foreach($position_data as $row)
 				{
 					echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
+					
+					
 					$devices_tr		.="
 						<tr>
-							<td><img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\"></td>
+							<td><a href=\"http://solesgps.com/seguimientos/&a=\">
+								<img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\">
+								</a>
+							</td>
 							<td>{$row["NOMBRE"]}</td>
 							<td>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>

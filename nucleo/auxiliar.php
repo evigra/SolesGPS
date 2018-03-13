@@ -1119,8 +1119,8 @@
 									
 									$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 									{		
-										source:\"{$valor["source"]}$vars\",
-										dataType: \"jsonp\",
+										source:		\"{$valor["source"]}$vars\",
+										dataType: 	\"jsonp\",
 										$js_auto
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 										{												
@@ -1634,6 +1634,61 @@
 			return $view;
 		} 		
     	##############################################################################        
+    	public function __FOLIOS($option)
+    	{								
+			
+			$sql    	="
+				SELECT * FROM configuracion 
+				WHERE 1=1 
+					AND company_id='{$_SESSION["company"]["id"]}' 
+					AND variable='{$option["variable"]}' 
+					AND subvariable='{$option["subvariable"]}' 
+					AND tipo='{$option["tipo"]}' 
+					AND subtipo='{$option["subtipo"]}' 
+					AND objeto='{$option["objeto"]}' 
+			";
+			$datas   	= $this->__EXECUTE("$sql");
+			
+			if(count($datas)>0)
+				$sql    	="
+					UPDATE configuracion SET valor=LPAD(valor+1,6,'0')						
+					WHERE 1=1 
+						AND company_id='{$_SESSION["company"]["id"]}' 
+						AND variable='{$option["variable"]}' 
+						AND subvariable='{$option["subvariable"]}' 
+						AND tipo='{$option["tipo"]}' 
+						AND subtipo='{$option["subtipo"]}' 
+						AND objeto='{$option["objeto"]}' 
+				";
+			else	
+				$sql    	="
+					INSERT INTO configuracion SET 
+						valor=LPAD(1,6,'0'),					 
+						company_id='{$_SESSION["company"]["id"]}',
+						variable='{$option["variable"]}', 
+						subvariable='{$option["subvariable"]}' ,
+						tipo='{$option["tipo"]}' ,
+						subtipo='{$option["subtipo"]}' ,
+						objeto='{$option["objeto"]}' 
+				";
+				
+			$datas   	= $this->__EXECUTE("$sql");
+
+			$sql    	="
+				SELECT * FROM configuracion 
+				WHERE 1=1 
+					AND company_id='{$_SESSION["company"]["id"]}' 
+					AND variable='{$option["variable"]}' 
+					AND subvariable='{$option["subvariable"]}' 
+					AND tipo='{$option["tipo"]}' 
+					AND subtipo='{$option["subtipo"]}' 
+					AND objeto='{$option["objeto"]}' 
+			";
+			$datas   	= $this->__EXECUTE("$sql");
+			
+			return $datas[0]["valor"];		    	
+    	}
+		###################################    	
 		public function __VIEW_REPORT($option)
 		{
 			
@@ -2124,15 +2179,7 @@
 												term: extractLast( request.term )
 												}, response );
 											},
-											search: function() 
-											{
-												// custom minLength
-												var term = extractLast( this.value );
-												if ( term.length < 2 ) 
-												{
-													return false;
-												}
-											},
+											
 											focus: function() 
 											{
 												// prevent value inserted on focus

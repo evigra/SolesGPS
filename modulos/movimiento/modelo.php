@@ -14,8 +14,17 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"company_id"	    =>array(
+			    "title"             => "Empresa",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),			
+
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
+			    "title_filter"      => "Empresa",	
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
@@ -64,6 +73,37 @@
 			    "default"           => "",
 			    "value"             => "",
 			),			
+			"movimiento_id"	    =>array(
+			    "title"             => "Relacion",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+			"registro"	    =>array(
+			    "title"             => "Registrado",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+			"fecha"	    =>array(
+			    "title"             => "Fecha",
+			    "title_filter"      => "Fecha",
+			    "showTitle"         => "si",
+			    "type"              => "date",
+			    "default"           => "",
+			    "value"             => "",
+			),			
+
+			"folio"	    =>array(
+			    "title"             => "Folio",
+			    "title_filter"      => "Folio",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			),			
 
 			
 				
@@ -86,6 +126,29 @@
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
+			
+			
+			if(!isset($datas["folio"]) OR $datas["folio"]=="")
+			{
+				$option_folios=array();
+				$option_folios["variable"]		=date("Y");
+				$option_folios["subvariable"]	=date("Y");
+				$option_folios["tipo"]			="folio";
+				$option_folios["subtipo"]		="folio";
+				$option_folios["objeto"]		="folio";
+				
+				
+				$datas["folio"]				=$this->__FOLIOS($option_folios);
+			}	
+			
+			#movimiento_id
+			
+			if($this->request["sys_action_movimiento"]=="__SAVE_pagar")
+			{
+				$datas["movimiento_id"]	=$this->sys_primary_id;
+				$datas["tipo"]			="PAG";
+				$this->sys_primary_id	="";
+			}
 			#$option["echo"]=$datas["total"];
     		
     	    $return= parent::__SAVE($datas,$option);

@@ -5,7 +5,7 @@
 	
 	$option				=array("where"=>array());
 	#$option["echo"]		="AUTOCOMPLETE EMPRESA";
-	$option["where"][]	="razon_social LIKE '%{$_GET["term"]}%'";
+	$option["where"][]	="nombre LIKE '%{$_GET["term"]}%'";
 	$data				=$objeto->__BROWSE($option);
 	
 	#echo $objeto->sys_sql;
@@ -14,12 +14,11 @@
 	{
 		foreach($data["data"] as $row)
 		{
-			$data_json[]=array(
-				'label'     => $row["razon_social"],
-				'clave'		=> $row["id"],
-				'venta'		=> $row["cliente"],
-				'compra'	=> $row["proveedor"],
-			);			
+			$data_json				=$row;	
+			$data_json['label']		=$row["nombre"];
+			$data_json['clave']		=$row["id"];
+			$data_json['venta']		=$row["cliente"];
+			$data_json['compra']	=$row["proveedor"];
 		}
 	}
 	else

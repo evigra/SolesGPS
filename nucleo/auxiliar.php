@@ -1084,7 +1084,7 @@
 					    {
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 					    	
-					    	$this->__PRINT_R($valor);
+					    	#$this->__PRINT_R($valor);
 					    	$json=$this->__JSON_AUTOCOMPLETE($valor);
 					    	
 					    	#$this->__PRINT_R("2".$json);

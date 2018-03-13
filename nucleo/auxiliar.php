@@ -1763,8 +1763,13 @@
 					##################################
 					
 		    		$return["data"]					= $browse["data"];
+		    		
 		    		$option["title"]				= @$browse["title"];
 					$option["title_pdf"]			= @$browse["title_pdf"];
+
+					$view_title						=@$browse["title"];
+					$view_title_pdf					=@$browse["title_pdf"];
+						
 		    		
 		    		if(isset($browse["total"]))		
 		    		{

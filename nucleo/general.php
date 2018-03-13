@@ -213,7 +213,6 @@
 							$option_report_titles=array(
 								"sys_order"		=>"$sys_order",
 								"sys_torder"	=>"$sys_torder",
-								"sys_order"		=>"$sys_order",
 								"font"			=>"$campo",
 								"name"			=>"$name",
 							);
@@ -419,7 +418,7 @@
 					{						
 						$option_report_titles=array(
 							"sys_order"		=>"$sys_order",
-							"sys_torder"	=>"$sys_torder",						
+							"sys_torder"	=>"$sys_torder",
 							"font"			=>"$campo",
 							"name"			=>"$name",
 						);

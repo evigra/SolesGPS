@@ -75,14 +75,14 @@
 			"cliente"	    	=>array(
 			    "title"             => "Cliente",
 			    "showTitle"         => "si",
-			    "type"              => "checkbox",
+			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),			
 			"proveedor"	    	=>array(
 			    "title"             => "Proveedor",
 			    "showTitle"         => "si",
-			    "type"              => "checkbox",
+			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),						

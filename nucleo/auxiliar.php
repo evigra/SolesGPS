@@ -1087,7 +1087,7 @@
 					    	$this->__PRINT_R($valor);
 					    	$json=$this->__JSON_AUTOCOMPLETE($valor);
 					    	
-					    	$this->__PRINT_R("2".$json);
+					    	#$this->__PRINT_R("2".$json);
 					    	
 					    	if(isset($this->request["auto_$campo"]))	$fields["auto_$campo"]["value"]	=$this->request["auto_$campo"];
 					    	else										$fields["auto_$campo"]["value"]	=@$json[0]->label;

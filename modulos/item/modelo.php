@@ -134,7 +134,7 @@
 			    "value"             => "",			    			    
 			),									
 			"categoria"	    =>array(
-			    "title"             => "Codigo",
+			    "title"             => "Categoria",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

@@ -168,6 +168,7 @@ body, table, a
 @import url(https://fonts.googleapis.com/css?family=Aldrich);
 
 section {				margin: 20px;}
+
 .checkbox-2 input[type=checkbox] {
 	visibility: 		hidden;
 }

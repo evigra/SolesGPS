@@ -1037,7 +1037,7 @@
 					        if($valor["value"]==1) $checked="checked";
 							
 					    	$words["$campo"]  = 
-					        "<div class=\"check-2\">
+					        "<div class=\"checkbox-2\">
 		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"$campo\" />
 		    					<label for=\"$campo\">".""."</label>
 							</div>$titulo

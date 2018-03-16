@@ -929,7 +929,8 @@
 
     	##############################################################################    
 		public function __INPUT($words=NULL, $fields=NULL)
-		{				    
+		{				
+			$this->__PRINT_R($fields);    
 		    if(!is_array($words))    $words=array();
 		    if(is_array($fields))
 		    {

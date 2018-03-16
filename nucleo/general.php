@@ -74,6 +74,8 @@
 				ini_set('display_errors', 0);
 			}				
 			
+			$this->__REQUEST();
+			
 			if($this->sys_name!="general")
 			{
                 
@@ -89,7 +91,7 @@
 				$this->sys_date								=date("Y-m-d H:i:s");
 				$this->sys_date2							=date("Y-m-d");
 
-				$this->__REQUEST();
+				
 				
 		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
 				

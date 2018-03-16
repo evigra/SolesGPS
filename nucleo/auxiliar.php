@@ -649,10 +649,8 @@
 					{		
 						$eval="
 							if(is_array(@$"."this->sys_fields[\"$campo\"]))	
-							{
-										
+							{			
 								$"."this->sys_fields[\"$campo\"]"."[\"value\"]=\"$valor\";
-								$"."this->__PRINT_R(  $"."this->sys_fields[\"$campo\"]"."[\"value\"]   );
 							}		
 							else
 							{

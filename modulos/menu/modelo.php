@@ -202,14 +202,7 @@
 			$option["actions"]	=array("write"=>"1==1");
 			
 			
-			$option_report=array();
-			$option_report["template_title"]	            = $this->sys_module . "html/report_title";
-			$option_report["template_body"]	                = $this->sys_module . "html/report_body";
-
-			$option_report["order"]="parent asc, id asc";
-			
-			return $this->__VIEW_REPORT($option_report);
-			#return $this->__VIEW_REPORT($option);
+			return $this->__VIEW_REPORT($option);
 		}		
 		public function data_menu($option=NULL)
     	{

@@ -161,6 +161,9 @@
 		
 		public function menu($option=NULL)
     	{
+    	
+    	
+    	
     		$data	=array();
     		
     		if(!is_array($option))
@@ -169,7 +172,7 @@
     			$option=array();
     		}
     		else	  						
-    		$menus	=$this->data_menu();
+    			$menus	=$this->data_menu();
     		    		
 			foreach($menus as $imenu => $menu)
 			{
@@ -198,7 +201,12 @@
 			$option["fin"]		=count($data);
 			$option["actions"]	=array("write"=>"1==1");
 			
-			return $this->__VIEW_REPORT($option);
+			
+			$option_report=array();
+			$option_report["order"]="parent asc, id asc";
+			
+			return $this->__VIEW_REPORT($option_report);
+			#return $this->__VIEW_REPORT($option);
 		}		
 		public function data_menu($option=NULL)
     	{

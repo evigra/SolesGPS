@@ -124,14 +124,23 @@
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
-			    "value"             => "",
-			    "relation"          => "one2many",			    
-			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
-			    "class_field_o"    	=> "company_id",
-			    "class_field_m"    	=> "id",
-			    			    
+			    "value"             => "",			    			    
 			),									
+			"codigo"	    =>array(
+			    "title"             => "Codigo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    			    
+			),									
+			"categoria"	    =>array(
+			    "title"             => "Codigo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    			    
+			),									
+
 		);				
 		##############################################################################	
 		##  Metodos	

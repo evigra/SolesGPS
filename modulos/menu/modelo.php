@@ -205,6 +205,7 @@
 			$option["actions"]["write"]           		= "true";
 			$option["actions"]["delete"]           		= "false";
 			$option["actions"]["show"]           		= "false";
+			$option["actions"]["select"]           		= "false";
 			
 			
 			return $this->__VIEW_REPORT($option);

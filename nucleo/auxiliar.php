@@ -933,6 +933,7 @@
 		    if(!is_array($words))    $words=array();
 		    if(is_array($fields))
 		    {
+		    	$this->__PRINT_R($fields);
 			    foreach($fields as $campo=>$valor)
 			    {		
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";

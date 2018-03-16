@@ -947,6 +947,10 @@
 			        if(!isset($valor["source"]))	   	$valor["source"]		="";			        
 			        if(!isset($valor["attr"]))	   		$valor["attr"]			="";
 					if(!isset($valor["style"]))	   		$valor["style"]			="";
+
+					if($campo=="parent")
+						$this->__PRINT_R($valor);
+
 					
 					if($this->sys_section=="create")	$valor["value"]			="";
 

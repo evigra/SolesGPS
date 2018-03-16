@@ -173,7 +173,7 @@ section {				margin: 20px;}
 	visibility: 		hidden;
 }
 .checkbox-2 {
-	width: 				90px;
+	width: 				84px;
 	height: 			24px;
 	/* background: 		rgba(0, 0, 0, 0.16); */
 	border-radius: 		5px;
@@ -187,7 +187,7 @@ section {				margin: 20px;}
 .checkbox-2:before {
 	content: 			'SI';
 	position: 			absolute;
-	top: 				2;
+	top: 				1;
 	left: 				16px;
 	color: 				gray;
 	font-size: 			15px;
@@ -197,8 +197,8 @@ section {				margin: 20px;}
 	content: 			'NO';
 	color: 				gray;
 	position: 			absolute;
-	top: 				2px;
-	right: 				12px;
+	top: 				1px;
+	right: 				10px;
 	font-size: 			15px;
 	line-height: 		25px;
 }

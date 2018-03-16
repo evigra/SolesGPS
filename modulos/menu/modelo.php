@@ -203,6 +203,8 @@
 		
 			$option["actions"]	                		= array();
 			$option["actions"]["write"]           		= "true";
+			$option["actions"]["delete"]           		= "false";
+			$option["actions"]["show"]           		= "false";
 			
 			
 			return $this->__VIEW_REPORT($option);

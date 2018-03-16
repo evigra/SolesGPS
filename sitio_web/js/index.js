@@ -1658,14 +1658,6 @@ styles:
 		    });
 	    }	    
 	   
-	    if($("td#system_submenu2").length>0)
-	    {
-	    	ajustar_device();
-			$( window ).resize(function() 
-			{
-				ajustar_device();
-			});	   	   
-	    }
     	if($(".sys_report").length>0) 
     	{
             $(".sys_report").click(function()
@@ -1815,6 +1807,17 @@ styles:
 			$("form").attr({"style":"width:700px;"});
 		}
 		*/		
+
+
+	    if($("td#system_submenu2").length>0)
+	    {
+	    	ajustar_device();
+			$( window ).resize(function() 
+			{
+				ajustar_device();
+			});	   	   
+	    }
+
     });	
 		
 
@@ -1852,17 +1855,4 @@ styles:
 
 		} 				
 	}	
-	
-	/*
-	$(function() 
-	{
-    	if($(document).length>0) 
-    	{
-	
-			$(document).tooltip();
-		}	
-	});
-	*/
-	
-	
 

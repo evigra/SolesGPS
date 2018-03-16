@@ -200,6 +200,9 @@
 			$option["inicio"]	=1;
 			$option["fin"]		=count($data);
 			$option["actions"]	=array("write"=>"1==1");
+		
+			$option["actions"]	                		= array();
+			$option["actions"]["write"]           		= "true";
 			
 			
 			return $this->__VIEW_REPORT($option);

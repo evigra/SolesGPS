@@ -936,6 +936,10 @@
 		    	
 			    foreach($fields as $campo=>$valor)
 			    {		
+					if($campo=="parent")
+						$this->__PRINT_R($valor);
+
+
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";
 			        if(!isset($valor["showTitle"]))	    $valor["showTitle"]		="si";
 			        if(!isset($valor["title"]))	    	$valor["title"]			="";
@@ -950,8 +954,6 @@
 					$style="style=\"" . $this->__VALOR($valor) . "\""; 				
 					
 					
-					if($campo=="parent")
-					$this->__PRINT_R($valor);
 								        
 			        if(!is_array($valor["value"]))
 			        {

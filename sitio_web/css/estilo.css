@@ -213,7 +213,7 @@ section {				margin: 20px;}
 	position: 			absolute;
 	top: 				2px;
 	z-index: 			1;
-	left: 				10px;
+	left: 				6px;
 }
 .checkbox-2 input[type=checkbox]:checked + label {
 	left: 				48px;

@@ -1668,16 +1668,10 @@ styles:
             	var path		="";
 				for(ivariables in variables)
 				{
-					
-				
 					if($("input#"+ivariables).length>0) 
-					{
 						$("input#"+ivariables).val(variables[ivariables]);
-						alert(ivariables + "=" +variables[ivariables]);
-					}
 					else if($("select#"+ivariables).length>0) 
 						$("select#"+ivariables).val(variables[ivariables]);
-
 					else
 						path=path+"&"+ivariables+"="+variables[ivariables];
 					

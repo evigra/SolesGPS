@@ -174,7 +174,7 @@ section {				margin: 20px;}
 }
 .checkbox-2 {
 	width: 				90px;
-	height: 			25px;
+	height: 			24px;
 	/* background: 		rgba(0, 0, 0, 0.16); */
 	border-radius: 		5px;
 	border:           	1px solid gray;
@@ -187,7 +187,7 @@ section {				margin: 20px;}
 .checkbox-2:before {
 	content: 			'SI';
 	position: 			absolute;
-	top: 				3;
+	top: 				2;
 	left: 				16px;
 	color: 				gray;
 	font-size: 			15px;
@@ -197,7 +197,7 @@ section {				margin: 20px;}
 	content: 			'NO';
 	color: 				gray;
 	position: 			absolute;
-	top: 				3px;
+	top: 				2px;
 	right: 				12px;
 	font-size: 			15px;
 	line-height: 		25px;
@@ -211,7 +211,7 @@ section {				margin: 20px;}
 	transition: 		all .7s ease;
 	cursor: 			pointer;
 	position: 			absolute;
-	top: 				5px;
+	top: 				2px;
 	z-index: 			1;
 	left: 				10px;
 }

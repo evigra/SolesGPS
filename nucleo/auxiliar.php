@@ -936,9 +936,6 @@
 		    	
 			    foreach($fields as $campo=>$valor)
 			    {		
-					if($campo=="parent")
-						$this->__PRINT_R($valor);
-
 
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";
 			        if(!isset($valor["showTitle"]))	    $valor["showTitle"]		="si";
@@ -948,11 +945,8 @@
 			        if(!isset($valor["attr"]))	   		$valor["attr"]			="";
 					if(!isset($valor["style"]))	   		$valor["style"]			="";
 
-					if($campo=="parent")
-						$this->__PRINT_R($valor);
-
 					
-					if($this->sys_section=="create")	$valor["value"]			="";
+					#if($this->sys_section=="create")	$valor["value"]			="";
 
 					$class="$campo ";
 					$style="style=\"" . $this->__VALOR($valor) . "\""; 				

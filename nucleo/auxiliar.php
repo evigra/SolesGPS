@@ -929,8 +929,7 @@
 
     	##############################################################################    
 		public function __INPUT($words=NULL, $fields=NULL)
-		{				
-			$this->__PRINT_R($fields);    
+		{							
 		    if(!is_array($words))    $words=array();
 		    if(is_array($fields))
 		    {
@@ -979,7 +978,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\"data=\"{$valor["value"]}\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					    } 
 					    if($valor["type"]=="date")	
 					    {

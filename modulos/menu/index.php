@@ -67,6 +67,8 @@
 		$option=array();
 		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
+		$option["action"]	                		= array();
+		$option["action"]["write"]             		= "true";
 		
 		$data										=$objeto->menu($option);
 		$objeto->words["module_body"]				=$data["html"];		

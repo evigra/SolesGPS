@@ -203,8 +203,8 @@
 			
 			
 			$option_report=array();
-		$option_report["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option_report["template_body"]	                = $objeto->sys_module . "html/report_body";
+			$option_report["template_title"]	            = $this->sys_module . "html/report_title";
+			$option_report["template_body"]	                = $this->sys_module . "html/report_body";
 
 			$option_report["order"]="parent asc, id asc";
 			

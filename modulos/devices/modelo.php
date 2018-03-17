@@ -178,9 +178,23 @@
 			    "default"           => "",
 			    "value"             => "",
 			),						
-			
+			"telcel"	    =>array(
+			    "title"             => "Telcel",
+			    "showTitle"         => "si",
+			    "type"              => "checkbox",
+			    "default"           => "",
+			    "value"             => "",
+			),						
 			"telefono"   =>array(
 			    "title"             => "Telefono",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			),
+			
+			"recargado"   =>array(
+			    "title"             => "recargado",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

@@ -2016,6 +2016,12 @@
 						$button_create_js="
 							if($(\"font#create_$name\").length>0)
 							{	
+								$(\"font.show_form\").button({
+									icons: 	{primary:	\"ui-icon-extlink\"},
+									text: 	false
+								
+								});
+							
 	            				$(\"font#create_$name\").click(function()
 	            				{
 	            					$(\"div#create_$name\").dialog({

@@ -2021,6 +2021,13 @@
 									text: 	false
 								
 								});
+
+								var options={};
+								options[\"class_one\"]			=\"{$template_option["class_one"]}\";
+								options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
+								options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
+								options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
+
 							
 	            				$(\"font#create_$name\").click(function()
 	            				{
@@ -2029,18 +2036,15 @@
 											var dialog = $(this).closest('.ui-dialog');
 										},
 										buttons: {
-											\"Aceptar\": function() {													
-												var options={};
-												options[\"class_one\"]			=\"{$template_option["class_one"]}\";
-												options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
-												options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
-												options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
-												
-											
-											
+											\"Registrar\": function() {													
 												many2one_post(options);
 											},
-											\"Cancelar\": function() {
+											\"Registrar y Cerrar\": function() {													
+												many2one_post(options);
+												$( this ).dialog(\"close\");
+											},
+
+											\"Cerrar\": function() {
 												$( this ).dialog(\"close\");
 											}
 										},										

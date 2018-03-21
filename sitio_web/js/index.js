@@ -197,11 +197,15 @@
 							var dialog = $(this).closest('.ui-dialog');
 						},
 						buttons: {
-							"Aceptar": function() {
-								
+							"Registrar": function() {								
 									many2one_post(options);
 							},
-							"Cancelar": function() {
+							"Registrar y Cerrar": function() {								
+									many2one_post(options);
+									$( this ).dialog("close");
+							},
+
+							"Cerrar": function() {
 								$( this ).dialog("close");
 							}
 						},										

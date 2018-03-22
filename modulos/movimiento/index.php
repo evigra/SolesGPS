@@ -112,21 +112,6 @@
 	   	$data										=$objeto->__BROWSE();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }    
-    elseif($objeto->sys_section=="report_especifico")
-    {
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);
-
-		#CARGANDO VISTA PARTICULAR Y CAMPOS			
-		$data										= $objeto->__REPORT_ESPECIFICO();		
-		$objeto->words["module_body"]				=$data["html"];
-		$module_title								="Reporte Especifico de ";
-    }    
     else
     {
 		#BOTONES SECCION DERECHA
@@ -138,7 +123,7 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		#$option["template_title"]	                = $objeto->sys_module . "html/report_title";
+		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 				

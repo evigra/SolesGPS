@@ -707,8 +707,7 @@
 		    if(@$this->request["sys_action"]=="print_pdf")
 		    {
 				$view="{system_template}";
-			}	
-		    
+			}			    
 		    $sys_action     						=@$this->request["sys_action"];
 		    
 		    if(@$this->request["sys_action"]=="print_excel")

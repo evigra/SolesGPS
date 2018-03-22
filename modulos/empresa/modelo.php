@@ -114,6 +114,14 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),							
+			"chat_whatsapp"	    	=>array(
+			    "title"             => "Grupo WhatsApp",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),							
+
 		);				
 		##############################################################################	
 		##  Metodos	

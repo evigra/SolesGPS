@@ -450,8 +450,13 @@
 			return $this->__VIEW_REPORT($option);
 		}
    		public function __REPORTE($option="")
-    	{			
-			if($option=="")	$option=array();			
+    	{			    	
+			if($option=="")	$option=array();
+			if(!isset($option["select"]))	$option["select"]=array();						
+			
+			$option["select"]["concat(tipo,folio)"]		="folio";
+			
+			
 			$option["template_title"]	                = $this->sys_module . "html/report_title";
 			#$option["template_title"]	                = "";
 			$option["template_body"]	                = $this->sys_module . "html/report_body";

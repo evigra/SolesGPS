@@ -11,6 +11,11 @@
 
                 </tr>          
                 <tr>
+					<td align="left"> {se_compra} </td>                
+					<td align="left"> {se_vende} </td>
+					<td>{servicio}          </td>
+                </tr>          
+                <tr>
                     <td colspan="6" width="100%">
 
 
@@ -22,19 +27,23 @@
 				</ul>
 				<div id="tabs-1" class="form">
 				     <table border="0" width="100%" class="form">
-				        <tr>
-				            <td>{transmision}</td>        
-				            <td>{tipoCombustible}</td>        
-				            <td>{emisionesCO2}</td>        
+				        <tr>                                        				            
+				            <td align="left"> {compra1} </td>
+				            <td align="left"> {compra2} </td>
+				            <td align="left"> {compra3} </td>
+				            <td align="left"> {compra4} </td>
+				            <td align="left"> {compra5} </td>
 				        </tr>          
 				    </table>			
 				</div>
 				<div id="tabs-2"  class="form">
 				    <table border="0"  width="100%">
 				        <tr>
-				            <td>{numAsientos}</td>        
-				            <td>{numPuertas}</td>        
-				            <td>{color}</td>        
+				            <td align="left"> {vende1} </td>
+				            <td align="left"> {vende2} </td>
+				            <td align="left"> {vende3} </td>
+				            <td align="left"> {vende4} </td>
+				            <td align="left"> {vende5} </td>
 				        </tr>          
 				    </table>
 				</div>
@@ -82,26 +91,20 @@
                     </td>        
                 </tr>          
                 <tr>                                        
-                    <td align="left"> {se_compra} </td>
-                    <td align="left"> {compra1} </td>
-                    <td align="left"> {compra2} </td>
-                    <td align="left"> {compra3} </td>
-                    <td align="left"> {compra4} </td>
-                    <td align="left"> {compra5} </td>
-                </tr>          
-                <tr>                                        
-                    <td align="left"> {se_vende} </td>                            			    		 
-                    <td align="left"> {vende1} </td>
-                    <td align="left"> {vende2} </td>
-                    <td align="left"> {vende3} </td>
-                    <td align="left"> {vende4} </td>
-                    <td align="left"> {vende5} </td>
+                    
                 </tr>
                 <tr>                    
-                    <td colspan="6">{servicio}          </td>                            			    		 
+                    
                 </tr>          
                           
             </table>
         </td>
     </tr>
 </table>
+
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>        
+

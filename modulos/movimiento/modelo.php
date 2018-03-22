@@ -474,8 +474,8 @@
 				$option["actions"]["delete"]				="false";
 			}	
 			
-			
-			$option["order"]="id desc";
+			if(!isset($this->request["sys_order_movimiento"]))
+			#$option["order"]="id desc";
 			
 			return $this->__VIEW_REPORT($option);
 		}						

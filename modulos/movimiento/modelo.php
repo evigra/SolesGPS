@@ -455,8 +455,8 @@
 			if(!isset($option["select"]))	$option["select"]=array();
 			
 			
-			$option["select"][]							="*";
-			$option["select"]["concat(tipo,folio)"]		="folio";
+			#$option["select"][]							="*";
+			#$option["select"]["concat(tipo,folio)"]		="folio";
 			
 			#$option["from"]								="movimiento m";
 			

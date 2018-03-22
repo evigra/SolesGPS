@@ -475,7 +475,7 @@
 			}	
 			
 			if(!isset($this->request["sys_order_movimiento"]))
-			#$option["order"]="id desc";
+				$option["order"]="id desc";
 			
 			return $this->__VIEW_REPORT($option);
 		}						

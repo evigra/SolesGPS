@@ -452,7 +452,7 @@
    		public function __REPORTE($option="")
     	{			    	
 			if($option=="")	$option=array();
-			if(!isset($option["select"]))	$option["select"]=array();
+			#if(!isset($option["select"]))	$option["select"]=array();
 			
 			
 			#$option["select"][]							="*";

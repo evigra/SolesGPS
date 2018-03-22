@@ -455,9 +455,10 @@
 			if(!isset($option["select"]))	$option["select"]=array();
 			
 			
-			$option["select"][]		="*";
+			$option["select"][]		="m.*";
 			$option["select"]["concat(tipo,folio)"]		="folio";
 			
+			$option["from"]		="movimiento m";
 			
 			$option["template_title"]	                = $this->sys_module . "html/report_title";
 			#$option["template_title"]	                = "";

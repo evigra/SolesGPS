@@ -52,7 +52,8 @@
 		    array("action_cancelar"=>"CANCELAR"),
 		);
 
-		$objeto->sys_fields["tipo"]["type"]="text";
+		$objeto->sys_fields["tipo"]["type"]="txt";
+		$objeto->sys_fields["folio"]["type"]="txt";
 		
 		#BOTONES SECCION DERECHA
 		$module_right=array(

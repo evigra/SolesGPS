@@ -328,7 +328,7 @@
     			
     			$order			.=$option["sys_order_$name"];
     			
-				if(isset($option["sys_torder_$name"]) AND $option["sys_torder_$name"])!="")	$order.=" ".$option["sys_torder_$name"];
+				if(isset($option["sys_torder_$name"]) AND $option["sys_torder_$name"]!="")	$order.=" ".$option["sys_torder_$name"];
     		}	
     		#####################
     		$group="";

@@ -126,9 +126,11 @@
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
 			
+		
 			
-			if(!isset($datas["folio"]) OR $datas["folio"]=="")
+			if($this->request["sys_section_movimiento"]=="create")
 			{
+	
 				$option_folios=array();
 				$option_folios["variable"]		=date("Y");
 				$option_folios["subvariable"]	=date("Y");
@@ -138,6 +140,7 @@
 				
 				
 				$datas["folio"]				=$this->__FOLIOS($option_folios);
+	
 			}	
 			
 			#movimiento_id

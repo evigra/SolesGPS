@@ -135,7 +135,7 @@
 
 
     
-	$objeto->words["module_title"]              ="$module_title Movimiento";
+	$objeto->words["module_title"]              ="$module_title Cotizaciones";
 	
 	
 	

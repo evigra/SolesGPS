@@ -44,7 +44,7 @@
 		    array("action"=>"Guardar"),
 		    array("cancel"=>"Cancelar"),
 		);
-
+		
 
 		$module_center=array(
 		    array("action_pagar"=>"PAGAR"),
@@ -52,7 +52,7 @@
 		    array("action_cancelar"=>"CANCELAR"),
 		);
 
-		
+		$objeto->sys_fields["tipo"]["type"]="text";
 		
 		#BOTONES SECCION DERECHA
 		$module_right=array(

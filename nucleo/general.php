@@ -361,6 +361,7 @@
     			
     			if($option["sys_row_$name"]=="")	   			$option["sys_row_$name"]	=50;
     			
+    			if($option["sys_page_$name"]=="")				$option["sys_page_$name"]	=1;	
     			
     			$inicio						=$option["sys_page_$name"] * $option["sys_row_$name"] - $option["sys_row_$name"];
     			

@@ -365,6 +365,8 @@
     			
     			$return["inicio"]    		=$inicio;
     			
+    			
+    			$this->__PRINT_R($option);
     			$limit						=" LIMIT $inicio, {$option["sys_row_$name"]}";
     		}	
 

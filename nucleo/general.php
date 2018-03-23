@@ -317,18 +317,18 @@
     		}    		
     		#####################
 			$order="";
-    		if(isset($option["order"]))		
+    		if(isset($option["order"]) AND $option["order"]!="")		
     		{
     			$order=	" ORDER BY ".$option["order"];
     		}
-    		if(isset($option["sys_order_$name"]))		
+    		if(isset($option["sys_order_$name"]) AND $option["sys_order_$name"]!="")		
     		{
     			if($order=="")	$order	=" ORDER BY ";
     			else    		$order	.=", ";
     			
     			$order			.=$option["sys_order_$name"];
     			
-				if(isset($option["sys_torder_$name"]))	$order.=" ".$option["sys_torder_$name"];
+				if(isset($option["sys_torder_$name"]) AND $option["sys_torder_$name"])!="")	$order.=" ".$option["sys_torder_$name"];
     		}	
     		#####################
     		$group="";
@@ -366,9 +366,7 @@
     			$inicio						=$option["sys_page_$name"] * $option["sys_row_$name"] - $option["sys_row_$name"];
     			
     			$return["inicio"]    		=$inicio;
-    			
-    			
-    			$this->__PRINT_R($option);
+    		
     			$limit						=" LIMIT $inicio, {$option["sys_row_$name"]}";
     		}	
 

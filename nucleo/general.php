@@ -358,7 +358,8 @@
     		if(isset($option["sys_page_$name"]))		
     		{
     			if(isset($this->request["sys_row_$name"])) 		$option["sys_row_$name"]    =$this->request["sys_row_$name"];
-    			else							    			$option["sys_row_$name"]	=50;
+    			
+    			if($option["sys_row_$name"]=="")	   			$option["sys_row_$name"]	=50;
     			
     			
     			$inicio						=$option["sys_page_$name"] * $option["sys_row_$name"] - $option["sys_row_$name"];

@@ -1055,9 +1055,13 @@
 					    {
 					        $words["$campo"]  ="$titulo<div id=\"$campo\" class=\"{$this->sys_name}\" $attr style=\"height:22px;\"> {$valor["value"]}</div><br>&nbsp;";
 					    } 
-					    if($valor["type"]=="txt")	
+					    if($valor["type"]=="title")	
 					    {
 					        $words["$campo"]  ="$titulo";
+					    } 
+					    if($valor["type"]=="value")	
+					    {
+					        $words["$campo"]  ="{$valor["value"]}";
 					    } 
 					    
 					    if($valor["type"]=="textarea")	

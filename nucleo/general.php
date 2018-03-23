@@ -359,7 +359,7 @@
     		{
     			if(isset($this->request["sys_row_$name"])) 		$option["sys_row_$name"]    =$this->request["sys_row_$name"];
     			
-    			if($option["sys_row_$name"]=="")	   			$option["sys_row_$name"]	=50;
+    			if(!isset($option["sys_row_$name"]) OR $option["sys_row_$name"]=="")	   			$option["sys_row_$name"]	=50;
     			
     			if($option["sys_page_$name"]=="")				$option["sys_page_$name"]	=1;	
     			

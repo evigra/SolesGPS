@@ -58,6 +58,7 @@
 			    "source"			=>array(
 			    	"1"		=>	"Activa",
 			    	"0"		=>	"Inactiva",
+			    	"-1"	=>	"Servicio",
 			    ),	
 			),
 			"bloqueo"	    =>array(

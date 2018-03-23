@@ -1137,12 +1137,12 @@
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 										{												
 											if(typeof auto_$campo === 'function') 								
-											{																
+											{					
+												alert(\"$campo\");											
 												auto_$campo(ui);
 											}									
 											else
-											{
-											
+											{											
 												$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
 												$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 											}

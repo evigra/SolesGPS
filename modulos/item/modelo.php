@@ -126,15 +126,15 @@
 			    "default"           => "",
 			    "value"             => "",			    			    
 			),									
-			"codigo"	    =>array(
-			    "title"             => "Codigo",
+			"c_barras"	    =>array(
+			    "title"             => "Codigo de Barras",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    			    
 			),									
-			"categoria"	    =>array(
-			    "title"             => "Categoria",
+			"c_qr"	    =>array(
+			    "title"             => "Codigo QR",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

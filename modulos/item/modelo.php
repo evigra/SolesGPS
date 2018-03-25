@@ -19,7 +19,7 @@
 			    "default"           => "",
 			    "value"             => "",		
   			    "style"             => array(			    	
-					"font-size"		=>array("25px"=>"1==1"),					
+					"font-size"		=>array("30px"=>"1==1"),					
 			    ),			    			    
 			    	    
 			),

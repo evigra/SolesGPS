@@ -48,7 +48,7 @@
 			    "value"             => "",
 			),						
 			"compra1"	    =>array(
-			    "title"             => "Compra 1",
+			    "title"             => "Precio de compra",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -84,7 +84,7 @@
 			),						
 			
 			"vende1"	    =>array(
-			    "title"             => "Venta 1",
+			    "title"             => "Precio de venta",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

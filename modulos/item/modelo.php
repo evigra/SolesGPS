@@ -151,7 +151,19 @@
 			    "default"           => "",
 			    "value"             => "",			    			    
 			),									
-
+			"type"	    =>array(
+			    "title"             => "Tipo",
+			    "showTitle"         => "si",
+			    "type"              => "select",
+			    "default"           => "",
+			    "value"             => "",		
+				"source"			=>array(
+					""				=>"Seleccciona un Tipo",
+					"1"				=>"Consumible",
+					"2"				=>"Servicio",
+					"3"				=>"Producto dispobible",
+				)					    	    			    
+			),									
 		);				
 		##############################################################################	
 		##  Metodos	

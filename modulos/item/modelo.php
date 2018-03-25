@@ -140,6 +140,13 @@
 			    "default"           => "",
 			    "value"             => "",			    			    
 			),									
+			"ref_interna"	    =>array(
+			    "title"             => "Referencia Interna",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    			    
+			),									
 
 		);				
 		##############################################################################	

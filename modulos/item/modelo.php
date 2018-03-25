@@ -161,7 +161,7 @@
 					""				=>"Seleccciona un Tipo",
 					"1"				=>"Consumible",
 					"2"				=>"Servicio",
-					"3"				=>"Producto dispobible",
+					"3"				=>"Producto disponible",
 				)					    	    			    
 			),									
 		);				

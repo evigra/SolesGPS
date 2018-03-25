@@ -17,7 +17,11 @@
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
-			    "value"             => "",			    
+			    "value"             => "",		
+  			    "style"             => array(			    	
+					"font-size"		=>array("25px"=>"1==1"),					
+			    ),			    			    
+			    	    
 			),
 			"descripcion"	    	=>array(
 			    "title"             => "Descripcion",

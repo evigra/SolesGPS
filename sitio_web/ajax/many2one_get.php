@@ -22,7 +22,6 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
-			#$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	
 		}
 	";		
 	eval($eval);	
@@ -39,30 +38,22 @@
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$obj_class->__FIND_FIELDS($value);												
-
-															
-			if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
-			{												
-		    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
-		    	{					    		
-		    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)
-		    		{
-		    			$row["auto_".$field]=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
-					}
-					else $row["auto_".$field]="";
-				}				
+														
+	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
+	    	{					    		
+	    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)
+	    		{
+	    			$row["auto_".$field]=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+				}
 				else $row["auto_".$field]="";
+			}				
+			else $row["auto_".$field]="";
 
-				if(isset($obj_class->sys_fields[$field]["values"][0]))
-					$row["auto_".$field]	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
-				else $row["auto_".$field]="";							
-			}	
-
-
-
-			#$obj_class->__PRINT_R($valor);
+			if(isset($obj_class->sys_fields[$field]["values"][0]))
+				$row["auto_".$field]	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+			else $row["auto_".$field]="";							
+	
 		}
-		$objeto->__PRINT_R($row);
 		
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";

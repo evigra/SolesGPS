@@ -30,7 +30,7 @@
 
 	foreach($row as $field=>$value)
 	{
-		if($objeto->sys_fields[$field]["type"]=="autocomplete")
+		if(@$objeto->sys_fields[$field]["type"]=="autocomplete")
 			$objeto->__PRINT_R($objeto->sys_fields[$field]);	
 	
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");

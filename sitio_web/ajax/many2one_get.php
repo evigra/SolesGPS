@@ -38,11 +38,33 @@
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			$valor=$obj_class->__BROWSE($value);
-			#$valor=$obj_class->sys_fields[$field];
-			#$json		=$obj_class->__JSON_AUTOCOMPLETE($valor);
-			$obj_class->__PRINT_R($valor);
+			if($obj_class->sys_primary_field==$field)
+			{
+				$obj_class->__FIND_FIELDS($fieldvalue);												
+			}															
+			if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
+			{												
+		    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
+		    	{					    		
+		    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)
+		    		{
+		    			$row["auto_".$field]=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+					}
+					else $row["auto_".$field]="";
+				}				
+				else $row["auto_".$field]="";
+
+				if(isset($obj_class->sys_fields[$field]["values"][0]))
+					$row["auto_".$field]	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+				else $row["auto_".$field]="";							
+			}	
+
+
+
+			#$obj_class->__PRINT_R($valor);
 		}
+		$objeto->__PRINT_R($row);
+		
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}

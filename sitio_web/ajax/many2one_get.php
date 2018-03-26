@@ -15,8 +15,7 @@
 	$eval="
 		$"."objeto									=new {$class_one}();				
 		$"."objeto->__SESSION();	
-		
-		
+				
 		$"."valor									=$"."objeto->sys_fields[$"."class_field];
 		
 		if(isset($"."valor[\"class_name\"]))
@@ -26,7 +25,6 @@
 	";		
 	eval($eval);	
 	
-	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
 
 	$js												="";
@@ -35,9 +33,10 @@
 	
 	foreach($row as $field=>$value)
 	{
-		$obj_class->__FIND_FIELDS($value);												 
+		
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
-		{											
+		{
+			$obj_class->__FIND_FIELDS($value);													 											
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		
 	    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)

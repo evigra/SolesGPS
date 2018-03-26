@@ -92,7 +92,7 @@
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
-			    "value"             => date("Y-m-d H:i:s"),
+			    "value"             => "",
 			),				
 
 			"caducidad"	    =>array(

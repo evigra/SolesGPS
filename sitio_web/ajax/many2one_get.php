@@ -42,7 +42,8 @@
 		
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			$obj_class->__PRINT_R($obj_class->sys_fields[$field]);	
+			$obj_class->sys_fields[$field]["value"]=$value;
+			#$obj_class->__PRINT_R($obj_class->sys_fields[$field]);	
 			$json=$obj_class->__JSON_AUTOCOMPLETE($obj_class->sys_fields[$field]);
 			$obj_class->__PRINT_R($json);
 		}

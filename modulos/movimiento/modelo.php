@@ -90,11 +90,19 @@
 			    "title"             => "Fecha",
 			    "title_filter"      => "Fecha",
 			    "showTitle"         => "si",
-			    "type"              => "date",
+			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",
 			),			
-
+			),			
+			"caducidad"	    =>array(
+			    "title"             => "Fecha",
+			    "title_filter"      => "Fecha",
+			    "showTitle"         => "si",
+			    "type"              => "date",
+			    "default"           => "",
+			    "value"             => "",
+			),
 			"folio"	    =>array(
 			    "title"             => "Folio",
 			    "title_filter"      => "Folio",

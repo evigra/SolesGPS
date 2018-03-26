@@ -19,7 +19,7 @@
 		
 		$"."valor									=$"."objeto->sys_fields[$"."class_field];
 		
-		if(isset({$"."valor["class_name"]}))
+		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new {$"."valor["class_name"]}();							
 			$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	

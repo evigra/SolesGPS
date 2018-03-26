@@ -92,11 +92,12 @@
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
-			    "value"             => "",
+			    "value"             => date("Y-m-d H:i:s"),
 			),				
+
 			"caducidad"	    =>array(
-			    "title"             => "Fecha",
-			    "title_filter"      => "Fecha",
+			    "title"             => "Caducidad",
+			    "title_filter"      => "Caducidad",
 			    "showTitle"         => "si",
 			    "type"              => "date",
 			    "default"           => "",

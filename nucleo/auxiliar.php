@@ -1137,8 +1137,7 @@
 										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 										{												
 											if(typeof auto_$campo === 'function') 								
-											{					
-												alert(\"$campo\");											
+											{														
 												auto_$campo(ui);
 											}									
 											else

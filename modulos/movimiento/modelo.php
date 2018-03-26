@@ -92,8 +92,14 @@
 			    "showTitle"         => "si",
 			    "type"              => "date",
 			    "default"           => "",
-			    "value"             => "",
+			    "value"             => date("Y-m-d H:i:s"),
 			),			
+
+
+#			$this->sys_date							=date("Y-m-d H:i:s");
+#			$this->sys_date2						=date("Y-m-d");
+
+
 
 			"folio"	    =>array(
 			    "title"             => "Folio",

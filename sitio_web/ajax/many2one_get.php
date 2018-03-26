@@ -28,7 +28,7 @@
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 
-	$objeto->__PRINT_R($_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"]);	
+	$objeto->__PRINT_R($_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id]);	
 	
 	foreach($row as $field=>$value)
 	{

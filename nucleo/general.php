@@ -453,12 +453,9 @@
 							"font"			=>"$campo",
 							"name"			=>"$name",
 						);
-						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);
-						
-					}	
-
+						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);	
+					}
 				}	
-				
 			}	
    			
    			

@@ -28,9 +28,11 @@
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 
-	
 	foreach($row as $field=>$value)
 	{
+		if($value["type"]=="autocomplete")
+			$js.="alert(\"$field\");";	
+	
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}

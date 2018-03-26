@@ -28,10 +28,12 @@
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 
+	$objeto->__PRINT_R($objeto->sys_fields);	
+	
 	foreach($row as $field=>$value)
 	{
 		#if(@$objeto->sys_fields[$field]["type"]=="autocomplete")
-			$objeto->__PRINT_R($objeto->sys_fields[$field]);	
+			
 	
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";

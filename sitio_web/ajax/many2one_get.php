@@ -14,12 +14,19 @@
 	
 	$eval="
 		$"."objeto									=new {$class_one}();				
+		$"."objeto->__SESSION();	
+		
+		
+		$"."valor									=$"."objeto->sys_fields[$"."class_field];
+		
+		if(isset({$"."valor["class_name"]}))
+		{
+			$"."obj_class							=new {$"."valor["class_name"]}();							
+			$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	
+		}
 	";		
 	eval($eval);	
 	
-	$objeto->__SESSION();	
-		
-	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
 
@@ -27,7 +34,7 @@
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
-	$objeto->__PRINT_R($valor);	
+	
 	
 	foreach($row as $field=>$value)
 	{

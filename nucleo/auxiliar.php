@@ -1943,7 +1943,7 @@
 											</table>
 										</td>
 										<td>											
-											<input style=\"paddin:8px; height:25px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
+											<input style=\"paddin:8px; height:28px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
 										</td>
 										<td width=\"30\">
 											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>

@@ -35,13 +35,16 @@
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 	
-	
+	$obj_class->__PRINT_R($row);
 	foreach($row as $field=>$value)
 	{
 		#if(@$objeto->sys_fields[$field]["type"]=="autocomplete")
+		
+		
+		
 		if(isset($obj_class->sys_fields[$field]) AND $obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			$json=$obj_class->__JSON_AUTOCOMPLETE($obj_class->sys_fields[$field])	;
+			$json=$obj_class->__JSON_AUTOCOMPLETE($obj_class->sys_fields[$field]);
 			$obj_class->__PRINT_R($json);
 		}
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");

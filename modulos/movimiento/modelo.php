@@ -54,7 +54,7 @@
 			"tipo"	    =>array(
 			    "title"             => "Tipo",
 			    "showTitle"         => "si",
-			    "type"              => "input",
+			    "type"              => "hidden",
 			    "default"           => "",
 			    "value"             => "",
 			),			
@@ -107,7 +107,7 @@
 			    "title"             => "Folio",
 			    "title_filter"      => "Folio",
 			    "showTitle"         => "si",
-			    "type"              => "input",
+			    "type"              => "hidden",
 			    "default"           => "",
 			    "value"             => "",
 			),			

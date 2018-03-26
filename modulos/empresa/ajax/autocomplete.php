@@ -8,7 +8,7 @@
 	$option["where"][]	="nombre LIKE '%{$_GET["term"]}%'";
 	$data				=$objeto->__BROWSE($option);
 	
-	echo $objeto->sys_sql;
+	#echo $objeto->sys_sql;
 
 	if(count($data["data"])>0)
 	{

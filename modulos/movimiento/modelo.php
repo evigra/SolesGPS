@@ -92,10 +92,8 @@
 			    "showTitle"         => "si",
 			    "type"              => "date",
 			    "default"           => "",
-			    "value"             => date("Y-m-d H:i:s"),
+			    "value"             => "",
 			),			
-
-
 
 			"folio"	    =>array(
 			    "title"             => "Folio",

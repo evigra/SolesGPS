@@ -30,8 +30,10 @@
 
 	foreach($row as $field=>$value)
 	{
+		
 		if(@$value["type"]=="autocomplete")
-			$js.="alert(\"$field\");";	
+			$this->__PRINT_R($value);
+			#$js.="alert(\"$field\");";	
 	
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";

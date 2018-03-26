@@ -54,8 +54,8 @@
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}
-	$obj_class->__PRINT_R($row);
-	
+	#$obj_class->__PRINT_R($row);
+
 	echo "
 		<script>
 			$js

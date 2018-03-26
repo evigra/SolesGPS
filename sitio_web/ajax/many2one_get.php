@@ -38,10 +38,9 @@
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			if($obj_class->sys_primary_field==$field)
-			{
-				$obj_class->__FIND_FIELDS($value);												
-			}															
+			$obj_class->__FIND_FIELDS($value);												
+
+															
 			if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 			{												
 		    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))

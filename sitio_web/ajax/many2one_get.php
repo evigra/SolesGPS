@@ -38,11 +38,10 @@
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			#$obj_class->sys_fields[$field]["value"]=$value;
-			#$obj_class->__PRINT_R($obj_class->sys_fields[$field]);	
-			$valor=$obj_class->sys_fields[$field];
-			$json		=$obj_class->__JSON_AUTOCOMPLETE($valor);
-			$obj_class->__PRINT_R($json);
+			$valor=$obj_class->__BROWSE($value);
+			#$valor=$obj_class->sys_fields[$field];
+			#$json		=$obj_class->__JSON_AUTOCOMPLETE($valor);
+			$obj_class->__PRINT_R($valor);
 		}
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";

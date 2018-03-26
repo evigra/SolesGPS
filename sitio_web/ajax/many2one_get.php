@@ -35,29 +35,25 @@
 	
 	foreach($row as $field=>$value)
 	{
+		$obj_class->__FIND_FIELDS($value);												 
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
-		{
-			$obj_class->__FIND_FIELDS($value);												
-														
+		{											
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		
 	    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)
 	    		{
 	    			$row["auto_".$field]=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
 				}
-				else $row["auto_".$field]="";
 			}				
-			else $row["auto_".$field]="";
 
 			if(isset($obj_class->sys_fields[$field]["values"][0]))
 				$row["auto_".$field]	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
-			else $row["auto_".$field]="";							
-	
 		}
 		
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}
+	$obj_class->__PRINT_R($row);
 	
 	echo "
 		<script>

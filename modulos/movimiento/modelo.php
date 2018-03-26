@@ -111,7 +111,14 @@
 			    "default"           => "",
 			    "value"             => "",
 			),			
-
+			"plazos_id"	    =>array(
+			    "title"             => "Plazos",
+			    "title_filter"      => "Plazos",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			),
 			
 				
 		);				

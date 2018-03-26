@@ -42,12 +42,14 @@
 	    	{					    		
 	    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)
 	    		{
-	    			$row["auto_".$field]=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+	    			$value_auto=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
 				}
 			}				
 
 			if(isset($obj_class->sys_fields[$field]["values"][0]))
-				$row["auto_".$field]	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+				$value_auto	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
+				
+			$js.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	";
 		}
 		
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");

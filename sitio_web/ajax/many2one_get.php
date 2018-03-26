@@ -21,7 +21,7 @@
 		
 		if(isset($"."valor[\"class_name\"]))
 		{
-			$"."obj_class							=new {$"."valor["class_name"]}();							
+			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
 			$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	
 		}
 	";		

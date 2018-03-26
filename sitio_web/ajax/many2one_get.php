@@ -40,7 +40,7 @@
 		{
 			if($obj_class->sys_primary_field==$field)
 			{
-				$obj_class->__FIND_FIELDS($fieldvalue);												
+				$obj_class->__FIND_FIELDS($value);												
 			}															
 			if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 			{												

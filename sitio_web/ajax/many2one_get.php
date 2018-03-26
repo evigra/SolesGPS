@@ -14,7 +14,6 @@
 	
 	$eval="
 		$"."objeto									=new {$class_one}();
-		$"."objeto_field							=new {$class_field}();		
 					
 	";		
 	eval($eval);	

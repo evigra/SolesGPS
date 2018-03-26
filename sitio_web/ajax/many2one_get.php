@@ -13,7 +13,9 @@
 	$obj											=$objeto_json;			
 	
 	$eval="
-		$"."objeto									=new {$class_one}();				
+		$"."objeto									=new {$class_one}();
+		$"."objeto_field							=new {$class_field}();		
+					
 	";		
 	eval($eval);	
 	
@@ -27,7 +29,7 @@
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
-	$objeto->__PRINT_R($objeto_json);	
+	$objeto->__PRINT_R($_SESSION["SAVE"]);	
 	
 	foreach($row as $field=>$value)
 	{

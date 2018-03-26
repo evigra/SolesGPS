@@ -34,12 +34,8 @@
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
-	
-	#$obj_class->__PRINT_R($row);
 	foreach($row as $field=>$value)
 	{
-		#if(@$objeto->sys_fields[$field]["type"]=="autocomplete")
-		
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$obj_class->sys_fields[$field]["value"]=$value;

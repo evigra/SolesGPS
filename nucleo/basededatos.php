@@ -400,6 +400,8 @@
         	$vauxpath[count($vauxpath)-1]	="";
         	$auxpath						="http://".$_SERVER["SERVER_NAME"].implode("/",$vauxpath).substr($valor["source"],3,strlen($valor["source"])-3);
         	
+        	echo "JSON_AUTOCOMPLETE :: ".$auxpath."?id=".$valor["value"];
+        	
         	return	@json_decode(@file_get_contents($auxpath."?id=".$valor["value"]));
 		}		
 		##############################################################################

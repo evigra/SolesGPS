@@ -22,7 +22,7 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
-			#$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	
+			$"."obj_class->__PRINT_R($"."obj_class->sys_fields);	
 		}
 	";		
 	eval($eval);	
@@ -39,10 +39,8 @@
 	foreach($row as $field=>$value)
 	{
 		#if(@$objeto->sys_fields[$field]["type"]=="autocomplete")
-		
-		
-		
-		if(isset($obj_class->sys_fields[$field]) AND $obj_class->sys_fields[$field]["type"]=="autocomplete")
+
+		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$json=$obj_class->__JSON_AUTOCOMPLETE($obj_class->sys_fields[$field]);
 			$obj_class->__PRINT_R($json);

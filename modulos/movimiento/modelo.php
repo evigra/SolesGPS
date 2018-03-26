@@ -93,8 +93,7 @@
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",
-			),			
-			),			
+			),				
 			"caducidad"	    =>array(
 			    "title"             => "Fecha",
 			    "title_filter"      => "Fecha",

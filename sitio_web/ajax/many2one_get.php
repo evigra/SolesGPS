@@ -21,6 +21,7 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
+			$"."objeto->__PRINT_R($"."valor"."[\"class_name\"]);
 		}
 	";		
 	eval($eval);	
@@ -33,11 +34,10 @@
 	
 	foreach($row as $field=>$value)
 	{
-		
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			#$obj_class->__PRINT_R($value);
-			$obj_class->__FIND_FIELDS($valor);													 											
+			$obj_class->__PRINT_R($value);
+			$obj_class->__FIND_FIELDS($value);													 											
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		
 	    		if(isset($obj_class->sys_fields[$field]["values"]) AND count($obj_class->sys_fields[$field]["values"])>0)

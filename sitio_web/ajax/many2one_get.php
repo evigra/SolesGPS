@@ -23,7 +23,6 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
-			echo $"."valor"."[\"class_name\"];
 		}
 	";		
 	eval($eval);	

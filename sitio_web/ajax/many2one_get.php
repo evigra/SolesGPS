@@ -33,7 +33,7 @@
 	
 	foreach($row as $field=>$value)
 	{
-		/*
+		
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$obj_class->__FIND_FIELDS($value);													 											
@@ -49,7 +49,7 @@
 				
 			$js.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	";
 		}
-		*/
+		
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}

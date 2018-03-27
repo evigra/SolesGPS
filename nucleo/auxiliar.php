@@ -1757,12 +1757,8 @@
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		 
-		    		
-		    		#$this->__PRINT_R($browse);
-
 					if(isset($this->sys_memory) AND isset($template_option["class_field"]))
-					{												
-						
+					{																		
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					}
 					

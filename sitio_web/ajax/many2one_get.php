@@ -40,6 +40,9 @@
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$obj_class->sys_fields[$field]["value"]="$value";
+			
+			$obj_class->sys_primary_id=$value;
+			
 			$obj_class->__FIND_FIELDS($value);													
 			$obj_class->__PRINT_R(		$obj_class->sys_fields[$field]		);
 							

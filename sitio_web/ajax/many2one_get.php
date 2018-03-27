@@ -12,7 +12,7 @@
 	
 	$obj											=$objeto_json;			
 
-	echo "$class_one :: "
+
 	
 	$eval="
 		$"."objeto									=new {$class_one}();				
@@ -23,6 +23,7 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
+			$"."objeto->__PRINT_R($"."valor"."[\"class_name\"]);
 		}
 	";		
 	eval($eval);	
@@ -41,7 +42,7 @@
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
 			$obj_class->__PRINT_R(		$value);
-			$obj_class->__FIND_FIELDS($row[id]);													
+			$obj_class->__FIND_FIELDS($row["id"]);													
 			$obj_class->__PRINT_R(		$obj_class->sys_fields[$field]		);
 							
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))

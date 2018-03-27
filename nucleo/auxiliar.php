@@ -139,13 +139,11 @@
 									echo "$eval"; #$eval; ---------------------------								        			
 							}		
 							if($value["relation"]=="many2one")
-							{
-								
+							{						
 								if(@$this->request["sys_action_" . $this->sys_object ]=="__clean_session")
 									unset($_SESSION["SAVE"][$this->sys_object]);			
 								#if(@$this->request["sys_action_" . $this->sys_object ]=="__SAVE")
 								#	unset($_SESSION["SAVE"][$this->sys_object][$field]);			
-								
 								
 								if($this->sys_section!="write")
 								{
@@ -179,7 +177,7 @@
 										
 										$eval="
 											$"."option=array();
-											#$"."option[\"echo\"]=array(\"CLASS {$value["class_name"]}\");
+											$"."option[\"echo\"]=array(\"CLASS {$value["class_name"]}\");
 											$"."option[\"where\"]=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
 											$"."$field=$"."this->$field"."_obj->__BROWSE($"."option);
 											$"."this->sys_fields[\"$field\"][\"values\"]=\"\";

@@ -23,7 +23,6 @@
 		if(isset($"."valor[\"class_name\"]))
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
-			$"."objeto->__PRINT_R($"."valor"."[\"class_name\"]);
 		}
 	";		
 	eval($eval);	
@@ -33,17 +32,13 @@
 	$js												="";
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	
-	$objeto->__PRINT_R($row);
-	
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 	foreach($row as $field=>$value)
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
 		{
-			$obj_class->__PRINT_R(		$value);
-			$obj_class->__FIND_FIELDS($row["id"]);													
-			$obj_class->__PRINT_R(		$obj_class->sys_fields[$field]		);
+			$obj_class->__FIND_FIELDS($row[$obj_class->sys_primary_field]);													
 							
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		

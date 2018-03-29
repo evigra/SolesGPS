@@ -1246,7 +1246,7 @@
 								
 				if(isset($"."json))
 				{								
-					$"."sys_primary_field	=$"."this->$campo"."_obj->sys_primary_field;
+					$"."sys_primary_field								=$"."this->$campo"."_obj->sys_primary_field;
 			
 					if(isset($"."class_id) AND $"."class_id>0)
 						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
@@ -1276,7 +1276,6 @@
 				$"."option_report[\"template_option\"]	                = $"."option;
 				
 				$"."option_report[\"name\"]	                			= '$campo';
-				
 				
 				$"."report_procedure									=$"."this->$campo"."_obj->__VIEW_REPORT($"."option_report	);
 
@@ -1716,6 +1715,8 @@
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
+					
+					$this->__PRINT_R($option["data"]);
 				}
 			}
 		    if(is_array($option))

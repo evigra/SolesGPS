@@ -986,6 +986,7 @@
 					    if($valor["type"]=="input")	
 					    {			        						        
 					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        
 					    } 
 					    if($valor["type"]=="date")	
 					    {
@@ -994,14 +995,18 @@
 					    		#$js_auto=", appendTo: \"#\"";
 
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
-					        $words["$campo"]  ="
-					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-			        			<script>
-									$(\"input#$campo".".{$this->sys_name}\").datepicker({
-										dateFormat:\"yy-mm-dd\" $js_auto
-									});
-					        	</script>			            	
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
+					        {
+							    $words["$campo"]  ="
+							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+					    			<script>
+										$(\"input#$campo".".{$this->sys_name}\").datepicker({
+											dateFormat:\"yy-mm-dd\" $js_auto
+										});
+							    	</script>			            	
 					        	";
+							}					        	
+					        else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";	
 					    } 
 					    if($valor["type"]=="multidate")	
 					    {
@@ -1020,16 +1025,21 @@
 								
 								$js_multidate="addDates: [$days_value]";
 					        }
-					        $words["$campo"]  ="
-					        	<input id=\"$campo\" $style type=\"text\" name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
-			        			<script>
-									$(\"input#$campo".".{$this->sys_name}\").multiDatesPicker(
-									{
-										dateFormat: \"yy-mm-dd\",
-										$js_multidate
-									});
-					        	</script>			            	
-					        	";
+   							if(!in_array(@$this->request["sys_action"],$this->sys_print))
+							{					        
+
+							    $words["$campo"]  ="
+							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
+					    			<script>
+										$(\"input#$campo".".{$this->sys_name}\").multiDatesPicker(
+										{
+											dateFormat: \"yy-mm-dd\",
+											$js_multidate
+										});
+							    	</script>			            	
+						    	";
+						    }
+						    else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";
 					    } 
 					    
 					    if($valor["type"]=="checkbox")	
@@ -1079,17 +1089,21 @@
 					    if($valor["type"]=="select")	
 					    {
 					        $options="";
-					        
-					        foreach($valor["source"] as $value =>$text)
-					        {
-					        	$selected="";
-					        	if($valor["value"]==$value) $selected="selected";
-					        	$options.="<option value=\"$value\" $selected>$text</option>";			            
-					        }			            
-						        $words["$campo"]  ="<select id=\"$campo\" $style name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
-					        		$options
-					        	</select><br>$titulo
-					        ";
+							if(!in_array(@$this->request["sys_action"],$this->sys_print))
+							{					        
+							    foreach($valor["source"] as $value =>$text)
+							    {
+							    	$selected="";
+							    	if($valor["value"]==$value) $selected="selected";
+							    	$options.="<option value=\"$value\" $selected>$text</option>";			            
+							    }			            
+							    $words["$campo"]  ="<select id=\"$campo\" $style name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
+							    		$options
+							    	</select><br>$titulo
+							    ";
+							}					        
+							else	$words["$campo"]  ="$text<br>$titulo";
+							
 					    }			        
 					    if($valor["type"]=="autocomplete")	
 					    {

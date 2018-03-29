@@ -1443,7 +1443,8 @@
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
-					{								
+					{							
+							
 						if($this->sys_primary_field==$field)
 						{
 							$this->__FIND_FIELDS($fieldvalue);												
@@ -1467,6 +1468,11 @@
 							if(isset($this->sys_fields[$field]["values"][0]))
 								$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
 							else $row[$field]="";							
+							
+							if($row[$field]=="" AND isset($row["auto_".$field]))
+							{
+								$row[$field]=$row["auto_".$field];
+							}
 						}	
 					}			    
                     if($class=="odd")   
@@ -1616,7 +1622,10 @@
 				    }	
 
 				    $view   .=$html_template;
-				    $view	=$this->__REPLACE($view,$row);				
+				    
+				    
+				    $view	=$this->__REPLACE($view,$row);
+				    				
 			    }		
 
 	        	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n))	

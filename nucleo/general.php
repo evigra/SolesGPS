@@ -648,7 +648,6 @@
 				###########################################################
 				if(isset($datas["class_one"]))
 				{		
-					
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
 					
@@ -672,7 +671,6 @@
 					
 					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
 					{
-						$this->__PRINT_R($row);
 						$active_id		=$datas["class_field_id"];						
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
 					}

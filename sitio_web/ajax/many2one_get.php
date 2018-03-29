@@ -12,8 +12,6 @@
 	
 	$obj											=$objeto_json;			
 
-
-	
 	$eval="
 		$"."objeto									=new {$class_one}();				
 		$"."objeto->__SESSION();	

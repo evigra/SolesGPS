@@ -1471,7 +1471,7 @@
 							
 							if($row[$field]=="" AND isset($row["auto_".$field]))
 							{
-								//$row[$field]=$row["auto_".$field];
+								$row[$field]=$row["auto_".$field];
 							}
 						}	
 					}			    

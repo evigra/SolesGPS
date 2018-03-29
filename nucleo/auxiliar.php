@@ -1127,31 +1127,39 @@
 							if(isset($valor["vars"]))	$vars	=$valor["vars"];
 							else						$vars	="";
 					    
-					        $words["$campo"]  ="					        	
-					        	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-					        	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-					        	<script type=\"\">
-									
-									$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
-									{		
-										source:		\"{$valor["source"]}$vars\",
-										dataType: 	\"jsonp\",
-										$js_auto
-										select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
-										{												
-											if(typeof auto_$campo === 'function') 								
-											{														
-												auto_$campo(ui);
-											}									
-											else
-											{											
-												$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
-												$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
-											}
-										}				
-									});				            	
-					        	</script>
-					        ";
+							if(!in_array(@$this->request["sys_action"],$this->sys_print))
+							{
+
+							    $words["$campo"]  ="					        	
+							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
+							    	<script type=\"\">
+										
+										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
+										{		
+											source:		\"{$valor["source"]}$vars\",
+											dataType: 	\"jsonp\",
+											$js_auto
+											select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
+											{												
+												if(typeof auto_$campo === 'function') 								
+												{														
+													auto_$campo(ui);
+												}									
+												else
+												{											
+													$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
+													$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+												}
+											}				
+										});				            	
+							    	</script>
+							    ";
+							}					    
+							else
+							{
+								$words["$campo"]  =$label;
+							}
 					    }  
 						#/*
 					    if($valor["type"]=="form")	

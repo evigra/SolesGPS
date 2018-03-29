@@ -53,7 +53,7 @@
 		);
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
-		$objeto->sys_fields["folio"]["type"]	="txt";
+		$objeto->sys_fields["folio"]["type"]	="value";
 		
 		#BOTONES SECCION DERECHA
 		$module_right=array(

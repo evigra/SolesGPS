@@ -1158,7 +1158,7 @@
 							}					    
 							else
 							{
-								$words["$campo"]  =$label;
+								$words["$campo"]  ="$label<br>$titulo";
 							}
 					    }  
 						#/*

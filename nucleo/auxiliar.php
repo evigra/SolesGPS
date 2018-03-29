@@ -1471,7 +1471,7 @@
 							
 							if($row[$field]=="" AND isset($row["auto_".$field]))
 							{
-								$row[$field]=$row["auto_".$field];
+								//$row[$field]=$row["auto_".$field];
 							}
 						}	
 					}			    
@@ -1725,7 +1725,7 @@
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
 					
-					$this->__PRINT_R($option["data"]);
+					#$this->__PRINT_R($option["data"]);
 				}
 			}
 		    if(is_array($option))

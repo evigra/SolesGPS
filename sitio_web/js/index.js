@@ -197,9 +197,6 @@
 							var dialog = $(this).closest('.ui-dialog');
 						},
 						buttons: {
-							"Registrar": function() {								
-									many2one_post(options);
-							},
 							"Registrar y Cerrar": function() {								
 									many2one_post(options);
 									$( this ).dialog("close");

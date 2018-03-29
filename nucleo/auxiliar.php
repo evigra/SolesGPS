@@ -817,6 +817,11 @@
 				$return								=$str;
 				foreach($words as $word=>$replace)
 				{
+					
+					if(isset($words["auto_".$word]))
+						$replace=$words["auto_".$word];
+					
+					
 		        	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n) AND isset($this->sys_view_l18n["$word"]))	
 		        		$replace					=$this->sys_view_l18n["$word"];
 		        	if(is_array($replace))	$replace="";	
@@ -1471,9 +1476,9 @@
 							
 							if($row[$field]=="" AND isset($row["auto_".$field]))
 							{
-								$aux					=$row[$field];
-								$row[$field]			=$row["auto_".$field];
-								$row["auto_".$field]	=$aux;
+								#$aux					=$row[$field];
+								#$row[$field]			=$row["auto_".$field];
+								#$row["auto_".$field]	=$aux;
 							}
 						}	
 					}			    

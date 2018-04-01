@@ -31,7 +31,7 @@
 			if(!isset($_SESSION["user"]["l18n"])) 
 				@$_SESSION["user"]["l18n"]			="es_MX";
 			
-			@$_SESSION["user"]["huso_h"]			=6;
+			@$_SESSION["user"]["huso_h"]			=5;
 			
 			$this->sys_date							=date("Y-m-d H:i:s");
 			$this->sys_date2						=date("Y-m-d");

@@ -1033,6 +1033,10 @@
 											changeYear: 	false,
 											currentText: 	\"Ahora\",
 											closeText: 		\"Listo\",
+											showSecond: 	null,			
+											showMillisec:	null,
+											showMicrosec:	null,
+											showTimezone:	false,											
 											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
 											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
 											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]

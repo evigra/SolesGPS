@@ -1001,13 +1001,51 @@
 							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
 										$(\"input#$campo".".{$this->sys_name}\").datepicker({
-											dateFormat:\"yy-mm-dd\" $js_auto
+											dateFormat:\"yy-mm-dd\",
+											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
+											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
+											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
+											$js_auto
+											
 										});
 							    	</script>			            	
 					        	";
 							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";	
 					    } 
+					    if($valor["type"]=="datetime")	
+					    {
+					    	$js_auto="";
+					    	#if(isset($this->sys_memory) AND $this->sys_memory!="")
+					    		#$js_auto=", appendTo: \"#\"";
+
+					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
+					        {
+							    $words["$campo"]  ="
+							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+					    			<script>
+										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
+											dateFormat: \"yy-mm-dd\",
+											timeFormat: \"HH:mm:ss\",
+
+											showSecond: false,			
+											showMillisec:false,
+											showMicrosec:false,
+											showTimezone:false,
+											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
+											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
+											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
+											$js_auto
+										});	
+										
+										
+							    	</script>			            	
+					        	";
+							}					        	
+					        else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";	
+					    } 
+
 					    if($valor["type"]=="multidate")	
 					    {
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";

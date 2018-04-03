@@ -1029,10 +1029,14 @@
 											dateFormat: \"yy-mm-dd\",
 											timeFormat: \"HH:mm:ss\",
 
-											showSecond: false,			
-											showMillisec:false,
-											showMicrosec:false,
-											showTimezone:false,
+											changeMonth: 	false,
+											changeYear: 	false,
+											currentText: 	\"Ahora\",
+											closeText: 		\"Listo\",
+											showSecond: 	false,			
+											showMillisec:	false,
+											showMicrosec:	false,
+											showTimezone:	false,											
 											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
 											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
 											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]

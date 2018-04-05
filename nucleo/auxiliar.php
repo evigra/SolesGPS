@@ -1036,7 +1036,7 @@
 											closeText: 		\"Listo\",
 											showSecond: 	null,			
 											showMillisec:	null,
-											showMicrosec:	null,
+											showMicrosec:	false,
 											showTimezone:	false,											
 											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
 											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],

@@ -126,7 +126,7 @@ input, button, label {
 input[type=text], input[type=password] {
   padding: 0 10px;
   width: 300px;
-  height: 40px;
+  height: 30px;
   color: #bbb;
   text-shadow: 1px 1px 1px black;
   background: rgba(0, 0, 0, 0.16);
@@ -160,11 +160,11 @@ label {
 
 .login-submit {
   position: absolute;
-  top: 12px;
+  top: 6px;
   right: 0;
   width: 48px;
   height: 48px;
-  padding: 8px;
+  padding: 4px;
   border-radius: 32px;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
@@ -194,7 +194,7 @@ label {
   z-index: 2;
   width: 48px;
   height: 48px;
-  padding: 0 0 48px;
+  padding: 0 0 20px;
   /* Fix wrong positioning in Firefox 9 & older (bug 450418) */
   text-indent: 120%;
   white-space: nowrap;
@@ -247,7 +247,7 @@ label {
 }
 
 .lt-ie9 input[type=text], .lt-ie9 input[type=password] {
-  line-height: 40px;
+  line-height: 30px;
   background: #282828;
 }
 .lt-ie9 .login-submit {

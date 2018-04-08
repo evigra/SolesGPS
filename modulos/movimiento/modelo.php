@@ -90,7 +90,7 @@
 			    "title"             => "Fecha",
 			    "title_filter"      => "Fecha",
 			    "showTitle"         => "si",
-			    "type"              => "date",
+			    "type"              => "datetime",
 			    "default"           => "",
 			    "value"             => "",
 			),				

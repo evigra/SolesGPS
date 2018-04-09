@@ -367,8 +367,6 @@
 	
 	if(isset($_SESSION["pdf"]["PAGE"]))
 		$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
-
-	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 	
 	$pdf->SetFont('helvetica', '', 9);
 
@@ -378,7 +376,7 @@
 
 	if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
-	$pdf->Output($_SESSION["pdf"]["save_name"], 'I');		
+	#$pdf->Output($_SESSION["pdf"]["save_name"], 'I');		
 				#header('Location:'.$path);		
 				//exit;
 			}

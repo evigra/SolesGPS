@@ -385,6 +385,8 @@
 
 		    $sys_action     						=@$this->request["sys_action"];		   
 
+			echo $this->request["sys_action"];
+
 			if(@$this->request["sys_action"]=="print_excel")
 		    {
 				return "
@@ -401,6 +403,7 @@
 			}			
 			else
 			{
+				
 				return "
 					<div name=\"title_$name\">
 						<div class=\"report_title_action\">
@@ -2330,7 +2333,7 @@
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
-				#$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
+				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
 								
 				if(isset($option["title"]))
 				{

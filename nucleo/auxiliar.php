@@ -342,6 +342,7 @@
 				$this->words["sys_modulo"]		=$template;
 				
 				$_SESSION["pdf"]["template"]	=$this->__REPLACE($view,$this->words);
+				$_SESSION["pdf"]["sys_action"]	=$this->request["sys_action"];
 				
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				$path				.="../$url";
@@ -393,16 +394,15 @@
 					</div>
 				";
 			}
-			else if(@$this->request["sys_action"]=="print_pdf")
+			else if(@$_SESSION["pdf"]["sys_action"]=="print_pdf")
 		    {
 				return "					
 						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					
 				";
 			}
-			/*			
+					
 			else
-			{
-								
+			{					
 				return "
 					<div name=\"title_$name\">
 						<div class=\"report_title_action\">
@@ -417,7 +417,7 @@
 				";
 							
 			}
-			*/			
+					
 		}	
 		public function __MENU($words)
 		{  			

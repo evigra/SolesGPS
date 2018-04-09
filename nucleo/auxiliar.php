@@ -359,7 +359,7 @@
         ##############################################################################
 		public function __REPORT_TITLES($option)
 		{  
-			
+			/*
 			$sys_order	=$option["sys_order"];
 			$sys_torder	=$option["sys_torder"];
 			$font		=$option["font"];
@@ -385,7 +385,6 @@
 
 		    $sys_action     						=@$this->request["sys_action"];		   
 
-			echo $this->request["sys_action"];
 
 			if(@$this->request["sys_action"]=="print_excel")
 		    {
@@ -403,7 +402,7 @@
 			}			
 			else
 			{
-				
+								
 				return "
 					<div name=\"title_$name\">
 						<div class=\"report_title_action\">
@@ -415,8 +414,10 @@
 							</table>
 						</div>
 					</div>
-				";			
-			}			
+				";
+							
+			}
+			*/			
 		}	
 		public function __MENU($words)
 		{  			

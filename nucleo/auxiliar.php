@@ -1025,7 +1025,6 @@
 							    $words["$campo"]  ="
 							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
-					    				/*
 										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
 											dateFormat: \"yy-mm-dd\",
 											timeFormat: \"HH:mm:ss\",
@@ -1037,12 +1036,6 @@
 											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
 											$js_auto
 										});	
-										*/
-										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
-											timeFormat: \"HH:mm:ss\",
-										});	
-
-										
 							    	</script>			            	
 					        	";
 							}					        	

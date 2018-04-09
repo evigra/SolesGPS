@@ -1033,7 +1033,7 @@
 											showMicrosecond: false,
 											minuteText: 	\"Minutos\",
 											hourText: 		\"Horas\",
-											timeText: 		\"Tiempo\",
+											showTime: 		false,
 											currentText: 	\"Ahora\",
 											closeText: 		\"Listo\",
 											dayNamesMin: 	[\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],

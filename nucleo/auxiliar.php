@@ -1029,6 +1029,7 @@
 											dateFormat: \"yy-mm-dd\",
 											timeFormat: \"HH:mm:ss\",
 											showSecond: false,
+											secondText: \"Segundos\",
 											currentText: 	\"Ahora\",
 											closeText: 		\"Listo\",
 											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],

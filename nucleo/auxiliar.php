@@ -376,7 +376,7 @@
 
 	if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
-	#$pdf->Output($_SESSION["pdf"]["save_name"], 'I');		
+	$pdf->Output($_SESSION["pdf"]["save_name"], 'I');		
 				#header('Location:'.$path);		
 				//exit;
 			}

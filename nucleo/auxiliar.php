@@ -355,7 +355,7 @@
 				";
 		
 				#header('Location:'.$path);		
-				exit;
+				//exit;
 			}
 			#$_SESSION["pdf"]["template"]				=$template;
 			#else	

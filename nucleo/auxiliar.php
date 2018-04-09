@@ -370,7 +370,7 @@
 				if(isset($_SESSION["pdf"]["PAGE"]))
 					$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
 
-				$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+				#$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 				
 				$pdf->SetFont('helvetica', '', 9);
 

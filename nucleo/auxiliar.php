@@ -1028,7 +1028,7 @@
 										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
 											dateFormat: 	\"yy-mm-dd\",
 											timeFormat: 	\"HH:mm:ss\",
-											showMinute: 	false
+											showMinute: 	false,
 											showSecond: 	false,
 											showMilisecond: false,
 											showMicrosecond: false,

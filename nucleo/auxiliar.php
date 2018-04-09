@@ -346,39 +346,8 @@
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				$path				.="../$url";
 		
-	if(@file_exists("tcpdf/tcpdf_include.php")) 			require_once('tcpdf/tcpdf_include.php');
-	if(@file_exists("../tcpdf/tcpdf_include.php")) 		require_once('../tcpdf/tcpdf_include.php');
-	if(@file_exists("../../tcpdf/tcpdf_include.php")) 	require_once('../../tcpdf/tcpdf_include.php');
-	if(@file_exists("../../../tcpdf/tcpdf_include.php")) 	require_once('../../../tcpdf/tcpdf_include.php');
-	
-	$pdf = new TCPDF(
-		$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], 
-		$_SESSION["pdf"]["PDF_UNIT"], 
-		$_SESSION["pdf"]["PDF_PAGE_FORMAT"], 
-		true, 'UTF-8', false
-	);
-
-	$pdf->SetCreator(PDF_CREATOR);
-	$pdf->SetAuthor('CEO ISC Eduardo Vizcaino Granados');
-	$pdf->SetTitle($_SESSION["pdf"]["title"]);
-
-	if(isset($_SESSION["pdf"]["HEADER"]))
-		$pdf->SetMargins(PDF_MARGIN_LEFT, $_SESSION["pdf"]["PDF_MARGIN_TOP"], PDF_MARGIN_RIGHT);
-	
-	if(isset($_SESSION["pdf"]["PAGE"]))
-		$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
-	
-	$pdf->SetFont('helvetica', '', 9);
-
-	$pdf->AddPage();
-
-	$pdf->writeHTML($html, true, 0, true, 0);
-
-	if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-
-	$pdf->Output($_SESSION["pdf"]["save_name"], 'I');		
-				#header('Location:'.$path);		
-				//exit;
+				header('Location:'.$path);		
+				exit;
 			}
 			#$_SESSION["pdf"]["template"]				=$template;
 			#else	

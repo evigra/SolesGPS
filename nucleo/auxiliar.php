@@ -359,7 +359,7 @@
         ##############################################################################
 		public function __REPORT_TITLES($option)
 		{  
-			/*
+			
 			$sys_order	=$option["sys_order"];
 			$sys_torder	=$option["sys_torder"];
 			$font		=$option["font"];
@@ -384,7 +384,7 @@
 			$base="";
 
 		    $sys_action     						=@$this->request["sys_action"];		   
-
+		    /*
 
 			if(@$this->request["sys_action"]=="print_excel")
 		    {

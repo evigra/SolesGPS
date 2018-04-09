@@ -394,7 +394,7 @@
 					</div>
 				";
 			}
-			else if(@$this->request["sys_action"]=="print_pdf")
+			else if(@$_SESSION["request"]["sys_action"]=="print_pdf")
 		    {
 				return "					
 						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					

@@ -384,7 +384,7 @@
 			$base="";
 
 		    $sys_action     						=@$this->request["sys_action"];		   
-		    /*
+		    
 
 			if(@$this->request["sys_action"]=="print_excel")
 		    {
@@ -399,7 +399,8 @@
 				return "					
 						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					
 				";
-			}			
+			}
+			/*			
 			else
 			{
 								

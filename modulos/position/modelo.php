@@ -1070,6 +1070,18 @@
 			}	
 			return $return;
 		}		
+		public function cron_update_positionid()
+    	{
+			$comando_sql        ="
+				UPDATE devices d JOIN (
+					SELECT max(p.id) as pid, d.id as did FROM admin_soles37.positions p join devices d on p.deviceid = d.id
+					WHERE company_id=9 AND left(devicetime,10)=left(now(),10)
+					GROUP BY deviceid
+				) dev  on d.id=dev.did
+				SET d.positionid=dev.pid
+			";
+			$datas_event     =$this->__EXECUTE($comando_sql);	
+		}		
 
 		public function position($option=NULL)
     	{

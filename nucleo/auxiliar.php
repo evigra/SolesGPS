@@ -18,7 +18,7 @@
 									"ignore"	=>"1",
 								);
 		var $sys_false		    =array(0,"0","false", "no");
-		var $sys_modules	    =array("historico","menu","user_group", "group","modulos","permiso","sesion");
+		var $sys_modules	    =array("historico","menu","user_group", "group","modulos","permiso","sesion","cron","cron_history");
 		var $sys_print	    	=array("print_report","print_excel","print_pdf");
 		var $sys_section	    ="";
 		var $sys_action		    ="";

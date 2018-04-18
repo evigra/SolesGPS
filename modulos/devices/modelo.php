@@ -162,9 +162,12 @@
 			    "default"           => "",
 			    "value"             => "",
 			    "source"			=>array(
-			    	"01"	=>	"Carro Gris",
+			    	"01"	=>	"Tracto Azul Caja Blanca",
+			    	"06"	=>	"Tracto Blanco Caja Blanca",
 			    	"02"	=>	"Carro Rojo",
-			    	"03"	=>	"Camioneta Gris",
+			    	"03"	=>	"Camioneta Gris",			    	
+			    	"06"	=>	"Camioneta Blanca",
+			    	"07"	=>	"Camioneta Azul",
 			    	"30"	=>	"Moto",
 			    	"90"	=>	"Celular Negro",
 			    	"91"	=>	"Celular Azul",
@@ -475,8 +478,7 @@
 		}
 						
 		public function cron_saldo()
-    	{    
-		    		
+    	{    	    		
 			$comando_sql		="
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
 				FROM devices d join company c on c.id=d.company_id  

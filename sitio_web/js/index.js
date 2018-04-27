@@ -1517,6 +1517,8 @@ styles:
 	
 	$(document).ready(function()
 	{
+		ajustar_device();
+	
 		var vURL = window.location.href
 		var aURL = vURL.split("/");
 		var	vURL = aURL[aURL.length-2]+"/"+aURL[aURL.length-1];

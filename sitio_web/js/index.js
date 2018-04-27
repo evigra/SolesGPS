@@ -618,7 +618,8 @@
 
  	function ajustar_device()
  	{
- 		render($("td#system_submenu2"), $("div#devices_all"),-50);
+ 		if($("td#system_submenu2").length>0 && $("div#devices_all").length>0) 
+	 		render($("td#system_submenu2"), $("div#devices_all"),-50);
  	
  	}
 	

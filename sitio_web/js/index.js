@@ -1518,7 +1518,11 @@ styles:
 	
 	$(document).ready(function()
 	{
-		ajustar_device();
+		setTimeout(function()
+		{  				
+			ajustar_device();
+		},1000);
+		
 	
 		var vURL = window.location.href
 		var aURL = vURL.split("/");

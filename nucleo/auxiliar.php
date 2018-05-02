@@ -1113,6 +1113,11 @@
 					    {
 					        $words["$campo"]  ="$titulo";
 					    } 
+					    if($valor["type"]=="txt")	
+					    {
+					        $words["$campo"]  ="$titulo";
+					    } 
+
 					    if($valor["type"]=="value")	
 					    {
 					        $words["$campo"]  ="{$valor["value"]}";

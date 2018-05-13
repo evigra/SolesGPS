@@ -488,13 +488,14 @@
 					OR bloqueo is NULL)
 					AND c.estatus=1
 					AND d.telcel=1
-					AND(d.recargado is null  OR    DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 
 			foreach($datas as $row)
-			{	
+			{					
 				$respuesta=$this->WS_TAECEL($row);
+				
 				$this->__PRINT_R( 	$respuesta		);
 				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
 				{
@@ -504,7 +505,6 @@
 							AND id='{$row["id"]}'
 					";
 					$datas	=$this->__EXECUTE($comando_sql);
-
 				}				
 			}
     	}
@@ -527,8 +527,7 @@
 				array("referencia"=>"9854123547", "producto"=>"MEG000", "monto"=>"131"),
 				array("referencia"=>"27458965324125", "producto"=>"DSH000", "monto"=>"103"),
 				array("referencia"=>"4578326541", "producto"=>"IZZ000", "monto"=>"155"),
-				array("referencia"=>"3456987", "producto"=>"MAX000", "monto"=>"177"),
-				
+				array("referencia"=>"3456987", "producto"=>"MAX000", "monto"=>"177"),			
 			);		    		
 
 			foreach($datas as $row)

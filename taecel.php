@@ -53,9 +53,9 @@
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 			$response = curl_exec($ch);
 	
-			$response=json_decode($response);
+			#$response=json_decode($response);
 
-			echo "<pre>" . print_r($response) . "</pre>";
+			echo "<pre>" . print_r(json_decode($response)) . "</pre>";
 
 
 ?>

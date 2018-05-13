@@ -55,7 +55,7 @@
 	
 			#$response=json_decode($response);
 
-			echo "<pre>" . print_r(json_decode($response)) . "</pre>";
+			echo "<pre>" . print_r($response) . "</pre>";
 
 
 ?>

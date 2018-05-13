@@ -55,8 +55,17 @@
 	
 			$response=json_decode($response);
 			
-			$data=$response->data;
-			echo "<pre>" . print_r($data) . "</pre>";
+			$datas=$response->data;
+			$recargar=1;
+			foreach($datas as $data)
+			{
+				if($data->Nota=="Recarga Exitosa" AND $data->Telefono=="5555555560")
+				{
+					$recargar=0;
+				}
+			}
+			
+			#echo "<pre>" . print_r($data) . "</pre>";
 
 
 ?>

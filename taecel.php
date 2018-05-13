@@ -64,7 +64,7 @@
 					$recargar=0;
 				}
 			}
-			
+			echo $recargar;
 			#echo "<pre>" . print_r($data) . "</pre>";
 
 

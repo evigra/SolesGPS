@@ -225,38 +225,42 @@
 			return $return;
 		}
 		public function WS_TAECEL($data)
-    	{    		    		
-    	
+    	{    		    		    	
 				$sesion 			=array("key"=>"6dce34dbc6cc3d6bd8de48fd011d0595", "nip"=>"7fbb2c3531d73ab26044fac7dfe1a503");
 				#$sesion 			=array("key"=>"25d55ad283aa400af464c76d713c07ad", "nip"=>"25d55ad283aa400af464");
-				$url 				="https://taecel.com/app/api/RequestTXN";
-				$vars 				=$sesion;
-				
-				$vars["producto"]	=$data["producto"];
-				$vars["referencia"]	=$data["referencia"];				
-				if(isset($data["monto"]))
-					$vars["monto"]=$data["monto"];				
 
-				$option				=array("url"=>$url,"post"=>$vars);
-				$respuesta1			=json_decode($this->__curl($option));
 				
-				
-				$url 				="https://taecel.com/app/api/StatusTXN";
-				$vars 				=$sesion;
-				$vars["transID"]	=$respuesta1->data->transID;
-						
-				$option				=array("url"=>$url,"post"=>$vars);
-				$respuesta2			=json_decode($this->__curl($option));
-				
-				return array(
-					"producto"	=>$data["producto"],
-					"referencia"=>$data["referencia"],
-					"mensaje1"	=>$respuesta1->message,
-					"transID"	=>$respuesta1->data->transID,
-					"folio"		=>$respuesta2->data->Folio,
-					"mensaje2"	=>$respuesta2->message,
-					"status"	=>$respuesta2->data->Status,
-				);
+
+
+
+					$url 				="https://taecel.com/app/api/RequestTXN";
+
+					$vars 				=$sesion;				
+					$vars["producto"]	=$data["producto"];
+					$vars["referencia"]	=$data["referencia"];				
+					if(isset($data["monto"]))
+						$vars["monto"]=$data["monto"];				
+
+					$option				=array("url"=>$url,"post"=>$vars);
+					$respuesta1			=json_decode($this->__curl($option));
+					
+					
+					$url 				="https://taecel.com/app/api/StatusTXN";
+					$vars 				=$sesion;
+					$vars["transID"]	=$respuesta1->data->transID;
+							
+					$option				=array("url"=>$url,"post"=>$vars);
+					$respuesta2			=json_decode($this->__curl($option));
+					
+					return array(
+						"producto"	=>$data["producto"],
+						"referencia"=>$data["referencia"],
+						"mensaje1"	=>$respuesta1->message,
+						"transID"	=>$respuesta1->data->transID,
+						"folio"		=>$respuesta2->data->Folio,
+						"mensaje2"	=>$respuesta2->message,
+						"status"	=>$respuesta2->data->Status,
+					);
     	}			
 
 		public function __SHOW_FILE($id)

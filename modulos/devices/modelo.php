@@ -479,8 +479,17 @@
 						
 		public function cron_saldo()
     	{    	    		
+			$url = "https://taecel.com/app/api/getSales";
+			$vars 				=$sesion;				
+			$vars['fecha']		=date("Y-m-d");
+
+			$option				=array("url"=>$url,"post"=>$vars);
+			$response			=json_decode($this->__curl($option));
+
+			$telefonos_recargados=$response->data;
+
 			$comando_sql		="
-				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL020' as producto
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND 
@@ -494,30 +503,41 @@
 
 			foreach($datas as $row)
 			{
-			
-				$respuesta=$this->WS_TAECEL($row);
-				
-				$this->__PRINT_R( 	$respuesta		);
-				
-				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+				$recargar=1;
+				foreach($telefonos_recargados as $data)
 				{
-					$comando_sql		="
-						UPDATE devices SET recargado='{$row["actualizado"]}'
-						WHERE 1=1 
-							AND id='{$row["id"]}'
-					";
-					$datas	=$this->__EXECUTE($comando_sql);
+					echo "<br>COMPRA " . $data->Telefono;
+					if($data->Nota=="Recarga Exitosa" AND $data->Telefono==$row["referencia"])
+					{
+						$recargar=0;
+					}				
+				}
+				if($recargar==1)
+				{
+					echo "<br>RECARGAR " . $row["referencia"];
+
+					$respuesta=$this->WS_TAECEL($row);
 					
-					$comando_sql		="
-						INSERT INTO taecel SET 
-							producto	='{$respuesta["producto"]}',
-							referencia	='{$respuesta["referencia"]}',
-							mensaje1	='{$respuesta["mensaje1"]}',
-							transID		='{$respuesta["transID"]}',
-							folio		='{$respuesta["folio"]}',
-							mensaje2	='{$respuesta["mensaje2"]}'							
-					";
-					$this->__EXECUTE($comando_sql);		
+					if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+					{
+						$comando_sql		="
+							UPDATE devices SET recargado='{$row["actualizado"]}'
+							WHERE 1=1 
+								AND id='{$row["id"]}'
+						";
+						$datas	=$this->__EXECUTE($comando_sql);
+						
+						$comando_sql		="
+							INSERT INTO taecel SET 
+								producto	='{$respuesta["producto"]}',
+								referencia	='{$respuesta["referencia"]}',
+								mensaje1	='{$respuesta["mensaje1"]}',
+								transID		='{$respuesta["transID"]}',
+								folio		='{$respuesta["folio"]}',
+								mensaje2	='{$respuesta["mensaje2"]}'							
+						";
+						$this->__EXECUTE($comando_sql);		
+					}
 				}				
 			}
     	}

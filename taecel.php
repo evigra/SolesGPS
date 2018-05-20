@@ -8,7 +8,7 @@
 				'key'			=>'25d55ad283aa400af464c76d713c07ad', 
 				'nip'			=>'25d55ad283aa400af464'
 			);
-			$telefono="3143520973";			
+			$telefono="3143520974";			
 
 
 			$postvars = $sesion;	
@@ -28,7 +28,7 @@
 			$recargar=1;
 			foreach($datas as $data)
 			{
-				echo "COMPRA " . $data->Telefono;
+				echo "<br>COMPRA " . $data->Telefono;
 				if($data->Nota=="Recarga Exitosa" AND $data->Telefono==$telefono)
 				{
 					$recargar=0;
@@ -36,7 +36,7 @@
 			}
 			if($recargar==1)
 			{
-				echo "RECARGAR $telefono";
+				echo "<br>RECARGAR $telefono";
 
 
 

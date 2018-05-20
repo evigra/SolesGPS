@@ -7,10 +7,11 @@
 			$sesion = array( 
 				'key'			=>'25d55ad283aa400af464c76d713c07ad', 
 				'nip'			=>'25d55ad283aa400af464'
-			);			
+			);
+			$telefono="3143520972";			
 			$postvars = $sesion;	
-			$postvars['producto']='MOV100';
-			$postvars['referencia']='5555555560';
+			$postvars['producto']='TEL050';
+			$postvars['referencia']=$telefono;
 
 			$url = "https://taecel.com/app/api/RequestTXN";
 			
@@ -22,7 +23,7 @@
 	
 			$response=json_decode($response);
 
-			echo "<pre>" . print_r($response) . "</pre>";
+			#echo "<pre>" . print_r($response) . "</pre>";
 			
 			$postvars = $sesion;	
 			$postvars['transID']=$response->data->transID;
@@ -39,7 +40,7 @@
 			$response=json_decode($response);
 
 
-			echo "<pre>" . print_r($response) . "</pre>";
+			#echo "<pre>" . print_r($response) . "</pre>";
 
 
 			$postvars = $sesion;	
@@ -59,12 +60,14 @@
 			$recargar=1;
 			foreach($datas as $data)
 			{
-				if($data->Nota=="Recarga Exitosa" AND $data->Telefono=="5555555560")
+				echo "verificando" . $data->Telefono;
+				if($data->Nota=="Recarga Exitosa" AND $data->Telefono==$telefono)
 				{
 					$recargar=0;
-				}
+				}				
 			}
-			echo "RECARGAS $recargar";
+			if($recargar==1)
+				echo "RECARGAR $telefono";
 			#echo "<pre>" . print_r($data) . "</pre>";
 
 

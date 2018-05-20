@@ -480,7 +480,7 @@
 		public function cron_saldo()
     	{    	    		
 			$comando_sql		="
-				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL020' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND 
@@ -493,10 +493,12 @@
 			$datas	=$this->__EXECUTE($comando_sql);
 
 			foreach($datas as $row)
-			{					
+			{
+			
 				$respuesta=$this->WS_TAECEL($row);
 				
 				$this->__PRINT_R( 	$respuesta		);
+				
 				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
 				{
 					$comando_sql		="
@@ -505,6 +507,17 @@
 							AND id='{$row["id"]}'
 					";
 					$datas	=$this->__EXECUTE($comando_sql);
+					
+					$comando_sql		="
+						INSERT INTO taecel SET 
+							producto	='{$respuesta["producto"]}',
+							referencia	='{$respuesta["referencia"]}',
+							mensaje1	='{$respuesta["mensaje1"]}',
+							transID		='{$respuesta["transID"]}',
+							folio		='{$respuesta["folio"]}',
+							mensaje2	='{$respuesta["mensaje2"]}'							
+					";
+					$this->__EXECUTE($comando_sql);		
 				}				
 			}
     	}

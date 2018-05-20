@@ -9,38 +9,6 @@
 				'nip'			=>'25d55ad283aa400af464'
 			);
 			$telefono="3143520972";			
-			$postvars = $sesion;	
-			$postvars['producto']='TEL050';
-			$postvars['referencia']=$telefono;
-
-			$url = "https://taecel.com/app/api/RequestTXN";
-			
-			curl_setopt($ch,CURLOPT_URL,$url);
-			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
-			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-			$response = curl_exec($ch);
-	
-			$response=json_decode($response);
-
-			#echo "<pre>" . print_r($response) . "</pre>";
-			
-			$postvars = $sesion;	
-			$postvars['transID']=$response->data->transID;
-
-			$url = "https://taecel.com/app/api/StatusTXN";
-			
-			curl_setopt($ch,CURLOPT_URL,$url);
-			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
-			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-
-			$response = curl_exec($ch);
-	
-			$response=json_decode($response);
-
-
-			#echo "<pre>" . print_r($response) . "</pre>";
 
 
 			$postvars = $sesion;	
@@ -67,9 +35,49 @@
 				}				
 			}
 			if($recargar==1)
+			{
 				echo "RECARGAR $telefono";
-			#echo "<pre>" . print_r($data) . "</pre>";
 
+
+
+
+
+				$postvars = $sesion;	
+				$postvars['producto']='TEL050';
+				$postvars['referencia']=$telefono;
+
+				$url = "https://taecel.com/app/api/RequestTXN";
+				
+				curl_setopt($ch,CURLOPT_URL,$url);
+				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+				curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+				$response = curl_exec($ch);
+		
+				$response=json_decode($response);
+
+				#echo "<pre>" . print_r($response) . "</pre>";
+				
+				$postvars = $sesion;	
+				$postvars['transID']=$response->data->transID;
+
+				$url = "https://taecel.com/app/api/StatusTXN";
+				
+				curl_setopt($ch,CURLOPT_URL,$url);
+				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+				curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+				$response = curl_exec($ch);
+		
+				$response=json_decode($response);
+
+
+				#echo "<pre>" . print_r($response) . "</pre>";
+
+
+				#echo "<pre>" . print_r($data) . "</pre>";
+			}
 
 ?>
 

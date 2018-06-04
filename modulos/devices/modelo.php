@@ -198,7 +198,7 @@
 			),
 			
 			"recargado"   =>array(
-			    "title"             => "recargado",
+			    "title"             => "Recargado",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -340,10 +340,9 @@
     	}		
 		public function devices($option=NULL)
     	{
-    		if(is_null($option))	$option=array();
-
-			#$option["echo"]="DEVICES :: modelo";    		
-			
+    		if(is_null($option))			$option=array();
+			if(!isset($option["where"]))    $option["where"]    =array();
+			if(!isset($option["select"]))   $option["select"]   =array();			
 			
 			$option["total"]	=1;
 			$option["select"]   =array(
@@ -357,10 +356,8 @@
 			
 			if(!isset($option["where"]))    $option["where"]    =array();
 
-
 			$option["section_filter"]="devices";
 
-			
 			$option["where"][]      ="d.company_id={$_SESSION["company"]["id"]}";
 			$option["where"][]      ="ug.menu_id=2";
 			$option["where"][]      ="
@@ -380,13 +377,10 @@
 			";		
 			
 			$option["color"]["orange"]	="$"."row[\"status\"]=='Inactiva'";
-			
-			
-			
+
 			$return =$this->__VIEW_REPORT($option);			
 			#$this->__PRINT_R($this->sys_sql);			
-			return	$return; 
-    	
+			return	$return;     	
 		}		
 		public function devices_user($user=NULL)
     	{

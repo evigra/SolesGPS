@@ -50,16 +50,9 @@
 					require_once("../../../../nucleo/auxiliar.php");		
 	}					
 
-    $objeto	=new general(); 
-        
-	$comando_sql="
-		SELECT * 
-		FROM modulos
-	";		
-
-	
+    $objeto	=new general();         
+	$comando_sql="SELECT * FROM modulos ";		
 	$modulos 		=$objeto->__EXECUTE($comando_sql);    
-	
 	
 	foreach($modulos as $modulo)
 	{
@@ -68,5 +61,4 @@
 		if(file_exists("../../modulos/{$modulo["clase"]}/modelo.php")) 			require_once("../../modulos/{$modulo["clase"]}/modelo.php");
 		if(file_exists("../../../modulos/{$modulo["clase"]}/modelo.php")) 		require_once("../../../modulos/{$modulo["clase"]}/modelo.php");
 	}
-
 ?>	

@@ -128,14 +128,17 @@
 				#$option_tareas=array("echo"=>"TAREAS :: SAVE");
 				$this->__SAVE($data);
 										
-				$cronshistory_data				=array();
-				$cronshistory_data["resume"]	="<br>Desde la tarea:<br>".$navegador;
-				$cronshistory_data["date"]		=@$this->sys_date;				
-								
 				$eval="
 					$"."objeto		=new {$row["class"]}();
 					{$row["codigo"]}	
 				";
+				$cronshistory_data				=array();
+				$cronshistory_data["resume"]	="<br>Desde la tarea:<br>".$navegador;
+				$cronshistory_data["date"]		=@$this->sys_date;
+				$cronshistory_data["cron_id"]	=@$row["id"];								
+				$cronshistory_data["codigo"]	=@$row["codigo"];								
+
+
 				#echo "<br><br><br>$eval";
 			
 				#if(@eval($row["codigo"])===false)

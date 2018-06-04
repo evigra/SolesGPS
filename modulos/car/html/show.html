@@ -1,19 +1,11 @@
-<table class="mainTable">
-    <tr>
-        <td style="padding:10px;">
-            <div style="color:SteelBlue; font-size:30; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">
-                {name}
-            </div>
-            <br>
-            <table width="100%" border="0">
+<div class="mainTable">
+    <div class="module_subtitle">Propiedades generales</div>
+            <table border="0">
                 <tr>
-                    <td width="33%">
-                        
+                    <td>                       
+                        {name}
                     </td>        
-                    <td width="33%">
-                        {uniqueId}
-                    </td>        
-                    <td  width="33%">
+                    <td colspan="2">
                         {responsable_fisico_id}
                     </td>        
                 </tr>          
@@ -25,67 +17,57 @@
                         {fechaAdquisicion}
                     </td>        
                     <td>
-						{valorCoche}                    
-		    		</td>        
+    			        {placas}                    
+		            </td>        
                 </tr>          
             </table>
-
-
-            <div style="color:SteelBlue; font-size:20; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;  ">Opciones del motor</div>
-            <table  width="100%" border="0">
-                <tr>
-                    <td  width="33%">
-                        {transmision}
-                    </td>        
-                    <td  width="33%">
-                        {tipoCombustible}
-                    </td>        
-                    <td width="33%">
-                        {emisionesCO2}                        
-                    </td>        
-                </tr>          
-                <tr>
-                    <td>
-                        {caballosPotencia}
-                    </td>        
-                    <td>
-			{fechaAdquisicion}                    
-		    </td>        
-                    <td>
-			{valorCoche}
-                    </td>        
-                </tr>          
-            </table>
-        
-
-            <div style="color:SteelBlue; font-size:20; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades adicionales</div>
-            <table  width="100%" border="0">
-                <tr>
-                    <td width="33%">
-                        {numAsientos}
-                    </td>        
-                    <td width="33%">
-                        {numPuertas}
-                    </td>        
-                    <td width="33%">
-                        {color}                        
-                    </td>        
-                </tr>          
-                <tr>                           
-                    <td>
-                        {imagen}                     
-                    </td>        
-                    <td>
-                        {telefono}
-                    </td>   
-                    <td>
-                        {placas}                        
-                    </td>      
-                </tr>          
-            </table>
-
-
-        
-        </td>
-    </tr>
-</table>
+			<br>
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Opciones del motor</a></li>
+					<li  class="form"><a href="#tabs-2">Propiedades adicionales</a></li>
+				</ul>
+				<div id="tabs-1" class="form">
+				     <table border="0" width="100%" class="form">
+				        <tr>
+				            <td>{transmision}</td>        
+				            <td>{tipoCombustible}</td>        
+				            <td>{emisionesCO2}</td>        
+				        </tr>          
+				        <tr>
+				            <td>{caballosPotencia}</td>        
+				            <td>{fechaAdquisicion}</td>        
+				            <td>{valorCoche}</td>        
+				        </tr>          
+				    </table>			
+				</div>
+				<div id="tabs-2"  class="form">
+				    <table border="0"  width="100%">
+				        <tr>
+				            <td>{numAsientos}</td>        
+				            <td>{numPuertas}</td>        
+				            <td>{color}</td>        
+				        </tr>          
+				        <tr>
+				            <td>{image}</td>        
+				            <td colspan="2">
+				                 {file_id}                                             
+				            </td>        				            
+				        </tr>          
+				        <tr>
+				            <td>
+				                <img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">
+				            </td>        
+				            <td></td>        
+				            <td>  </td>        
+				            
+				        </tr>        				        
+				    </table>
+				</div>
+			</div>
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();    
+  });
+  </script>        
+</div>

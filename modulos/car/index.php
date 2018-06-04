@@ -61,6 +61,31 @@
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	$objeto->tab_files();    	
     }
+    elseif($objeto->sys_section=="show")
+	{
+		# TITULO DEL MODULO
+    	$module_title                	=	"Detallar ";
+
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
+		$module_left=array(
+			/*
+		    array("action"=>"Guardar"),
+		    array("cancel"=>"Cancelar"),
+		    */
+		);
+    	$module_right=array(
+			#array("create"=>"Crear"),
+			array("write"=>"Modificar"),
+			array("kanban"=>"Kanban"),
+			array("report"=>"Reporte"),
+	    );
+
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	    	
+    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+    	$objeto->tab_files();    	
+    }
+
 	elseif($objeto->sys_section=="kanban")
 	{
 		# TITULO DEL MODULO

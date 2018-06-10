@@ -106,6 +106,14 @@
 			    "value"             => "",
 			    "value"             => "",
 			),						
+			"extension"	    	=>array(
+			    "title"             => "Extension",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),				
+			
 			"mail_from"	=>array(
 			    "title"             => "Mail FROM",
 			    "showTitle"         => "si",
@@ -145,6 +153,14 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),							
+			"nombre"	    	=>array(
+			    "title"             => "Razon Social",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),			
+
 			"email"	    	=>array(
 			    "title"             => "Email",
 			    "showTitle"         => "si",

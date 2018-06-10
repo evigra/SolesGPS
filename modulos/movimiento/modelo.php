@@ -142,8 +142,6 @@
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
 			
-		
-			
 			if($this->request["sys_section_movimiento"]=="create")
 			{
 	

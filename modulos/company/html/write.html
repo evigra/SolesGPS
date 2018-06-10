@@ -1,5 +1,63 @@
+
+
+
+
 <div class="mainTable">
     <div class="module_subtitle">Propiedades generales</div>
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Contacto</a></li>
+					<li  class="form"><a href="#tabs-2">Datos Fiscales</a></li>
+				</ul>
+				<div id="tabs-1" class="form">
+					<table border="0">
+				        <tr>
+				            <td width="33%">{email}</td>         
+				            <td width="17%">{telefono}</td>        
+				            <td width="16%">{extension}</td>                            
+				            <td width="17%">{cliente}</td>
+				            <td width="16%">{proveedor}</td>
+				        </tr>          
+				        <tr>                        
+				             <td colspan="3">{chat_whatsapp}</td>
+				        </tr>          
+				        
+					</table> 
+				</div>
+				<div id="tabs-2"  class="form">
+				    <table border="0" width="100%">
+				        <tr>
+				            <td width="33%">{rfc} </td>                        
+				            <td colspan="2">{razon_social}</td>        
+				        </tr>          
+				        <tr>                        
+				             <td colspan="2">{domicilio_fiscal}</td>                
+				        </tr>          
+				    </table>
+
+				</div>
+			</div>
+</div>            
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
              <table border="0" width="100%">
                 <tr>
                     <td rowspan="2" align="center">                       

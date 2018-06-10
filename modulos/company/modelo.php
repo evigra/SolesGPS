@@ -138,6 +138,21 @@
 			    "value"             => "",
 			    "value"             => "",
 			),			
+			"chat_whatsapp"	    	=>array(
+			    "title"             => "Grupo WhatsApp",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),							
+			"email"	    	=>array(
+			    "title"             => "Email",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),			
+
 			"domicilio_fiscal"	=>array(
 			    "title"             => "Domicilio Fiscal",
 			    "showTitle"         => "si",

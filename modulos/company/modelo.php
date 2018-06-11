@@ -57,6 +57,15 @@
 			    "value"             => "",
 			    "value"             => "",
 			),
+			"sistema_web"	    =>array(
+			    "title"             => "Plataforma Web",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			    "value"             => "",
+			),
+
 			"files_id"	    =>array(
 			    "title"             => "Logo",
 			    "showTitle"         => "si",

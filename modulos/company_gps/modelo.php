@@ -7,7 +7,7 @@
 		##  Propiedades	
 		##############################################################################
 		var $sys_enviroments	="DEVELOPER";
-		var $sys_table			="conpany";
+		var $sys_table			="company";
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
@@ -187,6 +187,15 @@
 			    "value"             => "",
 			    "value"             => "",
 			),			
+			"tipo_company"	=>array(
+			    "title"             => "TIPO",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			    "value"             => "",
+			),			
+
 
 		);				
 		##############################################################################	
@@ -200,8 +209,12 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		
     	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
-    	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    		
+    	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;
+    	    
+    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
+    	    $datas["tipo_company"]			="GPS";    		    		
 
     		parent::__SAVE($datas,$option);
 		}		

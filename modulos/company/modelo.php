@@ -186,6 +186,14 @@
 			    "value"             => "",
 			    "value"             => "",
 			),			
+			"tipo_company"	=>array(
+			    "title"             => "TIPO",
+			    "showTitle"         => "si",
+			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",
+			    "value"             => "",
+			),			
 
 		);				
 		##############################################################################	
@@ -201,6 +209,10 @@
     	{
     	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    		
+    	    
+    	    
+    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
+    	    	$datas["tipo_company"]			="COMPANY";
 
     		parent::__SAVE($datas,$option);
 		}		
@@ -214,7 +226,7 @@
 			    "company.*",			    
 			);			
 			$option["from"]		="company";			
-			$option["where"]	=array("tipo_company='GPS'");
+			$option["where"]	=array("tipo_company IN ('GPS','COMPANY')");
 			return $this->__VIEW_REPORT($option);    	
 		}				
 	}

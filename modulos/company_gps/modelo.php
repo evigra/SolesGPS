@@ -1,12 +1,13 @@
 <?php
 	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
 	#require_once("modulos/files/modelo.php");
-	class company extends general
+	class company_gps extends general
 	{   
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
 		var $sys_enviroments	="DEVELOPER";
+		var $sys_table			="conpany";
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",

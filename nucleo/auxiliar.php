@@ -588,8 +588,11 @@
 					razonSocial 
 				FROM 
 					company
-				WHERE 
-					razonSocial is not null"; 
+				WHERE 1=1
+					AND razonSocial is not null
+					AND estatus_cliente =1
+					AND tipo_company='GPS'
+			"; 
 
 		    $datas              =$this->__EXECUTE($comando_sql, $option_conf);
 			
@@ -606,8 +609,6 @@
 			$permisos=$_SESSION["group"];
 			$return="";
 
-
-			
 			foreach($permisos as $permiso)
 			{
 				if($permiso["menu_id"]==$_SESSION["sys"]["menu"] AND $permiso["nivel"]<=10)
@@ -615,9 +616,6 @@
 					$return=$vRespuesta;
 				}
 			}
-
-
-
 
 			return $return;
 		} 

@@ -186,14 +186,6 @@
 			    "value"             => "",
 			    "value"             => "",
 			),			
-			"tipo_company"	=>array(
-			    "title"             => "TIPO",
-			    "showTitle"         => "si",
-			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
-			    "value"             => "",
-			),			
 
 		);				
 		##############################################################################	
@@ -209,10 +201,6 @@
     	{
     	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    		
-    	    
-    	    
-    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
-    	    	$datas["tipo_company"]			="COMPANY";
 
     		parent::__SAVE($datas,$option);
 		}		
@@ -221,12 +209,11 @@
     		if(is_null($option))	$option=array();
     		    		
 			$option["select"]	=array(
-				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"		=>"img_files_id",
+				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"	=>"img_files_id",
 				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"	=>"img_files_id_med",				
 			    "company.*",			    
 			);			
 			$option["from"]		="company";			
-			$option["where"]	=array("tipo_company IN ('GPS','COMPANY')");
 			return $this->__VIEW_REPORT($option);    	
 		}				
 	}

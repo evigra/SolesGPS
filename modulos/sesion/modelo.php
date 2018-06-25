@@ -123,7 +123,7 @@
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		$this->obj_user   		=new users();
-    		$this->obj_company   	=new company();
+    		$this->obj_company   	=new company_gps();
     		
     	    
     		$this->words["mensaje_sesion"]	= 	"
@@ -176,6 +176,8 @@
 							
 							$option_company					=array("where"=>array("company.id={$user["company_id"]}"));
 							$data_company					=$this->obj_company->companys($option_company);
+					
+							#$this->__PRINT_R($data_company);
 					
 							$data_sesion					=array();
 							$data_sesion["user_id"]			=$user["id"];

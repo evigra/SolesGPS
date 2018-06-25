@@ -588,8 +588,11 @@
 					razonSocial 
 				FROM 
 					company
-				WHERE 
-					razonSocial is not null"; 
+				WHERE 1=1
+					AND razonSocial is not null
+					AND estatus_cliente =1
+					AND tipo_company='GPS'
+			"; 
 
 		    $datas              =$this->__EXECUTE($comando_sql, $option_conf);
 			
@@ -606,8 +609,6 @@
 			$permisos=$_SESSION["group"];
 			$return="";
 
-
-			
 			foreach($permisos as $permiso)
 			{
 				if($permiso["menu_id"]==$_SESSION["sys"]["menu"] AND $permiso["nivel"]<=10)
@@ -615,9 +616,6 @@
 					$return=$vRespuesta;
 				}
 			}
-
-
-
 
 			return $return;
 		} 
@@ -1877,8 +1875,7 @@
 				
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
-				
-					
+
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
@@ -2077,7 +2074,7 @@
 										
 					$return["title"]=$view_title;
 
-					if(!isset($option["height"]))					$option["height"]="99%";
+					if(!isset($option["height"]))					$option["height"]="100%";
 					
 					$height_render="height:{$option["height"]};";
 					$min_height		="min-height: 140px;";
@@ -2133,22 +2130,33 @@
 							}						
 						";
 						
-					}				
-					
+					}		
+#							
+#<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">					
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
-							$view_head
-							<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">
+							$view_head							
+							
+							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\" style=\"height: 100%;\">
+							<div id=\"div2_$name\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+
+
+
+
+
 						";
-					
-					$return["report"].="						
-							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+/*
 							$view_title
 							$view_body
+*/					
+					$return["report"].="						
+							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+								$view_body
 							</table>
 					";
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 						$return["report"].="							
+							</div>
 							</div>		
 						";						
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
@@ -2211,10 +2219,10 @@
 						</script>
 					";
 					
-					
+					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view="
-						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
+						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					";		
 
 					$view.="{$return["report"]}";

@@ -630,7 +630,7 @@
 	 		render($("div#div_"+obj), $("div#div2_"+obj),-38);
 	 		
 			var alto  =$("div#div_"+obj).height() -38;
-			if(alto>30)
+			if(alto>60)
 				$("div#div_"+obj).height(alto);	   
 		}
 	 	else

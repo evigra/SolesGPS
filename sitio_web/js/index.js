@@ -630,7 +630,8 @@
 	 		render($("div#div_"+obj), $("div#div2_"+obj),-38);
 	 		
 			var alto  =$("div#div_"+obj).height() -38;
-			$("div#div_"+obj).height(alto);	   
+			if(alto>30)
+				$("div#div_"+obj).height(alto);	   
 		}
 	 	else
 	 		render($("td#module_body"), $("div#module_body"),-20);

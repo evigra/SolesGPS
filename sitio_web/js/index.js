@@ -1841,6 +1841,7 @@ styles:
 			$( window ).resize(function() 
 			{
 				ajustar_menu();
+				ajustar_display():
 			});	   	   
 	    }
 

@@ -929,7 +929,7 @@ styles:
 		}			
 		if(!(item["ev"]==undefined || item["ev"]==false || item["ev"]=="false" || event=="REPORT" || event=="Report"))
         {        
-        	var res = str.substring(1, 4);
+        	//var res = str.substring(1, 4);
 
 			var obj=$("table.select_devices[device="+item["de"]+"]");
 

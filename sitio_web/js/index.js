@@ -630,21 +630,22 @@
  		{
  			var obj	=$("div.report_class").attr("obj"); 		
 	 		{
-	 			render($("div#div_"+obj), $("div#div2_"+obj),-38);
-		 		alert(2);
+	 			alert(2);
+	 			render($("div#div_"+obj), $("div#div2_"+obj),-38);		 		
 	 		}
 			var alto  =$("div#div_"+obj).height() -38;
 			//if(alto>60)
 			{
-				$("div#div_"+obj).height(alto);	   
 				alert(3);
+				$("div#div_"+obj).height(alto);	   
 			}	
 		}
 	 	else
 	 	{
 	 		//if(alto>60)
+	 			alert(4);
 		 		render($("td#module_body"), $("div#module_body"),-20);
-		 		alert(4);
+		 		
 	 	}
 
  	}

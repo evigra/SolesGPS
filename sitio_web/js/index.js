@@ -643,7 +643,7 @@
 	 	else
 	 	{
 	 		//if(alto>60)
-	 			alert(4);
+	 			//alert(4);
 		 		//render($("td#module_body"), $("div#module_body"),-20);
 		 		
 	 	}

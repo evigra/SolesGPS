@@ -2138,7 +2138,7 @@
 							$view_head							
 							
 							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\" style=\"height:calc(100%-600px)\">
-							<div id=\"div2_$name\" style=\"height:calc(100%-600px); width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+							<div id=\"div2_$name\" style=\"height:100px; width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
 
 
 

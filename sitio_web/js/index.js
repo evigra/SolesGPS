@@ -623,7 +623,7 @@
  		if($("td#module_body").length>0 && $("div#module_body").length>0) 
  		{
  			alert(1);
-	 		render($("td#module_body"), $("div#module_body"),0);
+	 		//render($("td#module_body"), $("div#module_body"),0);
 		}
 		
  		if($("div.report_class").length>0) 
@@ -640,7 +640,6 @@
 				alert(3);
 			}	
 		}
-
 	 	else
 	 	{
 	 		//if(alto>60)

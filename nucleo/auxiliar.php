@@ -2140,7 +2140,7 @@
 						";
 
 					$return["report"].="
-							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+							<table width=\"100%\" style=\"height:calc(100% - 120px); background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 								$view_body
 							</table>
 					";

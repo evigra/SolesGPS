@@ -2139,18 +2139,24 @@
 							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\" style=\"height:calc(100% - 120px); overflow-y:auto; padding:0px; margin:0px;\">
 								
 						";
-						
+
+					$return["report"].="						
+							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+								$view_body
+							</table>
+					";
+
 /*
 	<div id=\"div2_$name\" style=\"width:100%; overflow-x:hidden;\">
-	</div>
+	</div>		
 							$view_title
 							$view_body
 					
 */					
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 						$return["report"].="							
-								
-							</div>		
+								</div>
+							
 						";						
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					#$return["report"]="";

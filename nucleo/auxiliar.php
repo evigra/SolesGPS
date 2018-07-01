@@ -2142,12 +2142,13 @@
 /*
 							$view_title
 							$view_body
-*/					
-					$return["report1"].="						
+					
+					$return["report"].="						
 							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 								$view_body
 							</table>
 					";
+*/					
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 						$return["report"].="							
 								</div>

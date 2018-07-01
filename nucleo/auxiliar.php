@@ -2134,7 +2134,7 @@
 #							
 #<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">					
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
-						$return["report"]="
+						$return["report_lalo"]="
 							$view_head														
 							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\">
 								<div id=\"div2_$name\" style=\"height:calc(100% - 500px); width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">

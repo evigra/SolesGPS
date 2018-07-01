@@ -2136,8 +2136,8 @@
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
 							$view_head														
-							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\">
-								<div id=\"div2_$name\" style=\"height:calc(100% - 500px); width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\" style=\"height:calc(100% - 500px); overflow-y:auto;\">
+								<div id=\"div2_$name\" style=\"width:100%; overflow-x:hidden; padding:0px; margin:0px;\">
 						";
 /*
 							$view_title

@@ -2131,38 +2131,27 @@
 						";
 						
 					}		
-#							
-#<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">					
+							
+					$return["report"]="						
+						<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+							$view_body
+						</table>
+					";
+
+					#template_option
+					$report_class="";
+					if(!isset($option["template_option"]))	$report_class="report_class";
+
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
-							$view_head							
-							
-							<div id=\"div_$name\" class=\"report_class1\" obj=\"$name\" style=\"height: 100%;\">
-							<div id=\"div2_$name\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-
-
-
-
-
-						";
-/*
-							$view_title
-							$view_body
-*/					
-					$return["report"].="						
-							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
-								$view_body
-							</table>
-					";
-					if(!in_array(@$this->request["sys_action"],$this->sys_print))
-						$return["report"].="							
-							</div>
+							$view_head														
+							<div id=\"div_$name\" class=\"$report_class\" obj=\"$name\" style=\"height: 100%;\">
+								<div id=\"div2_$name\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">							
+									".$return["report"]."
+								</div>
 							</div>		
-						";						
-					if(!in_array(@$this->request["sys_action"],$this->sys_print))
-					
-					$return["report"].="
-						<script>
+							
+							<script>
 								$button_create_js
 								sys_report_memory();
 												
@@ -2216,8 +2205,10 @@
 										$(\"form\").submit(); 
 									}	
 								});	
-						</script>
-					";
+							</script>
+
+						";						
+					
 					
 					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					

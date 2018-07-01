@@ -2129,33 +2129,37 @@
 	            				});
 							}						
 						";
-						
 					}		
+
+					$return["report"]="
+						<table width=\"100%\" style=\"background-color:#ccc; color:#000;  padding:0px; margin:0px;\">
+							$view_body
+						</table>
+					";
+
 #							
 #<div id=\"div_$name\" class=\"render_h_destino\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; $min_height  padding:0px; margin:0px;\">					
+
+/*
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$return["report"]="
 							$view_head														
 							<div id=\"div_$name\" class=\"report_class\" obj=\"$name\" style=\"background-color:#bbb; height:calc(100% - 240px); overflow-y:auto; padding:0px; margin:0px;\">
+						
+							{$return["report"]}		
+							
+							</div>	
 						";
-
-					$return["report"].="
-							<table width=\"100%\" style=\"background-color:#ccc; color:#000;  padding:0px; margin:0px;\">
-								$view_body
-							</table>
-					";
+*/
 /*
 	<div id=\"div2_$name\" style=\"width:100%; overflow-x:hidden;\">
 	</div>		
 							$view_title
 							$view_body	
 */					
+			
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
-						$return["report"].="							
-								</div>	
-						";						
-					if(!in_array(@$this->request["sys_action"],$this->sys_print))
-					$return["report"]="";
+					#$return["report"]="";
 					$return["report"].="
 						<script>
 								$button_create_js

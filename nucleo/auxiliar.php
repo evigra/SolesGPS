@@ -2143,7 +2143,7 @@
 							$view_title
 							$view_body
 */					
-					$return["report"].="						
+					$return["report1"].="						
 							<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 								$view_body
 							</table>

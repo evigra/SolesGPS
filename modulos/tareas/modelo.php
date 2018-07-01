@@ -122,8 +122,6 @@
 				$data=array(
 					"now_time"		=>	$row["next_time1"],
 					"ejecucion"		=>	$row["now_time"],
-					
-					
 				);
 				#$option_tareas=array("echo"=>"TAREAS :: SAVE");
 				$this->__SAVE($data);

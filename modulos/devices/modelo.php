@@ -473,7 +473,7 @@
 						
 		public function cron_saldo()
     	{    	    		
-			$url = "https://taecel.com/app/api/getSales";
+			$url 				= "https://taecel.com/app/api/getSales";
 			$vars 				=$sesion;				
 			$vars['fecha']		=date("Y-m-d");
 

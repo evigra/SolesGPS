@@ -2155,7 +2155,7 @@
 								</div>	
 						";						
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
-					#$return["report"]="";
+					$return["report"]="";
 					$return["report"].="
 						<script>
 								$button_create_js

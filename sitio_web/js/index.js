@@ -623,12 +623,12 @@
  		if($("td#module_body").length>0 && $("div#module_body").length>0) 
  		{
  			//alert(1);
-	 		render($("td#module_body"), $("div#module_body"),0);
+	 		//render($("td#module_body"), $("div#module_body"),0);
 		}
 		else
  		{
  			//alert(1);
-	 		render($("td#module_body"), $("div#module_body"),-20);
+	 		//render($("td#module_body"), $("div#module_body"),-20);
 		}		
  		if($("div.report_class").length>0) 
  		{

@@ -132,7 +132,7 @@
 					{$row["codigo"]}	
 				";
 				$cronshistory_data				=array();
-				$cronshistory_data["resume"]	="<br>Desde la tarea:<br>".$navegador;
+				$cronshistory_data["resume"]	="<br>Excetute:<br>".$navegador;
 				$cronshistory_data["date"]		=@$this->sys_date;
 				#$cronshistory_data["cron_id"]	=@$row["id"];								
 				$cronshistory_data["codigo"]	=@$row["class"];								

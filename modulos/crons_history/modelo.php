@@ -28,6 +28,14 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"codigo"	    =>array(
+			    "title"             => "Codigo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),
+
 		);				
 		##############################################################################	
 		##  Metodos	

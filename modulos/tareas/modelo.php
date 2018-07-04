@@ -135,8 +135,8 @@
 				$cronshistory_data["resume"]	=$navegador;
 				$cronshistory_data["date"]		=@$this->sys_date;
 				#$cronshistory_data["cron_id"]	=@$row["id"];								
-				$cronshistory_data["codigo"]	=@$row["class"];								
-				$cronshistory_data["objeto"]	=@$row["class"];
+				$cronshistory_data["codigo"]	=@$row["class"]." = ".$row["codigo"];								
+				$cronshistory_data["objeto"]	=@$row["class"]." = ".$row["codigo"];								
 
 
 				#echo "<br><br><br>$eval";

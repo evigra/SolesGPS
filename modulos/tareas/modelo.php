@@ -104,7 +104,7 @@
 		
 			$crons_data =$this->crons($option);
 			
-			#$this->__PRINT_R($crons_data);
+			$this->__PRINT_R($crons_data);
 
 			if(count($crons_data["data"])==0)
 			{

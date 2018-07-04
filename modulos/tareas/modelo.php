@@ -104,7 +104,7 @@
 		
 			$crons_data =$this->crons($option);
 			
-			$this->__PRINT_R($crons_data);
+			
 
 			if(count($crons_data["data"])==0)
 			{
@@ -114,6 +114,7 @@
 				
 				$crons_data =$this->crons($option);    										
 			}
+			$this->__PRINT_R($crons_data);
 			foreach($crons_data["data"] as $row)
 			{
 				echo "<br>## TAREA {$row["name"]} ##################################";

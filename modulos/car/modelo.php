@@ -58,10 +58,12 @@
 			if($this->sys_fields["file_id"]["value"]!="")
 			{
 				$this->words["files_title"]				="<li  class=\"form\"><a href=\"#tabs-10\">Imagenes</a></li>";    		
-				$aux									="modulos/files/file/{$this->sys_fields["file_id"]["value"]}.jpg";
+				$aux									="modulos/files/file/{$this->sys_fields["file_id"]["value"]}";
 			
-				if(file_exists("../$aux"))				$path		="../$aux";
-				else									$path		="http://solesgps.com/$aux";			
+				if(file_exists("../$aux".".jpg"))						$path		="../$aux".".jpg";
+				else if(file_exists("../$aux".".jpeg"))					$path		="../$aux".".jpeg";
+				else if(file_exists("http://solesgps.com/$aux.jpg"))	$path		="http://solesgps.com/$aux.jpg";						
+				else if(file_exists("http://solesgps.com/$aux.jpeg"))	$path		="http://solesgps.com/$aux.jpeg";
 			
 				$this->words["files_description"]		="
 					<div id=\"tabs-10\"  class=\"form\">

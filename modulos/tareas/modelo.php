@@ -136,7 +136,7 @@
 				$cronshistory_data["objeto"]	=@$row["class"];								
 				
 				$cronshistory_data["codigo"]	=@$row["codigo"];								
-				$cronshistory_data["resume"]	=@$return_code;
+				
 				$cronshistory_data["date"]		=@$this->sys_date;
 				#$cronshistory_data["cron_id"]	=@$row["id"];								
 				
@@ -158,6 +158,8 @@
 				}
 				else
 				{
+					$cronshistory_data["resume"]	=@$return_code;
+					
 					$this->cronshistory_obj	=new crons_history();
 					$this->cronshistory_obj->__SAVE($cronshistory_data);
 					#echo "<br><br>".$this->sys_date . " :: " . $cronshistory_data["resume"];				

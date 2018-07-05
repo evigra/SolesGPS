@@ -132,11 +132,15 @@
 					{$row["codigo"]}	
 				";
 				$cronshistory_data				=array();
+				$cronshistory_data["execute"]	=$navegador;
+				$cronshistory_data["objeto"]	=@$row["class"];								
+				
+				$cronshistory_data["codigo"]	=@$row["codigo"];								
 				$cronshistory_data["resume"]	=$navegador;
 				$cronshistory_data["date"]		=@$this->sys_date;
 				#$cronshistory_data["cron_id"]	=@$row["id"];								
-				$cronshistory_data["codigo"]	=@$row["codigo"];								
-				$cronshistory_data["objeto"]	=@$row["class"];								
+				
+				
 
 
 				#echo "<br><br><br>$eval";

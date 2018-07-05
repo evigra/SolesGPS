@@ -129,7 +129,7 @@
 										
 				$eval="
 					$"."objeto		=new {$row["class"]}();
-					{$row["codigo"]}	
+					$"."return_code	={$row["codigo"]}	
 				";
 				$cronshistory_data				=array();
 				$cronshistory_data["execute"]	=$navegador;

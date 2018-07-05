@@ -136,7 +136,7 @@
 				$cronshistory_data["objeto"]	=@$row["class"];								
 				
 				$cronshistory_data["codigo"]	=@$row["codigo"];								
-				$cronshistory_data["resume"]	=$navegador;
+				$cronshistory_data["resume"]	=@$return_code;
 				$cronshistory_data["date"]		=@$this->sys_date;
 				#$cronshistory_data["cron_id"]	=@$row["id"];								
 				

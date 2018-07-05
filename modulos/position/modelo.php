@@ -203,7 +203,9 @@
 					"html"	=>"$mensaje",			
 				);				
 				$this->send_mail($option);				
-			}						
+			}
+			return count($position_data) . " Dispositivos retrazados";
+									
 		}
 		public function cron_retraso_mayor()
     	{			    		
@@ -278,6 +280,7 @@
 					) DAY); 
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
+			return "Posiciones borradas";
 		}
 		public function cron_log_block()
     	{			    		
@@ -285,6 +288,8 @@
 				DELETE FROM DATABASECHANGELOGLOCK
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
+			
+			return "Log borrado";
 		}
 
 		public function cron_distance()
@@ -309,6 +314,8 @@
 				having distance>0			
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
+			
+			return "Distancia calculada";
 		}
 
 		public function cron_position()
@@ -574,7 +581,8 @@
 				";		
 				#$this->__EXECUTE($comando_sql);				
                 
-            }						
+            }		
+			return count($position_data) . " POSICIONES";				
             #*/
 		}
 		public function mail_position($position=NULL,$option=NULL)

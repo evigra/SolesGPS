@@ -438,6 +438,7 @@
 				);			
 			";
 			$this->__EXECUTE($comando_sql);
+			return "Geocercas borradas";
 		}
    		public function __REPORT_GENERAL($option=NULL)
     	{

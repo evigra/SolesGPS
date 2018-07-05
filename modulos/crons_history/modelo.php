@@ -43,7 +43,7 @@
 			    "value"             => "",			    
 			),
 			"execute"	    =>array(
-			    "title"             => "Eecute",
+			    "title"             => "Execute",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

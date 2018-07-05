@@ -534,6 +534,7 @@
 					}
 				}				
 			}
+			return count($datas) . " Dispositivos recargados";
     	}
 		public function prueba_saldo()
     	{    

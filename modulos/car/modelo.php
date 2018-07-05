@@ -67,6 +67,7 @@
 			
 				$this->words["files_description"]		="
 					<div id=\"tabs-10\"  class=\"form\">
+					  $path
 						<img src=\"$path\" width=\"300\">
 					<div>
 				";

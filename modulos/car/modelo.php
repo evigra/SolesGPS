@@ -62,8 +62,8 @@
 			
 				if(file_exists("../$aux".".jpg"))						$path		="../$aux".".jpg";
 				else if(file_exists("../$aux".".jpeg"))					$path		="../$aux".".jpeg";
-				else if(file_exists("http://solesgps.com/$aux.jpg"))	$path		="http://solesgps.com/$aux.jpg";						
-				else if(file_exists("http://solesgps.com/$aux.jpeg"))	$path		="http://solesgps.com/$aux.jpeg";
+				else if(file_exists("$aux.jpg"))	$path		="http://solesgps.com/$aux.jpg";						
+				else if(file_exists("$aux.jpeg"))	$path		="http://solesgps.com/$aux.jpeg";
 			
 				$this->words["files_description"]		="
 					<div id=\"tabs-10\"  class=\"form\">

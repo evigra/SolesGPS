@@ -7,7 +7,7 @@
 	";		
 	eval($eval);
 	
-	$datas=$datas["data"],
+	$datas			=$datas["data"];
 	
 	foreach($datas as $index => $data)
 	{

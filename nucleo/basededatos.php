@@ -395,18 +395,43 @@
 		} 			
     	##############################################################################    
 		public function __JSON_AUTOCOMPLETE($valor)
-		{		
-        	$vauxpath						=explode("/",$_SERVER["PHP_SELF"]);
-        	$vauxpath[count($vauxpath)-1]	="";
-        	$auxpath						="http://".$_SERVER["SERVER_NAME"].implode("/",$vauxpath).substr($valor["source"],3,strlen($valor["source"])-3);
-
-			#$auxpath						="http://".$_SERVER["SERVER_NAME"].substr($valor["source"],3,strlen($valor["source"])-3);
-        	
-        	#echo "JSON_AUTOCOMPLETE :: ".$auxpath."?id=".$valor["value"];
-        	
+		{	
+			if(isset($valor["source"]))
+			{	
+		    	$vauxpath						=explode("/",$_SERVER["PHP_SELF"]);
+		    	$vauxpath[count($vauxpath)-1]	="";
+		    	$auxpath						="http://".$_SERVER["SERVER_NAME"].implode("/",$vauxpath).substr($valor["source"],3,strlen($valor["source"])-3);
+			}        	
         	return	@json_decode(@file_get_contents($auxpath."?id=".$valor["value"]));
 		}		
 		##############################################################################
+		public function __DATA_AUTOCOMPLETE($data)
+		{		
+			$data_json=array();
+			if(count($data)>0)
+			{
+				foreach($data as $row)
+				{
+					$data_json[]=array(
+						'label'     => $row["name"],
+						'clave'		=> $row["id"]	
+					);			
+				}
+			}
+			else
+			{
+				if(@$_GET["term"]!="")	$busqueda=@$_GET["term"];
+				else					$busqueda=@$_GET["id"];
+				
+				$data_json[]=array(
+					'label'     => "Sin resultados para ". $busqueda,
+					'clave'		=> ""	
+				);				
+			}		
+			echo json_encode($data_json);
+		}		
+		##############################################################################
+
 		public function menu_vehicle()
     	{
     		if(isset($_SESSION["company"]["id"]))	

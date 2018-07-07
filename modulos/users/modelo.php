@@ -222,29 +222,33 @@
     	    	else							$return=$data_user["data"];
     	    }
 			return $return;
-		}		
-    			
+		}
+		//////////////////////////////////////////////////		
+		public function autocomplete_user()		
+    	{	
+    		$data=$this->users($option);
+			$return =$this->__VIEW_REPORT($option);    				
+			return $return;
+		}				
+    	//////////////////////////////////////////////////	
 	
 		public function users($option=NULL)		
     	{	
-    		if(is_null($option))	$option=array();
+    		if(is_null($option))			$option					=array();
+    		if(!isset($option))				$option					=array();
     		
-			$option["select"]	=array(				
-                "FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"	=>"img_files_id",
-                "FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"	=>"img_files_id_min",
-                "FN_ImgFile('../modulos/users/img/user.png',files_id,150,0)"	=>"img_files_id_med",
-				"users.*",
-			);
+    		if(!isset($option["select"]))	$option["select"]		=array();
+    		
+			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]	="img_files_id";
+            $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"]	="img_files_id_min";
+            $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
+			$option["select"][]																="users.*";
+
 			$option["from"]		="users";
 			if(!isset($option["where"]))
 				$option["where"]="and users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]}";
-			
-			#$option["echo"]="USERS -> users()";
-			
+						
 			$return =$this->__VIEW_REPORT($option);    				
-			
-			#$this->__PRINT_R($return);
-			
 			return $return;
 		}				
 	}

@@ -36,17 +36,7 @@
 			if(!isset($option["where"]))    $option["where"]    =array();
 			if(!isset($option["select"]))   $option["select"]   =array();
 			
-			/*			
-			$option["select"]["distinct(d.id)"]					="d_id";			
-			$option["select"][]									="d.*";
-			$option["select"]["md5(d.id)"]						="attr";					
-			$option["select"]["IF(image!=0,CONCAT('../sitio_web/img/car/vehiculo_',image,'/i225.png'),'../modulos/device/img/cell.png')"]	="file_id";
-			$option["select"]["IF(vehicle=1,'../modulos/device/img/car.png','../modulos/device/img/cell.png')"]								="file_id1";
-			
-			*/
 			$option["where"][]      ="vehicle=1";
-			
-			#$option["echo"]      ="vehicle=1";
 			
 			return $this->devices($option);    	
 		}						

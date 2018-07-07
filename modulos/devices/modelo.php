@@ -239,11 +239,10 @@
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "source"           	=> "../modulos/users/ajax/index.php",
-			    "value"             => "",			    
+			    #"procedure"       	=> "autocomplete_user",
 			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "users",
-			    #"class_path"        => "modulos/users/modelo.php",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_fisico_id",
 			    "class_field_m"    	=> "id",			    

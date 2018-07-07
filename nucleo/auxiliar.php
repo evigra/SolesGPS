@@ -1151,32 +1151,39 @@
 					    if($valor["type"]=="autocomplete")	
 					    {
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
-					    	
-					    	#$this->__PRINT_R($valor);
-					    	$json=$this->__JSON_AUTOCOMPLETE($valor);
-					    	
-					    	#$this->__PRINT_R("2".$json);
-					    	
-					    	if(isset($this->request["auto_$campo"]))	$fields["auto_$campo"]["value"]	=$this->request["auto_$campo"];
-					    	else										$fields["auto_$campo"]["value"]	=@$json[0]->label;
-					    	
-					    	if(isset($this->request["$campo"]))			$fields["$campo"]["value"]		=$this->request["$campo"];
-					    	else										$fields["$campo"]["value"]		=@$json[0]->clave;
+
+							if(isset($this->request["auto_$campo"]))	
+							{
+								$fields["auto_$campo"]["value"]	=$this->request["auto_$campo"];
+								$fields["$campo"]["value"]		=$this->request["$campo"];
+							}									
+							if(isset($valor["source"]))
+							{						    	
+								$json=$this->__JSON_AUTOCOMPLETE($valor);
+								
+								if(!isset($this->request["auto_$campo"]))	
+								{
+									$fields["auto_$campo"]["value"]	=@$json[0]->label;
+									$fields["$campo"]["value"]		=@$json[0]->clave;
+								}
+							}
+							else if(isset($valor["procedure"]))
+							{
+								$eval="
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}();
+									$"."this->$campo"."_obj->{$valor["procedure"]}();
+								";									
+								if(@eval($eval)===false)	
+									echo ""; #$eval; ---------------------------								        			
+							}	
 					    	
 					    	$label	=$fields["auto_$campo"]["value"];
-							
-							
-							
-							#$this->__PRINT_R("1".$label);
 							
 					    	if(isset($this->sys_fields["$campo"]["class_field_l"]))
 					    	{
 					    		if(isset($this->sys_fields["$campo"]["values"]) AND count($this->sys_fields["$campo"]["values"])>0)
-					    		{
-					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];									
-					    		}
+					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];
 					    	}
-					    	#$this->__PRINT_R("1".$label);
 					    	$js_auto="";
 					    	if(isset($this->sys_memory) AND $this->sys_memory!="")
 					    		$js_auto="appendTo: \"div#create_{$this->sys_name}\",";
@@ -1186,7 +1193,6 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{
-
 							    $words["$campo"]  ="					        	
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">

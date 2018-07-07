@@ -16,7 +16,7 @@
 	}
 	$datas[]=array(
 		"label"		=>"Crear registro",
-		"clave"		=>"Crear registro"
+		"clave"		=>"create"
 	);
 	echo json_encode($datas);
 ?>

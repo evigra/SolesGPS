@@ -1,4 +1,5 @@
 <?php
+	
 	require_once("../../nucleo/sesion.php");
 	#require_once("../../../nucleo/general.php");
 	$datas=array();

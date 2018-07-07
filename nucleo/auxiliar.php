@@ -1170,11 +1170,14 @@
 							else if(isset($valor["procedure"]))
 							{
 								$eval="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();
-									$"."this->$campo"."_obj->{$valor["procedure"]}();
+									$"."this->$campo"."_obj			=new {$valor["class_name"]}();
+									$"."json						=$"."this->$campo"."_obj->{$valor["procedure"]}();
 								";									
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
+
+								$fields["auto_$campo"]["value"]		=@$json[0][$valor["class_field_l"]];
+								$fields["$campo"]["value"]			=@$json[0][$valor["class_field_m"]];
 							}	
 					    	
 					    	$label	=$fields["auto_$campo"]["value"];

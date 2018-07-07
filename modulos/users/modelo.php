@@ -226,9 +226,11 @@
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	
-    		$data=$this->users($option);
-			$return =$this->__VIEW_REPORT($option);    				
-			return $return;
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]	="name LIKE '%{$_GET["term"]}%'";
+    		
+			return $this->users($option);
 		}				
     	//////////////////////////////////////////////////	
 	
@@ -238,15 +240,14 @@
     		if(!isset($option))				$option					=array();
     		
     		if(!isset($option["select"]))	$option["select"]		=array();
+    		if(!isset($option["where"]))	$option["where"]		=array();
     		
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]	="img_files_id";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"]	="img_files_id_min";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
 			$option["select"][]																="users.*";
-
-			$option["from"]		="users";
-			if(!isset($option["where"]))
-				$option["where"]="and users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]}";
+			$option["from"]		="users";			
+			$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";
 						
 			$return =$this->__VIEW_REPORT($option);    				
 			return $return;

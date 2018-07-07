@@ -238,8 +238,8 @@
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/users/ajax/index.php",
-			    #"procedure"       	=> "autocomplete_user",
+			    #"source"           	=> "../modulos/users/ajax/index.php",
+			    "procedure"       	=> "autocomplete_user",
 			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "users",

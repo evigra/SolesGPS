@@ -240,7 +240,6 @@
 			    "type"              => "autocomplete",
 			    #"source"           	=> "../modulos/users/ajax/index.php",
 			    "procedure"       	=> "autocomplete_user",
-			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "users",
 			    "class_field_l"    	=> "name",				# Label

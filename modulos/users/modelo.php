@@ -228,7 +228,7 @@
     	{	
     		$option					=array();
     		$option["where"]		=array();    		
-    		$option["where"][]	="name LIKE '%{$_GET["term"]}%'";
+    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
 			return $this->users($option);
 		}				

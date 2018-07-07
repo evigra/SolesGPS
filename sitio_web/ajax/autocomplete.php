@@ -7,6 +7,8 @@
 	";		
 	eval($eval);
 	
+	$datas=$datas["data"],
+	
 	foreach($datas as $index => $data)
 	{
 		$datas[$index]["label"]			=$data[$_REQUEST["class_field_l"]];

@@ -6,6 +6,8 @@
 		$"."objeto		=new {$_REQUEST["class_name"]}();		
 		$"."datas		=$"."objeto->{$_REQUEST["procedure"]}();
 	";	
+	
+	echo $eval;
 	eval($eval);
 	
 	

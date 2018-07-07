@@ -1214,9 +1214,16 @@
 													auto_$campo(ui);
 												}									
 												else
-												{											
-													$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
-													$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+												{	
+													if(ui.item.clave==\"create\")
+													{
+														alert(\"aaa\");
+													}
+													else
+													{
+														$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
+														$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+													}
 												}
 											}				
 										});				            	

@@ -1231,7 +1231,8 @@
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"../../../sitio_web/ajax/autocomplete.php$vars\",														
+															source:		\"../../../sitio_web/ajax/autocomplete.php$vars\",
+															source:		\"autocomplete.php$vars\",
 															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
 															success:  function(res)
 															{	

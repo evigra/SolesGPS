@@ -46,9 +46,9 @@
 		$eval.="
 			$"."objeto->words				=$"."objeto->__INPUT(array(),$"."objeto->sys_fields);
 																			
-			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
+			#$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
 			
-			$"."objeto->__PRINT_R($"."objeto->words);
+			#$"."objeto->__PRINT_R($"."view_auto_create);
 			
 			#	echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
 		";		

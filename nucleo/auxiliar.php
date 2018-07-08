@@ -1211,7 +1211,7 @@
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
-											source:		\"../sitio_web/ajax/autocomplete.php$vars\",
+											source:		\"../sitio_web/ajax/autocomplete.php\" + JSON.stringify(vars_procedure) + \"$vars\",
 											dataType: 	\"jsonp\",
 											data:		{\"autocomplete\":JSON.stringify(vars_procedure)},
 											$js_auto

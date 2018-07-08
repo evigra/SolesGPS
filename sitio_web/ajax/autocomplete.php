@@ -48,8 +48,9 @@
 																			
 			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
 			
+			$"."objeto->__PRINT_R($"."objeto->words);
 			
-			echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
+			#	echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
 		";		
 		eval($eval);
 	}

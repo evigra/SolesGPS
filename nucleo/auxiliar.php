@@ -1141,7 +1141,7 @@
 					    }			        
 					    if($valor["type"]=="autocomplete")	
 					    {
-					    	#$words["$campo"]  ="";
+					    	$words["$campo"]  ="";
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							if(isset($this->request["auto_$campo"]))	
@@ -1162,14 +1162,14 @@
 							else if(isset($valor["procedure"]))
 							{
 								$eval="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();
-
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}();									
+									$"."json							=$"."this->$campo"."_obj->{$valor["procedure"]}();
+									
 									////////$"."words 							= array_merge($"."words,$"."this->$campo"."_obj->words);
 									
 									$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
 									/////////$"."words							=$"."this->$campo"."_obj->__INPUT($"."words,$"."this->$campo"."_obj->sys_fields);    
-									
-									$"."json							=$"."this->$campo"."_obj->{$valor["procedure"]}();
+
 								";									
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			

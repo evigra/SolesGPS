@@ -1145,13 +1145,7 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
-
-								$"."view_auto_create  			=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
-								$"."this->$campo"."_obj->words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);
-								
-								$"."words[\"create_auto_$campo\"] =$"."this->__REPLACE($"."view_auto_create,$"."this->$campo"."_obj->words);
-								
+								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
 							";	
 							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
 							if(@eval($eval)===false)	
@@ -1200,17 +1194,26 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{
-								#source:		\"{$valor["source"]}$vars\",
+								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo1}</div>
 							    	<script>
+										var options_vars={
+											\"class_name\":		\"{$valor["class_name"]}\", 	
+											\"class_field_l\":	\"{$valor["class_field_l"]}\",
+											\"class_field_m\":	\"{$valor["class_field_m"]}\", 			
+										};				
+							    		var vars_procedure				=options_vars;
+							    		vars_procedure[\"procedure\"]	=\"{$valor["procedure"]}\";
+							    		
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
-											source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
+											source:		\"../sitio_web/ajax/autocomplete.php$vars\",
 											dataType: 	\"jsonp\",
+											data:		{\"autocomplete\":JSON.stringify(vars_procedure)},
 											$js_auto
 											select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 											{												
@@ -1222,6 +1225,21 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{	
+														var vars_form				=options_vars;
+
+														$.ajax(
+														{				
+															cache:		false,				
+															type: 		\"GET\",  				
+															source:		\"../sitio_web/ajax/autocomplete.php$vars\",
+															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
+															success:  function(res)
+															{	
+																$(\"div#auto_$campo\").html(res);
+															},		
+														});			
+													
+													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
 															buttons: {

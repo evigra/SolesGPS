@@ -261,7 +261,8 @@
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
 			$option["select"][]																="users.*";
 			$option["from"]		="users";			
-			$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";
+			if(isset($_SESSION["company"]["id"]))
+				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";
 						
 			$return =$this->__VIEW_REPORT($option);    				
 			return $return;

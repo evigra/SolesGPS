@@ -1162,16 +1162,14 @@
 							else if(isset($valor["procedure"]))
 							{
 								$eval="
-									$"."this->$campo"."_obj			=new {$valor["class_name"]}();
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}();
 
-									$"."words = array_merge($"."this->$campo"."_obj->words, $"."words);
+									$"."words 							= array_merge($"."this->$campo"."_obj->words, $"."words);
 									
-									$"."words[\"create_auto_$campo\"]
-
 									$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
 									$"."words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
 									
-									$"."json						=$"."this->$campo"."_obj->{$valor["procedure"]}();
+									$"."json							=$"."this->$campo"."_obj->{$valor["procedure"]}();
 								";									
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			

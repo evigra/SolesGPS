@@ -241,11 +241,18 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
-			return $this->users($option);
+			$return =$this->__BROWSE($this->browse_users($option));    				
+			return $return;
+			
 		}				
     	//////////////////////////////////////////////////	
 	
 		public function users($option=NULL)		
+    	{	
+			$return =$this->__VIEW_REPORT($this->browse_users($option));    				
+			return $return;
+		}				
+		public function browse_users($option=NULL)		
     	{	
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
@@ -259,10 +266,10 @@
 			$option["select"][]																="users.*";
 			$option["from"]		="users";			
 			if(isset($_SESSION["company"]["id"]))
-				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";
-						
-			$return =$this->__VIEW_REPORT($option);    				
-			return $return;
+				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";						
+			    				
+			return $option;
 		}				
+
 	}
 ?>

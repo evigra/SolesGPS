@@ -1141,7 +1141,7 @@
 					    }			        
 					    if($valor["type"]=="autocomplete")	
 					    {
-					    	$words["$campo"]  ="";
+					    	#$words["$campo"]  ="";
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							if(isset($this->request["auto_$campo"]))	

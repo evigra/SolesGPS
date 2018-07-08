@@ -1200,7 +1200,8 @@
 							    $words["$campo"]  ="					        	
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<script type=\"\">
+							    	<div id=\"auto_$campo\" style=\"display:none;\">aaaaaaaa</div>
+							    	<script>
 										
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
@@ -1217,7 +1218,7 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{
-														alert(\"aaa\");
+														$(\"div#auto_$campo\").dialog();
 													}
 													else
 													{
@@ -1302,9 +1303,6 @@
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
-			#unset($_SESSION["SAVE"]["personal_calculo"]	);	
-			#$_SESSION["SAVE"]=array();
-			
 			$class_id			=@$option["class_id"];
 			$class_one			=$option["class_one"];
 			$class_one_id		=$option["class_one_id"];
@@ -1315,12 +1313,10 @@
 			
 			$words				=$option["words"];                                                                                                                                                                                                                                                          
 			$index				=$option["view"];
-			
-						
+									
 			if(isset($option["json"]))
 			{
-				$json	=$option["json"];						
-				
+				$json	=$option["json"];										
 			}
 						
 			$eval="

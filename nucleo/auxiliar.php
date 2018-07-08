@@ -936,10 +936,8 @@
 		    if(!is_array($words))    $words=array();
 		    if(is_array($fields))
 		    {
-		    	
 			    foreach($fields as $campo=>$valor)
 			    {		
-
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";
 			        if(!isset($valor["showTitle"]))	    $valor["showTitle"]		="si";
 			        if(!isset($valor["title"]))	    	$valor["title"]			="";
@@ -948,13 +946,8 @@
 			        if(!isset($valor["attr"]))	   		$valor["attr"]			="";
 					if(!isset($valor["style"]))	   		$valor["style"]			="";
 
-					
-					#if($this->sys_section=="create")	$valor["value"]			="";
-
 					$class="$campo ";
 					$style="style=\"" . $this->__VALOR($valor) . "\""; 				
-					
-					
 								        
 			        if(!is_array($valor["value"]))
 			        {
@@ -981,8 +974,6 @@
 							else						$titulo					="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]} </font>";
 					    	
 					    }	
-					    
-
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
@@ -1217,8 +1208,19 @@
 												else
 												{	
 													if(ui.item.clave==\"create\")
-													{
-														$(\"div#auto_$campo\").dialog();
+													{														
+														$(\"div#auto_$campo\").dialog({
+															buttons: {
+																\"Registrar\": function() {													
+																	//////many2one_post(options);
+																	$( this ).dialog(\"close\");
+																},
+																\"Cerrar\": function() {
+																	$( this ).dialog(\"close\");
+																}
+															},										
+															width:\"700px\"
+														});
 													}
 													else
 													{

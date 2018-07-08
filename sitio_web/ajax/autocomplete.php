@@ -1,22 +1,12 @@
 <?php
 	require_once("../../nucleo/sesion.php");
 	
-	if(isset($_REQUEST["autocomplete"]))
-	{
-		$autocomplete									=json_decode($_REQUEST["autocomplete"], true);	
-		unset($_REQUEST["autocomplete"]);
-
-		$class_name										=@$autocomplete["class_name"];		
-		$class_field_l									=@$autocomplete["class_field_l"];	
-		$class_field_m									=@$autocomplete["class_field_m"];		
-	}
-	else
-	{
-		$class_name										=@$_REQUEST["class_name"];		
-		$class_field_l									=@$_REQUEST["class_field_l"];	
-		$class_field_m									=@$_REQUEST["class_field_m"];		
+	$class_name										=@$_REQUEST["class_name"];		
+	$class_field_l									=@$_REQUEST["class_field_l"];	
+	$class_field_m									=@$_REQUEST["class_field_m"];		
+	
+	if(isset($_REQUEST["procedure"]))
 		$procedure										=@$_REQUEST["procedure"];
-	}	
 
 	$eval="
 		$"."objeto		=new {$class_name}();		
@@ -45,12 +35,9 @@
 	{
 		$eval.="
 			$"."objeto->words				=$"."objeto->__INPUT(array(),$"."objeto->sys_fields);
-																			
 			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
-			
-			#$"."objeto->__PRINT_R($"."view_auto_create);
-			
-			#	echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
+			#$"."objeto->__PRINT_R($"."view_auto_create);		
+			echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
 		";		
 		eval($eval);
 	}

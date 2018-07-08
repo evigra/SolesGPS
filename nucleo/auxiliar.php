@@ -1196,6 +1196,7 @@
 							{
 							
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
+								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
@@ -1231,9 +1232,7 @@
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"../../../sitio_web/ajax/autocomplete.php$vars\",
-															source:		\"autocomplete.php$vars\",
-															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
+															source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
 															success:  function(res)
 															{	
 																$(\"div#auto_$campo\").html(res);

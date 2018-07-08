@@ -1204,7 +1204,7 @@
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<div id=\"auto_$campo\" title=\"Crear Registro\" style=\"display:none;\">{create_auto_$campo}</div>
+							    	<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
 							    	<script>
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(

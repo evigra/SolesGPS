@@ -1204,8 +1204,7 @@
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	{create_auto_$campo}
-							    	<div id=\"auto_$campo\" style=\"display:none;\"></div>
+							    	<div id=\"auto_$campo\" style=\"display:none;\">{create_auto_$campo}</div>
 							    	<script>
 										
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
@@ -1222,8 +1221,9 @@
 												else
 												{	
 													if(ui.item.clave==\"create\")
-													{														
-														$(\"div#create_{$valor["class_name"]}\").dialog({
+													{	
+														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
+														$(\"div#auto_$campo\").dialog({
 															buttons: {
 																\"Registrar\": function() {													
 																	//////many2one_post(options);

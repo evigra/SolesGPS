@@ -1485,10 +1485,6 @@
 			$sys_action		="";
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
-			#if(@$this->request["sys_action"]!="print_pdf")	
-
-
-
 			$view2="";
 			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 			{
@@ -1498,15 +1494,11 @@
 					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";
 				if(!isset($option["input"]))	$option["input"]="true";
-				
-				#if(in_array(@$option["input"],$this->sys_false))	
-					#$view2="";
 			}
 			$view.=$view2;
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")
-			{	
-				
+			{					
 				$this->words["many2one_button"]="
 					<font id=\"{$this->sys_name}\">ACEPTAR</font>				
 					<font id=\"{$this->sys_name}\">CANCELAR</font>	<br>			<br>
@@ -1522,7 +1514,6 @@
 							});						
 					</script>					
 				";		
-		
 			}			
 			return $view;
 		}    	
@@ -1935,7 +1926,7 @@
 				###########################
 		    	if(isset($option["template_create"]) AND $option["template_create"] !="")
 		    	{
-					$this->words               	=	$this->__INPUT($this->words,$this->sys_fields);
+					$this->words		=	$this->__INPUT($this->words,$this->sys_fields);
 		    
 					$eval="
 						if(isset($"."this->sys_id_{$this->sys_name}))

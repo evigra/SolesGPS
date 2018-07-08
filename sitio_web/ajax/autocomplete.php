@@ -43,9 +43,11 @@
 	}
 	else
 	{
-		$eval.="																
-			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
+		$eval.="
 			$"."objeto->words				=$"."objeto->__INPUT(array(),$"."objeto->sys_fields);
+																			
+			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
+			
 			
 			echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
 		";		

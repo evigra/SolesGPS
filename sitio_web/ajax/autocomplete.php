@@ -9,19 +9,20 @@
 		$class_name										=@$autocomplete["class_name"];		
 		$class_field_l									=@$autocomplete["class_field_l"];	
 		$class_field_m									=@$autocomplete["class_field_m"];		
-		$procedure										=@$autocomplete["procedure"];
 	}
 	else
 	{
-	
-	
+		$class_name										=@$_REQUEST["class_name"];		
+		$class_field_l									=@$_REQUEST["class_field_l"];	
+		$class_field_m									=@$_REQUEST["class_field_m"];		
+		$procedure										=@$_REQUEST["procedure"];
 	}
 	
 
 	$eval="
 		$"."objeto		=new {$class_name}();		
 	";		
-	if(isset($autocomplete["procedure"]))
+	if(isset($procedure))
 	{
 		$datas										=array();
 		$eval.="
@@ -51,7 +52,4 @@
 		";		
 		eval($eval);
 	}
-		
-		
-	
 ?>

@@ -39,8 +39,8 @@
 		$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
-    	$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html();
-    	$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user();
+    	#$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html();
+    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user();
     }	
     elseif($objeto->sys_section=="write")
 	{

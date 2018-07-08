@@ -190,8 +190,9 @@
 		public function __INPUT($words,$sys_fields)
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);
-			/*
+			
 			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
+			/*
 			$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
 
 			if(isset($this->sys_fields["files_id"]["value"]))    	

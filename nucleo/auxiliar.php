@@ -1247,12 +1247,8 @@
 													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
-															close:{
-																$(this).html(\"\");
-															},
 															buttons: {
 																\"Registrar\": function() {													
-																	//////many2one_post(options);
 																	$( this ).dialog(\"close\");
 																},
 																\"Cerrar\": function() {

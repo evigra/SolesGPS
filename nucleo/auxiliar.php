@@ -1141,7 +1141,19 @@
 					    }			        
 					    if($valor["type"]=="autocomplete")	
 					    {
+					    	$words["$campo"]  ="";
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
+
+							$eval="
+								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
+
+								$"."words[\"create_auto_$campo\"]  	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
+								
+								
+							";	
+							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
+							if(@eval($eval)===false)	
+
 
 							if(isset($this->request["auto_$campo"]))	
 							{
@@ -1161,16 +1173,8 @@
 							else if(isset($valor["procedure"]))
 							{
 								$eval="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();									
 									$"."json							=$"."this->$campo"."_obj->{$valor["procedure"]}();
-									
-									
-								$"."this->__PRINT_R(\"aaaa\");
-									
-									$"."this->$campo"."_obj->"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
-									$"."this->$campo"."_obj->"."words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
 								";	
-								echo "$eval";								
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
 

@@ -1169,7 +1169,8 @@
 									
 									$"."this->$campo"."_obj->"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
 									$"."this->$campo"."_obj->"."words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
-								";									
+								";	
+								echo "$eval";								
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
 

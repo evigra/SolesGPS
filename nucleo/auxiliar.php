@@ -1194,6 +1194,22 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{
+/*
+														$.ajax(
+														{				
+															cache:		false,				
+															type: 		\"GET\",  				
+															source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
+															
+															source:		\"../sitio_web/ajax/autocomplete.php$vars\",														
+															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
+															success:  function(res)
+															{	
+																$(\"div#auto_$campo\").html(res);
+															},		
+														});	
+	*/																				
+							
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
@@ -1226,21 +1242,7 @@
 													{	
 														var vars_form				=options_vars;
 
-														///*
-														$.ajax(
-														{				
-															cache:		false,				
-															type: 		\"GET\",  				
-															source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
-															
-															source:		\"../sitio_web/ajax/autocomplete.php$vars\",														
-															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
-															success:  function(res)
-															{	
-																$(\"div#auto_$campo\").html(res);
-															},		
-														});	
-														/*//		
+																
 													
 													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													

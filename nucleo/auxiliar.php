@@ -1206,7 +1206,7 @@
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\" style=\"display:none;\">{create_auto_$campo}</div>
 							    	<script>
-										
+										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
 											source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",

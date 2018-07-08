@@ -1202,14 +1202,6 @@
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
-										var options_vars={
-											\"class_name\":		\"{$valor["class_name"]}\", 	
-											\"class_field_l\":	\"{$valor["class_field_l"]}\",
-											\"class_field_m\":	\"{$valor["class_field_m"]}\", 			
-										};				
-							    		var vars_procedure				=options_vars;
-							    		vars_procedure[\"procedure\"]	=\"{$valor["procedure"]}\";
-							    		
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
@@ -1226,8 +1218,6 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{	
-														var vars_form				=options_vars;
-
 														$.ajax(
 														{				
 															cache:		false,				
@@ -1238,8 +1228,6 @@
 																$(\"div#auto_$campo\").html(res);
 															},		
 														});	
-																
-													
 													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({

@@ -1167,7 +1167,7 @@
 									$"."words 							= array_merge($"."this->$campo"."_obj->words, $"."words);
 									
 									$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
-									$"."words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
+									$"."words							=$"."this->$campo"."_obj->__INPUT($"."words,$"."this->$campo"."_obj->sys_fields);    
 									
 									$"."json							=$"."this->$campo"."_obj->{$valor["procedure"]}();
 								";									

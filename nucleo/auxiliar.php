@@ -1226,21 +1226,28 @@
 													{	
 														var vars_form				=options_vars;
 
+														///*
 														$.ajax(
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"../sitio_web/ajax/autocomplete.php$vars\",
+															source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
+															
+															source:		\"../sitio_web/ajax/autocomplete.php$vars\",														
 															data:		{\"autocomplete\":JSON.stringify(vars_form)},														
 															success:  function(res)
 															{	
 																$(\"div#auto_$campo\").html(res);
 															},		
-														});			
+														});	
+														/*//		
 													
 													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
+															close:{
+																$(this).html(\"\");
+															},
 															buttons: {
 																\"Registrar\": function() {													
 																	//////many2one_post(options);

@@ -194,11 +194,11 @@
 			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
 			/*
 			$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
-
+			*/
 			if(isset($this->sys_fields["files_id"]["value"]))    	
 				$this->words["img_files_id"]	            =$this->files_obj->__GET_FILE($this->sys_fields["files_id"]["value"]);
 			else	$this->words["img_files_id"]="";	
-			*/
+			
 			return $this->words;
     	}
 

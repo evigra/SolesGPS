@@ -16,8 +16,7 @@
 		$class_field_l									=@$_REQUEST["class_field_l"];	
 		$class_field_m									=@$_REQUEST["class_field_m"];		
 		$procedure										=@$_REQUEST["procedure"];
-	}
-	
+	}	
 
 	$eval="
 		$"."objeto		=new {$class_name}();		
@@ -46,7 +45,7 @@
 	{
 		$eval.="																
 			$"."view_auto_create  			=$"."objeto->__VIEW_CREATE($"."objeto->sys_module . \"html/create\");	
-			$"."objeto->words				=$"."objeto->__INPUT($"."objeto->words,$"."objeto->sys_fields);
+			$"."objeto->words				=$"."objeto->__INPUT(array(),$"."objeto->sys_fields);
 			
 			echo $"."objeto->__REPLACE($"."view_auto_create,$"."objeto->words);
 		";		

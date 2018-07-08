@@ -1147,8 +1147,10 @@
 							$eval="
 								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
 
-								$"."words[\"create_auto_$campo\"]  	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
+								$"."view_auto_create  			=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
+								$"."this->$campo"."_obj->words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);
 								
+								$"."words[\"create_auto_$campo\"] =$"."this->__REPLACE($"."view_auto_create,$"."this->$campo"."_obj->words);
 								
 							";	
 							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    

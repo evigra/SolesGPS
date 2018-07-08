@@ -1167,9 +1167,10 @@
 									
 									////////$"."words 							= array_merge($"."words,$"."this->$campo"."_obj->words);
 									
+									$"."this->__PRINT_R($"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\"));
+									
 									$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
 									/////////$"."words							=$"."this->$campo"."_obj->__INPUT($"."words,$"."this->$campo"."_obj->sys_fields);    
-
 								";									
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
@@ -1239,6 +1240,7 @@
 										});				            	
 							    	</script>
 							    ";
+							    
 							    #$words["create_auto_$campo"]  ="lalo";
 							}					    
 							else

@@ -1214,7 +1214,7 @@
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo1}</div>
+							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
 										var options_vars={
 											\"class_name\":		\"{$valor["class_name"]}\", 	

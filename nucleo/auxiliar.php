@@ -1219,7 +1219,7 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{	
-														/*
+														
 														$.ajax(
 														{				
 															cache:		false,				
@@ -1230,7 +1230,7 @@
 																$(\"div#auto_$campo\").html(res);
 															},		
 														});	
-														*/
+														
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
 															buttons: {

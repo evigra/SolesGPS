@@ -1227,7 +1227,7 @@
 															source:		\"http://" . $_SERVER["SERVER_NAME"] . "?date=".date("YmdHis")."\",
 															success:  function(res_new)
 															{	
-																//////$(\"div#auto_$campo\").html(res_new);
+																$(\"div#auto_$campo\").html(res_new);
 															},		
 														});	
 														

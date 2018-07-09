@@ -1225,9 +1225,9 @@
 															cache:		false,				
 															type: 		\"GET\",  				
 															source:		\"http://" . $_SERVER["SERVER_NAME"] . "?date=".date("YmdHis")."\",
-															success:  function(res)
+															success:  function(res_new)
 															{	
-																$(\"div#auto_$campo\").html(res);
+																//////$(\"div#auto_$campo\").html(res_new);
 															},		
 														});	
 														

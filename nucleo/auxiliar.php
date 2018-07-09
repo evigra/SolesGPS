@@ -1223,7 +1223,7 @@
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"../tareas/&date=".date("YmdHis")."\",
+															source:		\"http://" . $_SERVER["SERVER_NAME"] . "?date=".date("YmdHis")."\",
 															success:  function(res)
 															{	
 																$(\"div#auto_$campo\").html(res);

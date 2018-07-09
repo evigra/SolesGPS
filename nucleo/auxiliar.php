@@ -1222,10 +1222,10 @@
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
+															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name=users&class_field_l=name&class_field_m=id\",
 															success:  function(res)
 															{	
-																
+																$(\"div#auto_$campo\").html(res);		
 															},		
 														});	
 													

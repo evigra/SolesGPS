@@ -633,7 +633,7 @@
 				{					
 					if(!is_array($valor)) $valor=htmlentities($valor);
 					
-					$this->request["$campo"]		=$valor;
+					$this->request["{$this->sys_name}_$campo"]		=$valor;
 					$_SESSION["request"]["$campo"]	=$valor;									
 					if(is_array($valor))
 					{						
@@ -672,7 +672,7 @@
 						$eval="
 							$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
 							$"."this->$campo=\"0\";
-							$"."this->request[\"$campo\"]=\"0\";
+							$"."this->request[\"{$this->sys_name}_$campo\"]=\"0\";
 						";
 						if(eval($eval)===false)	
 							echo ""; #$eval; ---------------------------					
@@ -891,11 +891,11 @@
 			
 			foreach($this->sys_fields as $campo=>$valor)
 			{
-				if(!isset($this->request["$campo"]))		$this->request["$campo"]="";
+				if(!isset($this->request["{$this->sys_name}_$campo"]))		$this->request["{$this->sys_name}_$campo"]="";
 				else
 				{	
-					$this->sys_fields["$campo"]["value"]	=$this->request["$campo"];
-					$this->sys_fields["$campo"]["request"]	=$this->request["$campo"];
+					$this->sys_fields["$campo"]["value"]	=$this->request["{$this->sys_name}_$campo"];
+					$this->sys_fields["$campo"]["request"]	=$this->request["{$this->sys_name}_$campo"];
 				}	
 			}		
 		}    
@@ -976,7 +976,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"{$this->sys_name}[$campo]\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input id=\"{$this->sys_name}_$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					        
 					    } 
 					    if($valor["type"]=="date")	

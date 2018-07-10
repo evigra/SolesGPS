@@ -633,7 +633,7 @@
 				{					
 					if(!is_array($valor)) $valor=htmlentities($valor);
 					
-					$this->request["{$this->sys_name}_$campo"]		=$valor;
+					$this->request["$campo"]		=$valor;
 					$_SESSION["request"]["$campo"]	=$valor;									
 					if(is_array($valor))
 					{						
@@ -672,7 +672,7 @@
 						$eval="
 							$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
 							$"."this->$campo=\"0\";
-							$"."this->request[\"{$this->sys_name}_$campo\"]=\"0\";
+							$"."this->request[\"$campo\"]=\"0\";
 						";
 						if(eval($eval)===false)	
 							echo ""; #$eval; ---------------------------					
@@ -891,11 +891,11 @@
 			
 			foreach($this->sys_fields as $campo=>$valor)
 			{
-				if(!isset($this->request["{$this->sys_name}_$campo"]))		$this->request["{$this->sys_name}_$campo"]="";
+				if(!isset($this->request["$campo"]))		$this->request["$campo"]="";
 				else
 				{	
-					$this->sys_fields["$campo"]["value"]	=$this->request["{$this->sys_name}_$campo"];
-					$this->sys_fields["$campo"]["request"]	=$this->request["{$this->sys_name}_$campo"];
+					$this->sys_fields["$campo"]["value"]	=$this->request["$campo"];
+					$this->sys_fields["$campo"]["request"]	=$this->request["$campo"];
 				}	
 			}		
 		}    
@@ -954,6 +954,7 @@
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
+
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
 								if($attr_value=="required")		$class.=" required ";
@@ -976,7 +977,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"{$this->sys_name}_$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					        
 					    } 
 					    if($valor["type"]=="date")	
@@ -1193,11 +1194,6 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{
-/*
-
-
-
-*/
 							
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
 								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
@@ -1207,6 +1203,7 @@
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
+										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
 											source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
@@ -1222,20 +1219,19 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{	
-														var url=\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\";
 														
-														alert(url);
 														$.ajax(
-														{				
-															cache:			false,				
-															type: 			\"GET\",  				
-															url: 			url,
-															success:  function(res)
-															{										
+														{
+															dataType:	\"html\",
+															type: 		\"POST\",  
+															async:		true,			
+															cache:		false,				
+															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
+															success:  function(res_new)
+															{	
 																$(\"div#auto_$campo\").html(res_new);
 															},		
-														});						
-
+														});	
 														
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({

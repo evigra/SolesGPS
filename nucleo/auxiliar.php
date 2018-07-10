@@ -1235,7 +1235,7 @@
 														$(\"div#auto_$campo\").dialog({
 															beforeClose: function( event, ui ) {
 																$(this).html(\"\");
-															};
+															},
 															buttons: {
 																\"Registrar\": function() {													
 																	$( this ).dialog(\"close\");

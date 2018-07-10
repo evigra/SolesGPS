@@ -1194,6 +1194,24 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{
+/*
+
+														$.ajax(
+
+														{
+															dataType:	\"html\",
+															type: 		\"POST\",  
+															async:		true,			
+															cache:		false,				
+															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
+															success:  function(res_new)
+															{	
+																$(\"div#auto_$campo\").html(res_new);
+															},		
+														});	
+
+
+*/
 							
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
 								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
@@ -1220,18 +1238,6 @@
 													if(ui.item.clave==\"create\")
 													{	
 														
-														$.ajax(
-														{
-															dataType:	\"html\",
-															type: 		\"POST\",  
-															async:		true,			
-															cache:		false,				
-															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
-															success:  function(res_new)
-															{	
-																$(\"div#auto_$campo\").html(res_new);
-															},		
-														});	
 														
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({

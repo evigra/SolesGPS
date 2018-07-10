@@ -1226,7 +1226,7 @@
 															type: 		\"POST\",  
 															async:		true,			
 															cache:		false,				
-															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
+															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 															success:  function(res_new)
 															{	
 																$(\"div#auto_$campo\").html(res_new);

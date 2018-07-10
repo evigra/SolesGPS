@@ -1224,7 +1224,7 @@
 														{				
 															cache:		false,				
 															type: 		\"GET\",  				
-															source:		\"http://" . $_SERVER["SERVER_NAME"] . "?date=".date("YmdHis")."\",
+															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 															success:  function(res_new)
 															{	
 																$(\"div#auto_$campo\").html(res_new);
@@ -1233,6 +1233,9 @@
 														
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
+															beforeClose: function( event, ui ) {
+																$(this).html(\"\");
+															};
 															buttons: {
 																\"Registrar\": function() {													
 																	$( this ).dialog(\"close\");

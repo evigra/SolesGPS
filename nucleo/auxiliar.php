@@ -954,7 +954,6 @@
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
-
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
 								if($attr_value=="required")		$class.=" required ";
@@ -977,7 +976,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input id=\"{$this->sys_name}[$campo]\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					        
 					    } 
 					    if($valor["type"]=="date")	
@@ -1206,22 +1205,8 @@
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<div id=\"auto_$campo\" title=\"Crear Registro\">aaaa</div>
+							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
-														var url=\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\";
-														
-														alert(url);
-														$.ajax(
-														{				
-															cache:			false,				
-															type: 			\"GET\",  				
-															url: 			url,
-															success:  function(res)
-															{										
-																$(\"div#auto_$campo\").html(res_new);
-															},		
-														});						
-
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
 											source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",

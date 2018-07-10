@@ -1208,6 +1208,20 @@
 							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
+														var url=\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\";
+														
+														alert(url);
+														$.ajax(
+														{				
+															cache:			false,				
+															type: 			\"GET\",  				
+															url: 			url,
+															success:  function(res)
+															{										
+																$(\"div#auto_$campo\").html(res_new);
+															},		
+														});						
+
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 										{		
@@ -1228,18 +1242,16 @@
 														
 														alert(url);
 														$.ajax(
-														{
-															dataType:	\"html\",
-															type: 		\"POST\",  
-															async:		true,			
-															cache:		false,				
-															source:		url,
-															success:  function(res_new)
-															{	
+														{				
+															cache:			false,				
+															type: 			\"GET\",  				
+															url: 			url,
+															success:  function(res)
+															{										
 																$(\"div#auto_$campo\").html(res_new);
 															},		
-														});	
-														
+														});						
+
 														
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({

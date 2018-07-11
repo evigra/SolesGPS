@@ -654,7 +654,7 @@
 		    if(@eval($eval)===false)	
 		    	echo ""; #$eval; ---------------------------					
 
-			if($this->sys_fields[$campo]["type"]=="checkbox" and $this->sys_fields[$campo]["value"]=="")
+			if(@$this->sys_fields[$campo]["type"]=="checkbox" and @$this->sys_fields[$campo]["value"]=="")
 			{					
 				$eval="
 					$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";

@@ -621,64 +621,79 @@
 		} 
 
         ##############################################################################
+		public function __REQUEST_AUX($campo,$valor)
+		{  
+			if(!is_array($valor)) $valor=htmlentities($valor);
+			
+			$this->request["$campo"]		=$valor;
+			$_SESSION["request"]["$campo"]	=$valor;									
+			if(is_array($valor))
+			{						
+				$eval="
+					if(is_array(@$"."this->sys_fields[\"$campo\"]))	
+					{
+						$"."this->sys_fields[\"$campo\"]"."[\"value\"]=$"."valor;
+					}									
+				";					
+			}
+			else
+			{		
+				$eval="
+					if(is_array(@$"."this->sys_fields[\"$campo\"]))	
+					{			
+						$"."this->sys_fields[\"$campo\"]"."[\"value\"]=\"$valor\";
+					}		
+					else
+					{
+						$"."this->$campo=\"$valor\";
+					}							
+				";
+			}	
 
+			#eval($eval);
+		    if(@eval($eval)===false)	
+		    	echo ""; #$eval; ---------------------------					
+
+			if($this->sys_fields[$campo]["type"]=="checkbox" and $this->sys_fields[$campo]["value"]=="")
+			{					
+				$eval="
+					$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
+					$"."this->$campo=\"0\";
+					$"."this->request[\"$campo\"]=\"0\";
+				";
+				if(eval($eval)===false)	
+					echo ""; #$eval; ---------------------------					
+			}
+
+			
+		}
 		public function __REQUEST()
 		{  
 			# ASIGNA TODAS LAS VARIABLES QUE CONTENGAN VALOR
 			# AL ARRAY DECLARADO $this->sys_fields EN EL MODEDLO
 			# O CREANDO UNA NUEVA PROPIEDAD 
-			foreach($_REQUEST as $campo =>$valor)
-			{
-				#if(!($valor=="" OR $valor=="undefined"))
-				{					
-					if(!is_array($valor)) $valor=htmlentities($valor);
-					
-					$this->request["$campo"]		=$valor;
-					$_SESSION["request"]["$campo"]	=$valor;									
-					if(is_array($valor))
-					{						
-						$eval="
-							if(is_array(@$"."this->sys_fields[\"$campo\"]))	
-							{
-								$"."this->sys_fields[\"$campo\"]"."[\"value\"]=$"."valor;
-							}									
-						";					
-					}
-					else
-					{		
-						$eval="
-							if(is_array(@$"."this->sys_fields[\"$campo\"]))	
-							{			
-								$"."this->sys_fields[\"$campo\"]"."[\"value\"]=\"$valor\";
-							}		
-							else
-							{
-								$"."this->$campo=\"$valor\";
-							}							
-						";
-					}	
-
-					#eval($eval);
-				    if(@eval($eval)===false)	
-				    	echo ""; #$eval; ---------------------------					
-				}	
-			}
 			if(is_array(@$this->sys_fields))
 			{
-				foreach(@$this->sys_fields as $campo =>$valor)
+				foreach($this->sys_fields as $campo =>$valor)
 				{
-					if($this->sys_fields[$campo]["type"]=="checkbox" and $this->sys_fields[$campo]["value"]=="")
-					{					
-						$eval="
-							$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
-							$"."this->$campo=\"0\";
-							$"."this->request[\"$campo\"]=\"0\";
-						";
-						if(eval($eval)===false)	
-							echo ""; #$eval; ---------------------------					
+					$request_campo		="{$this->sys_name}_$campo";
+					if(isset($_REQUEST[$request_campo]))
+					{
+						$valor			=$_REQUEST[$request_campo];
+						if(!is_array($valor)) $valor=htmlentities($valor);
+						
+						$this->__REQUEST_AUX($campo,$valor);
+						
+						unset($_REQUEST[$request_campo]);
 					}
 				}
+			}	
+			foreach($_REQUEST as $campo =>$valor)
+			{
+				$this->__REQUEST_AUX($campo,$valor);
 			}
+
+			
 			if(is_array($_FILES))
 			{
 				$this->request["files"]=array();				
@@ -977,7 +992,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					        
 					    } 
 					    if($valor["type"]=="date")	
@@ -990,7 +1005,7 @@
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 							    $words["$campo"]  ="
-							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
 										$(\"input#$campo".".{$this->sys_name}\").datepicker({
 											dateFormat:\"yy-mm-dd\",
@@ -1015,7 +1030,7 @@
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 							    $words["$campo"]  ="
-							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
 										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
 											dateFormat: 	\"yy-mm-dd\",
@@ -1058,7 +1073,7 @@
 							{					        
 
 							    $words["$campo"]  ="
-							    	<input id=\"$campo\" $style type=\"text\" name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
 										$(\"input#$campo".".{$this->sys_name}\").multiDatesPicker(
 										{
@@ -1079,7 +1094,7 @@
 							
 					    	$words["$campo"]  = 
 					        "<div class=\"checkbox-2\">
-		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"$campo\" />
+		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"{$this->sys_name}_$campo\" />
 		    					<label for=\"$campo\">".""."</label>
 							</div>$titulo
 							<br>
@@ -1090,7 +1105,7 @@
 					    if($valor["type"]=="file")	
 					    {
 					        $words["$campo"]  ="$titulo<input id=\"$campo\" name=\"$campo\" type=\"file\" class=\"formulario\">";
-					        $words["$campo"]  ="<input id=\"$campo\" $attr name=\"$campo\" type=\"file\" class=\"formulario {$this->sys_name} $class\" ><br>$titulo";
+					        $words["$campo"]  ="<input id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" type=\"file\" class=\"formulario {$this->sys_name} $class\" ><br>$titulo";
 					    }    
 
 					    if($valor["type"]=="font")	
@@ -1114,11 +1129,11 @@
 					    if($valor["type"]=="textarea")	
 					    {
 							if($attr=="")	$attr="style=\"height:150px;\"";
-					        $words["$campo"]  ="<textarea id=\"$campo\" name=\"$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
+					        $words["$campo"]  ="<textarea id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
 					    } 			           
 					    if($valor["type"]=="password")	
 					    {					        
-					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo";
+					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo";
 					    }    
 					    if($valor["type"]=="select")	
 					    {
@@ -1131,7 +1146,7 @@
 							    	if($valor["value"]==$value) $selected="selected";
 							    	$options.="<option value=\"$value\" $selected>$text</option>";			            
 							    }			            
-							    $words["$campo"]  ="<select id=\"$campo\" $style name=\"$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
+							    $words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
 							    		$options
 							    	</select><br>$titulo
 							    ";
@@ -1199,8 +1214,8 @@
 								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 							    $words["$campo"]  ="
-							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-							    	<input id=\"$campo\" name=\"$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
+							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"{$this->sys_name}_auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
 										$(\"div#auto_$campo\").hide();
@@ -1316,7 +1331,7 @@
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
-					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
+					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
 					    }    
 					    if($valor["type"]=="img")	
 					    {

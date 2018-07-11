@@ -684,7 +684,7 @@
 						
 						$this->__REQUEST_AUX($campo,$valor);
 						
-						unset($_REQUEST[$request_campo]);
+						unset($_REQUEST["$request_campo"]);
 					}
 				}
 			}	

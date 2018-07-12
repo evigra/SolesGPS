@@ -1008,7 +1008,6 @@
 											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
 											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
 											$js_auto
-											
 										});
 							    	</script>			            	
 					        	";
@@ -1089,7 +1088,7 @@
 							
 					    	$words["$campo"]  = 
 					        "<div class=\"checkbox-2\">
-		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"{$this->sys_name}_$campo\" />
+		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"$campo\" />
 		    					<label for=\"$campo\">".""."</label>
 							</div>$titulo
 							<br>

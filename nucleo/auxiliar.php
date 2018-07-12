@@ -651,7 +651,7 @@
 		    if(@eval($eval)===false)	
 		    	echo ""; #$eval; ---------------------------					
 
-			if(@$this->sys_fields[$campo]["type"]=="checkbox" and @$this->sys_fields[$campo]["value"]=="")
+			if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 			{					
 				$eval="
 					$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
@@ -660,9 +660,7 @@
 				";
 				if(eval($eval)===false)	
 					echo ""; #$eval; ---------------------------					
-			}
-
-			
+			}			
 		}
 		public function __REQUEST()
 		{  

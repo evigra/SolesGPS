@@ -379,7 +379,8 @@
 			    foreach($datas as $data)
 			    {			    
 			        $return .="
-			        	<input id=\"{$data["id"]}\" type=\"checkbox\">		<label for=\"{$data["id"]}\">{$data["title"]}</label>				        	
+			        	<input id=\"{$data["id"]}\" type=\"checkbox\">
+			        	<label for=\"{$data["id"]}\">{$data["title"]}</label>				        	
 			        ";
 			    }
 		        $return ="

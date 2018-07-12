@@ -84,11 +84,8 @@
 		}    	
 		public function __MENU_SEGUIMIENTO()
 		{  
-				$view	=$this->__TEMPLATE("sitio_web/html/menu_seguimiento");
-				
+				$view			=$this->__TEMPLATE("sitio_web/html/menu_seguimiento");				
 				$words["a"]		=$_SESSION["seguimiento_md5"];
-				
-
 				return	$this->__REPLACE($view,$words);
 		}    	
 
@@ -1095,7 +1092,7 @@
 					    	$words["$campo"]  = 
 					        "<div class=\"checkbox-2\">
 		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"{$this->sys_name}_$campo\" />
-		    					<label for=\"$campo\">".""."</label>
+		    					<label for=\"{$this->sys_name}_$campo\">".""."</label>
 							</div>$titulo
 							<br>
 							";
@@ -1214,8 +1211,8 @@
 								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
 								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 							    $words["$campo"]  ="
-							    	<input id=\"auto_$campo\" $style type=\"text\"  name=\"{$this->sys_name}_auto_$campo\"  $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-							    	<input id=\"$campo\" name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
+							    	<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+							    	<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
 							    	<script>
 										$(\"div#auto_$campo\").hide();

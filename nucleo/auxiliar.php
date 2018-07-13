@@ -1082,7 +1082,7 @@
 					    {
 					        //$words["$campo"]  ="<input id=\"$campo\" type=\"checkbox\" name=\"$campo\" class=\"formulario\"><br>$titulo";
 					        $checked="";
-					        #if($valor["value"]==1) $checked="checked";
+					        if($valor["value"]==1) $checked="checked";
 							
 					    	$words["$campo"]  = 
 					        "<div class=\"checkbox-2\">

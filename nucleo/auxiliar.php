@@ -1086,7 +1086,7 @@
 							
 					    	$words["$campo"]  = 
 					        "<div class=\"checkbox-2\">
-		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"$campo\" />
+		    					<input type=\"checkbox\" id=\"$campo\" $attr $checked value=\"1\" name=\"{$this->sys_name}_$campo\" />
 		    					<label for=\"$campo\">".""."</label>
 							</div>$titulo
 							<br>

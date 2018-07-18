@@ -671,8 +671,8 @@
 			# AL ARRAY DECLARADO $this->sys_fields EN EL MODEDLO
 			# O CREANDO UNA NUEVA PROPIEDAD 
 			
-			if(count($_REQUEST)>6)
-				$this->__PRINT_R($_REQUEST);
+			#if(count($_REQUEST)>6)
+			#	$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
 				foreach($this->sys_fields as $campo =>$valor)

@@ -670,6 +670,8 @@
 			# ASIGNA TODAS LAS VARIABLES QUE CONTENGAN VALOR
 			# AL ARRAY DECLARADO $this->sys_fields EN EL MODEDLO
 			# O CREANDO UNA NUEVA PROPIEDAD 
+			
+			$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
 				foreach($this->sys_fields as $campo =>$valor)
@@ -684,11 +686,12 @@
 					}
 				}
 			}	
+			$this->__PRINT_R($_REQUEST);
 			foreach($_REQUEST as $campo =>$valor)
 			{
 				$this->__REQUEST_AUX($campo,$valor);
 			}
-
+			$this->__PRINT_R($_REQUEST);
 			
 			if(is_array($_FILES))
 			{

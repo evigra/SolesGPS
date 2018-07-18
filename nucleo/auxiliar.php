@@ -620,7 +620,7 @@
         ##############################################################################
 		public function __REQUEST_AUX($campo,$valor)
 		{  
-			if(!is_array($valor)) $valor=htmlentities($valor);
+			if(!is_array($valor)) 			$valor=htmlentities($valor);
 			
 			$this->request["$campo"]		=$valor;
 			$_SESSION["request"]["$campo"]	=$valor;									
@@ -653,6 +653,7 @@
 
 			if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 			{					
+				$this->__PRINT_R($this->sys_fields[$campo]);
 				$eval="
 					$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
 					$"."this->$campo=\"0\";

@@ -651,9 +651,10 @@
 		    if(@eval($eval)===false)	
 		    	echo ""; #$eval; ---------------------------					
 
+			$this->__PRINT_R($this->sys_fields[$campo]);
 			if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 			{					
-				$this->__PRINT_R($this->sys_fields[$campo]);
+				
 				$eval="
 					$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
 					$"."this->$campo=\"0\";

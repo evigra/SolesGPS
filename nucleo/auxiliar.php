@@ -674,12 +674,11 @@
 			#	$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
+				#if(@$this->sys_fields[$campo]["type"]=="checkbox")
+					$this->__PRINT_R($this->sys_fields);
+
 				foreach($this->sys_fields as $campo =>$valor)
 				{
-					if(@$this->sys_fields[$campo]["type"]=="checkbox")
-						$this->__PRINT_R($this->sys_fields[$campo]);
-
-
 					$request_campo		="{$this->sys_name}_$campo";
 					if(isset($_REQUEST[$request_campo]))
 					{

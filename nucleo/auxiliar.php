@@ -651,8 +651,7 @@
 		    if(@eval($eval)===false)	
 		    	echo ""; #$eval; ---------------------------					
 
-			if(@$this->sys_fields[$campo]["type"]=="checkbox")
-				$this->__PRINT_R($this->sys_fields[$campo]);
+
 			if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 			{					
 				
@@ -677,6 +676,10 @@
 			{
 				foreach($this->sys_fields as $campo =>$valor)
 				{
+					if(@$this->sys_fields[$campo]["type"]=="checkbox")
+						$this->__PRINT_R($this->sys_fields[$campo]);
+
+
 					$request_campo		="{$this->sys_name}_$campo";
 					if(isset($_REQUEST[$request_campo]))
 					{

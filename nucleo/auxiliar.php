@@ -666,8 +666,8 @@
 				#if(@$this->sys_fields[$campo]["type"]=="checkbox")
 				if(@$this->sys_object=="devices")
 				{
-					$this->__PRINT_R($this->sys_fields);
-					$this->__PRINT_R($_REQUEST);
+					#$this->__PRINT_R($this->sys_fields);
+					#$this->__PRINT_R($_REQUEST);
 					
 				}
 				foreach($this->sys_fields as $campo =>$valor)

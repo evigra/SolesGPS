@@ -1159,7 +1159,7 @@
 
 
 								$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
-								$"."words[\"create_auto_$campo\"]  	=$"."this->$campo"."_obj->__INPUT($"."words[\"create_auto_$campo\"],$"."this->$campo"."_obj->sys_fields);
+								####$"."words[\"create_auto_$campo\"]  	=$"."this->$campo"."_obj->__INPUT($"."words[\"create_auto_$campo\"],$"."this->$campo"."_obj->sys_fields);
 								
 							";	
 							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    							

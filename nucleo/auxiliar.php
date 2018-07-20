@@ -1156,6 +1156,10 @@
 
 							$eval="
 								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
+
+
+								$"."words[\"create_auto_$campo\"]	=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
+								$"."words[\"create_auto_$campo\"]  	=$"."this->$campo"."_obj->__INPUT($"."words[\"create_auto_$campo\"],$"."this->$campo"."_obj->sys_fields);
 								
 							";	
 							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    							
@@ -1225,8 +1229,7 @@
 												else
 												{	
 													if(ui.item.clave==\"create\")
-													{	
-																												
+													{																													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
 															beforeClose: function( event, ui ) {

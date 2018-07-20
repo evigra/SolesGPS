@@ -663,13 +663,6 @@
 			#	$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
-				#if(@$this->sys_fields[$campo]["type"]=="checkbox")
-				if(@$this->sys_object=="devices")
-				{
-					#$this->__PRINT_R($this->sys_fields);
-					#$this->__PRINT_R($_REQUEST);
-					
-				}
 				foreach($this->sys_fields as $campo =>$valor)
 				{
 					$request_campo		="{$this->sys_name}_$campo";
@@ -681,8 +674,7 @@
 						unset($_REQUEST["$request_campo"]);
 					}
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
-					{					
-						
+					{											
 						$eval="
 							$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
 							$"."this->$campo=\"0\";
@@ -691,7 +683,6 @@
 						if(eval($eval)===false)	
 							echo ""; #$eval; ---------------------------					
 					}			
-					
 				}
 			}	
 			foreach($_REQUEST as $campo =>$valor)
@@ -1165,8 +1156,9 @@
 
 							$eval="
 								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
+								
 							";	
-							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
+							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    							
 							if(@eval($eval)===false)	
 
 
@@ -1212,15 +1204,11 @@
 							else						$vars	="";
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
-							{
-							
-								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars\",
-								#data:		{\"autocomplete\":JSON.stringify(vars_form)},														
-								#source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
+							{							
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<div id=\"auto_$campo\" title=\"Crear Registro\"></div>
+							    	<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
 							    	<script>
 										$(\"div#auto_$campo\").hide();
 										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
@@ -1238,20 +1226,7 @@
 												{	
 													if(ui.item.clave==\"create\")
 													{	
-														
-														$.ajax(
-														{
-															dataType:	\"html\",
-															type: 		\"POST\",  
-															async:		true,			
-															cache:		false,				
-															source:		\"http://developer.solesgps.com/sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
-															success:  function(res_new)
-															{	
-																$(\"div#auto_$campo\").html(res_new);
-															},		
-														});	
-														
+																												
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
 															beforeClose: function( event, ui ) {
@@ -1279,7 +1254,7 @@
 							    	</script>
 							    ";
 							    
-							    #$words["create_auto_$campo"]  ="lalo";
+							    $words["create_auto_$campo"]  ="lalo";
 							}					    
 							else
 							{

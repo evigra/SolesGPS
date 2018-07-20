@@ -1257,7 +1257,7 @@
 							    	</script>
 							    ";
 							    
-							    $words["create_auto_$campo"]  ="lalo";
+							    #$words["create_auto_$campo"]  ="lalo";
 							}					    
 							else
 							{

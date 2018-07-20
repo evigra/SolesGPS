@@ -675,6 +675,7 @@
 			if(is_array(@$this->sys_fields))
 			{
 				#if(@$this->sys_fields[$campo]["type"]=="checkbox")
+				if(@$this->sys_object=="devices")
 					$this->__PRINT_R($this->sys_fields);
 
 				foreach($this->sys_fields as $campo =>$valor)

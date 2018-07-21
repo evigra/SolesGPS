@@ -25,10 +25,12 @@
 			$datas[$index]["label"]			=$data[$class_field_l];
 			$datas[$index]["clave"]			=$data[$class_field_m];
 		}
+		/*
 		$datas[]=array(
 			"label"		=>"Crear registro",
 			"clave"		=>"create"
 		);
+		*/
 		echo json_encode($datas);
 	}
 	else

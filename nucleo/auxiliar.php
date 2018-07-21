@@ -1157,19 +1157,14 @@
 							$eval="
 								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
 
+
 								$"."view_auto						=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
 								$"."this->$campo"."_obj->words  	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);
 								
 								$"."words[\"create_auto_$campo\"]  	=$"."this->__REPLACE($"."view_auto,$"."this->$campo"."_obj->words);
 
-
-
-
-
 							";	
-							#$"."this->$campo"."_obj->"."words	=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    							
 							if(@eval($eval)===false)	
-
 
 							if(isset($this->request["auto_$campo"]))	
 							{
@@ -1237,9 +1232,6 @@
 													{																													
 														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
 														$(\"div#auto_$campo\").dialog({
-															beforeClose: function( event, ui ) {
-																$(this).html(\"\");
-															},
 															buttons: {
 																\"Registrar\": function() {													
 																	$( this ).dialog(\"close\");
@@ -1261,8 +1253,6 @@
 										});				            	
 							    	</script>
 							    ";
-							    
-							    #$words["create_auto_$campo"]  ="lalo";
 							}					    
 							else
 							{

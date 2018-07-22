@@ -587,7 +587,7 @@
 					company
 				WHERE 1=1
 					AND razonSocial is not null
-					AND estatus_cliente =1
+					AND estatus=1
 					AND tipo_company='GPS'
 			"; 
 

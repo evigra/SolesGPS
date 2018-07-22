@@ -468,7 +468,6 @@
   			";
 			return $return;
 		}
-						
 		public function cron_saldo()
     	{    	    		
 			$url 				= "https://taecel.com/app/api/getSales";
@@ -486,10 +485,75 @@
 				WHERE 1=1 
 					AND 
 					(bloqueo!=1
+
 					OR bloqueo is NULL)
 					AND c.estatus=1
 					AND d.telcel=1
 					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
+			";
+			$datas	=$this->__EXECUTE($comando_sql);
+
+			foreach($datas as $row)
+			{
+				$recargar=1;
+				foreach($telefonos_recargados as $data)
+				{
+					echo "<br>COMPRA " . $data->Telefono;
+					if($data->Nota=="Recarga Exitosa" AND $data->Telefono==$row["referencia"])
+					{
+						$recargar=0;
+					}				
+				}
+				if($recargar==1)
+				{
+					echo "<br>RECARGAR " . $row["referencia"];
+
+					$respuesta=$this->WS_TAECEL($row);
+					
+					if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+					{
+						$comando_sql		="
+							UPDATE devices SET recargado='{$row["actualizado"]}'
+
+							WHERE 1=1 
+								AND id='{$row["id"]}'
+						";
+						$datas	=$this->__EXECUTE($comando_sql);
+						
+						$comando_sql		="
+							INSERT INTO taecel SET 
+								producto	='{$respuesta["producto"]}',
+								referencia	='{$respuesta["referencia"]}',
+								mensaje1	='{$respuesta["mensaje1"]}',
+								transID		='{$respuesta["transID"]}',
+								folio		='{$respuesta["folio"]}',
+								mensaje2	='{$respuesta["mensaje2"]}'							
+						";
+						$this->__EXECUTE($comando_sql);		
+					}
+				}				
+			}
+			return count($datas) . " Dispositivos recargados";
+    	}
+						
+		public function cron_saldo_retraso()
+    	{    	    		
+			$url 				= "https://taecel.com/app/api/getSales";
+			$vars 				=$sesion;				
+			$vars['fecha']		=date("Y-m-d");
+
+			$option				=array("url"=>$url,"post"=>$vars);
+			$response			=json_decode($this->__curl($option));
+
+			$telefonos_recargados=$response->data;
+
+			$comando_sql		="
+				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL030' as producto
+				FROM V_ULTIMOREPORTE v 
+				WHERE 1=1
+					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >18
+					AND tipo_vehiculo='GPS'
+					AND reporto_hace>'00:05:00';    
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

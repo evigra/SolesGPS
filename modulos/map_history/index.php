@@ -1,11 +1,11 @@
 <?php
-	require_once("modulos/position/modelo.php");
-	require_once("modelo.php");
+#	require_once("modulos/position/modelo.php");
+#	require_once("modelo.php");
 
 	$objeto										=new map_history();
 	$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
-	$_SESSION["module"]=array();
+	$_SESSION["module"]							=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
 
@@ -34,8 +34,7 @@
     else // $objeto->sys_section=map
     {
 		$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
-		$files_js[]="../{$objeto->sys_module}js/map";
-    
+		$files_js[]									="../{$objeto->sys_module}js/map";
     
 		$objeto->words["module_body"]   			=$objeto->__VIEW_CREATE($objeto->sys_module . "html/report_form");
 		$objeto->words								=$objeto->__INPUT($objeto->words,$objeto->sys_fields); 
@@ -46,7 +45,7 @@
     	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/map");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     	
-    	$objeto->words["form_map"]		=$form_map;
+    	$objeto->words["form_map"]					=$form_map;
     	//
     }
     

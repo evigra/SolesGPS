@@ -1,6 +1,5 @@
 	$(document).ready(function()
-	{
-	    
+	{	    
 	    var location;
 	    var iZoom       =5;
 	    var iMap        ="ROADMAP";
@@ -65,14 +64,15 @@
 	{
 		$.ajax(
 		{
-			async:false,
-			cache:false,
-			dataType:"html",
-			type: "POST",  
-			data: str,
-			url: "../modulos/map_history/ajax/history.php",
+			async:		false,
+			cache:		false,
+			dataType:	"html",
+			type: 		"POST",  
+			data: 		str,
+			url: 		"../modulos/map_history/ajax/history.php",
 			success:  function(res)
-			{					
+			{				
+					
 				//$("#tablero").html("");
 				$("#script").html(res);
 			},
@@ -81,7 +81,8 @@
 			
 			},
 			error:function(res)
-			{			    
+			{	
+				alert("aa");		    
 				map_history(str);
 				$("div#tablero").html("Se presento un error :: Estamos intentando nuevamente");
 			}						

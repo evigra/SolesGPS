@@ -9,7 +9,7 @@
 	$objeto				=new map_history();
 	
 	$objeto->__PRINT_R($_REQUEST);	
-	$objeto
+
 		
 	$option				=array();
 	$option["select"]=array( 

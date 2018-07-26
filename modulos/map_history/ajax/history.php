@@ -20,8 +20,8 @@
 		"p.attributes"	=>"p_attributes",		
 	);	
 
-	if(isset($_REQUEST["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_REQUEST["start"]} 00:00:01'";
-	if(isset($_REQUEST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_REQUEST["end"]} 23:59:59'";
+	if(isset($_POST["map_history_start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_POST["map_history_start"]} 00:00:01'";
+	if(isset($_POST["map_history_end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["map_history_end"]} 23:59:59'";
 
 	$option["where"][]	="d.id={$_POST["device_active"]}";
 	$option["limit"]	="10000";

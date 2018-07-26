@@ -19,15 +19,15 @@
 		"p.attributes"	=>"p_attributes",		
 	);	
 
-	if(isset($_POST["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_POST["start"]} 00:00:01'";
-	if(isset($_POST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["end"]} 23:59:59'";
+	if(isset($_REQUEST["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_REQUEST["start"]} 00:00:01'";
+	if(isset($_REQUEST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_REQUEST["end"]} 23:59:59'";
 
 	$option["where"][]	="d.id={$_POST["device_active"]}";
 	$option["limit"]	="10000";
 	$option["order"]	="p.devicetime DESC";
 
 
-	#$option["echo"]		="POSITION";			
+	$option["echo"]		="POSITION";			
 	$datas				=$objeto->position($option);
 
 	$objeto->__PRINT_R($datas);

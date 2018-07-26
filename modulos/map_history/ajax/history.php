@@ -3,8 +3,12 @@
 #    require_once("../../../nucleo/general.php");
 #	require_once("../../../modulos/position/modelo.php");
 #	require_once("../modelo.php");
+
+#echo "ENTRA";
 		
 	$objeto				=new map_history();
+		
+	
 		
 	$option				=array();
 	$option["select"]=array( 
@@ -19,12 +23,14 @@
 	if(isset($_POST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["end"]} 23:59:59'";
 
 	$option["where"][]	="d.id={$_POST["device_active"]}";
-	$option["limit"]	="100000";
+	$option["limit"]	="10000";
 	$option["order"]	="p.devicetime DESC";
 
 
 	#$option["echo"]		="POSITION";			
 	$datas				=$objeto->position($option);
+
+	$objeto->__PRINT_R($datas);
 
 	$ajax="";
     foreach($datas["data"] as $data)

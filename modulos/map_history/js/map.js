@@ -82,9 +82,10 @@
 			},
 			error:function(res)
 			{	
-				alert("aa");		    
-				map_history(str);
+				//alert("aa");		    
 				$("div#tablero").html("Se presento un error :: Estamos intentando nuevamente");
+				//map_history(str);
+				
 			}						
 		});	
 	}

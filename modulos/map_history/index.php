@@ -1,13 +1,9 @@
 <?php
-#	require_once("modulos/position/modelo.php");
-#	require_once("modelo.php");
 
 	$objeto										=new map_history();
 	
-	
 	$objeto->__SESSION();
-	$objeto->__PRINT_R($objeto);
-	/*
+	#/*
 	$_SESSION["module"]							=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
@@ -92,6 +88,6 @@
     
     $objeto->html                               =$objeto->__VIEW_TEMPLATE("system", $objeto->words);
     $objeto->__VIEW($objeto->html);
-    */
+   # */
 ?>
 

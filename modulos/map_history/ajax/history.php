@@ -7,8 +7,9 @@
 #echo "ENTRA";
 		
 	$objeto				=new map_history();
-		
 	
+	$objeto->__PRINT_R($_REQUEST);	
+	$objeto
 		
 	$option				=array();
 	$option["select"]=array( 
@@ -27,10 +28,10 @@
 	$option["order"]	="p.devicetime DESC";
 
 
-	$option["echo"]		="POSITION";			
+	#$option["echo"]		="POSITION";			
 	$datas				=$objeto->position($option);
 
-	$objeto->__PRINT_R($datas);
+	
 
 	$ajax="";
     foreach($datas["data"] as $data)

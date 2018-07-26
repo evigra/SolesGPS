@@ -3,8 +3,10 @@
 #	require_once("modelo.php");
 
 	$objeto										=new map_history();
+	
+	
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($objeto);
+	$objeto->__PRINT_R($objeto);
 	$_SESSION["module"]							=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	

@@ -8,7 +8,7 @@
 		
 	$objeto				=new map_history();
 	
-	$objeto->__PRINT_R($_REQUEST);	
+	$objeto->__PRINT_R($_POST);	
 
 		
 	$option				=array();

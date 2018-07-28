@@ -101,8 +101,8 @@
 					{    				
 						if(@$this->sys_vpath==$this->sys_name."/")
 						{
-					    	if(isset($this->request["sys_id"]))     $this->sys_primary_id       =$this->request["sys_id"];
-						    else                                    $this->sys_primary_id       =$valor["value"];
+					    	if(isset($this->request["sys_id"]))     $this->sys_primary_id       =@$this->request["sys_id"];
+						    else                                    $this->sys_primary_id       =@$valor["value"];
 						}   
 						$this->sys_primary_field                =$campo; 
 					}	

@@ -8,9 +8,8 @@
 		
 	$objeto				=new map_history();
 	
-
-
-		
+	$objeto->__PRINT_R($objeto->request);
+			
 	$option				=array();
 	$option["select"]=array( 
 		"p.*",

@@ -8,7 +8,7 @@
 		
 	$objeto				=new map_history();
 	
-	$objeto->__PRINT_R($_POST);	
+
 
 		
 	$option				=array();
@@ -24,7 +24,7 @@
 	if(isset($_POST["map_history_end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["map_history_end"]} 23:59:59'";
 
 	$option["where"][]	="d.id={$_POST["device_active"]}";
-	$option["limit"]	="10000";
+	$option["limit"]	="40000";
 	$option["order"]	="p.devicetime DESC";
 
 

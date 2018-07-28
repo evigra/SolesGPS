@@ -1,17 +1,14 @@
 <?php
     require_once("../../../nucleo/sesion.php");
-    require_once("../../../nucleo/general.php");
-    require_once("../../../modulos/position/modelo.php");
-	require_once("../modelo.php");
 
 	$objeto				=new map_speed();
 	
 	if($_POST["device_active"]>0)
-		$option["where"][]	="deviceid = {$_POST["device_active"]}";
+		$option["where"][]	="deviceid = {$objeto->request["device_active"]}";
 
-	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$_POST["start"]} 00:00:01'";
-	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$_POST["end"]} 23:59:59'";
-	$option["where"][]	="1.852* speed >={$_POST["tiempo"]}";
+	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$objeto->request["start"]} 00:00:01'";
+	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$objeto->request["end"]} 23:59:59'";
+	$option["where"][]	="1.852* speed >={$objeto->request["tiempo"]}";
 
 	
 	$option["select"]	=array("deviceid","placas","DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)"=>"devicetime","image","course");

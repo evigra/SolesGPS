@@ -1,15 +1,8 @@
 <?php
     require_once("../../../nucleo/sesion.php");
-#    require_once("../../../nucleo/general.php");
-#	require_once("../../../modulos/position/modelo.php");
-#	require_once("../modelo.php");
-
-#echo "ENTRA";
 		
 	$objeto				=new map_history();
 	
-	$objeto->__PRINT_R($objeto->request);
-			
 	$option				=array();
 	$option["select"]=array( 
 		"p.*",
@@ -19,18 +12,14 @@
 		"p.attributes"	=>"p_attributes",		
 	);	
 
-	if(isset($_POST["map_history_start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_POST["map_history_start"]} 00:00:01'";
-	if(isset($_POST["map_history_end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["map_history_end"]} 23:59:59'";
+	if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]} 00:00:01'";
+	if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]} 23:59:59'";
 
-	$option["where"][]	="d.id={$_POST["device_active"]}";
+	$option["where"][]	="d.id={$objeto->request["device_active"]}";
 	$option["limit"]	="40000";
 	$option["order"]	="p.devicetime DESC";
 
-
-	#$option["echo"]		="POSITION";			
 	$datas				=$objeto->position($option);
-
-	
 
 	$ajax="";
     foreach($datas["data"] as $data)

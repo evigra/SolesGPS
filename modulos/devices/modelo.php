@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
-	
 	class devices extends general
 	{   
 		##############################################################################	
@@ -33,7 +31,6 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-
 			"bastidor"	    	=>array(
 			    "title"             => "Bastidor",
 			    "showTitle"         => "si",
@@ -41,7 +38,6 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-
 			"uniqueid"	    =>array(
 			    "title"             => "Imei",
 			    "showTitle"         => "si",
@@ -96,8 +92,7 @@
 			    "source"			=>array(
 			    	"Automatica"	=>	"Automatica",
 			    	"Estandar"		=>	"Estandar",
-			    ),	
-			    
+			    ),	  
 			),
 			"tipoCombustible"   =>array(
 			    "title"             => "Tipo de Combustible",
@@ -290,15 +285,11 @@
 			
 			$this->files_obj	=new files();	
 			parent::__CONSTRUCT();
-			
-			#$this->__PRINT_R($_SESSION);
 		}
 				
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{   
-    		#echo "PRUEBA---------------";
-    		#$option["echo"]				="DEVICES :: SAVE";
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
@@ -316,14 +307,11 @@
 			$option["select"]["d.placas"]		="PLACAS";
 			$option["select"]["SEC_TO_TIME(TIMESTAMPDIFF(SECOND, d.lastUpdate, now()))"]		="REPORTO HACE";
 			$option["select"]["lastUpdate"]		="ULTIMO REPORTE";
-			
-			
+					
 			$option["from"]						="device d LEFT JOIN company c ON d.company_id = c.id";
 			
 			$option["where"][]					="dev.company_id NOT IN (1)";
 			$option["where"][]					="SEC_TO_TIME(TIMESTAMPDIFF(SECOND, d.lastUpdate, now()))>'00:10:00'";
-			
-			
 						
 			$data = $this->__VIEW_REPORT($option);
 

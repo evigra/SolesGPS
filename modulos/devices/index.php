@@ -1,6 +1,4 @@
 <?php
-	#require_once("modelo.php");
-
 	$objeto							=	new devices();
 	$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);

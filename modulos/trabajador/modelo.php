@@ -1,15 +1,11 @@
 <?php
-	#if(file_exists("../device/modelo.php")) 
-	#require_once("../device/modelo.php");
-	#if(file_exists("device/modelo.php")) 
-	#require_once("device/modelo.php");
-	
 	class trabajador extends users
 	{   
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
 		var $mod_menu=array();
+		var $sys_table="users";
 		##############################################################################	
 		##  Metodos	
 		##############################################################################
@@ -17,19 +13,8 @@
         
 		public function __CONSTRUCT()
 		{
-			#echo "<br>USER :: CONSTRUC INI";
 			$this->files_obj		=new files();
-			$this->menu_obj			=new menu();
-			#$this->device_obj		=new device();
-			#$this->usergroup_obj	=new user_group();
-
-			
-			#@$_SESSION["user"]["l18n"]="es_MX";
-			#$_SESSION["user"]["l18n"]="en";
-			#echo "<br>USER :: CONSTRUC MEDIO";
 			parent::__CONSTRUCT();
-			#echo "<br>USER :: CONSTRUC FIN";
-			
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
@@ -45,57 +30,8 @@
 
     	    $user_id=parent::__SAVE($datas,$option);
     	    
-    	    #echo "<br>USUARIO=$user_id<br>";
-    	    ## GUARDAR PERFILES DE USUARIO
 		}		
 		
-		public function __INPUT($words,$sys_fields)
-		{	
-			$this->words					=parent::__INPUT($words,$sys_fields);
-			
-			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
-			/*
-			$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
-			*/
-			if(isset($this->sys_fields["files_id"]["value"]))    	
-				$this->words["img_files_id"]	            =$this->files_obj->__GET_FILE($this->sys_fields["files_id"]["value"]);
-			else	$this->words["img_files_id"]="";	
-			
-			return $this->words;
-    	}
-
-		public function session($user,$pass)
-    	{
-    	    $option=array(
-    	    	"where"=>
-			    	array(
-						"email='$user'",
-						"password=md5('$pass')"
-			    	),
-    	    );
-    	    $data_user	=$this->users($option);    	        	    
-    	    if(is_array($data_user) AND array_key_exists("data",$data_user))
-    	    {    	    	
-    	    	if(count($data_user["data"])>0)	$return=$data_user["data"][0];
-    	    	else							$return=$data_user["data"];
-    	    }
-			return $return;
-		}		
-		public function session2($user)
-    	{
-    	    $option=array(
-    	    	"where"=>
-			    	array("email='$user'"),
-    	    );
-    	    $data_user	=$this->users($option);    	    
-    	    
-    	    if(is_array($data_user) AND array_key_exists("data",$data_user))
-    	    {    	    	
-    	    	if(count($data_user["data"])>0)	$return=$data_user["data"][0];
-    	    	else							$return=$data_user["data"];
-    	    }
-			return $return;
-		}
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	

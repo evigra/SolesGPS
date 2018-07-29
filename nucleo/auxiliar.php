@@ -1209,6 +1209,7 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{							
+								if(!isset($valor["procedure"]))	$valor["procedure"]="";
 							    $words["$campo"]  ="
 							    	<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 							    	<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">

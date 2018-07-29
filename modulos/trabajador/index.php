@@ -105,7 +105,7 @@
     }
     
     
-	$objeto->words["module_title"]              ="$module_title Usuarios";
+	$objeto->words["module_title"]              ="$module_title Trabajadores";
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             ="";

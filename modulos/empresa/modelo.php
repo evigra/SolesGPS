@@ -154,5 +154,15 @@
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				
+		public function autocomplete_empresa()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
+    		
+			$return =$this->__BROWSE($this->browse_users($option));    				
+			return $return;			
+		}				
+		
 	}
 ?>

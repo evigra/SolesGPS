@@ -29,7 +29,7 @@
 			    "type"              => "autocomplete",
 			    #"source"           	=> "../modulos/empresa/ajax/autocomplete.php",
 			    "value"             => "",			    
-			    #"procedure"       	=> "",
+			    "procedure"       	=> "__BROWSE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "empresa",
 			    "class_field_l"    	=> "nombre",				# Label

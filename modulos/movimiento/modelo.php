@@ -27,9 +27,9 @@
 			    "title_filter"      => "Empresa",	
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/empresa/ajax/autocomplete.php",
+			    #"source"           	=> "../modulos/empresa/ajax/autocomplete.php",
 			    "value"             => "",			    
-			    
+			    #"procedure"       	=> "",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "empresa",
 			    "class_field_l"    	=> "nombre",				# Label

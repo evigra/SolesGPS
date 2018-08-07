@@ -242,8 +242,7 @@
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
 			$return =$this->__BROWSE($this->browse_users($option));    				
-			return $return;
-			
+			return $return;			
 		}				
     	//////////////////////////////////////////////////	
 	

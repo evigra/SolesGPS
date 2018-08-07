@@ -994,10 +994,6 @@
 					    if($valor["type"]=="date")	
 					    {
 					    	$js_auto="";
-					    	#if(isset($this->sys_memory) AND $this->sys_memory!="")
-					    		#$js_auto=", appendTo: \"#\"";
-
-					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 							    $words["$campo"]  ="
@@ -1018,10 +1014,6 @@
 					    if($valor["type"]=="datetime")	
 					    {
 					    	$js_auto="";
-					    	#if(isset($this->sys_memory) AND $this->sys_memory!="")
-					    		#$js_auto=", appendTo: \"#\"";
-
-					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 							    $words["$campo"]  ="

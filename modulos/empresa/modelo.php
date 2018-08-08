@@ -160,7 +160,7 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
     		
-    		$option["echo"]			="autocomplete_empresa";
+    		#$option["echo"]			="autocomplete_empresa";
     		
     		
     		

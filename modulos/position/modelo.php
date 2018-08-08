@@ -184,7 +184,9 @@
 							<td>{$row["NOMBRE"]}</td>
 							<td>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
-							<td><a href=\"tel:{$row["TELEFONO"]}\">{$row["TELEFONO"]}</a></td>        
+							<td><a href=\"tel:{$row["TELEFONO"]}\">
+								<img src=\"http://solesgps.com/sitio_web/img/phone.png?time=".date("YmdHis")."\">
+							</a></td>        
 						</tr>
 					";
 				}

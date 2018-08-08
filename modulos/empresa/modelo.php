@@ -160,7 +160,11 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
     		
-			$return =$this->__BROWSE($this->browse_users($option));    				
+    		$option["echo"]			="autocomplete_empresa";
+    		
+    		
+    		
+			$return =$this->__BROWSE($option);    				
 			return $return;			
 		}				
 		

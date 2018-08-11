@@ -182,17 +182,21 @@
 								</a>
 							</td>				
 							<td>
-								<a href=\"intent://send/+5213141182618#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end\">WA</a>
-								<a href=\"whatsapp://send?text=MENSAJE&phone=+5213141182618\">WA</a>						
+								<a href=\"intent://send/+5213141182618#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end\">
+									<img src=\"http://solesgps.com/sitio_web/img/WA.png\">
+								</a>
+								<a href=\"whatsapp://send?text=MENSAJE&phone=+5213141182618\">
+									<img src=\"http://solesgps.com/sitio_web/img/WA.png\">
+								</a>						
 								
 							</td>	
 							<td><a href=\"tel:{$row["TELEFONO"]}\">
-								<img src=\"http://solesgps.com/sitio_web/img/phone.png?time=".date("YmdHis")."\">
+								<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
 							</a></td>        
 							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
 							<td><a href=\"http://solesgps.com/devices/&a={$row["md5_id"]}&sys_section_devices=saldo_correo\">
-								<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/recarga.png?time=".date("YmdHis")."\">
+								<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
 							</a></td>
 							
 						</tr>

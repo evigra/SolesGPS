@@ -456,6 +456,10 @@
   			";
 			return $return;
 		}
+		public function saldo_correo()
+    	{
+    		
+		}
 		public function cron_saldo()
     	{    	    		
 			$url 				= "https://taecel.com/app/api/getSales";

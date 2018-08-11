@@ -225,10 +225,7 @@
     	{    		    		    	
 			$sesion 			=array("key"=>"6dce34dbc6cc3d6bd8de48fd011d0595", "nip"=>"7fbb2c3531d73ab26044fac7dfe1a503");
 			#$sesion 			=array("key"=>"25d55ad283aa400af464c76d713c07ad", "nip"=>"25d55ad283aa400af464");
-
-
 			$url 				="https://taecel.com/app/api/RequestTXN";
-
 			$vars 				=$sesion;				
 			$vars["producto"]	=$data["producto"];
 			$vars["referencia"]	=$data["referencia"];				

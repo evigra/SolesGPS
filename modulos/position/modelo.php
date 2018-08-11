@@ -180,14 +180,19 @@
 								<a href=\"http://solesgps.com/seguimientos/&a={$row["md5_id"]}\">
 									<img src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\">
 								</a>
-							</td>							
+							</td>				
+							<td>
+								<a href=\"intent://send/+5213141182618#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end\">WA</a>
+								<a href=\"whatsapp://send?text=MENSAJE&phone=+5213141182618\">WA</a>						
+								
+							</td>	
 							<td><a href=\"tel:{$row["TELEFONO"]}\">
 								<img src=\"http://solesgps.com/sitio_web/img/phone.png?time=".date("YmdHis")."\">
 							</a></td>        
 							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
 							<td><a href=\"tel:{$row["TELEFONO"]}\">
-								<img src=\"http://solesgps.com/sitio_web/img/recarga.png?time=".date("YmdHis")."\">
+								<img height=\"25\" src=\"http://solesgps.com/sitio_web/img/recarga.png?time=".date("YmdHis")."\">
 							</a></td>
 							
 						</tr>

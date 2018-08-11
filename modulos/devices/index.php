@@ -84,6 +84,14 @@
 	   	$data							=	$objeto->devices();        	
     	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }	
+	elseif($objeto->sys_section=="saldo_correo")
+	{
+        $module_left                            	=	"";
+    	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
+    	$objeto->sys_fields["name"]["showTitle"]	=	"no";
+    	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+    }
+
 	elseif($objeto->sys_section=="show")
 	{
         $module_left                            	=	"";

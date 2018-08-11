@@ -1,33 +1,38 @@
 <?php
-	class cliente extends empresa
+	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
+	#require_once("modulos/files/modelo.php");
+	class cliente extends company
 	{   
 		##############################################################################	
+		##  Propiedades	
+		##############################################################################
+		var $sys_enviroments	="DEVELOPER";
+		var $sys_table			="company";
+		##############################################################################	
 		##  Metodos	
-		##############################################################################&sys_action=__SAVE
+		##############################################################################		
 		public function __CONSTRUCT()
 		{
-			$this->sys_table="empresa";
-			parent::__CONSTRUCT();			
-		}				
+			$this->files_obj	=new files();
+			parent::__CONSTRUCT();
+		}
+		public function __SAVE($datas=NULL,$option=NULL)
+    	{
+    	    $files_id					=$this->files_obj->__SAVE($this->sys_table);    	    
+    	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    		
+    	    
+    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
+    	    	$datas["tipo_company"]			="COMPANY";
 
-   		public function __SAVE($datas=NULL,$option=NULL)
-    	{    	    
-    	    $datas["company_id"]		=$_SESSION["company"]["id"];
-    	    $datas["cliente"]			=1;
     		parent::__SAVE($datas,$option);
-		}	
-		public function __BROWSE($option=NULL)
+		}		
+		public function companys($option=NULL)
     	{
     		if(is_null($option))	$option=array();
-
-			if(!isset($option["where"]))    $option["where"]    =array();
-			
-			$option["where"][]      ="cliente=1";
-
-			$return =parent::__BROWSE($option);;
-			return	$return;     	
-		}		
-					
+    		if(!isset($option["where"]))	$option["where"]=array();
+    		    		
+			$option["where"][]	="tipo_company IN ('GPS','COMPANY')";
+			return parent::companys($option);    	
+		}				
 	}
 ?>
-

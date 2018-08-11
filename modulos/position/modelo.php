@@ -183,10 +183,10 @@
 							</td>				
 							<td>
 								<a href=\"intent://send/+5213141182618#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end\">
-									<img src=\"http://solesgps.com/sitio_web/img/WA.png\">
+									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
 								</a>
 								<a href=\"whatsapp://send?text=MENSAJE&phone=+5213141182618\">
-									<img src=\"http://solesgps.com/sitio_web/img/WA.png\">
+									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
 								</a>						
 								
 							</td>	

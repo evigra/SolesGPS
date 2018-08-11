@@ -191,7 +191,7 @@
 							</a></td>        
 							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
-							<td><a href=\"tel:{$row["TELEFONO"]}\">
+							<td><a href=\"http://solesgps.com/devices/&a={$row["md5_id"]}&sys_section_devices=saldo_correo\">
 								<img height=\"25\" src=\"http://solesgps.com/sitio_web/img/recarga.png?time=".date("YmdHis")."\">
 							</a></td>
 							

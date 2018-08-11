@@ -86,6 +86,7 @@
     }	
 	elseif($objeto->sys_section=="saldo_correo")
 	{
+		$objeto->saldo_correo();
         $module_left                            	=	"";
     	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
     	$objeto->sys_fields["name"]["showTitle"]	=	"no";

@@ -182,13 +182,9 @@
 								</a>
 							</td>				
 							<td>
-								<a href=\"intent://send/+5213141182618#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end\">
+								<a href=\"whatsapp://send?phone=3141182618&text=Hola%2C%20deseo%20adquirir%20un%20soporte%20con%20ustedes\">
 									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
-								</a>
-								<a href=\"whatsapp://send?text=MENSAJE&phone=+5213141182618\">
-									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
-								</a>						
-								
+								</a>								
 							</td>	
 							<td><a href=\"tel:{$row["TELEFONO"]}\">
 								<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
@@ -196,7 +192,7 @@
 							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
 							<td>{$row["REPORTO_HACE"]}</td>
 							<td><a href=\"http://solesgps.com/devices/&a={$row["md5_id"]}&sys_section_devices=saldo_correo\">
-								<img height=\"35\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
+								<img height=\"40\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
 							</a></td>
 							
 						</tr>

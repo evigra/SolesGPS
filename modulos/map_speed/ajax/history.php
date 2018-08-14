@@ -8,7 +8,7 @@
 
 	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$objeto->request["start"]} 00:00:01'";
 	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$objeto->request["end"]} 23:59:59'";
-	$option["where"][]	="1.852* speed >={$objeto->request["tiempo"]}";
+	$option["where"][]	="1.852* speed >={$objeto->request["tiempo"]} AND 1.852* speed <=160";
 
 	
 	$option["select"]	=array("deviceid","placas","DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)"=>"devicetime","image","course");

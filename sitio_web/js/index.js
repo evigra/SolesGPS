@@ -1116,8 +1116,8 @@ styles:
 				if(vehicle["ty"]=="ignitionOn")			icon_status="swich_on.png";
 				if(vehicle["ty"]=="ignitionOff")		icon_status="swich_off.png";
 				
-				if(vehicle["sp"]==0 && vehicle["ty"]=="deviceOnline")	icon_status="stop.png";
-				if(vehicle["sp"]>0 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
+				if(vehicle["sp"]<5 && vehicle["ty"]=="deviceOnline")	icon_status="stop.png";
+				if(vehicle["sp"]>5 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
 				
 				
 				if(icon_status!="")

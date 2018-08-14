@@ -1,32 +1,29 @@
 <?php
-	require_once("modelo.php");
-	
 	$objeto										=new execute();
-	$objeto->__SESSION();
+	#$objeto->__SESSION();
 	
 	#$objeto->__PRINT_R($objeto->menu_obj->modulos());
-	    
-	
-    	
-    	
-    	
-    	
+
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
-	
-	
+		
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
 	$objeto->words["html_head_css"]            	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
 	#$objeto->sys_section="kanban";
 	$module_title									="";
-    #if($objeto->sys_section=="create")
+    if($objeto->sys_section=="create")
 	{
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
     }	
-    
+    if($objeto->sys_section=="create")
+	{
+		$module_title								="Crear ";
+    	$objeto->words["module_body"]               =$objeto->log;	
+    }	
+       
     
 	$objeto->words["module_title"]              ="Log Traccar";
 	

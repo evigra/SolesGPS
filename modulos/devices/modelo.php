@@ -511,7 +511,7 @@
 
 
 			$comando_sql		="
-				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND 
@@ -582,9 +582,9 @@
 				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL030' as producto
 				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
-					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >18
+					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >14
 					AND tipo_vehiculo='GPS'
-					AND reporto_hace>'00:05:00';    
+					AND reporto_hace>'00:15:00';    
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

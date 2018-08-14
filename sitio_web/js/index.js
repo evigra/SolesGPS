@@ -1713,8 +1713,8 @@ styles:
 					{
 						
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-						alert("aaa");
-						//	$("select#"+ivariables).append("<option value=\""+variables[ivariables]+"\"></option>"):	
+						//	alert("aaa");
+							$("select#"+ivariables).append("<option value=\"\"></option>"):	
 							
 						$("select#"+ivariables).val(variables[ivariables]);
 						

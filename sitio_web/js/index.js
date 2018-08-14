@@ -1709,7 +1709,7 @@ styles:
 				{
 					if($("input#"+ivariables).length>0) 
 						$("input#"+ivariables).val(variables[ivariables]);
-					else if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
+					else if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length>0) 
 					{
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	

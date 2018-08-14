@@ -1711,9 +1711,10 @@ styles:
 						$("input#"+ivariables).val(variables[ivariables]);
 					else if($("select#"+ivariables).length>0) 
 					{
+						/*
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
 							$("select#"+ivariables).append("<option value=\""+variables[ivariables]+"\"></option>"):	
-							
+						*/	
 						$("select#"+ivariables).val(variables[ivariables]);
 						
 					}	

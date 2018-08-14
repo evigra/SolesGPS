@@ -1713,6 +1713,7 @@ styles:
 					{
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
 							$("select#"+ivariables).append("<option value=\""+variables[ivariables]+"\"></option>"):	
+							
 						$("select#"+ivariables).val(variables[ivariables]);
 						
 					}	

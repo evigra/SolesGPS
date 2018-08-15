@@ -1726,7 +1726,7 @@ styles:
 						enviar = confirm("Borrar datos");							
 				}	
 				if(path!="")	$("form").attr({"action":path});					
-				if(enviar==true)	$("form").submit(); 	        
+				//if(enviar==true)	$("form").submit(); 	        
 			});
 		}	    
         if($(".sys_order").length>0)

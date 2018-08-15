@@ -1712,9 +1712,7 @@ styles:
 					else if($("select#"+ivariables))
 					{
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length=0) 
-						//	alert("aaa");
-							//$("select#"+ivariables).append("<option value=\""+variables[ivariables]+"\"></option>");
-							$("select#"+ivariables).append($('<option>', {value:variables[ivariables], text:ivariables}));
+							$("#mySelect").append('<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>');
 							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	

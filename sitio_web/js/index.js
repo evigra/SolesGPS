@@ -1711,8 +1711,8 @@ styles:
 						$("input#"+ivariables).val(variables[ivariables]);
 					else if($("select#"+ivariables))
 					{
-						alert("aaa");
-						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length=0) 
+						alert("a");
+						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
 							alert("aaa");
 						//	$("#mySelect").append('<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>');
 							

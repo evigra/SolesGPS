@@ -1714,7 +1714,7 @@ styles:
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length=0) 
 						//	alert("aaa");
 							//$("select#"+ivariables).append("<option value=\""+variables[ivariables]+"\"></option>");
-							$("select#"+ivariables)..append($('<option>', {value:variables[ivariables], text:ivariables}));
+							$("select#"+ivariables).append($('<option>', {value:variables[ivariables], text:ivariables}));
 							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	

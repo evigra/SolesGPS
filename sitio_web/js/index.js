@@ -1714,7 +1714,7 @@ styles:
 						alert("a");
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
 							//alert("aaa");
-							$("#mySelect").append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");
+							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\"> LALO "+ivariables+"</option>");
 							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	

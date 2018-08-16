@@ -521,7 +521,7 @@
 						{
 							if(!is_array($valor))	
 							{					
-								if($data_anterior["data"][0][$campo]!=$valor)		
+								if(@$data_anterior["data"][0][$campo]!=$valor)		
 									@$modificados.=" 
 										<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
 									";

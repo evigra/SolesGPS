@@ -609,8 +609,6 @@
 			
 			
 			
-			
-			
 								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();		
 			
 								$"."class_field_m										=$"."valor_campo[\"class_field_m\"];

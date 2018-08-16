@@ -629,10 +629,11 @@
 
 
 
+
+
+
+
 									$"."primary_field					=$"."this->$campo"."_obj->sys_primary_field;
-									
-									
-									
 									
 									
 									if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)

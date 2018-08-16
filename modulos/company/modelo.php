@@ -181,10 +181,8 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
     		
-    		
 			$return =$this->__BROWSE($option);    				
 			return $return;			
-		}				
-						
+		}							
 	}
 ?>

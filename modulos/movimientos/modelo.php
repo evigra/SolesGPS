@@ -31,9 +31,8 @@
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/item/ajax/index.php",
-			    "value"             => "",			    
-			    
+			    "procedure"       	=> "autocomplete_item",
+			    "value"             => "",			    			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "item",
 			    "class_field_l"    	=> "nombre",				# Label

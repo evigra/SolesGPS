@@ -177,15 +177,24 @@
 
     		parent::__SAVE($datas,$option);
 		}		
-		public function __BROWSE($option=null)
-    	{
-    		if(!is_array($option))	 		$option=array();
-    		if(!isset($option["where"]))	$option["where"]=array();
+		public function __BROWSE($option=NULL)
+    	{    		
+    		if(is_null($option))	$option=array();			
+			if(!isset($option["where"]))    $option["where"]    =array();
+			
+			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			$return 				=parent::__BROWSE($option);
+			return	$return;     	
+		}				
+		public function autocomplete_item()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
     		
-    		$option["where"][]="company_id={$_SESSION["company"]["id"]}";
-    		
-    		return parent::__BROWSE($option);
-    	}		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
 
 	}
 ?>

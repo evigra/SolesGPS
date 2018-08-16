@@ -579,11 +579,11 @@
 			$comando_sql = "
 				SELECT 
 					id, 
-					razonSocial 
+					nombre 
 				FROM 
 					company
 				WHERE 1=1
-					AND razonSocial is not null
+					AND nombre is not null
 					AND estatus=1
 					AND tipo_company='GPS'
 			"; 

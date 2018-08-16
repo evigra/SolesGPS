@@ -499,38 +499,40 @@
 					$option_browse["where"]=array("{$this->sys_primary_field}='{$this->sys_primary_id}'");
 					$data_anterior=$this->__BROWSE($option_browse);				
 				}		
-				foreach($datas as $campo=>$valor)
-				{					
-					if(is_array($valor))
-					{
-						$many2one["$campo"]=$valor;						
-					}				
-					if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
-					{
-						#if(count(@$this->sys_fields["$campo"])>1 and $valor!="")
-						if(count(@$this->sys_fields["$campo"])>1 )
+				if(is_array($datas))
+				{
+					foreach($datas as $campo=>$valor)
+					{					
+						if(is_array($valor))
 						{
-							if(!is_array($valor))	
-								$fields	.="$campo='$valor',";
-						}
-					}
-					else
-					{
-						#if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
-						if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
+							$many2one["$campo"]=$valor;						
+						}				
+						if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
 						{
-							if(!is_array($valor))	
-							{					
-								if(@$data_anterior["data"][0][$campo]!=$valor)		
-									@$modificados.=" 
-										<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
-									";
-								$fields	.="$campo='$valor',";
-							}	
+							#if(count(@$this->sys_fields["$campo"])>1 and $valor!="")
+							if(count(@$this->sys_fields["$campo"])>1 )
+							{
+								if(!is_array($valor))	
+									$fields	.="$campo='$valor',";
+							}
 						}
-					}	
-				}    
-
+						else
+						{
+							#if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
+							if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
+							{
+								if(!is_array($valor))	
+								{					
+									if(@$data_anterior["data"][0][$campo]!=$valor)		
+										@$modificados.=" 
+											<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
+										";
+									$fields	.="$campo='$valor',";
+								}	
+							}
+						}	
+					}    
+				}
 				if($fields!="")
 				{
 					$SAVE_JS="";

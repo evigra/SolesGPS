@@ -1711,10 +1711,8 @@ styles:
 						$("input#"+ivariables).val(variables[ivariables]);
 					else if($("select#"+ivariables))
 					{
-						alert("a");
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-							//alert("aaa");
-							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\"> LALO "+ivariables+"</option>");
+							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");
 							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	
@@ -1726,7 +1724,7 @@ styles:
 						enviar = confirm("Borrar datos");							
 				}	
 				if(path!="")	$("form").attr({"action":path});					
-				//if(enviar==true)	$("form").submit(); 	        
+				if(enviar==true)	$("form").submit(); 	        
 			});
 		}	    
         if($(".sys_order").length>0)

@@ -187,7 +187,7 @@
 				$this->sys_fields["password"]["value"]="";			
 			}			
     	}
-		public function __INPUT($words,$sys_fields)
+		public function __INPUT($words=NULL,$sys_fields=NULL)
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);
 			

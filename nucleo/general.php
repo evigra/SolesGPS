@@ -622,17 +622,7 @@
 									
 			
 			
-			
-			
-
-
-
-
-
-
-
-
-
+	
 									$"."primary_field					=$"."this->$campo"."_obj->sys_primary_field;
 									
 									

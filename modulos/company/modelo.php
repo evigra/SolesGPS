@@ -171,7 +171,7 @@
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
-			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			#$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				
@@ -180,6 +180,8 @@
     		$option					=array();
     		$option["where"]		=array();    		
     		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
+    		
+    		$option["echo"]		="autocomplete_empresa";
     		
 			$return =$this->__BROWSE($option);    				
 			return $return;			

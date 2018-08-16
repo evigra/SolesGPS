@@ -14,7 +14,7 @@
 			    "type"              => "primary key",
 			),		
 			"razonSocial"	    	=>array(
-			    "title"             => "Compania",
+			    "title"             => "Razon Social",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
@@ -111,7 +111,7 @@
 			    "type"              => "input",
 			),							
 			"nombre"	    	=>array(
-			    "title"             => "Razon Social",
+			    "title"             => "Empresa",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			),			

@@ -165,6 +165,25 @@
 			$option["from"]		="company";			
 			$option["where"][]	="tipo_company IN ('GPS','COMPANY')";
 			return $this->__VIEW_REPORT($option);    	
+		}
+		public function __BROWSE($option=NULL)
+    	{    		
+    		if(is_null($option))	$option=array();			
+			if(!isset($option["where"]))    $option["where"]    =array();
+			
+			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			$return 				=parent::__BROWSE($option);
+			return	$return;     	
 		}				
+		public function autocomplete_empresa()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
+    		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
+						
 	}
 ?>

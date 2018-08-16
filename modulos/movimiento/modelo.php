@@ -31,7 +31,7 @@
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_empresa",
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "empresa",
+			    "class_name"       	=> "company",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    

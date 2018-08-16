@@ -595,7 +595,7 @@
 		    	$selected="";
 		    	if($_SESSION["company"]["id"]==$data["id"])
 		    		$selected="selected";
-		    	$vOption = $vOption."<option value=\"".$data["id"]."\"  $selected >".$data["id"]." :: ".$data["razonSocial"]."</option>";		    	
+		    	$vOption = $vOption."<option value=\"".$data["id"]."\"  $selected >".$data["id"]." :: ".$data["nombre"]."</option>";		    	
 		    }
 
 			$vRespuesta = "	<select id = \"setting_company\" system=\"yes\" name = \"setting_company\">".$vOption."</select>";

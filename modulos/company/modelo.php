@@ -172,6 +172,7 @@
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
 			#$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			$option["echo"]		   ="BROE+WSE";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				

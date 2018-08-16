@@ -169,8 +169,9 @@
 							{			        	
 								if(isset($value["type"]) AND $value["type"]!="class")	
 								{
-									if(isset($value["relation"]) AND $value["relation"]=="one2many")
+									if(isset($value["relation"]) AND $value["relation"]=="one2many" AND isset($value["class_field_m"]))
 									{
+										
 										
 										$eval="
 											$"."option=array();

@@ -1491,6 +1491,7 @@ styles:
         }    
 		if(device_active==0)	
 		{
+			$("div#map_search").show();
 			$("div#odometro").hide();
 			$("#tablero").html("Estatus : Seleccionar un vehiculo");			
 			$("#tablero").animate({				
@@ -1506,6 +1507,7 @@ styles:
 			$("#tablero").html("<h4>Cargando...</h4> <img id=\"loader1\" src=\"../sitio_web/img/loader1.gif\" height=\"30\" width=\"30\"/>");	
 			//status_device2();
 			$("#odometro").show(); 
+			$("div#map_search").hide();
 		}	  			
 	}
 	

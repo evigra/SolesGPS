@@ -42,8 +42,7 @@
 					devices_all.push($(this).attr("device"));
 				});			 	
 				obj=$("table.select_devices[device="+devices_all[0]+"]");
-				var ind=0;
-				
+				var ind=0;				
 			}
 			select_devices_send(obj,ind);
 		});    	

@@ -58,24 +58,15 @@
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
-			if($this->sys_enviroments=="DEVELOPER" AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
+			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
-				#$this->__PRINT_R($_SERVER["SERVER_NAME"]);
-				
 				error_reporting(-1);
 				ini_set('display_errors', 1);				
 			}
-			else if($this->sys_enviroments=="TESTING")	
-			{
-				ini_set('display_errors', 0);
-			}				
-			else if($this->sys_enviroments=="PRODUCTION" )	
-			{
-				ini_set('display_errors', 0);
-			}				
-
-				error_reporting(-1);
-				ini_set('display_errors', 1);				
+			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_true))
+			{	
+				ini_set('display_errors', 0);	
+			}
 
 			
 			$this->__REQUEST();

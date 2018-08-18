@@ -14,7 +14,7 @@
 	$option["select"]	=array("deviceid","placas","DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)"=>"devicetime","image","course");
 	$option["limit"]	="1000";
 	
-	$option["echo"]		="POSITION";
+#	$option["echo"]		="POSITION";
 	
 
 	#if(!isset($option["having"]))	

@@ -132,6 +132,16 @@
 			    "showTitle"         => "si",
 			    "type"              => "hidden",
 			),			
+			"cliente"	    	=>array(
+			    "title"             => "Cliente",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			),			
+			"proveedor"	    	=>array(
+			    "title"             => "Proveedor",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			),						
 
 		);				
 		##############################################################################	

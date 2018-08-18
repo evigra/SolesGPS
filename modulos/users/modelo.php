@@ -264,7 +264,7 @@
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
 			$option["select"][]																="users.*";
 			$option["from"]		="users";			
-			if(isset($_SESSION["company"]["id"]))
+			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))
 				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";						
 			    				
 			return $option;

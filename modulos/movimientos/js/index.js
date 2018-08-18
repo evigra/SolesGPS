@@ -1,5 +1,6 @@
 	function auto_item_id(ui)
 	{
+		alert("aaaa");
 		$("input#item_id").val(ui.item.clave);					
 		$("input#auto_item_id").val(ui.item.label);
 		

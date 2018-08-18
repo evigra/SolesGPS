@@ -419,7 +419,7 @@
 			$option_conf["open"]	=1;
 			$option_conf["close"]	=1;			
 
-			if(@$_SESSION["company"] AND @$_SESSION["company"]["id"])
+			if(@$_SESSION["company"] AND @$_SESSION["company"]["id"] AND @$_SESSION["user"]["id"])
 			{
 				$comando_sql        ="
 		            select

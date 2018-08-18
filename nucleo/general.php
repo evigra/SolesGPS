@@ -58,10 +58,11 @@
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
+			ini_set('display_errors', 1);				
+			
 			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
 				error_reporting(-1);
-				ini_set('display_errors', 1);				
 			}
 			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_true))
 			{	
@@ -605,7 +606,7 @@
 									{									
 										$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
 									}								
-									$"."primary_field					=$"."this->$campo"."_obj->sys_primary_field;
+									$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
 									
 									
 									if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)

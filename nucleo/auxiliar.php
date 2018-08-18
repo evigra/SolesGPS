@@ -298,7 +298,7 @@
 				    
 				    $words["system_logo"]           ="";
 						    
-				    if(isset($_SESSION["company"]["razonSocial"]))
+				    if(isset($_SESSION["company"]["razonSocial"]) AND isset($_SESSION["user"]["name"]))
 				    {
 					    $words["system_company"]        =$_SESSION["company"]["nombre"];
 					    $words["system_user"]           =$_SESSION["user"]["name"];

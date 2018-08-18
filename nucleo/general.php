@@ -603,7 +603,7 @@
 								foreach($"."valores as $"."valor)
 								{	
 									####if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))
-										$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
+									###	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
 
 									$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
 									

@@ -602,21 +602,15 @@
 								$"."class_field_m										=$"."valor_campo[\"class_field_m\"];	
 								foreach($"."valores as $"."valor)
 								{									
-									if(!(isset($"."valor_campo[$"."class_field_m]) AND $"."valor_campo[$"."class_field_m]==\"\"))								
-									{									
+									if(!(isset($"."valor_campo[$"."class_field_m]) AND $"."valor_campo[$"."class_field_m]==\"\"))
 										$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
-									}								
+
 									$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
 									
-									
 									if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
-									{										
 										$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
-									}	
 									else
-									{	
 										$"."this->$campo"."_obj->sys_primary_id		=\"\";
-									}
 									$"."this->$campo"."_obj->__SAVE($"."valor);		
 								}	
 							";

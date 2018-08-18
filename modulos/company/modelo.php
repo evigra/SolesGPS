@@ -135,12 +135,12 @@
 			"cliente"	    	=>array(
 			    "title"             => "Cliente",
 			    "showTitle"         => "si",
-			    "type"              => "input",
+			    "type"              => "checkbox",
 			),			
 			"proveedor"	    	=>array(
 			    "title"             => "Proveedor",
 			    "showTitle"         => "si",
-			    "type"              => "input",
+			    "type"              => "checkbox",
 			),						
 
 		);				

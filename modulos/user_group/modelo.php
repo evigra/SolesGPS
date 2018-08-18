@@ -57,7 +57,8 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    	    $datas["company_id"]    	=@$_SESSION["company"]["id"];
+    		if(is_array($datas))
+	    	    $datas["company_id"]    	=@$_SESSION["company"]["id"];
     		parent::__SAVE($datas,$option);
 		}		
 		public function groups($option=NULL)		

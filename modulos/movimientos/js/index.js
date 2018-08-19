@@ -1,6 +1,5 @@
 	function auto_item_id(ui)
 	{
-		alert("aaaa");
 		$("input#item_id").val(ui.item.clave);					
 		$("input#auto_item_id").val(ui.item.label);
 		
@@ -8,7 +7,7 @@
 		var compra 	=$("input#compra").val();
 
 		var lista=1;
-		
+		/*	
 		if(compra>0)
 		{ 	
 			lista=compra;
@@ -18,7 +17,8 @@
 		{ 	
 			lista=vende;
 			tipo="vende";
-		}	
+		}
+		*/	
 		$("input#precio").val(ui.item[tipo+lista]);					
 		subtotal();
 	}

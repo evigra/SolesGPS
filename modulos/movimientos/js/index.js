@@ -6,7 +6,6 @@
 		var vende 	=$("input#venta").val();
 		var compra 	=$("input#compra").val();
 
-		alert(vende);
 		var lista=1;
 		
 		if(compra>0)

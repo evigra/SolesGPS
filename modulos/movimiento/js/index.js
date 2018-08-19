@@ -4,8 +4,8 @@
 		$("input#auto_empresa_id").val(ui.item.label);
 		
 		
-		$("input#venta").val(ui.item.venta);
-		$("input#compra").val(ui.item.compra);
+		$("input#venta").val(ui.item.cliente);
+		$("input#compra").val(ui.item.proveedor);
 	}
 	$(document).ready(function()
 	{		

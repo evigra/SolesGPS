@@ -8,7 +8,7 @@
 
 		alert(vende);
 		var lista=1;
-		/*	
+		
 		if(compra>0)
 		{ 	
 			lista=compra;
@@ -19,7 +19,7 @@
 			lista=vende;
 			tipo="vende";
 		}
-		*/	
+			
 		$("input#precio").val(ui.item[tipo+lista]);					
 		subtotal();
 	}

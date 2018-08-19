@@ -40,9 +40,6 @@
 	    link_kanban("&sys_section=kanban&sys_action=");
 	    link_report("&sys_section=report&sys_action=");
 
-	    
-
-
     });
 
 	

@@ -1,6 +1,7 @@
 <?php
 	$objeto										=new execute();
-
+	echo "AAAAAAAAAA";
+				
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 		

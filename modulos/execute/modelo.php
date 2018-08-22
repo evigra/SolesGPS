@@ -46,27 +46,28 @@
 			
 				if($row["solicitud"]=="AUTORIZADA")
 				{				
-				$respuesta=$this->WS_TAECEL($row);					
-				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
-				{
-					$comando_sql		="
-						UPDATE devices SET recargado='{$row["actualizado"]}'
+					$respuesta=$this->WS_TAECEL($row);					
+					if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+					{
+						$comando_sql		="
+							UPDATE devices SET recargado='{$row["actualizado"]}'
 
-						WHERE 1=1 
-							AND id='{$row["id"]}'
-					";
-					$datas	=$this->__EXECUTE($comando_sql);
-					
-					$comando_sql		="
-						INSERT INTO taecel SET 
-							producto	='{$respuesta["producto"]}',
-							referencia	='{$respuesta["referencia"]}',
-							mensaje1	='{$respuesta["mensaje1"]}',
-							transID		='{$respuesta["transID"]}',
-							folio		='{$respuesta["folio"]}',
-							mensaje2	='{$respuesta["mensaje2"]}'							
-					";
-					$this->__EXECUTE($comando_sql);		
+							WHERE 1=1 
+								AND id='{$row["id"]}'
+						";
+						$datas	=$this->__EXECUTE($comando_sql);
+						
+						$comando_sql		="
+							INSERT INTO taecel SET 
+								producto	='{$respuesta["producto"]}',
+								referencia	='{$respuesta["referencia"]}',
+								mensaje1	='{$respuesta["mensaje1"]}',
+								transID		='{$respuesta["transID"]}',
+								folio		='{$respuesta["folio"]}',
+								mensaje2	='{$respuesta["mensaje2"]}'							
+						";
+						$this->__EXECUTE($comando_sql);		
+					}
 				}
 			}
 		}		

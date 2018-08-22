@@ -38,10 +38,12 @@
 			";
 			
 			$datas	=$this->__EXECUTE($comando_sql);
-			$this->__PRINT_R($datas);
-			/*
+						
 			foreach($datas as $row)
 			{
+				$this->__PRINT_R($row);
+			
+				/*
 				$respuesta=$this->WS_TAECEL($row);					
 				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
 				{
@@ -64,11 +66,8 @@
 					";
 					$this->__EXECUTE($comando_sql);		
 				}
-							
+				*/						
 			}
-			*/
-    		
-		}
-		
+		}		
 	}
 ?>

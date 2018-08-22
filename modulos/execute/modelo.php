@@ -38,7 +38,7 @@
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 			
-			$this->__PRINT($datas);
+			$this->__PRINT_R($datas);
 			/*
 			foreach($datas as $row)
 			{

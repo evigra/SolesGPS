@@ -20,12 +20,24 @@
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
     }	
+    
     if($objeto->sys_section=="saldo_correo")
 	{
+	
+    	$module_title                	=	"Modificar ";
+		$objeto->saldo_correo();
+    	$module_right=array(
+			array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			array("kanban"=>"Kanban"),
+			array("report"=>"Reporte"),
+	    );	
+
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
+    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+	
 		echo "AAAAAAAAAA";
-        $objeto->saldo_correo();
-    	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
-    	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+        
     }	
        
     

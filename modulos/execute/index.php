@@ -1,6 +1,5 @@
 <?php
 	$objeto										=new execute();
-	echo "AAAAAAAAAA";
 				
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
@@ -24,14 +23,8 @@
     if($objeto->sys_section=="saldo_correo")
 	{
 	
-    	$module_title                	=	"Modificar ";
+    	$module_title                	=	"Saldo por correo";
 		$objeto->saldo_correo();
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    );	
 		$objeto->words["module_body"]	=	"";	
     	#$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
     	#$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
@@ -40,7 +33,7 @@
     }	
        
     
-	$objeto->words["module_title"]              ="Log Traccar";
+	$objeto->words["module_title"]              ="Execute $module_title";
 	
 	$objeto->words["module_left"]               ="";
 	$objeto->words["module_center"]             ="";

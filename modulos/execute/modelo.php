@@ -23,9 +23,52 @@
 		{
 			parent::__CONSTRUCT();
 			#$ultima_linea = passthru('/opt/traccar/bin/traccar status', $var);
-			$ultima_linea = passthru('ls', $var);		
+			#$ultima_linea = passthru('ls', $var);		
 			
 			#echo $var;	
 		}			
+		public function saldo_correo()
+    	{
+			$comando_sql		="
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
+				FROM devices d join company c on c.id=d.company_id  
+				WHERE 1=1 
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now() )
+					AND md5(d.id)={$this->request["a"]}
+			";
+			$datas	=$this->__EXECUTE($comando_sql);
+			
+			$this->__PRINT($datas);
+			/*
+			foreach($datas as $row)
+			{
+				$respuesta=$this->WS_TAECEL($row);					
+				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
+				{
+					$comando_sql		="
+						UPDATE devices SET recargado='{$row["actualizado"]}'
+
+						WHERE 1=1 
+							AND id='{$row["id"]}'
+					";
+					$datas	=$this->__EXECUTE($comando_sql);
+					
+					$comando_sql		="
+						INSERT INTO taecel SET 
+							producto	='{$respuesta["producto"]}',
+							referencia	='{$respuesta["referencia"]}',
+							mensaje1	='{$respuesta["mensaje1"]}',
+							transID		='{$respuesta["transID"]}',
+							folio		='{$respuesta["folio"]}',
+							mensaje2	='{$respuesta["mensaje2"]}'							
+					";
+					$this->__EXECUTE($comando_sql);		
+				}
+							
+			}
+			*/
+    		
+		}
+		
 	}
 ?>

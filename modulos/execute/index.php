@@ -1,9 +1,5 @@
 <?php
 	$objeto										=new execute();
-	#$objeto->__SESSION();
-	
-	#$objeto->__PRINT_R($objeto->menu_obj->modulos());
-
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
@@ -22,6 +18,12 @@
 	{
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
+    }	
+    if($objeto->sys_section=="saldo_correo")
+	{
+        $objeto->saldo_correo();
+    	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
+    	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     }	
        
     

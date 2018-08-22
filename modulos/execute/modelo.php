@@ -44,7 +44,8 @@
 			{
 				$this->__PRINT_R($row);
 			
-				/*
+				if($row["solicitud"]=="AUTORIZADA")
+				{				
 				$respuesta=$this->WS_TAECEL($row);					
 				if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
 				{
@@ -67,7 +68,6 @@
 					";
 					$this->__EXECUTE($comando_sql);		
 				}
-				*/						
 			}
 		}		
 	}

@@ -520,7 +520,7 @@
 					OR bloqueo is NULL)
 					AND c.estatus=1
 					AND d.telcel=1
-					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 27 DAY)< now() )
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

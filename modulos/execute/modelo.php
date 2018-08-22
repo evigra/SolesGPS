@@ -31,7 +31,7 @@
     	{
 			$comando_sql		="
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto, 
-				if(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now(), 'AUTORIZADO','NEGADO' ) 
+				if(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now(), 'AUTORIZADA','NEGADA' ) AS solicitud
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND md5(d.id)='{$this->request["a"]}'
@@ -39,7 +39,6 @@
 			
 			$datas	=$this->__EXECUTE($comando_sql);
 			$this->__PRINT_R($datas);
-			$this->__PRINT_R($comando_sql);
 			/*
 			foreach($datas as $row)
 			{

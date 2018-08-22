@@ -21,6 +21,7 @@
     }	
     if($objeto->sys_section=="saldo_correo")
 	{
+		echo "AAAAAAAAAA";
         $objeto->saldo_correo();
     	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
     	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    

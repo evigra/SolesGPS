@@ -33,7 +33,7 @@
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
-					#AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now() )
 					AND md5(d.id)='{$this->request["a"]}'
 			";
 			

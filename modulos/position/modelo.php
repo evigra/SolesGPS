@@ -182,7 +182,7 @@
 								</a>
 							</td>				
 							<td>
-								<a href=\"whatsapp://send?phone=3141182618&text=Hola%2C%20deseo%20adquirir%20un%20soporte%20con%20ustedes\">
+								<a href=\"https://api.whatsapp.comsend?phone=5213141182618&text=Detectamos ausencia de senal de su dispositivo {$row["NOMBRE"]}\">
 									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
 								</a>								
 							</td>	
@@ -190,7 +190,7 @@
 								<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
 							</a></td>        
 							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
-							<td>{$row["REPORTO_HACE"]}</td>
+							<td>{$row["REPORTO_HACE"]}{$row["REPORTO_HACE"]}</td>
 							<td><a href=\"http://solesgps.com/execute/&a={$row["md5_id"]}&sys_section_execute=saldo_correo\">
 								<img height=\"40\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
 							</a></td>

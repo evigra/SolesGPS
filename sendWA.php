@@ -16,6 +16,7 @@
 
 
 	$ch = curl_init();
+	
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 	curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
@@ -26,6 +27,6 @@
 	$info = curl_getinfo($ch);
 	curl_close($ch);
 	
-	echo "entra";
+	echo "entra $info";
 
 ?>

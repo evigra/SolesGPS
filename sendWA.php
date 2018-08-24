@@ -1,5 +1,6 @@
 <?php
-
+	ini_set('display_errors', 1);
+	
 	$url			="https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json";
 	$username		="AC46f33ea3362e521534d758937494407b";
 	$password		="31ad51fd021cf3c89ea07c100f5d4113";

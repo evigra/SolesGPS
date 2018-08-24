@@ -27,6 +27,8 @@
 	$info = curl_getinfo($ch);
 	curl_close($ch);
 	
-	echo "entra $info";
+	echo "entra ";
+	
+	print_r($info);
 
 ?>

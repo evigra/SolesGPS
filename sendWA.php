@@ -1,5 +1,8 @@
 <?php
+
 	ini_set('display_errors', 1);
+	error_reporting(-1);	
+	
 	
 	$url			="https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json";
 	$username		="AC46f33ea3362e521534d758937494407b";
@@ -22,5 +25,7 @@
 	$output = curl_exec($ch);
 	$info = curl_getinfo($ch);
 	curl_close($ch);
+	
+	echo "entra";
 
 ?>

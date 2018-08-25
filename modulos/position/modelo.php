@@ -182,7 +182,7 @@
 								</a>
 							</td>				
 							<td>
-								<a href=\"https://api.whatsapp.comsend?phone=5213141182618&text=Detectamos ausencia de senal de su dispositivo {$row["NOMBRE"]}\">
+								<a href=\"https://api.whatsapp.com/send?phone=5213141182618&text=Detectamos ausencia de senal de su dispositivo {$row["NOMBRE"]}\">
 									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
 								</a>								
 							</td>	

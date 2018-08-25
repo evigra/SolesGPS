@@ -1,4 +1,8 @@
 <?php
+/*
+https://www.twilio.com/console/api/api-explorer/messages/create?Format=json&AccountSid=AC46f33ea3362e521534d758937494407b&To=whatsapp:+5213143520972&From=whatsapp:+14155238886&Body=Ejemplo&Method=post&Location=/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json&__referrer=sms-mms
+*/
+
 
 	ini_set('display_errors', 1);
 	error_reporting(-1);	
@@ -7,7 +11,7 @@
 #	https://timberwolf-mastiff-9776.twil.io/demo-reply
 	
 	$url			="https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json";
-	$url			="https://timberwolf-mastiff-9776.twil.io/demo-reply";
+	#$url			="https://timberwolf-mastiff-9776.twil.io/demo-reply";
 	$username		="AC46f33ea3362e521534d758937494407b";
 	$password		="31ad51fd021cf3c89ea07c100f5d4113";
 

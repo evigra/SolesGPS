@@ -44,7 +44,8 @@ div.report_form table tr
 }
 
 .submenu2_active,
-.submenu2:hover
+.submenu2:hover,
+.submenu2:active
 {
 	cursor:     		pointer;
 	color:      		#373737;

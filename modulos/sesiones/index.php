@@ -1,6 +1,6 @@
 <?php
 	$objeto							=	new sesiones();
-	$objeto->__SESSION();
+	#$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
@@ -21,13 +21,8 @@
 
 		$option["template_title"]		=	$objeto->sys_module."html/report_title";
 		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-		$option["template_form"]		=	$objeto->sys_module."html/report_form";
-		
-		$data							=	$objeto->devices($option);
 		
 		$objeto->words["module_body"]	=	$data["html"];	
-		$module_title                	=	"Reporte de ";
-    	
     }
 	
 	$objeto->words["module_title"]	=	"Sesiones Registradas";

@@ -39,9 +39,9 @@
     }
 	
 	$objeto->words["module_title"]	=	"Sesiones Registradas";
-	#$objeto->words["module_left"]  	=	$objeto->__BUTTON($module_left);
-	#$objeto->words["module_center"]	=	$module_center;
-	#$objeto->words["module_right"]	=	$objeto->__BUTTON($module_right);;
+	$objeto->words["module_left"]  	=	"";
+	$objeto->words["module_center"]	=	"";
+	$objeto->words["module_right"]	=	"";
 		
 	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";
 	

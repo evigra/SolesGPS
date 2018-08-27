@@ -114,8 +114,9 @@
 			";
 			$option["order"]		="date desc";
 			
+			#$option["where"]=" and u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]}";
 			if(!isset($option["where"]))
-				$option["where"]=" and u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]}";
+				$option["where"]=" and u.company_id={$_SESSION["company"]["id"]}";
 			#$option["echo"]="";
 			$return =$this->__VIEW_REPORT($option);    				
 			return $return;

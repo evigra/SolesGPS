@@ -115,6 +115,7 @@
     }    
     else
     {
+    	$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),

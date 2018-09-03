@@ -36,7 +36,7 @@
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    
 			),			
-
+			
 			"movimientos_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",

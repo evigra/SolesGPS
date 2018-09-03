@@ -93,6 +93,7 @@
 				return	$this->__REPLACE($view,$words);
 		}    	
 
+
 		public function __FIND_FIELD_ID()
 		{  
 			# BUSCA EL CAMPO y VALOR PRIMARY KEY
@@ -1432,6 +1433,30 @@
 					$this->sys_fields[$field]["attr"]=array("readonly"=>"readonly");			    
 			}
 		}
+		public function __SYS_HISTORY()
+		{  
+	  		if(@$this->sys_primary_id!="")	
+	  		{
+	  			$option						=array();	
+	  			$option["name"]				="historico";
+	  			
+	  			$this->sys_historico		=new historico();
+	  			$option						=array();	
+	  			$option["template_body"]	=$this->sys_historico->sys_module . "html/report_historico_body";
+	  			$option["order"]			="id DESC";
+	  			$option["where"]			=array();	
+	  			$option["where"][]			="clave=$this->sys_primary_id";
+	  			$option["where"][]			="objeto='$this->sys_object'";
+	  			$option["where"][]			="tabla='$this->sys_table'";				
+	  			
+	  			$reporte					=$this->sys_historico->__VIEW_REPORT($option);
+	  			
+	  			$this->words["sys_historico"]="
+	  										${reporte["html"]}	
+	  			";
+	  		}
+	
+		}    			
     	##############################################################################    
     	##############################################################################    
 		public function __VIEW_OPTION($data)

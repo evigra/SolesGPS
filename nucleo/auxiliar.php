@@ -1474,6 +1474,7 @@
     	##############################################################################    
 		public function __VIEW_CREATE($template)
 		{
+			$this->__SYS_HISTORY();
 			$view   =$this->__TEMPLATE("$template");
 			$view	=$this->__VIEW_INPUTSECTION($view);
 			return $view;
@@ -1481,6 +1482,7 @@
     	##############################################################################    
 		public function __VIEW_WRITE($template)
 		{
+			$this->__SYS_HISTORY();
 			$view   =$this->__TEMPLATE("$template");
 			$view	=$this->__VIEW_INPUTSECTION($view);
 			

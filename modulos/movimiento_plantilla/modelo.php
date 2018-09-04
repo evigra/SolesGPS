@@ -6,6 +6,8 @@
 		##############################################################################
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
+		var $sys_table			="movimiento";
+		
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",

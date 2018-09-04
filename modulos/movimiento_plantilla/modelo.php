@@ -143,7 +143,7 @@
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
-			$datas["tipo"]				="plantilla";
+			$datas["tipo"]				="PL";
 			
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
@@ -167,7 +167,7 @@
 			
 			if(!isset($option["where"]))	$option["where"]=array();
 			
-			$option["where"][]				="tipo='plantilla'";
+			$option["where"][]				="tipo='PL'";   # PL plantilla
 			
 			
 			#$option["select"][]							="*";

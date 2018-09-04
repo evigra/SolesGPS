@@ -143,13 +143,15 @@
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
+			$datas["tipo"]				="PL";
+			
 			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
 	
 				$option_folios=array();
 				$option_folios["variable"]		="";
 				$option_folios["subvariable"]	="";
-				$option_folios["tipo"]			="PL";
+				$option_folios["tipo"]			=$datas["tipo"];
 				$option_folios["subtipo"]		="";
 				$option_folios["objeto"]		="movimiento_plantilla";
 								

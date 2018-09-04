@@ -623,7 +623,7 @@
         ##############################################################################
 		public function __REQUEST_AUX($campo,$valor)
 		{  
-			if(!is_array($valor)) 			$valor=htmlentities($valor);
+			if(!is_array($valor)) 			$valor	=htmlentities($valor);
 			
 			$this->request["$campo"]		=$valor;
 			$_SESSION["request"]["$campo"]	=$valor;									
@@ -642,7 +642,7 @@
 					if(is_array(@$"."this->sys_fields[\"$campo\"]))	
 					{			
 						$"."this->sys_fields[\"$campo\"]"."[\"value\"]=\"$valor\";
-					}		
+					}							
 					else
 					{
 						$"."this->$campo=\"$valor\";

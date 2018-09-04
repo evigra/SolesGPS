@@ -1,5 +1,5 @@
 <?php	
-	$objeto											=new movimiento();		
+	$objeto											=new movimiento_plantilla();		
 	$objeto->__SESSION();
 	#$objeto->__PRINT_R($_SESSION);
 	
@@ -115,8 +115,7 @@
     }    
     else
     {
-    
-    	$objeto->__PRINT_R($objeto);
+    	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),

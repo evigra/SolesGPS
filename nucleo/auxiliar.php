@@ -1444,7 +1444,7 @@
 	  			$option						=array();	
 	  			$option["template_body"]	=$this->sys_historico->sys_module . "html/report_historico_body";
 	  			$option["order"]			="id DESC";
-	  			$option["echo"]			="SYS_HISTORY";
+	  			#$option["echo"]			="SYS_HISTORY";
 	  			$option["where"]			=array();	
 	  			$option["where"][]			="clave=$this->sys_primary_id";
 	  			$option["where"][]			="objeto='$this->sys_object'";

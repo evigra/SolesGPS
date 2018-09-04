@@ -143,7 +143,7 @@
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
-			#if($this->request["sys_section_movimiento"]=="create")
+			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
 	
 				$option_folios=array();

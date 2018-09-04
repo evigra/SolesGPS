@@ -116,7 +116,7 @@
     else
     {
     
-    	$objeto->__PRINT_R($objeto);
+    	#$objeto->__PRINT_R($objeto);
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),

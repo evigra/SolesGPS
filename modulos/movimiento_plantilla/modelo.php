@@ -141,6 +141,7 @@
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
+			$datas["tipo"]				="plantilla";
 			
 			if($this->request["sys_section_movimiento"]=="create")
 			{
@@ -153,7 +154,7 @@
 				$option_folios["objeto"]		="folio";
 				
 				
-				$datas["folio"]				=$this->__FOLIOS($option_folios);
+				#$datas["folio"]				=$this->__FOLIOS($option_folios);
 	
 			}	
 			
@@ -175,11 +176,7 @@
 			#$option["echo"]=$datas["total"];
     		
     	    $return= parent::__SAVE($datas,$option);
-    	    #$this->__PRINT_R($this->sys_sql);
-    	    #$this->__PRINT_R($datas);
     	    return $return;
-    	    
-    	    
 		}
 		#*/		
    		public function __GENERAR_PDF()
@@ -469,7 +466,10 @@
    		public function __REPORTE($option="")
     	{			    	
 			if($option=="")	$option=array();
-			#if(!isset($option["select"]))	$option["select"]=array();
+			
+			if(!isset($option["where"]))	$option["where"]=array();
+			
+			$option["where"][]				="tipo='plantilla'";
 			
 			
 			#$option["select"][]							="*";

@@ -150,7 +150,7 @@
 				$option_folios["variable"]		="";
 				$option_folios["subvariable"]	="";
 				$option_folios["tipo"]			="PL";
-				$option_folios["subtipo"]		="""";
+				$option_folios["subtipo"]		="";
 				$option_folios["objeto"]		="movimiento_plantilla";
 								
 				$datas["folio"]				=$this->__FOLIOS($option_folios);

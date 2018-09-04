@@ -41,6 +41,24 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"CANTIDAD"	    =>array(
+			    "title"             => "Tiempo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),
+			"TYPE_TIME"	    =>array(
+			    "title"             => "Unidad de Tiempo",
+			    "showTitle"         => "si",
+			    "type"              => "select",
+			    "source"           	=> array(
+			    	"MINUTE"        => "Minutos",
+			    	"DAY"           => "Dias",
+			    	"MONTH"         => "Mes",
+			    ),			    
+			),
+
 		);				
 		##############################################################################	
 		##  Metodos	

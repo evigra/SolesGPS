@@ -8,6 +8,8 @@
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
 		
+		var $movimiento_obj		=new movimiento();
+		
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
@@ -154,6 +156,7 @@
         
 		public function __CONSTRUCT()
 		{	
+			
 			parent::__CONSTRUCT();		
 			#$this->__PRINT_R($_SESSION["SAVE"]);
 			
@@ -161,7 +164,7 @@
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($datas);
+    		#$this->__PRINT_R($datas);
     		if(@$datas["tipo"]=="")		$datas["tipo"]				="PL";
     		
 			$datas["registro"]			=$this->sys_date;
@@ -220,8 +223,7 @@
 				unset($row["cron_cantidad"]);
 				unset($row["cron_unidad"]);
 				
-				$this->sys_primary_id="";
-				$this->__SAVE($row);
+				$this->movimiento_obj->__SAVE($row);
 			}
 			
 			#$this->__PRINT_R($crons_data["data"]);

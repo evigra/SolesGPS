@@ -133,6 +133,18 @@
 			#$this->__PRINT_R($_SESSION["SAVE"]);
 			
 		}
+		public function __FOLIOS($option_folios="")
+		{	
+			$option_folios=array();
+			$option_folios["variable"]		=date("Y");
+			$option_folios["subvariable"]	=date("Y");
+			$option_folios["tipo"]			="SO";
+			$option_folios["subtipo"]		="";
+			$option_folios["objeto"]		="";
+		
+			return parent::__FOLIOS($option_folios);		
+		}
+
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
@@ -143,18 +155,8 @@
 			$datas["company_id"]		=$_SESSION["company"]["id"];
 			
 			if($this->request["sys_section_movimiento"]=="create")
-			{
-	
-				$option_folios=array();
-				$option_folios["variable"]		=date("Y");
-				$option_folios["subvariable"]	=date("Y");
-				$option_folios["tipo"]			="folio";
-				$option_folios["subtipo"]		="folio";
-				$option_folios["objeto"]		="folio";
-				
-				
-				$datas["folio"]				=$this->__FOLIOS($option_folios);
-	
+			{				
+				$datas["folio"]				=$this->__FOLIOS();
 			}	
 			
 			#movimiento_id

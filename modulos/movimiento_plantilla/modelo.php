@@ -206,7 +206,7 @@
 
 		
 			$crons_data =$this->__BROWSE($option);			
-			$this->__PRINT_R($crons_data);
+			$this->__PRINT_R($crons_data["data"]);
 		}		
    		public function __GENERAR_PDF()
     	{

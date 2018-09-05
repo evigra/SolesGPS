@@ -204,6 +204,7 @@
 
 			$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
 			$option["where"][]="tipo='PL'";
+			$option["where"][]="cron_cantidad>0";
 
 		
 			$crons_data =$this->__BROWSE($option);			

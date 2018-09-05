@@ -189,6 +189,7 @@
     	{	
     		if(is_null($option))			$option				=array();
     		if(is_null(@$option["select"]))	$option["select"]	=array();
+    		if(is_null(@$option["where"]))	$option["where"]	=array();
     	
 			$option["select"]["
 					CASE
@@ -199,7 +200,9 @@
 			"]		="next_time";
 			
 		
-			if(!isset($option["where"]))	$option["where"]=array("LEFT(now_time,16)= LEFT(now(),16)");
+
+			$option["where"][]="(LEFT(caducidad,16)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
+
 		
 			$crons_data =$this->__BROWSE($option);			
 			$this->__PRINT_R($crons_data);

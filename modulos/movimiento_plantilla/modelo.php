@@ -200,10 +200,7 @@
 					END				
 			"]		="caducidad";
 			
-		
-
 			$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
-			$option["where"][]="tipo='PL'";
 			$option["where"][]="cron_cantidad>0";
 
 		
@@ -224,8 +221,7 @@
 
    		public function __REPORTE($option="")
     	{			    	
-			if($option=="")	$option=array();
-			
+			if($option=="")	$option=array();			
 			if(!isset($option["where"]))	$option["where"]=array();
 			
 			$option["where"][]				="tipo='PL'";   # PL plantilla
@@ -236,9 +232,9 @@
 			
 			#$option["from"]								="movimiento m";
 			
-			$option["template_title"]	                = $this->sys_module . "html/report_title";
+			#$option["template_title"]	                = $this->sys_module . "html/report_title";
 			#$option["template_title"]	                = "";
-			$option["template_body"]	                = $this->sys_module . "html/report_body";
+			#$option["template_body"]	                = $this->sys_module . "html/report_body";
 	
 			
 			if(!isset($option["actions"]))	
@@ -254,7 +250,15 @@
 				$option["order"]="id desc";
 			
 			return $this->__VIEW_REPORT($option);
-		}						
+		}	
+   		public function __BROWSE($option="")
+    	{			    	
+			if($option=="")	$option=array();			
+			if(!isset($option["where"]))	$option["where"]=array();
+			
+			$option["where"][]				="tipo='PL'";   # PL plantilla
+			return parent::__BROWSE($option);
+		}							
 	}
 ?>
 

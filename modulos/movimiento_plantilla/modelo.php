@@ -205,11 +205,27 @@
 			$option["where"][]="IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),LEFT(fecha,10))=LEFT(now(),10)";
 
 			$option["where"][]="cron_cantidad>0";
-			$option["echo"]="__CRON mov plantilla";
+			#$option["echo"]="__CRON mov plantilla";
 
 		
 			$crons_data =$this->__BROWSE($option);			
-			$this->__PRINT_R($crons_data["data"]);
+			foreach($crons_data["data"] as $row)
+			{
+				
+				$this->sys_primary_id=$row["id"];
+				$this->__SAVE($row);
+				
+				unset($row["id"]);
+				unset($row["tipo"]);
+				unset($row["folio"]);
+				unset($row["cron_cantidad"]);
+				unset($row["cron_unidad"]);
+				
+				$this->sys_primary_id="";
+				$this->__SAVE($row);
+			}
+			
+			#$this->__PRINT_R($crons_data["data"]);
 		}		
    		public function __GENERAR_PDF()
     	{

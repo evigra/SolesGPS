@@ -193,15 +193,15 @@
     	
 			$option["select"]["
 					CASE
-						WHEN cron_unidad='DAY' 		THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad DAY)
-						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad MONTH)
-						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad YEAR)
+						WHEN cron_unidad='DAY' 		THEN DATE_ADD(IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad), INTERVAL cron_cantidad DAY)
+						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad), INTERVAL cron_cantidad MONTH)
+						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad), INTERVAL cron_cantidad YEAR)
 					END				
 			"]		="next_time";
 			
 		
 
-			$option["where"][]="(LEFT(caducidad,16)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
+			$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
 
 		
 			$crons_data =$this->__BROWSE($option);			

@@ -201,7 +201,8 @@
 			"]		="caducidad";
 			$option["select"]["IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),fecha)"]		="fecha";
 			
-			$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
+			#$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00')";
+			$option["where"][]="LEFT(caducidad,10)= LEFT(now(),10)";
 			$option["where"][]="cron_cantidad>0";
 
 		

@@ -432,6 +432,7 @@
 					}	
 				}    			
 			}
+			
 			if(!is_array(@$html_title))
 			{
 				$return["data_0"][0]=array();	
@@ -459,13 +460,16 @@
    			
    			
    			
-   			if(isset($html_title))	$return["title"]	= $html_title;
-    		if($id!="")				$return				=$return["data"];
+   			if(isset($html_title))			$return["title"]		= $html_title;			
+			if(isset($html_title_clean))	$return["title_pdf"]	= $html_title_clean;
+			
+    		if($id!="")						$return					= $return["data"];
+
     		if(!isset($return["total"]) AND isset($return["data"]))
     		{
-    			$return["total"]=count($return["data"]);
+    			$return["total"]			=count($return["data"]);
     		}
-
+    		
     		return $return;    		
     	}		
 		##############################################################################		 		

@@ -199,6 +199,7 @@
 					END				
 			"]		="next_time";
 			$option["select"]["IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad)"]="ejemplo";
+			$option["select"][]="movimiento.*";
 			
 		
 

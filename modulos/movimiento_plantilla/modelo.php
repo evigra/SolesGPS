@@ -191,7 +191,6 @@
     		if(is_null(@$option["select"]))	$option["select"]	=array();
     		if(is_null(@$option["where"]))	$option["where"]	=array();
     	
-			$option["select"]["IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad)"]="ejemplo";
 			$option["select"][]="movimiento.*";
 			$option["select"]["
 					CASE

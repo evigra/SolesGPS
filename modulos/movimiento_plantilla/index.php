@@ -115,6 +115,7 @@
     }    
     else
     {
+    	$objeto->__CRON();
     	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(

@@ -89,17 +89,15 @@
 			    "value"             => "",
 			),			
 			"fecha"	    =>array(
-			    "title"             => "Fecha",
-			    "title_filter"      => "Fecha",
+			    "title"             => "Fecha de ejecucion",
 			    "showTitle"         => "si",
-			    "type"              => "datetime",
+			    "type"              => "date",
 			    "default"           => "",
 			    "value"             => "",
 			),				
 
 			"caducidad"	    =>array(
-			    "title"             => "Caducidad",
-			    "title_filter"      => "Caducidad",
+			    "title"             => "Siguiente Ejecucion",
 			    "showTitle"         => "si",
 			    "type"              => "date",
 			    "default"           => "",
@@ -187,6 +185,26 @@
     	    return $return;
 		}
 		#*/		
+		public function __CRON($option=NULL)		
+    	{	
+    		if(is_null($option))			$option				=array();
+    		if(is_null(@$option["select"]))	$option["select"]	=array();
+    	
+			$option["select"]["
+					CASE
+						WHEN cron_unidad='SECOND' 	THEN DATE_ADD(now_time, INTERVAL CANTIDAD SECOND)
+						WHEN cron_unidad='MINUTE' 	THEN DATE_ADD(now_time, INTERVAL CANTIDAD MINUTE)
+						WHEN cron_unidad='HOUR' 	THEN DATE_ADD(now_time, INTERVAL CANTIDAD HOUR)
+						WHEN cron_unidad='DAY' 		THEN DATE_ADD(now_time, INTERVAL CANTIDAD DAY)
+					END				
+			"]		="next_time";
+			
+		
+			if(!isset($option["where"]))	$option["where"]=array("LEFT(now_time,16)= LEFT(now(),16)");
+		
+			$crons_data =$this->__BROWSE($option);			
+			$this->__PRINT_R($crons_data);
+		}		
    		public function __GENERAR_PDF()
     	{
 			$_SESSION["pdf"]	=array();	

@@ -216,10 +216,13 @@
 							);
 							$html_title["$title"]				=$this->__REPORT_TITLES($option_report_titles);
 							
+							
+							
 							$option_report_titles["option"]		="pdf";
 							$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
 						}	
-    				}    			
+    				}    	
+    				$thi->__PRINT_R($html_title);		
     			}
     			else 
     			{

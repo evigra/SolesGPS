@@ -872,8 +872,6 @@
 			$this->__VARS();
 			$datas		=$this->sys_fields;
 			
-
-			
 			$return		=array();
     		foreach($datas as $campo=>$valor)
     		{

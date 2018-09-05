@@ -192,12 +192,12 @@
     	
 			$option["select"]["
 					CASE
-						WHEN cron_unidad='SECOND' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL CANTIDAD SECOND)
-						WHEN cron_unidad='MINUTE' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL CANTIDAD MINUTE)
+						WHEN cron_unidad='SECOND' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad SECOND)
+						WHEN cron_unidad='MINUTE' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad MINUTE)
 						WHEN cron_unidad='HOUR' 	THEN DATE_ADD(caducidad, INTERVAL CANTIDAD HOUR)
-						WHEN cron_unidad='DAY' 		THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL CANTIDAD DAY)
-						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL CANTIDAD MONTH)
-						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL CANTIDAD YEAR)
+						WHEN cron_unidad='DAY' 		THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad DAY)
+						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad MONTH)
+						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(caducidad='0000-00-00',now(),caducidad), INTERVAL cron_cantidad YEAR)
 					END				
 			"]		="next_time";
 			

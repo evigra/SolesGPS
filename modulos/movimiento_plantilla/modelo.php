@@ -161,16 +161,13 @@
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		if(@$datas["tipo"]=="")		$datas["tipo"]				="PL";
     		
-    		## GUARDAR USUARIO
-    		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
-			$datas["tipo"]				="PL";
 			
 			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
-	
 				$option_folios=array();
 				$option_folios["variable"]		="";
 				$option_folios["subvariable"]	="";
@@ -215,8 +212,9 @@
 				$this->sys_primary_id=$row["id"];
 				$this->__SAVE($row);
 				
-				unset($row["id"]);
-				unset($row["tipo"]);
+				$row["tipo"]="";
+				
+				unset($row["id"]);				
 				unset($row["folio"]);
 				unset($row["cron_cantidad"]);
 				unset($row["cron_unidad"]);

@@ -161,6 +161,7 @@
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$this->__PRINT_R($datas);
     		if(@$datas["tipo"]=="")		$datas["tipo"]				="PL";
     		
 			$datas["registro"]			=$this->sys_date;

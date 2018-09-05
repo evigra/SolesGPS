@@ -8,7 +8,7 @@
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
 		
-		var $movimiento_obj		=new movimiento();
+		var $movimiento_obj;
 		
 		var $sys_fields		=array( 
 			"id"	    =>array(
@@ -156,6 +156,7 @@
         
 		public function __CONSTRUCT()
 		{	
+			$this->movimiento_obj		=new movimiento();
 			
 			parent::__CONSTRUCT();		
 			#$this->__PRINT_R($_SESSION["SAVE"]);

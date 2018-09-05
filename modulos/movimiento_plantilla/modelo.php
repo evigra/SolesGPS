@@ -213,7 +213,7 @@
 				$this->sys_primary_id=$row["id"];
 				$this->__SAVE($row);
 				
-				$row["tipo"]="";
+				$row["tipo"]="SO";
 				
 				unset($row["id"]);				
 				unset($row["folio"]);

@@ -154,14 +154,14 @@
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
 			
-			if($this->request["sys_section_movimiento"]=="create")
+			if(@$this->request["sys_section_movimiento"]=="create")
 			{				
 				$datas["folio"]				=$this->__FOLIOS();
 			}	
 			
 			#movimiento_id
 			
-			if($this->request["sys_action_movimiento"]=="__SAVE_pagar")
+			if(@$this->request["sys_action_movimiento"]=="__SAVE_pagar")
 			{
 				#$this->__PRINT_R($this->request);
 								

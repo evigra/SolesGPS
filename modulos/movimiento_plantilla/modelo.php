@@ -218,9 +218,9 @@
 				$this->__SAVE($row);
 				
 				$row["tipo"]="SO";
-				
+				$row["folio"]=$this->movimiento_obj->__FOLIOS();
 				unset($row["id"]);				
-				unset($row["folio"]);
+				
 				unset($row["cron_cantidad"]);
 				unset($row["cron_unidad"]);
 				

@@ -222,7 +222,7 @@
 							$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
 						}	
     				}    	
-    				$thi->__PRINT_R($html_title);		
+    				$this->__PRINT_R($html_title);		
     			}
     			else 
     			{

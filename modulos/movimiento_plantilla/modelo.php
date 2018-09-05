@@ -198,6 +198,7 @@
 						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad), INTERVAL cron_cantidad YEAR)
 					END				
 			"]		="next_time";
+			$option["select"]["IF(LEFT(caducidad,10)='0000-00-00',now(),caducidad)"]="ejemplo";
 			
 		
 

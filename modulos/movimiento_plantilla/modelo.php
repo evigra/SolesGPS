@@ -113,6 +113,31 @@
 			    "default"           => "",
 			    "value"             => "",
 			),	
+			"estatus"	    =>array(
+			    "title"             => "Estatus",
+			    "showTitle"         => "si",
+			    "type"              => "select",
+			    "source"            => array(
+				    "PENDIENTE"     => "PENDIENTE",
+				    "CANCELADA"     => "CANCELADA",
+				)
+			),	
+			"cron_cantidad"	    =>array(
+			    "title"             => "Cantidad de Tiempo",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			),	
+			"cron_unidad"	    =>array(
+			    "title"             => "Unidad de tiempo",
+			    "showTitle"         => "si",
+			    "type"              => "select",
+			    "source"            => array(
+				    "DAY"     		=> "Dia",
+				    "MONTH"     	=> "Mes",
+				    "YEAR"  	   	=> "Ano",
+				)
+			),	
+
 			/*		
 			"plazos_id"	    =>array(
 			    "title"             => "Plazos",

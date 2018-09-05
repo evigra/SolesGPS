@@ -210,6 +210,7 @@
 			";
 
 			$option["where"][]="cron_cantidad>0";
+			$option["echo"]="__CRON mov plantilla";
 
 		
 			$crons_data =$this->__BROWSE($option);			

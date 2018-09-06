@@ -476,7 +476,7 @@
 							$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$valor["class_name"]}();
+								$"."obj_$campo   	=new {$value["class_name"]}();
 								
 								$"."option_$campo=array(
 									\"where\"		=>\"$class_field_m='$id'\"

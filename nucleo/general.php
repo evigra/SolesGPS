@@ -471,12 +471,12 @@
 				{	
 					if(@$this->sys_fields[$campo]["relation"]=="many2one")
 					{
-						foreach($return["data"] as $indice => $value)
+						foreach($return["data"] as $indice => $valor)
 						{
 							$valor =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$value["class_name"]}();
+								$"."obj_$campo   	=new {$valor["class_name"]}();
 								
 								$"."option_$campo=array(
 									\"where\"		=>\"$class_field_m='$valor'\"

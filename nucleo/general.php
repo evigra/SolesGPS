@@ -239,6 +239,15 @@
 				
 				foreach($this->sys_fields as $campo=>$valor)
 				{        								
+					if(@$this->sys_fields[$campo]["relation"]!="")
+					{
+						
+						$class_field_o			=$valor["class_field_o"];
+						$class_field_m			=$valor["class_field_m"];
+						$class_field_l			=$valor["class_field_l"];
+						
+						$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
+					}
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
 						if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
@@ -259,15 +268,8 @@
 						$busqueda					=$this->request["sys_filter_{$this->sys_name}_{$campo}"];
 						
 						if(@$this->sys_fields[$campo]["relation"]=="one2many")
-						{
-							
-							$class_field_o			=$valor["class_field_o"];
-							$class_field_m			=$valor["class_field_m"];
-							$class_field_l			=$valor["class_field_l"];
-							
-							$eval="
-								$"."obj_$campo   				=new {$valor["class_name"]}();
-								
+						{							
+							$eval.="								
 								$"."option_$campo=array(
 									\"where\"=>array(
 										\"$class_field_l $sys_where '%{$busqueda}%'\"
@@ -290,10 +292,7 @@
 						else
 							
 						$option["where"][]="$campo_aux $sys_where '%$busqueda%'";	
-						
-						#$this->__PRINT_R($option["where"]);
-					}
-					
+					}					
 				}	
 			}	
 	    		

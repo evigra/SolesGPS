@@ -242,9 +242,9 @@
 					if(@$this->sys_fields[$campo]["relation"]!="")
 					{
 						
-						$class_field_o			=$valor["class_field_o"];
-						$class_field_m			=$valor["class_field_m"];
-						$class_field_l			=$valor["class_field_l"];
+						$class_field_o			=@$valor["class_field_o"];
+						$class_field_m			=@$valor["class_field_m"];
+						$class_field_l			=@$valor["class_field_l"];
 						
 						$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
 					}

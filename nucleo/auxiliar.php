@@ -1896,8 +1896,8 @@
 					
 		    		$return["data"]					= $browse["data"];
 		    		
-		    		#$option["title"]				= @$browse["title"];
-					#$option["title_pdf"]			= @$browse["title_pdf"];
+		    		$option["title"]				= @$browse["title"];
+					$option["title_pdf"]			= @$browse["title_pdf"];
 
 					#$this->__PRINT_R($browse["title"]);
 					#$view_title						=@$browse["title"];
@@ -1922,7 +1922,7 @@
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
 
-				$this->__PRINT_R($view_title_data);
+				#$this->__PRINT_R($view_title_data);
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];

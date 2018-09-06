@@ -465,7 +465,31 @@
     		{
     			$return["total"]			=count($return["data"]);
     		}
-    		
+			if(is_array(@$return["data"]))
+			{
+				foreach($this->sys_fields as $campo => $value)
+				{	
+					if(@$this->sys_fields[$campo]["relation"]=="many2one")
+					{
+						foreach($return["data"] as $indice => $value)
+						{
+							$valor =   $return["data"]["$indice"][$class_field_o];
+							
+							$eval="
+								$"."obj_$campo   	=new {$valor["class_name"]}();
+								
+								$"."option_$campo=array(
+									\"where\"		=>\"$class_field_m='$valor'\"
+								);
+								
+								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+							";
+						}												
+					}
+				}
+			}	    		
     		return $return;    		
     	}		
 		##############################################################################		 		

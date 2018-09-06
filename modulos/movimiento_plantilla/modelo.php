@@ -218,7 +218,7 @@
 			{
 				
 				$this->sys_primary_id=$row["id"];
-				$this->__SAVE($row);
+				#$this->__SAVE($row);
 				
 				$row["tipo"]="SO";
 				$row["folio"]=$this->movimiento_obj->__FOLIOS();

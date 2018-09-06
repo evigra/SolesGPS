@@ -473,13 +473,13 @@
 					{
 						foreach($return["data"] as $indice => $valor)
 						{
-							$valor =   $return["data"]["$indice"][$class_field_o];
+							$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
 								$"."obj_$campo   	=new {$valor["class_name"]}();
 								
 								$"."option_$campo=array(
-									\"where\"		=>\"$class_field_m='$valor'\"
+									\"where\"		=>\"$class_field_m='$id'\"
 								);
 								
 								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);

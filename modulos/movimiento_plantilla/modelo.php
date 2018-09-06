@@ -207,7 +207,7 @@
 			$option["where"][]="IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),LEFT(fecha,10))=LEFT(now(),10)";
 
 			$option["where"][]="cron_cantidad>0";
-			#$option["echo"]="__CRON mov plantilla";
+			$option["echo"]="__CRON mov plantilla";
 
 		
 			$crons_data =$this->__BROWSE($option);			

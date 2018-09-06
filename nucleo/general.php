@@ -480,8 +480,7 @@
 								$"."obj_$campo   	=new {$value["class_name"]}();
 								
 								$"."option_$campo=array(
-									\"where\"		=>array(\"$class_field_m='$id'\"),
-									\"echo\"		=>\"BROWSE many2one\"
+									\"where\"		=>array(\"$class_field_m='$id'\")
 								);
 								
 								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);

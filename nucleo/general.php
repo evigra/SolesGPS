@@ -465,6 +465,7 @@
     		{
     			$return["total"]			=count($return["data"]);
     		}
+    		
 			if(is_array(@$return["data"]))
 			{
 				foreach($this->sys_fields as $campo => $value)
@@ -486,11 +487,12 @@
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
-							#eval($eval);
+							eval($eval);
 						}												
 					}
 				}
-			}	    		
+			}
+				    		
     		return $return;    		
     	}		
 		##############################################################################		 		

@@ -211,6 +211,9 @@
 
 		
 			$crons_data =$this->__BROWSE($option);			
+			
+			$this->__PRINT_R($crons_data);
+			
 			foreach($crons_data["data"] as $row)
 			{
 				
@@ -224,7 +227,7 @@
 				unset($row["cron_cantidad"]);
 				unset($row["cron_unidad"]);
 				
-				$this->movimiento_obj->__SAVE($row);
+				#$this->movimiento_obj->__SAVE($row);
 			}
 			
 			#$this->__PRINT_R($crons_data["data"]);

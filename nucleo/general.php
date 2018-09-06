@@ -485,7 +485,7 @@
 								
 								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
 								
-								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo;
 							";
 							eval($eval);
 						}												

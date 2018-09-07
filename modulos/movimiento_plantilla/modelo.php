@@ -199,8 +199,8 @@
 						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),fecha), INTERVAL cron_cantidad MONTH)
 						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),fecha), INTERVAL cron_cantidad YEAR)
 					END				
-			"]		="fecha";
-			$option["select"]["IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),fecha)"]		="caducidad";
+			"]		="caducidad";
+			$option["select"]["IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),fecha)"]		="fecha";
 			
 			$option["where"][]="(LEFT(caducidad,10)= LEFT(now(),10) OR LEFT(caducidad,10)='0000-00-00') ";
 			$option["where"][]="IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),LEFT(fecha,10))=LEFT(now(),10)";
@@ -215,6 +215,10 @@
 				$this->__SAVE($rows);
 				
 				$rows["tipo"]="SO";
+				$fecha					=$rows["caducidad"];
+				$rows["caducidad"]		=$rows["fecha"];
+				$rows["fecha"]			=$fecha;
+				
 				$rows["folio"]=$this->movimiento_obj->__FOLIOS();
 				
 				unset($rows["id"]);								

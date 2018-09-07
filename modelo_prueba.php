@@ -1,4 +1,9 @@
 <?php
+	
+	
+	$objeto											=new movimiento_plantilla();		
+	
+
 	class prueba extends position
 	{   
 		public function __CONSTRUCT()

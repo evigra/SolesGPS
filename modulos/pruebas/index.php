@@ -1,8 +1,6 @@
 <?php	
-	$objeto											=new movimiento_plantilla();		
+	$objeto											=new pruebas();		
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($_SESSION);
-	
 	# CARGANDO PLANTILLAS GENERALES
 	$objeto->words["system_body"]               	=$objeto->__TEMPLATE($objeto->sys_html."system_body"); 		
 	$objeto->words["system_module"]             	=$objeto->__TEMPLATE($objeto->sys_html."system_module");	
@@ -115,7 +113,7 @@
     }    
     else
     {
-    	#$objeto->__CRON();
+    	$objeto->__CRON();
     	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(

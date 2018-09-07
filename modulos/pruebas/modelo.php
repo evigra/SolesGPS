@@ -1,5 +1,5 @@
 <?php
-	class prueba extends movimiento_plantilla
+	class pruebas extends movimiento_plantilla
 	{   
 		##############################################################################	
 		##  Propiedades	

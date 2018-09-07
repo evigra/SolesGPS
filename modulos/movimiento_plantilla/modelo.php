@@ -213,7 +213,7 @@
 			{				
 				$this->__PRINT_R($rows);
 				$this->sys_primary_id	=$rows["id"];
-				#$this->__SAVE($rows);
+				$this->__SAVE($rows);
 				
 				$rows["tipo"]="SO";
 				$rows["folio"]			=$this->movimiento_obj->__FOLIOS();
@@ -230,7 +230,7 @@
 								
 				$this->sys_primary_id="";
 				$this->__PRINT_R($rows);
-				#$this->movimiento_obj->__SAVE($rows);
+				$this->movimiento_obj->__SAVE($rows);
 			}
 		}		
    		public function __GENERAR_PDF()

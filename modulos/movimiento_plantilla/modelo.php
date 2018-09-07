@@ -230,8 +230,8 @@
 				}
 								
 				$this->sys_primary_id="";
-				#$this->__PRINT_R($row);
-				$this->movimiento_obj->__SAVE($row);
+				$this->__PRINT_R($rows);
+				#$this->movimiento_obj->__SAVE($rows);
 			}
 		}		
    		public function __GENERAR_PDF()

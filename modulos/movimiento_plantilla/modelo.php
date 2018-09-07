@@ -261,6 +261,8 @@
 			if(!isset($option["where"]))	$option["where"]=array();
 			
 			$option["where"][]				="tipo='PL'";   # PL plantilla
+    		$option["where"][]				="company_id={$_SESSION["company"]["id"]}";    		
+
 			return parent::__BROWSE($option);
 		}							
 	}

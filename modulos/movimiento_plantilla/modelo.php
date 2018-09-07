@@ -224,8 +224,8 @@
 				
 				foreach($rows["movimientos_ids"] as $indice => $row)
 				{
-					$rows["movimientos_ids"][$indice]["movimiento_id"]=NULL;
 					unset($rows["movimientos_ids"][$indice]["movimiento_id"]);
+					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
 								
 				$this->sys_primary_id="";

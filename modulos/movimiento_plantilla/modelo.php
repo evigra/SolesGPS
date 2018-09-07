@@ -216,9 +216,12 @@
 				
 				$row["tipo"]="SO";
 				$row["folio"]=$this->movimiento_obj->__FOLIOS();
+				
 				unset($row["id"]);								
 				unset($row["cron_cantidad"]);
-				unset($row["cron_unidad"]);				
+				unset($row["cron_unidad"]);
+								
+				$this->sys_primary_id="";
 				$this->movimiento_obj->__SAVE($row);
 			}
 		}		

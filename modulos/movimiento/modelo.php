@@ -148,7 +148,6 @@
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($datas);
     		## GUARDAR USUARIO
     		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;

@@ -211,7 +211,6 @@
 	
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->__PRINT_R($rows);
 				$this->sys_primary_id	=$rows["id"];
 				$this->__SAVE($rows);
 				
@@ -229,7 +228,6 @@
 				}
 								
 				$this->sys_primary_id="";
-				$this->__PRINT_R($rows);
 				$this->movimiento_obj->__SAVE($rows);
 			}
 		}		

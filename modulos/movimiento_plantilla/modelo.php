@@ -227,7 +227,7 @@
 					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
 								
-				$this->sys_primary_id="";
+				$this->movimiento_obj->sys_primary_id="";
 				$this->movimiento_obj->__SAVE($rows);
 			}
 		}		

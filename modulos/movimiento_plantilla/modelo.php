@@ -209,20 +209,26 @@
 		
 			$crons_data =$this->__BROWSE($option);			
 	
-			foreach($crons_data["data"] as $row)
+			foreach($crons_data["data"] as $rows)
 			{				
-				$this->sys_primary_id=$row["id"];
-				$this->__SAVE($row);
+				$this->sys_primary_id=$rows["id"];
+				$this->__SAVE($rows);
 				
-				$row["tipo"]="SO";
-				$row["folio"]=$this->movimiento_obj->__FOLIOS();
+				$rows["tipo"]="SO";
+				$rows["folio"]=$this->movimiento_obj->__FOLIOS();
 				
-				unset($row["id"]);								
-				unset($row["cron_cantidad"]);
-				unset($row["cron_unidad"]);
+				unset($rows["id"]);								
+				unset($rows["cron_cantidad"]);
+				unset($rows["cron_unidad"]);
+				
+				
+				foreach($rows["movimientos_ids"] as $indice => $row)
+				{
+					unset($rows[$indice]["movimiento_id"]);
+				}
 								
 				$this->sys_primary_id="";
-				$this->movimiento_obj->__SAVE($row);
+				$this->movimiento_obj->__SAVE($rows);
 			}
 		}		
    		public function __GENERAR_PDF()

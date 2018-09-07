@@ -211,24 +211,23 @@
 	
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->sys_primary_id=$rows["id"];
+				$this->sys_primary_id	=$rows["id"];
 				$this->__SAVE($rows);
 				
 				$rows["tipo"]="SO";
-				$fecha					=$rows["caducidad"];
-				$rows["caducidad"]		=$rows["fecha"];
-				$rows["fecha"]			=$fecha;
+				#$fecha					=$rows["caducidad"];
+				#$rows["caducidad"]		=$rows["fecha"];
+				#$rows["fecha"]			=$fecha;
 				
-				$rows["folio"]=$this->movimiento_obj->__FOLIOS();
+				$rows["folio"]			=$this->movimiento_obj->__FOLIOS();
 				
 				unset($rows["id"]);								
 				unset($rows["cron_cantidad"]);
 				unset($rows["cron_unidad"]);
 				
-				
 				foreach($rows["movimientos_ids"] as $indice => $row)
 				{
-					unset($rows[$indice]["movimiento_id"]);
+					unset($rows["movimientos_ids"][$indice]["movimiento_id"]);
 				}
 								
 				$this->sys_primary_id="";

@@ -165,7 +165,6 @@
 		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		#$this->__PRINT_R($datas);
     		if(@$datas["tipo"]=="")		$datas["tipo"]				="PL";
     		
 			$datas["registro"]			=$this->sys_date;
@@ -241,17 +240,6 @@
 			if(!isset($option["where"]))	$option["where"]=array();
 			
 			$option["where"][]				="tipo='PL'";   # PL plantilla
-			
-			
-			#$option["select"][]							="*";
-			#$option["select"]["concat(tipo,folio)"]		="folio";
-			
-			#$option["from"]								="movimiento m";
-			
-			#$option["template_title"]	                = $this->sys_module . "html/report_title";
-			#$option["template_title"]	                = "";
-			#$option["template_body"]	                = $this->sys_module . "html/report_body";
-	
 			
 			if(!isset($option["actions"]))	
 			{	

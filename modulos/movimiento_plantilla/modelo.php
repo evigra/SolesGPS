@@ -215,10 +215,6 @@
 				$this->__SAVE($rows);
 				
 				$rows["tipo"]="SO";
-				#$fecha					=$rows["caducidad"];
-				#$rows["caducidad"]		=$rows["fecha"];
-				#$rows["fecha"]			=$fecha;
-				
 				$rows["folio"]			=$this->movimiento_obj->__FOLIOS();
 				
 				unset($rows["id"]);								
@@ -227,6 +223,7 @@
 				
 				foreach($rows["movimientos_ids"] as $indice => $row)
 				{
+					$rows["movimientos_ids"][$indice]["movimiento_id"]=NULL;
 					unset($rows["movimientos_ids"][$indice]["movimiento_id"]);
 				}
 								

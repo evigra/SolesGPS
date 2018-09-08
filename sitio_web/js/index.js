@@ -1327,7 +1327,7 @@ styles:
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
 	    		    	
-	    	if(vehicle["sp"]>0)	
+	    	if(vehicle["sp"]>4)	
 	    	{
 	    		simulation_stop=0;
 	    		simulation_time=600;

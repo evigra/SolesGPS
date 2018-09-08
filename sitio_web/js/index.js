@@ -1326,8 +1326,7 @@ styles:
         {        	
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
-	    	
-	    	
+	    		    	
 	    	if(vehicle["sp"]>0)	
 	    	{
 	    		simulation_stop=0;
@@ -1335,15 +1334,15 @@ styles:
 	    	}	
 	    	else	
 	    	{
-	    		if(simulation_stop<20)
-	    		{
-	    			simulation_stop=simulation_stop+1;
-	    			simulation_time=300;
-	    		}	
-	    		else
-	    		{
-	    			simulation_time=5;
-	    		}	
+					if(simulation_stop<20)
+					{
+						simulation_stop=simulation_stop+1;
+						if(simulation_time==600)    simulation_time=300;
+					}	
+					else
+					{
+						if(simulation_time==300)	simulation_time=5;
+					}	
 	    	}	
 	    	
 	    	vehicle["se"]		="simulator";

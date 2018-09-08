@@ -3,10 +3,10 @@
 	{   
 		public function __CONSTRUCT()
 		{
-			$this->sys_fields["start"]["type"]		="date";
+			$this->sys_fields["start"]["type"]		="datetime";
 			$this->sys_fields["start"]["title"]		="Fecha Inicial";
 
-			$this->sys_fields["end"]["type"]		="date";
+			$this->sys_fields["end"]["type"]		="datetime";
 			$this->sys_fields["end"]["title"]		="Fecha Final";
 			
 			$this->sys_fields["speed"]["type"]		="input";

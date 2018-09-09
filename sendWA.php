@@ -27,6 +27,8 @@ foreach($my_php_arr as $item)
 }
 */
 // Send Message
+
+/*
 $destination = "5213141182618";
 $message = "Funciona desde mi lap";
 $api_url = "http://panel.apiwha.com/send_message.php";
@@ -78,13 +80,45 @@ https://www.twilio.com/console/api/api-explorer/messages/create?Format=json&Acco
 	ini_set('display_errors', 1);
 	error_reporting(-1);	
 	
+curl 'https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json' -X POST \
+--data-urlencode 'To=whatsapp:+5213143520972' \
+--data-urlencode 'From=whatsapp:+14155238886' \
+--data-urlencode 'Body=Mensaje desde web' \
+-u AC46f33ea3362e521534d758937494407b:31ad51fd021cf3c89ea07c100f5d4113	
 	
 #	https://timberwolf-mastiff-9776.twil.io/demo-reply
-	
+*/	
+/*
+__referrer	sms-mms
+AccountSid	AC46f33ea3362e521534d758937494407b
+Body	NUEVO MENSAJE
+Format	json
+From	whatsapp:+14155238886
+Location	/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json
+Method	post
+To	whatsapp:+5213143520972
+
+
+
+&__referrer=sms-mms&AccountSid=AC46f33ea3362e521534d758937494407b&Body=NUEVO MENSAJE&Format=json&From=whatsapp:+14155238886&Location=/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json&Method=post&To=whatsapp:+5213143520972
+
+*/
+
+
 	$url			="https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json";
+	$url			="https://api.twilio.com/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json";
+	
+#	$url			="https://timberwolf-mastiff-9776.twil.io/demo-reply";
+	
 	#$url			="https://timberwolf-mastiff-9776.twil.io/demo-reply";
 	$username		="AC46f33ea3362e521534d758937494407b";
 	$password		="31ad51fd021cf3c89ea07c100f5d4113";
+	
+	
+	
+	$username		="AC46f33ea3362e521534d758937494407b";
+	$password		="31ad51fd021cf3c89ea07c100f5d4113";
+	
 
 	$postvars = array( 
 		'to'			=>'whatsapp:+5213143520972', 
@@ -92,6 +126,7 @@ https://www.twilio.com/console/api/api-explorer/messages/create?Format=json&Acco
 		'Body'			=>'SolesGPS Lalo desde lap',
 	);
 
+	$postvars="To=whatsapp:+5213143520972&__referrer=sms-mms&AccountSid=AC46f33ea3362e521534d758937494407b&Body=NUEVO MENSAJE DE LAP&Format=json&From=whatsapp:+14155238886&Location=/2010-04-01/Accounts/AC46f33ea3362e521534d758937494407b/Messages.json&Method=post";
 
 	$ch = curl_init();
 	
@@ -106,8 +141,8 @@ https://www.twilio.com/console/api/api-explorer/messages/create?Format=json&Acco
 	curl_close($ch);
 	
 	echo "entra <pre>";
-	
+	print_r($output);
 	print_r($info);
 	echo "FIn </pre>";
-*/
+
 ?>

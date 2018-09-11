@@ -102,14 +102,11 @@
     		if(is_null($option)) 			$option					=array();
     		
     		if(!isset($option["where"])) 	$option["where"]		=array();
-    		
-    		$option["select"][]						="alert.*";
-    		$option["select"]["descripcion"]		="cod_html";
-    		
+    		    		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
     		$option["order"]		="fechaevento DESC";
     		
-    		#$option["echo"]			="Alert";
+    		$option["echo"]			="Alert";
     		
     		return parent::__BROWSE($option);
 		}

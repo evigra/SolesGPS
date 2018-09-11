@@ -98,7 +98,7 @@
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
     		$option["order"]		="fechaevento DESC";
     		
-    		#$option["echo"]			="Alert";
+    		$option["echo"]			="Alert";
     		
     		return parent::__BROWSE($option);
 		}

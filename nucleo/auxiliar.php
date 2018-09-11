@@ -1117,6 +1117,11 @@
 							if($attr=="")	$attr="style=\"height:150px;\"";
 					        $words["$campo"]  ="<textarea id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
 					    } 			           
+					    if($valor["type"]=="html")	
+					    {
+					        $words["$campo"]  ="{$valor["value"]}";
+					    } 			           
+
 					    if($valor["type"]=="password")	
 					    {					        
 					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo";

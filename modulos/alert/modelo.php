@@ -33,6 +33,14 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"cod_html"	    =>array(
+			    "title"             => "Descripcion",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",			    
+			),
+
 			"asunto"	    =>array(
 			    "title"             => "Asunto",
 			    "showTitle"         => "si",
@@ -94,6 +102,9 @@
     		if(is_null($option)) 			$option					=array();
     		
     		if(!isset($option["where"])) 	$option["where"]		=array();
+    		
+    		$option["select"][]						="alert.*";
+    		$option["select"]["descripcion"]		="cod_html";
     		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
     		$option["order"]		="fechaevento DESC";

@@ -1119,7 +1119,7 @@
 					    } 			           
 					    if($valor["type"]=="html")	
 					    {
-					        $words["$campo"]  ="{$valor["value"]}";
+					        $words["$campo"]  ="LALO - {$valor["value"]}";
 					    } 			           
 
 					    if($valor["type"]=="password")	

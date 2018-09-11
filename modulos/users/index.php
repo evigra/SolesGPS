@@ -2,7 +2,7 @@
 	$objeto											=new users();
 	$objeto->device_obj								=new devices();
 
-	#$objeto->__SESSION();
+	$objeto->__SESSION();
 	
 	# TEMPLATES O PLANTILLAS ELEJIDAS PARA EL MODULO
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	

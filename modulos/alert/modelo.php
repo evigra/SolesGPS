@@ -29,7 +29,7 @@
 			"descripcion"	    =>array(
 			    "title"             => "Descripcion",
 			    "showTitle"         => "si",
-			    "type"              => "html",
+			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),

@@ -295,6 +295,8 @@
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
+    	    
+    	    $this->__PRINT_R($datas);
 
     		return parent::__SAVE($datas,$option);
 		}		

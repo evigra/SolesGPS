@@ -20,13 +20,6 @@
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",
-			    /*
-			    "relation"          => "one2many",			    
-			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
-			    "class_field_o"    	=> "company_id",
-			    "class_field_m"    	=> "id",			    			    
-			    */
 			),			
 			"name"	    =>array(
 			    "title"             => "Alerta",
@@ -79,13 +72,6 @@
 			    "type"              => "input",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "geofences",
-			    /*
-			    #"class_path"        => "modulos/geofences/modelo.php",
-			    #"class_field_l"    	=> "name",				# Label
-			    "class_field_o"    	=> "id",					# Origen
-			    "class_field_m"    	=> "geofences_id",			# Destino
-			    "value"             => "",			    			    
-			    */
 			),			
 			"devices_ids"	    =>array(
 			    "title"             => "Menu",
@@ -93,14 +79,6 @@
 			    "type"              => "input",			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "devices",
-			    /*
-			    #"class_path"        => "modulos/devices/modelo.php",
-			    #"class_field_l"    	=> "name",				# Label
-			    "class_field_o"    	=> "id",					# Origen
-			    "class_field_m"    	=> "devices_id",			# Destino
-			    "class_echo"    	=> "devices_id",			# Destino
-			    "value"             => "",			    
-			    */
 			),			
 		);				
 		##############################################################################	

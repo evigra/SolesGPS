@@ -629,7 +629,7 @@
 							
 							$eval="															
 								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();												
-								$"."class_field_m										=$"."valor_campo[\"class_field_m\"];	
+								$"."class_field_m										=@$"."valor_campo[\"class_field_m\"];	
 								foreach($"."valores as $"."valor)
 								{	
 									if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))

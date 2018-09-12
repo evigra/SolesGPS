@@ -626,19 +626,14 @@
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
-							
-							
-							
 							$eval="															
 								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();												
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
 								foreach($"."valores as $"."valor)
-								{	
-								
-									##if(!(isset($"."valor_campo[$"."class_field_m]))
-									
+								{									
+									##if(!(isset($"."valor_campo[$"."class_field_m]))									
 									if(isset($"."class_field_m))
 									{			
 										if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
@@ -650,10 +645,12 @@
 										$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
 									else
 										$"."this->$campo"."_obj->sys_primary_id		=\"\";
+							
 									$"."this->$campo"."_obj->__SAVE($"."valor);		
 									
 								}	
 							";
+							$this->__PRINT_R($eval);
 							eval($eval);														
 							unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
 							

@@ -45,7 +45,6 @@
 		public function autocomplete_modulos()		
     	{	
     		$option					=array();
-  			$option["select"]		=array();    		
     		$option["where"]		=array();    		
     		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";

@@ -79,7 +79,7 @@
 		$data										=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]	=$data["html"];	
     }
-	$objeto->words["module_title"]              ="$module_title Compañias";
+	$objeto->words["module_title"]              ="$module_title Variables";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             ="";
 	$objeto->words["module_right"]              =$objeto->__BUTTON($module_right);

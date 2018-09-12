@@ -606,8 +606,7 @@
 						unset($option["open"]);
 									
 						$this->__PRINT="Datos guardados correctamente";
-											
-						
+																	
 						$option["close"]=1;
 						
 						if($insert==1)
@@ -632,29 +631,31 @@
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
 								foreach($"."valores as $"."valor)
-								{									
-									##if(!(isset($"."valor_campo[$"."class_field_m]))									
-									if(isset($"."class_field_m))
-									{			
-										if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
-										 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
-									}
-									$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
-									
-									if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
-										$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
-									else
-										$"."this->$campo"."_obj->sys_primary_id		=\"\";
-							
-									$"."this->$campo"."_obj->__SAVE($"."valor);		
-									
+								{	
+									if(is_array($"."valor))
+									{								
+										##if(!(isset($"."valor_campo[$"."class_field_m]))									
+										if(isset($"."class_field_m))
+										{			
+											if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
+											 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
+										}
+										$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
+										
+										if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
+											$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
+										else
+											$"."this->$campo"."_obj->sys_primary_id		=\"\";
+								
+										
+										
+										$"."this->$campo"."_obj->__SAVE($"."valor);		
+									}	
 								}	
 							";
-							$this->__PRINT_R($eval);
+							#$this->__PRINT_R($eval);
 							eval($eval);														
 							unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
-							
-							
 						}
 						
 						if(!in_array($this->sys_table,$this->sys_modules))

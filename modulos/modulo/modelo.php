@@ -48,7 +48,13 @@
 		public function autocomplete_modulos()		
     	{	
     		$option					=array();
+  			$option["select"]		=array();    		
     		$option["where"]		=array();    		
+    		
+    		$option["select"][]		="*";
+    		$option["select"]["
+    			concat('../',clase,'/')
+    		"]	="sesion_start";
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
 			$return =$this->__BROWSE($option);    				

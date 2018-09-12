@@ -67,9 +67,14 @@
 			"sesion_start"	    =>array(
 			    "title"             => "Menu inicio",
 			    "showTitle"         => "no",
-			    "type"              => "img",
-			    "default"           => "",
+			    "type"              => "autocomplete",
 			    "value"             => "",			    
+			    "procedure"       	=> "autocomplete_modulos",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "modulo",
+			    "class_field_l"    	=> "name",				# Label
+			    "class_field_o"    	=> "sesion_start",
+			    "class_field_m"    	=> "sesion_start",			    
 			),						
 
 			"company_id"	    =>array(

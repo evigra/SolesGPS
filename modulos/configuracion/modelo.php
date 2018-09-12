@@ -48,7 +48,7 @@
 			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "objeto",
-			    "class_field_m"    	=> "id",			    
+			    "class_field_m"    	=> "name",			    
 			    
 			),
 

@@ -40,6 +40,11 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"menu"	    =>array(
+			    "title"             => "URL",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			),
 			
 		);						
 		##############################################################################	
@@ -51,10 +56,6 @@
   			$option["select"]		=array();    		
     		$option["where"]		=array();    		
     		
-    		$option["select"][]		="*";
-    		$option["select"]["
-    			concat('../',clase,'/')
-    		"]	="sesion_start";
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
 			$return =$this->__BROWSE($option);    				

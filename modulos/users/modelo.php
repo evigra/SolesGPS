@@ -74,7 +74,7 @@
 			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "sesion_start",
-			    "class_field_m"    	=> "sesion_start",			    
+			    "class_field_m"    	=> "menu",			    
 			),						
 
 			"company_id"	    =>array(

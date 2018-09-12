@@ -38,14 +38,10 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 	    	);	    	
-	    	$objeto->words["module_body"]   =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
-	    	
-	    	$objeto->words                  =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+    	$objeto->words["module_body"]   =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+    	
+    	$objeto->words                  =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 			
-			if($objeto->sys_fields["files_id"]["value"]!="")
-	    		$objeto->words["img_files_id"]	=$objeto->__SHOW_FILE($objeto->sys_fields["files_id"]["value"]);
-	    	else	
-	    		$objeto->words["img_files_id"]	="";
     }	
 	elseif($objeto->sys_section=="kanban")
 	{

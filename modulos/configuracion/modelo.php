@@ -41,7 +41,15 @@
 			"objeto"	    	=>array(
 			    "title"             => "Objeto",
 			    "showTitle"         => "si",
-			    "type"              => "input",
+			    "type"              => "autocomplete",
+			    "value"             => "",			    
+			    "procedure"       	=> "autocomplete_modulos",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "modulo",
+			    "class_field_l"    	=> "name",				# Label
+			    "class_field_o"    	=> "objeto",
+			    "class_field_m"    	=> "id",			    
+			    
 			),
 
 			"valor"	    =>array(

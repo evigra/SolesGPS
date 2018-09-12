@@ -290,7 +290,7 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{   
-    	    $datas["company_id"]		=$_SESSION["company"]["id"];
+    	    $datas["company_id"]		=@$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    

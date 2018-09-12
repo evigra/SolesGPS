@@ -56,7 +56,7 @@
 			array("report"=>"Reporte"),
 	    );
 
-		$objeto->__PRINT_R($objeto->sys_fields);
+		#$objeto->__PRINT_R($objeto->sys_fields);
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
     	$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	

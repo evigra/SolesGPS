@@ -53,7 +53,8 @@
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/devices/ajax/autocomplete.php",
+			    #"source"           	=> "../modulos/devices/ajax/autocomplete.php",
+			    "procedure"       	=> "autocomplete_devices",
 			    "value"             => "",			    
 			    
 			    "relation"          => "one2many",			    
@@ -92,9 +93,7 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		$datas["company_id"]    =$_SESSION["company"]["id"];
-    	    $alert_id				=parent::__SAVE($datas,$option);
-    	    
-
+    	    return parent::__SAVE($datas,$option);
 		}						
 		public function __BROWSE($option=NULL)
     	{

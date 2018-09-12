@@ -290,7 +290,7 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{   
-    		$this->__PRINT_R($datas);
+    		#$this->__PRINT_R($datas);
     	    $datas["company_id"]		=@$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
@@ -368,7 +368,18 @@
 			$return =$this->__VIEW_REPORT($option);			
 			#$this->__PRINT_R($this->sys_sql);			
 			return	$return;     	
-		}		
+		}
+		public function autocomplete_devices()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
+    		$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+    		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
+				
 		public function devices_user($user=NULL)
     	{
     		$return="";

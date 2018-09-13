@@ -362,8 +362,6 @@
 			$font		=$option["font"];
 			$name		=$option["name"];
 			
-		
-
 			$iorder									="";			
 			$title									=@$this->sys_fields[$font]["title"];
 						
@@ -669,7 +667,7 @@
 					$request_campo		="{$this->sys_name}_$campo";
 					if(isset($_REQUEST[$request_campo]))
 					{
-						$valor			=$_REQUEST[$request_campo];
+						$valor					=$_REQUEST[$request_campo];
 						if(!is_array($valor)) $valor=htmlentities($valor);						
 						$this->__REQUEST_AUX($campo,$valor);						
 						unset($_REQUEST["$request_campo"]);
@@ -677,9 +675,9 @@
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 					{											
 						$eval="
-							$"."this->sys_fields[\"$campo\"][\"value\"]=\"0\";
-							$"."this->$campo=\"0\";
-							$"."this->request[\"$campo\"]=\"0\";
+							$"."this->sys_fields[\"$campo\"][\"value\"]		=\"0\";
+							$"."this->$campo								=\"0\";
+							$"."this->request[\"$campo\"]					=\"0\";
 						";
 						if(eval($eval)===false)	
 							echo ""; #$eval; ---------------------------					

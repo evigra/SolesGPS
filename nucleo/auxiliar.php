@@ -1302,7 +1302,7 @@
 									"view"					=>"html",									
 								);								
 
-								$words						=$this->__MANYMANY($option);
+								$words						=$this->__MANY2MANY($option);
 							}
 							
 						}	
@@ -1463,11 +1463,10 @@
 								
 				$"."option_report										=array();				
 				
-				/*
+				
 				$"."option_report[\"where\"]							=array(
 					\"{$valor["class_field_m"]}='$class_one_id'\"
 				);
-				*/
 				
 				$"."option_report[\"template_title\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_title\";
 				$"."option_report[\"template_body\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_body\";

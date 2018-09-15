@@ -1463,7 +1463,8 @@
 								
 				$"."option_report										=array();				
 				
-				/*
+				$"."option_report[\"echo\"]								=\"aaaa\";
+				/*				
 				$"."option_report[\"where\"]							=array(
 					\"{$valor["class_field_m"]}='$class_one_id'\"
 				);

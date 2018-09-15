@@ -296,7 +296,7 @@
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
     	    
-    	    $this->__PRINT_R($datas);
+    	    #$this->__PRINT_R($datas);
 
     		return parent::__SAVE($datas,$option);
 		}		
@@ -481,7 +481,7 @@
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 			
-			$this->__PRINT($datas);
+			#$this->__PRINT($datas);
 			/*
 			foreach($datas as $row)
 			{

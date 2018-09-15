@@ -1483,7 +1483,7 @@
 
 				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->$campo"."_obj->words);									
 			";				
-			
+			$this->__PRINT_R($eval);
 			eval($eval);	
 			
 			return $words;

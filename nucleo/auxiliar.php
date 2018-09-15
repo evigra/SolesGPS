@@ -985,7 +985,10 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
+					    	if(@$this->request["sys_section_".$this->sys_name]=="show")
+					    		$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+					    	else					    	
+						        $words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";
 					        
 					    } 
 					    if($valor["type"]=="date")	
@@ -993,18 +996,21 @@
 					    	$js_auto="";
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
-							    $words["$campo"]  ="
-							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-					    			<script>
-										$(\"input#$campo".".{$this->sys_name}\").datepicker({
-											dateFormat:\"yy-mm-dd\",
-											dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
-											monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
-											monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
-											$js_auto
-										});
-							    	</script>			            	
-					        	";
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+								else					        
+									$words["$campo"]  ="
+										<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+										<script>
+											$(\"input#$campo".".{$this->sys_name}\").datepicker({
+												dateFormat:\"yy-mm-dd\",
+												dayNamesMin: [\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
+												monthNames: [\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
+												monthNamesShort: [\"Ene\", \"Feb\", \"Mar\", \"Abr\", \"May\", \"Jun\", \"Jul\", \"Ago\", \"Sep\", \"Oct\", \"Nov\", \"Dic\"]
+												$js_auto
+											});
+										</script>			            	
+							    	";
 							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";	
 					    } 
@@ -1013,6 +1019,9 @@
 					    	$js_auto="";
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+								else					        
 							    $words["$campo"]  ="
 							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
@@ -1055,7 +1064,9 @@
 					        }
    							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{					        
-
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+								else							
 							    $words["$campo"]  ="
 							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"><br>$titulo
 					    			<script>
@@ -1083,8 +1094,6 @@
 							</div>$titulo
 							<br>
 							";
-
-
 					    }      
 					    if($valor["type"]=="file")	
 					    {
@@ -1113,7 +1122,10 @@
 					    if($valor["type"]=="textarea")	
 					    {
 							if($attr=="")	$attr="style=\"height:150px;\"";
-					        $words["$campo"]  ="<textarea id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
+					    	if(@$this->request["sys_section_".$this->sys_name]=="show")
+					    		$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+					    	else							
+						        $words["$campo"]  ="<textarea id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea><br>$titulo";
 					    } 			           
 					    if($valor["type"]=="html")	
 					    {
@@ -1122,6 +1134,9 @@
 
 					    if($valor["type"]=="password")	
 					    {					        
+					    	if(@$this->request["sys_section_".$this->sys_name]=="show")
+					    		$words["$campo"]  ="*********<br>$titulo";
+					    	else					    
 					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\"><br>$titulo";
 					    }    
 					    if($valor["type"]=="select")	
@@ -1132,13 +1147,18 @@
 							    foreach($valor["source"] as $value =>$text)
 							    {
 							    	$selected="";
-							    	if($valor["value"]==$value) $selected="selected";
+							    	if($valor["value"]==$value) 
+							    	
+							    		$selected="selected";
 							    	$options.="<option value=\"$value\" $selected>$text</option>";			            
-							    }			            
-							    $words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
-							    		$options
-							    	</select><br>$titulo
-							    ";
+							    }
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
+								else							    			            
+									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
+											$options
+										</select><br>$titulo
+									";
 							}					        
 							else	$words["$campo"]  ="$text<br>$titulo";
 							
@@ -1204,50 +1224,54 @@
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{							
 								if(!isset($valor["procedure"]))	$valor["procedure"]="";
-							    $words["$campo"]  ="
-							    	<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-							    	<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-							    	<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
-							    	<script>
-										$(\"div#auto_$campo\").hide();
-										$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
-										{		
-											source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
-											dataType: 	\"jsonp\",
-											$js_auto
-											select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
-											{												
-												if(typeof auto_$campo === 'function') 								
-												{														
-													auto_$campo(ui);
-												}									
-												else
-												{	
-													if(ui.item.clave==\"create\")
-													{																													
-														$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
-														$(\"div#auto_$campo\").dialog({
-															buttons: {
-																\"Registrar\": function() {													
-																	$( this ).dialog(\"close\");
-																},
-																\"Cerrar\": function() {
-																	$( this ).dialog(\"close\");
-																}
-															},										
-															width:\"700px\"
-														});
-													}
+								
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$label}<br>$titulo";
+								else								
+									$words["$campo"]  ="
+										<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+										<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
+										<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
+										<script>
+											$(\"div#auto_$campo\").hide();
+											$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
+											{		
+												source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
+												dataType: 	\"jsonp\",
+												$js_auto
+												select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
+												{												
+													if(typeof auto_$campo === 'function') 								
+													{														
+														auto_$campo(ui);
+													}									
 													else
-													{
-														$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
-														$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+													{	
+														if(ui.item.clave==\"create\")
+														{																													
+															$(\"div#auto_$campo div\").removeClass(\"mainTable\");													
+															$(\"div#auto_$campo\").dialog({
+																buttons: {
+																	\"Registrar\": function() {													
+																		$( this ).dialog(\"close\");
+																	},
+																	\"Cerrar\": function() {
+																		$( this ).dialog(\"close\");
+																	}
+																},										
+																width:\"700px\"
+															});
+														}
+														else
+														{
+															$(\"input#$campo".".{$this->sys_name}\").val(ui.item.clave);					
+															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
+														}
 													}
-												}
-											}				
-										});				            	
-							    	</script>
-							    ";
+												}				
+											});				            	
+										</script>
+									";
 							}					    
 							else
 							{
@@ -1588,6 +1612,16 @@
 			
 			return $view;
 		}    	
+    	##############################################################################    
+		public function __VIEW_SHOW($template)
+		{
+			#$this->__INPUT_TYPE("font");
+			$this->__SYS_HISTORY();
+			$view   =$this->__TEMPLATE("$template");
+			$view	=$this->__VIEW_INPUTSECTION($view);
+			return $view;
+		} 		
+
 		public function __VIEW_INPUTSECTION($view, $option=array())
 		{								
 			$sys_section	=@$this->request["sys_section_".$this->sys_name];
@@ -1863,14 +1897,6 @@
 			$view =$this->__VIEW_INPUTSECTION($view, $option);
 			return $view;
 		}    	
-    	##############################################################################    
-		public function __VIEW_SHOW($template)
-		{
-			$this->__INPUT_TYPE("font");
-			$view   =$this->__TEMPLATE("$template");
-			$view	=$this->__VIEW_INPUTSECTION($view);
-			return $view;
-		} 		
     	##############################################################################        
     	public function __FOLIOS($option)
     	{								

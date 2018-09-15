@@ -29,18 +29,10 @@
 			"descripcion"	    =>array(
 			    "title"             => "Descripcion",
 			    "showTitle"         => "si",
-			    "type"              => "textarea",
-			    "default"           => "",
-			    "value"             => "",			    
-			),
-			"cod_html"	    =>array(
-			    "title"             => "Descripcion",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
 			    "value"             => "",			    
 			),
-
 			"asunto"	    =>array(
 			    "title"             => "Asunto",
 			    "showTitle"         => "si",

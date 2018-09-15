@@ -1299,11 +1299,10 @@
 									"class_field_id"		=>"",
 									"class_field_value"		=>$valor,
 									"words"					=>$words,
-									"view"					=>"html",
-									
+									"view"					=>"html",									
 								);								
 
-								$words						=$this->__MANY2ONE($option);
+								$words						=$this->__MANYMANY($option);
 							}
 							
 						}	
@@ -1413,7 +1412,82 @@
 			
 			return $words;
 		}
+
     	##############################################################################    
+		public function __MANY2MANY($option)		
+		{
+			$class_id			=@$option["class_id"];
+			$class_one			=$option["class_one"];
+			$class_one_id		=$option["class_one_id"];
+			
+			$campo				=$option["class_field"];
+			$class_field_id		=$option["class_field_id"];
+			$valor				=$option["class_field_value"];
+			
+			$words				=$option["words"];                                                                                                                                                                                                                                                          
+			$index				=$option["view"];
+									
+			if(isset($option["json"]))
+			{
+				$json	=$option["json"];										
+			}
+						
+			$eval="
+				$"."option_$campo		=array(				
+					\"memory\"			=>\"$campo\",
+					\"class_one\"		=>\"$class_one\",
+				);
+			
+				$"."this->$campo"."_obj									=new {$valor["class_name"]}($"."option_$campo);
+								
+				if(isset($"."json))
+				{								
+					$"."sys_primary_field								=$"."this->$campo"."_obj->sys_primary_field;
+			
+					if(isset($"."class_id) AND $"."class_id>0)
+						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+					
+					$"."this->$campo"."_obj->__SAVE($"."json);
+				}
+				
+				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
+				
+				$"."this->$campo"."_obj->words[\"many2one_form\"]		=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
+				$"."this->$campo"."_obj->words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
+												
+				$"."this->$campo"."_obj->words[\"many2one_report_id\"]	=$"."campo;
+								
+
+				if(isset($"."words[\"html_head_js\"]))								
+					$"."words[\"html_head_js\"] 						.= $"."this->$campo"."_obj->words[\"html_head_js\"];
+								
+				$"."option_report										=array();				
+				
+				/*
+				$"."option_report[\"where\"]							=array(
+					\"{$valor["class_field_m"]}='$class_one_id'\"
+				);
+				*/
+				
+				$"."option_report[\"template_title\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_title\";
+				$"."option_report[\"template_body\"]	                = $"."this->$campo"."_obj->sys_module . \"html/report_body\";
+				$"."option_report[\"template_create\"]	                = $"."this->$campo"."_obj->sys_module . \"html/create\";
+				$"."option_report[\"template_option\"]	                = $"."option;
+				
+				$"."option_report[\"name\"]	                			= '$campo';
+				
+				$"."report_procedure									=$"."this->$campo"."_obj->__VIEW_REPORT($"."option_report	);
+
+				$"."this->$campo"."_obj->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
+
+				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->$campo"."_obj->words);									
+			";				
+			
+			eval($eval);	
+			
+			return $words;
+		}
+
 		public function __REPORT_MANY2ONE_JS($data)
 		{
 			$js="";	

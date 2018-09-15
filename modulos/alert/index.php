@@ -66,7 +66,7 @@
     elseif($objeto->sys_section=="show")
 	{
 		# TITULO DEL MODULO
-    	$module_title                	=	"Modificar ";
+    	$module_title                	=	"Mostrar ";
 
 		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
 		$module_left=array(
@@ -85,6 +85,7 @@
     	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
+    	$objeto->__PRINT_R($objeto->sys_fields);
     }	
 
     else

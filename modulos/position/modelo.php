@@ -349,6 +349,7 @@
                         else  'REPORTE DE TIEMPO'
 					END
                     as cve_evento,
+                    c.telefono as c_telefono,
 					CASE 
 						WHEN e.descripcion IS NOT NULL THEN e.descripcion
                         else 'REPORTE DE TIEMPO'
@@ -404,8 +405,8 @@
             	$speed_end					="0000-00-00 00:00:00";
             	$speed_start				="0000-00-00 00:00:00";
             	$asunto						="";
-            	if($row["speed_max"]>0 AND $row["speed"]*1.852 >= $row["speed_max"] AND $row["speed"]*1.852<=240)		$asunto="VELOCIDAD";
-            	else if($row["speed"]*1.852>=110 AND $row["speed"]*1.852<=240)											$asunto="VELOCIDAD";
+            	if($row["speed_max"]>0 AND $row["speed"]*1.852 >= $row["speed_max"] AND $row["speed"]*1.852<=180)		$asunto="VELOCIDAD";
+            	else if($row["speed"]*1.852>=110 AND $row["speed"]*1.852<=180)											$asunto="VELOCIDAD";
             	else
             	{
             		if($row["speed_start"]!="0000-00-00 00:00:00")
@@ -454,7 +455,7 @@
             		echo "<br>  ALERT {$row["event"]}";
             		$enviar_mail=0;	
 					$option_mail=array(
-						"to"		=>"evigra@gmail.com",
+						"to"		=>"{$row["mail_to"]}",
 						"bbc"		=>"evigra@gmail.com",
 						"title"		=>"SOLESGPS :: {$row["event"]}"
 					);						
@@ -468,7 +469,7 @@
             				fechaEvento	='{$row["devicetime"]}', 
             			";
             		#if($speed_end!="0000-00-00 00:00:00")            	
-            		if($speed_end!="0000-00-00 00:00:00" OR $speed_start!="0000-00-00 00:00:00")
+            		if($speed_end!="0000-00-00 00:00:00" AND $speed_start!="0000-00-00 00:00:00")
             		{	# VELOCIDAD
             			$enviar_mail=1;
             			$descripcion	="
@@ -484,7 +485,7 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
-
+						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta por exceso de velocidad");
 					}	
             		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
             		{	# BATERIA BAJA
@@ -504,6 +505,7 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
+						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta por falta de bateria");
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
             		{	# BATERIA BAJA
@@ -522,6 +524,7 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";														
+						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta SOS ");
 					}	
             		else if($row["event"]=="ALERTA BATERIA BAJA")
             		{	# BATERIA BAJA
@@ -540,6 +543,7 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
+						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta Bateria baja ");
 					}	
 
             		else

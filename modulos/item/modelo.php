@@ -179,6 +179,7 @@
 			    "class_field_m"    	=> "tax_id",				
 				#"class_field_l"    	=> "horario",	
 			),
+			/*
 			"tax_compra_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -194,7 +195,7 @@
 			    "class_field_m"    	=> "tax_id",				
 				#"class_field_l"    	=> "horario",	
 			),
-			
+			*/
 		);				
 		##############################################################################	
 		##  Metodos	

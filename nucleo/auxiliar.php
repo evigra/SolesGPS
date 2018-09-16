@@ -197,6 +197,7 @@
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------					
 							}
+							$this->__PRINT_R($this->sys_fields);
 						}
 					}    
 				}	

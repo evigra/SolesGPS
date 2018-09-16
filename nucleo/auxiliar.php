@@ -197,7 +197,8 @@
 								/*
 								$eval="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
 								if(@eval($eval)===false)	
-									$this->__PRINT_R("$eval"); #$eval; ---------------------------								        			
+									$this->__PRINT_R("$eval"); #$eval; ---------------------------			
+								*/						        			
 							}
 							#$this->__PRINT_R($this->sys_fields);
 						}
@@ -211,7 +212,7 @@
 		public function __TABLE_MAIL($option)
 		{
 
-
+	
 		}
 		public function __curl($option)
 		{

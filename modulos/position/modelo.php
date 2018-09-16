@@ -641,9 +641,9 @@
 							<tr>
 								<td colspan=\"4\">
 									<a href=\"{$position["sistema_web"]}$ruta\">
-									<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/streetview?size=600x300&location={$position["latitude"]},{$position["longitude"]}\"><br>
-			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\"><br>
-			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=600x300&maptype=hybrid&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\">				
+									<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}\"><br>
+			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\"><br>
+			        				<img width=\"600\" border=\"0\" alt=\"IMAGEN\" src=\"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=hybrid&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}\">				
 			        				</a>
 								</td>
 							</tr>

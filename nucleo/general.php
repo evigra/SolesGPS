@@ -490,6 +490,27 @@
 							eval($eval);
 						}												
 					}
+					if(@$this->sys_fields[$campo]["relation"]=="many2many")
+					{
+						foreach($return["data"] as $indice => $valor)
+						{
+							$id =   $return["data"]["$indice"][$class_field_o];
+							
+							$eval="
+								$"."obj_$campo   	=new {$value["class_name"]}();
+								/*								
+								$"."option_$campo=array(
+									\"where\"		=>array(\"$class_field_m='$id'\")
+								);
+								*/
+								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+							";
+							eval($eval);
+						}												
+					}
+
 				}
 			}
 				    		
@@ -646,9 +667,7 @@
 											$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
 										else
 											$"."this->$campo"."_obj->sys_primary_id		=\"\";
-								
-										
-										
+
 										$"."this->$campo"."_obj->__SAVE($"."valor);		
 									}	
 								}	

@@ -1469,6 +1469,7 @@
 			
 				$"."this->$campo"."_obj									=new {$valor["class_name"]}($"."option_$campo);
 								
+				/*								
 				if(isset($"."json))
 				{								
 					$"."sys_primary_field								=$"."this->$campo"."_obj->sys_primary_field;
@@ -1478,8 +1479,11 @@
 					
 					$"."this->$campo"."_obj->__SAVE($"."json);
 				}
+				*/
 				
 				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
+				
+				
 				
 				$"."this->$campo"."_obj->words[\"many2one_form\"]		=$"."this->$campo"."_obj->__VIEW_CREATE($"."this->$campo"."_obj->sys_module . \"html/create\");	
 				$"."this->$campo"."_obj->words							=$"."this->$campo"."_obj->__INPUT($"."this->$campo"."_obj->words,$"."this->$campo"."_obj->sys_fields);    
@@ -1492,8 +1496,10 @@
 								
 				$"."option_report										=array();				
 				
+				
+				/*
 				$"."option_report[\"echo\"]								=\"aaaa\";
-				/*				
+								
 				$"."option_report[\"where\"]							=array(
 					\"{$valor["class_field_m"]}='$class_one_id'\"
 				);

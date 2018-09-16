@@ -193,6 +193,8 @@
 							#$this->__PRINT_R($datas);
 							foreach($datas[0] as $field =>$value)
 							{
+								$this->sys_fields["$field"]["value"]=$value;
+								/*
 								$eval="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
 								if(@eval($eval)===false)	
 									$this->__PRINT_R("$eval"); #$eval; ---------------------------								        			

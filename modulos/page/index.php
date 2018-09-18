@@ -90,7 +90,7 @@
 	   	$data										=$objeto->users();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }        
-	else
+	elseif($objeto->sys_section=="report")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Reporte de ";
@@ -108,7 +108,7 @@
 		$option["template_title"]					=	$objeto->sys_module."html/report_title";
 		$option["template_body"]					=	$objeto->sys_module."html/report_body";
 		
-		$data										=$objeto->users($option);
+		$data										=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }

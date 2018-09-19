@@ -112,7 +112,31 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-    
+	else
+	{
+		# TITULO DEL MODULO
+    	$module_title                	=	"Reporte de ";
+
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
+    	$module_right=array(
+			array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			array("kanban"=>"Kanban"),
+			#array("report"=>"Reporte"),
+	    );
+	    
+	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
+		$option     								=	array();
+		$option["template_title"]					=	$objeto->sys_module."html/report_title";
+		$option["template_body"]					=	$objeto->sys_module."html/report_body";
+		
+		$data										=$objeto->__VIEW_REPORT($option);
+		$objeto->words["module_body"]				=$data["html"];
+		$module_title								="Reporte de ";
+	    $objeto->html                               =$objeto->__VIEW_TEMPLATE("nosystem", $objeto->words);
+	    $objeto->__VIEW($objeto->html);    
+		exit();
+    }    
     
 	$objeto->words["module_title"]              ="$module_title Page";
 	

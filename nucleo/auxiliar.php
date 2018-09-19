@@ -1315,7 +1315,7 @@
 								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
 								
 								$campo_many					=$valor["class_field_o"];
-								$value_many					=$this->sys_fields["$campo_many"]["value"];								
+								$value_many					=@$this->sys_fields["$campo_many"]["value"];								
 								
 								if($this->sys_section=="create" AND $this->request["sys_action_".$this->sys_object] == "__SAVE")
 									$value_many=0;	
@@ -1976,7 +1976,7 @@
 			{	
 				$campo									=$template_option["class_field"];
 				
-				if(isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
+				if(isset(@$_SESSION["SAVE"][@$this->class_one]["$campo"]) AND count(@$_SESSION["SAVE"]@[$this->class_one]["$campo"])>0)
 				{						
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];

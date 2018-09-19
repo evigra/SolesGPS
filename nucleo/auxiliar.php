@@ -1976,7 +1976,7 @@
 			{	
 				$campo									=$template_option["class_field"];
 				
-				if(isset(@$_SESSION["SAVE"][@$this->class_one]["$campo"]) AND count(@$_SESSION["SAVE"]@[$this->class_one]["$campo"])>0)
+				if(isset(@$_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];

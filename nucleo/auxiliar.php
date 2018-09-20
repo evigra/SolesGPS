@@ -1510,7 +1510,7 @@
 				$"."option_report[\"template_option\"]	                = $"."option;
 				
 				$"."option_report[\"name\"]	                			= '$campo';
-				#$"."option_report[\"echo\"]	                			= '$campo';
+
 				
 				$"."report_procedure									=$"."this->$campo"."_obj->__VIEW_REPORT($"."option_report	);
 

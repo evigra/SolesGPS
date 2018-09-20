@@ -498,7 +498,7 @@
 							
 							$eval="
 								$"."obj_$campo   	=new {$value["class_name"]}();
-								
+								$"."option_$campo=array();
 ####								
 	
 								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);

@@ -2022,7 +2022,7 @@
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		 
-					if(isset($this->sys_memory) AND isset($template_option["class_field"]))
+					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]))
 					{																		
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					}

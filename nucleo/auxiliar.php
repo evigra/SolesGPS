@@ -1469,7 +1469,6 @@
 			
 				$"."this->$campo"."_obj									=new {$valor["class_name"]}($"."option_$campo);
 								
-				/*								
 				if(isset($"."json))
 				{								
 					$"."sys_primary_field								=$"."this->$campo"."_obj->sys_primary_field;
@@ -1479,7 +1478,7 @@
 					
 					$"."this->$campo"."_obj->__SAVE($"."json);
 				}
-				*/
+
 				
 				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
 				

@@ -4,7 +4,23 @@
 
 
 	$ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,$d);
+    curl_setopt($ch, CURLOPT_REFERER, $ref);
+    curl_setopt ($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch, CURLOPT_MAXREDIRS,3);
+    curl_setopt($ch,CURLOPT_VERBOSE,0);   // me informará (si esta en cero) de todos los errores que halla curl
+    curl_setopt($ch,CURLOPT_FOLLOWLOCATION,3);
+    if ($method == 'POST')
+    {
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
+    }
+ 	
 	
+	
+/*	
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_USERPWD, "evigra@gmail.com:EvG30JiC06");
@@ -29,6 +45,9 @@
 	echo "<br><br>-------<br><br>";
 	print_r($output);	
 	echo "</pre>";	#*/
+*/
+
+
 
 	curl_close($ch);
 

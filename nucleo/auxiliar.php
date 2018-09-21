@@ -218,9 +218,26 @@
 		{
 			$ch = curl_init();
 
-			curl_setopt($ch,CURLOPT_URL,$option["url"]);
-			curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
-			curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
+			curl_setopt($ch,CURLOPT_URL,$option["url"]);			
+			if(isset($option["post"]))
+			{
+				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
+			}	
+			if(isset($option["user"]))
+			{
+				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
+			}			
+			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, true);
+			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
+			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, true);
+			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, true);
+			
+
+
+			
+			
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 			#curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
 			#curl_setopt($ch,CURLOPT_TIMEOUT, 20);
@@ -1774,7 +1791,7 @@
 						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
 						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
 						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
-						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
+						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[	]\" value=\"{id}\">";
 					}	
                     
                     if(!is_null($option))

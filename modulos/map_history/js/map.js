@@ -22,7 +22,7 @@
 			
 	    	$("#form_map").dialog(
 	    	{
-	    		position: { my: "center top", at: "center top"},
+	    		position: { my: "center top", at	: "center top+20"},
 	    		width:621	    	
 	    	});
 

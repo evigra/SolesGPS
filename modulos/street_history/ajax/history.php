@@ -35,6 +35,7 @@
     	
 		
     	$txt_streetview="if(device_active=={$data["deviceid"]}) execute_streetMap(v);";
+    	$txt_streetview="";
         $ajax.="
        		////////				        
 	        var v 	={se:\"historyMap\", na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["date"]}\", ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", ot:{$data["attributes"]}};
@@ -50,7 +51,6 @@
     	$ajax.="historyMap=\"historyStreet\";";
     	
     echo "
-    	LALOOOOOOOOOOOOOOOOO
     	<script>
             if (typeof del_locations == 'function') 
             {

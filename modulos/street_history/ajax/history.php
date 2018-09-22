@@ -7,7 +7,7 @@
 	$objeto				=new street_history();
 		
 	$option				=array();
-	#$option["echo"]	="AJAX POSITIONS";
+	$option["echo"]	="AJAX POSITIONS";
 	$option["select"]=array( 
 		"p.*",
 		"d.*",

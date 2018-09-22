@@ -7,7 +7,7 @@
 	$objeto				=new street_history();
 		
 	$option				=array();
-	$option["echo"]	="AJAX POSITIONS";
+	#$option["echo"]	="AJAX POSITIONS";
 	$option["select"]=array( 
 		"p.*",
 		"d.*",
@@ -21,7 +21,7 @@
  	 		
 	$datas				=$objeto->position($option);
 
-	$objeto->__PRINT_R($datas);
+	#$objeto->__PRINT_R($datas);
 	
 	$ajax="";
     foreach($datas["data"] as $data)
@@ -48,13 +48,14 @@
     ";    
     else
     	$ajax.="historyMap=\"historyStreet\";";
+    	
     echo "
+    	LALOOOOOOOOOOOOOOOOO
     	<script>
             if (typeof del_locations == 'function') 
             {
                 del_locations();
             }
-
             butons_simulation();
             if (typeof fn_localizaciones == 'function') 
             {

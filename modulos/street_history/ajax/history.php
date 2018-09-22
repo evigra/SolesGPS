@@ -13,8 +13,8 @@
 		"d.*",
 		"TIME(DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR))"	=>"date",
 	);	
-	if(isset($_POST["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_POST["start"]} 00:00:01'";
-	if(isset($_POST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["end"]} 23:59:59'";
+	if(isset($_POST["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$_POST["start"]}'";
+	if(isset($_POST["end"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$_POST["end"]}'";
 	$option["where"][]	="d.id={$_POST["device_active"]}";
 	$option["limit"]	="100000";
 	$option["order"]	="p.devicetime DESC";

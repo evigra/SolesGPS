@@ -21,6 +21,8 @@
  	 		
 	$datas				=$objeto->position($option);
 
+	$objeto->__PRINT_R($datas);
+	
 	$ajax="";
     foreach($datas["data"] as $data)
     {    

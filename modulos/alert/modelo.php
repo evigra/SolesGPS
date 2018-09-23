@@ -35,6 +35,7 @@
 			),
 			"asunto"	    =>array(
 			    "title"             => "Asunto",
+			    "title_filter"      => "Asunto",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -42,13 +43,11 @@
 			),
 			"device_id"	=>array(
 			    "title"             => "Dispositivo",
+			    "title_filter"      => "Dispositivo",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    #"source"           	=> "../modulos/devices/ajax/autocomplete.php",
-			    "procedure"       	=> "autocomplete_devices",
-			    "value"             => "",			    
-			    
+			    "procedure"       	=> "autocomplete_devices",  
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "devices",
 			    "class_field_l"    	=> "name",				# Label
@@ -61,8 +60,6 @@
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "source"           	=> "../modulos/geofences/ajax/autocomplete.php",
-			    "value"             => "",			    
-			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "geofences",
 			    "class_field_l"    	=> "name",				# Label
@@ -96,6 +93,12 @@
     		    		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
     		$option["order"]		="fechaevento DESC";
+    		$option["action"]		=array(
+    			"show"		=>"1",
+    			"write"		=>"false",
+    			"delete"	=>"false",
+    			"check"		=>"false",
+    		);
     		
     		#$option["echo"]			="Alert";
     		

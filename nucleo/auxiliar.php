@@ -1796,7 +1796,6 @@
                     
                     if(!is_null($option))
                     {
-                    	$this->__PRINT_R($option);
                     	if(!isset($option["actions"]))				$option["actions"]=array();	
                     	
                     	if($option["actions"]=="false")

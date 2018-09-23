@@ -93,7 +93,7 @@
     		    		
     		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
     		$option["order"]		="fechaevento DESC";
-    		$option["action"]		=array(
+    		$option["actions"]		=array(
     			"show"		=>"1",
     			"write"		=>"false",
     			"delete"	=>"false",

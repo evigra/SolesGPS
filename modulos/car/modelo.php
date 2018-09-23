@@ -30,7 +30,6 @@
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["file_id"]			=$files_id;    	    
 
-			#$option["echo"]="CLASS CAR";
     		parent::__SAVE($datas,$option);
 		}				
 		public function cars($option=NULL)
@@ -66,6 +65,16 @@
 				";
 			}    		    		
 		}						
+		public function __VIEW_REPORT($option=NULL)
+    	{    		
+    		if(is_null($option)) 			$option					=array();
+    		
+    		$option["actions"]		=array(
+    			"show"		=>"false",
+    		);
+    		return parent::__VIEW_REPORT($option);
+		}
+		
 	}
 ?>
 

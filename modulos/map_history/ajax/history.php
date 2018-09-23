@@ -12,9 +12,9 @@
 		"p.attributes"	=>"p_attributes",		
 	);	
 
-	if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]} 00:00:01'";
+	#if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]} 00:00:01'";
 	if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]}'";
-	if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]} 23:59:59'";
+	#if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]} 23:59:59'";
 	if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]}'";
 
 	$option["where"][]	="d.id={$objeto->request["device_active"]}";

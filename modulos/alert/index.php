@@ -17,66 +17,16 @@
         
     $module_title	="";
     $template		="system";
-    if($objeto->sys_section=="create")
-	{
-		# TITULO DEL MODULO
-    	$module_title                	=	"Crear ";
-
-		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
-		$module_left=array(
-		    array("action"=>"Guardar"),
-		    array("cancel"=>"Cancelar"),
-		);
-    	$module_right=array(
-			#array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    );
-
-		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
-    	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-
-    }	
-    elseif($objeto->sys_section=="write")
-	{
-		# TITULO DEL MODULO
-    	$module_title                	=	"Modificar ";
-
-		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
-		$module_left=array(
-		    array("action"=>"Guardar"),
-		    array("cancel"=>"Cancelar"),
-		);
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    );
-
-		#$objeto->__PRINT_R($objeto->sys_fields);
-
-		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	
-    	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	
-    }	
-    elseif($objeto->sys_section=="show")
+    if($objeto->sys_section=="show")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Mostrar ";
 
 		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
-		$module_left=array(
-		    array("action"=>"Guardar"),
-		    array("cancel"=>"Cancelar"),
-		);
     	$module_right=array(
-			array("create"=>"Crear"),
+			#array("create"=>"Crear"),
 			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
+			#array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 	    );
 
@@ -95,10 +45,10 @@
 
 		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
     	$module_right=array(
-			array("create"=>"Crear"),
+			#array("create"=>"Crear"),
 			#array("write"=>"Modificar"),
 			#array("kanban"=>"Kanban"),
-			#array("report"=>"Reporte"),
+			array("report"=>"Reporte"),
 	    );
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  

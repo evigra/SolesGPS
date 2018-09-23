@@ -95,8 +95,8 @@
     		$option["order"]		="fechaevento DESC";
     		$option["actions"]		=array(
     			"show"		=>"1",
-    			"write"		=>"false",
-    			"delete"	=>"false",
+    			"write"		=>"0==1",
+    			"delete"	=>"0==1",
     			"check"		=>"false",
     		);
     		

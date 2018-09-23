@@ -84,24 +84,27 @@
     		$datas["company_id"]    =$_SESSION["company"]["id"];
     	    return parent::__SAVE($datas,$option);
 		}						
-		public function __BROWSE($option=NULL)
-    	{
-    		
+		public function __VIEW_REPORT($option=NULL)
+    	{    		
     		if(is_null($option)) 			$option					=array();
     		
-    		if(!isset($option["where"])) 	$option["where"]		=array();
-    		    		
-    		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
-    		$option["order"]		="fechaevento DESC";
     		$option["actions"]		=array(
     			"show"		=>"1",
     			"write"		=>"0==1",
     			"delete"	=>"0==1",
     			"check"		=>"false",
     		);
+    		return parent::__VIEW_REPORT($option);
+		}
+
+		public function __BROWSE($option=NULL)
+    	{
+    		if(is_null($option)) 			$option					=array();
     		
-    		#$option["echo"]			="Alert";
-    		
+    		if(!isset($option["where"])) 	$option["where"]		=array();
+    		    		
+    		$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
+    		$option["order"]		="fechaevento DESC";    		
     		return parent::__BROWSE($option);
 		}
 	}

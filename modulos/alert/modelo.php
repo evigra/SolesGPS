@@ -90,13 +90,12 @@
     		
     		$option["actions"]		=array(
     			"show"		=>"1",
-    			"write"		=>"0==1",
-    			"delete"	=>"0==1",
+    			"write"		=>"false",
+    			"delete"	=>"false",
     			"check"		=>"false",
     		);
     		return parent::__VIEW_REPORT($option);
 		}
-
 		public function __BROWSE($option=NULL)
     	{
     		if(is_null($option)) 			$option					=array();

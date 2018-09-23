@@ -44,7 +44,7 @@
 			"device_id"	=>array(
 			    "title"             => "Dispositivo",
 			    "title_filter"      => "Dispositivo",
-			    "description"       => "Encargado de supervisar distintos dispositivos",
+			    "description"       => "Dispositivo GPS",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_devices",  
@@ -56,7 +56,8 @@
 			),
 			"geofence_id"	=>array(
 			    "title"             => "Geocerca",
-			    "description"       => "Encargado de supervisar distintos dispositivos",
+			    "title_filter"      => "Geocerca",
+			    "description"       => "Son cercas geograficas",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "source"           	=> "../modulos/geofences/ajax/autocomplete.php",

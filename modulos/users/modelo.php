@@ -21,7 +21,7 @@
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
-			    "filter_title"      => "Nombre",
+			    "title_filter"      => "Nombre",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -29,7 +29,7 @@
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",
-			    "filter_title"      => "Mail",
+			    "title_filter"      => "Mail",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

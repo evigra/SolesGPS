@@ -150,8 +150,10 @@
     	    $datas["company_id"]    	=$_SESSION["company"]["id"];
     	    $datas["hashedPassword"]	="ef38a22ac8e75f7f3a6212dbfe05273365333ef53e34c14c";
     	    $datas["salt"]				="000000000000000000000000000000000000000000000000";
-    	    if(isset($datas["password"]))
+    	    if(isset($datas["password"]) AND $datas["password"]!="")
 	    	    $datas["password"]		=md5($datas["password"]);
+	    	else
+	    		unset($datas["password"]);    
     	    
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    

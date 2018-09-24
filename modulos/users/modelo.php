@@ -226,7 +226,7 @@
 						"status=1"
 			    	),
     	    );
-    	    $option["echo"]="USERS sesion()";
+    	    #$option["echo"]="USERS sesion()";
     	    $data_user	=$this->users($option);    	        	    
     	    if(is_array($data_user) AND array_key_exists("data",$data_user))
     	    {    	    	

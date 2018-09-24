@@ -22,7 +22,7 @@
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
     		
-    		if(!isset($option["select"]))	$option["select"]		=array();
+    		#if(!isset($option["select"]))	$option["select"]		=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
     		

@@ -68,7 +68,7 @@
 			),
 
 			"sesion_start"	    =>array(
-			    "title"             => "Menu inicio",
+			    "title"             => "Modulo de inicio",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
@@ -117,7 +117,11 @@
 			    #"class_field_m"    	=> "responsable_fisico_id",
 			    "value"             => "",			    
 			),
-			
+			"status"	    =>array(
+			    "title"             => "Activo",
+			    "showTitle"         => "si",
+			    "type"              => "checkbox",
+			),				
 		);				
 		##############################################################################	
 		##  Metodos	

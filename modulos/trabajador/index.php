@@ -1,5 +1,7 @@
 <?php	
 	$objeto											=new trabajador();
+	$objeto->device_obj								=new devices();
+
 	$objeto->__SESSION();
 	
 	# TEMPLATES O PLANTILLAS ELEJIDAS PARA EL MODULO
@@ -60,6 +62,13 @@
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
 		$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	 
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+    	
+    	#$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html(@$objeto->sys_fields["usergroup_ids"]["values"]);
+    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user($objeto->sys_primary_id);
+    	
+    	#if(isset($objeto->sys_fields["files_id"]["value"]))    	
+	    #	$objeto->words["img_files_id"]	            =$objeto->files_obj->__GET_FILE($objeto->sys_fields["files_id"]["value"]);
+	    #else	$objeto->words["img_files_id"]="";	
 	    
     	$module_title								="Modificar ";
     }	
@@ -105,7 +114,7 @@
     }
     
     
-	$objeto->words["module_title"]              ="$module_title Trabajadores";
+	$objeto->words["module_title"]              ="$module_title Trabajador";
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             ="";

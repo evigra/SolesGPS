@@ -220,7 +220,8 @@
     	    	"where"=>
 			    	array(
 						"email='$user'",
-						"password=md5('$pass')"
+						"password=md5('$pass')",
+						"status=1"
 			    	),
     	    );
     	    $data_user	=$this->users($option);    	        	    

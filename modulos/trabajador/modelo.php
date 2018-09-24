@@ -5,6 +5,7 @@
 		##  Propiedades	
 		##############################################################################
 		var $mod_menu=array();
+		var $sys_table="users";
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",

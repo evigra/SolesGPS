@@ -109,7 +109,7 @@
     	}     	     	  
 		public function __PRINT_R($variable)
 		{  
-		    echo "<div class=\"echo\" title=\"Sistema\"><pre>";
+		    echo "<div class=\"echo\" title=\"Sistema :: {$htis->sys_object}\"><pre>";
 		    @print_r(@$variable);
 		    echo "</pre></div>";			
     	} 

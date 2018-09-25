@@ -1708,17 +1708,16 @@ styles:
             	var path		="";
 				for(ivariables in variables)
 				{
-					if($("select#"+ivariables))
+					if($("input#"+ivariables).length>0) 
+						$("input#"+ivariables).val(variables[ivariables]);
+					else if($("select#"+ivariables))
 					{
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
 							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	
-					else if($("input#"+ivariables).length>0) 
-						$("input#"+ivariables).val(variables[ivariables]);
 					else
 					{
-					
 						path=path+"&"+ivariables+"="+variables[ivariables];
 					}
 					if(variables[ivariables]=="delete")							

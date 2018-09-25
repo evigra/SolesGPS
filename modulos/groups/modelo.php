@@ -25,7 +25,7 @@
 			    "title"             => "Menu",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"            => "../modulos/menu/ajax/index.php",
+			    "procedure"         => "autocomplete",
 			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "menu",

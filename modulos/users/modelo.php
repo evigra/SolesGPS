@@ -151,6 +151,9 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		## GUARDAR USUARIO
+    		
+    		$this->__PRINT_R($datas);
+    		
     		if(is_array($datas))
     		{
 
@@ -165,7 +168,7 @@
 
 			    $user_id=parent::__SAVE($datas,$option);
 			    
-			    $this->__PRINT_R($datas);
+			    
 			    
 			    ## GUARDAR PERFILES DE USUARIO
 			    $usergroup_datas=array();

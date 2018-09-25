@@ -190,7 +190,7 @@
 			    }	
 			}    
 		}		
-		
+		/*
 		public function __FIND_FIELDS($id=NULL)
 		{
 			parent::__FIND_FIELDS($id);
@@ -199,6 +199,7 @@
 				$this->sys_fields["password"]["value"]="";			
 			}			
     	}
+    	*/
 		public function __INPUT($words=NULL,$sys_fields=NULL)
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);

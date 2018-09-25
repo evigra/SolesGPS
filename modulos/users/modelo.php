@@ -152,9 +152,9 @@
     	{
     		## GUARDAR USUARIO
     		
-    		$this->__PRINT_R($datas);
     		
-    		if(is_array($datas))
+    		
+    		if(count($datas)>2)
     		{
 
 			    $datas["company_id"]    	=$_SESSION["company"]["id"];
@@ -168,7 +168,7 @@
 
 			    $user_id=parent::__SAVE($datas,$option);
 			    
-			    
+				$this->__PRINT_R($datas);	    
 			    
 			    ## GUARDAR PERFILES DE USUARIO
 			    $usergroup_datas=array();

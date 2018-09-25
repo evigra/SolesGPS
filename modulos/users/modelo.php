@@ -167,7 +167,7 @@
 
 			    $user_id=parent::__SAVE($datas,$option);
 			    
-				$this->__PRINT_R($datas);	    
+				#$this->__PRINT_R($datas);	    
 			    
 			    ## GUARDAR PERFILES DE USUARIO
 			    $usergroup_datas=array();

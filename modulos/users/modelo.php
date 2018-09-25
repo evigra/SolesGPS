@@ -1,9 +1,4 @@
 <?php
-	#if(file_exists("../device/modelo.php")) 
-	#require_once("../device/modelo.php");
-	#if(file_exists("device/modelo.php")) 
-	#require_once("device/modelo.php");
-	
 	class users extends general
 	{   
 		##############################################################################	
@@ -131,8 +126,17 @@
 		public function __CONSTRUCT()
 		{
 			#echo "<br>USER :: CONSTRUC INI";
-			$this->files_obj		=new files();
-			$this->menu_obj			=new menu();
+
+			$option		=array(		
+				"name"			=>"files_obj",		
+				"memory"		=>"files_obj",
+			);			
+			$this->files_obj		=new files($option);
+			$option		=array(	
+				"name"			=>"menu_obj",		
+				"memory"		=>"menu_obj",
+			);						
+			$this->menu_obj			=new menu($option);
 			#$this->device_obj		=new device();
 			#$this->usergroup_obj	=new user_group();
 
@@ -158,7 +162,7 @@
 
     	    $user_id=parent::__SAVE($datas,$option);
     	    
-    	    $this->__PRINT_R($this);
+    	    $this->__PRINT_R($datas);
     	    
     	    ## GUARDAR PERFILES DE USUARIO
     	    $usergroup_datas=array();

@@ -8,7 +8,7 @@
 		{
 			$this->sys_table="devices";
 			
-			$this->sys_fields["name"]["title"]				="Modelo";			
+			$this->sys_fields["name"]["title"]				="Modelo";					
 			$this->sys_fields["placas"]["description"]		="Placas actuales del vehiculo";			
 			$this->sys_fields["telefono"]["description"]	="Numero telefonico del celular";			
 			$this->sys_fields["image"]["description"]		="Imagen que se presentara en el mapa";			
@@ -20,6 +20,9 @@
 			    	"06"	=>	"Camioneta Blanca",
 			    	"07"	=>	"Camioneta Azul",
 		    );		
+		    
+			$this->sys_fields["telcel"]["type"]		="input";					    
+			$this->sys_fields["vehiculo"]["type"]	="input";
 			parent::__CONSTRUCT();			
 		}				
 

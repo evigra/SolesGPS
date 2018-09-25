@@ -224,11 +224,13 @@
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			}	
+			/*
 			if(isset($option["user"]))
 			{
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
-			}			
+			}
+			*/			
 			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, true);
 			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, true);

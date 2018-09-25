@@ -137,6 +137,7 @@
 				
 			}	
 		}
+		/*
 		public function __DELETE($option=array())
     	{    	
     		if(is_array($option))
@@ -157,6 +158,7 @@
     		
 
 		}
+		*/
 		public function __BROWSE($option=array())
     	{    	
     		$option_conf=array();

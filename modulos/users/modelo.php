@@ -151,9 +151,6 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		## GUARDAR USUARIO
-    		
-    		
-    		
     		if(count($datas)>2)
     		{
 
@@ -170,7 +167,7 @@
 
 			    $user_id=parent::__SAVE($datas,$option);
 			    
-				#$this->__PRINT_R($datas);	    
+				$this->__PRINT_R($datas);	    
 			    
 			    ## GUARDAR PERFILES DE USUARIO
 			    $usergroup_datas=array();

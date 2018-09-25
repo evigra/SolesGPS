@@ -23,12 +23,12 @@
 		    
 			$this->sys_fields["telcel"]["type"]		="hidden";					    
 			$this->sys_fields["vehicle"]["type"]	="hidden";
+		
 			parent::__CONSTRUCT();			
 		}				
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($datas);    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    

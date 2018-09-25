@@ -158,7 +158,7 @@
 
     	    $user_id=parent::__SAVE($datas,$option);
     	    
-    	    #echo "<br>USUARIO=$user_id<br>";
+    	    $this->__PRINT_R($this->comando_sql);
     	    ## GUARDAR PERFILES DE USUARIO
     	    $usergroup_datas=array();
     	    if(isset($datas["usergroup_ids"]))

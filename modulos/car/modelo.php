@@ -25,13 +25,17 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		#$this->__PRINT_R($datas);    	    
+    		$this->__PRINT_R($datas);    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["file_id"]			=$files_id;    	    
 
-    		parent::__SAVE($datas,$option);
+	  		$return=parent::__SAVE($datas,$option);
+	  		
+	  		
+	  		
+	  		return $return;
 		}				
 		public function cars($option=NULL)
     	{

@@ -29,6 +29,8 @@
 
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		
+    		$datas["vehicle"]			="1";
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    

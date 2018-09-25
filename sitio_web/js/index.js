@@ -1722,7 +1722,10 @@ styles:
 						path=path+"&"+ivariables+"="+variables[ivariables];
 					}
 					if(variables[ivariables]=="delete")							
+					{
 						enviar = confirm("Borrar datos");							
+						alert(enviar);
+					}	
 				}	
 				if(path!="")	$("form").attr({"action":path});					
 				if(enviar==true)	$("form").submit(); 	        

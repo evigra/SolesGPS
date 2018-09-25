@@ -1295,6 +1295,8 @@
 															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 														}
 													}
+													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
+														$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
 										</script>

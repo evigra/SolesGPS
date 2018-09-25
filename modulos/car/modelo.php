@@ -21,8 +21,8 @@
 			    	"07"	=>	"Camioneta Azul",
 		    );		
 		    
-			$this->sys_fields["telcel"]["type"]		="input";					    
-			$this->sys_fields["vehiculo"]["type"]	="input";
+			$this->sys_fields["telcel"]["type"]		="hidden";					    
+			$this->sys_fields["vehicle"]["type"]	="hidden";
 			parent::__CONSTRUCT();			
 		}				
 

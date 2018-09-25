@@ -151,49 +151,53 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		## GUARDAR USUARIO
-    	    $datas["company_id"]    	=$_SESSION["company"]["id"];
-    	    $datas["hashedPassword"]	="ef38a22ac8e75f7f3a6212dbfe05273365333ef53e34c14c";
-    	    $datas["salt"]				="000000000000000000000000000000000000000000000000";
-    	    if(isset($datas["password"]) AND $datas["password"]!="")
-	    	    $datas["password"]		=md5($datas["password"]);
-    	    
-    	    $files_id					=$this->files_obj->__SAVE();    	    
-    	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
+    		if(is_array($datas))
+    		{
 
-    	    $user_id=parent::__SAVE($datas,$option);
-    	    
-    	    $this->__PRINT_R($datas);
-    	    
-    	    ## GUARDAR PERFILES DE USUARIO
-    	    $usergroup_datas=array();
-    	    if(isset($datas["usergroup_ids"]))
-    	    {
-			    foreach($datas["usergroup_ids"] as $index => $data)
+			    $datas["company_id"]    	=$_SESSION["company"]["id"];
+			    $datas["hashedPassword"]	="ef38a22ac8e75f7f3a6212dbfe05273365333ef53e34c14c";
+			    $datas["salt"]				="000000000000000000000000000000000000000000000000";
+			    if(isset($datas["password"]) AND $datas["password"]!="")
+				    $datas["password"]		=md5($datas["password"]);
+			    
+			    $files_id					=$this->files_obj->__SAVE();    	    
+			    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
+
+			    $user_id=parent::__SAVE($datas,$option);
+			    
+			    $this->__PRINT_R($datas);
+			    
+			    ## GUARDAR PERFILES DE USUARIO
+			    $usergroup_datas=array();
+			    if(isset($datas["usergroup_ids"]))
 			    {
-					$usergroup_option=array();
-					## BUSCA PERFIL PREVIO 
-					## SI EXISTE, LO MODIFICA
-					## SI NO, LO CREA
-					#$usergroup_option["echo"]="PERFILES";
-					$usergroup_option["where"]=array(
-						"user_id=$user_id",
-						"company_id={$_SESSION["company"]["id"]}",
-						"menu_id={$index}",
-					);    	    		    	    		
-					$usergroup_data						=$this->usergroup_ids_obj->groups($usergroup_option);
+					foreach($datas["usergroup_ids"] as $index => $data)
+					{
+						$usergroup_option=array();
+						## BUSCA PERFIL PREVIO 
+						## SI EXISTE, LO MODIFICA
+						## SI NO, LO CREA
+						#$usergroup_option["echo"]="PERFILES";
+						$usergroup_option["where"]=array(
+							"user_id=$user_id",
+							"company_id={$_SESSION["company"]["id"]}",
+							"menu_id={$index}",
+						);    	    		    	    		
+						$usergroup_data						=$this->usergroup_ids_obj->groups($usergroup_option);
 
-					if($usergroup_data["total"]>0)		$this->usergroup_ids_obj->sys_primary_id=$usergroup_data["data"][0]["id"];
-					else								$this->usergroup_ids_obj->sys_primary_id=NULL;
+						if($usergroup_data["total"]>0)		$this->usergroup_ids_obj->sys_primary_id=$usergroup_data["data"][0]["id"];
+						else								$this->usergroup_ids_obj->sys_primary_id=NULL;
 
-					$usergroup_save=array(
-						"user_id"		=>"$user_id",
-						"company_id"	=>"{$_SESSION["company"]["id"]}",
-						"menu_id"		=>"{$index}",
-						"active"		=>"$data"
-					);	
-					$this->usergroup_ids_obj->__SAVE($usergroup_save);
-			    }	
-			}    
+						$usergroup_save=array(
+							"user_id"		=>"$user_id",
+							"company_id"	=>"{$_SESSION["company"]["id"]}",
+							"menu_id"		=>"{$index}",
+							"active"		=>"$data"
+						);	
+						$this->usergroup_ids_obj->__SAVE($usergroup_save);
+					}	
+				}    
+			}	
 		}		
 		#/*
 		public function __FIND_FIELDS($id=NULL)

@@ -161,9 +161,6 @@
 		
 		public function menu($option=NULL)
     	{
-    	
-    	
-    	
     		$data	=array();
     		
     		if(!is_array($option))
@@ -252,6 +249,7 @@
 		
 		public function option()
     	{
+
 		}				
 		public function view_opction()
     	{

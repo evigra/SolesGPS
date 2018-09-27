@@ -308,6 +308,18 @@
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
 
+			if($this->__PRINT!="")
+			{
+				
+				$this->__SAVE_MESSAGE="
+					<div class=\"echo\" title=\"\">
+						{$this->__PRINT}				
+					</div>		    		
+				";
+				
+			}						
+
+
 			
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
@@ -878,18 +890,7 @@
 			$opcion=array(
 				"message"=>"DATOS GUARDADOS",
 			);	
-			$this->__SAVE($fields, $opcion);
-			
-			if($this->__PRINT!="")
-			{
-				
-				$this->__SAVE_MESSAGE="
-					<div class=\"echo\" title=\"\">
-						{$this->__PRINT}				
-					</div>		    		
-				";
-				
-			}	
+			$this->__SAVE($fields, $opcion);			
     	}
 		##############################################################################    
 		public function __FIELDS()

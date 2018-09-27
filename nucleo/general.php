@@ -126,6 +126,7 @@
 				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
+					
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	    
 				}							
@@ -668,6 +669,7 @@
 						unset($option["open"]);
 									
 						$this->__PRINT="Datos guardados correctamente";
+						
 																	
 						$option["close"]=1;
 						

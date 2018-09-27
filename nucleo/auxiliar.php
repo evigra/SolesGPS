@@ -308,7 +308,7 @@
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
 
-			
+			/*
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
@@ -316,7 +316,7 @@
 		        #$words["system_message"]    		="AAAAAAAAAA";
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
-			
+			*/
 			if(array_key_exists("user",$_SESSION))
 			{ 				
 			    if(@$_SESSION["user"]!="Invitado" AND count($_SESSION["user"])>1)

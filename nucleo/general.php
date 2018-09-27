@@ -129,7 +129,9 @@
 				{
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-				    $words["system_js"]     				=@$this->__SAVE_JS;	            
+				    $words["system_js"]     				=@$this->__SAVE_JS;	    
+				    
+				    $words["system_message"]    			="AAAAAAAAA";        
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);

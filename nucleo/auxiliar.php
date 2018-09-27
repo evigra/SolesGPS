@@ -880,6 +880,15 @@
 				"message"=>"DATOS GUARDADOS",
 			);	
 			$this->__SAVE($fields, $opcion);
+			
+			if($this->__PRINT!="")
+			{
+				$this->__SAVE_MESSAGE="
+					<div class=\"echo\" title=\"\">
+						{$this->__PRINT}				
+					</div>		    		
+				";
+			}	
     	}
 		##############################################################################    
 		public function __FIELDS()

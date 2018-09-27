@@ -317,8 +317,11 @@
 					</div>		    		
 				";	
 				if(@$this->__MESSAGE_OPTION["time"]>0)
-					@$this->__SAVE_JS.="
-						$(\".echo\").dialog(\"close\");
+					@$this->__SAVE_JS.="				
+						setTimeout(function()
+						{  	
+							$(\".echo\").dialog(\"close\");							
+						},{$this->__MESSAGE_OPTION["time"]});					
 					";
 				
 			}						

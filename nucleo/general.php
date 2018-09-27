@@ -580,6 +580,9 @@
 				if(!array_key_exists("title",$option))   
 					$option["title"]="Mensaje de sistema";
 
+				if(!array_key_exists("time",$option))   
+					$option["time"]=1000;
+
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -686,8 +689,9 @@
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
 						
-						$this->__MESSAGE_OPTION["text"]	=$option["message"];
+						$this->__MESSAGE_OPTION["text"]		=$option["message"];
 						$this->__MESSAGE_OPTION["title"]	=$option["title"];
+						$this->__MESSAGE_OPTION["time"]		=$option["time"];
 						
 						$return=@$this->sys_primary_id;
 						

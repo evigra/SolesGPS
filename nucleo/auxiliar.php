@@ -310,11 +310,17 @@
 
 			if(@$this->__MESSAGE_OPTION["text"]!="")
 			{				
+				
 				$this->__SYSTEM_MESSAGE="
-					<div class=\"echo\" title=\"{$this->__MESSAGE_OPTION["title"]}\">
+					<div class=\"echo message\"  title=\"{$this->__MESSAGE_OPTION["title"]}\">
 						{$this->__MESSAGE_OPTION["text"]}				
 					</div>		    		
-				";				
+				";	
+				if(@$this->__MESSAGE_OPTION["time"]>0)
+					$this->__SAVE_JS.="
+						$(\".echo\").dialog(\"close\");
+					";
+				
 			}						
 
 

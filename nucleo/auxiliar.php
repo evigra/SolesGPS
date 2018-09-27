@@ -317,7 +317,7 @@
 					</div>		    		
 				";	
 				if(@$this->__MESSAGE_OPTION["time"]>0)
-					$this->__SAVE_JS.="
+					@$this->__SAVE_JS.="
 						$(\".echo\").dialog(\"close\");
 					";
 				

@@ -190,7 +190,6 @@
 								}	
 							}
 							// AQUI SI FUNCIONA!!!-------------------
-							#$this->__PRINT_R($datas);
 							foreach($datas[0] as $field =>$value)
 							{
 								$this->sys_fields["$field"]["value"]=$value;
@@ -200,7 +199,6 @@
 									$this->__PRINT_R("$eval"); #$eval; ---------------------------			
 								*/						        			
 							}
-							#$this->__PRINT_R($this->sys_fields);
 						}
 					}    
 				}	
@@ -314,6 +312,8 @@
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
+		        
+		        $words["system_message"]    		="AAAAAAAAAA";
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
 			
@@ -683,7 +683,6 @@
 			# O CREANDO UNA NUEVA PROPIEDAD 
 			
 			#if(count($_REQUEST)>6)
-			#	$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
 				foreach($this->sys_fields as $campo =>$valor)
@@ -1548,7 +1547,6 @@
 
 				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->$campo"."_obj->words);									
 			";				
-			#$this->__PRINT_R($eval);
 			eval($eval);	
 			
 			return $words;
@@ -2010,7 +2008,7 @@
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
-					#$this->__PRINT_R($option["data"]);
+
 				}
 			}
 		    if(is_array($option))
@@ -2067,7 +2065,7 @@
 		    		$option["title"]				= @$browse["title"];
 					$option["title_pdf"]			= @$browse["title_pdf"];
 
-					#$this->__PRINT_R($browse["title"]);
+
 					#$view_title						=@$browse["title"];
 					#$view_title_pdf					=@$browse["title_pdf"];
 						
@@ -2084,13 +2082,11 @@
 					}			    		
 		    	}	
 		    	
-		    	#$this->__PRINT_R($option);	
+
 				#######################							
 				
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
-
-				#$this->__PRINT_R($view_title_data);
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
@@ -2179,7 +2175,6 @@
 		    	    if(!isset($option["input"]))	$option_kanban["input"]		="true";
 		    	    if(isset($option["input"]))		$option_kanban["input"]		=$option["input"];
 		    	    
-		    	    #$this->__PRINT_R($option_kanban);
 
 					if(isset($return["data_0"]))
 					{
@@ -2543,7 +2538,7 @@
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
-			#$this->__PRINT_R($option);
+
 			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
 			
 			#if(isset($option["template_title"]))
@@ -2553,7 +2548,6 @@
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
-				#$this->__PRINT_R($option);
 				
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
 				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo

@@ -640,6 +640,7 @@
 					{
 						$insert=1;
 						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
+		
 						$this->__PRINT_JS.="
 							$(\"input[system!='yes']\").each(function(){                		
 								$(this).val(\"\");                			

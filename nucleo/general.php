@@ -576,6 +576,10 @@
 				
 				if(!array_key_exists("message",$option))   
 					$option["message"]="Datos guardados correctamente";
+
+				if(!array_key_exists("title",$option))   
+					$option["title"]="Mensaje de sistema";
+
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -682,7 +686,8 @@
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
 						
-						$this->__MESSAGE_OPTION["text"]=$option["message"];
+						$this->__MESSAGE_OPTION["text"]	=$option["message"];
+						$this->__MESSAGE_OPTION["title"]	=$option["title"];
 						
 						$return=@$this->sys_primary_id;
 						

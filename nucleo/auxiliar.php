@@ -313,7 +313,6 @@
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
 		        
-		        #$words["system_message"]    		="AAAAAAAAAA";
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
 			
@@ -883,13 +882,13 @@
 			
 			if($this->__PRINT!="")
 			{
-				/*
+				
 				$this->__SAVE_MESSAGE="
 					<div class=\"echo\" title=\"\">
 						{$this->__PRINT}				
 					</div>		    		
 				";
-				*/
+				
 			}	
     	}
 		##############################################################################    

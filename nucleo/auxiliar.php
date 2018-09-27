@@ -308,23 +308,20 @@
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
 
-			if($this->__PRINT!="")
-			{
-				
-				$this->__SAVE_MESSAGE="
-					<div class=\"echo\" title=\"\">
-						{$this->__PRINT}				
+			if(@$this->__MESSAGE_OPTION["text"]!="")
+			{				
+				$this->__SYSTEM_MESSAGE="
+					<div class=\"echo\" title=\"{$this->__MESSAGE_OPTION["title"]}\">
+						{$this->__MESSAGE_OPTION["text"]}				
 					</div>		    		
-				";
-				
+				";				
 			}						
 
 
 			
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
-		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
-		        
+		        $words["system_message"]    		=@$this->__SYSTEM_MESSAGE;		        
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
 			

@@ -575,7 +575,7 @@
 				if(!isset($option) OR is_null($option))	$option=array();
 				
 				if(!array_key_exists("message",$option))   
-					$option["message"]="DATOS GUARDADOS";
+					$option["message"]="Datos guardados correctamente";
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -667,9 +667,7 @@
 					if(@$this->OPHP_conexion->error=="")
 					{					
 						unset($option["open"]);
-									
-						$this->__PRINT="Datos guardados correctamente";
-						
+																		
 																	
 						$option["close"]=1;
 						
@@ -683,6 +681,9 @@
 							unset($option["close"]);
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
+						
+						$this->__MESSAGE_OPTION["text"]=$option["message"];
+						
 						$return=@$this->sys_primary_id;
 						
 

@@ -21,11 +21,13 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),			
+
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
 			    "title_filter"      => "Empresa",	
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
+			    #"source"           	=> "../modulos/empresa/ajax/autocomplete.php",
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_empresa",
 			    "relation"          => "one2many",			    
@@ -34,6 +36,7 @@
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    
 			),			
+			
 			"movimientos_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -42,8 +45,11 @@
 			    "value"             => "",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "movimientos",			    
+				#"class_template"  	=> "many2one_lateral",			    
+				#"class_report" 		=> "kanban",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "movimiento_id",				
+				#"class_field_l"    	=> "horario",	
 			),
 			"tipo"	    =>array(
 			    "title"             => "Tipo",
@@ -105,22 +111,17 @@
 			    "default"           => "",
 			    "value"             => "",
 			),	
-			"cron_cantidad"	    =>array(
-			    "title"             => "Cantidad de Tiempo",
+			/*		
+			"plazos_id"	    =>array(
+			    "title"             => "Plazos",
+			    "title_filter"      => "Plazos",
 			    "showTitle"         => "si",
 			    "type"              => "input",
-			),	
-			"cron_unidad"	    =>array(
-			    "title"             => "Unidad de tiempo",
-			    "showTitle"         => "si",
-			    "type"              => "select",
-			    "source"            => array(
-				    "DAY"     		=> "Dia",
-				    "MONTH"     	=> "Mes",
-				    "YEAR"  	   	=> "Ano",
-				)
-			),	
-
+			    "default"           => "",
+			    "value"             => "",
+			),
+			*/
+				
 		);				
 		##############################################################################	
 		##  Metodos	
@@ -128,7 +129,9 @@
         
 		public function __CONSTRUCT()
 		{	
-			parent::__CONSTRUCT();					
+			parent::__CONSTRUCT();		
+			#$this->__PRINT_R($_SESSION["SAVE"]);
+			
 		}
 		public function __FOLIOS($option_folios="")
 		{	
@@ -141,22 +144,47 @@
 		
 			return parent::__FOLIOS($option_folios);		
 		}
+
+		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		## GUARDAR USUARIO
+    		#$datas["total"]		=count(explode(",",$datas["dias"]));
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
-
-    	    return parent::__SAVE($datas,$option);
+			
+			if(@$this->request["sys_section_movimiento"]=="create")
+			{				
+				$datas["folio"]				=$this->__FOLIOS();
+			}
+			/*				
+			if(@$this->request["sys_action_movimiento"]=="__SAVE_pagar")
+			{
+				$datas["movimiento_id"]						=$this->sys_primary_id;
+				$datas["tipo"]								="PAG";
+				
+				$this->request["sys_id"]					="";
+				$this->request["sys_id_movimiento"]			="";
+				$this->request["sys_section_movimiento"]	="create";
+				
+				$this->sys_primary_id	="";
+			}
+			*/
+			
+    	    $return= parent::__SAVE($datas,$option);
+    	    return $return;
 		}
    		public function __BROWSE($option="")
     	{			    	
-			if($option=="")					$option				=array();			
-			if(!isset($option["where"]))	$option["where"]	=array();
+			if($option=="")	$option=array();			
+			if(!isset($option["where"]))	$option["where"]=array();
 			
+			$option["where"][]				="tipo='PL'";   # PL plantilla
     		$option["where"][]				="company_id={$_SESSION["company"]["id"]}";    		
 
 			return parent::__BROWSE($option);
 		}							
+
 	}
 ?>
 

@@ -130,7 +130,7 @@
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 				
-		$data										= $objeto->__VIEW_REPORT($option);		
+		$data										= $objeto->__REPORTE($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }

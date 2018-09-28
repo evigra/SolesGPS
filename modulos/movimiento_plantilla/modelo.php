@@ -19,27 +19,18 @@
 			$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
 		}
-		#/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		if(@$datas["tipo"]=="")		$datas["tipo"]				="PL";
-    					
 			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
 				$option_folios=array();
-				$option_folios["variable"]		="";
-				$option_folios["subvariable"]	="";
-				$option_folios["tipo"]			=$datas["tipo"];
-				$option_folios["subtipo"]		="";
-				$option_folios["objeto"]		="movimiento_plantilla";
-								
-				$datas["folio"]				=$this->__FOLIOS($option_folios);
+				$option_folios["tipo"]			="PL";								
+				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}	
 			
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
-		#*/		
 		public function __CRON($option=NULL)		
     	{	
     		if(is_null($option))			$option				=array();
@@ -65,18 +56,23 @@
 				";
 			#$option["where"][]="IF(LEFT(fecha,10)='0000-00-00',LEFT(now(),10),LEFT(fecha,10))=LEFT(now(),10)";
 
-			$option["where"][]="cron_cantidad>0";
+			$option["where"][]						="cron_cantidad>0";
 		
-			$crons_data =$this->__BROWSE($option);			
+			$crons_data 							=$this->__BROWSE($option);			
 	
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->sys_primary_id	=$rows["id"];
+				$this->sys_primary_id				=$rows["id"];
 				$this->__SAVE($rows);
 				
-				$rows["tipo"]="SO";
-				$rows["folio"]			=$this->movimiento_obj->__FOLIOS();
-				
+				$rows["tipo"]						="SO";
+				if($this->request["sys_section_movimiento_plantilla"]=="create")
+				{
+					$option_folios					=array();
+					$option_folios["tipo"]			=$rows["tipo"];								
+					$option_folios["variable"]		=date("Y");
+					$rows["folio"]					=$this->__FOLIOS($option_folios);
+				}	
 				unset($rows["id"]);								
 				unset($rows["cron_cantidad"]);
 				unset($rows["cron_unidad"]);
@@ -87,8 +83,8 @@
 					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
 								
-				$this->movimiento_obj->sys_primary_id="";
-				$this->movimiento_obj->__SAVE($rows);
+				$this->sys_primary_id="";
+				$this->__SAVE($rows);
 			}
 		}		
    		public function __BROWSE($option="")
@@ -98,7 +94,7 @@
 			
 			$option["where"][]				="tipo='PL'";   # PL plantilla
 			
-			if(!isset($this->request["sys_order_movimiento"]))
+			if(!isset($this->request["sys_order_movimiento_plantilla"]))
 				$option["order"]="id desc";
 			
 			return parent::__BROWSE($option);

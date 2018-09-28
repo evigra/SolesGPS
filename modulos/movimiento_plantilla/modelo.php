@@ -21,8 +21,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($this->request);
-    		
     		$datas["tipo"]						="PL";								
 			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
@@ -31,7 +29,6 @@
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
 			
-			$this->__PRINT_R($datas);
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}

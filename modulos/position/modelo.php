@@ -382,8 +382,7 @@
 			$aux_descripcion="";
             foreach($position_data as $row)
             {
-				//           
-				//
+           
             	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########";
             	$data_update	=array();
             	

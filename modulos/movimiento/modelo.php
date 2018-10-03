@@ -136,6 +136,8 @@
 			$datas["company_id"]				=$_SESSION["company"]["id"];
     		$datas["tipo"]						=$this->tipo_movimiento;	
     									
+    									
+    		$THIS->__PRINT_R($this->sys_object);							
 			if($this->request["sys_section_" . $this->sys_object]=="create")
 			{
 				$option_folios=array();

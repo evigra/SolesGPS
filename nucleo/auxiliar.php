@@ -308,29 +308,12 @@
 			$words["system_js"]						="";
 			$words["sys_date"]						=$this->sys_date;
 
-			if(@$this->__MESSAGE_OPTION["text"]!="")
-			{				
-				
-				$this->__SYSTEM_MESSAGE="
-					<div class=\"echo message\"  title=\"{$this->__MESSAGE_OPTION["title"]}\">
-						{$this->__MESSAGE_OPTION["text"]}				
-					</div>		    		
-				";	
-				if(@$this->__MESSAGE_OPTION["time"]>0)
-					@$this->__SAVE_JS.="				
-						setTimeout(function()
-						{  	
-							$(\".echo\").dialog(\"close\");							
-						},{$this->__MESSAGE_OPTION["time"]});					
-					";
-				
-			}						
-
-
 			
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
-		        $words["system_message"]    		=@$this->__SYSTEM_MESSAGE;		        
+		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
+		        
+		        #$words["system_message"]    		="AAAAAAAAAA";
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
 			
@@ -896,7 +879,18 @@
 			$opcion=array(
 				"message"=>"DATOS GUARDADOS",
 			);	
-			$this->__SAVE($fields, $opcion);			
+			$this->__SAVE($fields, $opcion);
+			
+			if($this->__PRINT!="")
+			{
+				/*
+				$this->__SAVE_MESSAGE="
+					<div class=\"echo\" title=\"\">
+						{$this->__PRINT}				
+					</div>		    		
+				";
+				*/
+			}	
     	}
 		##############################################################################    
 		public function __FIELDS()

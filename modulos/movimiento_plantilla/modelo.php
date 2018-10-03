@@ -8,8 +8,6 @@
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
 		
-		var $tipo_movimiento	="PL";
-		
 		var $movimiento_obj;
 		
 		##############################################################################	
@@ -20,6 +18,19 @@
 		{	
 			$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
+		}
+   		public function __SAVE($datas=NULL,$option=NULL)
+    	{
+    		$datas["tipo"]						="PL";								
+			if($this->request["sys_section_movimiento_plantilla"]=="create")
+			{
+				$option_folios=array();
+				$option_folios["tipo"]			=$datas["tipo"];
+				$datas["folio"]					=$this->__FOLIOS($option_folios);
+			}				
+			
+    	    $return= parent::__SAVE($datas,$option);
+    	    return $return;
 		}
 		public function __CRON($option=NULL)		
     	{	
@@ -55,8 +66,8 @@
 				$this->sys_primary_id				=$rows["id"];
 				$this->__SAVE($rows);
 				
-				$rows["tipo"]						=$this->tipo_movimiento;
-				if($this->request["sys_section_" . $this->sys_object]=="create")
+				$rows["tipo"]						="SO";
+				if($this->request["sys_section_movimiento_plantilla"]=="create")
 				{
 					$option_folios					=array();
 					$option_folios["tipo"]			=$rows["tipo"];								

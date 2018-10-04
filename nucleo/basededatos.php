@@ -111,7 +111,7 @@
 		{  
 		    echo "<div class=\"echo\" title=\"Sistema :: {$this->sys_object} {$this->sys_name}\"><pre>";
 		    @print_r(@$variable);
-		    echo "</pre></div>";			
+		    echo "</pre></div>";		    			
     	} 
 		public function __PRINT_HTML($variable)
 		{  

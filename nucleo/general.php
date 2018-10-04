@@ -100,8 +100,7 @@
 				if(!isset($_SESSION["pdf"]["PDF_PAGE_FORMAT"]))			$_SESSION["pdf"]["PDF_PAGE_FORMAT"]			="A4";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
-				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
-				
+				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   					
 						
 				$eval="
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
@@ -120,16 +119,16 @@
 											
 				";
 				eval($eval);							
-			
-			
+						
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
 				#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
 				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
+					
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-				    $words["system_js"]     				=@$this->__SAVE_JS;	            
+				    $words["system_js"]     				=@$this->__SAVE_JS;	    
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
@@ -576,7 +575,14 @@
 				if(!isset($option) OR is_null($option))	$option=array();
 				
 				if(!array_key_exists("message",$option))   
-					$option["message"]="DATOS GUARDADOS";
+					$option["message"]="Datos guardados correctamente";
+
+				if(!array_key_exists("title",$option))   
+					$option["title"]="Mensaje de sistema";
+
+				if(!array_key_exists("time",$option))   
+					$option["time"]=1000;
+
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -640,6 +646,7 @@
 					{
 						$insert=1;
 						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
+		
 						$this->__PRINT_JS.="
 							$(\"input[system!='yes']\").each(function(){                		
 								$(this).val(\"\");                			
@@ -667,8 +674,7 @@
 					if(@$this->OPHP_conexion->error=="")
 					{					
 						unset($option["open"]);
-									
-						$this->__PRINT="Datos guardados correctamente";
+																		
 																	
 						$option["close"]=1;
 						
@@ -682,6 +688,11 @@
 							unset($option["close"]);
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
+						
+						$this->__MESSAGE_OPTION["text"]		=$option["message"];
+						$this->__MESSAGE_OPTION["title"]	=$option["title"];
+						$this->__MESSAGE_OPTION["time"]		=$option["time"];
+						
 						$return=@$this->sys_primary_id;
 						
 

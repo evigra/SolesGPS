@@ -13,6 +13,7 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
+			    
 			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			    "default"           => "",
@@ -20,6 +21,7 @@
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
+			    "title_filter"      => "Nombre",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -27,6 +29,7 @@
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",
+			    "title_filter"      => "Mail",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -65,8 +68,8 @@
 			),
 
 			"sesion_start"	    =>array(
-			    "title"             => "Menu inicio",
-			    "showTitle"         => "no",
+			    "title"             => "Modulo de inicio",
+			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_modulos",
@@ -114,7 +117,11 @@
 			    #"class_field_m"    	=> "responsable_fisico_id",
 			    "value"             => "",			    
 			),
-			
+			"status"	    =>array(
+			    "title"             => "Activo",
+			    "showTitle"         => "si",
+			    "type"              => "checkbox",
+			),				
 		);				
 		##############################################################################	
 		##  Metodos	
@@ -143,7 +150,7 @@
     	    $datas["company_id"]    	=$_SESSION["company"]["id"];
     	    $datas["hashedPassword"]	="ef38a22ac8e75f7f3a6212dbfe05273365333ef53e34c14c";
     	    $datas["salt"]				="000000000000000000000000000000000000000000000000";
-    	    if(isset($datas["password"]))
+    	    if(isset($datas["password"]) AND $datas["password"]!="")
 	    	    $datas["password"]		=md5($datas["password"]);
     	    
     	    $files_id					=$this->files_obj->__SAVE();    	    
@@ -151,7 +158,7 @@
 
     	    $user_id=parent::__SAVE($datas,$option);
     	    
-    	    #echo "<br>USUARIO=$user_id<br>";
+    	    #$this->__PRINT_R($this->comando_sql);
     	    ## GUARDAR PERFILES DE USUARIO
     	    $usergroup_datas=array();
     	    if(isset($datas["usergroup_ids"]))
@@ -183,7 +190,7 @@
 			    }	
 			}    
 		}		
-		
+		#/*
 		public function __FIND_FIELDS($id=NULL)
 		{
 			parent::__FIND_FIELDS($id);
@@ -192,6 +199,7 @@
 				$this->sys_fields["password"]["value"]="";			
 			}			
     	}
+    	#*/
 		public function __INPUT($words=NULL,$sys_fields=NULL)
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);
@@ -213,9 +221,11 @@
     	    	"where"=>
 			    	array(
 						"email='$user'",
-						"password=md5('$pass')"
+						"password=md5('$pass')",
+						"status=1"
 			    	),
     	    );
+    	    #$option["echo"]="USERS sesion()";
     	    $data_user	=$this->users($option);    	        	    
     	    if(is_array($data_user) AND array_key_exists("data",$data_user))
     	    {    	    	
@@ -224,6 +234,7 @@
     	    }
 			return $return;
 		}		
+		/*
 		public function session2($user)
     	{
     	    $option=array(
@@ -239,6 +250,7 @@
     	    }
 			return $return;
 		}
+		*/
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	
@@ -246,17 +258,17 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
-			$return =$this->__BROWSE($this->browse_users($option));    				
+			$return =$this->__BROWSE($option);    				
 			return $return;			
 		}				
     	//////////////////////////////////////////////////	
 	
 		public function users($option=NULL)		
     	{	
-			$return =$this->__VIEW_REPORT($this->browse_users($option));    				
+			$return =$this->__VIEW_REPORT($option);    				
 			return $return;
 		}				
-		public function browse_users($option=NULL)		
+		public function __BROWSE($option=NULL)		
     	{	
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
@@ -267,12 +279,13 @@
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]	="img_files_id";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"]	="img_files_id_min";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
-			$option["select"][]																="users.*";
-			$option["from"]		="users";			
+			$option["select"][]																="u.*";
+			$option["from"]		="users u";			
+
 			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))
-				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";						
-			    				
-			return $option;
+				$option["where"][]	="(u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]})";									    				
+
+			return parent::__BROWSE($option);
 		}				
 
 	}

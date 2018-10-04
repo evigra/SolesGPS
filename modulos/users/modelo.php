@@ -13,7 +13,6 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
-			    
 			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			    "default"           => "",
@@ -21,7 +20,6 @@
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
-			    "title_filter"      => "Nombre",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -29,7 +27,6 @@
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",
-			    "title_filter"      => "Mail",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -68,8 +65,8 @@
 			),
 
 			"sesion_start"	    =>array(
-			    "title"             => "Modulo de inicio",
-			    "showTitle"         => "si",
+			    "title"             => "Menu inicio",
+			    "showTitle"         => "no",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_modulos",
@@ -117,11 +114,7 @@
 			    #"class_field_m"    	=> "responsable_fisico_id",
 			    "value"             => "",			    
 			),
-			"status"	    =>array(
-			    "title"             => "Activo",
-			    "showTitle"         => "si",
-			    "type"              => "checkbox",
-			),				
+			
 		);				
 		##############################################################################	
 		##  Metodos	
@@ -231,7 +224,6 @@
     	    }
 			return $return;
 		}		
-		/*
 		public function session2($user)
     	{
     	    $option=array(
@@ -247,7 +239,6 @@
     	    }
 			return $return;
 		}
-		*/
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	
@@ -255,17 +246,17 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
-			$return =$this->__BROWSE($option);    				
+			$return =$this->__BROWSE($this->browse_users($option));    				
 			return $return;			
 		}				
     	//////////////////////////////////////////////////	
 	
 		public function users($option=NULL)		
     	{	
-			$return =$this->__VIEW_REPORT($option);    				
+			$return =$this->__VIEW_REPORT($this->browse_users($option));    				
 			return $return;
 		}				
-		public function __BROWSE($option=NULL)		
+		public function browse_users($option=NULL)		
     	{	
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
@@ -276,13 +267,12 @@
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]	="img_files_id";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"]	="img_files_id_min";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
-			$option["select"][]																="u.*";
-			$option["from"]		="users u";			
-
+			$option["select"][]																="users.*";
+			$option["from"]		="users";			
 			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))
-				$option["where"][]	="(u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]})";									    				
-
-			return parent::__BROWSE($option);
+				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";						
+			    				
+			return $option;
 		}				
 
 	}

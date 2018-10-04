@@ -22,11 +22,11 @@
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
     		
-    		#if(!isset($option["select"]))	$option["select"]		=array();
+    		if(!isset($option["select"]))	$option["select"]		=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
     		
-    		$option["echo"]		="trabajador";						
+    		$option["echo"]	="tipo";						
 			$option["where"][]	="tipo='trabajador'";						
 			    				
 			return parent::__BROWSE($option);

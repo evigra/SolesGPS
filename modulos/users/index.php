@@ -87,7 +87,7 @@
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
 		$template_body								=	$objeto->sys_module."html/kanban";	
-	   	$data										=$objeto->__BROWSE($option);
+	   	$data										=$objeto->users();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }        
 	else
@@ -108,7 +108,7 @@
 		$option["template_title"]					=	$objeto->sys_module."html/report_title";
 		$option["template_body"]					=	$objeto->sys_module."html/report_body";
 		
-		$data										=$objeto->__VIEW_REPORT($option);
+		$data										=$objeto->users($option);
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }

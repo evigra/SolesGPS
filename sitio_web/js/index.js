@@ -1713,8 +1713,7 @@ styles:
 					else if($("select#"+ivariables))
 					{
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");
-							
+							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	
 					else
@@ -1722,10 +1721,15 @@ styles:
 						path=path+"&"+ivariables+"="+variables[ivariables];
 					}
 					if(variables[ivariables]=="delete")							
-						enviar = confirm("Borrar datos");							
+					{
+						enviar = confirm("Borrar datos");														
+					}	
 				}	
-				if(path!="")	$("form").attr({"action":path});					
-				if(enviar==true)	$("form").submit(); 	        
+				if(enviar==true)
+				{
+					if(path!="")	$("form").attr({"action":path});					
+					$("form").submit(); 	        
+				}		
 			});
 		}	    
         if($(".sys_order").length>0)

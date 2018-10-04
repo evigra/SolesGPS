@@ -113,7 +113,7 @@
 					
 						$"."this->request[\"sys_id\"]	=@$"."this->request[\"sys_id_".$this->sys_name."\"];					
 					}
-					if($"."this->sys_section=="delete")
+					if($"."this->sys_section==\"delete\")
 					{
 						
 					}

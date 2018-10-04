@@ -224,13 +224,11 @@
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			}	
-			/*
 			if(isset($option["user"]))
 			{
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
-			}
-			*/			
+			}			
 			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, true);
 			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, true);
@@ -1193,12 +1191,7 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								$"."option_$campo		=array(		
-									\"name\"			=>\"$campo"."_obj\",		
-									\"memory\"			=>\"$campo\",
-								);
-
-								$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_$campo);
+								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
 
 
 								$"."view_auto						=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
@@ -1268,11 +1261,6 @@
 												source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 												dataType: 	\"jsonp\",
 												$js_auto
-												change: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
-												{
-													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
-													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
-												},
 												select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 												{												
 													if(typeof auto_$campo === 'function') 								
@@ -1302,8 +1290,6 @@
 															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 														}
 													}
-													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
-													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
 										</script>
@@ -1373,8 +1359,11 @@
 							{
 								$eval="";
 								$eval="
-									$"."option							=array(\"name\"=>\"$campo"."_obj\");								
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option);
+									$"."this->$campo				=new {$valor["class_name"]}();									
+									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
+								";	
+								$eval="
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
 								";	
 								
 								if(@eval($eval)===false)	
@@ -1419,8 +1408,7 @@
 			}
 						
 			$eval="
-				$"."option_$campo		=array(		
-					\"name\"			=>\"$campo"."_obj\",		
+				$"."option_$campo		=array(				
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);
@@ -1490,9 +1478,8 @@
 				$json	=$option["json"];										
 			}
 						
-			$eval="			
-				$"."option_$campo		=array(		
-					\"name\"			=>\"$campo"."_obj\",		
+			$eval="
+				$"."option_$campo		=array(				
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);

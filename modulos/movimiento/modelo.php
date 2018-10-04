@@ -132,8 +132,17 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-			$datas["registro"]			=$this->sys_date;
-			$datas["company_id"]		=$_SESSION["company"]["id"];
+			$datas["registro"]					=$this->sys_date;
+			$datas["company_id"]				=$_SESSION["company"]["id"];
+    		$datas["tipo"]						=$this->tipo_movimiento;	
+    									
+			if($this->request["sys_section_" . $this->sys_object]=="create")
+			{
+				$option_folios=array();
+				$option_folios["tipo"]			=$datas["tipo"];
+				$datas["folio"]					=$this->__FOLIOS($option_folios);
+			}				
+
 
     	    return parent::__SAVE($datas,$option);
 		}

@@ -460,7 +460,6 @@
 						"title"		=>"SOLESGPS :: {$row["event"]}"
 					);						
 					$option_mail["to"].="{$row["mail_speed"]}";			
-            
             	
             		$comando_sql		="";
             		$PRE_comando_sql	="

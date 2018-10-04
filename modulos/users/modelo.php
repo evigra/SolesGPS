@@ -69,7 +69,7 @@
 
 			"sesion_start"	    =>array(
 			    "title"             => "Menu inicio",
-			    "showTitle"         => "no",
+			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_modulos",

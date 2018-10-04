@@ -112,7 +112,12 @@
 						#if(isset($"."this->request[\"sys_id_".$this->sys_name."\"]))
 					
 						$"."this->request[\"sys_id\"]	=@$"."this->request[\"sys_id_".$this->sys_name."\"];					
-					}	
+					}
+					if($"."this->sys_section==\"delete\")
+					{
+						$"."this->__DELETE($"."this->request[\"sys_id_".$this->sys_name."\"]);
+					}
+											
 				";
 				eval($eval);							
 			
@@ -132,6 +137,29 @@
 				
 			}	
 		}
+		
+		public function __DELETE($option=array())
+    	{    	
+    		if(is_array($option))
+    		{
+    			foreach($option as $id)
+    			{     		
+    				$this->__DELETE($id);
+    			}	
+    		}
+    		if($option>0)
+    		{
+    			$this->__FIND_FIELD_ID();
+    			$this->sys_sql			="
+    				DELETE FROM {$this->sys_table} WHERE 1=1
+    				AND {$this->sys_primary_field}='$option'
+    				
+    			";
+    			    	
+    			$return = $this->__EXECUTE($this->sys_sql);    		  
+    		}
+		}
+		
 		public function __BROWSE($option=array())
     	{    	
     		$option_conf=array();

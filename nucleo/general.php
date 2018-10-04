@@ -152,9 +152,7 @@
     			$this->__FIND_FIELD_ID();
     			$this->sys_sql			="DELETE FROM {$this->sys_table} WHERE {$this->sys_primary_field}='$option'";
     			    	
-    			$return = $this->__EXECUTE($this->sys_sql);    		
-    			$this->__PRINT_R($return);
-    			return $return;  
+    			$return = $this->__EXECUTE($this->sys_sql);    		  
     		}
 		}
 		

@@ -1804,11 +1804,6 @@ styles:
 	    {
 			$(".echo").dialog();
 		}		
-	    if($(".developer").length>0)
-	    {
-			$(".developer").dialog();
-		}		
-
 		if($(".cBodyReport").length>0) 
 		{
 			var colorAction;

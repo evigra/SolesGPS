@@ -130,6 +130,17 @@
 		{	
 			parent::__CONSTRUCT();					
 		}
+		public function __FOLIOS($option_folios="")
+		{	
+			$option_folios=array();
+			$option_folios["variable"]		=date("Y");
+			$option_folios["subvariable"]	=date("Y");
+			$option_folios["tipo"]			="SO";
+			$option_folios["subtipo"]		="";
+			$option_folios["objeto"]		="";
+		
+			return parent::__FOLIOS($option_folios);		
+		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
 			$datas["registro"]			=$this->sys_date;

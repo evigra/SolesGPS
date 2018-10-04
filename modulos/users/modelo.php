@@ -13,6 +13,7 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
+			    
 			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			    "default"           => "",
@@ -20,6 +21,7 @@
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
+			    "filter_title"      => "Nombre",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -27,6 +29,7 @@
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",
+			    "filter_title"      => "Mail",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

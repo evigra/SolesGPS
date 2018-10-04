@@ -72,6 +72,16 @@
 		}		
 		#*/
 	
+		public function autocomplete()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
+    		$option["where"][]		="type='menu'";
+    		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
 
 		public function grupos()
     	{

@@ -70,32 +70,34 @@
 </table>
 
 <div id="setting" title="Ajustes de Usuario">
-    <table width="100%" >
+    <table width="100%" border="1">
         <tr style="height: 50px;">
-            <td>
+            <td colspan="2">
                 <font size="3">
                     Usuario: {system_user}
                 </font>
+            </td>
+            <td>
+            </td>
+
+        </tr>		        
+        <tr style="height: 50px;">
+            <td width="33%">
+                <font size="2">
+                    Elegir Empresa
+                </font>
+            </td> 
+            <td width="33%">
+                {companys}
             </td> 
             <td align="right">
                 <font id="update_settings">
                     Actualizar
                 </font>
-            </td>
-        </tr>		        
-        <tr style="height: 50px;">
-            <td>
-                <font size="2">
-                    Elegir Empresa
-                </font>
-            </td> 
-            <td align="right">
-                <!--<input type="text" name="setting_company" id="setting_company">-->
-                {companys}
             </td> 
         </tr>
         <tr style="height: 50px;">
-        	<td colspan="2">
+        	<td colspan="3">
 				<div id="varias_hojas" class="form">
 					<ul>
 						<li  class="form"><a href="#vh1">PAGOS EN BANAMEX</a></li>

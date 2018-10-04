@@ -115,7 +115,7 @@
 					}
 					if($"."this->sys_section==\"delete\")
 					{
-						$"."this->__DELETE($"."this->request[\"sys_id_".$this->sys_name."\"]);
+						
 					}
 											
 				";

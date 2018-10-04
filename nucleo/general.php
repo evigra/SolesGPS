@@ -100,7 +100,8 @@
 				if(!isset($_SESSION["pdf"]["PDF_PAGE_FORMAT"]))			$_SESSION["pdf"]["PDF_PAGE_FORMAT"]			="A4";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
-				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   					
+				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
+				
 						
 				$eval="
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
@@ -119,7 +120,8 @@
 											
 				";
 				eval($eval);							
-						
+			
+			
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
 				#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
@@ -127,7 +129,7 @@
 				{
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-				    $words["system_js"]     				=@$this->__SAVE_JS;	    
+				    $words["system_js"]     				=@$this->__SAVE_JS;	            
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
@@ -638,7 +640,6 @@
 					{
 						$insert=1;
 						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
-		
 						$this->__PRINT_JS.="
 							$(\"input[system!='yes']\").each(function(){                		
 								$(this).val(\"\");                			

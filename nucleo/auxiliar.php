@@ -1266,11 +1266,6 @@
 												source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 												dataType: 	\"jsonp\",
 												$js_auto
-												change: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
-												{
-													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
-													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
-												},
 												select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 												{												
 													if(typeof auto_$campo === 'function') 								
@@ -1300,8 +1295,6 @@
 															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 														}
 													}
-													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
-													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
 										</script>

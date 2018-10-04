@@ -1257,7 +1257,7 @@
 								else								
 									$words["$campo"]  ="
 										<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-										<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden1\">
+										<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
 										<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
 										<script>
 											$(\"div#auto_$campo\").hide();
@@ -1266,6 +1266,11 @@
 												source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 												dataType: 	\"jsonp\",
 												$js_auto
+												change: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
+												{
+													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
+													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
+												},
 												select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 												{												
 													if(typeof auto_$campo === 'function') 								
@@ -1295,6 +1300,8 @@
 															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 														}
 													}
+													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
+													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
 										</script>

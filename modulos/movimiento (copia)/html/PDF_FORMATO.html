@@ -1,0 +1,194 @@
+<table width="100%" border ="1" style="padding:3px;" align="left">
+	<tr>
+		<td colspan="10">DEPENDENCIA<br><b>{trabajador_dependencia}</b></td>
+		<td colspan="4">FECHA<br><b>{registro}</b></td>
+		<td colspan="6"></td>
+	</tr>	
+</table>
+<br><br>
+<table width="100%" border ="1" style="padding:3px;" align="left">		
+	<tr><td colspan="20" align="center" style="background-color:#bbb; color:#fff;"><b>DATOS DEL TRABAJADOR</b></td></tr>	
+	<tr>
+		<td colspan="14">NOMBRE<br><b>{trabajador_nombre}</b></td>
+		<td colspan="6">MATRICULA<br><b>{trabajador_clave}</b></td>	
+	</tr>	
+	<tr>
+		<td colspan="2">PLAZA<br><b>{trabajador_plaza}</b></td>
+		<td colspan="5">SUELDO<br><b>{sueldo}</b></td>	
+		<td colspan="13">PUESTO<br><b>{trabajador_puesto}</b></td>		
+	</tr>	
+	<tr>
+		<td colspan="7" style="background-color:#eee;">SOLICITUD DE (maque con una X)</td>
+		<td colspan="7" style="background-color:#eee;">CONCEPTOS(C) REGISTROS(R)</td>	
+		<td colspan="6" style="background-color:#eee;">INFORMACION ADICIONAL</td>		
+	</tr>		
+	<tr>
+		<td rowspan="3" align="center"><font size="3">I<br>N<br>C<br>L<br>U<br>S<br>I<br>O<br>N</font></td>
+		<td align="center">{che_pago}</td>
+		<td colspan="5">PAGO</td>
+		<td colspan="7"	align="center"><b>{d_pago}</b></td>		
+		<td colspan="4">QNA DE INCIDENCIA</td>			
+		<td colspan="2" align="right"><b>{incidencia}</b></td>			
+	</tr>		
+	<tr>		
+		<td align="center">{che_descuento}</td>
+		<td colspan="5">DESCUENTO</td>
+		<td colspan="7"	align="center"><b>{d_descuento}</b></td>		
+		<td colspan="4">QNA DE PROCESO </td>			
+		<td colspan="2"  align="right"><b>{proceso}</b></td>			
+	</tr>			
+	<tr>		
+		<td >{che_reintegro}</td>
+		<td colspan="5">REINTEGRO</td>
+		<td colspan="7"	align="center"><b>{d_reintegro}</b></td>		
+		<td colspan="6">NO DE ANEXOS</td>			
+	</tr>			
+	<tr>
+		<td rowspan="2"></td>
+		<td align="center" >{che_exclusion}</td>
+		<td colspan="5">EXCLUSION</td>
+		<td colspan="7"		align="center"><b>{d_exclusion}</b></td>		
+		<td colspan="6">PERIODO<br>DEL <b>{del}</b> AL <b>{al}</b></td>			
+	</tr>				
+	<tr>		
+		<td align="center">{che_ajuste}</td>
+		<td colspan="5">AJUSTE AL HISTORICO DE ACUM</td>
+		<td colspan="7"		align="center"><b>{d_ajuste}</b></td>		
+		<td colspan="6"></td>			
+	</tr>				
+	<tr><td colspan="20"  height="50">MOTIVO<br><b>{motivo}</b></td></tr>	
+	<tr>		
+		<td colspan="10" align="center">
+			<table>
+				<tr><td height="60">TRABAJADOR</td></tr>
+				<tr><td><b>{trabajador_nombre}</b></td></tr>			
+			</table>
+		</td>
+		<td colspan="10"  align="center">
+			<table>
+				<tr><td>JEFE DE LA DEPENDENCIA</td></tr>
+				<tr><td></td></tr>			
+			</table>		
+		</td>
+	</tr>			
+</table>
+<br><br>
+<table width="100%" border ="1" style="padding:3px;" align="left">	
+	<tr><td colspan="20" align="center" style="background-color:#bbb; color:#fff;"><b>DATOS DEL REPORTE PARA USO EXCLUSIVO DEL DEPARTAMENTO DELEGACIONAL DE PERSONAL</b></td></tr>	
+	<tr>		
+		<td colspan="7" align="center" style="background-color:#eee;">CONCEPTOS FIJOS</td>
+		<td colspan="6" align="center" style="background-color:#eee;">HISTORICO DE ACUMULADOS</td>		
+		<td colspan="7" align="center" style="background-color:#eee;">CONCEPTOS POR UNA VEZ</td>			
+	</tr>				
+	<tr>		
+		<td colspan="3">MATRICULA</td>
+		<td colspan="4" align="right">{CPF1_matricula1}</td>
+		<td colspan="3">MATRICULA</td>
+		<td colspan="3" align="right">{H1_matricula1}</td>
+		<td colspan="3">MATRICULA</td>
+		<td colspan="4" align="rigth">{CP1V_matricula1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">CONCEPTO</td>
+		<td colspan="4" align="right">{CPF1_con1}</td>
+		<td colspan="3">CONTADOR</td>
+		<td colspan="3" align="right">{H1_con1}</td>
+		<td colspan="3">CONCEPTO</td>
+		<td colspan="4"  align="right">{CP1V_con1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">UNIDAD</td>
+		<td colspan="4" align="right">{CPF1_uni1}</td>
+		<td colspan="3">MES</td>
+		<td colspan="3" align="right">{H1_mes1}</td>
+		<td colspan="3">IMPORTE</td>
+		<td colspan="4" align="right">{CP1V_imp1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">IMPORTE</td>
+		<td colspan="4" align="right">{CPF1_imp1}</td>
+		<td colspan="3">UNID SUMA</td>
+		<td colspan="3" align="right">{H1_uni_s1}</td>
+		<td colspan="3">UNIDADES</td>
+		<td colspan="4" align="right">{CP1V_uni1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">QNA INICIAL</td>
+		<td colspan="4" align="right">{CPF1_ini1}</td>
+		<td colspan="3">UNID RESTYA</td>
+		<td colspan="3" align="right">{H1_uni_r1}</td>
+		<td colspan="3">DIA/GRUP</td>
+		<td colspan="4" align="right">{CP1V_dia1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">QNA FINAL</td>
+		<td colspan="4" align="right">{CPF1_fin1}</td>
+		<td colspan="3">IMP SUMA</td>
+		<td colspan="3" align="right">{H1_imp_s1}</td>
+		<td colspan="3">JOR/GRUP</td>
+		<td colspan="4" align="right">{CP1V_jor1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">NO CONTROL</td>
+		<td colspan="4" align="right">{CPF1_noc1}</td>
+		<td colspan="3">IMP RESTA</td>
+		<td colspan="3" align="right">{H1_imp_r1}</td>
+		<td colspan="3">FACTOR 6 Y 7</td>
+		<td colspan="4" align="right">{CP1V_fac1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3">DESCRIPCION</td>
+		<td colspan="4" align="right">{CPF1_des1}</td>
+		<td colspan="3">DESCRIPCION</td>
+		<td colspan="3" align="right">{H1_des1}</td>
+		<td colspan="3">DESCRIPCION</td>
+		<td colspan="4" align="right">{CP1V_des1}</td>
+	</tr>				
+	<tr>		
+		<td colspan="3" rowspan="2">CIFRA CONTROL</td>
+		<td colspan="4" rowspan="2" align="right">{CPF1_cif1}</td>
+		<td colspan="3">DICE</td>		
+		<td colspan="3" align="right">{H1_dic1}</td>
+		<td colspan="3">BASE 22</td>
+		<td colspan="4" align="right">{CP1V_bas1}</td>
+	</tr>		
+	<tr>		
+		<td colspan="3">DEBE DECIR</td>		
+		<td colspan="3" align="right">{H1_deb1}</td>
+		<td colspan="3">MARCA</td>
+		<td colspan="4" align="right">{CP1V_mar1}</td>
+	</tr>		
+	<tr>		
+		<td colspan="13" rowspan="3">QNA DE PROCESO</td>		
+		<td colspan="3">FECHA INICIAL</td>		
+		<td colspan="4" align="right">{CP1V_ini1}</td>		
+	</tr>		
+	<tr>		
+		<td colspan="3">FECHA FINAL</td>		
+		<td colspan="4" align="right">{CP1V_fin1}</td>		
+	</tr>		
+	<tr>		
+		<td colspan="3">CIFRA CONTROL</td>		
+		<td colspan="4" align="right">{CP1V_cif1}</td>		
+	</tr>		
+	<tr>				
+		<td colspan="7" align="center">
+			<table>
+				<tr><td height="60">ELABORO REPORTE</td></tr>
+				<tr><td><b>{elaboro}<br>{m_elaboro}</b></td></tr>			
+			</table>		
+		</td>		
+		<td colspan="6" align="center">
+			<table>
+				<tr><td height="60">AUTORIZA JEFE DE OFICINA</td></tr>
+				<tr><td><b>{autorizo}<br>{m_autorizo}</b></td></tr>			
+			</table>				
+		</td>		
+		<td colspan="7" align="center">
+			<table>
+				<tr><td height="50">ACTUALIZA EN SIAP</td></tr>
+				<tr><td><b></b></td></tr>			
+			</table>				
+		</td>
+	</tr>		
+</table>

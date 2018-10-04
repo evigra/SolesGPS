@@ -1954,6 +1954,11 @@
     	##############################################################################        
     	public function __FOLIOS($option)
     	{								
+			if(!isset($option["variable"]))		$option["variable"]="";
+			if(!isset($option["subvariable"]))	$option["subvariable"]="";
+			if(!isset($option["tipo"]))			$option["tipo"]="";
+			if(!isset($option["subtipo"]))		$option["subtipo"]="";
+			if(!isset($option["objeto"]))		$option["objeto"]="";
 			
 			$sql    	="
 				SELECT * FROM configuracion 

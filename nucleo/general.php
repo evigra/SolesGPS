@@ -246,7 +246,13 @@
 						$class_field_m			=@$valor["class_field_m"];
 						$class_field_l			=@$valor["class_field_l"];
 						
-						$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
+						$eval="
+							$"."option_$campo		=array(		
+								\"name\"			=>\"$campo"."_obj\",		
+								\"memory\"			=>\"$campo\",
+							);
+							
+							$"."obj_$campo   				=new {$valor["class_name"]}($"."option_$campo);";							
 					}
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
@@ -477,7 +483,12 @@
 							$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$value["class_name"]}();
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
+								$"."obj_$campo   	=new {$value["class_name"]}($"."option_$campo);
 								
 								$"."option_$campo=array(
 									\"where\"		=>array(\"$class_field_m='$id'\")
@@ -497,6 +508,11 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
 								$"."obj_$campo   	=new {$value["class_name"]}();
 								$"."option_$campo=array();
 ####								
@@ -644,8 +660,14 @@
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
-							$eval="															
-								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();												
+							$eval="			
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
+																			
+								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}($"."option_$campo);												
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	

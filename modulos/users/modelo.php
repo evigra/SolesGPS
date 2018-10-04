@@ -227,6 +227,7 @@
     	    }
 			return $return;
 		}		
+		/*
 		public function session2($user)
     	{
     	    $option=array(
@@ -242,6 +243,7 @@
     	    }
 			return $return;
 		}
+		*/
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	
@@ -249,17 +251,17 @@
     		$option["where"]		=array();    		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		
-			$return =$this->__BROWSE($this->browse_users($option));    				
+			$return =$this->__BROWSE($option);    				
 			return $return;			
 		}				
     	//////////////////////////////////////////////////	
 	
 		public function users($option=NULL)		
     	{	
-			$return =$this->__VIEW_REPORT($this->browse_users($option));    				
+			$return =$this->__VIEW_REPORT($option);    				
 			return $return;
 		}				
-		public function browse_users($option=NULL)		
+		public function __BROWSE($option=NULL)		
     	{	
     		if(is_null($option))			$option					=array();
     		if(!isset($option))				$option					=array();
@@ -270,12 +272,13 @@
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]	="img_files_id";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,30)"]	="img_files_id_min";
             $option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,150)"]	="img_files_id_med";
-			$option["select"][]																="users.*";
-			$option["from"]		="users";			
+			$option["select"][]																="u.*";
+			$option["from"]		="users u";			
+
 			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))
-				$option["where"][]	="(users.company_id={$_SESSION["company"]["id"]} or users.id={$_SESSION["user"]["id"]})";						
-			    				
-			return $option;
+				$option["where"][]	="(u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]})";									    				
+
+			return parent::__BROWSE($option);
 		}				
 
 	}

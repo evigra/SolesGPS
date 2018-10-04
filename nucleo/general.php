@@ -126,7 +126,6 @@
 				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
-					
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	    
 				}							
@@ -575,14 +574,7 @@
 				if(!isset($option) OR is_null($option))	$option=array();
 				
 				if(!array_key_exists("message",$option))   
-					$option["message"]="Datos guardados correctamente";
-
-				if(!array_key_exists("title",$option))   
-					$option["title"]="Mensaje de sistema";
-
-				if(!array_key_exists("time",$option))   
-					$option["time"]=1500;
-
+					$option["message"]="DATOS GUARDADOS";
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -674,7 +666,8 @@
 					if(@$this->OPHP_conexion->error=="")
 					{					
 						unset($option["open"]);
-																		
+									
+						$this->__PRINT="Datos guardados correctamente";
 																	
 						$option["close"]=1;
 						
@@ -688,11 +681,6 @@
 							unset($option["close"]);
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
-						
-						$this->__MESSAGE_OPTION["text"]		=$option["message"];
-						$this->__MESSAGE_OPTION["title"]	=$option["title"];
-						$this->__MESSAGE_OPTION["time"]		=$option["time"];
-						
 						$return=@$this->sys_primary_id;
 						
 

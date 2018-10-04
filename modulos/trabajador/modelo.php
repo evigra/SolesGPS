@@ -26,7 +26,7 @@
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
     		
-    		$option["echo"]	="tipo";						
+    		$option["echo"]		="trabajador";						
 			$option["where"][]	="tipo='trabajador'";						
 			    				
 			return parent::__BROWSE($option);

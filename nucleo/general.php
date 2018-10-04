@@ -100,8 +100,7 @@
 				if(!isset($_SESSION["pdf"]["PDF_PAGE_FORMAT"]))			$_SESSION["pdf"]["PDF_PAGE_FORMAT"]			="A4";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
-				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
-				
+				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   					
 						
 				$eval="
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
@@ -112,19 +111,24 @@
 						#if(isset($"."this->request[\"sys_id_".$this->sys_name."\"]))
 					
 						$"."this->request[\"sys_id\"]	=@$"."this->request[\"sys_id_".$this->sys_name."\"];					
-					}	
+					}
+					if($"."this->sys_section==\"delete\")
+					{
+						$"."this->__DELETE($"."this->request[\"sys_id_".$this->sys_name."\"]);
+					}
+											
 				";
 				eval($eval);							
-			
-			
+						
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
 				#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
 				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
+					
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-				    $words["system_js"]     				=@$this->__SAVE_JS;	            
+				    $words["system_js"]     				=@$this->__SAVE_JS;	    
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
@@ -132,6 +136,29 @@
 				
 			}	
 		}
+		
+		public function __DELETE($option=array())
+    	{    	
+    		if(is_array($option))
+    		{
+    			foreach($option as $id)
+    			{     		
+    				$this->__DELETE($id);
+    			}	
+    		}
+    		if($option>0)
+    		{
+    			$this->__FIND_FIELD_ID();
+    			$this->sys_sql			="
+    				DELETE FROM {$this->sys_table} WHERE 1=1
+    				AND {$this->sys_primary_field}='$option'
+    				
+    			";
+    			    	
+    			$return = $this->__EXECUTE($this->sys_sql);    		  
+    		}
+		}
+		
 		public function __BROWSE($option=array())
     	{    	
     		$option_conf=array();
@@ -246,7 +273,13 @@
 						$class_field_m			=@$valor["class_field_m"];
 						$class_field_l			=@$valor["class_field_l"];
 						
-						$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
+						$eval="
+							$"."option_$campo		=array(		
+								\"name\"			=>\"$campo"."_obj\",		
+								\"memory\"			=>\"$campo\",
+							);
+							
+							$"."obj_$campo   				=new {$valor["class_name"]}($"."option_$campo);";							
 					}
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
@@ -477,7 +510,12 @@
 							$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$value["class_name"]}();
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
+								$"."obj_$campo   	=new {$value["class_name"]}($"."option_$campo);
 								
 								$"."option_$campo=array(
 									\"where\"		=>array(\"$class_field_m='$id'\")
@@ -497,6 +535,11 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
 								$"."obj_$campo   	=new {$value["class_name"]}();
 								$"."option_$campo=array();
 ####								
@@ -532,7 +575,14 @@
 				if(!isset($option) OR is_null($option))	$option=array();
 				
 				if(!array_key_exists("message",$option))   
-					$option["message"]="DATOS GUARDADOS";
+					$option["message"]="Datos guardados correctamente";
+
+				if(!array_key_exists("title",$option))   
+					$option["title"]="Mensaje de sistema";
+
+				if(!array_key_exists("time",$option))   
+					$option["time"]=1500;
+
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -596,6 +646,7 @@
 					{
 						$insert=1;
 						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
+		
 						$this->__PRINT_JS.="
 							$(\"input[system!='yes']\").each(function(){                		
 								$(this).val(\"\");                			
@@ -623,8 +674,7 @@
 					if(@$this->OPHP_conexion->error=="")
 					{					
 						unset($option["open"]);
-									
-						$this->__PRINT="Datos guardados correctamente";
+																		
 																	
 						$option["close"]=1;
 						
@@ -638,14 +688,25 @@
 							unset($option["close"]);
 							$this->sys_primary_id=$data[0]["ID"];
 						}	
+						
+						$this->__MESSAGE_OPTION["text"]		=$option["message"];
+						$this->__MESSAGE_OPTION["title"]	=$option["title"];
+						$this->__MESSAGE_OPTION["time"]		=$option["time"];
+						
 						$return=@$this->sys_primary_id;
 						
 
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
-							$eval="															
-								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();												
+							$eval="			
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+							
+																			
+								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}($"."option_$campo);												
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	

@@ -382,7 +382,8 @@
 			$aux_descripcion="";
             foreach($position_data as $row)
             {
-           
+				//           
+				//
             	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########";
             	$data_update	=array();
             	
@@ -460,6 +461,7 @@
 						"title"		=>"SOLESGPS :: {$row["event"]}"
 					);						
 					$option_mail["to"].="{$row["mail_speed"]}";			
+            
             	
             		$comando_sql		="";
             		$PRE_comando_sql	="

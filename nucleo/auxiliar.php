@@ -1191,7 +1191,12 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+
+								$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_$campo);
 
 
 								$"."view_auto						=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
@@ -1359,11 +1364,8 @@
 							{
 								$eval="";
 								$eval="
-									$"."this->$campo				=new {$valor["class_name"]}();									
-									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
-								";	
-								$eval="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
+									$"."option							=array(\"name\"=>\"$campo"."_obj\");								
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option);
 								";	
 								
 								if(@eval($eval)===false)	
@@ -1408,7 +1410,8 @@
 			}
 						
 			$eval="
-				$"."option_$campo		=array(				
+				$"."option_$campo		=array(		
+					\"name\"			=>\"$campo"."_obj\",		
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);
@@ -1478,8 +1481,9 @@
 				$json	=$option["json"];										
 			}
 						
-			$eval="
-				$"."option_$campo		=array(				
+			$eval="			
+				$"."option_$campo		=array(		
+					\"name\"			=>\"$campo"."_obj\",		
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);

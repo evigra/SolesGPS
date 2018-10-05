@@ -8,7 +8,7 @@
 		{
 			$this->sys_table="devices";
 			
-			$this->sys_fields["name"]["title"]				="Modelo";					
+			$this->sys_fields["name"]["title"]				="Modelo";			
 			$this->sys_fields["placas"]["description"]		="Placas actuales del vehiculo";			
 			$this->sys_fields["telefono"]["description"]	="Numero telefonico del celular";			
 			$this->sys_fields["image"]["description"]		="Imagen que se presentara en el mapa";			
@@ -20,27 +20,17 @@
 			    	"06"	=>	"Camioneta Blanca",
 			    	"07"	=>	"Camioneta Azul",
 		    );		
-		    
-			$this->sys_fields["telcel"]["type"]		="hidden";					    
-			$this->sys_fields["vehicle"]["type"]	="hidden";
-		
 			parent::__CONSTRUCT();			
 		}				
 
    		public function __SAVE($datas=NULL,$option=NULL)
-    	{
-    		
-    		$datas["vehicle"]			="1";
+    	{    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["file_id"]			=$files_id;    	    
 
-	  		$return=parent::__SAVE($datas,$option);
-	  		
-	  		
-	  		
-	  		return $return;
+    		parent::__SAVE($datas,$option);
 		}				
 		public function cars($option=NULL)
     	{

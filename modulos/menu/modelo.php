@@ -72,6 +72,16 @@
 		}		
 		#*/
 	
+		public function autocomplete()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
+    		$option["where"][]		="type='menu'";
+    		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
 
 		public function grupos()
     	{
@@ -161,9 +171,6 @@
 		
 		public function menu($option=NULL)
     	{
-    	
-    	
-    	
     		$data	=array();
     		
     		if(!is_array($option))
@@ -252,6 +259,7 @@
 		
 		public function option()
     	{
+
 		}				
 		public function view_opction()
     	{

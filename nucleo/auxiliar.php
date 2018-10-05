@@ -190,7 +190,6 @@
 								}	
 							}
 							// AQUI SI FUNCIONA!!!-------------------
-							#$this->__PRINT_R($datas);
 							foreach($datas[0] as $field =>$value)
 							{
 								$this->sys_fields["$field"]["value"]=$value;
@@ -200,7 +199,6 @@
 									$this->__PRINT_R("$eval"); #$eval; ---------------------------			
 								*/						        			
 							}
-							#$this->__PRINT_R($this->sys_fields);
 						}
 					}    
 				}	
@@ -224,11 +222,13 @@
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			}	
+			/*
 			if(isset($option["user"]))
 			{
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
-			}			
+			}
+			*/			
 			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, true);
 			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, true);
@@ -312,6 +312,8 @@
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SAVE_MESSAGE;
+		        
+		        #$words["system_message"]    		="AAAAAAAAAA";
 		        $words["system_js"]     			=@$this->__SAVE_JS;		        
 			}
 			
@@ -681,7 +683,6 @@
 			# O CREANDO UNA NUEVA PROPIEDAD 
 			
 			#if(count($_REQUEST)>6)
-			#	$this->__PRINT_R($_REQUEST);
 			if(is_array(@$this->sys_fields))
 			{
 				foreach($this->sys_fields as $campo =>$valor)
@@ -879,6 +880,17 @@
 				"message"=>"DATOS GUARDADOS",
 			);	
 			$this->__SAVE($fields, $opcion);
+			
+			if($this->__PRINT!="")
+			{
+				/*
+				$this->__SAVE_MESSAGE="
+					<div class=\"echo\" title=\"\">
+						{$this->__PRINT}				
+					</div>		    		
+				";
+				*/
+			}	
     	}
 		##############################################################################    
 		public function __FIELDS()
@@ -1191,7 +1203,12 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								$"."this->$campo"."_obj				=new {$valor["class_name"]}();																									
+								$"."option_$campo		=array(		
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+								);
+
+								$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option_$campo);
 
 
 								$"."view_auto						=$"."this->$campo"."_obj->__VIEW_WRITE($"."this->$campo"."_obj->sys_module.\"html/create\");	
@@ -1261,6 +1278,11 @@
 												source:		\"../sitio_web/ajax/autocomplete.php?class_name={$valor["class_name"]}&procedure={$valor["procedure"]}&class_field_l={$valor["class_field_l"]}&class_field_m={$valor["class_field_m"]}$vars&date=".date("YmdHis")."\",
 												dataType: 	\"jsonp\",
 												$js_auto
+												change: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
+												{
+													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
+													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
+												},
 												select: function( event, ui ) // CUANDO SE SELECCIONA LA OPCION REALIZA LO SIGUIENTE
 												{												
 													if(typeof auto_$campo === 'function') 								
@@ -1290,6 +1312,8 @@
 															$(\"input#auto_$campo".".{$this->sys_name}\").val(ui.item.label);
 														}
 													}
+													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
+													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
 										</script>
@@ -1359,11 +1383,8 @@
 							{
 								$eval="";
 								$eval="
-									$"."this->$campo				=new {$valor["class_name"]}();									
-									$"."this->$campo"."_obj->sys_module	=\"{$valor["class_name"]}\";
-								";	
-								$eval="
-									$"."this->$campo"."_obj				=new {$valor["class_name"]}();																	
+									$"."option							=array(\"name\"=>\"$campo"."_obj\");								
+									$"."this->$campo"."_obj				=new {$valor["class_name"]}($"."option);
 								";	
 								
 								if(@eval($eval)===false)	
@@ -1408,7 +1429,8 @@
 			}
 						
 			$eval="
-				$"."option_$campo		=array(				
+				$"."option_$campo		=array(		
+					\"name\"			=>\"$campo"."_obj\",		
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);
@@ -1478,8 +1500,9 @@
 				$json	=$option["json"];										
 			}
 						
-			$eval="
-				$"."option_$campo		=array(				
+			$eval="			
+				$"."option_$campo		=array(		
+					\"name\"			=>\"$campo"."_obj\",		
 					\"memory\"			=>\"$campo\",
 					\"class_one\"		=>\"$class_one\",
 				);
@@ -1535,7 +1558,6 @@
 
 				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->$campo"."_obj->words);									
 			";				
-			#$this->__PRINT_R($eval);
 			eval($eval);	
 			
 			return $words;
@@ -1997,7 +2019,7 @@
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
-					#$this->__PRINT_R($option["data"]);
+
 				}
 			}
 		    if(is_array($option))
@@ -2054,7 +2076,7 @@
 		    		$option["title"]				= @$browse["title"];
 					$option["title_pdf"]			= @$browse["title_pdf"];
 
-					#$this->__PRINT_R($browse["title"]);
+
 					#$view_title						=@$browse["title"];
 					#$view_title_pdf					=@$browse["title_pdf"];
 						
@@ -2071,13 +2093,11 @@
 					}			    		
 		    	}	
 		    	
-		    	#$this->__PRINT_R($option);	
+
 				#######################							
 				
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
-
-				#$this->__PRINT_R($view_title_data);
 
 				$view_title			=$view_title_data["view_title"];
 				$view_title_pdf		=$view_title_data["view_title_pdf"];
@@ -2166,7 +2186,6 @@
 		    	    if(!isset($option["input"]))	$option_kanban["input"]		="true";
 		    	    if(isset($option["input"]))		$option_kanban["input"]		=$option["input"];
 		    	    
-		    	    #$this->__PRINT_R($option_kanban);
 
 					if(isset($return["data_0"]))
 					{
@@ -2530,7 +2549,7 @@
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
-			#$this->__PRINT_R($option);
+
 			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
 			
 			#if(isset($option["template_title"]))
@@ -2540,7 +2559,6 @@
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
-				#$this->__PRINT_R($option);
 				
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
 				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo

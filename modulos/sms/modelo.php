@@ -1,7 +1,7 @@
 <?php
 	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
 	#require_once("modulos/files/modelo.php");
-	class tax extends configuracion
+	class conf_sms extends configuracion
 	{   
 		##############################################################################	
 		##  Propiedades	
@@ -17,7 +17,7 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-   	    	$datas["subtipo"]		="TAX";
+   	    	$datas["subtipo"]		="SMS";
    	    	$datas["company_id"]	="{$_SESSION["company"]["id"]}";
     		return parent::__SAVE($datas,$option);
 		}		
@@ -26,7 +26,7 @@
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
-			$option["where"][]      ="subtipo='TAX'";
+			$option["where"][]      ="subtipo='SMS'";
 			$option["where"][]      ="company_id='{$_SESSION["company"]["id"]}'";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

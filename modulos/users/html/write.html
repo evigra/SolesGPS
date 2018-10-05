@@ -1,58 +1,30 @@
-<table class="mainTable">
-    <tr>
-        <td style="padding:10px;">
-			{img_files_id}
-            <div style="color:SteelBlue; font-size:25; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades generales</div>
-			<table border="0">
-				<tr>
-				    <td colspan="2">                       
-				        {name}
-				    </td>        
-				    
-				    <td width="33%">                        
-				        {sesion_start}
-				    </td>        
-				</tr>   
-			   <tr>
-				    <td width="33%">
-				        {email}
-				    </td>        
-				    <td width="33%">                        
-				        {password}
-				    </td>        
-				    <td width="33%">
-				       	{files_id} 
-				    </td>        
-				</tr>          
-			</table>
-            
-
-			<div id="tabs" class="form">
-				<ul>
-					<li  class="form"><a href="#tabs-1">Permisos</a></li>
-					<li  class="form"><a href="#tabs-2">Flotilla</a></li>
-				</ul>
-				<div id="tabs-1" class="form">
-					{permisos}
-				</div>
-				<div id="tabs-2"  class="form">
-					{flotilla}
-				</div>
-			</div>
-
-
-  <script>
-  $(function() {
-    $( "#tabs" ).tabs();
-  });
-  </script>        
-
-
-            
-            
-            
-            
-				            
-        </td>
-    </tr>
-</table>
+<div class="mainTable">
+    <div class="module_subtitle">Propiedades generales</div>
+	<table border="0">
+		<tr>
+		    <td colspan="4">                       
+		        {name}
+		    </td>        				    
+		    <td  colspan="2" width="33%">                        
+		        {sesion_start}
+		    </td>        
+		</tr>   
+	   <tr>
+		    <td width="33%"  colspan="2">
+		        {email}
+		    </td>        
+		    <td>                        
+		        {password}
+		    </td>        
+		    <td width="80">                        
+		        {status}
+		    </td> 		    
+		    <td width="33%"  colspan="2">
+		       	{files_id} 
+		    </td>        
+		</tr>          
+	</table>
+          
+    <div class="module_subtitle">Permisos</div>
+		{permisos}
+</div>

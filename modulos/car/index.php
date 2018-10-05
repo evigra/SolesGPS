@@ -134,7 +134,7 @@
 	$objeto->words["module_right"]	=	$objeto->__BUTTON($module_right);;
 		
 
-	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";	
+	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["nombre"]} :: {$objeto->words["module_title"]}";	
 	$objeto->words["html_head_description"]	=	"EN LA EMPRESA SOLESGPS, CONTAMOS CON UN MODULO PARA ADMINISTRAR EL REGISTRO DE DISPOSITIVOS GPS.";
 	$objeto->words["html_head_keywords"]	=	"GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
 	

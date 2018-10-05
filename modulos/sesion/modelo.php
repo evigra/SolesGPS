@@ -186,6 +186,7 @@
 							$data_sesion["remote_addr"]		=$_SERVER["REMOTE_ADDR"];
 							$data_sesion["http_user_agent"]	=$_SERVER["HTTP_USER_AGENT"];
 						
+							$option=array("message"=>"");
 							parent::__SAVE($data_sesion,$option);
 						    $_SESSION["user"]       		=$user;		
 						    $_SESSION["session"]    		=@$data_sesion;

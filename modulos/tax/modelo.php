@@ -17,7 +17,8 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-   	    	$datas["subtipo"]="TAX";
+   	    	$datas["subtipo"]		="TAX";
+   	    	$datas["company_id"]	="{$_SESSION["company"]["id"]}";
     		return parent::__SAVE($datas,$option);
 		}		
 		public function __BROWSE($option=NULL)
@@ -26,6 +27,7 @@
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
 			$option["where"][]      ="subtipo='TAX'";
+			$option["where"][]      ="company_id='{$_SESSION["company"]["id"]}'";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				

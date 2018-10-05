@@ -41,11 +41,14 @@
     <body style="margin:0px; padding:0px;">
 
     	<form action=""  method="POST" enctype="multipart/form-data">	
-    		<div id="message">{system_message}</div>
+    		{system_message}
 			{system_template}  
 		</form>
 		<script id="script" type="text/javascript">
-			{system_js}
+			$(document).ready(function()
+			{
+				{system_js}
+			});	
 		</script>
 		<div id="script">
 		</div>		

@@ -130,15 +130,22 @@
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 				
-		$data										= $objeto->__VIEW_REPORT($option);		
+		$data										= $objeto->__REPORTE($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-	$objeto->words["module_title"]              ="$module_title Plantilla";
+    
+    
+	$objeto->words["module_title"]              ="$module_title Movimiento";
+	
+	
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);
-	$objeto->words["module_right"]              =$objeto->__BUTTON($module_right);    
+	$objeto->words["module_right"]              =$objeto->__BUTTON($module_right);
+	    
+    
+    
     
 	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";
 	
@@ -147,5 +154,7 @@
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
     $objeto->__VIEW($objeto->html);
+    
+    
     
 ?>

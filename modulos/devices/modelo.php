@@ -21,6 +21,7 @@
 			),
 			"attributes"	    	=>array(
 			    "title"             => "atributos",
+			    "title_filter"		=> "Dispositivo",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			),

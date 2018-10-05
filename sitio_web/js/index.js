@@ -1708,31 +1708,24 @@ styles:
             	var path		="";
 				for(ivariables in variables)
 				{
-				
-					if($("select#"+ivariables).length>0)
+					if($("input#"+ivariables).length>0) 
+						$("input#"+ivariables).val(variables[ivariables]);
+					else if($("select#"+ivariables))
 					{
 						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");							
+							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");
+							
 						$("select#"+ivariables).val(variables[ivariables]);						
 					}	
-					else if($("input#"+ivariables).length>0) 
-					{
-						$("input#"+ivariables).val(variables[ivariables]);
-					}
 					else
 					{
 						path=path+"&"+ivariables+"="+variables[ivariables];
 					}
 					if(variables[ivariables]=="delete")							
-					{
-						enviar = confirm("Borrar datos");														
-					}	
+						enviar = confirm("Borrar datos");							
 				}	
-				if(enviar==true)
-				{
-					if(path!="")	$("form").attr({"action":path});					
-					$("form").submit(); 	        
-				}		
+				if(path!="")	$("form").attr({"action":path});					
+				if(enviar==true)	$("form").submit(); 	        
 			});
 		}	    
         if($(".sys_order").length>0)
@@ -1804,11 +1797,6 @@ styles:
 	    {
 			$(".echo").dialog();
 		}		
-	    if($(".developer").length>0)
-	    {
-			$(".developer").dialog();
-		}		
-
 		if($(".cBodyReport").length>0) 
 		{
 			var colorAction;

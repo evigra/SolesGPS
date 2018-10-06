@@ -535,6 +535,8 @@
 					$option["message"]="DATOS GUARDADOS CORRECTAMENTE";
 				if(!array_key_exists("time",$option))   
 					$option["time"]="1500";
+				if(!array_key_exists("title",$option))   
+					$option["message"]="MENSAJE DEL SISTEMA";
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -628,6 +630,7 @@
 									
 						$this->__MESSAGE_OPTION["text"]		=$option["message"];
 						$this->__MESSAGE_OPTION["time"]		=$option["time"];																	
+						$this->__MESSAGE_OPTION["title"]	=$option["title"];
 						$option["close"]=1;
 						
 						if($insert==1)

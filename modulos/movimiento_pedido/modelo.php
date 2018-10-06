@@ -22,7 +22,7 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		$datas["tipo"]						=$this->tipo_movimiento;								
-			if($this->request["sys_section_movimiento_plantilla"]=="create")
+			if($this->request["sys_section_". $this->sys_object]=="create")
 			{
 				$option_folios=array();
 				$option_folios["tipo"]			=$this->tipo_movimiento;
@@ -39,7 +39,7 @@
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 			
-			if(!isset($this->request["sys_order_movimiento_plantilla"]))
+			if(!isset($this->request["sys_order_". $this->sys_object]))
 				$option["order"]="id desc";
 			
 			return parent::__BROWSE($option);

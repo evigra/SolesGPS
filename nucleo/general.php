@@ -129,9 +129,10 @@
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	            
-				}							
-				
+				}											
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
+				
+
 			}	
 		}
 		public function __BROWSE($option=array())
@@ -519,9 +520,6 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-			
-		
-			
 			if(!isset($this->sys_memory) OR $this->sys_memory=="")
 			{	
 				###########################################################	
@@ -534,7 +532,9 @@
 				if(!isset($option) OR is_null($option))	$option=array();
 				
 				if(!array_key_exists("message",$option))   
-					$option["message"]="DATOS GUARDADOS";
+					$option["message"]="DATOS GUARDADOS CORRECTAMENTE";
+				if(!array_key_exists("time",$option))   
+					$option["time"]="1500";
 								
 				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
 				{
@@ -626,8 +626,8 @@
 					{					
 						unset($option["open"]);
 									
-						$this->__PRINT="Datos guardados correctamente";
-																	
+						$this->__MESSAGE_OPTION["text"]		=$option["message"];
+						$this->__MESSAGE_OPTION["time"]		=$option["time"];																	
 						$option["close"]=1;
 						
 						if($insert==1)

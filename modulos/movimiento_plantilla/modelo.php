@@ -7,6 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
+		var $tipo_movimiento	="PL";
 		
 		var $movimiento_obj;
 		
@@ -21,11 +22,11 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$datas["tipo"]						="PL";								
+    		$datas["tipo"]						=$this->tipo_movimiento;								
 			if($this->request["sys_section_movimiento_plantilla"]=="create")
 			{
 				$option_folios=array();
-				$option_folios["tipo"]			=$datas["tipo"];
+				$option_folios["tipo"]			=$this->tipo_movimiento;
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
 			
@@ -93,7 +94,7 @@
 			if($option=="")	$option=array();			
 			if(!isset($option["where"]))	$option["where"]=array();
 			
-			$option["where"][]				="tipo='PL'";   # PL plantilla
+			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 			
 			if(!isset($this->request["sys_order_movimiento_plantilla"]))
 				$option["order"]="id desc";

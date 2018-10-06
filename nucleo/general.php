@@ -731,6 +731,12 @@
 			}
     	}
     	##############################################################################	   	
+		public function __DELETE($option)
+    	{
+			$comando_sql	="DELETE FROM {$this->sys_table} WHERE {$this->sys_primary_field}='$option'";					
+			$this->__EXECUTE($comando_sql);
+		}
+    	##############################################################################	   	
 		public function __EXECUTE($comando_sql, $option=array("open"=>1,"close"=>1))
     	{
     		if(is_string($option))

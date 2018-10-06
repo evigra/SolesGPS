@@ -735,6 +735,7 @@
     	##############################################################################	   	
 		public function __DELETE($option)
     	{
+    		$this->__FIND_FIELD_ID();
 			$comando_sql	="DELETE FROM {$this->sys_table} WHERE {$this->sys_primary_field}='$option'";					
 			$this->__EXECUTE($comando_sql);
 		}

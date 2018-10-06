@@ -1,29 +1,48 @@
 {venta}
 {compra}
 <div class="mainTable">
-	<table border="0"  width="100%">
-		<tr>
-			<td colspan="4" align="left">{empresa_id}</td>			
-		</tr>   
-		<tr>
-			<td>{cron_cantidad}</td>                							
-			<td>{cron_unidad}</td>                							
-			<td></td>
-			<td align="left">{fecha}</td>						
-		</tr>   
-		<tr>
-			<td colspan="2"></td>           
-			<td></td>
-			<td align="left">{caducidad}</td>						
-		</tr>   
-		<tr>
-			<td colspan="4">
-				<div class="form">
+				<table border="0"  width="100%">
+					<tr>
+						<td width="17%" style="font-size:25px;">
+							<b>{tipo}{folio}</b>
+						</td>                							
+						<td width="40%">
+						
+						</td>
+						<td>
+						
+						</td>
+						<td width="20%">
+							{fecha}
+						</td>
+					</tr>   
+					<tr>
+						<td colspan="2">
+							{empresa_id}
+						</td>                							
+						<td>
+						
+						</td>
+						<td>
+							{caducidad}
+						</td>						
+					</tr>   
+					<tr>
+						<td colspan="2">
+
+						</td>                							
+						<td>
+						
+						</td>
+						<td>
+							{plazos_id}
+						</td>						
+					</tr>   
+
+				</table>    		
+			
+				<div id="tabs-2" class="form">
 					{movimientos_ids}
 				</div>
-			</td>           
-		</tr>   
-
-	</table>    		
+	</table>
 </div>
-

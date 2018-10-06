@@ -8,24 +8,18 @@
 			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
 		</tr>   
 		<tr>
-			<td width="33%">{cron_cantidad}</td>                							
-			<td width="33%">{cron_unidad}</td>                							
+			<td colspan="2"></td>                							
 			<td></td>
-			<td width="17%" align="left">{fecha}</td>						
+			<td align="left">{fecha}</td>						
 		</tr>   
 		<tr>
 			<td colspan="2"></td>           
 			<td></td>
 			<td align="left">{caducidad}</td>						
 		</tr>   
-		<tr>
-			<td colspan="4">
-				<div class="form">
-					{movimientos_ids}
-				</div>
-			</td>           
-		</tr>   
-
 	</table>    		
+	<br>			
+	<div id="tabs-2" class="form">
+		{movimientos_ids}
+	</div>
 </div>
-

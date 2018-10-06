@@ -104,6 +104,10 @@
 				
 						
 				$eval="
+					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]==\"delete\")
+					{
+						$"."this->__DELETE(@$"."this->request[\"sys_id_".$this->sys_name."\"]);
+					}
 					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
 					{
 						$"."this->sys_action	=@$"."this->request[\"sys_action_".$this->sys_name."\"];
@@ -128,8 +132,6 @@
 				}							
 				
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
-
-				
 			}	
 		}
 		public function __BROWSE($option=array())

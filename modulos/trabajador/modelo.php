@@ -1,61 +1,11 @@
 <?php
-	class trabajador extends general
+	class trabajador extends users
 	{   
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
 		var $mod_menu=array();
-		var $sys_fields		=array( 
-			"id"	    =>array(
-			    "title"             => "id",			    
-			    "type"              => "primary key",
-			),
-			"nombre"	    =>array(
-			    "title"             => "Nombre",
-			    "title_filter"      => "Nombre",
-			    "type"              => "input",
-			),
-			"email"	    =>array(
-			    "title"             => "Mail",
-			    "title_filter"      => "Mail",
-			    "type"              => "input",
-			),
-			"telefono"	    =>array(
-			    "title"             => "telefono",
-			    "type"              => "input",
-			),			
-			"extension"	    =>array(
-			    "title"             => "Extension",
-			    "type"              => "input",
-			),
-			"files_id"	    =>array(
-			    "title"             => "Imagen",
-			    "type"              => "file",
-			    "relation"          => "one2many",
-			    "class_name"       	=> "files",
-			    "class_path"        => "modulos/files/modelo.php",
-			    "class_field_o"    	=> "files_id",
-			    "class_field_m"    	=> "id",			    
-			),
-			"domicilio"	    =>array(
-			    "title"             => "Domicilio",
-			    "type"              => "input",
-			),						
-			"company_id"	    =>array(
-			    "title"             => "Compania",
-			    "type"              => "input",
-			),						
-			"salt"	    		=>array(
-			    "title"             => "Compania",
-			    "type"              => "input",
-			),
-			"status"	    =>array(
-			    "title"             => "Activo",
-			    "showTitle"         => "si",
-			    "type"              => "checkbox",
-			),				
-		);				
-	
+		var $sys_table="users";
 		##############################################################################	
 		##  Metodos	
 		##############################################################################

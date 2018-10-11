@@ -8,8 +8,6 @@
 	</div>
 	
 	<script>
-		// VERSA
-		var DEVICE_ID=54;
 		//----------------------------------------------------------------------------------
 		// SI FUNCIONA		
 		//----------------------------------------------------------------------------------
@@ -26,8 +24,8 @@
                 console.log(sessionResponse);
 
             }			
+		//----------------------------------------------------------------------------------
         });
-        //----------------------------------------------------------------------------------
 		$.ajax({
 			type: 'GET',
 			url: 'http://solesgps.com:8082/api/devices?all=true&userId=50',
@@ -48,7 +46,7 @@
 				"Authorization": "Basic " + btoa("admin:EvG30")
 			},
 			contentType:"application/json",
-			data:JSON.stringify({attributes:{},deviceId:DEVICE_ID,type:"engineStop"}),
+			data:JSON.stringify({attributes:{},deviceId:23,type:"engineStop"}),
 			success: function (response) 
 			{
 				console.log(response);
@@ -79,7 +77,7 @@
 		*/
 		//----------------------------------------------------------------------------------
 
-		/*
+		
 		//var comando="engineResume";
 		var comando="engineStop";
 		
@@ -90,27 +88,13 @@
 				"Authorization": "Basic " + btoa("admin:EvG30")
 			},
 			contentType:"application/json",
-			data:JSON.stringify({attributes:{},deviceId:DEVICE_ID,type:comando}),
+			data:JSON.stringify({attributes:{},deviceId:23,type:comando}),
 			success: function (response) 
 			{
 				console.log(response);
 			}
 		});        
-		*/
 
-		//----------------------------------------------------------------------------------
-		//*
-
-		$.ajax({
-			type: 'GET',
-			url: 'http://solesgps.com:8082/api/commands',
-			data:'&all=true&refresh=true',
-			success: function (response) 
-			{
-				console.log(response);
-			}
-		});        
-		//*/
 
 		//----------------------------------------------------------------------------------
 

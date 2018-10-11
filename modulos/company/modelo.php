@@ -181,7 +181,7 @@
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
-			if(isset($_SESSION) AND isset($_SESSION["company"]) isset($_SESSION["company"]["id"]))
+			if(isset($_SESSION["company"]))
 				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

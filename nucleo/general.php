@@ -821,7 +821,7 @@
        		{
        			
        			$sql="INSERT INTO sql_errores SET sql=\"$comando_sql\", modelo=\"{$this->sys_object}\"";
-       			$this->__PRINT_R($sql);
+       			$this->__PRINT_R($this->OPHP_conexion->error);
 				@mysql_query($comando_sql);
        		    #$this->__MESSAGE_EXECUTE    =$error;
        		}

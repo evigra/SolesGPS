@@ -50,11 +50,11 @@
 			    "type"              => "input",
 			),						
 			"locacion_id"	    		=>array(
-			    "title"             => "Compania",
+			    "title"             => "Locacion",
 			    "type"              => "input",
 			),
 			"departamento_id"	    =>array(
-			    "title"             => "Activo",
+			    "title"             => "Departamento",
 			    "type"              => "input",
 			),				
 		);				

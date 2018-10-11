@@ -27,6 +27,11 @@
 			    "title"             => "telefono",
 			    "type"              => "input",
 			),			
+			"celular"	    =>array(
+			    "title"             => "telefono",
+			    "type"              => "input",
+			),			
+
 			"extension"	    =>array(
 			    "title"             => "Extension",
 			    "type"              => "input",

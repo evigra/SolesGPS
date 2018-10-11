@@ -64,6 +64,9 @@
     	{
     		## GUARDAR USUARIO
     		if(is_array($datas))	$datas["tipo"]				="trabajador";
+    		
+    		$datas["company_id"]    	=$_SESSION["company"]["id"];
+    		
     	    return parent::__SAVE($datas,$option);
 		}		
 		//////////////////////////////////////////////////		
@@ -75,9 +78,8 @@
     		#if(!isset($option["select"]))	$option["select"]		=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
-    		
-    		$option["echo"]		="trabajador";						
-			#$option["where"][]	="tipo='trabajador'";						
+    					
+			$option["where"][]	="company_id='{$_SESSION["company"]["id"]}'";						
 			    				
 			return parent::__BROWSE($option);
 		}				

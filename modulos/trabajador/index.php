@@ -1,6 +1,5 @@
 <?php	
 	$objeto											=new trabajador();
-	$objeto->device_obj								=new devices();
 
 	$objeto->__SESSION();
 	
@@ -38,9 +37,6 @@
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
 		$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    	
-    	#$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html();
-    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user();
     }	
     elseif($objeto->sys_section=="write")
 	{
@@ -63,35 +59,13 @@
 		$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	 
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
-    	#$objeto->words["permisos"]	            	=$objeto->menu_obj->grupos_html(@$objeto->sys_fields["usergroup_ids"]["values"]);
-    	#$objeto->words["flotilla"]	            	=$objeto->device_obj->devices_user($objeto->sys_primary_id);
-    	
-    	#if(isset($objeto->sys_fields["files_id"]["value"]))    	
-	    #	$objeto->words["img_files_id"]	            =$objeto->files_obj->__GET_FILE($objeto->sys_fields["files_id"]["value"]);
-	    #else	$objeto->words["img_files_id"]="";	
 	    
     	$module_title								="Modificar ";
     }	
-	elseif($objeto->sys_section=="kanban")
+	elseif($objeto->sys_section=="report")
 	{
-		# TITULO DEL MODULO
-    	$module_title                	=	"Reporte Modular de ";
 
-		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			#array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    );
 
-		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-		$template_body								=	$objeto->sys_module."html/kanban";	
-	   	$data										=$objeto->users();
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
-    }        
-	else
-	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Reporte de ";
 
@@ -111,6 +85,25 @@
 		$data										=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
+	
+    }        
+	else
+	{
+		# TITULO DEL MODULO
+    	$module_title                	=	"Reporte Modular de ";
+
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
+    	$module_right=array(
+			array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			#array("kanban"=>"Kanban"),
+			array("report"=>"Reporte"),
+	    );
+
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+		$template_body								=	$objeto->sys_module."html/kanban";	
+	   	$data										=$objeto->__BROWSE();
+    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }
     
     

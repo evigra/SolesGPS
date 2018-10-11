@@ -821,7 +821,7 @@
        		{
        			$sql='INSERT INTO sql_errores SET sql="$comando_sql", modelo="{$this->sys_object}"';
 				@mysql_query($comando_sql);
-       		    $this->__MESSAGE_EXECUTE    =$error;
+       		    #$this->__MESSAGE_EXECUTE    =$error;
        		}
        		#/*
     		if(is_array($option))

@@ -817,9 +817,9 @@
 			}
 
 			$this->__MESSAGE_EXECUTE="";
-       		if(@$error!="")	
+       		if(isset($this->OPHP_conexion->error))
        		{
-       			$sql='INSERT INTO sql_erros SET sql="$comando_sql"';
+       			$sql='INSERT INTO sql_errores SET sql="$comando_sql", modelo="{$this->sys_object}"';
 				@mysql_query($comando_sql);
        		    $this->__MESSAGE_EXECUTE    =$error;
        		}

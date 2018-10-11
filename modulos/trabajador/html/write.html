@@ -1,45 +1,91 @@
-<table class="mainTable">
-    <tr>
-        <td style="padding:10px;">
-			{img_files_id}
-            <div style="color:SteelBlue; font-size:25; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades generales</div>
-			<table border="0">
-				<tr>
-				    <td colspan="2">                       
-				        {name}
-				    </td>        
-				    
-				    <td width="33%">                        
-				        {sesion_start}
-				    </td>        
-				</tr>   
-			   <tr>
-				    <td width="33%">
-				        {email}
-				    </td>        
-				    <td width="33%">                        
-				        {password}
-				    </td>        
-				    <td width="33%">
-				       	{files_id} 
-				    </td>        
-				</tr>          
-			</table>
-            
+<div class="mainTable">
+            <table border="0" width="100%">
+                <tr>
+                    <td rowspan="2" align="center" width="150">
+                        {imagen}
+                    </td>        
+                    <td colspan="4">{nombre}</td>
+                    <td width="230"></td>
+                </tr>          
+                <tr>
+	                <td align="left"> {locacion_id} </td>
+					<td align="left"> {departamento_id} </td>
+					<td></td>
+                </tr>          
 
-			<div id="tabs" class="form">
-				<ul>
-					<li  class="form"><a href="#tabs-1">Permisos</a></li>
-					<li  class="form"><a href="#tabs-2">Flotilla</a></li>
-				</ul>
-				<div id="tabs-1" class="form">
-					{permisos}
-				</div>
-				<div id="tabs-2"  class="form">
-					{flotilla}
-				</div>
-			</div>
+                <tr>
+                    <td colspan="6" width="100%">
+			 			<div id="tabs" class="form">
+							<ul>					
+								<li  class="form"><a href="#tabs-3">Informacion</a></li>
+								<li  class="form"><a href="#tabs-2">Venta</a></li>
+								<li  class="form"><a href="#tabs-1">Compra</a></li>
+							</ul>
 
+							<div id="tabs-3" class="form">
+								 <table border="0" width="100%" class="form">
+									<tr>
+										<td width="17%" align="left"> {telefono} </td>
+										<td></td>
+										<td width="150" align="left"> {extension} </td>
+									</tr>          
+									<tr>
+										<td width="350" align="left"> {celular} </td>
+										<td></td>
+										<td width="150" align="left"> {domicilio} </td>
+									</tr>          
+									<tr>
+										<td align="left"> {cp} </td>
+										<td></td>
+										<td align="left">{colonia}</td>
+									</tr>          
+									<tr>
+										<td align="left"> {c_qr} </td>
+										<td></td>
+										<td align="left">  </td>
+									</tr>          
+								</table>			
+							</div>
+							<div id="tabs-2"  class="form">
+								<table border="0"  width="100%">
+									<tr>
+										<td align="left"> {vende2} </td>
+										<td align="left"> {vende3} </td>
+										<td align="left"> {vende4} </td>
+										<td align="left"> {vende5} </td>
+									</tr>          
+									<tr>
+										<td align="left" colspan="4"> {tax_venta_ids} </td>
+									</tr>          									
+									
+								</table>
+							</div>
+							<div id="tabs-1" class="form">
+								 <table border="0" width="100%" class="form">
+									<tr>                                        				            
+										<td align="left"> {compra2} </td>
+										<td align="left"> {compra3} </td>
+										<td align="left"> {compra4} </td>
+										<td align="left"> {compra5} </td>
+									</tr>          
+									<tr>
+										<td align="left" colspan="4"> {tax_compra_ids1} </td>
+									</tr>          									
+
+								</table>			
+							</div>
+
+
+						</div>
+
+                        
+                    </td>        
+                </tr>          
+
+			</table>			
+
+
+</div>
 
   <script>
   $(function() {
@@ -47,12 +93,3 @@
   });
   </script>        
 
-
-            
-            
-            
-            
-				            
-        </td>
-    </tr>
-</table>

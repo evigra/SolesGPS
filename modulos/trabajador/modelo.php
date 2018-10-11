@@ -14,6 +14,10 @@
 			    "title"             => "Nombre",
 			    "title_filter"      => "Nombre",
 			    "type"              => "input",
+  			    "style"             => array(			    	
+					"font-size"		=>array("30px"=>"1==1"),					
+			    ),			    			    
+			    
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",
@@ -65,8 +69,7 @@
     		## GUARDAR USUARIO
     		if(is_array($datas))	$datas["tipo"]				="trabajador";
     		
-    		$datas["company_id"]    	=$_SESSION["company"]["id"];
-    		
+    		$datas["company_id"]    	=$_SESSION["company"]["id"];	
     	    return parent::__SAVE($datas,$option);
 		}		
 		//////////////////////////////////////////////////		
@@ -83,6 +86,5 @@
 			    				
 			return parent::__BROWSE($option);
 		}				
-
 	}
 ?>

@@ -49,7 +49,7 @@
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),						
-			"locacion"	    		=>array(
+			"locacion_id"	    		=>array(
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),

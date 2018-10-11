@@ -44,6 +44,15 @@
 			    "title"             => "Domicilio",
 			    "type"              => "input",
 			),						
+			"colonia"	    =>array(
+			    "title"             => "Colonia",
+			    "type"              => "input",
+			),
+			"cp"	    =>array(
+			    "title"             => "Codigo Postal",
+			    "type"              => "input",
+			),
+
 			"company_id"	    =>array(
 			    "title"             => "Compania",
 			    "type"              => "input",

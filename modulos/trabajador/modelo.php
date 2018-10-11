@@ -16,8 +16,7 @@
 			    "type"              => "input",
   			    "style"             => array(			    	
 					"font-size"		=>array("30px"=>"1==1"),					
-			    ),			    			    
-			    
+			    ),			    			    			    
 			),
 			"email"	    =>array(
 			    "title"             => "Mail",

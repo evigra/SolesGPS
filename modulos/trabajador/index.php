@@ -58,14 +58,11 @@
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
 		$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	 
 		$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    	
-	    
+    		    
     	$module_title								="Modificar ";
     }	
 	elseif($objeto->sys_section=="report")
 	{
-
-
 		# TITULO DEL MODULO
     	$module_title                	=	"Reporte de ";
 

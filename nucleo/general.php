@@ -820,7 +820,7 @@
        		if(isset($this->OPHP_conexion->error))
        		{
        			
-       			$sql='INSERT INTO sql_errores SET sql="$comando_sql", modelo="{$this->sys_object}"';
+       			$sql="INSERT INTO sql_errores SET sql=\"$comando_sql\", modelo=\"{$this->sys_object}\"";
        			$this->__PRINT_R($sql);
 				@mysql_query($comando_sql);
        		    #$this->__MESSAGE_EXECUTE    =$error;

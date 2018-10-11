@@ -49,14 +49,13 @@
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),						
-			"salt"	    		=>array(
+			"locacion"	    		=>array(
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),
-			"status"	    =>array(
+			"departamento_id"	    =>array(
 			    "title"             => "Activo",
-			    "showTitle"         => "si",
-			    "type"              => "checkbox",
+			    "type"              => "input",
 			),				
 		);				
 	

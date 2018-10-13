@@ -91,7 +91,7 @@
 			    "type"              => "input",
 			),							
 			"nombre"	    	=>array(
-			    "title"             => "Empresa",
+			    "title"             => "Nombre",
 			    "type"              => "input",
 			),			
 			"email"	    	=>array(

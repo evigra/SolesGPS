@@ -28,7 +28,7 @@
     		if(is_null($option))			$option					=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
-    		$option["where"][]	="tipo_company='{$this->company_type;}'";
+    		$option["where"][]	="tipo_company='{$this->company_type}'";
 			return $this->__VIEW_REPORT($option);    	
 		}				
 	}

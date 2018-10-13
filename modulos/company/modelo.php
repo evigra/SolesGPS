@@ -164,7 +164,7 @@
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				
-		public function autocomplete_empresa()		
+		public function __AUTOCOMPLETE()		
     	{	
     		$option					=array();
     		$option["where"]		=array();    		

@@ -12,6 +12,11 @@
 			    "title"             => "id",
 			    "type"              => "primary key",
 			),		
+			"company_id"	    	=>array(
+			    "title"             => "Company",
+			    "type"              => "input",
+			),
+
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",

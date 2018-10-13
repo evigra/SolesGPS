@@ -168,9 +168,9 @@
 			    "description"       => "Responsable del dispositivo",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "procedure"       	=> "autocomplete_empresa",
+			    "procedure"       	=> "autocomplete_user",
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "trabajador",
+			    "class_name"       	=> "users",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_id",
 			    "class_field_m"    	=> "id",			    

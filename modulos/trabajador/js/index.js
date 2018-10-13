@@ -1,9 +1,5 @@
-
 	$(document).ready(function()
 	{
-		var accion="";
-		var GeoMarker1=Array();
-
 		$("#action").button({
 			icons: {	primary: "ui-icon-document" },
 			text: true
@@ -23,12 +19,6 @@
 		    }
 	    );		
 
-
-
-		$("#cancel").button({
-			icons: {	primary: "ui-icon-closethick" },
-			text: true
-		});
 		$("#create").button({
 			icons: {	primary: "ui-icon-document" },
 			text: false
@@ -46,7 +36,13 @@
 		        window.location="&sys_section=write&sys_action=";		    
 		    }
 	    );		
-
-		link_report("&sys_section=report&sys_action=");
+		action_cancel();
 	    link_kanban("&sys_section=kanban&sys_action=");
+	    link_report("&sys_section=report&sys_action=");
+
+	    
+
+
     });
+
+	

@@ -1,48 +1,74 @@
-<div class="mainTable">
-            <table border="0" width="100%">
+{tipo_company}
+<div class="mainTable">    
+             <table border="0" width="100%">
                 <tr>
-                    <td rowspan="2" align="center" width="20%">
-                        {imagen}
+                    <td width="33%" rowspan="2" align="center">                       
+                        {img_files_id}
+                    </td>                        
+                    <td colspan="2" width="66%">                       
+                        {razonSocial}
                     </td>        
-                    <td colspan="4" width="60%">{nombre}</td>
-                    <td width="20%"></td>
                 </tr>          
                 <tr>
-	                <td width="40%" align="left"> {email}  </td>
-					<td width="20%" align="left">{celular} </td>
-					<td></td>
+                    <td>
+                        {estatus}
+                    </td>        
+                    <td>                        
+                        {lema}
+                    </td>        
                 </tr>          
-
                 <tr>
-                    <td colspan="6" width="100%">
-			 			<div id="tabs" class="form">
-							<ul>					
-								<li  class="form"><a href="#tabs-3">Informacion</a></li>
+                    <td colspan="3">
+						<div id="tabs" class="form">
+							<ul>
+								<li  class="form"><a href="#tabs-1">Contacto</a></li>
+								<li  class="form"><a href="#tabs-2">Datos Fiscales</a></li>
+								<li  class="form"><a href="#tabs-3">Configuracion</a></li>
 							</ul>
-							<div id="tabs-3" class="form">
-								 <table border="0" width="100%" class="form">
+							<div id="tabs-1" class="form">
+								<table border="0">
 									<tr>
-										<td colspan="4" width="66%"> {domicilio} </td>
-										<td colspan="2"> {colonia}</td>										
+										<td width="33%">{email}</td>         
+										<td width="17%">{telefono}</td>        
+										<td width="16%">{extension}</td>                            
+										<td width="17%">{cliente}</td>
+										<td width="16%">{proveedor}</td>
 									</tr>          
+								</table> 
+							</div>
+							<div id="tabs-2"  class="form">
+								<table border="0" width="100%">
 									<tr>
-										<td width="16" > {cp} </td>
-										<td colspan="2"  width="33%"></td>
-										<td width="17%"> {telefono} </td>
-										<td width="16" > {extension} </td>
-										<td colspan="2"  width="33%" ></td>
+										<td width="33%">{RFC} </td>                        
+										<td colspan="2">{nombre}</td>        
 									</tr>          
-								</table>			
+									<tr>                        
+										 <td colspan="2">{domicilio_fiscal}</td>                
+									</tr>          
+								</table>
+							</div>
+							<div id="tabs-3"  class="form">
+								<table border="0" width="100%">
+									<tr>
+										<td width="33%">{web} </td>                        
+										<td colspan="2">{sistema_web}</td>        
+									</tr>          
+									<tr>                        
+										<td>{files_id}</td>                        
+										<td colspan="2">{chat_whatsapp}</td>
+									</tr>            
+								</table>
 							</div>
 						</div>
                     </td>        
                 </tr>          
-
-			</table>			
-
-
-</div>
-
+                <tr>
+                    <td colspan="3" height="200">
+						{sys_historico}
+                    </td>        
+                </tr>          
+            </table> 
+</div>            
   <script>
   $(function() {
     $( "#tabs" ).tabs();

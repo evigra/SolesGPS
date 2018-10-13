@@ -1,102 +1,35 @@
 <?php
-	class trabajador extends general
+	class trabajador extends company
 	{   
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
-		var $mod_menu=array();
-		var $sys_fields		=array( 
-			"id"	    =>array(
-			    "title"             => "id",			    
-			    "type"              => "primary key",
-			),
-			"nombre"	    =>array(
-			    "title"             => "Nombre",
-			    "title_filter"      => "Nombre",
-			    "type"              => "input",
-  			    "style"             => array(			    	
-					"font-size"		=>array("30px"=>"1==1"),					
-			    ),			    			    			    
-			),
-			"email"	    =>array(
-			    "title"             => "Mail",
-			    "title_filter"      => "Mail",
-			    "type"              => "input",
-			),
-			"telefono"	    =>array(
-			    "title"             => "telefono",
-			    "type"              => "input",
-			),			
-			"celular"	    =>array(
-			    "title"             => "Celular",
-			    "type"              => "input",
-			),			
+		var $sys_enviroments	="DEVELOPER";
+		var $sys_table			="company";
+		var $company_type		="TRABAJADOR";	
 
-			"extension"	    =>array(
-			    "title"             => "Extension",
-			    "type"              => "input",
-			),
-			"files_id"	    =>array(
-			    "title"             => "Imagen",
-			    "type"              => "file",
-			    "relation"          => "one2many",
-			    "class_name"       	=> "files",
-			    "class_path"        => "modulos/files/modelo.php",
-			    "class_field_o"    	=> "files_id",
-			    "class_field_m"    	=> "id",			    
-			),
-			"domicilio"	    =>array(
-			    "title"             => "Domicilio",
-			    "type"              => "input",
-			),						
-			"colonia"	    =>array(
-			    "title"             => "Colonia",
-			    "type"              => "input",
-			),
-			"cp"	    =>array(
-			    "title"             => "Codigo Postal",
-			    "type"              => "input",
-			),
-
-			"company_id"	    =>array(
-			    "title"             => "Compania",
-			    "type"              => "input",
-			),						
-			"locacion_id"	    		=>array(
-			    "title"             => "Locacion",
-			    "type"              => "input",
-			),
-			"departamento_id"	    =>array(
-			    "title"             => "Departamento",
-			    "type"              => "input",
-			),				
-		);				
-	
 		##############################################################################	
 		##  Metodos	
-		##############################################################################
+		##############################################################################		
+		public function __CONSTRUCT()
+		{	
+			$this->files_obj	=new files();
+			parent::__CONSTRUCT();
+		}
+		public function __SAVE($datas=NULL,$option=NULL)
+    	{  		    	    
+    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
+    	   		$datas["tipo_company"]			=$this->company_type;    		    		
 
-   		public function __SAVE($datas=NULL,$option=NULL)
-    	{
-    		## GUARDAR USUARIO
-    		if(is_array($datas))	$datas["tipo"]				="trabajador";
-    		
-    		$datas["company_id"]    	=$_SESSION["company"]["id"];	
-    	    return parent::__SAVE($datas,$option);
+    		parent::__SAVE($datas,$option);
 		}		
-		//////////////////////////////////////////////////		
-		public function __BROWSE($option=NULL)		
-    	{	
+		public function companys($option=NULL)
+    	{
     		if(is_null($option))			$option					=array();
-    		if(!isset($option))				$option					=array();
-    		
-    		#if(!isset($option["select"]))	$option["select"]		=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
-    					
-			$option["where"][]	="company_id='{$_SESSION["company"]["id"]}'";						
-			    				
-			return parent::__BROWSE($option);
+    		$option["where"][]	="tipo_company='{$this->company_type;}'";
+			return $this->__VIEW_REPORT($option);    	
 		}				
 	}
 ?>

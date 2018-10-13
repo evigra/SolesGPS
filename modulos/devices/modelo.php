@@ -162,24 +162,15 @@
 			    "title"             => "Compania",
 			    "showTitle"         => "si",
 			    "type"              => "input",
-			    /*
-			    "default"           => "",
-			    "value"             => "",
-			    "relation"          => "one2many",			    
-			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
-			    "class_field_o"    	=> "company_id",
-			    "class_field_m"    	=> "id",			    			    
-			    */
 			),
 			"responsable_id"	    =>array(
 			    "title"             => "Trabajador",
 			    "description"       => "Responsable del dispositivo",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "procedure"       	=> "autocomplete_user",
+			    "procedure"       	=> "autocomplete",
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "users",
+			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_id",
 			    "class_field_m"    	=> "id",			    

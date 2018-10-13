@@ -18,6 +18,10 @@
 			    "title"             => "Razon Social",
 			    "type"              => "input",
 			),
+			"nombre"	    	=>array(
+			    "title"             => "Nombre",
+			    "type"              => "input",
+			),			
 			"RFC"	    		=>array(
 			    "title"             => "RFC",
 			    "type"              => "input",
@@ -90,10 +94,6 @@
 			    "title"             => "Grupo WhatsApp",
 			    "type"              => "input",
 			),							
-			"nombre"	    	=>array(
-			    "title"             => "Nombre",
-			    "type"              => "input",
-			),			
 			"email"	    	=>array(
 			    "title"             => "Email",
 			    "type"              => "input",

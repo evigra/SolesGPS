@@ -147,9 +147,9 @@
 			if(!isset($option["where"]))    $option["where"]	=array();
 			if(!isset($option["select"]))   $option["select"]	=array();
 
-			$option["select"][]="admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"="img_files_id";
-			$option["select"][]="admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"="img_files_id_med";				
-			$option["select"][]="company.*";			
+			$option["select"]["admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"]		="img_files_id";
+			$option["select"]["admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"]	="img_files_id_med";				
+			$option["select"][]	="company.*";			
 
 			$option["from"]						="company";			
 			

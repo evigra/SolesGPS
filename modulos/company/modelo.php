@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
-	#require_once("modulos/files/modelo.php");
 	class company extends general
 	{   
 		##############################################################################	
@@ -16,7 +14,6 @@
 			    "title"             => "Company",
 			    "type"              => "input",
 			),
-
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",
@@ -45,7 +42,6 @@
 			    "title"             => "Plataforma Web",
 			    "type"              => "input",
 			),
-
 			"files_id"	    =>array(
 			    "title"             => "Logo",
 			    "type"              => "file",
@@ -74,7 +70,6 @@
 			    "title"             => "Extension",
 			    "type"              => "input",
 			),				
-			
 			"mail_from"	=>array(
 			    "title"             => "Mail FROM",
 			    "type"              => "input",
@@ -144,27 +139,27 @@
 		public function __BROWSE($option=NULL)
     	{    		
     		if(is_null($option))	$option=array();			
-			if(!isset($option["where"]))    $option["where"]	=array();
-			if(!isset($option["select"]))   $option["select"]	=array();
+			if(!isset($option["where"]))    	$option["where"]	=array();
+			if(!isset($option["select"]))   	$option["select"]	=array();
 
 			$option["select"]["admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"]		="img_files_id";
 			$option["select"]["admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"]	="img_files_id_med";				
-			$option["select"][]	="company.*";			
+			$option["select"][]					="company.*";			
 
 			$option["from"]						="company";			
 			
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
-				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
-			$return 				=parent::__BROWSE($option);
+				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
+			$return 							=parent::__BROWSE($option);
 			return	$return;     	
 		}				
 		public function __AUTOCOMPLETE()		
     	{	
-    		$option					=array();
-    		$option["where"]		=array();    		
-    		$option["where"][]		="nombre LIKE '%{$_GET["term"]}%'";
+    		$option								=array();
+    		$option["where"]					=array();    		
+    		$option["where"][]					="nombre LIKE '%{$_GET["term"]}%'";
     		
-			$return =$this->__BROWSE($option);    				
+			$return 							=$this->__BROWSE($option);    				
 			return $return;			
 		}							
 	}

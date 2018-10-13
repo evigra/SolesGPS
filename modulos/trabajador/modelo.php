@@ -23,13 +23,15 @@
 
     		parent::__SAVE($datas,$option);
 		}		
-		public function companys($option=NULL)
-    	{
-    		if(is_null($option))			$option					=array();
-    		if(!isset($option["where"]))	$option["where"]		=array();
-    		
-    		$option["where"][]	="tipo_company='{$this->company_type}'";
-			return $this->__VIEW_REPORT($option);    	
-		}				
+		public function __BROWSE($option=NULL)
+    	{    		
+    		if(is_null($option))	$option=array();			
+			if(!isset($option["where"]))    $option["where"]	=array();
+			if(!isset($option["select"]))   $option["select"]	=array();
+
+			$option["where"][]	="tipo_company='{$this->company_type}'";
+			$return 				=parent::__BROWSE($option);
+			return	$return;     	
+		}						
 	}
 ?>

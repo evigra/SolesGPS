@@ -141,23 +141,17 @@
 
     		parent::__SAVE($datas,$option);
 		}		
-		public function companys($option=NULL)
-    	{
-    		if(is_null($option))				$option						=array();
-    		if(!isset($option["where"]))		$option["where"]			=array();
-    		    		
-			$option["select"]	=array(
-				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"		=>"img_files_id",
-				"admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"	=>"img_files_id_med",				
-			    "company.*",			    
-			);			
-			$option["from"]						="company";			
-			return $this->__VIEW_REPORT($option);    	
-		}
 		public function __BROWSE($option=NULL)
     	{    		
     		if(is_null($option))	$option=array();			
-			if(!isset($option["where"]))    $option["where"]    =array();
+			if(!isset($option["where"]))    $option["where"]	=array();
+			if(!isset($option["select"]))   $option["select"]	=array();
+
+			$option["select"][]="admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0)"="img_files_id";
+			$option["select"][]="admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0)"="img_files_id_med";				
+			$option["select"][]="company.*";			
+
+			$option["from"]						="company";			
 			
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";

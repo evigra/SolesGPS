@@ -704,14 +704,16 @@
 			{
 				foreach($this->sys_fields as $campo =>$valor)
 				{
-					$eval="
-						$"."option"."_obj_$campo	=array(\"
-							name\"=>\"$campo"."_obj\"
-						);													
-						$"."obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
-					";		
-					eval($eval);					
-				
+					if(isset($valor["class_name"]))
+					{				
+						$eval="
+							$"."option"."_obj_$campo	=array(\"
+								name\"=>\"$campo"."_obj\"
+							);													
+							$"."obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
+						";		
+						eval($eval);					
+					}
 				
 				
 					$request_campo		="{$this->sys_name}_$campo";

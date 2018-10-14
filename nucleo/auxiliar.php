@@ -714,7 +714,7 @@
 							$"."option"."_obj_$campo	=array(\"
 								\"name\"			=>\"$campo"."_obj\",		
 								\"memory\"			=>\"$campo\",
-								\"class_one\"		=>\"$class_one\",
+								\"class_one\"		=>\"{$this->name}\",
 							);													
 							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
 						";		

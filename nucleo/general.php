@@ -249,7 +249,7 @@
 						$class_field_m			=@$valor["class_field_m"];
 						$class_field_l			=@$valor["class_field_l"];
 						
-						$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
+						#$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
 					}
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
@@ -492,6 +492,16 @@
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
+							$eval="
+								$"."option_$campo=array(
+									\"where\"		=>array(\"$class_field_m='$id'\")
+								);
+								
+								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+							";
+
 							eval($eval);
 						}												
 					}
@@ -506,12 +516,19 @@
 
 								$"."obj_$campo   	=new {$value["class_name"]}($"."option"."_obj_$campo);
 								$"."option_$campo=array();
-####								
 	
 								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
+							$eval="
+								$"."option_$campo=array();
+	
+								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+							";
+
 							eval($eval);
 						}												
 					}

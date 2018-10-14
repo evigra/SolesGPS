@@ -656,7 +656,7 @@
 							$eval="												
 										
 								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
-								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+								$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	

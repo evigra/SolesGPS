@@ -22,9 +22,8 @@
 			    "value"             => "",			    
 			),			
 			"trabajador_id"	    =>array(
-			    "title"             => "Chofer",
+			    "title"             => "Vendedor",
 			    "description"       => "Responsable del dispositivo",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    

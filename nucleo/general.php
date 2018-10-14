@@ -497,7 +497,7 @@
 									\"where\"		=>array(\"$class_field_m='$id'\")
 								);
 								
-								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								$"."data_$campo	=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
@@ -524,7 +524,7 @@
 							$eval="
 								$"."option_$campo=array();
 	
-								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
+								$"."data_$campo	=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";

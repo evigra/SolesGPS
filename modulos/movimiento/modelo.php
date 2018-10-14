@@ -140,6 +140,9 @@
     	{
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
+			if(!isset($datas["trabajador_id"]))	$datas["trabajador_id"]=$_SESSION["user"]["id"];
+
+			$_this->__PRINT_R($_SESSION);
 
     	    return parent::__SAVE($datas,$option);
 		}

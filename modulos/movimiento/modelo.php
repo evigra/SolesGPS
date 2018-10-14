@@ -23,11 +23,8 @@
 			),			
 			"trabajador_id"	=>array(
 			    "title"             => "Vendedor",
-			    "title_filter"      => "Empresa",	
-			    "showTitle"         => "si",
-			    "type"              => "autocomplete",
-			    "value"             => "",			    
-			    "procedure"       	=> "autocomplete_empresa",
+			    "type"              => "autocomplete",    
+			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
@@ -141,8 +138,6 @@
 			$datas["registro"]			=$this->sys_date;
 			$datas["company_id"]		=$_SESSION["company"]["id"];
 			if(!isset($datas["trabajador_id"]))	$datas["trabajador_id"]=$_SESSION["user"]["id"];
-
-			$this->__PRINT_R($_SESSION);
 
     	    return parent::__SAVE($datas,$option);
 		}

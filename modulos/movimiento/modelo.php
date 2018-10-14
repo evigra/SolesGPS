@@ -21,9 +21,11 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),			
-			"trabajador_id"	=>array(
-			    "title"             => "Vendedor",
-			    "type"              => "autocomplete",    
+			"trabajador_id"	    =>array(
+			    "title"             => "Chofer",
+			    "description"       => "Responsable del dispositivo",
+			    "showTitle"         => "si",
+			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "trabajador",

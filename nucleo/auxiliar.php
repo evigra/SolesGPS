@@ -711,7 +711,7 @@
 					if(isset($valor["class_name"]))
 					{				
 						$eval="
-							$"."option"."_obj_$campo	=array(\"
+							$"."option"."_obj_$campo	=array(
 								\"name\"			=>\"$campo"."_obj\",		
 								\"memory\"			=>\"$campo\",
 								\"class_one\"		=>\"{$this->sys_name}\",

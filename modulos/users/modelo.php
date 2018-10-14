@@ -15,7 +15,7 @@
 			    "value"             => "",			    
 			),
 			"trabajador_id"	    =>array(
-			    "title"             => "Vendedor",
+			    "title"             => "Trabajador",
 			    "description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",

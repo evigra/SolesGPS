@@ -178,11 +178,11 @@
 									{
 										$eval="
 											$"."option=array();
-											#$"."option[\"echo\"]=array(\"CLASS {$value["class_name"]}\");
-											$"."option[\"where\"]=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
+											#$"."option[\"echo\"]		=array(\"CLASS {$value["class_name"]}\");
+											$"."option[\"where\"]		=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
 											$"."$field=$"."this->$field"."_obj->__BROWSE($"."option);
-											$"."this->sys_fields[\"$field\"][\"values\"]=\"\";
-											$"."this->sys_fields[\"$field\"][\"values\"]=$"."$field"."[\"data\"];
+											$"."this->sys_fields[\"$field\"][\"values\"]		=\"\";
+											$"."this->sys_fields[\"$field\"][\"values\"]		=$"."$field"."[\"data\"];
 										";										
 										if(@eval($eval)===false)	
 											$this->__PRINT_R("$eval"); #$eval; ---------------------------								        			

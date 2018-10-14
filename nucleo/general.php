@@ -480,7 +480,9 @@
 							$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$value["class_name"]}();
+								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");								
+							
+								$"."obj_$campo   	=new {$value["class_name"]}($"."option"."_obj_$campo);
 								
 								$"."option_$campo=array(
 									\"where\"		=>array(\"$class_field_m='$id'\")
@@ -500,7 +502,9 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."obj_$campo   	=new {$value["class_name"]}();
+								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");								
+
+								$"."obj_$campo   	=new {$value["class_name"]}($"."option"."_obj_$campo);
 								$"."option_$campo=array();
 ####								
 	
@@ -649,8 +653,10 @@
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
-							$eval="															
-								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}();												
+							$eval="												
+										
+								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
+								$"."this->$campo"."_obj									=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	

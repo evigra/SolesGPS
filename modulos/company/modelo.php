@@ -14,6 +14,7 @@
 			    "title"             => "Company",
 			    "type"              => "input",
 			),
+			/*
 			"locacion_id"	    =>array(
 			    "title"             => "Locacion",
 			    "description"       => "Responsable del dispositivo",
@@ -37,7 +38,8 @@
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "responsable_id",
 			    "class_field_m"    	=> "id",			    
-			),			
+			),
+			*/			
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",

@@ -164,7 +164,7 @@
 			    "type"              => "input",
 			),
 			"responsable_id"	    =>array(
-			    "title"             => "Trabajador",
+			    "title"             => "Chofer",
 			    "description"       => "Responsable del dispositivo",
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",

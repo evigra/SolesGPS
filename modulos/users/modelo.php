@@ -14,6 +14,17 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),
+			"trabajador_id"	    =>array(
+			    "title"             => "Vendedor",
+			    "description"       => "Responsable del dispositivo",
+			    "type"              => "autocomplete",
+			    "procedure"       	=> "__AUTOCOMPLETE",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "trabajador",
+			    "class_field_l"    	=> "nombre",				# Label
+			    "class_field_o"    	=> "trabajador_id",
+			    "class_field_m"    	=> "id",			    
+			),			
 			"name"	    =>array(
 			    "title"             => "Nombre",
 			    "title_filter"      => "Nombre",

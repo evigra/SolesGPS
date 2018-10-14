@@ -175,7 +175,7 @@
 							$data_usergroup 				=$this->__EXECUTE($comando_sql,$option_conf);						
 							
 							$option_company					=array("where"=>array("company.id={$user["company_id"]}"));
-							$data_company					=$this->obj_company->companys($option_company);
+							$data_company					=$this->obj_company->__BROWSE($option_company);
 					
 							#$this->__PRINT_R($data_company);
 					

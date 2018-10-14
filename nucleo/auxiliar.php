@@ -184,7 +184,7 @@
 											$"."option[\"where\"]		=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
 											
 											
-											$"."$field=					$"."this->obj_$campo"."->__BROWSE($"."option);
+											$"."$field=					$"."this->obj_$field"."->__BROWSE($"."option);
 											$"."this->sys_fields[\"$field\"][\"values\"]		=\"\";
 											$"."this->sys_fields[\"$field\"][\"values\"]		=$"."$field"."[\"data\"];
 										";										

@@ -39,7 +39,7 @@
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
-			    "procedure"       	=> "autocomplete_empresa",
+			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "company",
 			    "class_field_l"    	=> "nombre",				# Label

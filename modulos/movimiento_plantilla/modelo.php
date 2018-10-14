@@ -29,6 +29,7 @@
 				$option_folios["tipo"]			=$this->tipo_movimiento;
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
+			if(!isset($datas["trabajador_id"]))	$datas["trabajador_id"]=$_SESSION["user"]["id"];
 			
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;

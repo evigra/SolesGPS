@@ -21,6 +21,19 @@
 			    "default"           => "",
 			    "value"             => "",			    
 			),			
+			"trabajador_id"	=>array(
+			    "title"             => "Vendedor",
+			    "title_filter"      => "Empresa",	
+			    "showTitle"         => "si",
+			    "type"              => "autocomplete",
+			    "value"             => "",			    
+			    "procedure"       	=> "autocomplete_empresa",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "trabajador",
+			    "class_field_l"    	=> "nombre",				# Label
+			    "class_field_o"    	=> "trabajador_id",
+			    "class_field_m"    	=> "id",			    
+			),			
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
 			    "title_filter"      => "Empresa",	
@@ -61,13 +74,6 @@
 			),			
 			"venta"	    =>array(
 			    "title"             => "Lista de venta",
-			    "showTitle"         => "si",
-			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
-			),			
-			"movimiento_id"	    =>array(
-			    "title"             => "Relacion",
 			    "showTitle"         => "si",
 			    "type"              => "hidden",
 			    "default"           => "",

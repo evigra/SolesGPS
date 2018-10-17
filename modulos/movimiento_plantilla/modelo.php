@@ -22,7 +22,8 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$datas["tipo"]						=$this->tipo_movimiento;								
+    		if(!isset($datas["tipo"]) AND $datas["tipo"]=="")
+	    		$datas["tipo"]						=$this->tipo_movimiento;								
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{
 				$option_folios=array();
@@ -86,7 +87,6 @@
 				}
 								
 				$this->sys_primary_id="";
-				$this->__PRINT_R($rows);
 				$this->__SAVE($rows);
 			}
 		}		

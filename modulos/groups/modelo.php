@@ -52,15 +52,12 @@
 			),
 			"permiso_ids"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "permiso",
 			    "class_path"        => "modulos/permiso/modelo.php",
-			    #"class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "id",					# Origen
-			    "class_field_m"    	=> "usergroup_id",			# Destino
-			    "value"             => "",			    
+			    "class_field_m"    	=> "usergroup_id",			# Destino	    
 			),			
 			
 		);				
@@ -112,10 +109,10 @@
 						"usergroup_id=$group_id",
 						"menu_id={$index}",
 					);    	    		    	    		
-					$usergroup_data						=$this->permiso_ids_obj->groups($usergroup_option);
+					$usergroup_data						=$this->obj_permiso_ids->groups($usergroup_option);
 
-					if($usergroup_data["total"]>0)		$this->permiso_ids_obj->sys_primary_id=$usergroup_data["data"][0]["id"];
-					else								$this->permiso_ids_obj->sys_primary_id=NULL;
+					if($usergroup_data["total"]>0)		$this->obj_permiso_ids->sys_primary_id=$usergroup_data["data"][0]["id"];
+					else								$this->obj_permiso_ids->sys_primary_id=NULL;
 
 					$usergroup_save=array(
 						"usergroup_id"	=>"$group_id",
@@ -128,7 +125,7 @@
 					if(isset($data["d"]))			$usergroup_save["d"]="{$data["d"]}";
 					
 					#$this->__PRINT_R($usergroup_save);
-					$this->permiso_ids_obj->__SAVE($usergroup_save);
+					$this->obj_permiso_ids->__SAVE($usergroup_save);
 
 			    }	
 			}    

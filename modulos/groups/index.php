@@ -37,7 +37,8 @@
     	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
-    	$objeto->words["permisos"]	            	=$objeto->permiso_ids_obj->permisos_html();
+    	
+    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html();
     }	
     elseif($objeto->sys_section=="write")
 	{
@@ -61,7 +62,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	$module_title								="Modificar ";
     	   
-    	$objeto->words["permisos"]	            	=$objeto->permiso_ids_obj->permisos_html($objeto->sys_fields["permiso_ids"]["values"]);
+    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["permiso_ids"]["values"]);
     }	
 	elseif($objeto->sys_section=="kanban")
 	{

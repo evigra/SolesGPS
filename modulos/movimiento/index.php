@@ -19,7 +19,7 @@
 	
     if($objeto->sys_section=="create")
 	{
-		$objeto->__CRON();
+
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
 		    array("action"=>"Guardar"),

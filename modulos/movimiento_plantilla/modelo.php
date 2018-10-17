@@ -86,6 +86,7 @@
 				}
 								
 				$this->sys_primary_id="";
+				$this->__PRINT_R($rows);
 				$this->__SAVE($rows);
 			}
 		}		

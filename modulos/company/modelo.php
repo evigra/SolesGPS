@@ -47,6 +47,7 @@
 			),
 			"nombre"	    	=>array(
 			    "title"             => "Nombre",
+			    "title_filter"		=> "Nombre",
 			    "type"              => "input",
 			),			
 			"RFC"	    		=>array(

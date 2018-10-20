@@ -459,8 +459,16 @@
    			
    			
    			
-   			if(isset($html_title))			$return["title"]		= $html_title;			
-			if(isset($html_title_clean))	$return["title_pdf"]	= $html_title_clean;
+   			if(isset($html_title))			
+   			{
+   				#$return["title"]		= $html_title;	   			
+   				$this->sys_title=$html_title;
+   			}		
+			if(isset($html_title_clean))	
+			{
+				#$return["title_pdf"]	= $html_title_clean;
+				$this->sys_title_pdf	= $html_title_clean;
+			}	
 			
     		if($id!="")						$return					= $return["data"];
 

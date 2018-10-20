@@ -111,7 +111,7 @@
 					);    	    		    	    		
 					$usergroup_data						=$this->obj_permiso_ids->__BROWSE($usergroup_option);
 					
-					$this->__PRINT_R($usergroup_data);
+					#$this->__PRINT_R($usergroup_data);
 
 					if($usergroup_data["total"]>0)		$this->obj_permiso_ids->sys_primary_id=$usergroup_data["data"][0]["id"];
 					else								$this->obj_permiso_ids->sys_primary_id=NULL;
@@ -125,10 +125,8 @@
 					if(isset($data["c"]))			$usergroup_save["c"]="{$data["c"]}";
 					if(isset($data["w"]))			$usergroup_save["w"	]="{$data["w"]}";
 					if(isset($data["d"]))			$usergroup_save["d"]="{$data["d"]}";
-					
-					#$this->__PRINT_R($usergroup_save);
-					$this->obj_permiso_ids->__SAVE($usergroup_save);
 
+					$this->obj_permiso_ids->__SAVE($usergroup_save);
 			    }	
 			}    
 		}				

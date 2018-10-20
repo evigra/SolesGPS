@@ -2121,14 +2121,10 @@
 		    		
 		    		$option["title"]				= @$this->sys_title;
 					$option["title_pdf"]			= @$this->sys_title_pdf;
-					
-					
-
-
+										
 					#$view_title						=@$browse["title"];
 					#$view_title_pdf					=@$browse["title_pdf"];
 						
-		    		
 		    		if(isset($browse["total"]))		
 		    		{
 						$return["total"]				= $browse["total"];	
@@ -2598,12 +2594,8 @@
 		{
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
 
-			#if(isset($option["template_title"]) AND !in_array($option["template_title"],$this->sys_false))
-			
-			#if(isset($option["template_title"]))
 			if(isset($option["template_title"]) AND $option["template_title"] != "")
 			{
-								
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
@@ -2613,11 +2605,13 @@
 								
 				if(isset($option["title"]))
 				{
-					$return["view_title"]	    =$this->__REPLACE($view_title,$option["title"]);
+					#$return["view_title"]	    =$this->__REPLACE($view_title,$option["title"]);
+					$return["view_title"]	    =$this->__REPLACE($view_title,$this->sys_title);					
 				}    		    	    
 				if(isset($option["title_pdf"]))
 				{
-					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$option["title_pdf"]);
+					#$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$option["title_pdf"]);
+					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title_pdf);
 				}    		    	    
 				
 			} 

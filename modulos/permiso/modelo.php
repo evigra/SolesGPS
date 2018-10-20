@@ -75,6 +75,17 @@
     	    #echo "EJECUTA";
     	    return parent::__SAVE($datas,$option);
     	}    		
+		public function __BROWSE($option=NULL)		
+    	{	
+    		if(is_null($option))	$option=array();
+    		
+			$option["select"]	=array(
+				"permiso.*",
+			);
+			$option["from"]		="permiso";
+			return parent::__BROWSE($option);
+		}		
+		/*
 		public function groups($option=NULL)		
     	{	
     		if(is_null($option))	$option=array();
@@ -86,7 +97,8 @@
 			
 			$return =$this->__VIEW_REPORT($option);    				
 			return $return;
-		}		
+		}
+		*/		
 		public function permisos_html($values=NULL)
     	{
     		$menu_id=NULL;

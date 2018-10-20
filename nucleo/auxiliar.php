@@ -2119,8 +2119,10 @@
 					
 		    		$return["data"]					= $browse["data"];
 		    		
-		    		$option["title"]				= @$browse["title"];
-					$option["title_pdf"]			= @$browse["title_pdf"];
+		    		$option["title"]				= @$this->sys_title;
+					$option["title_pdf"]			= @$this->sys_title_pdf;
+					
+					
 
 
 					#$view_title						=@$browse["title"];

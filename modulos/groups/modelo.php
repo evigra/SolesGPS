@@ -109,7 +109,7 @@
 						"usergroup_id	=$group_id",
 						"menu_id		={$index}",
 					);    	    		    	    		
-					$usergroup_data						=$this->obj_permiso_ids->groups($usergroup_option);
+					$usergroup_data						=$this->obj_permiso_ids->__BROWSE($usergroup_option);
 					
 					$this->__PRINT_R($usergroup_data);
 

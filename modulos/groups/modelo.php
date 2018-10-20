@@ -97,7 +97,7 @@
     	    $usergroup_datas=array();
     	    if(isset($datas["permiso_ids"]))
     	    {
-    	    	#$this->__PRINT_R($datas["permiso_ids"]);
+    	    	$this->__PRINT_R($datas);
 			    foreach($datas["permiso_ids"] as $index => $data)
 			    {
 					$usergroup_option=array();

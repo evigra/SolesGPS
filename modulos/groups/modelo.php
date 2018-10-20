@@ -106,10 +106,12 @@
 					## SI NO, LO CREA
 					#$usergroup_option["echo"]="PERFILES";
 					$usergroup_option["where"]=array(
-						"usergroup_id=$group_id",
-						"menu_id={$index}",
+						"usergroup_id	=$group_id",
+						"menu_id		={$index}",
 					);    	    		    	    		
 					$usergroup_data						=$this->obj_permiso_ids->groups($usergroup_option);
+					
+					$this->__PRINT_R($usergroup_data);
 
 					if($usergroup_data["total"]>0)		$this->obj_permiso_ids->sys_primary_id=$usergroup_data["data"][0]["id"];
 					else								$this->obj_permiso_ids->sys_primary_id=NULL;

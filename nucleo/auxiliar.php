@@ -1158,6 +1158,13 @@
 					        $words["$campo"]  ="$titulo<input id=\"$campo\" name=\"$campo\" type=\"file\" class=\"formulario\">";
 					        $words["$campo"]  ="<input id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" type=\"file\" class=\"formulario {$this->sys_name} $class\" ><br>$titulo";
 					    }    
+					    if($valor["type"]=="show_file")	
+					    {
+					        $words["$campo"]  =$this->__SHOW_FILE($valor["value"]);
+					    }    
+
+
+
 
 					    if($valor["type"]=="font")	
 					    {

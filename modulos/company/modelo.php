@@ -81,19 +81,19 @@
 			#/*
 			"img_files_id"	    =>array(
 			    "title"             => "Logo",
-			    "type"              => "file",
+			    "type"              => "show_file",
 			),						
 			"img_files_id_med"	    =>array(
 			    "title"             => "Logo",
-			    "type"              => "file",
+			    "type"              => "show_file",
 			),
 			"img_files_id_chi"	    =>array(
 			    "title"             => "Logo",
-			    "type"              => "file",
+			    "type"              => "show_file",
 			),
 			"img_files_id_sup_chi"	    =>array(
 			    "title"             => "Logo",
-			    "type"              => "file",
+			    "type"              => "show_file",
 			),
 
 			#*/						

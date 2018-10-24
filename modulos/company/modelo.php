@@ -78,6 +78,7 @@
 			    "title"             => "Logo",
 			    "type"              => "file",
 			),			
+			/*
 			"img_files_id"	    =>array(
 			    "title"             => "Logo",
 			    "type"              => "file",
@@ -85,7 +86,8 @@
 			"img_files_id_med"	    =>array(
 			    "title"             => "Logo",
 			    "type"              => "file",
-			),						
+			),
+			*/						
 			"Id_detalleDatos"	=>array(
 			    "title"             => "Id Detalle Datos",
 			    "type"              => "input",

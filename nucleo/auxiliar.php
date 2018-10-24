@@ -1160,7 +1160,7 @@
 					    }    
 					    if($valor["type"]=="show_file")	
 					    {
-					        $words["$campo"]  =$this->__SHOW_FILE($valor["value"]);
+					        $words["$campo"]  =$valor["value"];
 					    }    
 
 

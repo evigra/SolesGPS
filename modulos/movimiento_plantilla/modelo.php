@@ -71,7 +71,7 @@
 				$this->__SAVE($rows);
 				
 				$rows["tipo"]						="SO";
-				if($this->request["sys_section_". $this->sys_object]=="create")
+				#if($this->request["sys_section_". $this->sys_object]=="create")
 				{
 					$option_folios					=array();
 					$option_folios["tipo"]			=$rows["tipo"];								

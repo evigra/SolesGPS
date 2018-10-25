@@ -24,10 +24,11 @@
     	{
     		if(!isset($datas["tipo"]) AND $datas["tipo"]=="")
 	    		$datas["tipo"]						=$this->tipo_movimiento;								
+	    		
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{
 				$option_folios=array();
-				$option_folios["tipo"]			=$this->tipo_movimiento;
+				$option_folios["tipo"]			=$datas["tipo"];
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
 			

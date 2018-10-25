@@ -1160,6 +1160,7 @@
 					    }    
 					    if($valor["type"]=="show_file")	
 					    {
+					    	
 					        $words["$campo"]  =$valor["value"];
 					    }    
 

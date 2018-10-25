@@ -466,7 +466,7 @@
 					(bloqueo!=1
 
 					OR bloqueo is NULL)
-					AND c.estatus=1
+					AND c.estatus!=0
 					AND d.telcel=1
 					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 27 DAY)< now() )
 			";

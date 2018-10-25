@@ -67,6 +67,7 @@
 			foreach($crons_data["data"] as $rows)
 			{				
 				$this->sys_primary_id				=$rows["id"];
+				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);
 				
 				$rows["tipo"]						="SO";

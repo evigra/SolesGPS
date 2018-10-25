@@ -22,7 +22,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		if(!isset($datas["tipo"]) AND $datas["tipo"]=="")
+    		if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
 	    		$datas["tipo"]						=$this->tipo_movimiento;								
 	    		
 			if($this->request["sys_section_". $this->sys_object]=="create")

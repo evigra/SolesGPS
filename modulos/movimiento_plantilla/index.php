@@ -47,10 +47,9 @@
 		);
 		
 
-		$module_center=array(
-		    array("action_pagar"=>"PAGAR"),
-		    array("action_abonar"=>"ABONAR"),
-		    array("action_cancelar"=>"CANCELAR"),
+		$module_center=arr
+		ay(
+		    array("action_ejecutar"=>"Ejecutar"),
 		);
 
 		$objeto->sys_fields["tipo"]["type"]		="value";

@@ -19,6 +19,7 @@
 			    	"03"	=>	"Camioneta Gris",			    	
 			    	"06"	=>	"Camioneta Blanca",
 			    	"07"	=>	"Camioneta Azul",
+			    	"30"	=>	"Moto",
 		    );		
 		    
 			$this->sys_fields["telcel"]["type"]		="hidden";					    

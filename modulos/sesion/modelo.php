@@ -196,6 +196,7 @@
 						    #$huso_horario					=$_SESSION["company"]["huso_horario"];
 						    #$_SESSION["user"]["huso_h"]		=$this->huso_horario($huso_horario);
 						    $_SESSION["user"]["huso_h"]		=5;
+						    $_SESSION["user"]["huso_h"]		=6;
 						    
 						    $_SESSION["group"]				=@$data_usergroup;
 						    

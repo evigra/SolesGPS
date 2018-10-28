@@ -32,6 +32,7 @@
 				@$_SESSION["user"]["l18n"]			="es_MX";
 			
 			@$_SESSION["user"]["huso_h"]			=5;
+			@$_SESSION["user"]["huso_h"]			=6;
 			
 			$this->sys_date							=date("Y-m-d H:i:s");
 			$this->sys_date2						=date("Y-m-d");

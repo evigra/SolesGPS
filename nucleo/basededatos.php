@@ -82,7 +82,7 @@
     	} 
     	public function __HTML_USER()
     	{
-    		$this->__PRINT_R($_SESSION);
+    		#$this->__PRINT_R($_SESSION);
     	    $return="";
     	    #$img=@$_SESSION["user"]["img_files_id_min"];
     	    $img=@$_SESSION["user"]["img_files_id_sup_chi"];

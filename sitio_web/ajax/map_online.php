@@ -8,7 +8,7 @@
 	{
 		$compania=" d.company_id={$_SESSION["company"]["id"]} AND ";
 		
-		#$_SESSION["user"]["huso_h"]=6;
+		$_SESSION["user"]["huso_h"]=6;
 	
 		if(@$_SESSION["module"]["name"]=="map/")
 		{

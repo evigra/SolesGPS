@@ -1,15 +1,14 @@
 <?php
     require_once("../../nucleo/sesion.php");
-    #require_once("../../../nucleo/general.php");
-    #require_once("../../../modulos/position/modelo.php");
-	#require_once("../modelo.php");
-
+    
 	$objeto				=new position();
 	$ajax="";
 
 	if(isset($_SESSION["company"]["id"]))
 	{
 		$compania=" d.company_id={$_SESSION["company"]["id"]} AND ";
+		
+		$_SESSION["user"]["huso_h"]=6;
 	
 		if(@$_SESSION["module"]["name"]=="map/")
 		{

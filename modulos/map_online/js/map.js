@@ -14,11 +14,9 @@
         
         if(window.location.hostname=="pruebas.solesgps.com" || window.location.hostname=="localhost")
         {
-        	ajax_positions_now("../modulos/travels/ajax/geocenfe.php",100);
-        	//ajax_positions_now("../modulos/travels/ajax/geocenfe1.php",100);              
+        	ajax_positions_now("../modulos/travels/ajax/geocenfe.php",100);              
         }	
 
-        //ajax_positions_now("../modulos/travels/ajax/index.php",100);
         ajax_positions_now("../modulos/geofences/ajax/index.php",100);
         
         ajax_positions_now("../sitio_web/ajax/map_online.php");

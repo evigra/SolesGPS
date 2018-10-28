@@ -151,8 +151,6 @@
 							$option_company					=array("where"=>array("company.id={$user["company_id"]}"));
 							$data_company					=$this->obj_company->__BROWSE($option_company);
 					
-							#$this->__PRINT_R($data_company);
-					
 							$data_sesion					=array();
 							$data_sesion["user_id"]			=$user["id"];
 							$data_sesion["date"]			=$this->sys_date;
@@ -169,8 +167,8 @@
 						    
 						    #$huso_horario					=$_SESSION["company"]["huso_horario"];
 						    #$_SESSION["user"]["huso_h"]		=$this->huso_horario($huso_horario);
-						    $_SESSION["user"]["huso_h"]		=5;
-						    $_SESSION["user"]["huso_h"]		=6;
+						    #$_SESSION["user"]["huso_h"]		=5;
+						    #$_SESSION["user"]["huso_h"]		=6;
 						    
 						    $_SESSION["group"]				=@$data_usergroup;
 						    
@@ -203,10 +201,6 @@
 								</div>
 							";
 						}
-					    $_SESSION["user"]["huso_h"]		=5;
-					    $_SESSION["user"]["huso_h"]		=6;
-
-						#$this->__PRINT_R($_SESSION);				
 					}
 				}						
 			}	

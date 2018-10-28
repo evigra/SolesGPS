@@ -123,16 +123,10 @@
     		
     		if(array_key_exists("user",$datas) AND array_key_exists("pass",$datas))
     		{
-    			#$this->__PRINT_R($datas);    	    
 				$user       								=$this->obj_user->session($datas["user"],$datas["pass"]);
-				#$this->__PRINT_R($user);
-				
-				
-				
-				
-				if(count($user)>0)
-				{
 					
+				if(count($user)>0)
+				{	
 					if($user["email"]==$datas["user"])
 					{
 						if($user["password"]==md5($datas["pass"]))						
@@ -209,6 +203,9 @@
 								</div>
 							";
 						}
+					    $_SESSION["user"]["huso_h"]		=5;
+					    $_SESSION["user"]["huso_h"]		=6;
+
 						#$this->__PRINT_R($_SESSION);				
 					}
 				}						

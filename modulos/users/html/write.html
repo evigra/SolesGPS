@@ -27,7 +27,22 @@
 		    </td>        
 		</tr>          
 	</table>
-          
-    <div class="module_subtitle">Permisos</div>
-		{permisos}
+         
+         
+         
+          		
+		
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Permisos</a></li>
+					<li  class="form"><a href="#tabs-2">Dispositivos</a></li>
+				</ul>
+				<div id="tabs-1" class="form">{permisos}</div>
+				<div id="tabs-2"  class="form">{flotilla}</div>
+			</div>
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();    
+  });
+  </script>        
 </div>

@@ -113,6 +113,7 @@
 			    "class_field_m"    	=> "user_id",
 			    "value"             => "",			    
 			),
+			/*
 			"devices_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "input",
@@ -123,6 +124,7 @@
 			    #"class_field_m"    	=> "responsable_fisico_id",
 			    #"value"             => "",			    
 			),
+			*/
 			"status"	    =>array(
 			    "title"             => "Activo",
 			    "showTitle"         => "si",
@@ -228,7 +230,7 @@
 			
 			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
 			#/*
-			$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
+			#$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
 			#*/
 			
 			

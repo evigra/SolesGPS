@@ -84,6 +84,7 @@
     	{
     	    $return="";
     	    $img=@$_SESSION["user"]["img_files_id_min"];
+    	    $img=@$_SESSION["user"]["img_files_id_chi"];
     	    $return="    
     	    	<!--	            	        
     	        <img src=\"../sitio_web/img/settings.png\" height=\"20\">

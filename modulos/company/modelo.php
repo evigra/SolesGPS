@@ -182,9 +182,9 @@
 			if(!isset($option["select"]))   	$option["select"]	=array();
 
 			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]		="img_files_id";
-			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,200,200)"]	="img_files_id_med";				
-			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,100,60)"]	="img_files_id_chi";
-			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,50,30)"]	="img_files_id_sup_chi";
+			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,300,300)"]	="img_files_id_med";				
+			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,150,90)"]	="img_files_id_chi";
+			$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,40,24)"]	="img_files_id_sup_chi";
 			$option["select"][]					="company.*";			
 
 			$option["from"]						="company";			

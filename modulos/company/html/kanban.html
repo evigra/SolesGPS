@@ -1,19 +1,16 @@
-<div class="cKanban" style="float:left; margin:5px; height:100px; width:350px; background-color:white; border:1px; border-radius:5px 15px 5px 15px;     border-style: solid; border-width: 2px; overflow:hidden;">
-
-	<table border="0" height="85%" width="100%" style="margin:10px;">
+<div class="cKanban" style="float:left; margin:5px; height:160px; background-color:white; border:1px; border-radius:5px 15px 5px 15px;     border-style: solid; border-width: 2px; overflow:hidden;">
+	<table border="0" width="330" style="margin:10px;">
 	    <tr>
-	        <td rowspan="4" width="100" style="padding-right:8px;">
-	        	<div style="height:80px; width:100px; overflow:hidden;">
+	        <td width="280" style="padding-right:8px;">
+	        	<div style="height:80px; width:280px; overflow:hidden;">
 	       			{img_files_id_chi}
 	       		</div>
-	        </td>
-	        <td><b>{nombre}<b></td>        
-	        <td rowspan="4" width="30" valign="top">{actionsv}</td>        
+	        </td>        
+	        <td valign="top">{actionsv}</td>        
 	    </tr>    
-	    <tr><td>{email}</td></tr>
-	    <tr><td>{telefono}</td></tr>
-	    <tr><td>{web}</td></tr>                    
+	    <tr><td colspan="2"><b>{razonSocial}</b></td></tr>          
+	    <tr><td colspan="2">{web}</td></tr>          		    
+	    <tr><td colspan="2">{email}</td></tr>
 	</table>
-
 </div>
 

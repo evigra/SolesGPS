@@ -44,37 +44,37 @@
 	    	else	
 	    		$objeto->words["img_files_id"]	="";
     }	
-	elseif($objeto->sys_section=="kanban")
-	{
-		$module_title							="Reporte Modular de ";
-		$module_left							="";
-		$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			#array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    	);
-		$template_body							=$objeto->sys_module . "html/kanban";
-	   	$data									=$objeto->__BROWSE();        	
-		$objeto->words["module_body"]   		=$objeto->__VIEW_KANBAN($template_body,$data["data"]);		
-				
-    	}	
-	else
+	elseif($objeto->sys_section=="report")
 	{
 		$module_title							="Reporte de ";
 		$module_left							="";
 		$module_right=array(
+		$module_right=array(
 			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
 			array("kanban"=>"Kanban"),
-			#array("report"=>"Reporte"),
-	    	);
+			array("report"=>"Reporte"),
+    	);
 		$option=array();
 		$option["template_title"]				= $objeto->sys_module . "html/report_title";
 		$option["template_body"]				= $objeto->sys_module . "html/report_body";
 		
 		$data									=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]			=$data["html"];	
+				
+   	}	
+	else
+	{
+		$module_title							="Reporte Modular de ";
+		$module_left							="";
+		$module_right=array(
+			array("create"=>"Crear"),
+			array("kanban"=>"Kanban"),
+			array("report"=>"Reporte"),
+    	);
+		$template_body							=$objeto->sys_module . "html/kanban";
+	   	$data									=$objeto->__BROWSE();        	
+		$objeto->words["module_body"]   		=$objeto->__VIEW_KANBAN($template_body,$data["data"]);		
+
     }
 	$objeto->words["module_title"]              ="$module_title Trabajador";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);

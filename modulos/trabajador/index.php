@@ -49,7 +49,6 @@
 		$module_title							="Reporte de ";
 		$module_left							="";
 		$module_right=array(
-		$module_right=array(
 			array("create"=>"Crear"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),

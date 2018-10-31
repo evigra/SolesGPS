@@ -47,8 +47,7 @@
 		);
 		
 
-		$module_center=arr
-		ay(
+		$module_center=array(
 		    array("action_ejecutar"=>"Ejecutar"),
 		);
 

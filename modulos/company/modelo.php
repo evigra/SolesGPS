@@ -41,6 +41,18 @@
 			    "class_field_m"    	=> "id",			    
 			),
 			*/			
+			"trabajador_ids"	    =>array(
+			    "title"             => "Horario",
+			    "showTitle"         => "si",
+			    "type"              => "form",
+			    "default"           => "",
+			    "value"             => "",
+			    "relation"          => "many2one",			    
+			    "class_name"       	=> "trabajador",			    
+			    "class_field_o"    	=> "id",
+			    "class_field_m"    	=> "company_id",				
+			),
+
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",

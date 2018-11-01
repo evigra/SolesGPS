@@ -174,6 +174,9 @@
 					var class_field				=$(this).attr("class_field"); 
 					
 					var data        			=$(this).attr("data");               
+					
+					alert(data);
+					
 					var variables				=serializar_url(data);
 					
 					var class_one 				=$(this).attr("class_one");     

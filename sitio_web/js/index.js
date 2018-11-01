@@ -169,13 +169,11 @@
 				{					
 					
 					var class_field_id			=$(this).attr("class_field_id"); 
-					var id						=$(this).attr("id"); 
-					
-					var class_field				=$(this).attr("class_field"); 
-					
+					var id						=$(this).attr("id"); 					
+					var class_field				=$(this).attr("class_field"); 					
 					var data        			=$(this).attr("data");               
 					
-					alert(data);
+					//alert(data);
 					
 					var variables				=serializar_url(data);
 					
@@ -195,34 +193,46 @@
 					
 					
 					
-					$("div#create_"+ class_field).dialog({
-						open: function(event, ui){
-							var dialog = $(this).closest('.ui-dialog');
-						},
-						buttons: {
-							"Registrar y Cerrar": function() {								
-									many2one_post(options);
-									$( this ).dialog("close");
-							},
+			
+					for(ivariables in variables)
+					{
+						if(variables[ivariables]=="write")
+						{
+							$("div#create_"+ class_field).dialog({
+								open: function(event, ui){
+									var dialog = $(this).closest('.ui-dialog');
+								},
+								buttons: {
+									"Registrar y Cerrar": function() {								
+											many2one_post(options);
+											$( this ).dialog("close");
+									},
+									"Cerrar": function() {
+										$( this ).dialog("close");
+									}
+								},										
+								width:"700px"
+							});							
+						}
+						if(variables[ivariables]=="delete")
+						{
+							alert("DELETE");
+						}
 
-							"Cerrar": function() {
-								$( this ).dialog("close");
-							}
-						},										
-						width:"700px"
-					});				
-					
-					
+					}					
+					/*					
 					for(ivariables in variables)
 					{
 						var input="";
 						if($("input#"+ivariables).length>0) {}
 						else	
 						{	
+							
 							input="<input id=\""+ivariables+"\" name=\""+ivariables+"\" value=\"" + variables[ivariables] + "\" type=\"hidden1\">";						
 							$("form").append(input);
 						}			
-					}	
+					}
+					*/	
 
 				});
 			}	   		

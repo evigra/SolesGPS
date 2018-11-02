@@ -2757,9 +2757,14 @@
 		##############################################################################
 		function __SMS($sDestination, $sMessage, $debug, $sSenderId){
 			$sData ='cmd=sendsms&';
-			$sData .='domainId=test&';
-			$sData .='login=e.vizcaino&';
-			$sData .='passwd=r94uf43n&';
+			$sData .='domainId=solesgps&';
+			$sData .='login=e.vizcaino@solesgps.com&';
+			$sData .='passwd=Vz4sPioUm7&';
+
+
+			#$sData .='domainId=test&';
+			#$sData .='login=e.vizcaino&';
+			#$sData .='passwd=r94uf43n&';
 			
 			//No es posible utilizar el remitente en América pero sí en España y Europa
 			$sData .='senderId='.$sSenderId.'&';

@@ -224,6 +224,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
+					AND reporto_hace<'01:10:00'
 					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);

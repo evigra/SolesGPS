@@ -224,6 +224,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
+					AND reporto_hace>'01:10:00'
 					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
@@ -233,7 +234,7 @@
 				foreach($position_data as $row)
 				{					
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
-					$row["TEL_COMPANY"]="5213143520972";
+					#$row["TEL_COMPANY"]="5213143520972";
 					
 					$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");
 				}

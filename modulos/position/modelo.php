@@ -166,8 +166,8 @@
 			#$this->__PRINT_R($position_data);
 			if(count($position_data)>0)
 			{								
-				$comando_sql		="INSERT INTO logs SET text='RETARDO DE ". count($position_data) ."'";
-				$this->__EXECUTE($comando_sql);
+				#$comando_sql		="INSERT INTO logs SET text='RETARDO DE ". count($position_data) ."'";
+				#$this->__EXECUTE($comando_sql);
 				
 				$devices_tr			="<tr><td>Status</td><td>WA</td><td>Contacto</td><td>Dispositivo</td><td>Tiempo</td><td></td></tr>";			
 				
@@ -224,6 +224,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
+					AND reporto_hace<'01:10:00'
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			

@@ -232,7 +232,7 @@
 			{								
 				foreach($position_data as $row)
 				{					
-					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTE_HACE"]}";
+					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
 					$row["TEL_COMPANY"]="5213143520972";
 					
 					$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");

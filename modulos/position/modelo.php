@@ -216,6 +216,29 @@
 			return count($position_data) . " Dispositivos retrazados";
 									
 		}
+		public function cron_retraso_SMS()
+    	{			    		
+			$comando_sql="
+				SELECT v.*, md5(ID) as md5_id 
+				FROM V_ULTIMOREPORTE v 
+				WHERE 1=1
+					AND tipo_vehiculo='GPS'
+					AND reporto_hace>'00:30:00'
+			";
+			$position_data 		=$this->__EXECUTE($comando_sql);
+			
+			if(count($position_data)>0)
+			{								
+				foreach($position_data as $row)
+				{					
+					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}";
+					$row["TEL_COMPANY"]="5213143520972";
+					
+					$this->AltiriaSMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");
+				}
+			}
+		}
+
 		public function cron_retraso_mayor()
     	{			    		
 			$comando_sql="

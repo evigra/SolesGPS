@@ -235,7 +235,7 @@
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}";
 					$row["TEL_COMPANY"]="5213143520972";
 					
-					$this->AltiriaSMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");
+					$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");
 				}
 			}
 		}

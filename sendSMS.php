@@ -20,10 +20,16 @@ function AltiriaSMS($sDestination, $sMessage, $debug, $sSenderId){
  $sData .='login=YY&';
  $sData .='passwd=ZZ&';
 */
- $sData ='cmd=sendsms&';
- $sData .='domainId=test&';
- $sData .='login=e.vizcaino&';
- $sData .='passwd=r94uf43n&';
+$sData ='cmd=sendsms&';
+$sData .='domainId=solesgps&';
+$sData .='login=e.vizcaino@solesgps.com&';
+$sData .='passwd=Vz4sPioUm7&';
+
+
+ #$sData ='cmd=sendsms&';
+ #$sData .='domainId=test&';
+ #$sData .='login=e.vizcaino&';
+ #$sData .='passwd=r94uf43n&';
 
 
  //No es posible utilizar el remitente en América pero sí en España y Europa
@@ -106,7 +112,7 @@ function AltiriaSMS($sDestination, $sMessage, $debug, $sSenderId){
 //No es posible utilizar el remitente en América pero sí en España y Europa
 #$resp= AltiriaSMS("346xxxxxxxx,346yyyyyyyy", "Mensaje de prueba", false, "");
 #$resp= AltiriaSMS("+5213143520972,+5213141182618,+5213414208060", "SolesGPS Mensaje de prueba desde mi lap", false, "");
-$resp= AltiriaSMS("+5213143520972", "SolesGPS Mensaje de prueba desde mi lap2", false, "");
+$resp= AltiriaSMS("+5213143520972", "SolesGPS Mensaje de prueba desde mi lap", false, "");
 #$resp= AltiriaSMS(array("+5213143520972","+5213141182618","+5213414208060"), "SolesGPS Mensaje de prueba desde mi lap", false, "");
 //Utilizar esta llamada solo si se cuenta con un remitente autorizado por Altiria
 //$resp= AltiriaSMS("346xxxxxxxx,346yyyyyyyy", "Mensaje de prueba", false, "remitente");

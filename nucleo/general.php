@@ -502,7 +502,7 @@
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
 							$eval="
-								if(!isset($"."this->sys_memory))
+								##if(!isset($"."this->sys_memory))
 								{
 									$"."option_$campo=array(
 										\"where\"		=>array(\"$class_field_m='$id'\")

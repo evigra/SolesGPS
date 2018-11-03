@@ -708,7 +708,7 @@
 			{
 				foreach($this->sys_fields as $campo =>$valor)
 				{
-					if(isset($valor["class_name"]) AND !isset($this->sys_memory))
+					if(isset($valor["class_name"]))
 					{				
 						$eval="
 							$"."option"."_obj_$campo	=array(
@@ -1486,7 +1486,7 @@
 				
 				*/				
 			
-				if(!isset($"."this->sys_memory))
+				##if(!isset($"."this->sys_memory))
 				{
 
 					if(isset($"."json))

@@ -1485,43 +1485,48 @@
 				$"."this->obj_$campo"."									=new {$valor["class_name"]}($"."option_$campo);
 				
 				*/				
-				if(isset($"."json))
-				{								
-					$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
 			
-					if(isset($"."class_id) AND $"."class_id>0)
-						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
-					
-					$"."this->obj_$campo"."->__SAVE($"."json);
-				}
-				
-				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
-				
-				$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
-				$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
-												
-				$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
-								
-				if(isset($"."words[\"html_head_js\"]))								
-					$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
-								
-				$"."option_report										=array();				
-				
-				$"."option_report[\"where\"]							=array(
-					\"{$valor["class_field_m"]}='$class_one_id'\"
-				);
-				
-				$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
-				$"."option_report[\"template_body\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_body\";
-				$"."option_report[\"template_create\"]	                = $"."this->obj_$campo"."->sys_module . \"html/create\";
-				$"."option_report[\"template_option\"]	                = $"."option;
-				
-				$"."option_report[\"name\"]	                			= '$campo';
-				
-				$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
+				if(!isset($"."this->sys_memory))
+				{
 
-				$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
-				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
+					if(isset($"."json))
+					{								
+						$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
+				
+						if(isset($"."class_id) AND $"."class_id>0)
+							$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+						
+						$"."this->obj_$campo"."->__SAVE($"."json);
+					}
+					
+					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
+					
+					$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
+					$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
+													
+					$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
+									
+					if(isset($"."words[\"html_head_js\"]))								
+						$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
+									
+					$"."option_report										=array();				
+					
+					$"."option_report[\"where\"]							=array(
+						\"{$valor["class_field_m"]}='$class_one_id'\"
+					);
+					
+					$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
+					$"."option_report[\"template_body\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_body\";
+					$"."option_report[\"template_create\"]	                = $"."this->obj_$campo"."->sys_module . \"html/create\";
+					$"."option_report[\"template_option\"]	                = $"."option;
+					
+					$"."option_report[\"name\"]	                			= '$campo';
+					
+					$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
+
+					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
+					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
+				}	
 			";				
 			
 			eval($eval);	

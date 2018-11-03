@@ -708,7 +708,7 @@
 			{
 				foreach($this->sys_fields as $campo =>$valor)
 				{
-					if(isset($valor["class_name"]))
+					if(isset($valor["class_name"]) AND !isset($this->sys_memory))
 					{				
 						$eval="
 							$"."option"."_obj_$campo	=array(

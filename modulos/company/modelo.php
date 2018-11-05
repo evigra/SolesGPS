@@ -164,6 +164,15 @@
 			    "title"             => "Proveedor",
 			    "type"              => "checkbox",
 			),						
+			"sms"	    	=>array(
+			    "title"             => "Alertas SMS",
+			    "type"              => "checkbox",
+			),			
+			"whatsapp"	    	=>array(
+			    "title"             => "Alertas WhatsAPP",
+			    "type"              => "checkbox",
+			),			
+
 		);				
 		##############################################################################	
 		##  Metodos	

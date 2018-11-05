@@ -1,6 +1,5 @@
-
-
 <?php
+	echo "INICIO";
 	$usuarios_sesion	="EXECUTE_CRONS";
 	$usuarios_sesion	="PHPSESSID";
 	
@@ -10,6 +9,62 @@
 	session_cache_limiter('nocache,private');	
 	#if(!isset($_SESSION))
 	require_once("nucleo/sesion.php");	
+
+
+	$objeto				=new general();	
+	
+	$option				=array();	
+	$option["url"]		="https://panel.apiwha.com/";	
+	$respuesta			=$objeto->__curl($option);
+	$objeto->__PRINT_R($respuesta);
+
+/*	
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	#$objeto->__PRINT_R($respuesta);
+	
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	#$objeto->__PRINT_R($respuesta);
+	
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	#$objeto->__PRINT_R($respuesta);
+	
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+#	$objeto->__PRINT_R($respuesta);
+#/*
+
+	$vars_url		=explode("?",$option["url"]);
+
+	$vars=array(
+		"email"		=>"evigra@gmail.com",
+		"password"	=>"EvG30JiC06",	
+	);	
+	$option["post"]		=$vars;
+	#$option["user"]		="evigra@gmail.com";				
+	#$option["pass"]		="EvG30JiC06";
+	$option["url"]		="https://panel.apiwha.com/?a=" . $vars_url[1];	
+	$respuesta			=$objeto->__curl($option);
+
+
+	$objeto->__PRINT_R($respuesta);
+
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	$objeto->__PRINT_R($respuesta);
+	
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	$objeto->__PRINT_R($respuesta);
+
+	$option["url"]		=$respuesta["info"]["redirect_url"];	
+	$respuesta			=$objeto->__curl($option);
+	$objeto->__PRINT_R($respuesta);
+#*/	
+	echo "FIN";
+
 
 /*
 	$comando_sql="
@@ -38,7 +93,8 @@
 		$objeto->__EXECUTE($comando_sql);    		
 	}
 #*/	
-#/*	
+
+/*	
 	echo "<br>INICIO";
 	$objeto				=new position();	
 

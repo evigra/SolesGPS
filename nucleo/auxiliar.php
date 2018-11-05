@@ -226,27 +226,36 @@
 				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			}	
-			/*
+			
 			if(isset($option["user"]))
 			{
-				curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
-				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
+				curl_setopt($ch, CURLOPT_USERPWD, $option["user"].":".$option["pass"]);
+				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 			}
-			*/			
-			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, true);
-			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
-			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, true);
-			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, true);
-			
-
-
+						
+			if(isset($option["ssl"]))				curl_setopt($ch,CURLOPT_SSL_FALSESTART, $option["ssl"]);		# true or false
+			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, $option["location"]);	# true or false
+			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, $option["referer"]);			# true or false
+			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, $option["service"]);		# true or false
 			
 			
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 			#curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
 			#curl_setopt($ch,CURLOPT_TIMEOUT, 20);
 	
-			$return =curl_exec($ch);
+			$resultado 	=curl_exec($ch);			
+			$info 		=curl_getinfo($ch);	
+
+			$error		="";
+			if(curl_errno($ch)) 					$error = curl_error($ch);
+
+			$return=array(				
+				"info"		=>$info,
+				"error"		=>$error,
+				"return"	=>$resultado,				
+			);
+			
+			
 			curl_close ($ch);
 			
 			return $return;
@@ -263,7 +272,9 @@
 				$vars["monto"]=$data["monto"];				
 
 			$option				=array("url"=>$url,"post"=>$vars);
-			$respuesta1			=json_decode($this->__curl($option));
+			
+			$respuesta			=$this->__curl($option);			
+			$respuesta1			=json_decode($respuesta["return"]);
 			
 			
 			$url 				="https://taecel.com/app/api/StatusTXN";
@@ -271,7 +282,9 @@
 			$vars["transID"]	=$respuesta1->data->transID;
 					
 			$option				=array("url"=>$url,"post"=>$vars);
-			$respuesta2			=json_decode($this->__curl($option));
+
+			$respuesta			=$this->__curl($option);			
+			$respuesta2			=json_decode($respuesta["return"]);
 			
 			return array(
 				"producto"	=>$data["producto"],

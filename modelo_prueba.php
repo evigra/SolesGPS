@@ -13,10 +13,6 @@
 			parent::__CONSTRUCT();
 		}
 		
-		
-		
-		
-		
 			
 	}
 ?>

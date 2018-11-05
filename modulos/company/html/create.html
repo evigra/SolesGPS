@@ -2,22 +2,20 @@
 <div class="mainTable">    
              <table border="0" width="100%">
                 <tr>
-                    <td width="33%" rowspan="2" align="center">                       
-                        {img_files_id}
-                    </td>                        
-                    <td colspan="2" width="66%">                       
-                    	{nombre}                        
-                    </td>        
+                    <td width="33%" rowspan="2" align="center">{img_files_id}</td>                        
+                    <td colspan="2">{nombre}</td>
+                    <td width="40">{cliente}</td>        
+                    <td width="40">{proveedor}</td>
                 </tr>          
                 <tr>
-                    <td>
-                        {estatus}
-                    </td>        
-                    <td>                        
-                        {lema}
-                    </td>        
+                	<td>{estatus}</td>        
+                    <td width="17%">{telefono}</td>        
+                    <td width="40">{sms}</td>        
+                    <td width="40">{whatsapp}</td>
+                    
                 </tr>          
             </table> 
+
 			<div id="tabs" class="form">
 				<ul>
 					<li  class="form"><a href="#tabs-1">Contacto</a></li>
@@ -28,10 +26,10 @@
 					<table border="0">
 				        <tr>
 				            <td width="33%">{email}</td>         
-				            <td width="17%">{telefono}</td>        
+				            <td width="17%">{telefono_contacto}</td>
 				            <td width="16%">{extension}</td>                            
-				            <td width="17%">{cliente}</td>
-				            <td width="16%">{proveedor}</td>
+				            
+				            <td width="16%"></td>
 				        </tr>          
 					</table> 
 				</div>
@@ -40,6 +38,7 @@
 				        <tr>
 				            <td width="33%">{RFC} </td>                        
 				            <td colspan="2">{razonSocial}</td>        
+				                    					
 				        </tr>          
 				        <tr>                        
 				             <td colspan="2">{domicilio_fiscal}</td>                
@@ -50,15 +49,18 @@
 				    <table border="0" width="100%">
 				        <tr>
 				            <td width="33%">{web} </td>                        
-				            <td colspan="2">{sistema_web}</td>        
+				            <td >{sistema_web}</td>        
+				            <td >{chat_whatsapp}</td>
 				        </tr>          
 				        <tr>                        
 				        	<td>{files_id}</td>                        
-				            <td colspan="2">{chat_whatsapp}</td>
+				        	<td colspan="2">{lema}</td>
+				            
 				        </tr>            
 				    </table>
 				</div>
 			</div>
+			{trabajador_ids1}
 </div>            
   <script>
   $(function() {

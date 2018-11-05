@@ -117,6 +117,10 @@
 			    "type"              => "input",
 			),
 			"telefono"	=>array(
+			    "title"             => "Telefono Alertas",
+			    "type"              => "input",
+			),						
+			"telefono_contacto"	=>array(
 			    "title"             => "Telefono",
 			    "type"              => "input",
 			),						

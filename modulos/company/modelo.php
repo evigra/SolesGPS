@@ -165,11 +165,11 @@
 			    "type"              => "checkbox",
 			),						
 			"sms"	    	=>array(
-			    "title"             => "Alertas SMS",
+			    "title"             => "SMS",
 			    "type"              => "checkbox",
 			),			
 			"whatsapp"	    	=>array(
-			    "title"             => "Alertas WhatsAPP",
+			    "title"             => "WhatsAPP",
 			    "type"              => "checkbox",
 			),			
 

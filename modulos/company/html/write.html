@@ -2,21 +2,18 @@
 <div class="mainTable">    
              <table border="1" width="100%">
                 <tr>
-                    <td width="33%" rowspan="3" align="center">{img_files_id}</td>                        
+                    <td width="33%" rowspan="2" align="center">{img_files_id}</td>                        
                     <td colspan="2">{nombre}</td>
                     <td width="40">{cliente}</td>        
                     <td width="40">{proveedor}</td>
                 </tr>          
                 <tr>
-                    <td colspan="3">{lema}</td>        					
+                    <td>{telefono}</td>        
                     <td width="17%">{estatus}</td>        
-                </tr>          
-                <tr>
-					<td colspan="2">{telefono}</td>        
                     <td width="40">{sms}</td>        
                     <td width="40">{whatsapp}</td>
-                </tr>                          
-                
+                    
+                </tr>          
             </table> 
 
 			<div id="tabs" class="form">
@@ -41,6 +38,7 @@
 				        <tr>
 				            <td width="33%">{RFC} </td>                        
 				            <td colspan="2">{razonSocial}</td>        
+				            <td colspan="3">{lema}</td>        					
 				        </tr>          
 				        <tr>                        
 				             <td colspan="2">{domicilio_fiscal}</td>                

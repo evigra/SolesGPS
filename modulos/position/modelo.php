@@ -237,7 +237,7 @@
 					#$row["TEL_COMPANY"]="5213143520972";
 					
 					$this->__SMS("+{$row["TEL_COMPANY"]},5213143520972", $mensaje, false, "");					
-					$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje))
+					$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));
 				}
 			}
 		}

@@ -216,7 +216,32 @@
 			return count($position_data) . " Dispositivos retrazados";
 									
 		}
-		public function cron_retraso_SMS()
+		public function cron_retraso_ALERTAS()
+    	{			    		
+			$comando_sql="
+				SELECT v.*, md5(ID) as md5_id 
+				FROM V_ULTIMOREPORTE v 
+				WHERE 1=1
+					AND tipo_vehiculo='GPS'
+					AND reporto_hace>'00:30:00'
+					AND reporto_hace>'01:10:00'
+					
+			";
+			$position_data 		=$this->__EXECUTE($comando_sql);
+			
+			if(count($position_data)>0)
+			{								
+				foreach($position_data as $row)
+				{					
+					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
+					#$row["TEL_COMPANY"]="5213143520972";
+					
+					$this->__SMS("+{$row["TEL_COMPANY"]},5213143520972", $mensaje, false, "");					
+					$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje))
+				}
+			}
+		}
+		public function cron_retraso_WA()
     	{			    		
 			$comando_sql="
 				SELECT v.*, md5(ID) as md5_id 

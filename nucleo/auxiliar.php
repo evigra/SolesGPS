@@ -260,6 +260,19 @@
 			
 			return $return;
 		}
+		public function __WA($data)
+    	{    		    		    	
+			$sesion 			=array("apikey"=>"AO7K3A1BOEO8O0PX4KK4");
+
+			$url 				="https://panel.apiwha.com/send_message.php";
+			$vars 				=$sesion;				
+			$vars["number"]		=$data["telefono"];
+			$vars["text"]		=$data["mensaje"];
+
+			$option				=array("url"=>$url,"post"=>$vars);
+			
+			$respuesta			=$this->__curl($option);			
+    	}			
 		public function WS_TAECEL($data)
     	{    		    		    	
 			$sesion 			=array("key"=>"6dce34dbc6cc3d6bd8de48fd011d0595", "nip"=>"7fbb2c3531d73ab26044fac7dfe1a503");

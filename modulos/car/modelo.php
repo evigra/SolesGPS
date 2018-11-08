@@ -69,8 +69,7 @@
 				else if(file_exists("$aux.jpeg"))	$path		="http://solesgps.com/$aux.jpeg";
 			
 				$this->words["files_description"]		="
-					<div id=\"tabs-10\"  class=\"form\">
-					  $path
+					<div id=\"tabs-10\"  class=\"form\">					  
 						<img src=\"$path\" width=\"300\">
 					<div>
 				";

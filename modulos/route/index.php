@@ -1,9 +1,6 @@
 <?php
-	#require_once("modelo.php");
-
 	$objeto							=	new route();
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($objeto);
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
@@ -51,7 +48,7 @@
 			#array("write"=>"Modificar"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
-	    	);	
+    	);	
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
@@ -100,7 +97,5 @@
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
     $objeto->__VIEW($objeto->html);
-	#$objeto->__PRINT_R($objeto->sys_fields);
-    
-    
+	  
 ?>

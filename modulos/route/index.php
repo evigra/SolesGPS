@@ -25,9 +25,9 @@
     $module_title	=	"";
 
     $module_center=array(
-        array("accion_punto"=>"Agregar"),
-        array("finalizar_punto"=>"Finalizar"),
-        array("limpiar_punto"=>"Limpiar"),
+        array("accion_punto"		=>"Agregar"),
+        array("finalizar_punto"		=>"Finalizar"),
+        array("limpiar_punto"		=>"Limpiar"),
     );    
 
     if($objeto->sys_section=="create")

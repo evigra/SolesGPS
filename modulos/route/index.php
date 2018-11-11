@@ -1,7 +1,7 @@
 <?php
 	#require_once("modelo.php");
 
-	$objeto							=	new item();
+	$objeto							=	new route();
 	$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
 	

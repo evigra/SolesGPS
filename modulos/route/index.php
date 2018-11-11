@@ -24,12 +24,6 @@
     $module_center	=	"";
     $module_title	=	"";
 
-    $module_center=array(
-        array("accion_punto"		=>"Agregar"),
-        array("finalizar_punto"		=>"Finalizar"),
-        array("limpiar_punto"		=>"Limpiar"),
-    );    
-
     if($objeto->sys_section=="create")
 	{
     	$module_title                	=	"Crear ";
@@ -39,7 +33,13 @@
 			#array("write"=>"Modificar"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
-	    	);
+    	);
+
+		$module_center=array(
+		    array("accion_punto"		=>"Agregar"),
+		    array("finalizar_punto"		=>"Finalizar"),
+		    array("limpiar_punto"		=>"Limpiar"),
+		);    
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
@@ -55,6 +55,13 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
     	);	
+
+    $module_center=array(
+        array("accion_punto"		=>"Agregar"),
+        array("finalizar_punto"		=>"Finalizar"),
+        array("limpiar_punto"		=>"Limpiar"),
+    );    
+
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);

@@ -201,9 +201,9 @@
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
 			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
-			$option["where"][]      ="modulo='{$this->modulo}'";
-			
-			
+			if($this->modulo!="")
+				$option["where"][]      ="modulo='{$this->modulo}'";
+					
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				

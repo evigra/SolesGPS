@@ -1,9 +1,4 @@
 <?php
-	#if(file_exists("../device/modelo.php")) 
-	#require_once("../device/modelo.php");
-	#if(file_exists("device/modelo.php")) 
-	#require_once("device/modelo.php");
-	
 	class travels extends general
 	{   
 		##############################################################################	
@@ -91,6 +86,7 @@
 			    "class_field_o"    	=> "device_id",
 			    "class_field_m"    	=> "id",			    
 			),
+/*
 			"empresa_id"	=>array(
 			    "title"             => "Cliente",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
@@ -105,6 +101,7 @@
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    
 			),			
+*/
 			"company_id"	    =>array(
 			    "title"             => "Compania",
 			    "showTitle"         => "si",

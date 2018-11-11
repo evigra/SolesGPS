@@ -13,7 +13,7 @@
 			$this->sys_fields["long1"]	    =array(
 			    "title"             => "points",
 			    "type"              => "input",
-			),									
+			);									
 
 			$this->files_obj	=new files();
 			parent::__CONSTRUCT();

@@ -1,67 +1,100 @@
-	{inegi1}
-	{inegi2}
-	
-			<div id="tabs" class="form" style="height:-moz-calc(100% - 2px); height:calc(100% - 2px)">
-				<ul>
-					<li  class="form"><a href="#tabs-1">Mapa</a></li>
-					<li  class="form"><a href="#tabs-2">Informacion General</a></li>
-				</ul>
-				<div id="tabs-1" class="form" style="height:-moz-calc(100% - 50px); height:calc(100% - 50px)">
-					<table width="100%" height="100%">
-						<tr>
-							<td  colspan="3">
-								<div style="position:relative; width:100%; height:100%;">
-								   <div id="map" style="z-index:100; position:absolute; bottom:0px; left:0px;   width:100%; height:100%;">  
-								        MAP
-								    </div>      
-								    <div style="z-index:100; text-align:left; position:absolute; top:8px; left:108px;  height:27px;   padding:3px; background-color:#ddd;">
-								    	<table>
-								    		<tr>
-								    			<td>	<input id="address" name="address" value="" placeholder="Busca una direccion aqui"> </td>
-								    			<td>  	<font id="buscar_address" class="">BUSCAR</font> </td>               
-								    		</tr>	
-								    	</table>	
-								    </div>                                       
-								</div>
-							</td>
-						</tr> 
-					</table>
-				</div>
-				<div id="tabs-2"  class="form"  style="height:-moz-calc(100% - 50px); height:calc(100% - 50px)">
-				    <table border="0"  width="100%">
-						<tr>
-							<td height="25" width="33%">{name}</td>
-							<td colspan="2">{description}</td>
-						</tr> 
+<div class="mainTable">
+            <table border="0" width="100%">
+                <tr>
+                    <td rowspan="3" align="center" width="150">
+                        {imagen}
+                    </td>        
+                    <td colspan="4">{nombre}</td>
+                    <td width="230"></td>
+                </tr>          
+                <tr>
+	                <td align="left"> {se_vende} </td>
+					<td width="100"></td>
+					<td></td>
+                </tr>          
+                <tr>
+					<td align="left"> {se_compra} </td>                
+					<td width="100"></td>
+					<td></td>
+                </tr>          
 
-				        <tr>
-				            <td height="25">{start}</td>        
-				            <td>{end}</td>        
-				            <td>{tiempo}</td>        
-				        </tr>          
-				        <tr>
-				            <td height="25">{costo}</td>        
-				            <td>{venta}		</td>        
-				            <td>{distancia}</td>        
-				        </tr>          
-				        <tr>
-				            <td colspan="3">
-				            	<div id="text" style="height:200px; overflow:auto; background-color:#aaa; padding-left:15;">
-				            	</div>   
-				            	{points_route}     
-				            </td>        
-				        </tr>				        
-				    </table>
-				</div>
-			</div>
+                <tr>
+                    <td colspan="6" width="100%">
+			 			<div id="tabs" class="form">
+							<ul>					
+								<li  class="form"><a href="#tabs-3">Informacion General</a></li>
+								<li  class="form"><a href="#tabs-2">Venta</a></li>
+								<li  class="form"><a href="#tabs-1">Compra</a></li>
+							</ul>
 
+							<div id="tabs-3" class="form">
+								 <table border="0" width="100%" class="form">
+									<tr>
+										<td width="350" align="left"> {type} </td>
+										<td></td>
+										<td width="150" align="left"> {vende1} </td>
+									</tr>          
+									<tr>
+										<td width="350" align="left"> {ref_interna} </td>
+										<td></td>
+										<td width="150" align="left"> {compra1} </td>
+									</tr>          
+									<tr>
+										<td align="left"> {c_barras} </td>
+										<td></td>
+										<td align="left">  </td>
+									</tr>          
+									<tr>
+										<td align="left"> {c_qr} </td>
+										<td></td>
+										<td align="left">  </td>
+									</tr>          
+								</table>			
+							</div>
+							<div id="tabs-2"  class="form">
+								<table border="0"  width="100%">
+									<tr>
+										<td align="left"> {vende2} </td>
+										<td align="left"> {vende3} </td>
+										<td align="left"> {vende4} </td>
+										<td align="left"> {vende5} </td>
+									</tr>          
+									<tr>
+										<td align="left" colspan="4"> {tax_venta_ids} </td>
+									</tr>          									
+									
+								</table>
+							</div>
+							<div id="tabs-1" class="form">
+								 <table border="0" width="100%" class="form">
+									<tr>                                        				            
+										<td align="left"> {compra2} </td>
+										<td align="left"> {compra3} </td>
+										<td align="left"> {compra4} </td>
+										<td align="left"> {compra5} </td>
+									</tr>          
+									<tr>
+										<td align="left" colspan="4"> {tax_compra_ids1} </td>
+									</tr>          									
+
+								</table>			
+							</div>
+
+
+						</div>
+
+                        
+                    </td>        
+                </tr>          
+
+			</table>			
+
+
+</div>
 
   <script>
   $(function() {
     $( "#tabs" ).tabs();
   });
   </script>        
-
-
-
 

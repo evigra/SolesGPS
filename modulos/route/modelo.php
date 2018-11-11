@@ -10,7 +10,7 @@
 		##############################################################################&sys_action=__SAVE
 		public function __CONSTRUCT()
 		{	
-			$this->sys_fields["long1"]	    =>array(
+			$this->sys_fields["long1"]	    =array(
 			    "title"             => "points",
 			    "type"              => "input",
 			),									

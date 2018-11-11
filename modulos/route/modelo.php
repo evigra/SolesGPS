@@ -14,6 +14,10 @@
 			    "title"             => "points",
 			    "type"              => "hidden",
 			);									
+			$this->sys_fields["campo1"]	    =array(
+			    "title"             => "points_route",
+			    "type"              => "input",
+			);									
 
 			$this->files_obj	=new files();
 			parent::__CONSTRUCT();

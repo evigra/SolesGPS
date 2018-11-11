@@ -31,7 +31,7 @@
 			),
 			"descripcion"	    	=>array(
 			    "title"             => "Descripcion",
-			    "type"              => "textarea",
+			    "type"              => "input",
 			),
 			"servicio"	    =>array(
 			    "title"             => "Servicio",

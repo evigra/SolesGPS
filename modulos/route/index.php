@@ -6,7 +6,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps	","../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps","../".$objeto->sys_module."js/index"));
 	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
 	$module_left=array(

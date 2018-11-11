@@ -57,6 +57,7 @@
 			limpiar_real();	  
 			
 		}	    
+		/*
 		$("#action").button({
 			icons: {	primary: "ui-icon-document" },
 			text: true
@@ -174,5 +175,6 @@
 					limpiar_real();				
 				}
 			);	    
-		}	            
+		}
+		*/	            
     });

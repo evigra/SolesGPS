@@ -6,7 +6,7 @@
 		{		
 			punto	=GeoMarker[index];
 			puntos	+=punto["latitude"]+","+punto["longitude"]+"|"; 
-		    $("input#points").val(puntos);	
+		    //$("input#points").val(puntos);	
 		}				
 	}
 	
@@ -22,7 +22,7 @@
 	function limpiar_real()
 	{	
 		limpiar_virtual();
-		$("input#points").val("");		
+		//$("input#points").val("");		
 		for(ilineas in lineas)
 		{			
 			lineas[ilineas].setMap(null);									
@@ -152,8 +152,8 @@
 								});
 							}	
 						}
-						$("#start").val(origen1.substring(1, origen1.length-2));
-						$("#end").val(destino1.substring(1, destino1.length-2));
+						//$("#start").val(origen1.substring(1, origen1.length-2));
+						//$("#end").val(destino1.substring(1, destino1.length-2));
 					
 						tracert(origen,destino,waypts);
 						//distance(origen,destino,waypts);

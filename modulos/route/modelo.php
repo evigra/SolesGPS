@@ -12,7 +12,7 @@
 		{	
 			$this->sys_fields["long1"]	    =array(
 			    "title"             => "points",
-			    "type"              => "input",
+			    "type"              => "hidden",
 			);									
 
 			$this->files_obj	=new files();

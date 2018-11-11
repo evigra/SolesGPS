@@ -25,7 +25,10 @@
 					"font-size"		=>array("30px"=>"1==1"),					
 			    ),			    			    			    	    
 			),
-
+			"modulo"	    	=>array(
+			    "title"             => "modulo",
+			    "type"              => "hidden",
+			),
 			"descripcion"	    	=>array(
 			    "title"             => "Descripcion",
 			    "type"              => "textarea",

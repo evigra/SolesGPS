@@ -19,6 +19,14 @@
 			    "title"             => "points_route",
 			    "type"              => "input",
 			);									
+			$this->sys_fields["campo2"]	    =array(
+			    "title"             => "Tiempo",
+			    "type"              => "input",
+			);									
+			$this->sys_fields["campo3"]	    =array(
+			    "title"             => "Distancia",
+			    "type"              => "input",
+			);									
 
 			$this->files_obj	=new files();
 			parent::__CONSTRUCT();

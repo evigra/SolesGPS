@@ -1,9 +1,6 @@
 <?php
-	#require_once("modelo.php");
-
 	$objeto							=	new item();
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($objeto);
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
@@ -69,7 +66,7 @@
     	); 	
 
 		$template_body					=	$objeto->sys_module."html/kanban";	
-	   	$data							=	$objeto->devices();        	
+	   	$data							=	$objeto->__BROWSE();        	
     	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }	
 	else
@@ -99,8 +96,5 @@
 	$objeto->words["html_head_keywords"]	=	"GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
-    $objeto->__VIEW($objeto->html);
-	#$objeto->__PRINT_R($objeto->sys_fields);
-    
-    
+    $objeto->__VIEW($objeto->html);    
 ?>

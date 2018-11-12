@@ -204,7 +204,6 @@
 			if($this->modulo!="")
 				$option["where"][]      ="modulo='{$this->modulo}'";
 				
-			$option["echo"]      ="ITEM";	
 					
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

@@ -203,8 +203,7 @@
 			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
 			if($this->modulo!="")
 				$option["where"][]      ="modulo='{$this->modulo}'";
-				
-					
+									
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				

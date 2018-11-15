@@ -381,8 +381,8 @@
 		}
 		duracion= duracion + minutos + " Minuto(s)";
 		//alert(duracion);
-		$("input#tiempo.formulario").val(duracion);
-		$("input#distancia.formulario").val(recorrido);
+		$("input#campo2.formulario").val(duracion);
+		$("input#campo3.formulario").val(recorrido);
 		return "<table width='100%'>"+tr+"</table>";
 	}
 	

@@ -120,6 +120,9 @@
 						tracert(origen,destino,waypts);
 						distance(origen,destino,waypts);
 						
+						
+						
+						
 						limpiar_virtual();
 						limpiar_real();										
 					}					

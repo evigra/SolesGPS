@@ -56,11 +56,11 @@
 			array("report"=>"Reporte"),
     	);	
 
-    $module_center=array(
-        array("accion_punto"		=>"Agregar"),
-        array("finalizar_punto"		=>"Finalizar"),
-        array("limpiar_punto"		=>"Limpiar"),
-    );    
+		$module_center=array(
+		    array("accion_punto"		=>"Agregar"),
+		    array("finalizar_punto"		=>"Finalizar"),
+		    array("limpiar_punto"		=>"Limpiar"),
+		);    
 
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	

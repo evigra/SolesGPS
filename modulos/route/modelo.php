@@ -28,7 +28,6 @@
 			    "type"              => "input",
 			);									
 
-			$this->files_obj	=new files();
 			parent::__CONSTRUCT();
 		}
    		public function __SAVE($datas=NULL,$option=NULL)

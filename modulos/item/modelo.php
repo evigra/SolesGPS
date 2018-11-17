@@ -142,7 +142,7 @@
 			    "title"             => "campo5",
 			    "type"              => "input",
 			),									
-			"long1"	    =>array(
+			"largo1"	    =>array(
 			    "title"             => "long1",
 			    "type"              => "input",
 			),									
@@ -193,6 +193,9 @@
     	{    	    
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
     	    $datas["modulo"]			=$this->modulo;
+    	    
+			$this->files_obj	=new files();
+
     		parent::__SAVE($datas,$option);
 		}		
 		public function __BROWSE($option=NULL)

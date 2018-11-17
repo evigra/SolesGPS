@@ -6,7 +6,7 @@
 		{		
 			punto	=GeoMarker[index];
 			puntos	+=punto["latitude"]+","+punto["longitude"]+"|"; 
-		    $("input#long1").val(puntos);	
+		    $("input#largo1").val(puntos);	
 		}				
 	}
 	
@@ -22,7 +22,7 @@
 	function limpiar_real()
 	{	
 		limpiar_virtual();
-		$("input#long1").val("");		
+		$("input#largo1").val("");		
 		for(ilineas in lineas)
 		{			
 			lineas[ilineas].setMap(null);									

@@ -10,7 +10,7 @@
 		    $("input#largo1").val(puntos);	
 		}				
 	}
-/*	
+	
 	function limpiar_virtual()
 	{		
 		for(indexMarker=0;indexMarker<locationsMarker.length;indexMarker++)
@@ -32,7 +32,7 @@
 		GeoMarker	=Array();
 		GeoMarker1	=Array();
 	}
-*/	
+	
 	$(document).ready(function()
 	{
     	if($("div#map").length>0) 

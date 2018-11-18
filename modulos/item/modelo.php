@@ -142,7 +142,7 @@
 			    "title"             => "campo5",
 			    "type"              => "input",
 			),									
-			"largo1"	    =>array(
+			"long1"	    =>array(
 			    "title"             => "long1",
 			    "type"              => "input",
 			),									

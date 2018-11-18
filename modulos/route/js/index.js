@@ -7,7 +7,7 @@
 		{		
 			punto	=GeoMarker[index];
 			puntos	+=punto["latitude"]+","+punto["longitude"]+"|"; 
-		    $("input#largo1").val(puntos);	
+		    $("input#long1").val(puntos);	
 		}				
 	}
 	
@@ -23,7 +23,7 @@
 	function limpiar_real()
 	{	
 		limpiar_virtual();
-		$("input#largo1").val("");		
+		$("input#long1").val("");		
 		for(ilineas in lineas)
 		{			
 			lineas[ilineas].setMap(null);									
@@ -54,7 +54,7 @@
 				coordinate  ={latitude:latitud,longitude:longitud};
 			});        
 		    
-			//limpiar_virtual();
+			limpiar_virtual();
 			limpiar_real();	  			
 		}	    
 		

@@ -11,7 +11,7 @@
 		##############################################################################&sys_action=__SAVE
 		public function __CONSTRUCT()
 		{	
-			$this->sys_fields["long12"]	    =array(
+			$this->sys_fields["long1"]	    =array(
 			    "title"             => "points",
 			    "type"              => "hidden",
 			);									
@@ -33,6 +33,9 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
     	    $datas["type"]		=2;
+    	    
+    	    
+    	    
     		parent::__SAVE($datas,$option);
 		}		
 			

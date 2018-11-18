@@ -55,7 +55,7 @@
 			});        
 		    
 			limpiar_virtual();
-			//limpiar_real();	  			
+			limpiar_real();	  			
 		}	    
 		
     	if($("div#map").length>0) 
@@ -115,14 +115,11 @@
 							}	
 						}
 						//$("#start").val(origen1.substring(1, origen1.length-2));
-						//$("#end").val(destino1.substring(1, destino1.length-2));
-					
+						//$("#end").val(destino1.substring(1, destino1.length-2));					
 						tracert(origen,destino,waypts);
 						distance(origen,destino,waypts);
 						
-						
-						
-						
+				
 						limpiar_virtual();
 						limpiar_real();										
 					}					

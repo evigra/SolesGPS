@@ -1,4 +1,3 @@
-/*
 
 	function puntos(GeoMarker)
     {
@@ -11,7 +10,7 @@
 		    $("input#largo1").val(puntos);	
 		}				
 	}
-	
+/*	
 	function limpiar_virtual()
 	{		
 		for(indexMarker=0;indexMarker<locationsMarker.length;indexMarker++)

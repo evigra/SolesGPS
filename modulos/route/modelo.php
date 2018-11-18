@@ -34,7 +34,7 @@
     	{    	    
     	    $datas["type"]		=2;
     	    
-    	    
+    	    if($datas["long1"]=="")	unset($datas["long1"]);
     	    
     		parent::__SAVE($datas,$option);
 		}		

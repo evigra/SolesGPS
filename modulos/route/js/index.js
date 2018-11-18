@@ -54,7 +54,7 @@
 				coordinate  ={latitude:latitud,longitude:longitud};
 			});        
 		    
-			//limpiar_virtual();
+			limpiar_virtual();
 			//limpiar_real();	  			
 		}	    
 		

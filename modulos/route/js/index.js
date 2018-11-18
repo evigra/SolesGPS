@@ -1,3 +1,5 @@
+/*
+
 	function puntos(GeoMarker)
     {
 		var punto	=new String();
@@ -141,3 +143,5 @@
 			);	    
 		}            
     });
+    
+    */

@@ -55,8 +55,8 @@
 				coordinate  ={latitude:latitud,longitude:longitud};
 			});        
 		    
-			limpiar_virtual();
-			limpiar_real();	  
+			//limpiar_virtual();
+			//limpiar_real();	  
 			
 		}	    
 		
@@ -119,14 +119,14 @@
 						//$("#start").val(origen1.substring(1, origen1.length-2));
 						//$("#end").val(destino1.substring(1, destino1.length-2));
 					
-						tracert(origen,destino,waypts);
-						distance(origen,destino,waypts);
+						//tracert(origen,destino,waypts);
+						//distance(origen,destino,waypts);
 						
 						
 						
 						
-						limpiar_virtual();
-						limpiar_real();										
+						//limpiar_virtual();
+						//limpiar_real();										
 					}					
 				}
 			);	    
@@ -137,8 +137,8 @@
 				})		
 				.click(function()
 				{
-					limpiar_virtual();
-					limpiar_real();				
+					//limpiar_virtual();
+					//limpiar_real();				
 				}
 			);	    
 		}            

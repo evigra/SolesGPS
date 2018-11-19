@@ -99,7 +99,7 @@
     }    
     else
     {
-		if($objeto->sys_section=="action_ejecutar")
+		if($objeto->sys_action=="action_ejecutar")
 		{
 			$objeto->__CRON();
 		}

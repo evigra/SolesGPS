@@ -101,6 +101,7 @@
     {
 		if($objeto->sys_action=="action_ejecutar")
 		{
+			$objeto->__PRINT_R("aaasss");
 			$objeto->__CRON();
 		}
     	#

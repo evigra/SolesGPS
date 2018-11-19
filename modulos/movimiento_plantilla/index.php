@@ -43,11 +43,6 @@
 		    array("action"=>"Guardar"),
 		    array("cancel"=>"Cancelar"),
 		);
-		
-
-		$module_center=array(
-		    array("action_ejecutar"=>"Ejecutar"),
-		);
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
 		$objeto->sys_fields["folio"]["type"]	="value";
@@ -61,16 +56,8 @@
 		);		
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 
-		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-
-		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
-
-    		    							
-		
-		#$objeto->__GENERAR_PDF();
-
 		
     	$module_title								="Modificar ";
     }	
@@ -117,7 +104,6 @@
 			$objeto->__CRON();
 		}
     	#
-    	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
@@ -128,13 +114,17 @@
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
-		
+		$option["template_body"]	                = $objeto->sys_module . "html/report_body";		
 				
 		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
+	$module_center=array(
+	    array("action_ejecutar"=>"Ejecutar"),
+	);
+
+
 	$objeto->words["module_title"]              ="$module_title Plantilla";
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);

@@ -1,7 +1,6 @@
 <?php	
 	$objeto											=new movimiento_plantilla();		
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($_SESSION);
 	
 	# CARGANDO PLANTILLAS GENERALES
 	$objeto->words["system_body"]               	=$objeto->__TEMPLATE($objeto->sys_html."system_body"); 		
@@ -9,7 +8,6 @@
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
 	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	#$objeto->words["html_head_css"]             	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left		="";	
 	$module_right		="";	
@@ -114,7 +112,11 @@
     }    
     else
     {
-    	#$objeto->__CRON();
+		if($objeto->sys_section=="action_ejecutar")
+		{
+			$objeto->__CRON();
+		}
+    	#
     	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(

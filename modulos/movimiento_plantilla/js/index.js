@@ -10,7 +10,7 @@
 	$(document).ready(function()
 	{		
 		$("#action_ejecutar").click(function(){
-			$("#sys_section_movimiento").val("action_ejecutar");
+			$("#sys_section_movimiento_plantilla").val("action_ejecutar");
 			$("form").submit();
 		});
     });

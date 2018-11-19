@@ -9,8 +9,8 @@
 	}
 	$(document).ready(function()
 	{		
-		$("#action_pagar").click(function(){
-			$("#sys_action_movimiento").val("__SAVE_pagar");
+		$("#action_ejecutar").click(function(){
+			$("#sys_action_movimiento").val("action_ejecutar");
 			$("form").submit();
 		});
 		$("#action_abonar").click(function(){

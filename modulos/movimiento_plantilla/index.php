@@ -101,8 +101,8 @@
     {
 		#if($objeto->sys_section=="action_ejecutar")
 		{
-			$objeto->__PRINT_R("aaasss");
-			$objeto->__CRON();
+			$objeto->__PRINT_R($objeto->sys_section);
+			#$objeto->__CRON();
 		}
     	#
 		#BOTONES SECCION DERECHA

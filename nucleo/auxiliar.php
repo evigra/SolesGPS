@@ -2051,7 +2051,7 @@
 				$sql    	="
 					UPDATE configuracion SET valor=LPAD(valor+1,6,'0')						
 					WHERE 1=1 
-						AND company_id='{$_SESSION["company"]["id"]}' 
+						AND company_id='{$option["company_id"]}' 
 						AND variable='{$option["variable"]}' 
 						AND subvariable='{$option["subvariable"]}' 
 						AND tipo='{$option["tipo"]}' 
@@ -2062,7 +2062,7 @@
 				$sql    	="
 					INSERT INTO configuracion SET 
 						valor=LPAD(1,6,'0'),					 
-						company_id='{$_SESSION["company"]["id"]}',
+						company_id='{$option["company_id"]}',
 						variable='{$option["variable"]}', 
 						subvariable='{$option["subvariable"]}' ,
 						tipo='{$option["tipo"]}' ,
@@ -2075,7 +2075,7 @@
 			$sql    	="
 				SELECT * FROM configuracion 
 				WHERE 1=1 
-					AND company_id='{$_SESSION["company"]["id"]}' 
+					AND company_id='{$option["company_id"]}' 
 					AND variable='{$option["variable"]}' 
 					AND subvariable='{$option["subvariable"]}' 
 					AND tipo='{$option["tipo"]}' 

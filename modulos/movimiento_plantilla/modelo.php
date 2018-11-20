@@ -62,7 +62,11 @@
 
 			$option["where"][]						="cron_cantidad>0";
 		
+		
+		
 			$crons_data 							=$this->__BROWSE($option);			
+	
+			echo $this->sys_sql;	
 	
 			foreach($crons_data["data"] as $rows)
 			{				

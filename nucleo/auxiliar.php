@@ -2028,16 +2028,17 @@
     	##############################################################################        
     	public function __FOLIOS($option)
     	{								
-			if(!isset($option["variable"]))		$option["variable"]="";
-			if(!isset($option["subvariable"]))	$option["subvariable"]="";
-			if(!isset($option["tipo"]))			$option["tipo"]="";
-			if(!isset($option["subtipo"]))		$option["subtipo"]="";
-			if(!isset($option["objeto"]))		$option["objeto"]="";
+			if(!isset($option["variable"]))		$option["variable"]		="";
+			if(!isset($option["subvariable"]))	$option["subvariable"]	="";
+			if(!isset($option["tipo"]))			$option["tipo"]			="";
+			if(!isset($option["subtipo"]))		$option["subtipo"]		="";
+			if(!isset($option["objeto"]))		$option["objeto"]		="";
+			if(!isset($option["company_id"]))	$option["company_id"]	=$_SESSION["company"]["id"];
 			
 			$sql    	="
 				SELECT * FROM configuracion 
 				WHERE 1=1 
-					AND company_id='{$_SESSION["company"]["id"]}' 
+					AND company_id='{$option["company_id"]}' 
 					AND variable='{$option["variable"]}' 
 					AND subvariable='{$option["subvariable"]}' 
 					AND tipo='{$option["tipo"]}' 

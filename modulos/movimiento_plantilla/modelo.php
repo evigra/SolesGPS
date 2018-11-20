@@ -74,6 +74,7 @@
 					$option_folios					=array();
 					$option_folios["tipo"]			=$rows["tipo"];								
 					$option_folios["variable"]		=date("Y");
+					$option_folios["company_id"]	=$rows["company_id"];
 					$rows["folio"]					=$this->__FOLIOS($option_folios);
 				}	
 				unset($rows["id"]);								

@@ -44,16 +44,16 @@
 			$option["select"][]="movimiento.*";
 			$option["select"]["
 					CASE
-						WHEN cron_unidad='DAY' 		THEN DATE_ADD(LEFT(now(),10), INTERVAL cron_cantidad DAY)
-						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(LEFT(now(),10), INTERVAL cron_cantidad MONTH)
-						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(LEFT(now(),10), INTERVAL cron_cantidad YEAR)
+						WHEN cron_unidad='DAY' 		THEN DATE_ADD(LEFT(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10), INTERVAL cron_cantidad DAY)
+						WHEN cron_unidad='MONTH' 	THEN DATE_ADD(LEFT(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10), INTERVAL cron_cantidad MONTH)
+						WHEN cron_unidad='YEAR' 	THEN DATE_ADD(LEFT(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10), INTERVAL cron_cantidad YEAR)
 					END				
 			"]		="caducidad";
 			$option["select"]["LEFT(now(),10)"]		="fecha";
 			
 			$option["where"][]="
 				(
-					LEFT(caducidad,10)= LEFT(now(),10) 
+					LEFT(caducidad,10)= LEFT(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10) 
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)='0000-00-00') 
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)=LEFT(now(),10)) 
 				 )

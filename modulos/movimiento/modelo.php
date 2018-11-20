@@ -136,10 +136,11 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-			$datas["registro"]			=$this->sys_date;
-			$datas["company_id"]		=$_SESSION["company"]["id"];
+			$datas["registro"]				=$this->sys_date;
+			if(isset($_SESSION["company"]["id"]))
+				$datas["company_id"]		=$_SESSION["company"]["id"];
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
-				$datas["trabajador_id"]=$_SESSION["user"]["trabajador_id"];		
+				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 
     	    return parent::__SAVE($datas,$option);
 		}
@@ -148,7 +149,8 @@
 			if($option=="")					$option				=array();			
 			if(!isset($option["where"]))	$option["where"]	=array();
 			
-    		$option["where"][]				="company_id={$_SESSION["company"]["id"]}";    		
+			if(isset($_SESSION["company"]["id"]))
+	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
 
 			return parent::__BROWSE($option);
 		}							

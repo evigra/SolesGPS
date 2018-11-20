@@ -9,17 +9,11 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"company_id"	    =>array(
 			    "title"             => "Empresa",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 			"trabajador_id"	    =>array(
 			    "title"             => "Vendedor",
@@ -35,7 +29,6 @@
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
 			    "title_filter"      => "Empresa",	
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "value"             => "",			    
 			    "procedure"       	=> "__AUTOCOMPLETE",
@@ -47,10 +40,7 @@
 			),			
 			"movimientos_ids"	    =>array(
 			    "title"             => "Horario",
-			    "showTitle"         => "si",
 			    "type"              => "form",
-			    "default"           => "",
-			    "value"             => "",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "movimientos",			    
 			    "class_field_o"    	=> "id",
@@ -58,65 +48,42 @@
 			),
 			"tipo"	    =>array(
 			    "title"             => "Tipo",
-			    "showTitle"         => "si",
 			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"compra"	    =>array(
 			    "title"             => "Lista de compra",
-			    "showTitle"         => "si",
 			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"venta"	    =>array(
 			    "title"             => "Lista de venta",
-			    "showTitle"         => "si",
 			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"registro"	    =>array(
 			    "title"             => "Registrado",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"fecha"	    =>array(
 			    "title"             => "Fecha",
 			    "title_filter"      => "Fecha",
-			    "showTitle"         => "si",
 			    "type"              => "datetime",
-			    "default"           => "",
-			    "value"             => "",
 			),				
 
 			"caducidad"	    =>array(
 			    "title"             => "Caducidad",
 			    "title_filter"      => "Caducidad",
-			    "showTitle"         => "si",
 			    "type"              => "date",
-			    "default"           => "",
-			    "value"             => "",
 			),
 			"folio"	    =>array(
 			    "title"             => "Folio",
 			    "title_filter"      => "Folio",
-			    "showTitle"         => "si",
 			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
 			),	
 			"cron_cantidad"	    =>array(
 			    "title"             => "Cantidad de Tiempo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),	
 			"cron_unidad"	    =>array(
 			    "title"             => "Unidad de tiempo",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "source"            => array(
 				    "DAY"     		=> "Dia",
@@ -151,7 +118,6 @@
 			
 			if(isset($_SESSION["company"]["id"]))
 	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
-
 			return parent::__BROWSE($option);
 		}							
 	}

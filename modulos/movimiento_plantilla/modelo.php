@@ -57,17 +57,11 @@
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)='0000-00-00') 
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)=LEFT(now(),10)) 
 				 )
-				";
-			#$option["echo"]="MOV PLANTILLA";
-
+			";
 			$option["where"][]						="cron_cantidad>0";
 		
-		
-		
 			$crons_data 							=$this->__BROWSE($option);			
-	
-			echo $this->sys_sql;	
-	
+		
 			foreach($crons_data["data"] as $rows)
 			{				
 				$this->sys_primary_id				=$rows["id"];

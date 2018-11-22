@@ -60,8 +60,8 @@
     	$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
-    	$objeto->words["geofences"]	            	=$objeto->geofences_ids_obj->geofences_html(@$objeto->sys_fields["id"]["value"]);
-    	$objeto->words["flotilla"]	            	=$objeto->devices_ids_obj->devices_html(@$objeto->sys_fields["id"]["value"]);
+    	$objeto->words["geofences"]	            	=$objeto->obj_geofences_ids->geofences_html(@$objeto->sys_fields["id"]["value"]);
+    	$objeto->words["flotilla"]	            	=$objeto->obj_devices_ids->devices_html(@$objeto->sys_fields["id"]["value"]);
     }	
 	elseif($objeto->sys_section=="kanban")
 	{

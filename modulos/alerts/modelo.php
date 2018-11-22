@@ -77,7 +77,7 @@
 		}
 		public function save_device($datas,$alert_id=NULL)		
     	{	
-			$devices=$this->devices_ids_obj->devices_data();
+			$devices=$this->obj_devices_ids->devices_data();
 			
     		foreach($devices as $device)
     		{
@@ -109,7 +109,7 @@
 		}
 		public function save_geofence($datas,$alert_id=NULL)		
     	{	
-			$geofences=$this->geofences_ids_obj->geofences_data();
+			$geofences=$this->obj_geofences_ids->geofences_data();
     		foreach($geofences as $geofence)
     		{
     			$status ="status=0";

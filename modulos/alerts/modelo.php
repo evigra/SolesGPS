@@ -9,46 +9,28 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"company_id"	    =>array(
 			    "title"             => "Compania",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"name"	    =>array(
 			    "title"             => "Alerta",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"geofence_in"	    =>array(
 			    "title"             => "Email de entrada",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"geofence_out"	    =>array(
 			    "title"             => "Email de salida",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			
 			"event"	    =>array(
 			    "title"             => "Evento",
-			    "showTitle"         => "si",
 			    "type"              => "select",
-			    "default"           => "",
-			    "value"             => "",			    
 			    "source"			=>array(
 			    	"ingeofence"		=>	"Entrada a geocerca",
 			    	"outgeofence"		=>	"Salida de geocerca",
@@ -57,10 +39,7 @@
 			),
 			"status"	    =>array(
 			    "title"             => "Estatus",
-			    "showTitle"         => "si",
 			    "type"              => "select",
-			    "default"           => "",
-			    "value"             => "",		
 			    "source"			=>array(
 			    	"activo"		=>	"Activa",
 			    	"inativo"		=>	"Inactivo",
@@ -68,14 +47,12 @@
 			),			
 			"geofences_ids"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "geofences",
 			),			
 			"devices_ids"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "devices",

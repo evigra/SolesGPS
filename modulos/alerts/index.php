@@ -35,8 +35,8 @@
     	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
-    	$objeto->words["geofences"]	            	=$objeto->geofences_ids_obj->geofences_html();
-    	$objeto->words["flotilla"]	            	=$objeto->devices_ids_obj->devices_html();
+    	$objeto->words["geofences"]	            	=$objeto->obj_geofences_ids->geofences_html();
+    	$objeto->words["flotilla"]	            	=$objeto->obj_devices_ids->devices_html();
 
     }	
     elseif($objeto->sys_section=="write")

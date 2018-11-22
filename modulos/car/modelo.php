@@ -68,11 +68,12 @@
 				else if(file_exists("$aux.jpg"))	$path		="http://solesgps.com/$aux.jpg";						
 				else if(file_exists("$aux.jpeg"))	$path		="http://solesgps.com/$aux.jpeg";
 			
-				$this->words["files_description"]		="
-					<div id=\"tabs-10\"  class=\"form\">					  
-						<img src=\"$path\" width=\"300\">
-					<div>
-				";
+				if(@$path!="")
+					$this->words["files_description"]		="
+						<div id=\"tabs-10\"  class=\"form\">					  
+							<img src=\"$path\" width=\"300\">
+						<div>
+					";
 			}    		    		
 		}						
 		public function __VIEW_REPORT($option=NULL)

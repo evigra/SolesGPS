@@ -17,7 +17,7 @@
 			);									
 			$this->sys_fields["campo1"]	    =array(
 			    "title"             => "points_route",
-			    "type"              => "input",
+			    "type"              => "hidden",
 			);									
 			$this->sys_fields["campo2"]	    =array(
 			    "title"             => "Tiempo",

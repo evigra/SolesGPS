@@ -1,52 +1,25 @@
-
-	$(document).ready(function()
+	function auto_empresa_id(ui)
 	{
-		var accion="";
-		var GeoMarker1=Array();
-
-		$("#action").button({
-			icons: {	primary: "ui-icon-document" },
-			text: true
-		    })
-		    .click(function(){
-				var variables=getVarsUrl();
-				var str_url="";
-				for(ivariables in variables)
-				{
-					if(ivariables=="sys_action")	str_url+="&"+ivariables+"=__SAVE";
-					else							str_url+="&"+ivariables+"="+ variables[ivariables];
-				}		        
-				$("form")
-					.attr({"action":str_url})
-					.submit();
-		        
-		    }
-	    );		
-
-
-
-		$("#cancel").button({
-			icons: {	primary: "ui-icon-closethick" },
-			text: true
+		$("input#empresa_id").val(ui.item.clave);					
+		$("input#auto_empresa_id").val(ui.item.label);
+		
+		
+		$("input#venta").val(ui.item.cliente);
+		$("input#compra").val(ui.item.proveedor);
+	}
+	$(document).ready(function()
+	{		
+		$("#action_pagar").click(function(){
+			$("#sys_action_movimiento").val("__SAVE_pagar");
+			$("form").submit();
 		});
-		$("#create").button({
-			icons: {	primary: "ui-icon-document" },
-			text: false
-		    })
-		    .click(function(){
-		        window.location="&sys_section=create&sys_action=";		    
-		    }
-	    );		
-
-		$("#write").button({
-			icons: {	primary: "ui-icon-pencil" },
-			text: false
-		    })
-		    .click(function(){
-		        window.location="&sys_section=write&sys_action=";		    
-		    }
-	    );		
-
-		link_report("&sys_section=report&sys_action=");
-	    link_kanban("&sys_section=kanban&sys_action=");
+		$("#action_abonar").click(function(){
+			$("#sys_action_movimiento").val("__SAVE_abonar");
+			$("form").submit();
+		});
+		$("#action_pagar").click(function(){
+			$("#action_cancelar").val("__SAVE_cancelar");
+			$("form").submit();
+		});
     });
+    // ###########################################################################

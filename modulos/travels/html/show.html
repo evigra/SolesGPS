@@ -1,42 +1,38 @@
-<table class="mainTable">
-    <tr>
-        <td style="padding:10px;">
+<div class="fondo_formulario">
+    <div class="subtitulo">TRABAJADOR </div>    
+    <table border="0">
+        <tr>
+            <td width="33%">                        
+                {trabajador_clave}
+            </td>                	
+            <td colspan="2">
+                {trabajador_nombre}
+            </td>                	
+        </tr>   
+       <tr>
+            <td width="33%">                       
+                {trabajador_horario}
+            </td>        
+            <td colspan="2">
+               	{trabajador_puesto} 
+            </td>        
+        </tr>          
+    </table>
+    <div class="subtitulo">SUSTITUTO</div>    
+    <table border="0">
+        <tr>
+            <td width="33%">                        
+                {sustituto_clave}
+            </td>                	
+            <td colspan="2">
+                {sustituto_nombre}
+            </td>                	
+        </tr>   
+       <tr>
+            <td colspan="3">                       
+				{dias}
+            </td>        
+        </tr>          
+    </table>
 
-
-            <div style="color:SteelBlue; font-size:25; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades generales</div>
-            <table border="0">
-                <tr>
-                    <td rowspan="3">                       
-                    	{file_id}
-                    </td>        
-                    <td>                       
-                        {name}
-                    </td>        
-                    <td>                        
-                        {email}
-                    </td>        
-                </tr>   
-                <tr>
-                    <td>
-                        {type}
-                    </td>        
-                    <td>
-                        {type}
-                    </td>        
-
-                </tr>          
-                <tr>
-                    <td>
-                        {type}
-                    </td>        
-                    <td>
-                        {type}
-                    </td>        
-
-                </tr>          
-
-            </table>
-
-        </td>
-    </tr>
-</table>
+</div>

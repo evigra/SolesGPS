@@ -10,7 +10,7 @@
 		##############################################################################
 		public function __CONSTRUCT($option=array())
 		{	
-			$this->sys_fields["image"]=array(
+			#$this->sys_fields["image"]=array(
 		
 		
 			parent::__CONSTRUCT($option);			

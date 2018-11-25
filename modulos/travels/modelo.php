@@ -24,7 +24,7 @@
 			    "class_name"       	=> "carta_porte",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "movimiento_id",				
-			),
+			);
 
 
 			parent::__CONSTRUCT();		

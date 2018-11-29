@@ -34,7 +34,7 @@
 			    "procedure"       	=> "autocomplete_item",
 			    "value"             => "",			    			    
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "route",
+			    "class_name"       	=> "item",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "item_id",
 			    "class_field_m"    	=> "id",			    

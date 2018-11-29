@@ -1401,8 +1401,8 @@
 							{								
 								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
 								
-								$campo_many					=$valor["class_field_o"];
-								$value_many					=$this->sys_fields["$campo_many"]["value"];								
+								$campo_many					=@$valor["class_field_o"];
+								$value_many					=@$this->sys_fields["$campo_many"]["value"];								
 								
 								if($this->sys_section=="create" AND $this->request["sys_action_".$this->sys_object] == "__SAVE")
 									$value_many=0;	

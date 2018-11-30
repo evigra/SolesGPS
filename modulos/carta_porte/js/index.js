@@ -1,3 +1,5 @@
+	var modulo="carta_porte";
+
 	function auto_item_id(ui)
 	{
 		$("input#item_id").val(ui.item.clave);					
@@ -29,23 +31,23 @@
 		var descuento=0;
 		var subtotal=0;
 		
-		if(!isNaN(parseFloat($("#cantidad.movimientos").val())))	
-			cantidad=parseFloat($("#cantidad.movimientos").val());
+		if(!isNaN(parseFloat($("#cantidad."+modulo).val())))	
+			cantidad=parseFloat($("#cantidad."+modulo).val());
 			
-		if(!isNaN(parseFloat($("#precio.movimientos").val())))	
-			precio=parseFloat($("#precio.movimientos").val());
+		if(!isNaN(parseFloat($("#precio."+modulo).val())))	
+			precio=parseFloat($("#precio."+modulo).val());
 			
-		if(!isNaN(parseFloat($("#descuento.movimientos").val())))	
-			descuento=parseFloat($("#descuento.movimientos").val());
+		if(!isNaN(parseFloat($("#descuento."+modulo).val())))	
+			descuento=parseFloat($("#descuento."+modulo).val());
 
 		subtotal=(cantidad*precio)-descuento;
 
-		$("#subtotal.movimientos").val(subtotal);
+		$("#subtotal."+modulo).val(subtotal);
 	}		
 	$(document).ready(function()
 	{
 		
-		$("input.movimientos_ids")
+		$("input."+modulo")
 			.focusout(function(){subtotal();})
 			.on('keydown', function (e) 
 			{			

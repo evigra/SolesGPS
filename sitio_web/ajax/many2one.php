@@ -44,7 +44,6 @@
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
-	$objeto->__PRINT_R($class_field_value);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

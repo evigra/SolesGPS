@@ -13,30 +13,8 @@
 	
 	$row											=$objeto_json["row"];
 	
-	
-	/*
-	
-			$campo				=@$option["class_field"];
-			$class_field_id		=@$option["class_field_id"];
-			$valor				=@$option["class_field_value"];
-	
-	
-	*/
-	
-	
-	
-	
-	$eval="";
-	if($class_section=="delete")
-	{
-		$eval="
-			/////$"."objeto->__DELETE($class_id);
-		";
-	}
-	
 	$eval="
 		$"."objeto									=new {$class_one}();		
-		$eval	
 	";
 
 	eval($eval);	

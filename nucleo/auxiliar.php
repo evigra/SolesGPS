@@ -1495,7 +1495,7 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 									
-			$this->__PRINT_R($valor);						
+			#$this->__PRINT_R($valor);						
 									
 			if(isset($option["json"]))
 			{
@@ -1860,9 +1860,9 @@
 					}				
 					else	
 					{			
-						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
-						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
-						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
+						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}&class_field={$this->sys_name}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
+						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}&class_field={$this->sys_name}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
+						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}&class_field={$this->sys_name}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
 						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"{id}\">";
 					}	
                     

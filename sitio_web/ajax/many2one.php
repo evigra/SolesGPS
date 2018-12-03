@@ -22,16 +22,15 @@
 	
 	$eval="
 		$"."objeto									=new {$class_one}();		
-		$eval
-	
+		$eval	
 	";
-	echo $eval;			
+
 	eval($eval);	
 		
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
-	#$objeto->__PRINT_R($row);
+	$objeto->__PRINT_R($objeto_json);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

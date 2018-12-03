@@ -75,6 +75,7 @@
 		class_one		=options["class_one"];
 		class_one_id	=options["class_one_id"];
 		class_field		=options["class_field"];
+		class_section	=options["class_section"];
 		class_field_id	=options["class_field_id"];
 		class_id		=options["id"];
 		class_many		=options["class_many"];
@@ -95,8 +96,7 @@
 				}			
 			}		
 		});
-		
-		
+				
 		if(require=="")		
 		{	
 			$("div#create_"+ class_field +" ."+class_field).val("");
@@ -107,6 +107,7 @@
 				"class_one":		class_one, 	
 				"class_one_id":		class_one_id, 	
 				"class_field":		class_field, 			
+				"class_section":	class_section,
 				"class_field_id":	class_field_id, 
 				"class_id":			class_id, 
 				"class_many":		class_many,									
@@ -167,35 +168,26 @@
 			{
 				$(".sys_report_memory").click(function()
 				{					
-					
 					var class_field_id			=$(this).attr("class_field_id"); 
 					var id						=$(this).attr("id"); 					
 					var class_field				=$(this).attr("class_field"); 					
 					var data        			=$(this).attr("data");               
-					
-					//alert(data);
-					
+										
 					var variables				=serializar_url(data);
-					
 					var class_one 				=$(this).attr("class_one");     
 
 					var options					={};				
-					options["class_one"]		=class_one;
-					//options["class_one_id"]		=class_one_id;
+					options["class_one"]		=class_one;					
 					options["class_field"]		=class_field;
 					options["class_field_id"]	=class_field_id;
-					options["id"]				=id;
-					
+					options["id"]				=id;					
 					options["object"]			=class_one;
 					options["class_many"]		=class_one;						
 										
-					many2one_get(options);
-					
-					
-					
-			
+					many2one_get(options);													
 					for(ivariables in variables)
 					{
+						options["class_section"]	=variables[ivariables];	
 						if(variables[ivariables]=="write")
 						{
 							$("div#create_"+ class_field).dialog({
@@ -204,8 +196,8 @@
 								},
 								buttons: {
 									"Registrar y Cerrar": function() {								
-											many2one_post(options);
-											$( this ).dialog("close");
+										many2one_post(options);
+										$( this ).dialog("close");
 									},
 									"Cerrar": function() {
 										$( this ).dialog("close");
@@ -227,7 +219,6 @@
 						if($("input#"+ivariables).length>0) {}
 						else	
 						{	
-							
 							input="<input id=\""+ivariables+"\" name=\""+ivariables+"\" value=\"" + variables[ivariables] + "\" type=\"hidden1\">";						
 							$("form").append(input);
 						}			

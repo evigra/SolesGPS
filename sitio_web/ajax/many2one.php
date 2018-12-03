@@ -6,13 +6,23 @@
 	$class_one										=$objeto_json["class_one"];
 	#$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];
+	$class_section									=$objeto_json["class_section"];
 	$class_field_id									=@$objeto_json["class_field_id"];
 	$class_id										=@$objeto_json["class_id"];
 	
 	$row											=$objeto_json["row"];
 	
+	$eval="";
+	if($class_section=="delete")
+	{
+		$eval="
+			$"."objeto->__PRINT(\"delete aaaaa\");	
+		";
+	}
+	
 	$eval="
 		$"."objeto									=new {$class_one}();		
+		$eval
 	";			
 	eval($eval);	
 		
@@ -28,7 +38,8 @@
 		"class_id"									=>$class_id,
 		"class_one"									=>$class_one,
 		"class_one_id"								=>"",
-		"class_field"								=>$class_field,		
+		"class_field"								=>$class_field,
+		"class_section"								=>$class_section,				
 		"class_field_id"							=>$class_field_id,				
 		"class_field_value"							=>$valor,		
 		"words"										=>$objeto->words,		

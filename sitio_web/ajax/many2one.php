@@ -16,7 +16,7 @@
 	if($class_section=="delete")
 	{
 		$eval="
-			$"."objeto->__DELETE($class_id);
+			/////$"."objeto->__DELETE($class_id);
 		";
 	}
 	
@@ -30,7 +30,7 @@
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
-	$objeto->__PRINT_R($objeto_json);
+	$objeto->__PRINT_R($valor);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

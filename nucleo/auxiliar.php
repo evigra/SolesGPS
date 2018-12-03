@@ -1495,7 +1495,7 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 									
-			$this->__PRINT_R($option);						
+			#$this->__PRINT_R($option);						
 									
 			if(isset($option["json"]))
 			{

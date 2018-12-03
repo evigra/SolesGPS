@@ -1501,20 +1501,8 @@
 			}
 						
 			$eval="
-				/*
-				$"."option_$campo		=array(		
-					\"name\"			=>\"$campo"."_obj\",		
-					\"memory\"			=>\"$campo\",
-					\"class_one\"		=>\"$class_one\",
-				);
-			
-				$"."this->obj_$campo"."									=new {$valor["class_name"]}($"."option_$campo);
-				
-				*/				
-			
 				##if(!isset($"."this->sys_memory))
 				{
-
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
@@ -1580,15 +1568,6 @@
 			}
 						
 			$eval="		
-				/*	
-				$"."option_$campo		=array(		
-					\"name\"			=>\"$campo"."_obj\",		
-					\"memory\"			=>\"$campo\",
-					\"class_one\"		=>\"$class_one\",
-				);
-			
-				$"."this->obj_$campo"."									=new {$valor["class_name"]}($"."option_$campo);
-				*/				
 				if(isset($"."json))
 				{								
 					$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
@@ -1598,30 +1577,25 @@
 					
 					$"."this->obj_$campo"."->__SAVE($"."json);
 				}
-
 				
-				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
-				
-				
+				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");													
 				
 				$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
 				$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
 												
 				$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
 								
-
 				if(isset($"."words[\"html_head_js\"]) AND isset($"."this->obj_$campo"."->words[\"html_head_js\"]))								
 					$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
 								
 				$"."option_report										=array();				
-				
-				
-				/*
-				$"."option_report[\"echo\"]								=\"aaaa\";
 								
-				$"."option_report[\"where\"]							=array(
-					\"{$valor["class_field_m"]}='$class_one_id'\"
-				);
+				/*
+					$"."option_report[\"echo\"]								=\"aaaa\";
+									
+					$"."option_report[\"where\"]							=array(
+						\"{$valor["class_field_m"]}='$class_one_id'\"
+					);
 				*/
 				
 				$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
@@ -1630,10 +1604,8 @@
 				$"."option_report[\"template_option\"]	                = $"."option;
 				
 				$"."option_report[\"name\"]	                			= '$campo';
-
 				
 				$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
-
 				$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
 
 				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
@@ -1656,7 +1628,6 @@
 					";
 				}
 			}
-			
 			
 			$js="
 				var object=\"". $this->sys_name ."\";
@@ -1877,21 +1848,20 @@
 	                    $actions["sys_class"]		=$class;
 	                else    
 	                    $actions["style_tr"]	=$style;
-                    
-                    				
+                                        				
                     if(isset($this->sys_memory) AND $this->sys_memory!="")
 					{
 						$show	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-contact\"></font>";	
 						$write	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-pencil\"></font>";
 						$delete	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-trash\"></font>";
-						$check	="<input class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[]\" value=\"{id}\">";
+						$check	="<input class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"\">";
 					}				
 					else	
 					{			
 						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
 						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
 						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
-						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[	]\" value=\"{id}\">";
+						$check	="<input type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"\">";
 					}	
                     
                     if(!is_null($option))
@@ -1912,9 +1882,7 @@
 		                	if(!isset($option["actions"]["write"]))		$option["actions"]["write"]	="1==1";
 		                	if(!isset($option["actions"]["delete"]))	$option["actions"]["delete"]="1==1";
 		                	if(!isset($option["actions"]["check"]))		$option["actions"]["check"]	="1==1";
-                    	}           
-
-						
+                    	}           	
 
 	                	if($option["actions"]["show"]=="true")			$option["actions"]["show"]	="1==1";
 	                	elseif($option["actions"]["show"]=="false")		$option["actions"]["show"]	="1==0";
@@ -1924,8 +1892,6 @@
 	                	elseif($option["actions"]["delete"]=="false")	$option["actions"]["delete"]="1==0";
 	                	if($option["actions"]["check"]=="true")			$option["actions"]["check"]	="1==1";
 	                	elseif($option["actions"]["check"]=="false")	$option["actions"]["check"]	="1==0";
-                    	
-                    	
                     	         	
                     	$eval="
                     		if({$option["actions"]["show"]}) 						$"."show='$show';
@@ -1947,8 +1913,6 @@
                     	
                     	foreach($option["color"] as $color => $filter)
                     	{							
-							
-							
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
@@ -1956,9 +1920,6 @@
                     	$eval.=$eval_color;
                     	if(@eval($eval)===false)	
 				    		echo ""; #$eval; ---------------------------					
-				    	
-				    	
-
                     }
                     if(substr(@$this->request["sys_action"],0,5)!="print")
                     {
@@ -2003,12 +1964,9 @@
 				    	$html_template  =$this->__TEMPLATE("$template");
 				    	$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    }	
-
 				    $view   .=$html_template;
 				    
-				    
-				    $view	=$this->__REPLACE($view,$row);
-				    				
+				    $view	=$this->__REPLACE($view,$row);			
 			    }		
 
 	        	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n))	
@@ -2222,7 +2180,6 @@
 		    		$this->words["module_body"]     =$this->__VIEW_CREATE($option["template_search"]);
 		    		$this->words					=$this->__INPUT($this->words,$this->sys_fields); 
 
-
 					$view_search					=$this->words["module_body"];
 		    		$this->words["module_body"]		="";
 		    		
@@ -2296,14 +2253,10 @@
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
                 	
-                	
-
-                	
                 	elseif(!in_array(@$this->request["sys_action"],$this->sys_print))	
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
-
                 		$view_head="
 							<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
 								<table width=\"100%\" height=\"100%\" style=\"padding:0px; margin:0px;\">

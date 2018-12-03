@@ -116,11 +116,8 @@
 			    "relation"          => "many2many",			    
 			    "relation_table"    => "item_tax",
 			    "class_name"       	=> "tax",			    
-				#"class_template"  	=> "many2one_lateral",			    
-				#"class_report" 		=> "kanban",			    
 			    "class_field_o"    	=> "item_id",
 			    "class_field_m"    	=> "tax_id",				
-				#"class_field_l"    	=> "horario",	
 			),
 			"campo1"	    =>array(
 			    "title"             => "campo1",

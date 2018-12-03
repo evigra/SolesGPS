@@ -16,7 +16,7 @@
 	if($class_section=="delete")
 	{
 		$eval="
-			$"."objeto->__PRINT(\"delete aaaaa\");	
+			$"."objeto->__PRINT_R(\"delete aaaaa\");	
 		";
 	}
 	

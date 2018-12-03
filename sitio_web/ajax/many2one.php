@@ -23,7 +23,9 @@
 	$eval="
 		$"."objeto									=new {$class_one}();		
 		$eval
-	";			
+	
+	";
+	echo $eval;			
 	eval($eval);	
 		
 	$obj											=$objeto_json;			

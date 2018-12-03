@@ -12,7 +12,7 @@
 	$class_id										=@$objeto_json["class_id"];
 	
 	$row											=$objeto_json["row"];
-	
+		
 	$eval="
 		$"."objeto									=new {$class_one}();		
 	";
@@ -22,6 +22,7 @@
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
+	$objeto->__PRINT_R($objeto_json);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

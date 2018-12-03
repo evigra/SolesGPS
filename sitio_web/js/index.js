@@ -208,11 +208,8 @@
 						}
 						if(variables[ivariables]=="delete")
 						{
-							alert("DELETE JS");
-							many2one_post(options);
-							
+							many2one_post(options);	
 						}
-
 					}					
 					/*					
 					for(ivariables in variables)

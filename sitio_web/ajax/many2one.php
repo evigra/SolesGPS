@@ -8,9 +8,23 @@
 	$class_field									=$objeto_json["class_field"];
 	$class_section									=$objeto_json["class_section"];
 	$class_field_id									=@$objeto_json["class_field_id"];
+	$class_field_value								=@$objeto_json["class_field_value"];
 	$class_id										=@$objeto_json["class_id"];
 	
 	$row											=$objeto_json["row"];
+	
+	
+	/*
+	
+			$campo				=@$option["class_field"];
+			$class_field_id		=@$option["class_field_id"];
+			$valor				=@$option["class_field_value"];
+	
+	
+	*/
+	
+	
+	
 	
 	$eval="";
 	if($class_section=="delete")
@@ -30,7 +44,7 @@
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
-	$objeto->__PRINT_R($valor);
+	$objeto->__PRINT_R($class_field_value);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

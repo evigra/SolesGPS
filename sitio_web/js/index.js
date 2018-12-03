@@ -208,7 +208,9 @@
 						}
 						if(variables[ivariables]=="delete")
 						{
-							alert("DELETE");
+							alert("DELETE JS");
+							many2one_post(options);
+							
 						}
 
 					}					

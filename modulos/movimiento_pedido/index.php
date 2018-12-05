@@ -64,10 +64,12 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 
 		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
+		$objeto->words["sesion_domicilio_fiscal"]               =$_SESSION["company"]["domicilio_fiscal"];	
+		
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
-		$objeto->__PRINT_R($_SESSION);	
+		#$objeto->__PRINT_R($_SESSION);	
 
     		    							
 		

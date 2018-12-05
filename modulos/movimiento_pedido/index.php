@@ -1,7 +1,6 @@
 <?php	
 	$objeto											=new movimiento_pedido();		
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($_SESSION);
 	
 	# CARGANDO PLANTILLAS GENERALES
 	$objeto->words["system_body"]               	=$objeto->__TEMPLATE($objeto->sys_html."system_body"); 		
@@ -115,8 +114,6 @@
     }    
     else
     {
-    	#$objeto->__CRON();
-    	#$objeto->__PRINT_R($_SESSION);
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
@@ -135,6 +132,8 @@
 		$module_title								="Reporte de ";
     }
 	$objeto->words["module_title"]              ="$module_title Movimiento";
+	
+	
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);

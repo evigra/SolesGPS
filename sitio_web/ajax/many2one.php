@@ -6,7 +6,7 @@
 	$class_one										=$objeto_json["class_one"];
 	#$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];
-	$class_section									=$objeto_json["class_section"];
+	$class_section									=@$objeto_json["class_section"];
 	$class_field_id									=@$objeto_json["class_field_id"];
 	$class_field_value								=@$objeto_json["class_field_value"];
 	$class_id										=@$objeto_json["class_id"];
@@ -22,7 +22,7 @@
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		
 	
-	$objeto->__PRINT_R($objeto_json);
+	#$objeto->__PRINT_R($objeto_json);
 	$valor											=$objeto->sys_fields[$class_field];
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					

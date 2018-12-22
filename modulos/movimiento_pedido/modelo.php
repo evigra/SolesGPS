@@ -42,7 +42,7 @@
 			if(!isset($this->request["sys_order_". $this->sys_object]))
 				$option["order"]="id desc";
 			
-			$option["echo"]="MOVIMIENTO PEDIDO";
+			$option["echo"]=$this->request["sys_order_". $this->sys_object];
 			
 			return parent::__BROWSE($option);
 		}							

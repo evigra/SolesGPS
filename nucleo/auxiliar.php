@@ -1252,7 +1252,7 @@
 										</select><br>$titulo
 									";
 							}					        
-							else	$words["$campo"]  ="$text<br>$titulo";
+							else	$words["$campo"]  =@$text."<br>$titulo";
 							
 					    }			        
 					    if($valor["type"]=="autocomplete")	

@@ -2138,9 +2138,8 @@
 		    	}	
 		    	
 
-				#######################							
-				
-				#/*	
+				#######################											
+				/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
 
 				$view_title			=$view_title_data["view_title"];

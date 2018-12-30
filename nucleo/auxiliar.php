@@ -2477,7 +2477,7 @@
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					";		
 
-					$view.="{$return["report"]}";
+					@$view.="{$return["report"]}";
 
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					

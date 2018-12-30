@@ -2229,7 +2229,6 @@
 		    	    if(!isset($option["input"]))	$option_kanban["input"]		="true";
 		    	    if(isset($option["input"]))		$option_kanban["input"]		=$option["input"];
 		    	    
-
 					if(isset($return["data_0"]))
 					{
 						$view_body		=$this->__VIEW_KANBAN2($template,$return["data_0"],$option_kanban);
@@ -2245,7 +2244,6 @@
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
 					$return["pdf"]	="
-					    aaaaaaaaaaaaaa
 						<table width=\"100%\" border=\"1\" style=\"background-color:#fff;  color:#000; padding:0px; margin:0px;\">								
 							$view_title_pdf
 							$view_body_pdf
@@ -2310,7 +2308,6 @@
 											</select>
 							";
 						}					
-						#3141005662
 						$view_head.="	
 										</td>
 										<td  width=\"20\" align=\"center\" >
@@ -2390,23 +2387,21 @@
 						
 					}		
 							
-					$return["report"]="
-						<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
-							$view_title
-							$view_body
-						</table>
-					";
 
 					#template_option
 					$report_class="";
 					if(!isset($option["template_option"]))	$report_class="report_class";
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
+					{
 						$return["report"]="
 							$view_head														
 							<div id=\"div_$name\" class=\"$report_class\" obj=\"$name\" style=\"height: 100%;\">
 								<div id=\"div2_$name\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">							
-									".$return["report"]."
+									<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+										$view_title
+										$view_body
+									</table>
 								</div>
 							</div>		
 							
@@ -2446,17 +2441,11 @@
 									var sys_page2		=sys_page;
 									if(action==\"-\")
 									{	
-										if($inicio > $(\"#sys_row_$name\").val())
-										{	
-											sys_page--;
-										}	
+										if($inicio > $(\"#sys_row_$name\").val())		sys_page--;
 									}	
 									else
 									{				
-										if($fin < {$return["total"]})
-										{	
-											sys_page++;
-										}	
+										if($fin < {$return["total"]})					sys_page++;
 									}			
 									if(sys_page!=sys_page2)
 									{	
@@ -2465,9 +2454,8 @@
 									}	
 								});	
 							</script>
-
 						";						
-					
+					}
 					
 					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
@@ -2525,13 +2513,8 @@
 								
 									$( function() 
 									{
-										function split( val ) {
-											return val.split( /,\s*/ );
-										}
-										function extractLast( term ) 
-										{
-											return split( term ).pop();
-										}
+										function split( val ) 			{	return val.split( /,\s*/ );	}
+										function extractLast( term ) 	{	return split( term ).pop();	}
 
 										$(\"#sys_filter_$name\" )								
 										.on( \"keydown\", function( event ) 

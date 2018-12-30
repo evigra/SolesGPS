@@ -2284,7 +2284,6 @@
 											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
 										</td>
 							";
-						
 						}
 						$view_head.="						
 										
@@ -2355,8 +2354,7 @@
 							{	
 								$(\"font.show_form\").button({
 									icons: 	{primary:	\"ui-icon-extlink\"},
-									text: 	false
-								
+									text: 	false								
 								});
 
 								var options={};
@@ -2365,7 +2363,6 @@
 								options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
 								options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
 
-							
 	            				$(\"font#create_$name\").click(function()
 	            				{
 	            					$(\"div#create_$name\").dialog({
@@ -2393,7 +2390,8 @@
 						
 					}		
 							
-					$return["report"]="						
+					$return["report"]="
+						aaaaaaaaaaaaaaaaaaaa tipo report						
 						<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 							$view_title
 							$view_body

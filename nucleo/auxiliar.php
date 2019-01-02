@@ -1467,7 +1467,14 @@
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
-					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
+					        {
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="";
+								else					        
+									$words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
+							}					        	
+					        else	$words["$campo"]  ="";						           
 					    }    
 					    if($valor["type"]=="img")	
 					    {

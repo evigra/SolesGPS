@@ -1046,6 +1046,7 @@
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
+
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
 								if($attr_value=="required")		$class.=" required ";
@@ -1072,8 +1073,7 @@
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
 								else					        
-									$words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";							
-							}					        	
+									$words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\"><br>$titulo";							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}<br>$titulo";						        
 					    } 
 					    if($valor["type"]=="date")	
@@ -1467,15 +1467,7 @@
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
-					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
-					        {
-								if(@$this->request["sys_section_".$this->sys_name]=="show")
-									$words["$campo"]  ="";
-								else					        
-									$words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
-					        else	$words["$campo"]  ="";						        
-
-
+					        $words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
 					    }    
 					    if($valor["type"]=="img")	
 					    {

@@ -1,25 +1,32 @@
-<table border="0" width="795">
+{venta}
+{compra}
+<div class="mainTable">
+	<table border="0"  width="100%">
+		<tr>
+			<td colspan="2" align="left">{empresa_id}</td>
+			<td width="16%" align="left"></td>                							
+			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
+		</tr>   
+		<tr>
+			<td colspan="2"></td>                							
+			<td></td>
+			<td align="left">{fecha}</td>						
+		</tr>   
+		<tr>
+			<td colspan="2"></td>           
+			<td></td>
+			<td align="left">{caducidad}</td>						
+		</tr>   
+	</table>    		
+	<br>			
+	<div id="tabs-2" style="heigth:500px;" class="form">
+		{movimientos_ids}
+	</div>
+	<br>
+</div>	
+<br>	
+<table border="0"  width="100%">
 	<tr>
-		<td colspan="4" align="left">{empresa_id}</td>
-		<td width="16%" align="left"></td>                							
-		<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
+		<td align="center">{sesion_domicilio_fiscal}</td>
 	</tr>   
-	<tr>
-		<td colspan="4"></td>                							
-		<td></td>
-		<td align="left">{fecha}</td>						
-	</tr>   
-	<tr>
-		<td colspan="4"></td>           
-		<td></td>
-		<td align="left">{caducidad}</td>						
-	</tr>   
-	<tr>
-		<td>
-			{movimientos_ids}
-		</td>           
-	</tr>   
-	<tr>
-		<td colspan="6">{sesion_domicilio_fiscal}</td>           
-	</tr>   		
 </table>

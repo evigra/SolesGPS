@@ -78,6 +78,11 @@
 			    "title_filter"      => "Folio",
 			    "type"              => "hidden",
 			),	
+			"estatus"	    =>array(
+			    "title"             => "Activo",
+			    "type"              => "check",
+			),
+			
 			"cron_cantidad"	    =>array(
 			    "title"             => "Cantidad de Tiempo",
 			    "type"              => "input",

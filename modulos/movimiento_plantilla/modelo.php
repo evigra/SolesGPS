@@ -95,7 +95,7 @@
    		public function __VIEW_REPORT($option="")
     	{			    	
 			if($option=="")	$option=array();			
-			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
+			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
 			return parent::__VIEW_REPORT($option);
 		}							
    		public function __BROWSE($option="")
@@ -105,8 +105,6 @@
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 
-			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
-			
 			if(!isset($this->request["sys_order_". $this->sys_object]))
 				$option["order"]="id desc";
 			

@@ -1928,7 +1928,6 @@
                     	}
                     	
                     	$eval.=$eval_color;
-                    	echo $eval;
                     	if(@eval($eval)===false)	
 				    		echo "";#$eval; ---------------------------";					
                     }

@@ -1928,8 +1928,9 @@
                     	}
                     	
                     	$eval.=$eval_color;
+                    	echo $eval;
                     	if(@eval($eval)===false)	
-				    		echo ""; #$eval; ---------------------------					
+				    		echo "";#$eval; ---------------------------";					
                     }
                     if(substr(@$this->request["sys_action"],0,5)!="print")
                     {

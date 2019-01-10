@@ -39,8 +39,8 @@
     	{	
     		if(is_null($option))			$option				=array();
     		if(is_null(@$option["select"]))	$option["select"]	=array();
-    		if(is_null(@$option["where"]))	$option["where"]	=array();
-    	
+    		if(is_null(@$option["where"]))	$option["where"]	=array();	
+			
 			$option["select"][]="movimiento.*";
 			$option["select"]["
 					CASE
@@ -60,7 +60,6 @@
 			";
 			$option["where"][]						="cron_cantidad>0";
 		
-			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
 		
 			$crons_data 							=$this->__BROWSE($option);			
 		
@@ -99,6 +98,8 @@
 			if(!isset($option["where"]))	$option["where"]=array();
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
+
+			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
 			
 			if(!isset($this->request["sys_order_". $this->sys_object]))
 				$option["order"]="id desc";

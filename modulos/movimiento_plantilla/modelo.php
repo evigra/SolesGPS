@@ -96,7 +96,6 @@
     	{			    	
 			if($option=="")	$option=array();			
 			if(!isset($option["where"]))	$option["where"]=array();
-			$option["color"]				=array();
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 

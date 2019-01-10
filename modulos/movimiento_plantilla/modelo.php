@@ -60,6 +60,8 @@
 			";
 			$option["where"][]						="cron_cantidad>0";
 		
+			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
+		
 			$crons_data 							=$this->__BROWSE($option);			
 		
 			foreach($crons_data["data"] as $rows)

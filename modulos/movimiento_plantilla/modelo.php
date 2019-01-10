@@ -59,6 +59,7 @@
 				 )
 			";
 			$option["where"][]						="cron_cantidad>0";
+			$option["where"][]						="estatus=1";
 		
 		
 			$crons_data 							=$this->__BROWSE($option);			

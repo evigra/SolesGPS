@@ -1830,7 +1830,7 @@ styles:
 				$(this).css("background-color", colorAction);
 			});		   
 		
-			$("[type=checkbox]").click(function() 
+			$(".view_report:checkbox").click(function() 
 			{  
 			    if($(this).is(':checked')) 
 			    { 	        	

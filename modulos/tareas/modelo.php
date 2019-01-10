@@ -87,7 +87,8 @@
 
 			$option["from"]		="tareas t";
 			#$option["limit"]		="1";
-			$data = $this->__VIEW_REPORT($option);
+			#$data = $this->__VIEW_REPORT($option);
+			$data = $this->__BROWSE($option);
 			
 			return $data;
 		}
@@ -132,7 +133,7 @@
 				
 				$crons_data =$this->crons($option);    										
 			}
-			$this->__PRINT_R($crons_data);
+			#$this->__PRINT_R($crons_data);
 			foreach($crons_data["data"] as $row)
 			{
 				echo "<br>## TAREA {$row["name"]} ##################################";

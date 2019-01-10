@@ -92,6 +92,12 @@
 				$this->__SAVE($rows);
 			}
 		}		
+   		public function __VIEW_REPORT($option="")
+    	{			    	
+			if($option=="")	$option=array();			
+			$option["color"]["orange"]	="$"."row[\"estatus\"]=='0'";
+			return parent::__VIEW_REPORT($option);
+		}							
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")	$option=array();			
@@ -106,6 +112,7 @@
 			
 			return parent::__BROWSE($option);
 		}							
+
 	}
 ?>
 

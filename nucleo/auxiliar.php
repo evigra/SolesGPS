@@ -1920,6 +1920,8 @@
                     	if(!isset($option["color"]))				$option["color"]=array();
                     	
                     	if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
+                    
+                    	$this->__PRINT_R($option["color"]);
                     	
                     	foreach($option["color"] as $color => $filter)
                     	{							

@@ -80,7 +80,7 @@
 			),	
 			"estatus"	    =>array(
 			    "title"             => "Activo",
-			    "type"              => "check",
+			    "type"              => "checkbox",
 			),
 			
 			"cron_cantidad"	    =>array(

@@ -42,10 +42,10 @@
     			"iva"		=>0,
     			"total"		=>0,
     		);
-    		foreach($option["datas"] as $row)
+    		foreach($option["data"] as $row)
     		{
-    			$return["subtotal"]	+=$row["subtotal"];
-    			$return["iva"]		+=$row["iva"];    			
+    			$return["subtotal"]+=$row["subtotal"];
+    			$return["iva"]+=$row["iva"];    			
     		}
     		$return["total"]		=$row["subtotal"]+$row["iva"];    			
     	    return $return;

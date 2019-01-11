@@ -61,7 +61,7 @@
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 		
-		$objeto->__PRINT_R($objeto->obj_movimientos_ids);
+		$objeto->__PRINT_R($objeto->obj_movimientos_ids->__VIEW_REPORT);
 		
     	$module_title								="Modificar ";
     }	

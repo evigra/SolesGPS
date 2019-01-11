@@ -1546,9 +1546,9 @@
 					
 					$"."option_report[\"name\"]	                			= '$campo';
 					
-					$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
+					$"."this->obj_$campo"."->__VIEW_REPORT					=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
 
-					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
+					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
 				}	
 			";				

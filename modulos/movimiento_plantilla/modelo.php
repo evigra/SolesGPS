@@ -9,7 +9,7 @@
 		var $sys_table			="movimiento";
 		var $tipo_movimiento	="PL";
 		
-		var $movimiento_obj;
+		#var $movimiento_obj;
 		
 		##############################################################################	
 		##  Metodos	
@@ -17,7 +17,7 @@
         
 		public function __CONSTRUCT()
 		{	
-			$this->movimiento_obj		=new movimiento();			
+			#$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
@@ -97,7 +97,14 @@
     	{			    	
 			if($option=="")	$option=array();			
 			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
-			return parent::__VIEW_REPORT($option);
+			 
+			
+			$report=parent::__VIEW_REPORT($option);
+			
+			$this->__PRINT_R($report);
+			
+			
+			return $report;
 		}							
    		public function __BROWSE($option="")
     	{			    	

@@ -45,7 +45,7 @@
 		}
    		public function __TOTALES($option=NULL)
     	{
-    		$this->__PRINT_R($option);
+    		#$this->__PRINT_R($option);
     		$this->words["subtotal"]=0;
     		$this->words["iva"]=0;
     		$this->words["total"]=0;

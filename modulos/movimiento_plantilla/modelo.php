@@ -37,11 +37,14 @@
 		}
    		public function __TOTALES($option=NULL)
     	{
+    		$this->__PRINT_R($option);
     		$return=array(
     			"subtotal"	=>0,
     			"iva"		=>0,
     			"total"		=>0,
     		);
+    		
+    		
     		foreach($option["data"] as $row)
     		{
     			$return["subtotal"]+=$row["subtotal"];

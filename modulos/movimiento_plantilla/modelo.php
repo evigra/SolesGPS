@@ -35,6 +35,22 @@
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
+   		public function __TOTALES($option=NULL)
+    	{
+    		$return=array(
+    			"subtotal"	=>0,
+    			"iva"		=>0,
+    			"total"		=>0,
+    		);
+    		foreach($option["data"] as $row)
+    		{
+    			$return["subtotal"]	+=$row["subtotal"];
+    			$return["iva"]		+=$row["iva"];    			
+    		}
+    		$return["total"]		=$row["subtotal"]+$row["iva"];    			
+    	    return $return;
+		}
+
 		public function __CRON($option=NULL)		
     	{	
     		if(is_null($option))			$option				=array();

@@ -45,14 +45,14 @@
 		}
    		public function __TOTALES($option=NULL)
     	{
-    		$this->__PRINT_R($option);
+    		#$this->__PRINT_R($option);
     		$this->words["subtotal"]=0;
     		$this->words["iva"]=0;
     		$this->words["total"]=0;
     		foreach($option["data"] as $row)
     		{
 				$this->words["subtotal"]+=$row["subtotal"];
-				$this->words["iva"]+=$row["iva"];
+				#$this->words["iva"]+=$row["iva"];
     		}
     		$this->words["total"]		=$this->words["subtotal"]+$this->words["iva"];    			
     		

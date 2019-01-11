@@ -116,6 +116,30 @@
 
     	    return parent::__SAVE($datas,$option);
 		}
+   		public function __INPUT($words=NULL, $fields=NULL)
+    	{
+    	    $this->words =parent::__INPUT($words, $fields);    	    
+    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
+    	    
+    	    return parent::__INPUT($this->words, $this->sys_fields);    	    
+    	    
+		}
+   		public function __TOTALES($option=NULL)
+    	{
+    		#$this->__PRINT_R($option);
+    		$this->words["subtotal"]=0;
+    		$this->words["iva"]=0;
+    		$this->words["total"]=0;
+    		foreach($option["data"] as $row)
+    		{
+				$this->words["subtotal"]+=$row["subtotal"];
+				#$this->words["iva"]+=$row["iva"];
+    		}
+    		$this->words["total"]		=$this->words["subtotal"]+$this->words["iva"];    			
+    		
+    	    return $return;
+		}
+		
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			

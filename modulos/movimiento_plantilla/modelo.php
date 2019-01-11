@@ -97,14 +97,7 @@
     	{			    	
 			if($option=="")	$option=array();			
 			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
-			 
-			
-			$report=parent::__VIEW_REPORT($option);
-			
-			$this->__PRINT_R($report);
-			
-			
-			return $report;
+			return parent::__VIEW_REPORT($option);
 		}							
    		public function __BROWSE($option="")
     	{			    	

@@ -44,8 +44,8 @@
     		);	
     		foreach($option["data"] as $row)
     		{
-    			$return["subtotal"]+=$row["subtotal"];
-    			$return["iva"]+=$row["iva"];    			
+    			$return["subtotal"]	=$return["subtotal"]+$row["subtotal"];
+    			$return["iva"]		=$return["iva"]+$row["iva"];    			
     		}
     		$return["total"]		=$row["subtotal"]+$row["iva"];    			
     	    return $return;

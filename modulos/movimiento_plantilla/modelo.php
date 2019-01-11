@@ -47,7 +47,7 @@
     			$return["subtotal"]	=$return["subtotal"]+$row["subtotal"];
     			$return["iva"]		=$return["iva"]+$row["iva"];    			
     		}
-    		$return["total"]		=$row["subtotal"]+$row["iva"];    			
+    		$return["total"]		=$return["subtotal"]+$row["iva"];    			
     	    return $return;
 		}
 

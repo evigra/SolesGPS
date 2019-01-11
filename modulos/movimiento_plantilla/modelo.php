@@ -35,21 +35,26 @@
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
+   		public function __INPUT($words=NULL, $fields=NULL)
+    	{
+    	    $this->words =parent::__INPUT($words, $fields);    	    
+    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
+    	    
+    	    return parent::__INPUT($this->words, $this->sys_fields);    	    
+    	    
+		}
    		public function __TOTALES($option=NULL)
     	{
-    		$return=array(
-    			"subtotal"	=>0,
-    			"iva"		=>0,
-    			"total"		=>0,
-    		);	
+    		$this->words["subtotal"]=0;
+    		$this->words["iva"]=0;
+    		$this->words["total"]=0;
     		foreach($option["data"] as $row)
     		{
-    			$return["subtotal"]	=$return["subtotal"]+$row["subtotal"];
-    			$return["iva"]		=$return["iva"]+$row["iva"];    			
+				$this->words["subtotal"]+=$row["subtotal"];
+				$this->words["iva"]+=$row["iva"];
     		}
-    		$return["total"]		=$return["subtotal"]+$row["iva"];    			
+    		$this->words["total"]		=$this->words["subtotal"]+$this->words["iva"];    			
     		
-    			
     	    return $return;
 		}
 

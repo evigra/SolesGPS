@@ -136,8 +136,6 @@
 				#$this->words["iva"]+=$row["iva"];
     		}
     		$this->words["total"]		=$this->words["subtotal"]+$this->words["iva"];    			
-    		
-    	    return $return;
 		}
 		
    		public function __BROWSE($option="")

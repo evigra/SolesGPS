@@ -1,32 +1,42 @@
 {venta}
 {compra}
-<div>
-	<table border="1"  width="795">
+<div class="mainTable">
+	<table border="0"  width="100%">
 		<tr>
-			<td colspan="2" align="left">{empresa_id}</td>
+			<td colspan="4" align="left">{empresa_id}</td>
 			<td width="16%" align="left"></td>                							
 			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
 		</tr>   
 		<tr>
-			<td colspan="2"></td>                							
+			<td colspan="2" width="33%">{trabajador_id}</td>                							
 			<td></td>
-			<td align="left">{fecha}</td>						
+			<td width="17%"></td>                							
+			<td></td>                							
+			<td width="17%" align="left">{fecha}</td>						
 		</tr>   
 		<tr>
-			<td colspan="2"></td>           
+			<td colspan="4"></td>           
 			<td></td>
 			<td align="left">{caducidad}</td>						
 		</tr>   
+		<tr>
+			<td colspan="6">
+				<div class="form">{movimientos_ids}</div>
+			</td>           
+		</tr>   
+		<tr>
+			<td colspan="4" rowspan="3"></td>           
+			<td align="right"><b>Subtotal</b></td>           
+			<td align="right">{subtotal}</td>           
+		</tr>   
+		<tr>
+			<td align="right"><b>IVA</b></td>           
+			<td align="right">{iva}</td>           
+		</tr>   
+		<tr>
+			<td align="right"><b>Total</b></td>           
+			<td align="right">{total}</td>           
+		</tr>   
+
 	</table>    		
-	<br>			
-	<div style="heigth:500px;" >
-		{movimientos_ids1}
-	</div>
-	<br>
-</div>	
-<br>	
-<table border="1" width="795">
-	<tr>
-		<td align="center">{sesion_domicilio_fiscal}</td>
-	</tr>   
-</table>
+</div>

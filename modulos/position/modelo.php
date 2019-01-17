@@ -422,7 +422,7 @@
 					AND leido=0
 					AND protocol in ('meitrack','gps103','osmand','h02','tk103','' )
 					AND valid=1
-				LIMIT 400
+				LIMIT 500
 			";		
 
 			#echo "<br><br>$comando_sql <br><br><br>"; # AND event not in ('REPORTE DE TIEMPO','ALERTA EXCESO DE VELOCIDAD')
@@ -648,6 +648,21 @@
             }		
 			return count($position_data) . " POSICIONES";				
             #*/
+		}
+
+		public function cron_position_ausencia_senal($position=NULL,$option=NULL)
+		{
+				$comando_sql="
+					UPDATE devices d, positions p
+					SET d.positionid='{$row["pos_id"]}' $comando_sql_complemento
+					WHERE 1=1
+						AND p.id='{$row["pos_id"]}'
+						AND p.deviceid=d.id					
+						AND d.lastupdate<p.devicetime
+						AND d.id='{$row["dev_id"]}'
+				";		
+				#$this->__EXECUTE($comando_sql);				
+
 		}
 		public function mail_position($position=NULL,$option=NULL)
     	{		 

@@ -75,7 +75,6 @@
 			    "source"            => array(
 			    	"1"=>"Vigente",
 			    	"0"=>"Cancelado"
-			    	"2"=>"Ausencia"
 			    ),
 			),
 			"web"	    =>array(

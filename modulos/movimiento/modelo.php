@@ -121,8 +121,7 @@
     	    $this->words =parent::__INPUT($words, $fields);    	    
     	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
     	    
-    	    return parent::__INPUT($this->words, $this->sys_fields);    	    
-    	    
+    	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
    		public function __TOTALES($option=NULL)
     	{

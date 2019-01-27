@@ -382,7 +382,7 @@
 					    $words["companys"]           	=@$this->__COMPANYS();
 
 
-						$words["system_domicilio"]		=$_SESSION["company"]["domicilio_fiscal"];	
+						
 					}
 			    }
 			    else
@@ -410,6 +410,7 @@
 				$this->words["system_logo"]		=$words["system_logo"];
 				$this->words["sys_title"]		=$_SESSION["pdf"]["sys_title"];
 				$this->words["sys_subtitle"]	=$_SESSION["pdf"]["sys_subtitle"];
+				$this->words["system_domicilio"]=$_SESSION["company"]["domicilio_fiscal"];
 				$this->words["sys_modulo"]		=$template;
 				
 				$_SESSION["pdf"]["template"]	=$this->__REPLACE($view,$this->words);

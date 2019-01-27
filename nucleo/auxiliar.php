@@ -380,6 +380,9 @@
 					    $words["system_img"]           	=$this->__HTML_USER();
 					    $words["sys_page"]           	=@$this->request["sys_page"];
 					    $words["companys"]           	=@$this->__COMPANYS();
+
+
+						$words["system_domicilio"]		=$_SESSION["company"]["domicilio_fiscal"];	
 					}
 			    }
 			    else

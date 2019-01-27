@@ -410,11 +410,11 @@
 				$this->words["system_logo"]		=$words["system_logo"];
 				$this->words["sys_title"]		=$_SESSION["pdf"]["sys_title"];
 				$this->words["sys_subtitle"]	=$_SESSION["pdf"]["sys_subtitle"];
-				$this->words["system_domicilio"]=$_SESSION["company"]["domicilio_fiscal"];
-				$this->words["system_rfc"]		=$_SESSION["company"]["RFC"];
-				$this->words["system_email"]	=$_SESSION["company"]["email"];
+				$this->words["system_domicilio"]=strtoupper($_SESSION["company"]["domicilio_fiscal"]);
+				$this->words["system_rfc"]		=strtoupper($_SESSION["company"]["RFC"]);
+				$this->words["system_email"]	=strtoupper($_SESSION["company"]["email"]);
 				$this->words["system_telefono"]	=$_SESSION["company"]["telefono"];
-				$this->words["system_rs"]		=$_SESSION["company"]["razonSocial"];
+				$this->words["system_rs"]		=strtoupper($_SESSION["company"]["razonSocial"]);
 				$this->words["sys_modulo"]		=$template;
 				
 				$_SESSION["pdf"]["template"]	=$this->__REPLACE($view,$this->words);

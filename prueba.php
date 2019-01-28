@@ -18,7 +18,7 @@
 
 
 	
-	$objeto->__PRINT_R(openssl_x509_parse(openssl_x509_read(file_get_contents('VIGE850830GKA.cer'))));
+	$objeto->__PRINT_R(openssl_x509_parse(openssl_x509_read('VIGE850830GKA.cer')));
 	
 	#file_put_contents('./key.pub', $keyData['key']); 	
 	

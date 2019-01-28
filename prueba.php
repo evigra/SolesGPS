@@ -15,16 +15,10 @@
 	
 	
     $cert_content = file_get_contents('VIGE850830GKA.cer');
-	$objeto->__PRINT_R($cert_content);
-
-    $res = openssl_x509_read( $cert_content );
-	$objeto->__PRINT_R($res);
-
-    $data = openssl_x509_parse( $res );
-	$objeto->__PRINT_R($data);
 
 
 	
+	$objeto->__PRINT_R(openssl_x509_parse(openssl_x509_read(file_get_contents('VIGE850830GKA.cer'))));
 	
 	#file_put_contents('./key.pub', $keyData['key']); 	
 	

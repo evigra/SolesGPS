@@ -12,27 +12,16 @@
 
 
 	$objeto				=new general();	
-	
+	$objeto->__PRINT_R(openssl_x509_parse(file_get_contents('VIGE850830GKA.cer')));
 	
     #$cert_content = file_get_contents('VIGE850830GKA.cer');
 
 
 
-$fp = fopen("VIGE850830GKA.cer", "r");
-$cert = fread($fp, 8192);
-fclose($fp);
+$data = openssl_x509_parse(file_get_contents('/path/to/cert.crt'));
 
-echo "Read<br>";
-echo openssl_x509_read($cert);
-echo "<br>";
-echo "*********************";
-echo "<br>";
-echo "Parse<br>";
-print_r(openssl_x509_parse($cert));
-/*
-// or
-print_r(openssl_x509_parse( openssl_x509_read($cert) ) ); 	
-	
+$validFrom = date('Y-m-d H:i:s', $data['validFrom_time_t']);
+$validTo ) date('Y-m-d H:i:s', $data['validTo_time_t']);	
 	
 
 /*	

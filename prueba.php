@@ -13,14 +13,17 @@
 
 	$objeto				=new general();	
 	
-	$file=file_get_contents('VIGE850830GKA.key');
-	$objeto->__PRINT_R($file);
 	
-	$pub_key = openssl_pkey_get_public($file);
-	$objeto->__PRINT_R($pub_key);
-	
-	$keyData = openssl_pkey_get_details($pub_key);
-	$objeto->__PRINT_R($keyData);
+    $cert_content = file_get_contents('VIGE850830GKA.cer');
+	$objeto->__PRINT_R($cert_content);
+
+    $res = openssl_x509_read( $cert_content );
+	$objeto->__PRINT_R($res);
+
+    $data = openssl_x509_parse( $res );
+	$objeto->__PRINT_R($data);
+
+
 	
 	
 	#file_put_contents('./key.pub', $keyData['key']); 	

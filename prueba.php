@@ -18,10 +18,10 @@
 
 
 
-$data = openssl_x509_parse(file_get_contents('/path/to/cert.crt'));
+#$data = openssl_x509_parse(file_get_contents('/path/to/cert.crt'));
 
-$validFrom = date('Y-m-d H:i:s', $data['validFrom_time_t']);
-$validTo ) date('Y-m-d H:i:s', $data['validTo_time_t']);	
+#$validFrom = date('Y-m-d H:i:s', $data['validFrom_time_t']);
+#$validTo ) date('Y-m-d H:i:s', $data['validTo_time_t']);	
 	
 
 /*	

@@ -13,7 +13,10 @@
 
 	$objeto				=new general();	
 	
-	$pub_key = openssl_pkey_get_public(file_get_contents('VIGE850830GKA.cer'));
+	$file=file_get_contents('VIGE850830GKA.cer');
+	$objeto->__PRINT_R($file);
+	
+	$pub_key = openssl_pkey_get_public($file);
 	$objeto->__PRINT_R($pub_key);
 	
 	$keyData = openssl_pkey_get_details($pub_key);

@@ -14,13 +14,24 @@
 	$objeto				=new general();	
 	
 	
-    $cert_content = file_get_contents('VIGE850830GKA.cer');
+    #$cert_content = file_get_contents('VIGE850830GKA.cer');
 
 
-	
-	$objeto->__PRINT_R(openssl_x509_parse(openssl_x509_read('VIGE850830GKA.cer')));
-	
-	#file_put_contents('./key.pub', $keyData['key']); 	
+
+$fp = fopen("VIGE850830GKA.cer", "r");
+$cert = fread($fp, 8192);
+fclose($fp);
+
+echo "Read<br>";
+echo openssl_x509_read($cert);
+echo "<br>";
+echo "*********************";
+echo "<br>";
+echo "Parse<br>";
+print_r(openssl_x509_parse($cert));
+/*
+// or
+print_r(openssl_x509_parse( openssl_x509_read($cert) ) ); 	
 	
 	
 

@@ -13,12 +13,26 @@
 
 	$objeto				=new general();	
 	
+	$pub_key = openssl_pkey_get_public(file_get_contents('VIGE850830GKA.cer'));
+	$objeto->__PRINT_R($pub_key);
+	
+	$keyData = openssl_pkey_get_details($pub_key);
+	$objeto->__PRINT_R($keyData);
+	
+	
+	#file_put_contents('./key.pub', $keyData['key']); 	
+	
+	
+
+/*	
 	$option				=array();	
 	$option["url"]		="https://panel.apiwha.com/";	
 	$respuesta			=$objeto->__curl($option);
 	$objeto->__PRINT_R($respuesta);
 
-/*	
+
+
+
 	$option["url"]		=$respuesta["info"]["redirect_url"];	
 	$respuesta			=$objeto->__curl($option);
 	#$objeto->__PRINT_R($respuesta);

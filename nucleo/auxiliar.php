@@ -352,12 +352,9 @@
 						{  	
 							$(\".echo\").dialog(\"close\");							
 						},{$this->__MESSAGE_OPTION["time"]});					
-					";
-				
+					";				
 			}						
 
-
-			
 			if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))				
 			{
 		        $words["system_message"]    		=@$this->__SYSTEM_MESSAGE;		        
@@ -1424,8 +1421,7 @@
 									"class_field_id"		=>"",
 									"class_field_value"		=>$valor,
 									"words"					=>$words,
-									"view"					=>"html",
-									
+									"view"					=>"html",			
 								);								
 
 								$words						=$this->__MANY2ONE($option);
@@ -2261,7 +2257,7 @@
 					
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-							$view_title_pdf
+							$view_title
 							$view_body_pdf
 						</table>					
 					";

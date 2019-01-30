@@ -52,8 +52,14 @@
 		}    
 		else
 		{
-			$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/show");	
-			$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+			$option=array();
+
+			$option["template_title"]	                = $objeto->sys_module . "html/report_title";
+			$option["template_body"]	                = $objeto->sys_module . "html/report_body";
+		
+			$data										=$objeto->crons($option);
+			$objeto->words["module_body"]				=$data["html"];
+			$module_title								="Reporte de ";		
 		}
 		$module_left=array(
 		    array("action"=>"Guardar"),

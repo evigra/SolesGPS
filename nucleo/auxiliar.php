@@ -2257,7 +2257,7 @@
 					
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-							$view_title
+							$view_title_pdf
 							$view_body_pdf
 						</table>					
 					";
@@ -2602,7 +2602,7 @@
 				if(isset($option["title_pdf"]))
 				{
 					#$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$option["title_pdf"]);
-					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title_pdf);
+					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title);
 				}    		    	    
 				
 			} 

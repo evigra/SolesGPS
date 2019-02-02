@@ -92,6 +92,9 @@
 			$option["template_body"]					=	$objeto->sys_module."html/report_body";
 		
 			$data										=$objeto->crons($option);
+			$objeto->__PRINT_R($data);
+			
+			
 			$objeto->words["module_body"]				=$data["html"];
 			$module_title								="Reporte de ";		
 		}

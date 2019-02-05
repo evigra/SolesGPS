@@ -2072,7 +2072,7 @@
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
 				
-				#if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+				
 				
 		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
 		    	else
@@ -2112,7 +2112,7 @@
 					}			    		
 		    	}	
 		    	
-		    	
+		    	if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
 				#######################											
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		

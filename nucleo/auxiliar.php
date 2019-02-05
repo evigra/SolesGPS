@@ -1267,24 +1267,6 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								/*
-								$"."option_$campo		=array(		
-									\"name\"			=>\"$campo"."_obj\",		
-									\"memory\"			=>\"$campo\",
-								);
-
-								$"."this->obj_$campo"."				=new {$valor["class_name"]}($"."option_$campo);
-								
-								*/
-								
-								$"."view_auto						=$"."this->obj_$campo"."->__VIEW_WRITE($"."this->obj_$campo"."->sys_module.\"html/create\");	
-								$"."this->obj_$campo"."->words  	=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);
-								
-								$"."words[\"create_auto_$campo\"]  	=$"."this->__REPLACE($"."view_auto,$"."this->obj_$campo"."->words);
-
-							";	
-							$eval="
-
 								$"."view_auto						=$"."this->obj_$campo"."->__VIEW_WRITE($"."this->obj_$campo"."->sys_module.\"html/create\");	
 								$"."this->obj_$campo"."->words  	=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);
 								
@@ -1551,6 +1533,8 @@
 					$"."option_report[\"name\"]	                			= '$campo';
 					
 					$"."this->obj_$campo"."->__VIEW_REPORT					=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
+
+					$"."this->obj_$campo"."->__PRINT_R($"."this->obj_$campo"."->__VIEW_REPORT);
 
 					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									

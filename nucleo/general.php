@@ -385,14 +385,16 @@
    			}
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
-			if(is_array(@$return["data"][0]))
-			{			
 				if($this->sys_object=="movimientos")	
 				{
 					$this->__PRINT_R($return);
 				
 				
 				}
+
+
+			if(is_array(@$return["data"][0]))
+			{			
 
 
 				foreach($return["data"][0] as $campo => $title)

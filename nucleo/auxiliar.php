@@ -739,6 +739,8 @@
 								\"class_one\"		=>\"{$this->sys_name}\",
 							);													
 							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
+							
+							
 						";		
 						eval($eval);					
 					}
@@ -1577,15 +1579,7 @@
 					$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
 								
 				$"."option_report										=array();				
-								
-				/*
-					$"."option_report[\"echo\"]								=\"aaaa\";
-									
-					$"."option_report[\"where\"]							=array(
-						\"{$valor["class_field_m"]}='$class_one_id'\"
-					);
-				*/
-				
+												
 				$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
 				$"."option_report[\"template_body\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_body\";
 				$"."option_report[\"template_create\"]	                = $"."this->obj_$campo"."->sys_module . \"html/create\";
@@ -1593,7 +1587,7 @@
 				
 				$"."option_report[\"name\"]	                			= '$campo';
 				
-				$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
+				$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report);
 				$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
 
 				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									

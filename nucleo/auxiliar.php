@@ -196,12 +196,7 @@
 							// AQUI SI FUNCIONA!!!-------------------
 							foreach($datas[0] as $field =>$value)
 							{
-								$this->sys_fields["$field"]["value"]=$value;
-								/*
-								$eval="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
-								if(@eval($eval)===false)	
-									$this->__PRINT_R("$eval"); #$eval; ---------------------------			
-								*/						        			
+								$this->sys_fields["$field"]["value"]=$value;				        			
 							}
 						}
 					}    
@@ -1481,9 +1476,7 @@
 			
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
-									
-			#$this->__PRINT_R($valor);						
-									
+																		
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
@@ -2078,6 +2071,8 @@
 				if($sys_row=="")								$sys_row	=50;
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
+				
+				#if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
 				
 		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
 		    	else

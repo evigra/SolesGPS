@@ -2548,7 +2548,7 @@
 
 			if(isset($option["template_title"]) AND $option["template_title"] != "")
 			{
-				if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+				#if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
 
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo

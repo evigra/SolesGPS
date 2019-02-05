@@ -2030,7 +2030,7 @@
 		###################################    	
 		public function __VIEW_REPORT($option)
 		{
-			
+			$this->__PRINT_R($this->sys_object);
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			
 			$return=array();
@@ -2104,7 +2104,7 @@
 					$option["title_pdf"]			= @$this->sys_title_pdf;
 					
 					#if($this->sys_object=="")
-					$this->__PRINT_R($this->sys_object);
+					
 																
 		    		if(isset($browse["total"]))		
 		    		{

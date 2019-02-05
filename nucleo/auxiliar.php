@@ -2563,12 +2563,6 @@
 					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title);
 				}    		    	    				
 			} 
-			if($this->sys_object=="movimientos")	
-			{
-				$this->__PRINT_R($return);
-			
-			
-			}
 
 
 			return $return;

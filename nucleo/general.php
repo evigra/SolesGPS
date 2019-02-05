@@ -387,8 +387,18 @@
 
 			if(is_array(@$return["data"][0]))
 			{			
+				if($this->sys_object=="movimientos")	
+				{
+					$this->__PRINT_R($return);
+				
+				
+				}
+
+
 				foreach($return["data"][0] as $campo => $title)
 				{
+			
+			
 					$font								=$title;
 					if(is_string($campo))				$sys_order	=$campo;							
 					else								$sys_order	=$title;    						

@@ -411,15 +411,16 @@
 
 			if(is_array(@$return["data"][0]))
 			{
-				$this->__PRINT_R($return["data"][0]);
+				
 				foreach($return["data"][0] as $campo => $title)
 				{
-					$font		=$title;
+					$font					=$title;
 					if(is_string($campo))	$sys_order	=$campo;							
 					else					$sys_order	=$title;    						
 
 					if(!isset($html_title["$campo"]))	
-					{						
+					{			
+						$this->__PRINT_R($html_title);			
 						$option_report_titles=array(
 							"sys_order"		=>"$sys_order",
 							"sys_torder"	=>"$sys_torder",

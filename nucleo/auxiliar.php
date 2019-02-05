@@ -459,7 +459,7 @@
 
 			if(@$this->request["sys_action"]=="print_excel")
 		    {
-				return "
+				$return["excel"]="
 					<div name=\"title_$name\" style=\"height:25px;\">
 							<b><font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font><b>
 					</div>
@@ -467,13 +467,13 @@
 			}
 			else if(@$_SESSION["request"]["sys_action"]=="print_pdf")
 		    {
-				return "					
+				$return["pdf"]="					
 						<font class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">$title</font>					
 				";
 			}
 			else
 			{					
-				return "
+				$return["html"]="
 					<div name=\"title_$name\">
 						<div class=\"report_title_action\">
 							<table width=\"100%\" class=\"sys_order\" name=\"$name\" sys_order=\"$sys_order\" sys_torder=\"$sys_torder\">
@@ -487,6 +487,8 @@
 				";
 							
 			}
+			
+			return $return;
 					
 		}	
 		public function __MENU($words)

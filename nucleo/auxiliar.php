@@ -2030,7 +2030,6 @@
 		###################################    	
 		public function __VIEW_REPORT($option)
 		{
-			$this->__PRINT_R($this->sys_object);
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			
 			$return=array();
@@ -2049,6 +2048,9 @@
 
 				}
 			}
+			
+			if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+			
 		    if(is_array($option))
 		    {
 				$inicio=0;	

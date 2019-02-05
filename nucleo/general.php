@@ -454,13 +454,16 @@
 							"name"			=>"$name",
 						);
 						$html_title["$campo"]				=$this->__REPORT_TITLES($option_report_titles);	
+						$option_report_titles["option"]		="pdf";
+						$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);							
+
 					}
 				}	
 			}	
    			
    			
    			
-   			#if(isset($html_title))			
+   			if(isset($html_title))			
    			{
    				#$return["title"]		= $html_title;	   			
    				$this->sys_title		=$html_title;

@@ -411,6 +411,7 @@
 
 			if(is_array(@$return["data"][0]))
 			{
+				$this->__PRINT_R($return["data"][0]);
 				foreach($return["data"][0] as $campo => $title)
 				{
 					$font		=$title;

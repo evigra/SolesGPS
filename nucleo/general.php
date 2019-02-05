@@ -461,6 +461,8 @@
 				}	
 			}	
    			
+   				$this->sys_title		=$html_title;
+   				$this->sys_title_pdf	=$html_title;
    			
    			
    			if(isset($html_title))			

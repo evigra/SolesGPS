@@ -2117,7 +2117,7 @@
 					}			    		
 		    	}	
 		    	
-		    	if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+		    	
 				#######################											
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		

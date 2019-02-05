@@ -383,11 +383,10 @@
     		{
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			}
-   			#$return["data"] 	= $this->__EXECUTE($this->sys_sql, $option);
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
 			if(is_array(@$return["data"][0]))
-			{
+			{			
 				foreach($return["data"][0] as $campo => $title)
 				{
 					$font								=$title;

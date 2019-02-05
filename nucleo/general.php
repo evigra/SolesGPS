@@ -198,6 +198,7 @@
     						else				    $select		    .=", $title";
     						$sys_order	=$title;    						
 						}
+						/*
 						if(!isset($html_title["$title"]))	
 						{
 							$option_report_titles=array(
@@ -210,7 +211,8 @@
 													
 							$html_title["$campo"]			=$__REPORT_TITLES["html"];	
 							$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
-						}	
+						}
+						*/	
     				}    	
     			}
     			else 

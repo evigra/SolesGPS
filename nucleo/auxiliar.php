@@ -1530,8 +1530,7 @@
 					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
 				}	
-			";				
-			
+			";							
 			eval($eval);	
 			
 			return $words;
@@ -2107,6 +2106,9 @@
 					
 		    		$return["data"]					= $browse["data"];
 		    		
+		    		$this->__PRINT_R($browse);
+		    		
+		    		
 		    		$option["title"]				= @$this->sys_title;
 					$option["title_pdf"]			= @$this->sys_title_pdf;
 										
@@ -2564,26 +2566,20 @@
 			{
 				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
-				
-				
+								
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
 				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
 								
 				if(isset($this->sys_title))
 				{
-					#$return["view_title"]	    =$this->__REPLACE($view_title,$option["title"]);
 					$return["view_title"]	    =$this->__REPLACE($view_title,$this->sys_title);					
 				}    		    	    
 				if(isset($option["title_pdf"]))
 				{
-					#$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$option["title_pdf"]);
 					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title);
-				}    		    	    
-				
+				}    		    	    				
 			} 
-
 			return $return;
-			#return $view_title;
 		} 			
 		
     	##############################################################################        

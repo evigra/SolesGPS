@@ -219,9 +219,10 @@
 								"font"			=>"$campo",
 								"name"			=>"$name",
 							);
-							$html_title["$title"]				=$this->__REPORT_TITLES($option_report_titles);
-							$option_report_titles["option"]		="pdf";
-							$html_title_clean["$campo"]			=$this->__REPORT_TITLES($option_report_titles);
+							$__REPORT_TITLES	=$this->__REPORT_TITLES($option_report_titles);
+													
+							$html_title["$campo"]				=$__REPORT_TITLES["html"];	
+							$html_title_clean["$campo"]			=$__REPORT_TITLES["pdf"];								
 						}	
     				}    	
     			}

@@ -456,7 +456,6 @@
 
 		    $sys_action     						=@$this->request["sys_action"];		   
 		    
-
 			$return=array();
 
 			$return["excel"]="
@@ -479,9 +478,7 @@
 					</div>
 				</div>
 			";
-			
-			return $return;
-					
+			return $return;		
 		}	
 		public function __MENU($words)
 		{  			

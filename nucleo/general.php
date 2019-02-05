@@ -373,11 +373,6 @@
     		{    			
     			if(is_array(@$total[0]))
 	    			$return["total"]    =$total[0]["total"];
-	    		else 	
-	    		{
-	    			#$return["total"]	="SE HA DETECTADO UN ERROR";
-	    			#$option["echo"]		="ERROR AL EJECUTAR CONSULTA";
-	    		}	
     		}	
 
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
@@ -441,8 +436,6 @@
 				}	
 			}	
    			
-   			$this->__PRINT_R($html_title);
-
 			$this->sys_title		=$html_title;
 			$this->sys_title_pdf	=$html_title;
    			   			

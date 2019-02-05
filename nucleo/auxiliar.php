@@ -2048,9 +2048,6 @@
 
 				}
 			}
-			
-			if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
-			
 		    if(is_array($option))
 		    {
 				$inicio=0;	
@@ -2120,7 +2117,7 @@
 					}			    		
 		    	}	
 		    	
-
+		    	if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
 				#######################											
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		

@@ -188,41 +188,28 @@
     					$font		=$title;
     					if(is_string($campo))
     					{
-							if($select=="")		
-							{
-							    $select		    ="$campo as $title";									
-							}
-							else
-							{
-								$select		    .=", $campo as $title";
-							}				
+							if($select=="")		    $select		    ="$campo as $title";									
+							else					$select		    .=", $campo as $title";
 							$sys_order	=$campo;	
-													
 						}
 						else
 						{
-    						if($select=="")		
-    						{
-    						    $select		    ="$title";
-    						}
-    						else
-    						{				
-    						    $select		    .=", $title";
-    						}
+    						if($select=="")		    $select		    ="$title";
+    						else				    $select		    .=", $title";
     						$sys_order	=$title;    						
 						}
 						if(!isset($html_title["$title"]))	
 						{
 							$option_report_titles=array(
-								"sys_order"		=>"$sys_order",
-								"sys_torder"	=>"$sys_torder",
-								"font"			=>"$campo",
-								"name"			=>"$name",
+								"sys_order"					=>"$sys_order",
+								"sys_torder"				=>"$sys_torder",
+								"font"						=>"$campo",
+								"name"						=>"$name",
 							);
-							$__REPORT_TITLES	=$this->__REPORT_TITLES($option_report_titles);
+							$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 													
-							$html_title["$campo"]				=$__REPORT_TITLES["html"];	
-							$html_title_clean["$campo"]			=$__REPORT_TITLES["pdf"];								
+							$html_title["$campo"]			=$__REPORT_TITLES["html"];	
+							$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
 						}	
     				}    	
     			}
@@ -237,21 +224,16 @@
 			#####################
     		$where='WHERE 1=1';
     		
-    		
 			##   FILTER AUTOCOMPLETE ######
 			if(isset($this->sys_fields) AND is_array($this->sys_fields))
-			{
-				
+			{	
 				foreach($this->sys_fields as $campo=>$valor)
 				{        								
 					if(@$this->sys_fields[$campo]["relation"]!="")
-					{
-						
+					{			
 						$class_field_o			=@$valor["class_field_o"];
 						$class_field_m			=@$valor["class_field_m"];
 						$class_field_l			=@$valor["class_field_l"];
-						
-						#$eval="$"."obj_$campo   				=new {$valor["class_name"]}();";							
 					}
 					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
 					{	
@@ -280,16 +262,14 @@
 										\"$class_field_l $sys_where '%{$busqueda}%'\"
 									)
 								);									
-								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);
-								
-								$"."busqueda=\"\";
+								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);								
+								$"."busqueda					=\"\";
 								foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
 								{									
-									if($"."busqueda==\"\") 	$"."busqueda		= $"."row_$campo"."[\"$class_field_m\"];
-									else					$"."busqueda		.= \",\" . $"."row_$campo"."[\"$class_field_m\"];
+									if($"."busqueda==\"\") 		$"."busqueda	= $"."row_$campo"."[\"$class_field_m\"];
+									else						$"."busqueda	.= \",\" . $"."row_$campo"."[\"$class_field_m\"];
 								}															
 							";
-
 							eval($eval);										
 
 							$option["where"][]="$class_field_o IN ($busqueda)";			
@@ -380,8 +360,7 @@
     			$this->sys_sql					="SELECT count(*) as total FROM $from $where  $group $having";
     		else	
     		{
-    			if($select=="*") $select="$from.*"; 
-    				
+    			if($select=="*") 				$select="$from.*";     				
     			$this->sys_sql					="SELECT count(*) as total, $select FROM $from $where  $group $having";
     		}	
     		
@@ -412,26 +391,24 @@
 
 			if(is_array(@$return["data"][0]))
 			{
-				
 				foreach($return["data"][0] as $campo => $title)
 				{
-					$font					=$title;
-					if(is_string($campo))	$sys_order	=$campo;							
-					else					$sys_order	=$title;    						
+					$font								=$title;
+					if(is_string($campo))				$sys_order	=$campo;							
+					else								$sys_order	=$title;    						
 
 					if(!isset($html_title["$campo"]))	
 					{			
 						$option_report_titles=array(
-							"sys_order"		=>"$sys_order",
-							"sys_torder"	=>"$sys_torder",
-							"font"			=>"$campo",
-							"name"			=>"$name",
+							"sys_order"					=>"$sys_order",
+							"sys_torder"				=>"$sys_torder",
+							"font"						=>"$campo",
+							"name"						=>"$name",
 						);
-
-						$__REPORT_TITLES	=$this->__REPORT_TITLES($option_report_titles);
+						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
-						$html_title["$campo"]				=$__REPORT_TITLES["html"];	
-						$html_title_clean["$campo"]			=$__REPORT_TITLES["pdf"];								
+						$html_title["$campo"]			=$__REPORT_TITLES["html"];	
+						$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
 					}	
 				}    			
 			}
@@ -442,42 +419,40 @@
 				foreach($this->sys_fields as $campo => $value)
 				{	
 					$return["data_0"][0]["$campo"]="";
-					if(isset($value["title"]))	$font		=$value["title"];					
-					else 						$font		=$campo;
+					if(isset($value["title"]))			$font		=$value["title"];					
+					else 								$font		=$campo;
 					
-					if(is_string($campo))	$sys_order	=$campo;									
-					else					$sys_order	=$title;    						
+					if(is_string($campo))				$sys_order	=$campo;									
+					else								$sys_order	=$title;    						
 
 					if(!isset($html_title["$campo"]))	
 					{						
 						$option_report_titles=array(
-							"sys_order"		=>"$sys_order",
-							"sys_torder"	=>"$sys_torder",
-							"font"			=>"$campo",
-							"name"			=>"$name",
+							"sys_order"					=>"$sys_order",
+							"sys_torder"				=>"$sys_torder",
+							"font"						=>"$campo",
+							"name"						=>"$name",
 						);
-						
-						$__REPORT_TITLES	=$this->__REPORT_TITLES($option_report_titles);
+						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
-						$html_title["$campo"]				=$__REPORT_TITLES["html"];	
-						$html_title_clean["$campo"]			=$__REPORT_TITLES["pdf"];								
+						$html_title["$campo"]			=$__REPORT_TITLES["html"];	
+						$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
 					}
 				}	
 			}	
    			
-   				$this->sys_title		=$html_title;
-   				$this->sys_title_pdf	=$html_title;
-   			
-   			
+   			$this->__PRINT_R($html_title);
+
+			$this->sys_title		=$html_title;
+			$this->sys_title_pdf	=$html_title;
+   			   			
    			if(isset($html_title))			
    			{
-   				#$return["title"]		= $html_title;	   			
    				$this->sys_title		=$html_title;
    				$this->sys_title_pdf	=$html_title;
    			}		
 			if(isset($html_title_clean))	
 			{
-				#$return["title_pdf"]	= $html_title_clean;
 				$this->sys_title_pdf	= $html_title_clean;
 			}	
 			

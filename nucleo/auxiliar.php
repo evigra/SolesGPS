@@ -2548,14 +2548,16 @@
 
 			if(isset($option["template_title"]) AND $option["template_title"] != "")
 			{
+				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
+				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
+
 				if($this->sys_object=="movimientos")	
 				{
-					$this->__PRINT_R($option);
+					$this->__PRINT_R($view_title);
 				
 				
 				}
-				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
-				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
+
 								
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
 				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo

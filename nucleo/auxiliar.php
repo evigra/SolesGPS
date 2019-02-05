@@ -2109,11 +2109,9 @@
 		    		$option["title"]				= @$this->sys_title;
 					$option["title_pdf"]			= @$this->sys_title_pdf;
 					
-					$this->__PRINT_R($option);
-										
-					#$view_title						=@$browse["title"];
-					#$view_title_pdf					=@$browse["title_pdf"];
-						
+					#if($this->sys_object=="")
+					$this->__PRINT_R($this->sys_object);
+																
 		    		if(isset($browse["total"]))		
 		    		{
 						$return["total"]				= $browse["total"];	

@@ -2111,8 +2111,7 @@
 						else                            $fin    =$return["total"];
 					}			    		
 		    	}	
-		    	
-		    	if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+		    			    	
 				#######################											
 				#/*	
 				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
@@ -2545,6 +2544,8 @@
 		}   
 		public function __VIEW_TEMPLATE_TITLE($option)
 		{
+			if($this->sys_object=="movimientos")	$this->__PRINT_R($this->sys_object);
+		
 			$return=array("view_title"=>"","view_title_pdf"=>"");	
 
 			if(isset($option["template_title"]) AND $option["template_title"] != "")

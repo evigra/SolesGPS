@@ -493,20 +493,6 @@
 						foreach($return["data"] as $indice => $valor)
 						{
 							$id =   $return["data"]["$indice"][$class_field_o];
-							
-							$eval="
-								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");								
-							
-								$"."obj_$campo   	=new {$value["class_name"]}($"."option"."_obj_$campo);
-								
-								$"."option_$campo=array(
-									\"where\"		=>array(\"$class_field_m='$id'\")
-								);
-								
-								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
-								
-								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
-							";
 							$eval="
 								##if(!isset($"."this->sys_memory))
 								{
@@ -529,16 +515,6 @@
 						{
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
-							$eval="
-								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");								
-
-								$"."obj_$campo   	=new {$value["class_name"]}($"."option"."_obj_$campo);
-								$"."option_$campo=array();
-	
-								$"."data_$campo	=$"."obj_$campo"."->__BROWSE($"."option_$campo);
-								
-								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
-							";
 							$eval="
 								$"."option_$campo=array();
 	

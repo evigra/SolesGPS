@@ -2106,11 +2106,10 @@
 					
 		    		$return["data"]					= $browse["data"];
 		    		
-		    		$this->__PRINT_R($browse);
-		    		
-		    		
 		    		$option["title"]				= @$this->sys_title;
 					$option["title_pdf"]			= @$this->sys_title_pdf;
+					
+					$this->__PRINT_R($option);
 										
 					#$view_title						=@$browse["title"];
 					#$view_title_pdf					=@$browse["title_pdf"];

@@ -2554,12 +2554,9 @@
 				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
 				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
 								
-				#if(isset($this->sys_title))
+				if(isset($this->sys_title))
 				{
 					$return["view_title"]	    =$this->__REPLACE($view_title,$this->sys_title);					
-				}    		    	    
-				#if(isset($option["title_pdf"]))
-				{
 					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title);
 				}    		    	    				
 			} 

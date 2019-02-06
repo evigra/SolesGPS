@@ -387,7 +387,7 @@
 
 				if($this->sys_object=="movimientos")	
 				{
-					$this->__PRINT_R($return);
+					#$this->__PRINT_R($return);
 				
 				
 				}

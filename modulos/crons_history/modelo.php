@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("../device/modelo.php")) require_once("../device/modelo.php");
-	
 	class crons_history extends general
 	{   
 		##############################################################################	

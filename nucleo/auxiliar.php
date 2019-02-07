@@ -1520,8 +1520,6 @@
 					
 					$"."this->obj_$campo"."->__VIEW_REPORT					=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report	);
 
-					####$"."this->obj_$campo"."->__PRINT_R($"."this->obj_$campo"."->__VIEW_REPORT);
-
 					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
 				}	
@@ -2025,11 +2023,11 @@
 		{
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			
-			$return=array();
-		    $view_title="";
+			$return						=array();
+		    $view_title					="";
 			if(isset($this->sys_memory) AND isset($template_option["class_field"]))
 			{	
-				$campo									=$template_option["class_field"];
+				$campo					=$template_option["class_field"];
 				
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
@@ -2038,7 +2036,6 @@
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
-
 				}
 			}
 		    if(is_array($option))
@@ -2051,12 +2048,12 @@
 				if(isset($option["fin"]) AND $option["fin"]>0)			$fin				=$option["fin"];
 				else													$fin				=0;
 		    	
-		        $sys_order="";
-		        $sys_torder="";
+		        $sys_order				="";
+		        $sys_torder				="";
 		    	if(!isset($option["name"]))    					$name		=@$this->sys_name;
 		    	else											$name		=$option["name"];
 				
-				$this->sys_name=$name;		
+				$this->sys_name			=$name;		
 		    	
 		    	if(isset($this->request["sys_page_$name"]))		$sys_page	=$this->request["sys_page_$name"];
 		    	else											$sys_page	=1;
@@ -2072,56 +2069,44 @@
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
 				
-				
-				
 		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
 		    	else
 		    	{			    		
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		 
-					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]))
-					{																		
+					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]))															
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
-					}
-					
-					if(count($browse["data"])<=0)
-					{							
-						$browse["data"]=array();				
-					}								
+					if(count($browse["data"])<=0)				$browse["data"]		=array();					
 					
 					##################################
 					
-		    		$return["data"]					= $browse["data"];
+		    		$return["data"]								= $browse["data"];
 		    		
-		    		$option["title"]				= @$this->sys_title;
-					$option["title_pdf"]			= @$this->sys_title_pdf;
-					
-					#if($this->sys_object=="")
-					
-																
+		    		$option["title"]							= @$this->sys_title;
+					$option["title_pdf"]						= @$this->sys_title_pdf;
+																					
 		    		if(isset($browse["total"]))		
 		    		{
-						$return["total"]				= $browse["total"];	
+						$return["total"]						= $browse["total"];	
+						$inicio				 					= @$browse["inicio"] + 1;
+						$aux_fin                    		    = @$inicio + @$sys_row -1;
 						
-						$inicio				            = @$browse["inicio"] + 1;
-						$aux_fin                        = @$inicio + @$sys_row -1;
-						
-						if($aux_fin<$return["total"])   $fin    =$aux_fin;
-						else                            $fin    =$return["total"];
+						if($aux_fin<$return["total"])   		$fin    =$aux_fin;
+						else                            		$fin    =$return["total"];
 					}			    		
 		    	}	
 		    			    	
 				#######################											
 				#/*	
-				$view_title_data	=$this->__VIEW_TEMPLATE_TITLE($option);		
+				$view_title_data		=$this->__VIEW_TEMPLATE_TITLE($option);		
 
-				$view_title			=$view_title_data["view_title"];
-				$view_title_pdf		=$view_title_data["view_title_pdf"];
+				$view_title				=$view_title_data["view_title"];
+				$view_title_pdf			=$view_title_data["view_title_pdf"];
 				#*/
 								
-		    	$view_create	="";
-		    	$button_create	="";
+		    	$view_create			="";
+		    	$button_create			="";
 				###########################
 		    	if(isset($option["template_create"]) AND $option["template_create"] !="")
 		    	{
@@ -2194,8 +2179,8 @@
 				##############################
 		    	if(isset($option["template_body"]))
 		    	{    
-		    	    $template       =$option["template_body"];
-		    	    $option_kanban	=array();
+		    	    $template       				=$option["template_body"];
+		    	    $option_kanban					=array();
 		    	    if(isset($option["actions"]))	$option_kanban["actions"]	=$option["actions"];
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;
@@ -2204,14 +2189,14 @@
 		    	    
 					if(isset($return["data_0"]))
 					{
-						$view_body		=$this->__VIEW_KANBAN2($template,$return["data_0"],$option_kanban);
-						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data_0"],$option_kanban);
+						$view_body					=$this->__VIEW_KANBAN2($template,$return["data_0"],$option_kanban);
+						$view_body_pdf				=$this->__VIEW_KANBAN2($template."_pdf",$return["data_0"],$option_kanban);
 						unset($return["data_0"]);
 					}	
 					else
 					{	
-						$view_body		=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
-						$view_body_pdf	=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
+						$view_body					=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
+						$view_body_pdf				=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
 
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;
@@ -2314,7 +2299,6 @@
 						$min_height		="";
 					}						
 
-					#0133 32084420  CESAR JIMENES  32084444
 					$button_create_js="";
 					
 					if(isset($template_option) AND !in_array(@$this->request["sys_action"],$this->sys_print))
@@ -2441,11 +2425,10 @@
 					else	
 						@$view.="{$return["pdf"]}";
 
-
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view.="						
 						</div>		
-						";
+					";
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{
@@ -2548,11 +2531,11 @@
 
 			if(isset($option["template_title"]) AND $option["template_title"] != "")
 			{
-				$view_title     =$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
-				$view_title		=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
+				$view_title     				=$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
+				$view_title						=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 
-				$view_title_pdf =$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
-				$view_title_pdf	=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
+				$view_title_pdf 				=$this->__TEMPLATE($option["template_title"]."_pdf");					//  HTML DEL REPORTE
+				$view_title_pdf					=str_replace("<td>", "<td class=\"title\">", $view_title_pdf);      // AGREGA la clase titulo
 								
 				if(isset($this->sys_title))
 				{
@@ -2560,8 +2543,6 @@
 					$return["view_title_pdf"]   =$this->__REPLACE($view_title_pdf,$this->sys_title);
 				}    		    	    				
 			} 
-
-
 			return $return;
 		} 			
 		

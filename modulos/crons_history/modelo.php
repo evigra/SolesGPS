@@ -15,7 +15,8 @@
 			    "value"             => "",			    
 			),
 			"resume"	    =>array(
-			    "title"             => "resume",
+			    "title"             => "Resumen",
+			    "title_filter"      => "Resumen",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",
@@ -77,12 +78,7 @@
 			$option["order"]	="id desc";
 			$data = $this->__VIEW_REPORT($option);
 			
-			#$this->__PRINT_R($data);
-			
-			return $data;		
-			
+			return $data;					
 		}
-
-								
 	}
 ?>

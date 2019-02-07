@@ -7,8 +7,7 @@
 		var $mod_menu=array();
 		var $sys_fields		=array( 
 			"id"	    =>array(
-			    "title"             => "id",
-			    
+			    "title"             => "id",			    
 			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			    "default"           => "",
@@ -16,7 +15,7 @@
 			),
 			"trabajador_id"	    =>array(
 			    "title"             => "Trabajador",
-			    "description"       => "Responsable del dispositivo",
+			    #"description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    

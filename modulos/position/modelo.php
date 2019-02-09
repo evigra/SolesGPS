@@ -173,29 +173,32 @@
 				
 				foreach($position_data as $row)
 				{
-					echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
-					$devices_tr		.="
-						<tr>
-							<td>
-								<a href=\"http://solesgps.com/seguimientos/&a={$row["md5_id"]}\">
-									<img height=\"30\" src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\">
-								</a>
-							</td>				
-							<td>
-								<a href=\"https://api.whatsapp.com/send?phone={$row["TEL_COMPANY"]}&text=Detectamos ausencia de senal de su {$row["NOMBRE"]}\">
-									<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
-								</a>								
-							</td>	
-							<td><a href=\"tel:{$row["TELEFONO"]}\">
-								<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
-							</a></td>        
-							<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
-							<td>{$row["REPORTO_HACE"]}<br>{$row["REPORTO_HACE"]}</td>
-							<td><a href=\"http://solesgps.com/execute/&a={$row["md5_id"]}&sys_section_execute=saldo_correo\">
-								<img height=\"40\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
-							</a></td>
-						</tr>
-					";
+					if($row["ESTADO"]=="RETRASADO")
+					{
+						echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
+						$devices_tr		.="
+							<tr>
+								<td>
+									<a href=\"http://solesgps.com/seguimientos/&a={$row["md5_id"]}\">
+										<img height=\"30\" src=\"http://solesgps.com/modulos/execute/status_device.php?ID={$row["ID"]}&time=".date("YmdHis")."\">
+									</a>
+								</td>				
+								<td>
+									<a href=\"https://api.whatsapp.com/send?phone={$row["TEL_COMPANY"]}&text=Detectamos ausencia de senal de su {$row["NOMBRE"]}\">
+										<img height=\"30\" src=\"http://solesgps.com/sitio_web/img/WA.png\">
+									</a>								
+								</td>	
+								<td><a href=\"tel:{$row["TELEFONO"]}\">
+									<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
+								</a></td>        
+								<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
+								<td>{$row["REPORTO_HACE"]}<br>{$row["REPORTO_HACE"]}</td>
+								<td><a href=\"http://solesgps.com/execute/&a={$row["md5_id"]}&sys_section_execute=saldo_correo\">
+									<img height=\"40\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
+								</a></td>
+							</tr>
+						";
+					}
 				}
 				$mensaje   = "
 					<html>
@@ -224,7 +227,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
-					AND reporto_hace>'01:10:00'
+					AND reporto_hace<'01:10:00'
 					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);

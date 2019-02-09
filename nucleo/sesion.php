@@ -1,7 +1,7 @@
 <?php	
 	if(!isset($_SESSION))
 	{
-		ini_set('display_errors', 0);
+		#ini_set('display_errors', 0);
 		$usuarios_sesion						="PHPSESSID";
 		session_name($usuarios_sesion);
 		@session_start();
@@ -22,43 +22,26 @@
 			$destino= "../sesion/";	
 			Header ("Location: $destino");			
 		}	
-	}	
+	}
+	$pre_path="";
 	
-	if(@file_exists("nucleo/general.php"))
+	for($a=0; $a<10; $a++)
 	{
-					require_once("nucleo/general.php");		
-					require_once("nucleo/auxiliar.php");		
-	}				
-	if(@file_exists("../nucleo/general.php"))
-	{
-					require_once("../nucleo/general.php");		
-					require_once("../nucleo/auxiliar.php");		
-	}								
-	if(@file_exists("../../nucleo/general.php"))	
-	{
-					require_once("../../nucleo/general.php");		
-					require_once("../../nucleo/auxiliar.php");		
-	}				
-	if(@file_exists("../../../nucleo/general.php")) 	
-	{
-					require_once("../../../nucleo/general.php");		
-					require_once("../../../nucleo/auxiliar.php");		
-	}				
-	if(@file_exists("../../../../nucleo/general.php")) 	
-	{
-					require_once("../../../../nucleo/general.php");		
-					require_once("../../../../nucleo/auxiliar.php");		
-	}					
+		if(@file_exists($pre_path	."nucleo/general.php"))
+		{
+			require_once($pre_path	."nucleo/general.php");		
+			require_once($pre_path	."nucleo/auxiliar.php");		
 
-    $objeto	=new general();         
-	$comando_sql="SELECT * FROM modulos ";		
-	$modulos 		=$objeto->__EXECUTE($comando_sql);    
-	
-	foreach($modulos as $modulo)
-	{
-		if(file_exists("modulos/{$modulo["clase"]}/modelo.php")) 				require_once("modulos/{$modulo["clase"]}/modelo.php");
-		if(file_exists("../modulos/{$modulo["clase"]}/modelo.php")) 			require_once("../modulos/{$modulo["clase"]}/modelo.php");
-		if(file_exists("../../modulos/{$modulo["clase"]}/modelo.php")) 			require_once("../../modulos/{$modulo["clase"]}/modelo.php");
-		if(file_exists("../../../modulos/{$modulo["clase"]}/modelo.php")) 		require_once("../../../modulos/{$modulo["clase"]}/modelo.php");
+			$objeto	=new general();         
+			$comando_sql="SELECT * FROM modulos ";		
+			$modulos 		=$objeto->__EXECUTE($comando_sql);    
+			
+			foreach($modulos as $modulo)
+			{
+				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
+					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");
+			}
+		}				
+		$pre_path.="../";
 	}
 ?>	

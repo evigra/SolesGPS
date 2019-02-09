@@ -21,7 +21,7 @@
 			    "value"             => "",			    
 			),
 			"ejecucion"	    =>array(
-			    "title"             => "Ejecucion Anterior",
+			    "title"             => "Ejecutado",
 			    "showTitle"         => "si",
 			    "type"              => "input",
 			    "default"           => "",

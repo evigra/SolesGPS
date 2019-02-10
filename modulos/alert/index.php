@@ -59,7 +59,7 @@
 					"title"=>false,
 					"icon"=>"ui-icon-battery-0"
 			),
-			array(	"report_batery_low",
+			array(	"report_batery_low"=>false,
 					"title"=>"",
 					"icon"=>"ui-icon-battery-1"
 			),

@@ -59,8 +59,8 @@
 					"title"=>false,
 					"icon"=>"ui-icon-battery-0"
 			),
-			array(	"report_batery_low"=>false,
-					"title"=>"",
+			array(	"report_batery_low"=>"Bateria Baja",
+					"text"=>false,
 					"icon"=>"ui-icon-battery-1"
 			),
 	    );

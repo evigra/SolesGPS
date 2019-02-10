@@ -1,5 +1,7 @@
 	$(document).ready(function()
 	{
+		/*
+
 		$("#action").button({
 			icons: {	primary: "ui-icon-document" },
 			text: true
@@ -61,4 +63,5 @@
 		    
 		    }
 	    );
+	    */
     });

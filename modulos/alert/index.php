@@ -63,7 +63,7 @@
 			array(	"report_batery_low"=>"",
 					"text"=>"false",
 					"title"=>"Bateria Baja",
-					"icon"=>"ui-icon-battery-1"
+					"icon"=>"ui-icon-battery-2"
 			),
 	    );
 	    $module_center=$objeto->__BUTTON($module_center);

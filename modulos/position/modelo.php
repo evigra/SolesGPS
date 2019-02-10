@@ -227,8 +227,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
-					AND reporto_hace<'01:10:00'
-					
+					AND reporto_hace<'01:10:00'					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			
@@ -239,7 +238,7 @@
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
 					#$row["TEL_COMPANY"]="5213143520972";
 					
-					$this->__SMS("+{$row["TEL_COMPANY"]},5213143520972", $mensaje, false, "");					
+					$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
 					$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));
 				}
 			}
@@ -252,7 +251,7 @@
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
-					AND reporto_hace>'01:10:00'
+					AND reporto_hace<'01:10:00'
 					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
@@ -539,7 +538,10 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
-						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta por exceso de velocidad");
+
+						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por exceso de velocidad";
+						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
             		{	# BATERIA BAJA
@@ -559,7 +561,9 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
-						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta por falta de bateria");
+						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por falta de bateria";
+						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
             		{	# BATERIA BAJA
@@ -578,7 +582,9 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";														
-						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta SOS ");
+						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta SOS";
+						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA BATERIA BAJA")
             		{	# BATERIA BAJA
@@ -597,7 +603,9 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";		
-						$this->__SMS($row["c_telefono"], "SolesGPS [{$row["dispo"]}] :: Alerta Bateria baja ");
+						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta bateria baja";
+						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
 					}	
 
             		else

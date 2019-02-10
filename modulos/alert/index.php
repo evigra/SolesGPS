@@ -55,7 +55,7 @@
 			#array("create"=>"Crear"),
 			#array("write"=>"Modificar"),
 			#array("kanban"=>"Kanban"),
-			array(	"report_batery_del"=>"Ausencia de bateria",
+			array(	"report_batery_del"=>"",
 					"title"=>false,
 					"icon"=>"ui-icon-battery-0"
 			),

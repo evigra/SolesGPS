@@ -56,11 +56,11 @@
 			#array("write"=>"Modificar"),
 			#array("kanban"=>"Kanban"),
 			array(	"report_batery_del"=>"Ausencia de bateria",
-					"title"=>"Ausencia de bateria",
+					"title"=>"",
 					"icon"=>"ui-icon-battery-0"
 			),
 			array(	"report_batery_low"=>"Bateria Baja",
-					"title"=>"Bateria Baja",
+					"title"=>"",
 					"icon"=>"ui-icon-battery-1"
 			),
 	    );

@@ -60,7 +60,7 @@
 					"icon"=>"ui-icon-battery-0"
 			),
 			array(	"report_batery_low"=>"Bateria Baja",
-					"text"=>false,
+					"text"=>"false",
 					"title"=>"aaa",
 					"icon"=>"ui-icon-battery-1"
 			),

@@ -55,10 +55,11 @@
 			#array("create"=>"Crear"),
 			#array("write"=>"Modificar"),
 			#array("kanban"=>"Kanban"),
-			array(	"report_batery_del"=>"Ausencia de bateria",
+			array(	"report_batery_del"=>"",
 					"icon"=>"ui-icon-battery-0"
 			),
-			array(	"report_batery_low"=>"Bateria Baja",
+			array(	"report_batery_low"=>"",
+			
 					"icon"=>"ui-icon-battery-1"
 			),
 	    );

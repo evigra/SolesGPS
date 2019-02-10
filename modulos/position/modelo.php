@@ -170,11 +170,12 @@
 				#$this->__EXECUTE($comando_sql);
 				
 				$devices_tr			="<tr><td>Status</td><td>WA</td><td>Contacto</td><td>Dispositivo</td><td>Tiempo</td><td></td></tr>";			
-				
+				$retrasados=0;
 				foreach($position_data as $row)
 				{
 					if($row["ESTADO"]=="RETRASADO")
 					{
+						$retrasados++;
 						echo "<br>#### RETRASO {$row["REPORTO_HACE"]} :: {$row["NOMBRE"]} ######## ";
 						$devices_tr		.="
 							<tr>
@@ -216,7 +217,7 @@
 				);				
 				$this->send_mail($option);				
 			}
-			return count($position_data) . " Dispositivos retrazados";
+			return "$retrasados Dispositivos retrazados";
 									
 		}
 		public function cron_retraso_ALERTAS()

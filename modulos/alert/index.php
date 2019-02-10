@@ -61,6 +61,7 @@
 			),
 			array(	"report_batery_low"=>"Bateria Baja",
 					"text"=>false,
+					"title"=>"aaa",
 					"icon"=>"ui-icon-battery-1"
 			),
 	    );

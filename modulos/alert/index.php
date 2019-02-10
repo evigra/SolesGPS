@@ -50,6 +50,20 @@
 			#array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 	    );
+
+    	$module_center=array(
+			#array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			#array("kanban"=>"Kanban"),
+			array(	"report_batery_del"=>"Ausencia de bateria"
+					"icon"=>"ui-icon-battery-0"
+			),
+			array(	"report_batery_low"=>"Bateria Baja"
+					"icon"=>"ui-icon-battery-1"
+			),
+	    );
+	    $module_center=$objeto->__BUTTON($module_center);
+
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
 		$option     					=	array();

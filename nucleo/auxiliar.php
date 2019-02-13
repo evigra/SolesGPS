@@ -2069,8 +2069,8 @@
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
 				
-		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
-		    	else
+		    	#if(isset($option["data"]))          			$return["data"] =$option["data"];	
+		    	#else
 		    	{			    		
 		    	    $option["name"]                 			=$name;
 		    	   

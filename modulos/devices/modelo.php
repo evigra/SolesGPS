@@ -462,13 +462,10 @@
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
-					AND 
-					(bloqueo!=1
-
-					OR bloqueo is NULL)
+					AND (bloqueo!=1 OR bloqueo is NULL)
 					AND c.estatus!=0
 					AND d.telcel=1
-					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 27 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 
@@ -527,7 +524,7 @@
 			$telefonos_recargados=$response->data;
 
 			$comando_sql		="
-				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL030' as producto
+				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL050' as producto
 				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
 					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >14
@@ -560,7 +557,7 @@
 							WHERE 1=1 
 								AND id='{$row["id"]}'
 						";
-						$datas	=$this->__EXECUTE($comando_sql);
+						$recargados=$this->__EXECUTE($comando_sql);
 						
 						$comando_sql		="
 							INSERT INTO taecel SET 
@@ -575,7 +572,7 @@
 					}
 				}				
 			}
-			return count($datas) . " Dispositivos recargados";
+			return count($recargados) . " Dispositivos recargados";
     	}
 		public function prueba_saldo()
     	{    

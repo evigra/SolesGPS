@@ -722,15 +722,20 @@
 					if(!isset($row[$this->sys_primary_field]))		$row[$this->sys_primary_field]=@$this->sys_primary_id;
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
+					{
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"]=array();
-					
+						$_SESSION["SAVE"]["$class_one"][$class_field]["title"]=array();
+					}
 					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
 					{
 						$active_id		=$datas["class_field_id"];						
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
 					}
-					else	$_SESSION["SAVE"]["$class_one"][$class_field]["data"][]	=	$row;
-	
+					else
+					{	
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][]	=	$row;
+					}
+					
 					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 			
 

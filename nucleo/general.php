@@ -5,14 +5,14 @@
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
+		var $sys_fields_l18n	=NULL;
+		var $sys_enviroments	="PRODUCTION";
 		#var $ophp_fields		=array();
+
 			
 		##############################################################################	
 		##  Metodos	
-		##############################################################################
-		var $sys_fields_l18n	=NULL;
-		var $sys_enviroments	="PRODUCTION";
-		
+		##############################################################################		
 		public function __CONSTRUCT($option=array())
 		{  	
 			if(!isset($this->sys_fields))			$this->sys_fields=array();
@@ -69,9 +69,6 @@
 			{	
 				ini_set('display_errors', 0);	
 			}
-
-
-
 
 			
 			$this->__REQUEST();

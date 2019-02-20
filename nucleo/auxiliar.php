@@ -2068,7 +2068,8 @@
 				if($sys_row=="")								$sys_row	=50;
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
-				
+		
+				/*		
 		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
 		    	else
 		    	{			    		
@@ -2096,7 +2097,7 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}	
-		    			    	
+		    	*/		    	
 				#######################											
 				#/*	
 				$view_title_data		=$this->__VIEW_TEMPLATE_TITLE($option);		

@@ -120,11 +120,10 @@
 					}	
 				";
 				eval($eval);							
-			
-			
+
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
-				#if(@$this->sys_vpath==$this->sys_name."/" AND @$this->sys_action=="__SAVE" AND ($this->sys_section=="create" OR $this->sys_section=="write"))
+
 				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
 				{
 					$this->__PRE_SAVE();
@@ -132,8 +131,6 @@
 				    $words["system_js"]     				=@$this->__SAVE_JS;	            
 				}											
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
-				
-
 			}	
 		}
 		public function __BROWSE($option=array())
@@ -385,22 +382,17 @@
    			}
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
-				if($this->sys_object=="movimientos")	
-				{
-					#$this->__PRINT_R($return);
-				
-				
-				}
-
+			if($this->sys_object=="movimientos")	
+			{
+				#$this->__PRINT_R($return);
+			
+			
+			}
 
 			if(is_array(@$return["data"][0]))
 			{			
-
-
 				foreach($return["data"][0] as $campo => $title)
 				{
-			
-			
 					$font								=$title;
 					if(is_string($campo))				$sys_order	=$campo;							
 					else								$sys_order	=$title;    						
@@ -501,9 +493,8 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."option_$campo=array();
-	
-								$"."data_$campo	=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
+								$"."option_$campo	=array();	
+								$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
 								
 								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";

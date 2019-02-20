@@ -2071,8 +2071,9 @@
 		
 				/*		
 		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
-		    	else
+		    	else  	#*/
 		    	{			    		
+		    	
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		 
@@ -2097,7 +2098,7 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}	
-		    	*/		    	
+		    			    	
 				#######################											
 				#/*	
 				$view_title_data		=$this->__VIEW_TEMPLATE_TITLE($option);		

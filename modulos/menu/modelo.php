@@ -9,31 +9,21 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"name"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
+		    
 			),
 			"link"	    =>array(
 			    "title"             => "Link",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
+			    "htmlentities"      => false,
 			),
 			"type"	    =>array(
 			    "title"             => "Tipo",
-			    "showTitle"         => "si",
 			    "type"              => "select",
-			    "default"           => "",
-			    "value"             => "",			    
 			    "source"			=>array(
 			    	"menu"			=>	"Menu",
 			    	"submenu"		=>	"SubMenu",
@@ -42,10 +32,7 @@
 			),
 			"parent"	    =>array(
 			    "title"             => "Padre",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),											
 		);				
 		##############################################################################	

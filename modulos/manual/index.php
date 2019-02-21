@@ -24,8 +24,7 @@
     $module_center	=	"";
     $module_title	=	"";
 
-    if($objeto->sys_section=="create")
-	{
+
     	$module_title                	=	"Crear ";
 
     	$module_right=array(
@@ -37,84 +36,8 @@
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    	
-    }	
-    elseif($objeto->sys_section=="write")
-	{
-    	$module_title                	=	"Modificar ";
 
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    );	
 
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
-    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    }
-    elseif($objeto->sys_section=="write2")
-	{
-    	$module_title                	=	"Modificar ";
-
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    	);	
-
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write2");	
-    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	
-    }    	
-	elseif($objeto->sys_section=="kanban")
-	{
-	    $module_title			="Reporte Modular de ";
-
-	    $module_left	=	"";
-
-	   	$module_right=array(
-        array("create"=>"Crear"),        
-        array("report"=>"Reporte"),
-    	); 	
-
-		$template_body					=	$objeto->sys_module."html/kanban";	
-	   	$data							=	$objeto->devices();        	
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
-    }	
-	elseif($objeto->sys_section=="saldo_correo")
-	{
-		$objeto->saldo_correo();
-        $module_left                            	=	"";
-    	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
-    	$objeto->sys_fields["name"]["showTitle"]	=	"no";
-    	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    }
-
-	elseif($objeto->sys_section=="show")
-	{
-        $module_left                            	=	"";
-    	$objeto->words["module_body"]           	=	$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	
-    	$objeto->sys_fields["name"]["showTitle"]	=	"no";
-    	$objeto->words                          	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    }
-    else
-    {
-
-	    $module_left	=	"";
-		$option     	=	array();
-
-		$option["template_title"]		=	$objeto->sys_module."html/report_title";
-		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-		$option["template_form"]		=	$objeto->sys_module."html/report_form";
-		
-		$data							=	$objeto->devices($option);
-		
-		$objeto->words["module_body"]	=	$data["html"];	
-		$module_title                	=	"Reporte de ";
-    	
-    }
 	
 	$objeto->words["module_title"]	=	"$module_title Dispositivos";
 	$objeto->words["module_left"]  	=	$objeto->__BUTTON($module_left);

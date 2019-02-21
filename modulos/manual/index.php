@@ -12,9 +12,18 @@
 
 	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");
 	
-	$objeto->words["module_title"]	=	"Manual :: Metodos";
-	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/metodos");		
-
+	if($objeto->sys_section=="input")
+	{
+		$objeto->words["module_title"]	=	"Manual :: Metodos";
+		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/metodos");		
+	}
+	elseif($objeto->sys_section=="input")
+	{
+		$objeto->words["module_title"]	=	"Manual :: Input";
+		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/input");		
+	}
+	
+	
 	#$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
 	

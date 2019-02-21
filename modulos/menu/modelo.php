@@ -210,11 +210,10 @@
 		
 			$option["actions"]	                		= array();
 			$option["actions"]["write"]           		= "true";
-			$option["actions"]["delete"]           		= "false";
+			$option["actions"]["delete"]           		= "true";
 			$option["actions"]["show"]           		= "false";
 			$option["actions"]["check"]           		= "false";
-			
-			
+						
 			return $this->__VIEW_REPORT($option);
 		}		
 		public function data_menu($option=NULL)

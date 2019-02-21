@@ -8,8 +8,12 @@
 
 	$module_title                	=	"Crear ";
 
-	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	
-	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+
+
+	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");
+	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/metodos");		
+
+	#$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
 	
 	$objeto->words["module_title"]	=	"$module_title Manual";

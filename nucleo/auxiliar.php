@@ -784,10 +784,15 @@
 		} 
 		##############################################################################
 		public function __VIEW_TEMPLATE($template,$words)
-		{  
+		{  		
 			# CON LA PLANTILLA BASE, 
 			# CARGA LA PLANTILLA INDICADA
 			# VERIFICANDO QUE LA SOLICITUD, NO SEA UNA, IMPRESION, EXCEL, O PDF
+			
+			if(!isset($words["module_title"]))	$words["module_title"]="";
+			if(!isset($words["module_left"]))	$words["module_left"]="";
+			if(!isset($words["module_center"]))	$words["module_center"]="";
+			if(!isset($words["module_right"]))	$words["module_right"]="";
 			
 		    $view   								=$this->__TEMPLATE("sitio_web/html/index");		    
 		    if(@$this->request["sys_action"]=="print_pdf")

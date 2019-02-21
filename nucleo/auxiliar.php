@@ -686,7 +686,7 @@
 			#	$valor	=htmlentities($valor);
 			
 			if(!isset($this->sys_fields["$campo"]["htmlentities"]))	
-				$this->sys_fields["$campo"]["htmlentities"]=true;
+				$this->sys_fields["$campo"]["htmlentities"]="true";
 						
 			if(!is_array($valor) AND in_array($this->sys_fields["$campo"]["htmlentities"], $this->sys_true))				
 					$valor	=htmlentities($valor);

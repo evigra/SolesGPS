@@ -19,7 +19,7 @@
 			"link"	    =>array(
 			    "title"             => "Link",
 			    "type"              => "input",
-			    "htmlentities"      => false,
+			    "htmlentities"      => "false",
 			),
 			"type"	    =>array(
 			    "title"             => "Tipo",

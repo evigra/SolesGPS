@@ -12,7 +12,7 @@
 
 	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");
 	
-	if($objeto->sys_section=="input")
+	if($objeto->sys_section=="metodos")
 	{
 		$objeto->words["module_title"]	=	"Manual :: Metodos";
 		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/metodos");		

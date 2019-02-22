@@ -19,8 +19,13 @@
 			"link"	    =>array(
 			    "title"             => "Link",
 			    "type"              => "input",
+			),
+			"variables"	    =>array(
+			    "title"             => "fariables",
+			    "type"              => "input",
 			    "htmlentities"      => "false",
 			),
+
 			"type"	    =>array(
 			    "title"             => "Tipo",
 			    "type"              => "select",

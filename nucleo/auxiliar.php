@@ -505,7 +505,7 @@
 				$menu_html								="";
 				foreach($datas_menu as $data_menu)
 				{
-					$link								=$data_menu["link"]."&sys_menu=".$data_menu["id"];				
+					$link								=$data_menu["link"]."&sys_menu=".$data_menu["id"].$data_menu["variables"];				
 					$alertas="";
 					if($data_menu["c_menu_id"]>0)
 						$alertas="

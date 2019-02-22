@@ -609,7 +609,7 @@
 								</div>					
 							";				
 
-						$link			=$data_opcion["link"]."&sys_menu={$sys_menu}" . $data_menu["variables"];
+						$link			=$data_opcion["link"]."&sys_menu={$sys_menu}" . $data_opcion["variables"];
 						$option_html	.="
 							<a href=\"{$link}\">
 								<div class=\"submenu2\">

@@ -505,7 +505,7 @@
 				$menu_html								="";
 				foreach($datas_menu as $data_menu)
 				{
-					$link								=$data_menu["link"]."&sys_menu=".$data_menu["id"].$data_menu["variables"];				
+					$link								=$data_menu["link"]."&sys_menu=".$data_menu["id"] . $data_menu["variables"];				
 					$alertas="";
 					if($data_menu["c_menu_id"]>0)
 						$alertas="
@@ -609,9 +609,9 @@
 								</div>					
 							";				
 
-
+						$link			=$data_opcion["link"]."&sys_menu={$sys_menu}" . $data_menu["variables"];
 						$option_html	.="
-							<a href=\"{$data_opcion["link"]}&sys_menu={$sys_menu}\">
+							<a href=\"{$link}\">
 								<div class=\"submenu2\">
 									{$data_opcion["name"]}
 									$alertas

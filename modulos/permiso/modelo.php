@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("../modelo/modelo.php")) require_once("../modelo/modelo.php");
-	
 	class permiso extends general
 	{   
 		##############################################################################	
@@ -10,52 +8,31 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"usergroup_id"	    =>array(
 			    "title"             => "Usuario",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"menu_id"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"s"	    =>array(
 			    "title"             => "select",
-			    "showTitle"         => "si",
 			    "type"              => "input",			    
-			    "default"           => "",
-			    "value"             => "",			    
 			),						
 			"c"	    =>array(
 			    "title"             => "create",
-			    "showTitle"         => "si",
 			    "type"              => "password",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 			"w"	    =>array(
 			    "title"             => "write",
-			    "showTitle"         => "si",
 			    "type"              => "password",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 			"d"	    =>array(
 			    "title"             => "delete",
-			    "showTitle"         => "si",
 			    "type"              => "password",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 
 		);				
@@ -85,20 +62,6 @@
 			$option["from"]		="permiso";
 			return parent::__BROWSE($option);
 		}		
-		/*
-		public function groups($option=NULL)		
-    	{	
-    		if(is_null($option))	$option=array();
-    		
-			$option["select"]	=array(
-				"permiso.*",
-			);
-			$option["from"]		="permiso";
-			
-			$return =$this->__VIEW_REPORT($option);    				
-			return $return;
-		}
-		*/		
 		public function permisos_html($values=NULL)
     	{
     		$menu_id=NULL;
@@ -135,7 +98,6 @@
 					$write="";
 					$delete="";    				
     			}	
-
 
     			$tr.="
     				<tr>

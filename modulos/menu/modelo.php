@@ -222,7 +222,7 @@
     			$filtro=" AND id=$option";
     			    			
 			$comando_sql        ="SELECT * FROM menu WHERE type='menu' $filtro";
-			
+			$this->__PRINT_R($comando_sql);
 			$return =$this->__EXECUTE($comando_sql, $option_conf);			
 			return $return;
 		}		

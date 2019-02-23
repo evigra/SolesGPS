@@ -63,8 +63,7 @@
 			return parent::__BROWSE($option);
 		}		
 		public function permisos_html($values=NULL, $menu_id=NULL)
-    	{
-    		
+    	{    		
     		$menus=$this->menu_obj->menu($menu_id);  
 			$tr="";
     		foreach($menus["data"] as $menu)

@@ -221,9 +221,10 @@
     		if(!(is_null($option) OR is_array($option)))
     			$filtro=" AND id=$option";
     			    			
-			$comando_sql        ="SELECT * FROM menu WHERE type='menu' $filtro";
-			$this->__PRINT_R($comando_sql);
+			$comando_sql        ="SELECT * FROM menu WHERE type='menu' $filtro";			
 			$return =$this->__EXECUTE($comando_sql, $option_conf);			
+			
+			$this->__PRINT_R($return);
 			return $return;
 		}		
 		public function data_submenu($menu)

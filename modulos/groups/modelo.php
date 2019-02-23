@@ -55,7 +55,6 @@
 			    "type"              => "input",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "permiso",
-			    #"class_path"        => "modulos/permiso/modelo.php",
 			    "class_field_o"    	=> "id",					# Origen
 			    "class_field_m"    	=> "usergroup_id",			# Destino	    
 			),			

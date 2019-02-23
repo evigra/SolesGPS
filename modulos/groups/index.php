@@ -60,12 +60,13 @@
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	$module_title								="Modificar ";
-    	   
-    	#$objeto->__PRINT_R($objeto->sys_fields["permiso_ids"]["values"]);   
-    	   
-    	#$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["permiso_ids"]["values"]);
-    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["menu_id"]["values"]);
+    	$module_title								="Modificar ";    	 
+    	
+    	$menu_id									=$objeto->sys_fields["menu_id"]["values"];  
+    	$objeto->__PRINT_R($menu_id);
+    	
+    	
+    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["permiso_ids"]["values"],$menu_id);
     }	
 	elseif($objeto->sys_section=="kanban")
 	{

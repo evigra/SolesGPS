@@ -165,6 +165,8 @@
     	{
     		$data	=array();
     		
+    		
+    		$this->__PRINT_R($option);
     		if(!is_null($option))
     		{	  		
     			$menus	=$this->data_menu($option);

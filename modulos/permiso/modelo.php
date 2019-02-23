@@ -62,11 +62,8 @@
 			$option["from"]		="permiso";
 			return parent::__BROWSE($option);
 		}		
-		public function permisos_html($values=NULL)
+		public function permisos_html($values=NULL, $menu_id=NULL)
     	{
-    		$menu_id=NULL;
-    		if(!is_null($values))
-    			$menu_id	=@$values[0]["menu_id"];
     		
     		$menus=$this->menu_obj->menu($menu_id);  
 			$tr="";

@@ -62,10 +62,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	$module_title								="Modificar ";    	 
     	
-    	$menu_id									=$objeto->sys_fields["menu_id"]["values"];  
-    	$objeto->__PRINT_R($menu_id);
-    	
-    	
+    	$menu_id									=$objeto->sys_fields["menu_id"]["values"][0]["id"];  
     	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["permiso_ids"]["values"],$menu_id);
     }	
 	elseif($objeto->sys_section=="kanban")

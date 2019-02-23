@@ -1565,6 +1565,7 @@ styles:
 		
 		$(".submenu2").removeClass("submenu2_active");
 		
+		/*
 		$(".submenu2").click(function(e)
 		{				
 			vLINK = $(this).parents( "a" ).attr('href');
@@ -1576,7 +1577,7 @@ styles:
 			    e.preventDefault();			
 			}					    					    			
 		});
-
+		*/
 	    if($(".base_report").length>0)
 	    {
 	    	var origen=$(".base_report");	    	

@@ -164,7 +164,7 @@
 		public function menu($option=NULL)
     	{
     		$data	=array();
-    		$this->__PRINT_R($option);
+    		#$this->__PRINT_R($option);
     		if(!is_null($option))
     		{	  		
     			$menus	=$this->data_menu($option);
@@ -173,6 +173,8 @@
     		else	  						
     			$menus	=$this->data_menu();
     		    		
+    		$this->__PRINT_R($menus);
+    		
 			foreach($menus as $imenu => $menu)
 			{
 			    $data[]					=$menu;

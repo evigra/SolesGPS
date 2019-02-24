@@ -224,7 +224,7 @@
 			$comando_sql        ="SELECT * FROM menu WHERE type='menu' $filtro";			
 			$return =$this->__EXECUTE($comando_sql, $option_conf);			
 			
-			$this->__PRINT_R($return);
+			#$this->__PRINT_R($return);
 			return $return;
 		}		
 		public function data_submenu($menu)

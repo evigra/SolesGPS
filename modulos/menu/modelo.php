@@ -196,7 +196,7 @@
 						
 	    	if(!isset($option["name"]))    	$option["name"]	=$this->sys_object;
 
-			$option["data"]		=$data;
+			#$option["data"]		=$data;
 			$option["total"]	=count($data);
 			$option["inicio"]	=1;
 			$option["fin"]		=count($data);

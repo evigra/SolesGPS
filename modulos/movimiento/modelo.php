@@ -96,6 +96,19 @@
 				    "YEAR"  	   	=> "Ano",
 				)
 			),	
+			"subtotal"	    =>array(
+			    "title"             => "Subtotal",
+			    "type"              => "input",
+			),	
+			"total"	    =>array(
+			    "title"             => "Total",
+			    "type"              => "input",
+			),	
+			"iva"	    =>array(
+			    "title"             => "IVA",
+			    "type"              => "input",
+			),	
+			
 
 		);				
 		##############################################################################	

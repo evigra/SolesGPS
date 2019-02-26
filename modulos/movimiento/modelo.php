@@ -139,15 +139,14 @@
    		public function __TOTALES($option=NULL)
     	{
     		#$this->__PRINT_R($option);
-    		$this->words["subtotal"]=0;
-    		$this->words["iva"]=0;
-    		$this->words["total"]=0;
+    		$this->sys_fields["subtotal"]["value"]=0;
+    		$this->sys_fields["iva"]["value"]=0;
+    		$this->sys_fields["total"]["value"]=0;
     		foreach($option["data"] as $row)
     		{
-				$this->words["subtotal"]+=$row["subtotal"];
-				#$this->words["iva"]+=$row["iva"];
+				$this->sys_fields["subtotal"]["value"]+=$row["subtotal"];
     		}
-    		$this->words["total"]		=$this->words["subtotal"]+$this->words["iva"];    			
+    		$this->words["total"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];    			
 		}
 		
    		public function __BROWSE($option="")

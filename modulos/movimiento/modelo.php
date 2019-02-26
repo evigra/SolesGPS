@@ -148,7 +148,7 @@
     		}
     		
     		
-    		$this->sys_fields["subtotal"]["value"]	=number_format ( $this->sys_fields["subtotal"]["value"],2 )
+    		$this->sys_fields["subtotal"]["value"]	=number_format ($this->sys_fields["subtotal"]["value"],2 );
     		$this->sys_fields["total"]["value"]		=number_format ($this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"],2);    			
 		}
 		

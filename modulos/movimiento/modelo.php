@@ -146,7 +146,7 @@
     		{
 				$this->sys_fields["subtotal"]["value"]+=$row["subtotal"];
     		}
-    		$this->words["total"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];    			
+    		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];    			
 		}
 		
    		public function __BROWSE($option="")

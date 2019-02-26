@@ -146,7 +146,10 @@
     		{
 				$this->sys_fields["subtotal"]["value"]+=$row["subtotal"];
     		}
-    		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];    			
+    		
+    		
+    		$this->sys_fields["subtotal"]["value"]	=number_format ( $this->sys_fields["subtotal"]["value"],2 )
+    		$this->sys_fields["total"]["value"]		=number_format ($this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"],2);    			
 		}
 		
    		public function __BROWSE($option="")

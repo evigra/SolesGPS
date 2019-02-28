@@ -1016,10 +1016,10 @@
 						foreach($val_attr as $field_attr => $eval_field)
 						{		
 								
-							if($attr=="background-color")	$eval_attr.="if({$eval_field})	$"."style.=\"background-color:$field_attr;\";";
-							elseif($attr=="border")			$eval_attr.="if({$eval_field})	$"."style.=\"border: 1px solid $field_attr; \";";
-							elseif($attr=="font-size")		$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
-							else							$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
+							#if($attr=="background-color")	$eval_attr.="if({$eval_field})	$"."style.=\"background-color:$field_attr;\";";
+							if($attr=="border")				$eval_attr.="if({$eval_field})	$"."style.=\"border: 1px solid $field_attr; \";";
+							#elseif($attr=="font-size")		$eval_attr.="if({$eval_field})	$"."style.=\"font-size: $field_attr; \";";
+							else							$eval_attr.="if({$eval_field})	$"."style.=\"$attr: $field_attr; \";";
 							
 
 						}
@@ -2374,9 +2374,9 @@
 					{
 						$return["report"]="
 							$view_head														
-							<div id=\"div_$name\" class=\"$report_class\" obj=\"$name\" style=\"height: 100%;\">
-								<div id=\"div2_$name\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">							
-									<table width=\"100%\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+							<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
+								<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">							
+									<table width=\"100%\" class=\"view_report_t1\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
 										$view_title
 										$view_body
 									</table>

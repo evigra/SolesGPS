@@ -20,7 +20,7 @@ div.report_form table tr
 	height: 			-webkit-calc(100%);
 }
 
-view_report_d1 view_report_d2 view_report_t1 tr td{
+.view_report_d1 .view_report_d2 .view_report_t1 tr td{
 	padding-left:		2px;
 	padding-right:		2px;
 }

@@ -139,9 +139,9 @@
    		public function __TOTALES($option=NULL)
     	{
     		#$this->__PRINT_R($option);
-    		$this->sys_fields["subtotal"]["value"]=0;
-    		$this->sys_fields["iva"]["value"]=0;
-    		$this->sys_fields["total"]["value"]=0;
+    		$this->sys_fields["subtotal"]["value"]	=0;
+    		$this->sys_fields["iva"]["value"]		=0;
+    		$this->sys_fields["total"]["value"]		=0;
     		foreach($option["data"] as $row)
     		{
 				$this->sys_fields["subtotal"]["value"]+=$row["subtotal"];

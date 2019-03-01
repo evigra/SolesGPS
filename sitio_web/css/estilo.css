@@ -26,8 +26,8 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td{
 }
 
 div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td table.cBotones tr td.cAction{
-	padding-left:		0px;
-	padding-right:		0px;
+	padding-left:		1px;
+	padding-right:		1px;
 }
 
 
@@ -46,6 +46,30 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td table.cBotones 
 	padding-top:		15px; 
 	padding-bottom:		10px;
 }
+.module_subtitle2{
+	color:				SteelBlue; 
+	font-size:			20; 
+	text-align:			left;  
+	padding-top:		15px; 
+	padding-bottom:		10px;
+}
+.module_subtitle3{
+	color:				SteelBlue; 
+	font-size:			17; 
+	text-align:			left; 
+	font-weight:		bold; 
+	padding-top:		15px; 
+	padding-bottom:		10px;
+}
+.module_subtitle4{
+	color:				SteelBlue; 
+	font-size:			17; 
+	text-align:			left; 
+	font-weight:		bold; 
+	padding-top:		15px; 
+	padding-bottom:		10px;
+}
+
 
 .submenu2
 {

@@ -25,7 +25,7 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td{
 	padding-right:		4px;
 }
 
-table.cBotones tr td.cAction{
+div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td table.cBotones tr td.cAction{
 	padding-left:		0px;
 	padding-right:		0px;
 }

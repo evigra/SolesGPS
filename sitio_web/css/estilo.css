@@ -25,6 +25,11 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td{
 	padding-right:		4px;
 }
 
+table.cBotones tr td.cAction{
+	padding-left:		0px;
+	padding-right:		0px;
+}
+
 
 .module_title {
 	padding-left:		10px; 

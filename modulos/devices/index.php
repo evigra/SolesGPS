@@ -54,21 +54,6 @@
     	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     }
-    elseif($objeto->sys_section=="write2")
-	{
-    	$module_title                	=	"Modificar ";
-
-    	$module_right=array(
-			array("create"=>"Crear"),
-			#array("write"=>"Modificar"),
-			array("kanban"=>"Kanban"),
-			array("report"=>"Reporte"),
-	    	);	
-
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write2");	
-    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	
-    }    	
 	elseif($objeto->sys_section=="kanban")
 	{
 	    $module_title			="Reporte Modular de ";
@@ -108,7 +93,7 @@
 
 		$option["template_title"]		=	$objeto->sys_module."html/report_title";
 		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-		$option["template_form"]		=	$objeto->sys_module."html/report_form";
+		#$option["template_form"]		=	$objeto->sys_module."html/report_form";
 		
 		$data							=	$objeto->devices($option);
 		

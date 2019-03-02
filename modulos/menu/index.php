@@ -87,7 +87,7 @@
 		";
 		
 		
-		$data										=$objeto->VIEW_REPORT($option);
+		$data										=$objeto->__VIEW_REPORT($option);
 		
 		
 		$objeto->words["module_body"]				=$data["html"];		

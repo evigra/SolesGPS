@@ -69,9 +69,6 @@
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 		$data										=$objeto->menu($option);
-		$data										=$objeto->VIEW_REPORT($option);
-		
-		
 		$objeto->words["module_body"]				=$data["html"];		
     }
     $module_left=array(

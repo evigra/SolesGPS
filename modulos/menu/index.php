@@ -68,27 +68,22 @@
 		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
 		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
-		$data										=$objeto->menu($option);
 		
 		$option["select"]	="n.*";
 		$option["from"]		="
 			admin_server.menu p 
 			join  admin_server.menu h on p.type='menu'
 			join  admin_server.menu n		
-				on 
-					(p.type=h.type and p.id=h.id and h.id=n.id) 
+				on 	(p.type=h.type and p.id=h.id and h.id=n.id) 
 				or  (h.type='submenu' and h.type=n.type and h.parent=p.id and h.id=n.id) 
 				or  (h.type='submenu' and n.type='opcion'and h.parent=p.id and n.parent=h.id) 
 		";
 		$option["order"]	="
-		p.parent,p.id,
-		h.parent,h.id,
-		n.parent,n.id
+			p.parent,p.id,
+			h.parent,h.id,
+			n.parent,n.id
 		";
-		
-		
 		$data										=$objeto->__VIEW_REPORT($option);
-		
 		
 		$objeto->words["module_body"]				=$data["html"];		
     }

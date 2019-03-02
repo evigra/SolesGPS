@@ -173,7 +173,7 @@
     		else	  						
     			$menus	=$this->data_menu();
     		    		
-    		$this->__PRINT_R($menus);
+    		#$this->__PRINT_R($menus);
     		
 			foreach($menus as $imenu => $menu)
 			{
@@ -196,7 +196,7 @@
 						
 	    	if(!isset($option["name"]))    	$option["name"]	=$this->sys_object;
 
-			#$option["data"]		=$data;
+			$option["data"]		=$data;
 			$option["total"]	=count($data);
 			$option["inicio"]	=1;
 			$option["fin"]		=count($data);

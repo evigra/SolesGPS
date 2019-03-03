@@ -1,29 +1,82 @@
 <div class="mainTable">
-    <div class="module_subtitle">__CONSTRUCT($option=array())</div>
     <table width="100%" border="0">
         <tr>
-            <td width="15%">$option["object"]</td>        
+            <td colspan="3">
+	            <div class="module_subtitle">__CONSTRUCT($option=array())</div>
+            </td>        
+        </tr>          
+        
+        <tr><td colspan="3"><div class="module_subtitle1">DESCRIPCION</div></td></tr>          
+        <tr>
+            <td colspan="3">
+				Este metodo asigna los atributos del modulo usando un array llamado option, el cual puede indicarse para asignarlos o utilizar los atributos preestablecidos del modulo	            
+            </td>        
+        </tr>          
+        
+        <tr><td colspan="3"><div class="module_subtitle1">METODOS QUE USA</div></td></tr>          
+        <tr>
+            <td width="15%">__REQUEST</td>        
             <td width="5%"></td>
-            <td>El indice OBJECT hace referencia a la tabla</td>        
+            <td>Localizado en la clase AUXILIAR</td>        
         </tr>          
         <tr>
-            <td width="15%">$option["name"]</td>        
+            <td width="15%">__FIND_FIELD_ID</td>        
             <td width="5%"></td>
-            <td>El indice NAME hace referencia a la tabla</td>        
+            <td>Localizado en la clase AUXILIAR</td>        
         </tr>          
         <tr>
-            <td width="15%">$option["table"]</td>        
+            <td width="15%">__FIND_FIELDS</td>        
             <td width="5%"></td>
-            <td>El indice TABLE hace referencia a la tabla</td>        
+            <td>Localizado en la clase AUXILIAR</td>        
         </tr>          
         <tr>
-            <td width="15%">$option["memory"]</td>        
+            <td width="15%">__PRE_SAVE</td>        
             <td width="5%"></td>
-            <td>El indice MEMORY hace referencia a la tabla</td>        
+            <td>Localizado en la clase AUXILIAR</td>        
+        </tr>          
+
+		<tr><td colspan="3"><div class="module_subtitle1">DATOS DE ENTRADA</div></td></tr>          
+        <tr>
+            <td colspan="3">
+				Recibe un array llamado <b>option</b> el cual puede ser usado para asignar los artibutos al objeto creado. Si el metodo no tiene un array, el framework asignara los prestablecidos del modulo.				
+            </td>        
+        </tr>          
+
+		<tr><td colspan="3"><div class="module_subtitle1">DATOS QUE MODIFICA DURANTE EL PROCESO.</div></td></tr>          
+        <tr>
+            <td colspan="3">
+				Recibe un array llamado <b>option</b> el cual puede ser usado para asignar los artibutos al objeto creado. Si el metodo no tiene un array, el framework asignara los prestablecidos del modulo.				
+            </td>        
         </tr>          
 
 
 
+
+        <tr>
+            <td width="15%">sys_object</td>        
+            <td width="5%"></td>
+            <td>Nombre de la carpeta que representa al modulo</td>        
+        </tr>          
+        <tr>
+            <td width="15%">sys_table</td>        
+            <td width="5%"></td>
+            <td>Nombre de la tabla en la BD que usa el modulo</td>        
+        </tr>          
+        <tr>
+            <td width="15%">sys_module</td>        
+            <td width="5%"></td>
+            <td>Ruta real, para accesar al modulo</td>        
+        </tr>          
+        <tr>
+            <td width="15%">sys_fields</td>        
+            <td width="5%"></td>
+            <td>Array de atributos de la tabla indicada en el attribute <b>sys_table</b></td>        
+        </tr>          
+        <tr>
+            <td width="15%">request</td>        
+            <td width="5%"></td>
+            <td>Array de atributos enviados por formularios </b></td>        
+        </tr>          
 
     </table>
 

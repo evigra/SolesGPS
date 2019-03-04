@@ -1,5 +1,5 @@
 <?php
-	class movimiento_plantilla extends movimiento
+	class plantilla_compra extends movimiento
 	{   
 		##############################################################################	
 		##  Propiedades	
@@ -7,7 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
-		var $tipo_movimiento	="PL";
+		var $tipo_movimiento	="PC";
 		
 		#var $movimiento_obj;
 		
@@ -71,7 +71,7 @@
 				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);
 				
-				$rows["tipo"]						="SO";
+				$rows["tipo"]						="OC";
 				#if($this->request["sys_section_". $this->sys_object]=="create")
 				{
 					$option_folios					=array();

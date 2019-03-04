@@ -144,7 +144,8 @@
     		$this->sys_fields["total"]["value"]		=0;
     		foreach($option["data"] as $row)
     		{
-				$this->sys_fields["subtotal"]["value"]+=$row["subtotal"];
+				$this->sys_fields["subtotal"]["value"]	+=$row["subtotal"];
+				$this->sys_fields["iva"]["value"]		+=$row["impuesto"];
 				
     		}    		    		    		
     		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];  			

@@ -24,11 +24,11 @@
 	}
 	function subtotal()
 	{
-		var cantidad=0;
-		var precio=0;
-		var descuento=0;
-		var subtotal=0;
-		var iva=0;
+		var cantidad	=0;
+		var precio		=0;
+		var descuento	=0;
+		var subtotal	=0;
+		var impuesto	=0;
 		
 		if(!isNaN(parseFloat($("#cantidad.movimientos").val())))	
 			cantidad=parseFloat($("#cantidad.movimientos").val());
@@ -39,11 +39,11 @@
 		if(!isNaN(parseFloat($("#descuento.movimientos").val())))	
 			descuento=parseFloat($("#descuento.movimientos").val());
 
-		subtotal	=(cantidad*precio)-descuento;
-		iva			=subtotal*0.16;
+		subtotal		=(cantidad*precio)-descuento;
+		impuesto		=subtotal*0.16;
 
 		$("#subtotal.movimientos").val(subtotal);
-		$("#subtotal.impuesto").val(iva);
+		$("#subtotal.impuesto").val(impuesto);
 	}		
 	$(document).ready(function()
 	{

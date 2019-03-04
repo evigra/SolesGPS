@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
-	#require_once("modulos/files/modelo.php");
 	class tax extends configuracion
 	{   
 		##############################################################################	

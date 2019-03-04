@@ -51,7 +51,6 @@
 			    "class_field_m"    	=> "clase",			    
 			    
 			),
-
 			"valor"	    =>array(
 			    "title"             => "valor",
 			    "showTitle"         => "si",

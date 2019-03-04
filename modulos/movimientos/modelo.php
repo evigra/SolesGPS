@@ -9,15 +9,11 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 			#######################################################################
 			"movimiento_id"	    =>array(
 				"title"             => "Calculo ID",			    
-			    "holder"             => "concepto",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 					"required",
@@ -29,10 +25,8 @@
 			"item_id"	=>array(
 			    "title"             => "Articulo",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_item",
-			    "value"             => "",			    			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "item",
 			    "class_field_l"    	=> "nombre",				# Label
@@ -42,7 +36,6 @@
 
 			"cantidad"	    =>array(
 				"title"             => "Cantidad",			    
-			    "holder"             => "concepto",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 				
@@ -52,7 +45,6 @@
 			),
 			"precio"	    =>array(
 				"title"             => "Precio",			    
-			    "holder"             => "concepto",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 				
@@ -62,7 +54,6 @@
 			),
 			"subtotal"	    =>array(
 				"title"             => "Subtotal",			    
-			    "holder"             => "concepto",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 				
@@ -70,12 +61,20 @@
 			    ),				
 				
 			),
-			"descuento"	    =>array(
-				"title"             => "Descuento",			    
-			    "holder"             => "concepto",			    
+			"impuesto"	    =>array(
+				"title"             => "IVA",			       
 			    "type"              => "input",								
 			    "attr"             => array(		
 				
+					"tabindex"		=>"1",			    	
+			    ),				
+				
+			),
+
+			"descuento"	    =>array(
+				"title"             => "Descuento",			        
+			    "type"              => "input",								
+			    "attr"             => array(						
 					"tabindex"		=>"1",			    	
 			    ),				
 				

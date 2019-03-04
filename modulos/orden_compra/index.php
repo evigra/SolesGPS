@@ -1,5 +1,5 @@
 <?php	
-	$objeto											=new movimiento_pedido();		
+	$objeto											=new orden_compra();		
 	$objeto->__SESSION();
 	
 	# CARGANDO PLANTILLAS GENERALES

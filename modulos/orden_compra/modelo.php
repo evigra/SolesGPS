@@ -1,5 +1,5 @@
 <?php
-	class movimiento_pedido extends movimiento
+	class orden_compra extends movimiento
 	{   
 		##############################################################################	
 		##  Propiedades	
@@ -7,7 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
-		var $tipo_movimiento	="SO";
+		var $tipo_movimiento	="OC";
 		
 		var $movimiento_obj;
 		

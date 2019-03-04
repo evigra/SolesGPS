@@ -43,7 +43,8 @@
 		impuesto		=subtotal*0.16;
 
 		$("#subtotal.movimientos").val(subtotal);
-		$("#subtotal.impuesto").val(impuesto);
+		$("#impuesto.movimientos").val(impuesto);
+	
 	}		
 	$(document).ready(function()
 	{

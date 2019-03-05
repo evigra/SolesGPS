@@ -2346,7 +2346,7 @@
 										 
 											var key = event.keyCode;  
 										 
-										 
+										 	alert(key);
 
 
 

@@ -8,15 +8,15 @@
 
 		var lista=1;
 		
-		if(compra>0)
-		{ 	
-			lista=compra;
-			tipo="compra";
-		}
 		if(vende>0)
 		{ 	
 			lista=vende;
 			tipo="vende";
+		}
+		if(compra>0)
+		{ 	
+			lista=compra;
+			tipo="compra";
 		}
 			
 		$("input#precio").val(ui.item[tipo+lista]);					

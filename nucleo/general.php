@@ -511,6 +511,9 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		if($this->sys_primary_field=="")
+	    		$this->__FIND_FIELD_ID();
+    	
 			if(!isset($this->sys_memory) OR $this->sys_memory=="")
 			{	
 				###########################################################	
@@ -705,12 +708,12 @@
 							)
 						);
 					}				
-
 					$valor_campo	=$this->sys_fields[$this->sys_primary_field]["value"];
 	
 					$row														=$datas["row"];				
 
-					if(!isset($row[$this->sys_primary_field]))		$row[$this->sys_primary_field]=@$this->sys_primary_id;
+					if(!isset($row[$this->sys_primary_field]))		
+						$row[$this->sys_primary_field]=@$this->sys_primary_id;
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
 					{

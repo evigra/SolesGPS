@@ -2349,7 +2349,8 @@
 											}
 
 										 
-											var key = (event.keyCode ? event.keyCode : event.which); 
+											////var key = (event.keyCode ? event.keyCode : event.which);
+											var key = event.keyCode;  
 										 
 											if (key >= '65' && key = '96' && key = '48' && key = '112' && key <= '123') 
 												alert('You pressed FUNCTION key - ' + (key - 111)); 

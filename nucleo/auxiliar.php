@@ -2344,20 +2344,8 @@
 										.on( \"keydown\", function( event ) 
 										{
 										 
-											////var key = (event.keyCode ? event.keyCode : event.which);
 											var key = event.keyCode;  
 										 
-											if (key >= '65' && key = '96' && key = '48' && key = '112' && key <= '123') 
-												alert('You pressed FUNCTION key - ' + (key - 111)); 
-										 
-											else if (key == '144') 
-												alert('You pressed NUMLOCK key'); 
-										 
-											else if (key == '145') 
-												alert('You pressed SCROLL LOCK key'); 
-										 
-											else 
-												alert('You pressed SPECIAL CHARACTER key'); 
 										 
 
 

@@ -107,6 +107,7 @@
 					"3"				=>"Producto disponible",
 				)					    	    			    
 			),									
+			/*
 			"tax_venta_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -119,6 +120,7 @@
 			    "class_field_o"    	=> "item_id",
 			    "class_field_m"    	=> "tax_id",				
 			),
+			*/
 			"campo1"	    =>array(
 			    "title"             => "campo1",
 			    "type"              => "input",

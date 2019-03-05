@@ -45,6 +45,10 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "movimiento_id",				
 			),
+			"subtipo"	    =>array(
+			    "title"             => "Tipo",
+			    "type"              => "input",
+			),			
 			"tipo"	    =>array(
 			    "title"             => "Tipo",
 			    "type"              => "hidden",

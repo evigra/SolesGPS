@@ -27,8 +27,7 @@
 				$option_folios=array();
 				$option_folios["tipo"]			=$this->tipo_movimiento;
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
-			}				
-			
+			}							
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
@@ -41,8 +40,7 @@
 			
 			if(!isset($this->request["sys_order_". $this->sys_object]) OR $this->request["sys_order_". $this->sys_object]=="")
 				$option["order"]="id desc";
-			
-			
+						
 			return parent::__BROWSE($option);
 		}							
 	}

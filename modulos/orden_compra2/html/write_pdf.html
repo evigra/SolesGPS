@@ -1,18 +1,15 @@
-{venta}
-{compra}
-<div class="mainTable">
-	<table border="0"  width="100%">
+	<table border="0"  width="680">
 		<tr>
 			<td colspan="4" align="left">{empresa_id}</td>
-			<td width="16%" align="left"></td>                							
-			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
+			<td width="10%" align="left"></td>                							
+			<td width="20%" align="left"><b style="font-size:25px;">{tipo}{folio}</b></td>			
 		</tr>   
 		<tr>
-			<td colspan="2" width="33%">{trabajador_id}</td>                							
+			<td colspan="2" align="left">{trabajador_id}</td>                							
 			<td></td>
-			<td width="17%"></td>                							
 			<td></td>                							
-			<td width="17%" align="left">{fecha}</td>						
+			<td></td>                							
+			<td align="left">{fecha}</td>						
 		</tr>   
 		<tr>
 			<td colspan="4"></td>           
@@ -20,7 +17,8 @@
 			<td align="left">{caducidad}</td>						
 		</tr>   
 		<tr>
-			<td colspan="6">
+			<td colspan="6" height="600">
+				<br>
 				<div class="form">{movimientos_ids}</div>
 			</td>           
 		</tr>   
@@ -28,7 +26,7 @@
 			<td colspan="4" align="right">
 			</td>	
 			<td  colspan="2">
-				<table border="0"  width="250">
+				<table border="0">
 					<tr>
 						<td align="right"><b>Subtotal</b></td>           
 						<td align="right">{subtotal}</td>           
@@ -42,8 +40,6 @@
 						<td align="right">{total}</td>           
 					</tr>   
 				</table>
-
 			</td>	
-		</tr>           
+		</tr>           		
 	</table>    		
-</div>

@@ -39,7 +39,6 @@
 			    "class_field_m"    	=> "id",			    
 			),			
 			"movimientos_ids"	    =>array(
-			    "title"             => "Horario",
 			    "type"              => "form",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "movimientos",			    
@@ -163,4 +162,3 @@
 		}							
 	}
 ?>
-

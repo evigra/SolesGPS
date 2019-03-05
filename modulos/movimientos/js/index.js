@@ -48,7 +48,6 @@
 	}		
 	$(document).ready(function()
 	{
-		
 		$("input.movimientos_ids")
 			.focusout(function(){subtotal();})
 			.on('keydown', function (e) 
@@ -58,7 +57,6 @@
 					subtotal();							
 				}	
 			});
-			
 	});	
 		
 		

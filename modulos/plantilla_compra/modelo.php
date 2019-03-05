@@ -17,7 +17,6 @@
         
 		public function __CONSTRUCT()
 		{	
-			#$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
@@ -29,6 +28,7 @@
 			{
 				$option_folios=array();
 				$option_folios["tipo"]			=$datas["tipo"];
+				$option_folios["variable"]		=date("Y");
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
 			

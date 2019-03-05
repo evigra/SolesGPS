@@ -2340,7 +2340,19 @@
 
 	            				$(\"font#create_$name\").click(function()
 	            				{
-	            					$(\"div#create_$name\").dialog({
+	            					$(\"div#create_$name\")
+	            						.keydown(function(event) { 
+											var key = (event.keyCode ? event.keyCode : event.which); 
+											if (key >= '65' && key = '96' && key = '48' && key = '112' && key <= '123') 
+											alert('You pressed FUNCTION key - ' + (key - 111)); 
+											else if (key == '144') 
+											alert('You pressed NUMLOCK key'); 
+											else if (key == '145') 
+											alert('You pressed SCROLL LOCK key'); 
+											else 
+											alert('You pressed SPECIAL CHARACTER key'); 
+										}) 	            					
+	            						.dialog({
 	            						open: function(event, ui){
 											var dialog = $(this).closest('.ui-dialog');
 										},

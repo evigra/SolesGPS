@@ -708,7 +708,7 @@
 							)
 						);
 					}		
-					$valor_campo=""
+					$valor_campo="";
 					
 					if(isset($this->sys_fields[$this->sys_primary_field]["value"]))		
 						$valor_campo	=$this->sys_fields[$this->sys_primary_field]["value"];

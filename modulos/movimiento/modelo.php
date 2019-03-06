@@ -156,10 +156,16 @@
     		{
 				$this->sys_fields["subtotal"]["value"]	+=$row["subtotal"];
 				$this->sys_fields["iva"]["value"]		+=$row["impuesto"];
-				
-    		}    		    		    		
+    		}
+			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
+				$this->sys_fields["iva"]["value"]=0;
+
+
+
+    		    		    		    		
     		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];  			
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
+    		
 		}
 		
    		public function __BROWSE($option="")

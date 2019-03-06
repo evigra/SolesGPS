@@ -157,7 +157,7 @@
 				$this->sys_fields["subtotal"]["value"]	+=$row["subtotal"];
 				$this->sys_fields["iva"]["value"]		+=$row["impuesto"];
     		}
-			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
+			if(isset($this->sys_fields["subtipo"]["value"]) AND ($this->sys_fields["subtipo"]["value"]=="SV" OR $this->sys_fields["subtipo"]["value"]=="SC"))	
 				$this->sys_fields["iva"]["value"]=0;
 
 

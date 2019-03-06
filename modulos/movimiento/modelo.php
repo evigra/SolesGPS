@@ -183,6 +183,10 @@
 			
 			if(isset($_SESSION["company"]["id"]))
 	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
+	    		
+			if(!isset($this->request["sys_order_". $this->sys_object]))
+				$option["order"]="id desc";
+	    		
 			return parent::__BROWSE($option);
 		}							
 	}

@@ -2373,7 +2373,7 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
-						@$this->__VIEW_REPORT_JS.="			
+						@$return["js"].="			
 								$button_create_js
 								sys_report_memory();
 												
@@ -2435,7 +2435,7 @@
 								</div>
 							</div>
 							<script>
-								{$this->__VIEW_REPORT_JS}
+								{$return["js"]}
 							</script>
 						";
 						

@@ -83,6 +83,12 @@
     	{    		
     	    return parent::__SAVE($datas,$option);
 		}
+   		public function __VIEW_REPORT($option)
+    	{    		
+    	    return __VIEW_REPORT($option)
+		}
+		
+		
 	}
 ?>
 

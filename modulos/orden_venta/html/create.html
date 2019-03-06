@@ -4,14 +4,14 @@
 	<table border="0"  width="100%">
 		<tr>
 			<td colspan="4" align="left">{empresa_id}</td>
-			<td width="16%" align="left"></td>                							
+			<td width="16%" align="left">{subtipo}</td>                							
 			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
 		</tr>   
 		<tr>
 			<td colspan="2" width="33%">{trabajador_id}</td>                							
 			<td></td>
 			<td width="17%"></td>                							
-			<td></td>                							
+			<td>{estatus}</td>                							
 			<td width="17%" align="left">{fecha}</td>						
 		</tr>   
 		<tr>
@@ -28,18 +28,12 @@
 			<td colspan="4" align="right">
 			</td>	
 			<td  colspan="2">
-				<table border="0"  width="250">
+				<table width="100%">
 					<tr>
-						<td align="right"><b>Subtotal</b></td>           
-						<td align="right">{subtotal}</td>           
+						<td>{subtotal}</td><td>{iva}</td>
 					</tr>   
 					<tr>
-						<td align="right"><b>IVA</b></td>           
-						<td align="right">{iva}</td>           
-					</tr>   
-					<tr>
-						<td align="right"><b>Total</b></td>           
-						<td align="right">{total}</td>           
+						<td colspan="2">{total}</td>           
 					</tr>   
 				</table>
 

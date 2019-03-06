@@ -7,7 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
-		var $tipo_movimiento	="PV";
+		var $tipo_movimiento	="TV";
 		
 		#var $movimiento_obj;
 		

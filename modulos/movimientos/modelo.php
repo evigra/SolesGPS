@@ -85,10 +85,11 @@
 		}
    		public function __VIEW_REPORT($option)
     	{    		
-    	    return __VIEW_REPORT($option)
+			$return =	parent::__VIEW_REPORT($option);
+			$this->__PRINT_R($return);
+    	
+    	    return $return
 		}
-		
-		
 	}
 ?>
 

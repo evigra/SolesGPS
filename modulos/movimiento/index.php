@@ -136,7 +136,7 @@
 		$module_title								="Reporte de ";
     }
     
-	$objeto->words["module_title"]              ="$module_title Ordenes de Venta";
+	$objeto->words["module_title"]              ="$module_title Movimientos";
 	
 	
 	

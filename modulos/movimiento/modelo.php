@@ -132,7 +132,9 @@
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
-				$datas["iva"]		=0;		
+				$datas["iva"]		=0;
+				
+			$this->__PRINT_R($datas);			
 
 
     	    return parent::__SAVE($datas,$option);

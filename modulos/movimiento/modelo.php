@@ -113,8 +113,6 @@
 			    "title"             => "IVA",
 			    "type"              => "input",
 			),	
-			
-
 		);				
 		##############################################################################	
 		##  Metodos	
@@ -126,6 +124,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+  			$this->__PRINT_R($datas);
   			if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
     		$datas["tipo"]						=$this->tipo_movimiento;								
     		    		
@@ -150,7 +149,7 @@
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 
-    	    return parent::__SAVE($datas,$option);
+    	#    return parent::__SAVE($datas,$option);
 		}
    		public function __INPUT($words=NULL, $fields=NULL)
     	{

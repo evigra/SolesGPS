@@ -131,7 +131,9 @@
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{
 				$datas["iva"]				=0;
-				$datas["tipo"]				=$datas["subtipo"];
+				
+				if(!($datas["tipo"]="PV" OR $datas["tipo"]="PC"))
+					$datas["tipo"]				=$datas["subtipo"];
 			}					
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{

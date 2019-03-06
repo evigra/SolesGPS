@@ -126,16 +126,26 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$datas["tipo"]						=$this->tipo_movimiento;								
+    		    		
+			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
+			{
+				$datas["iva"]				=0;
+				$datas["tipo"]				=$datas["subtipo"];
+			}					
+			if($this->request["sys_section_". $this->sys_object]=="create")
+			{
+				$option_folios=array();
+				$option_folios["tipo"]			=$datas["tipo"];
+				$option_folios["variable"]		=date("Y");
+				$datas["folio"]					=$this->__FOLIOS($option_folios);
+			}				
+
 			$datas["registro"]				=$this->sys_date;
 			if(isset($_SESSION["company"]["id"]))
 				$datas["company_id"]		=$_SESSION["company"]["id"];
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
-			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
-				$datas["iva"]		=0;
-				
-			#$this->__PRINT_R($datas);			
-
 
     	    return parent::__SAVE($datas,$option);
 		}
@@ -148,7 +158,6 @@
 		}
    		public function __TOTALES($option=NULL)
     	{
-    		#$this->__PRINT_R($option);
     		$this->sys_fields["subtotal"]["value"]	=0;
     		$this->sys_fields["iva"]["value"]		=0;
     		$this->sys_fields["total"]["value"]		=0;
@@ -160,12 +169,8 @@
 			if(isset($this->sys_fields["subtipo"]["value"]) AND ($this->sys_fields["subtipo"]["value"]=="SV" OR $this->sys_fields["subtipo"]["value"]=="SC"))	
 				$this->sys_fields["iva"]["value"]=0;
 
-
-
-    		    		    		    		
     		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];  			
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
-    		
 		}
 		
    		public function __BROWSE($option="")

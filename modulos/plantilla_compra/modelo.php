@@ -21,17 +21,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
-	    		$datas["tipo"]						=$this->tipo_movimiento;								
-	    		
-			if($this->request["sys_section_". $this->sys_object]=="create")
-			{
-				$option_folios=array();
-				$option_folios["tipo"]			=$datas["tipo"];
-				$option_folios["variable"]		=date("Y");
-				$datas["folio"]					=$this->__FOLIOS($option_folios);
-			}				
-			
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}

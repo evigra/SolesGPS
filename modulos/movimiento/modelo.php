@@ -126,7 +126,7 @@
     	{
   			$this->__PRINT_R($datas);
   			if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
-    		$datas["tipo"]						=$this->tipo_movimiento;								
+    			$datas["tipo"]						=$this->tipo_movimiento;								
     		    		
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{

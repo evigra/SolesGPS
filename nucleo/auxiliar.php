@@ -2373,18 +2373,7 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
-						$return["report"]="
-							$view_head														
-							<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
-								<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-									<table width=\"100%\" class=\"view_report_t1\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
-										$view_title
-										$view_body
-									</table>
-								</div>
-							</div>		
-							
-							<script>
+						@$this->__VIEW_REPORT_JS.="			
 								$button_create_js
 								sys_report_memory();
 												
@@ -2432,8 +2421,24 @@
 										$(\"form\").submit(); 
 									}	
 								});	
-							</script>
 						";						
+
+
+						$return["report"]="
+							$view_head														
+							<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
+								<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+									<table width=\"100%\" class=\"view_report_t1\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+										$view_title
+										$view_body
+									</table>
+								</div>
+							</div>
+							<script>
+								{$this->__VIEW_REPORT_JS}
+							</script>
+						";
+						
 					}
 					
 					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">

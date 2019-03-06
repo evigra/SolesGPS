@@ -47,10 +47,12 @@
 			),
 			"subtipo"	    =>array(
 			    "title"             => "Tipo",
+			    "title_filter"      => "Subtipo",		
 			    "type"              => "input",
 			),			
 			"tipo"	    =>array(
 			    "title"             => "Tipo",
+			    "title_filter"      => "Tipo",				    
 			    "type"              => "hidden",
 			),			
 			"compra"	    =>array(

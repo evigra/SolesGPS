@@ -2341,17 +2341,6 @@
 	            				$(\"font#create_$name\").click(function()
 	            				{
 	            					$(\"div#create_$name\")
-										.on( \"keydown\", function( event ) 
-										{
-										 
-											var key = event.keyCode;  
-										 
-										 	alert(key);
-
-
-
-										})
-	     
 	            						.dialog({
 			        						open: function(event, ui){
 												var dialog = $(this).closest('.ui-dialog');

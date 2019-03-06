@@ -134,7 +134,7 @@
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 				$datas["iva"]		=0;
 				
-			$this->__PRINT_R($datas);			
+			#$this->__PRINT_R($datas);			
 
 
     	    return parent::__SAVE($datas,$option);

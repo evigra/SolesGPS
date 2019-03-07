@@ -124,7 +124,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-  			$this->__PRINT_R($datas);
   			if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
     			$datas["tipo"]						=$this->tipo_movimiento;								
     		    		

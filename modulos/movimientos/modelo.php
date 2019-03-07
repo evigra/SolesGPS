@@ -85,8 +85,15 @@
 		}
    		public function __VIEW_REPORT($option)
     	{    		
-			$return=parent::__VIEW_REPORT($option);
-			$this->__PRINT_R($return);
+			$return		=parent::__VIEW_REPORT($option);			
+			$datas		=$return["data"];
+			foreach($datas as $data)
+			{
+			
+			}
+			
+			
+			$this->__PRINT_R($datas);
     	    return $return;
 		}
 	}

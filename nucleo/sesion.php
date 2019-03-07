@@ -29,6 +29,7 @@
 	{
 		if(@file_exists($pre_path	."nucleo/general.php"))
 		{
+			require_once($pre_path	."nucleo/basededatos.php");
 			require_once($pre_path	."nucleo/general.php");		
 			require_once($pre_path	."nucleo/auxiliar.php");		
 
@@ -41,6 +42,7 @@
 				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
 					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");
 			}
+			break;
 		}				
 		$pre_path.="../";
 	}

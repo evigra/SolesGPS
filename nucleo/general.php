@@ -1,5 +1,5 @@
 <?php
-	include('auxiliar.php');	
+	#include('auxiliar.php');	
 	class general extends auxiliar
 	{   
 		##############################################################################	

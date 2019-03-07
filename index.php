@@ -1,5 +1,5 @@
 <?php
-	include("nucleo/sesion.php");
+	require_once("nucleo/sesion.php");
     
     if(@$_REQUEST["setting_company"]>0)
     {

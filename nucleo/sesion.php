@@ -47,5 +47,5 @@
 		}				
 		$pre_path.="../";
 	}
-	$objeto=null;
+	
 ?>	

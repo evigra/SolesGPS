@@ -10,7 +10,7 @@
 			FROM company c WHERE id={$_REQUEST["setting_company"]}
 		";		
 		$modulos 		=$objeto->__EXECUTE($comando_sql);    
-					
+		$objeto=null;					
 		foreach($modulos as $modulo)
 		{
 			$_SESSION["company"]					=$modulo;

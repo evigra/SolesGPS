@@ -30,8 +30,9 @@
 		if(@file_exists($pre_path	."nucleo/general.php"))
 		{
 			require_once($pre_path	."nucleo/basededatos.php");
+			require_once($pre_path	."nucleo/auxiliar.php");
 			require_once($pre_path	."nucleo/general.php");		
-			require_once($pre_path	."nucleo/auxiliar.php");		
+					
 
 			$objeto	=new general();         
 			$comando_sql="SELECT * FROM modulos ";		

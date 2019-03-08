@@ -148,7 +148,7 @@
 
     	    return parent::__SAVE($datas,$option);
 		}
-		/*
+		
    		public function __INPUT($words=NULL, $fields=NULL)
     	{
     	    $this->words =parent::__INPUT($words, $fields);    	    
@@ -175,7 +175,7 @@
 
 
 		}
-		*/
+		
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			

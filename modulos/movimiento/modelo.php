@@ -130,6 +130,7 @@
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{
 				$datas["iva"]				=0;				
+				$datas["total"]				=$datas["subtotal"];
 			}					
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{

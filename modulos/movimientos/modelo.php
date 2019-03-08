@@ -87,13 +87,26 @@
     	{    		
 			$return		=parent::__VIEW_REPORT($option);			
 			$datas		=$return["data"];
+			
+			
+			
+			$subtotal=0;
+			$impuesto=0;
 			foreach($datas as $data)
 			{
-			
+				$subtotal+=$data["subtotal"];
+				$impuesto+=$data["impuesto"];
 			}
+			$total=$subtotal+$impuesto;
 			
+			$datas=array(
+				"subtotal[name='{$this->class_one}_subtotal"	=>"$subtotal",
+				"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
+				"total[name='{$this->class_one}_total']"		=>"$total",				
+			);
 			
-			$this->__PRINT_R($datas);
+			$this->__JS_SET_INPUT($datas)
+			
     	    return $return;
 		}
 	}

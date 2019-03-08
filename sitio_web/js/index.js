@@ -1712,24 +1712,8 @@ styles:
             	var path		="";
 				for(ivariables in variables)
 				{
-					path=set_var(variables, ivariables);
+					path=set_var(ivariables, variables[ivariables]);
 				
-					/*
-					if($("select#"+ivariables).length>0)
-					{
-						if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-							$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");							
-						$("select#"+ivariables).val(variables[ivariables]);						
-					}	
-					else if($("input#"+ivariables).length>0) 
-					{
-						$("input#"+ivariables).val(variables[ivariables]);
-					}
-					else
-					{
-						path=path+"&"+ivariables+"="+variables[ivariables];
-					}
-					*/
 					if(variables[ivariables]=="delete")							
 					{
 						enviar = confirm("Borrar datos");														
@@ -1886,19 +1870,19 @@ styles:
 	function set_var(variables, ivariables)
 	{
 		var path="";
-		if($("select#"+ivariables).length>0)
+		if($("select#"+variables).length>0)
 		{
-			if($("select#"+ivariables+" option[value='"+variables[ivariables]+"']").length==0) 
-				$("select#"+ivariables).append("<option value=\"" + variables[ivariables] + "\">"+ivariables+"</option>");							
-			$("select#"+ivariables).val(variables[ivariables]);						
+			if($("select#"+variables+" option[value='"+ivariables+"']").length==0) 
+				$("select#"+variables).append("<option value=\"" + ivariables + "\">"+ivariables+"</option>");							
+			$("select#"+variables).val(ivariables);						
 		}	
-		else if($("input#"+ivariables).length>0) 
+		else if($("input#"+variables).length>0) 
 		{
-			$("input#"+ivariables).val(variables[ivariables]);
+			$("input#"+variables).val(ivariables);
 		}
 		else
 		{
-			path=path+"&"+ivariables+"="+variables[ivariables];
+			path=path+"&"+variables+"="+ivariables;
 		}
 		return path;
 	}

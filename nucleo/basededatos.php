@@ -134,12 +134,30 @@
     	}     	   	
 		public function __JS($variable)
 		{  
-		    echo "
+		    echo $this->__JS_SET($variable);
+    	}    	
+		public function __JS_SET($variable)
+		{  
+		    return "
 		        <script>
 		            $variable
 		        </script>    
 		    ";
     	}    	
+		public function __JS_SET_INPUT($datas)
+		{
+			$return="";
+			if(is_array($datas))
+			{				
+			    foreach($datas as $field =>$value)
+			    {
+			    	$return.="
+			    		set_var(\"{$field}\", \"$value\");";			 		
+				}			  
+			}
+			return $return;
+    	}    	
+    	
 		public function __BUTTON($datas=NULL)
 		{  
 			$return="";

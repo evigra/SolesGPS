@@ -1327,16 +1327,7 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{							
-								if(!isset($valor["procedure"]))	$valor["procedure"]="";
-								
-								if(@$this->request["sys_section_".$this->sys_name]=="show")
-									$words["$campo"]  ="{$label}<br>$titulo";
-								else								
-									$words["$campo"]  ="
-										<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
-										<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
-										<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
-										<script>
+								$js="
 											$(\"div#auto_$campo\").hide();
 											$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(
 											{		
@@ -1381,8 +1372,20 @@
 													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
 												}				
 											});				            	
-										</script>
-									";
+								
+								";
+
+
+								if(!isset($valor["procedure"]))	$valor["procedure"]="";
+								
+								if(@$this->request["sys_section_".$this->sys_name]=="show")
+									$words["$campo"]  ="{$label}<br>$titulo";
+								else								
+									$words["$campo"]  ="
+										<input id=\"auto_$campo\"  name=\"{$this->sys_name}_auto_$campo\" $style type=\"text\"   $attr value=\"$label\" class=\"formulario {$this->sys_name} $class\"><br>$titulo
+										<input id=\"$campo\" 	   name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\"  class=\"formulario {$this->sys_name}\" type=\"hidden\">
+										<div id=\"auto_$campo\" title=\"Crear Registro\">{create_auto_$campo}</div>
+									" . $this->__JS_SET($js);
 							}					    
 							else
 							{
@@ -1734,11 +1737,8 @@
 			$view.=$view2;
 			
 			if(isset($this->sys_memory) AND $this->sys_memory!="")
-			{					
-				$this->words["many2one_button"]="
-					<font id=\"{$this->sys_name}\">ACEPTAR</font>				
-					<font id=\"{$this->sys_name}\">CANCELAR</font>	<br>			<br>
-					<script>
+			{				
+				$js="
 						$(\"font#{$this->sys_name}\")
 							.button()
 							.click(function(){						
@@ -1747,9 +1747,13 @@
 									\"class_one\":\"{$this->sys_object}\",
 								}
 								many2one_post(options);
-							});						
-					</script>					
-				";		
+						});										
+				";
+				
+				$this->words["many2one_button"]="
+					<font id=\"{$this->sys_name}\">ACEPTAR</font>				
+					<font id=\"{$this->sys_name}\">CANCELAR</font>	<br>			<br>
+				" . $this->__JS_SET($js);		
 			}			
 			return $view;
 		}    	

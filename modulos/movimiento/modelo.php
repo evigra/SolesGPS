@@ -148,7 +148,6 @@
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 
-			$this->__PRINT_R($datas);
     	    return parent::__SAVE($datas,$option);
 		}
    		public function __INPUT($words=NULL, $fields=NULL)

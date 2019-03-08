@@ -22,7 +22,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}

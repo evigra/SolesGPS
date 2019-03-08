@@ -20,12 +20,13 @@
 			#$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
 		}
+		/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
-
+		*/
 		public function __CRON($option=NULL)		
     	{	
     		if(is_null($option))			$option				=array();

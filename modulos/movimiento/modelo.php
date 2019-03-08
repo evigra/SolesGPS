@@ -129,10 +129,7 @@
     		    		
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{
-				$datas["iva"]				=0;
-				
-				#if(!($datas["tipo"]="TV" OR $datas["tipo"]="TC"))
-				#	$datas["tipo"]				=$datas["subtipo"];
+				$datas["iva"]				=0;				
 			}					
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{
@@ -150,6 +147,7 @@
 
     	    return parent::__SAVE($datas,$option);
 		}
+		/*
    		public function __INPUT($words=NULL, $fields=NULL)
     	{
     	    $this->words =parent::__INPUT($words, $fields);    	    
@@ -157,6 +155,7 @@
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
+		
    		public function __TOTALES($option=NULL)
     	{
     		$this->sys_fields["subtotal"]["value"]	=0;
@@ -175,7 +174,7 @@
 
 
 		}
-		
+		*/
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			

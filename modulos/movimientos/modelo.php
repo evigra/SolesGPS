@@ -88,8 +88,6 @@
 			$return		=parent::__VIEW_REPORT($option);			
 			$datas		=$return["data"];
 			
-			
-			
 			$subtotal=0;
 			$impuesto=0;
 			foreach($datas as $data)
@@ -105,7 +103,7 @@
 				"total[name='{$this->class_one}_total']"		=>"$total",				
 			);
 			
-			$this->__JS_SET_INPUT($datas)
+			$this->__JS($this->__JS_SET($this->__JS_SET_INPUT($datas)));
 			
     	    return $return;
 		}

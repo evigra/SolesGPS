@@ -18,7 +18,7 @@
 			lista=compra;
 			tipo="compra";
 		}
-		$("input#cantidad[name='movimientos_ids_cantidad']").val(ui.item[tipo+lista]);			
+		$("input#cantidad[name='movimientos_ids_cantidad']").val(1);			
 		$("input#precio[name='movimientos_ids_precio']").val(ui.item[tipo+lista]);					
 		subtotal();
 	}

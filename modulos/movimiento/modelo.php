@@ -124,8 +124,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($datas);
-  			if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
+  			if((!isset($datas["tipo"]) OR $datas["tipo"]=="") AND  $this->tipo_movimiento!="")
     			$datas["tipo"]						=$this->tipo_movimiento;								
     		    		
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	

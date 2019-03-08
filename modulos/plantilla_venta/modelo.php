@@ -22,8 +22,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
-  			if((!isset($datas["tipo"]) OR $datas["tipo"]=="") AND  $this->tipo_movimiento!="")
-    			$datas["tipo"]						=$this->tipo_movimiento;								
 
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;

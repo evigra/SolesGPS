@@ -1,7 +1,7 @@
 	function auto_item_id(ui)
 	{
-		$("input#item_id").val(ui.item.clave);					
-		$("input#auto_item_id").val(ui.item.label);
+		$("input#item_id[name='movimientos_ids_item_id']").val(ui.item.clave);					
+		$("input#auto_item_id[name='movimientos_ids_auto_item_id']").val(ui.item.label);
 		
 		var vende 	=$("input#venta").val();
 		var compra 	=$("input#compra").val();
@@ -18,8 +18,8 @@
 			lista=compra;
 			tipo="compra";
 		}
-			
-		$("input#precio").val(ui.item[tipo+lista]);					
+		$("input#cantidad[name='movimientos_ids_cantidad']").val(ui.item[tipo+lista]);			
+		$("input#precio[name='movimientos_ids_precio']").val(ui.item[tipo+lista]);					
 		subtotal();
 	}
 	function subtotal()

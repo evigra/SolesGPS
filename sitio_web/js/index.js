@@ -1869,6 +1869,7 @@ styles:
 		
 	function set_var(variables, ivariables)
 	{
+		alert(ivariables);
 		var path="";
 		if($("select#"+variables).length>0)
 		{

@@ -148,7 +148,7 @@
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 
-    	#    return parent::__SAVE($datas,$option);
+    	    return parent::__SAVE($datas,$option);
 		}
    		public function __INPUT($words=NULL, $fields=NULL)
     	{
@@ -172,6 +172,8 @@
 
     		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];  			
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
+
+
 		}
 		
    		public function __BROWSE($option="")

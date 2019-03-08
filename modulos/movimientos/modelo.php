@@ -101,8 +101,7 @@
 				"subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
 				"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 				"total[name='{$this->class_one}_total']"		=>"$total",				
-			);
-			
+			);			
 			$this->__JS($this->__JS_SET_INPUT($datas));
 			
     	    return $return;

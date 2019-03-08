@@ -124,6 +124,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$this->__PRINT_R($datas);
   			if(!isset($datas["tipo"]) OR $datas["tipo"]=="")
     			$datas["tipo"]						=$this->tipo_movimiento;								
     		    		
@@ -131,8 +132,8 @@
 			{
 				$datas["iva"]				=0;
 				
-				if(!($datas["tipo"]="PV" OR $datas["tipo"]="PC"))
-					$datas["tipo"]				=$datas["subtipo"];
+				#if(!($datas["tipo"]="TV" OR $datas["tipo"]="TC"))
+				#	$datas["tipo"]				=$datas["subtipo"];
 			}					
 			if($this->request["sys_section_". $this->sys_object]=="create")
 			{
@@ -148,6 +149,7 @@
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
 				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
 
+			$this->__PRINT_R($datas);
     	    return parent::__SAVE($datas,$option);
 		}
    		public function __INPUT($words=NULL, $fields=NULL)

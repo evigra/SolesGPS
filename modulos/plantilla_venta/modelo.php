@@ -22,6 +22,7 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$this->__PRINT_R($datas);
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
@@ -102,7 +103,6 @@
 			
 			return parent::__BROWSE($option);
 		}							
-
 	}
 ?>
 

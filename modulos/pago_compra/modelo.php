@@ -1,5 +1,5 @@
 <?php
-	class orden_compra extends movimiento
+	class pago_compra extends movimiento
 	{   
 		##############################################################################	
 		##  Propiedades	
@@ -7,7 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
-		var $tipo_movimiento	="OC";
+		var $tipo_movimiento	="PC";
 		
 		var $movimiento_obj;
 		
@@ -20,14 +20,7 @@
 			parent::__CONSTRUCT();		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
-    	{
-    		$datas["tipo"]						=$this->tipo_movimiento;								
-			if($this->request["sys_section_". $this->sys_object]=="create")
-			{
-				$option_folios=array();
-				$option_folios["tipo"]			=$this->tipo_movimiento;
-				$datas["folio"]					=$this->__FOLIOS($option_folios);
-			}							
+    	{    					
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}

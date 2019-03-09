@@ -20,7 +20,7 @@
 			parent::__CONSTRUCT();		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
-    	{
+    	{    					
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
@@ -33,8 +33,7 @@
 			
 			if(!isset($this->request["sys_order_". $this->sys_object]) OR $this->request["sys_order_". $this->sys_object]=="")
 				$option["order"]="id desc";
-			
-			
+						
 			return parent::__BROWSE($option);
 		}							
 	}

@@ -748,17 +748,14 @@
 								\"class_one\"		=>\"{$this->sys_name}\",
 							);													
 							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
-							
-							
 						";		
 						eval($eval);					
 					}
 				
-				
 					$request_campo		="{$this->sys_name}_$campo";
 					if(isset($_REQUEST[$request_campo]))
 					{
-						$valor					=$_REQUEST[$request_campo];
+						$valor					=strtoupper($_REQUEST[$request_campo]);
 						if(!is_array($valor)) $valor=htmlentities($valor);						
 						$this->__REQUEST_AUX($campo,$valor);						
 						unset($_REQUEST["$request_campo"]);

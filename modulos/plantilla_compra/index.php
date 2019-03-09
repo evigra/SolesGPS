@@ -128,7 +128,7 @@
 	);
 
 
-	$objeto->words["module_title"]              ="$module_title Plantilla de Venta";
+	$objeto->words["module_title"]              ="$module_title Plantilla de Compra";
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);

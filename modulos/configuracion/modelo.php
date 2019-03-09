@@ -15,34 +15,27 @@
 			),		
 			"company_id"	    	=>array(
 			    "title"             => "Empresa",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"variable"	    		=>array(
 			    "title"             => "Variable",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"subvariable"	    	=>array(
 			    "title"             => "SubVariable",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"tipo"	    	=>array(
 			    "title"             => "Tipo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"subtipo"	    	=>array(
 			    "title"             => "SubTipo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"objeto"	    	=>array(
 			    "title"             => "Objeto",
-			    "showTitle"         => "si",
-			    "type"              => "autocomplete",
-			    "value"             => "",			    
+			    "type"              => "autocomplete",	    
 			    "procedure"       	=> "autocomplete_modulos",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "modulo",
@@ -53,9 +46,13 @@
 			),
 			"valor"	    =>array(
 			    "title"             => "valor",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
+			"descripcion"	    =>array(
+			    "title"             => "descripcion",
+			    "type"              => "input",
+			),
+
 		);				
 		##############################################################################	
 		##  Metodos	

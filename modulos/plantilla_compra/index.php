@@ -1,5 +1,5 @@
 <?php	
-	$objeto											=new plantilla_venta();		
+	$objeto											=new plantilla_compra();		
 	$objeto->__SESSION();
 	
 	# CARGANDO PLANTILLAS GENERALES

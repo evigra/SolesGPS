@@ -132,7 +132,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-	$objeto->words["module_title"]              ="$module_title Ordenes de Compra";
+	$objeto->words["module_title"]              ="$module_title Pago de Ventas";
 	
 	
 	

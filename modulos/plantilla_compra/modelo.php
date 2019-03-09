@@ -7,7 +7,7 @@
 		var $mod_menu			=array();
 		var $sys_enviroments	="DEVELOPER";
 		var $sys_table			="movimiento";
-		var $tipo_movimiento	="PC";
+		var $tipo_movimiento	="TC";
 		
 		#var $movimiento_obj;
 		
@@ -17,14 +17,16 @@
         
 		public function __CONSTRUCT()
 		{	
+			#$this->movimiento_obj		=new movimiento();			
 			parent::__CONSTRUCT();		
 		}
+		/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
-
+		*/
 		public function __CRON($option=NULL)		
     	{	
     		if(is_null($option))			$option				=array();
@@ -101,7 +103,6 @@
 			
 			return parent::__BROWSE($option);
 		}							
-
 	}
 ?>
 

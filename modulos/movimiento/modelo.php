@@ -201,7 +201,7 @@
 			$option["select"][]	="m1.*";
 			$option["select"]["SUM(m1.pago)"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";
-			$option["select"]["SUM(m1.orden) - SUM(m1.orden)"]	="diferencia";
+			$option["select"]["SUM(m1.orden) - SUM(m1.pago)"]	="diferencia";
 
 			$option["from"]		="
 				(

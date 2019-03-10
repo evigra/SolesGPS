@@ -198,16 +198,18 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 			
-			$option["select"][]	="*";
-			$option["select"]["SUM(pago)"]	="pago";
-			$option["select"]["SUM(orden)"]	="orden";
+			$option["select"][]	="m1.*";
+			$option["select"]["SUM(m1.pago)"]	="pago";
+			$option["select"]["SUM(m1.orden)"]	="orden";
 
 			$option["from"]		="
+				(
 				SELECT  
 					(CASE WHEN tipo=\"PV\" then total else 0 end) as PAGO,
 					(CASE WHEN tipo=\"OV\" then total else 0 end) as ORDEN,		
 					m.*
 				FROM movimiento m WHERE tipo in (\"PV\", \"OV\")			
+				) m1
 			";
 
 

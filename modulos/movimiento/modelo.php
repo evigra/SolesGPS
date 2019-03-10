@@ -198,7 +198,7 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 			
-			$option["select"][]	="movimiento.*";
+			$option["select"][]	="*";
 			$option["select"]["SUM(pago)"]	="pago";
 			$option["select"]["SUM(orden)"]	="orden";
 

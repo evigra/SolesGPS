@@ -152,7 +152,9 @@
    		public function __INPUT($words=NULL, $fields=NULL)
     	{
     	    $this->words =parent::__INPUT($words, $fields);    	    
-    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
+    	    
+    	    if((isset($this->tipo_movimiento) AND $this->tipo_movimiento!="")
+	    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
@@ -175,7 +177,6 @@
 
 
 		}
-		
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			
@@ -186,6 +187,21 @@
 	    		
 			if(!isset($this->request["sys_order_". $this->sys_object]))
 				$option["order"]="id desc";
+	    		
+			return parent::__BROWSE($option);
+		}							
+		
+   		public function __BROWSE_KANBAN($option="")
+    	{			    	
+			if($option=="")					$option				=array();			
+			if(!isset($option["where"]))	$option["where"]	=array();
+			
+			if(!isset($option["select"]))	$option["select"]	=array();
+			
+			$option["select"][]	="movimiento.*";
+			$option["select"]["SUM(movimiento.total)"]	="total";
+
+			$option["group"]	="empresa_id";
 	    		
 			return parent::__BROWSE($option);
 		}							

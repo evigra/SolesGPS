@@ -154,7 +154,6 @@
     	    $this->words =parent::__INPUT($words, $fields);    	    
     	    
     	    if(isset($this->tipo_movimiento) AND !in_array($this->tipo_movimiento,array("PV","PC")) )
-
 	    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
@@ -200,7 +199,17 @@
 			if(!isset($option["select"]))	$option["select"]	=array();
 			
 			$option["select"][]	="movimiento.*";
-			$option["select"]["SUM(movimiento.total)"]	="total";
+			$option["select"]["SUM(pago)"]	="pago";
+			$option["select"]["SUM(orden)"]	="orden";
+
+			$option["from"]		="
+				SELECT  
+					(CASE WHEN tipo=\"PV\" then total else 0 end) as PAGO,
+					(CASE WHEN tipo=\"OV\" then total else 0 end) as ORDEN,		
+					m.*
+				FROM movimiento m WHERE tipo in (\"PV\", \"OV\")			
+			";
+
 
 			$option["group"]	="empresa_id";
 	    		

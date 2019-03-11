@@ -72,7 +72,7 @@
     elseif($objeto->sys_action=="__SAVE_PAGAR")
 	{
 		$result = post('../pago_venta/', array(
-			'pago_venta_secion' => 'create',
+			'pago_venta_section' => 'create',
 		));
 
     }	

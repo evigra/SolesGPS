@@ -33,7 +33,7 @@
 				for(ivariables in variables)
 					path		=set_var(ivariables, variables[ivariables]);				
 
-				$(\"form\").attr({\"action\":path});					
+				$(\"form\").attr({\"action\":&sys_section_pago_venta=create&pago_venta_total=56});					
 				$(\"form\").submit(); 	        
 			";	
 			$this->__JS($js);

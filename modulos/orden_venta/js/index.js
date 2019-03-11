@@ -10,7 +10,8 @@
 	$(document).ready(function()
 	{		
 		$("#action_pagar").click(function(){
-			$("#sys_action_movimiento").val("__SAVE_pagar");
+
+			$("form").attr({"action":"../pago_venta/&sys_section_pago_venta=create&pago_venta_total=56});					
 			$("form").submit();
 		});
 		$("#action_abonar").click(function(){

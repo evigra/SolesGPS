@@ -27,12 +27,6 @@
    		public function __SAVE_PAGAR($datas=NULL,$option=NULL)
     	{    					
 			$js="
-				var data		=\"&sys_section_pago_venta=create&pago_venta_total=56\";
-            	var variables	=serializar_url(data);
-            	var path		=\"../pago_venta/\";
-				for(ivariables in variables)
-					path		=set_var(ivariables, variables[ivariables]);				
-
 				$(\"form\").attr({\"action\":&sys_section_pago_venta=create&pago_venta_total=56});					
 				$(\"form\").submit(); 	        
 			";	

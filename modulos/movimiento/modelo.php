@@ -38,6 +38,7 @@
 			    "class_field_o"    	=> "empresa_id",
 			    "class_field_m"    	=> "id",			    
 			),			
+			/*
 			"movimiento_id"	    =>array(
 			    "type"              => "autocomplete",
 			    "relation"          => "one2many",			    
@@ -45,6 +46,7 @@
 			    "class_field_o"    	=> "movimiento_id",
 			    "class_field_m"    	=> "id",				
 			),
+			*/
 			"movimientos_ids"	    =>array(
 			    "type"              => "form",
 			    "relation"          => "many2one",			    

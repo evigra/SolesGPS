@@ -11,7 +11,7 @@
 	{		
 		$("#action_pagar").click(function(){
 
-			$("form").attr({"action":"../pago_venta/&sys_section_pago_venta=create&pago_venta_total=56});					
+			$("form").attr({"action":"../pago_venta/&sys_section_pago_venta=create&pago_venta_total=56"});					
 			$("form").submit();
 		});
 		$("#action_abonar").click(function(){

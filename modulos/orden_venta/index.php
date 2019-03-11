@@ -62,21 +62,21 @@
 		    array("report"=>"Reporte"),
 		);		
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-
-		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
-		
+	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-
-		#$objeto->__PRINT_R($_SESSION);	
-
-    		    							
-		
-		#$objeto->__GENERAR_PDF();
 
 		
     	$module_title								="Modificar ";
     }	
+    elseif($objeto->sys_action=="__SAVE_PAGAR")
+	{
+		$result = post('../pago_venta/', array(
+			'pago_venta_secion' => 'create',
+		));
+
+    }	
+
     elseif($objeto->sys_section=="show")
 	{
 		#BOTONES SECCION IZQUIERDA

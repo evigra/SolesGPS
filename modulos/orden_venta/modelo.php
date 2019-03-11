@@ -24,6 +24,10 @@
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
+   		public function __SAVE_PAGAR($datas=NULL,$option=NULL)
+    	{    					
+		}
+
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")	$option=array();			

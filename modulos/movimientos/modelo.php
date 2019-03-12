@@ -83,9 +83,9 @@
     	{    		
     	    return parent::__SAVE($datas,$option);
 		}
-   		public function __VIEW_REPORT($option)
+   		public function __BROWSE($option)
     	{    		
-			$return		=parent::__VIEW_REPORT($option);			
+			$return		=parent::__BROWSE($option);			
 			$datas		=$return["data"];
 			
 			$subtotal=0;
@@ -102,7 +102,7 @@
 				"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 				"total[name='{$this->class_one}_total']"		=>"$total",				
 			);			
-			$this->__JS($this->__JS_SET_INPUT($datas));
+			$return["js"]=$this->__JS_SET_INPUT($datas);
 			
     	    return $return;
 		}

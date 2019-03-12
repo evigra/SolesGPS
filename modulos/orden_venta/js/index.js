@@ -15,6 +15,7 @@
 			var mod_actual	="orden_venta";
 			var variables	="../"+mod_destino+"/";
 			variables		+="&sys_section_"+mod_destino+"=create";
+			variables		+="&sys_action_"+mod_destino+"=";
 			variables		+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
 			variables		+="&"+mod_destino+"_auto_empresa_id=" + $("#auto_empresa_id[name='"+mod_actual+"_auto_empresa_id']").val();
 			variables		+="&"+mod_destino+"_empresa_id=" + $("#empresa_id[name='"+mod_actual+"_empresa_id']").val();																

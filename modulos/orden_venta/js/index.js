@@ -18,7 +18,7 @@
 			variables		+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
 			variables		+="&"+mod_destino+"_auto_empresa_id=" + $("#auto_empresa_id[name='"+mod_actual+"_auto_empresa_id']").val();								
 
-			$("form").attr({"action":variables);					
+			$("form").attr({"action":variables});					
 			$("form").submit();
 		});
 		$("#action_abonar").click(function(){

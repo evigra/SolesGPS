@@ -13,10 +13,10 @@
 
 			var mod_destino	="pago_venta";
 			var mod_actual	="orden_venta";
-			var variables="../pago_venta/";
-			variables+="&sys_section_"+mod_destino+"=create";
-			variables+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
-			variables+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();								
+			var variables	="../"+mod_destino+"/";
+			variables		+="&sys_section_"+mod_destino+"=create";
+			variables		+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
+			variables		+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();								
 
 			$("form").attr({"action":variables);					
 			$("form").submit();

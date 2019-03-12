@@ -20,6 +20,8 @@
 			variables		+="&"+mod_destino+"_auto_empresa_id=" + $("#auto_empresa_id[name='"+mod_actual+"_auto_empresa_id']").val();
 			variables		+="&"+mod_destino+"_empresa_id=" + $("#empresa_id[name='"+mod_actual+"_empresa_id']").val();																
 
+			pago_venta_auto_empresa_id
+
 			$("form").attr({"action":variables});					
 			$("form").submit();
 		});

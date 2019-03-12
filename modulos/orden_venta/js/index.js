@@ -11,7 +11,14 @@
 	{		
 		$("#action_pagar").click(function(){
 
-			$("form").attr({"action":"../pago_venta/&sys_section_pago_venta=create&pago_venta_total=56"});					
+			var mod_destino	="pago_venta";
+			var mod_actual	="orden_venta";
+			var variables="../pago_venta/";
+			variables+="&sys_section_"+mod_destino+"=create";
+			variables+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
+			variables+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();								
+
+			$("form").attr({"action":variables);					
 			$("form").submit();
 		});
 		$("#action_abonar").click(function(){

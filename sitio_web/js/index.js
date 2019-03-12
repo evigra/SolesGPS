@@ -532,7 +532,10 @@
 			var x			= arrUrl[i].split("=");
 			urlObj[x[0]]	=x[1]
 		}
-		return urlObj;		$("#action").button({
+		return urlObj;		
+		
+/*
+		$("#action").button({
 			icons: {	primary: "ui-icon-document" },
 			text: true
 		    })
@@ -549,7 +552,8 @@
 					.attr({"action":str_url})
 					.submit();		        
 		    }
-	    );	
+	    );
+	    */	
 	}
 	function showGeofence()
 	{

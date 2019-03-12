@@ -24,15 +24,6 @@
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
-   		public function __SAVE_PAGAR($datas=NULL,$option=NULL)
-    	{    					
-			$js="
-				$(\"form\").attr({\"action\":&sys_section_pago_venta=create&pago_venta_total=56});					
-				$(\"form\").submit(); 	        
-			";	
-			$this->__JS($js);
-		}
-
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")	$option=array();			

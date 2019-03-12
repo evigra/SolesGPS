@@ -69,14 +69,6 @@
 		
     	$module_title								="Modificar ";
     }	
-    elseif($objeto->sys_action=="__SAVE_PAGAR")
-	{
-		$result = post('../pago_venta/', array(
-			'pago_venta_section' => 'create',
-		));
-
-    }	
-
     elseif($objeto->sys_section=="show")
 	{
 		#BOTONES SECCION IZQUIERDA

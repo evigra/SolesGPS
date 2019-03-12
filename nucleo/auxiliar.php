@@ -2118,7 +2118,9 @@
 						if($aux_fin<$return["total"])   		$fin    =$aux_fin;
 						else                            		$fin    =$return["total"];
 					}			    		
-		    	}	
+		    	}
+		    	if(!isset($browse))	$browse=array("");	
+		    	if(!isset($browse["js"]))	$browse["js"]="";	
 		    			    	
 				#######################											
 				#/*	
@@ -2544,6 +2546,8 @@
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
+								{$browse["js"]}
+								
 							</script>							
 						";
 					}

@@ -154,9 +154,11 @@
     				"{$this->sys_primary_field}='$id'"
     			);
     		}
-    		
+
 	    	if(!isset($option["name"]))    					$name							=@$this->sys_name;
 	    	else											$name							=$option["name"];
+    	
+	    	if(!isset($option["js"]))    					$option["js"]					="";
             
 			if(isset($this->request["sys_order_$name"]))	$option["sys_order_$name"]		=$this->request["sys_order_$name"];
 			if(isset($this->request["sys_torder_$name"]))	$option["sys_torder_$name"]		=$this->request["sys_torder_$name"];
@@ -505,7 +507,7 @@
 
 				}
 			}
-				    		
+			$return["js"]=$option["js"];	    		
     		return $return;    		
     	}		
 		##############################################################################		 		

@@ -83,7 +83,7 @@
     	{    		
     	    return parent::__SAVE($datas,$option);
 		}
-   		public function __BROWSE($option)
+   		public function __BROWSE($option="")
     	{    		
 			$return		=parent::__BROWSE($option);			
 			$datas		=$return["data"];

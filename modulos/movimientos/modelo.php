@@ -97,13 +97,14 @@
 			}
 			$total=$subtotal+$impuesto;
 			
+			/*
 			$datas="
 				$(\"subtotal[name='{$this->class_one}_subtotal']\").val(\"$subtotal\");
 				$(\"iva[name='{$this->class_one}_iva']']\").val(\"$impuesto\");
 				$(\"total[name='{$this->class_one}_total']\").val(\"$total\");
 			";			
 			$this->__JS($datas);
-			
+			*/
     	    return $return;
 		}
 	}

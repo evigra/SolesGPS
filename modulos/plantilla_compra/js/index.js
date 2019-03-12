@@ -8,10 +8,12 @@
 		$("input#compra").val(ui.item.proveedor);
 	}
 	$(document).ready(function()
-	{		
+	{
+		/*		
 		$("#action_ejecutar").click(function(){
 			$("#sys_section_movimiento_plantilla").val("action_ejecutar");
 			$("form").submit();
 		});
+		*/
     });
     // ###########################################################################

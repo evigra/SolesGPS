@@ -10,7 +10,8 @@
 	$(document).ready(function()
 	{		
 		$("#action_pagar").click(function(){
-
+		
+			/*
 			var mod_destino	="pago_venta";
 			var mod_actual	="orden_venta";
 			var variables	="../"+mod_destino+"/";
@@ -25,6 +26,7 @@
 
 			$("form").attr({"action":variables});					
 			$("form").submit();
+			*/
 		});
 		$("#action_abonar").click(function(){
 			$("#sys_action_movimiento").val("__SAVE_abonar");

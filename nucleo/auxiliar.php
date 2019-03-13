@@ -740,16 +740,21 @@
 				foreach($this->sys_fields as $campo =>$valor)
 				{
 					if(isset($valor["class_name"]))
-					{				
-						$eval="
-							$"."option"."_obj_$campo	=array(
-								\"name\"			=>\"$campo"."_obj\",		
-								\"memory\"			=>\"$campo\",
-								\"class_one\"		=>\"{$this->sys_name}\",
-							);													
-							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
-						";		
-						eval($eval);					
+					{			
+						if($this->sys_memory_n<4)	
+						{
+							$sys_memory_n=$this->sys_memory_n + 1;
+							$eval="
+								$"."option"."_obj_$campo	=array(
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+									\"memory_n\"		=>$sys_memory_n,
+									\"class_one\"		=>\"{$this->sys_name}\",
+								);													
+								$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
+							";		
+							eval($eval);					
+						}
 					}
 				
 					$request_campo		="{$this->sys_name}_$campo";
@@ -1503,7 +1508,7 @@
 			}
 						
 			$eval="
-				##if(!isset($"."this->sys_memory))
+				if(isset($"."this->sys_memory_n)<4)
 				{
 					if(isset($"."json))
 					{								
@@ -1734,7 +1739,7 @@
 			}
 			$view.=$view2;
 			
-			if(isset($this->sys_memory) AND $this->sys_memory!="")
+			if(isset($this->sys_memory) AND $this->sys_memory!="" AND $this->sys_memory_n<4)
 			{				
 				$js="
 						$(\"font#{$this->sys_name}\")

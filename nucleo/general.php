@@ -48,6 +48,7 @@
 			if(isset($option["name"])) 				$this->sys_name					=$option["name"];
 			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
 			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
+			if(isset($option["memory_n"])) 			$this->sys_memory_n				=$option["memory_n"];
 			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
 
 			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
@@ -56,6 +57,7 @@
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
 			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
+			if(!isset($this->sys_memory_n)) 		$this->sys_memory_n             =0;
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			

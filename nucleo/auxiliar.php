@@ -1510,7 +1510,7 @@
 			}
 						
 			$eval="
-				if(isset($"."this->sys_memory_n)<4)
+				if($"."this->sys_memory_n<4)
 				{
 					if(isset($"."json))
 					{								

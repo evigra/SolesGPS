@@ -656,16 +656,12 @@
 							$eval="												
 								if(is_object($"."this->obj_$campo))
 								{		
-									##$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
-									##$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
-									
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
 									foreach($"."valores as $"."valor)
 									{	
 										if(is_array($"."valor))
 										{								
-											##if(!(isset($"."valor_campo[$"."class_field_m]))									
 											if(isset($"."class_field_m))
 											{			
 												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									

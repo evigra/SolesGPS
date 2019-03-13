@@ -131,27 +131,10 @@
 					{					
 						if(isset($value["relation"]))
 						{														
-							if($value["relation"]=="one2many")
-							{
-								/*
-								$eval="
-									$"."option=array(\"name\"=>\"$field"."_obj\");
-									$"."this->$field"."_obj			=new {$value["class_name"]}($"."option);
-								";
-								if(@eval($eval)===false)	
-									echo "$eval"; #$eval; ---------------------------								        			
-								*/	
-							}		
 							if($value["relation"]=="many2one")
 							{						
 								if(@$this->request["sys_action_" . $this->sys_object ]=="__clean_session")
 									unset($_SESSION["SAVE"][$this->sys_object]);			
-								#if(@$this->request["sys_action_" . $this->sys_object ]=="__SAVE")
-								#	unset($_SESSION["SAVE"][$this->sys_object][$field]);			
-								
-								if($this->sys_section!="write")
-								{
-								}															
 							}			        									
 						}			        		
 					}
@@ -911,12 +894,6 @@
 			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
 				$boSend =  @mail($option["to"], $option["title"], $option["html"], $headers);
 
-			/*
-			if(!$boSend) 
-			{
-				throw new Exception('Email fail');
-			} 
-			*/			
 		}		
 		##############################################################################
 		public function __REPLACE($str,$words)
@@ -1453,24 +1430,6 @@
 							}
 							
 						}	
-						#*/
-					    if($valor["type"]=="class")	
-					    {					    
-							if(isset($valor["relation"]) AND $valor["relation"]=="one2many")
-							{
-								/*
-								$eval="";
-								$eval="
-									$"."option							=array(\"name\"=>\"$campo"."_obj\");								
-									$"."this->obj_$campo"."				=new {$valor["class_name"]}($"."option);
-								";	
-								
-								if(@eval($eval)===false)	
-									echo ""; #$eval; ---------------------------								        			
-									*/
-							}			        		
-					    	#$words["$campo"]  =$data["html"];
-					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
 					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        

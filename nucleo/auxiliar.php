@@ -741,10 +741,11 @@
 				{
 					if(isset($valor["class_name"]))
 					{	
-						$this->__PRINT_R($this->sys_memory_n);		
+						
 						if($this->sys_memory_n<4)	
-						{
+						{							
 							$sys_memory_n=$this->sys_memory_n + 1;
+							$this->__PRINT_R($this->sys_memory_n);		
 							$eval="
 								$"."option"."_obj_$campo	=array(
 									\"name\"			=>\"$campo"."_obj\",		

@@ -1278,10 +1278,13 @@
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
 							$eval="
-								$"."view_auto						=$"."this->obj_$campo"."->__VIEW_WRITE($"."this->obj_$campo"."->sys_module.\"html/create\");	
-								$"."this->obj_$campo"."->words  	=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);
-								
-								$"."words[\"create_auto_$campo\"]  	=$"."this->__REPLACE($"."view_auto,$"."this->obj_$campo"."->words);
+								if(is_object($"."this->obj_$campo))
+								{
+									$"."view_auto						=$"."this->obj_$campo"."->__VIEW_WRITE($"."this->obj_$campo"."->sys_module.\"html/create\");	
+									$"."this->obj_$campo"."->words  	=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);
+									
+									$"."words[\"create_auto_$campo\"]  	=$"."this->__REPLACE($"."view_auto,$"."this->obj_$campo"."->words);
+								}	
 
 							";	
 							#$"."this->obj_$campo
@@ -1306,7 +1309,10 @@
 							else if(isset($valor["procedure"]))
 							{
 								$eval="
-									$"."json							=$"."this->obj_$campo"."->{$valor["procedure"]}();
+									if(is_object($"."this->obj_$campo))
+									{
+										$"."json							=$"."this->obj_$campo"."->{$valor["procedure"]}();
+									}	
 								";	
 								if(@eval($eval)===false)	
 									echo ""; #$eval; ---------------------------								        			
@@ -1509,7 +1515,7 @@
 			}
 						
 			$eval="
-				if($"."this->sys_memory_n<4)
+				if(is_object($"."this->obj_$campo) AND $"."this->sys_memory_n<4)
 				{
 					if(isset($"."json))
 					{								
@@ -1574,40 +1580,43 @@
 				$json	=$option["json"];										
 			}
 						
-			$eval="		
-				if(isset($"."json))
-				{								
-					$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
-			
-					if(isset($"."class_id) AND $"."class_id>0)
-						$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+			$eval="
+				if(is_object($"."this->obj_$campo))
+				{		
+					if(isset($"."json))
+					{								
+						$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;
+				
+						if(isset($"."class_id) AND $"."class_id>0)
+							$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+						
+						$"."this->obj_$campo"."->__SAVE($"."json);
+					}
 					
-					$"."this->obj_$campo"."->__SAVE($"."json);
-				}
-				
-				$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");													
-				
-				$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
-				$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
-												
-				$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
-								
-				if(isset($"."words[\"html_head_js\"]) AND isset($"."this->obj_$campo"."->words[\"html_head_js\"]))								
-					$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
-								
-				$"."option_report										=array();				
-												
-				$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
-				$"."option_report[\"template_body\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_body\";
-				$"."option_report[\"template_create\"]	                = $"."this->obj_$campo"."->sys_module . \"html/create\";
-				$"."option_report[\"template_option\"]	                = $"."option;
-				
-				$"."option_report[\"name\"]	                			= '$campo';
-				
-				$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report);
-				$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
+					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");													
+					
+					$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
+					$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
+													
+					$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
+									
+					if(isset($"."words[\"html_head_js\"]) AND isset($"."this->obj_$campo"."->words[\"html_head_js\"]))								
+						$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
+									
+					$"."option_report										=array();				
+													
+					$"."option_report[\"template_title\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_title\";
+					$"."option_report[\"template_body\"]	                = $"."this->obj_$campo"."->sys_module . \"html/report_body\";
+					$"."option_report[\"template_create\"]	                = $"."this->obj_$campo"."->sys_module . \"html/create\";
+					$"."option_report[\"template_option\"]	                = $"."option;
+					
+					$"."option_report[\"name\"]	                			= '$campo';
+					
+					$"."report_procedure									=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report);
+					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."report_procedure[$"."index];				
 
-				$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
+					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
+				}					
 			";				
 			eval($eval);	
 			

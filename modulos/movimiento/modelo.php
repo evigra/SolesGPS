@@ -42,7 +42,7 @@
 			"movimiento_id"	    =>array(
 			    "type"              => "autocomplete",
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "orden_venta",			    
+			    "class_name"       	=> "movimiento",			    
 			    "class_field_o"    	=> "movimiento_id",
 			    "class_field_m"    	=> "id",				
 			),

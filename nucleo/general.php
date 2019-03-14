@@ -48,7 +48,6 @@
 			if(isset($option["name"])) 				$this->sys_name					=$option["name"];
 			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
 			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
-			if(isset($option["memory_n"])) 			$this->sys_memory_n				=$option["memory_n"];
 			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
 
 			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
@@ -57,7 +56,6 @@
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
 			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
-			if(!isset($this->sys_memory_n)) 		$this->sys_memory_n             =0;
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
@@ -259,22 +257,19 @@
 						
 						if(@$this->sys_fields[$campo]["relation"]=="one2many")
 						{							
-							$eval.="
-								if(is_object($"."this->obj_$campo))
-								{								
-									$"."option_$campo=array(
-										\"where\"=>array(
-											\"$class_field_l $sys_where '%{$busqueda}%'\"
-										)
-									);									
-									$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);								
-									$"."busqueda					=\"\";
-									foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
-									{									
-										if($"."busqueda==\"\") 		$"."busqueda	= $"."row_$campo"."[\"$class_field_m\"];
-										else						$"."busqueda	.= \",\" . $"."row_$campo"."[\"$class_field_m\"];
-									}															
-								}	
+							$eval.="								
+								$"."option_$campo=array(
+									\"where\"=>array(
+										\"$class_field_l $sys_where '%{$busqueda}%'\"
+									)
+								);									
+								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);								
+								$"."busqueda					=\"\";
+								foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
+								{									
+									if($"."busqueda==\"\") 		$"."busqueda	= $"."row_$campo"."[\"$class_field_m\"];
+									else						$"."busqueda	.= \",\" . $"."row_$campo"."[\"$class_field_m\"];
+								}															
 							";
 							eval($eval);										
 
@@ -478,7 +473,7 @@
 						{
 							$id =   $return["data"]["$indice"][$class_field_o];
 							$eval="
-								if(is_object($"."this->obj_$campo))
+								##if(!isset($"."this->sys_memory))
 								{
 									$"."option_$campo=array(
 										\"where\"		=>array(\"$class_field_m='$id'\")
@@ -500,13 +495,10 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								if(is_object($"."this->obj_$campo)) 
-								{
-									$"."option_$campo	=array();	
-									$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
-									
-									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
-								}
+								$"."option_$campo	=array();	
+								$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
+								
+								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 							";
 
 							eval($eval);
@@ -654,32 +646,30 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							$eval="												
-								if(is_object($"."this->obj_$campo))
-								{		
-									$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
-									$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
-									
-									if(isset($"."valor_campo[\"class_field_m\"]))			
-										$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
-									foreach($"."valores as $"."valor)
-									{	
-										if(is_array($"."valor))
-										{								
-											##if(!(isset($"."valor_campo[$"."class_field_m]))									
-											if(isset($"."class_field_m))
-											{			
-												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
-												 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
-											}
-											$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
-											
-											if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
-												$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
-											else
-												$"."this->$campo"."_obj->sys_primary_id		=\"\";
+										
+								$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
+								$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+								
+								if(isset($"."valor_campo[\"class_field_m\"]))			
+									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
+								foreach($"."valores as $"."valor)
+								{	
+									if(is_array($"."valor))
+									{								
+										##if(!(isset($"."valor_campo[$"."class_field_m]))									
+										if(isset($"."class_field_m))
+										{			
+											if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
+											 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
+										}
+										$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
+										
+										if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
+											$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
+										else
+											$"."this->$campo"."_obj->sys_primary_id		=\"\";
 
-											$"."this->$campo"."_obj->__SAVE($"."valor);		
-										}	
+										$"."this->$campo"."_obj->__SAVE($"."valor);		
 									}	
 								}	
 							";

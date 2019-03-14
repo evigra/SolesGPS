@@ -61,7 +61,7 @@
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
-			#ini_set('display_errors', 1);				
+			#
 			
 			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
@@ -71,6 +71,8 @@
 			{	
 				ini_set('display_errors', 0);	
 			}
+			
+			ini_set('display_errors', 1);				
 
 			
 			$this->__REQUEST();

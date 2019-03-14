@@ -1,14 +1,9 @@
 <?php
 	require_once("../../nucleo/sesion.php");
 	#require_once("../../../nucleo/general.php");
-
-	$eval="
-		$"."option"."_obj_$campo	=array(
-			\"memory_n\"		=>1,
-			\"class_one\"		=>\"{$this->sys_name}\",
-		);													
-		$"."objeto   	=new {$_REQUEST["class"]}($"."option"."_obj_$campo);
 	
+	$eval="
+		$"."objeto=new {$_REQUEST["class"]}();		
 	";	
 	eval($eval);
 	

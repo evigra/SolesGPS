@@ -14,15 +14,6 @@
 	$row											=$objeto_json["row"];
 		
 	$eval="
-		$"."option"."_obj_$campo	=array(
-			\"memory_n\"		=>1,
-			\"class_one\"		=>\"{$this->sys_name}\",
-		);													
-		$"."objeto   	=new {$class_one}($"."option"."_obj_$campo);
-
-
-
-
 		$"."objeto									=new {$class_one}();		
 	";
 

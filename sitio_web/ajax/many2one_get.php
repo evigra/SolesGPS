@@ -13,12 +13,7 @@
 	$obj											=$objeto_json;			
 
 	$eval="
-		$"."option"."_obj_$campo	=array(
-			\"memory_n\"		=>1,
-			\"class_one\"		=>\"{$this->sys_name}\",
-		);													
-		$"."objeto   	=new {$valor["class_one"]}($"."option"."_obj_$campo);
-
+		$"."objeto									=new {$class_one}();				
 		$"."objeto->__SESSION();	
 				
 		$"."valor									=$"."objeto->sys_fields[$"."class_field];

@@ -727,7 +727,7 @@
 					if(isset($valor["class_name"]))
 					{	
 						
-						if($this->sys_memory_n<3)	
+						#if($this->sys_memory_n<3)	
 						{							
 							$sys_memory_n=$this->sys_memory_n + 1;
 							$eval="

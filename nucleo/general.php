@@ -656,7 +656,7 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							$eval="												
-								if(is_object($"."this->obj_$campo))
+								##if(is_object($"."this->obj_$campo))
 								{		
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	

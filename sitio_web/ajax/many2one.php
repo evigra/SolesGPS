@@ -15,7 +15,7 @@
 		
 	$eval="
 		$"."option"."_obj_$campo	=array(
-			\"memory_n\"		=>3,
+			\"memory_n\"		=>1,
 			\"class_one\"		=>\"{$this->sys_name}\",
 		);													
 		$"."objeto   	=new {$class_one}($"."option"."_obj_$campo);

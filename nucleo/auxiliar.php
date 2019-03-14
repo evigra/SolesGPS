@@ -61,27 +61,6 @@
    
 		public function __SESSION()
 		{  
-			foreach($this->sys_fields as $campo =>$valor)
-			{
-				if(isset($valor["class_name"]))
-				{	
-					
-					if($this->sys_memory_n<3)	
-					{							
-						$sys_memory_n=$this->sys_memory_n + 1;
-						$eval="
-							$"."option"."_obj_$campo	=array(
-								\"name\"			=>\"$campo"."_obj\",		
-								\"memory\"			=>\"$campo\",
-								\"memory_n\"		=>$sys_memory_n,
-								\"class_one\"		=>\"{$this->sys_name}\",
-							);													
-							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
-						";		
-						eval($eval);					
-					}
-				}
-			}	
 		
 			$redireccionar= "<script>window.location=\"../webHome/\";</script>";
 			if(is_array($_SESSION))
@@ -744,7 +723,7 @@
 			{
 				foreach($this->sys_fields as $campo =>$valor)
 				{
-					/*
+					#/*
 					if(isset($valor["class_name"]))
 					{	
 						
@@ -763,7 +742,7 @@
 							eval($eval);					
 						}
 					}
-					*/
+					#*/
 					$request_campo		="{$this->sys_name}_$campo";
 					if(isset($_REQUEST[$request_campo]))
 					{

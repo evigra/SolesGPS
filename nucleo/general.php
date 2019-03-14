@@ -61,7 +61,7 @@
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			
-			#
+			ini_set('display_errors', 1);				
 			
 			if(in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
 			{	
@@ -71,8 +71,6 @@
 			{	
 				ini_set('display_errors', 0);	
 			}
-			
-			ini_set('display_errors', 1);				
 
 			
 			$this->__REQUEST();
@@ -656,27 +654,31 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							$eval="												
-								##if(is_object($"."this->obj_$campo))
+								if(is_object($"."this->obj_$campo))
 								{		
+									$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
+									$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+									
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
 									foreach($"."valores as $"."valor)
 									{	
 										if(is_array($"."valor))
 										{								
+											##if(!(isset($"."valor_campo[$"."class_field_m]))									
 											if(isset($"."class_field_m))
 											{			
 												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
 												 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
 											}
-											$"."primary_field					=@$"."this->obj_$campo->sys_primary_field;
+											$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
 											
 											if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
-												$"."this->obj_$campo->sys_primary_id		=@$"."valor[$"."primary_field];	
+												$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];	
 											else
-												$"."this->obj_$campo->sys_primary_id		=\"\";
+												$"."this->$campo"."_obj->sys_primary_id		=\"\";
 
-											$"."this->obj_$campo->__SAVE($"."valor);		
+											$"."this->$campo"."_obj->__SAVE($"."valor);		
 										}	
 									}	
 								}	

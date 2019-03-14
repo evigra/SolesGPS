@@ -9,7 +9,12 @@
 		$procedure										=@$_REQUEST["procedure"];
 
 	$eval="
-		$"."objeto		=new {$class_name}();		
+
+		$"."option"."_obj_$campo	=array(
+			\"memory_n\"		=>3,
+			\"class_one\"		=>\"{$this->sys_name}\",
+		);													
+		$"."objeto   	=new {$class_name}($"."option"."_obj_$campo);
 	";		
 	if(isset($procedure))
 	{

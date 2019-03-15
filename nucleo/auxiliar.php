@@ -2121,8 +2121,8 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}
-		    	#if(!isset($browse))			$browse			=array("");	
-		    	#if(!isset($browse["js"]))	$browse["js"]	="";	
+		    	if(!isset($browse))			$browse			=array("");	
+		    	if(!isset($browse["js"]))	$browse["js"]	="";	
 		    	
 		    	#$this->__PRINT_R($browse);
 		    			    	

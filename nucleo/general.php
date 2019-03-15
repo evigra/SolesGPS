@@ -49,6 +49,8 @@
 			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
 			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
 			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
+			else 									$this->class_one				=$this->sys_name;
+			
 
 			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";

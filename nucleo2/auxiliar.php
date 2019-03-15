@@ -9,7 +9,6 @@
 		##  PROPIEDADES
 		##############################################################################
 		var $request			=array();	# este arrat recibe las variables del POST		
-		var $sys_true			=array(1,"1","true", "si");
 		var $sys_import			=array(
 									"type"		=>"replace",
 									"fields"	=>",",
@@ -17,7 +16,9 @@
 									"lines"		=>"\\n",
 									"ignore"	=>"1",
 								);
-		var $sys_false		    =array(0,"0","false", "no");
+		var $sys_false		    =array(0,"0","false", "no", false, null);
+		var $sys_true			=array(1,"1","true", "si", true);
+
 		var $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 
 									"group","modulos","permiso","sesion","cron",
@@ -41,6 +42,7 @@
 		var $sys_name; 
 		var $sys_table; 
 		var $sys_memory			=""; 
+		
 		
 		var $__PRINT			="";
 		var $__PRINT_OPTION		=array();
@@ -1734,7 +1736,7 @@
 			}
 			$view.=$view2;
 			
-			if(isset($this->sys_memory) AND $this->sys_memory!="")
+			#if(isset($this->sys_memory) AND $this->sys_memory!="")
 			{				
 				$js="
 						$(\"font#{$this->sys_name}\")
@@ -2119,8 +2121,10 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}
-		    	if(!isset($browse))	$browse=array("");	
-		    	if(!isset($browse["js"]))	$browse["js"]="";	
+		    	if(!isset($browse))			$browse			=array("");	
+		    	if(!isset($browse["js"]))	$browse["js"]	="";	
+		    	
+		    	#$this->__PRINT_R($browse);
 		    			    	
 				#######################											
 				#/*	
@@ -2377,8 +2381,11 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
-						@$return["js"].="			
+						@$return["js"].="
+								{$browse["js"]}			
+								
 								$button_create_js
+								
 								sys_report_memory();
 												
 								$(\"#sys_search_$name\")
@@ -2546,7 +2553,7 @@
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
-								{$browse["js"]}
+								
 								
 							</script>							
 						";

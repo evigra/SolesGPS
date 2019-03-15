@@ -2382,7 +2382,6 @@
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
 						@$return["js"].="
-								alert(\"aaaa\");
 								{$browse["js"]}			
 								
 								$button_create_js

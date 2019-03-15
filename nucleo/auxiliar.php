@@ -2381,7 +2381,8 @@
 
 					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
-						@$return["js"].="			
+						@$return["js"].="
+								{$browse["js"]}			
 								$button_create_js
 								sys_report_memory();
 												
@@ -2550,9 +2551,6 @@
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
-								
-								alert(\"aaaaaaaaa\");
-								{$browse["js"]}
 								
 								
 							</script>							

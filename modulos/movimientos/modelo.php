@@ -86,19 +86,19 @@
    		public function __BROWSE($option="")
     	{    		
 			$return		=parent::__BROWSE($option);			
-			$datas		=$return["data"];
-			
-			$subtotal=0;
-			$impuesto=0;
-			foreach($datas as $data)
-			{
-				$subtotal+=$data["subtotal"];
-				$impuesto+=$data["impuesto"];
-			}
-			$total=$subtotal+$impuesto;
-	
 			if(isset($this->class_one))
 			{		
+				$datas		=$return["data"];
+				
+				$subtotal=0;
+				$impuesto=0;
+				foreach($datas as $data)
+				{
+					$subtotal+=$data["subtotal"];
+					$impuesto+=$data["impuesto"];
+				}
+				$total=$subtotal+$impuesto;
+	
 				$datas=array(
 					"#subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
 					"#iva[name='{$this->class_one}_iva']"			=>"$impuesto",

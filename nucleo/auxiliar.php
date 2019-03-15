@@ -2551,9 +2551,10 @@
 									handles: \"e\"
 								});
 								
-								alert(\"aaaaa\");
-								
+								alert(\"aaaaaaaaa\");
 								{$browse["js"]}
+								
+								
 							</script>							
 						";
 					}

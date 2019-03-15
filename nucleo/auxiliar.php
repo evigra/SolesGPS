@@ -2124,7 +2124,7 @@
 		    	if(!isset($browse))			$browse			=array("");	
 		    	if(!isset($browse["js"]))	$browse["js"]	="";	
 		    	
-		    	$this->__PRINT_R($browse);
+		    	#$this->__PRINT_R($browse);
 		    			    	
 				#######################											
 				#/*	

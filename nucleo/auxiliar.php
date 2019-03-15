@@ -1736,7 +1736,7 @@
 			}
 			$view.=$view2;
 			
-			if(isset($this->sys_memory) AND $this->sys_memory!="")
+			#if(isset($this->sys_memory) AND $this->sys_memory!="")
 			{				
 				$js="
 						$(\"font#{$this->sys_name}\")

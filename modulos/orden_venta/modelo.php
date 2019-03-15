@@ -38,7 +38,7 @@
 			
 			$this->__PRINT_R($return);
 			
-			return
+			return $return;
 		}							
 	}
 ?>

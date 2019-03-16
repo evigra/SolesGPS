@@ -2380,7 +2380,7 @@
 						@$return["js"].="			
 								$button_create_js
 								sys_report_memory();
-												
+								{$browse["js"]}												
 								$(\"#sys_search_$name\")
 									.button({
 										icons: {	primary: \"ui-icon-search\" },
@@ -2546,8 +2546,6 @@
 								$(\".title\").resizable({
 									handles: \"e\"
 								});
-								{$browse["js"]}
-								
 							</script>							
 						";
 					}

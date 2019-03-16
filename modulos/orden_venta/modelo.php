@@ -36,7 +36,7 @@
 			
 			$return= parent::__BROWSE($option);
 			
-			$this->__PRINT_R($return);
+			#$this->__PRINT_R($return);
 			
 			return $return;
 		}							

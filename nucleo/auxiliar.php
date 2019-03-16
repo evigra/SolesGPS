@@ -2331,6 +2331,8 @@
 						$button_create_js="
 							if($(\"font#create_$name\").length>0)
 							{	
+								{$browse["js"]}
+							
 								$(\"font.show_form\").button({
 									icons: 	{primary:	\"ui-icon-extlink\"},
 									text: 	false								
@@ -2380,7 +2382,7 @@
 						@$return["js"].="			
 								$button_create_js
 								sys_report_memory();
-								{$browse["js"]}												
+																				
 								$(\"#sys_search_$name\")
 									.button({
 										icons: {	primary: \"ui-icon-search\" },

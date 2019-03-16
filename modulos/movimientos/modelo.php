@@ -87,7 +87,7 @@
     	{    		
 			$return		=parent::__BROWSE($option);			
 			
-			$this->__PRINT_R($this->class_one);
+			
 			
 			if(isset($this->class_one))
 			{		
@@ -108,6 +108,8 @@
 					"#total[name='{$this->class_one}_total']"		=>"$total"
 				);			
 				$return["js"]=$this->__JS_SET_INPUT($datas);
+				
+				$this->__PRINT_R($return["js"]);
 			}			
     	    return $return;
 		}

@@ -87,8 +87,6 @@
     	{    		
 			$return		=parent::__BROWSE($option);			
 			
-			
-			
 			if(isset($this->class_one))
 			{		
 				$datas		=$return["data"];

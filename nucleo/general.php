@@ -643,7 +643,7 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							$eval="												
-								###$"."option"."_obj_$campo	=array(\"name\"=>\"$campo"."_obj\");			
+								###$"."option"."_obj_$campo		=array(\"name\"=>\"$campo"."_obj\");			
 								###$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 								
 								

@@ -649,8 +649,8 @@
 								$"."memory				=$"."this->sys_memory;
 								$"."class_one			=$"."this->class_one;
 
-								unset($"."this->sys_memory);
-								unset($"."this->class_one);
+								$"."this->sys_memory	=\"\";
+								$"."this->class_one		=\"\";
 
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			

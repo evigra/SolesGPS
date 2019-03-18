@@ -67,7 +67,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
 		
-    	$module_title								="Modificar ";
+    	$module_title								="";
     }	
     elseif($objeto->sys_section=="show")
 	{
@@ -124,7 +124,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-	$objeto->words["module_title"]              ="$module_title Ordenes de Venta";
+	$objeto->words["module_title"]              ="$module_title Orden de Venta";
 	
 	
 	

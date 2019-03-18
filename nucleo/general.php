@@ -643,14 +643,14 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							$eval="												
-								###$"."option"."_obj_$campo		=array(\"name\"=>\"$campo"."_obj\");			
-								###$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+								$"."option"."_obj_$campo		=array(\"name\"=>\"$campo"."_obj\");			
+								$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 								
 								$"."memory				=$"."this->sys_memory;
 								$"."class_one			=$"."this->class_one;
 
-								$"."this->sys_memory	=\"\";
-								$"."this->class_one		=\"\";
+								##$"."this->sys_memory	=\"\";
+								##$"."this->class_one		=\"\";
 
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
@@ -665,21 +665,21 @@
 											if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
 											 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
 										}
-										###$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
-										$"."primary_field					=@$"."this->obj_"."$campo"."->sys_primary_field;
+										$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
+										##$"."primary_field					=@$"."this->obj_"."$campo"."->sys_primary_field;
 										
 										if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
 										{
-											###$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];
-											@$"."this->obj_"."$campo"."->sys_primary_id		=@$"."valor[$"."primary_field];		
+											$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];
+											##@$"."this->obj_"."$campo"."->sys_primary_id		=@$"."valor[$"."primary_field];		
 										}	
 										else
 										{
-											###$"."this->$campo"."_obj->sys_primary_id		=\"\";
-											@$"."this->obj_"."$campo"."->sys_primary_id		=\"\";
+											$"."this->$campo"."_obj->sys_primary_id		=\"\";
+											##@$"."this->obj_"."$campo"."->sys_primary_id		=\"\";
 										}
-										###$"."this->$campo"."_obj->__SAVE($"."valor);
-										@$"."this->obj_"."$campo"."->__SAVE($"."valor);				
+										$"."this->$campo"."_obj->__SAVE($"."valor);
+										##@$"."this->obj_"."$campo"."->__SAVE($"."valor);				
 									}	
 								}	
 								$"."this->sys_memory	=$"."memory;

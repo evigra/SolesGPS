@@ -8,7 +8,6 @@
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
 	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	#$objeto->words["html_head_css"]             	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left		="";	
 	$module_right		="";	
@@ -31,7 +30,7 @@
 		    array("report"=>"Reporte"),
 		);
 		
-		$module_title								="Crear ";
+		$module_title								="Crear";
     	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
@@ -124,9 +123,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-	$objeto->words["module_title"]              ="$module_title Orden de Venta";
-	
-	
+	$objeto->words["module_title"]              =$module_title . "Orden de Venta";
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);

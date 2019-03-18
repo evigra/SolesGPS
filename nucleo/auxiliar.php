@@ -1041,7 +1041,8 @@
 			    foreach($fields as $campo=>$valor)
 			    {		
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";
-			        if(!isset($valor["showTitle"]))	    $valor["showTitle"]		="si";
+			        if(!isset($valor["titleShow"]))	    $valor["titleShow"]		="si";
+			        if(!isset($valor["titleAlign"]))	$valor["titleAlign"]	="bottom";
 			        if(!isset($valor["title"]))	    	$valor["title"]			="";
 			        if(!isset($valor["value"]))	    	$valor["value"]			="";
 			        if(!isset($valor["source"]))	   	$valor["source"]		="";			        
@@ -1056,7 +1057,6 @@
 			        	$attr="";
 			        	if(is_array($valor["attr"]))
 			        	{	
-
 			        		foreach($valor["attr"] as $attr_field => $attr_value)
 			        		{
 								if($attr_value=="required")		$class.=" required ";
@@ -1065,15 +1065,15 @@
 			        		}			        	
 			        	}			        				        	
 						$titulo					="&nbsp;";		
-					    if(in_array($valor["showTitle"],$this->sys_true))	
+					    if(in_array($valor["titleShow"],$this->sys_true))	
 					    {			        
 					    	if(is_array($this->sys_fields_l18n) AND isset($this->sys_fields_l18n["$campo"]))	
 					    	{			        	
-					    		$valor["title"]		=$this->sys_fields_l18n["$campo"];
+					    		$valor["title"]			=$this->sys_fields_l18n["$campo"];
 					    	}	
 
-							if($valor["type"]=="txt")	$titulo					="{$valor["title"]}";			        	
-							else						$titulo					="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]} </font>";					    	
+							if($valor["type"]=="txt")	$titulo		="{$valor["title"]}";			        	
+							else						$titulo		="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]} </font>";
 					    }	
 					    
 					    if($valor["type"]=="input")	

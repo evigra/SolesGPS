@@ -107,7 +107,7 @@
 				);			
 				$return["js"]=$this->__JS_SET_INPUT($datas);
 				
-				$this->__PRINT_R($return["js"]);
+				#$this->__PRINT_R($return["js"]);
 			}			
     	    return $return;
 		}

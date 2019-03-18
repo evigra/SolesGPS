@@ -646,6 +646,12 @@
 								###$"."option"."_obj_$campo		=array(\"name\"=>\"$campo"."_obj\");			
 								###$"."this->$campo"."_obj		=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 								
+								$"."memory				=$"."this->sys_memory;
+								$"."class_one			=$"."this->class_one;
+
+								$"."this->sys_memory 	=null;
+								$"."this->class_one		=null;
+
 								
 								if(isset($"."valor_campo[\"class_field_m\"]))			
 									$"."class_field_m	=@$"."valor_campo[\"class_field_m\"];	
@@ -676,6 +682,9 @@
 										@$"."this->obj_"."$campo"."->__SAVE($"."valor);				
 									}	
 								}	
+								$"."this->sys_memory	=$"."memory;
+								$"."this->class_one		=$"."class_one;
+
 							";
 							#$this->__PRINT_R($eval);
 							eval($eval);														

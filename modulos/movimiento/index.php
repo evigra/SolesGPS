@@ -1,7 +1,6 @@
 <?php	
 	$objeto											=new movimiento();		
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($_SESSION);
 	
 	# CARGANDO PLANTILLAS GENERALES
 	$objeto->words["system_body"]               	=$objeto->__TEMPLATE($objeto->sys_html."system_body"); 		
@@ -19,7 +18,6 @@
 	
     if($objeto->sys_section=="create")
 	{
-
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
 		    array("action"=>"Guardar"),
@@ -35,8 +33,7 @@
 		
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
-    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-    	
+    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    	
     }	
     elseif($objeto->sys_section=="write")
 	{
@@ -46,7 +43,6 @@
 		    array("cancel"=>"Cancelar"),
 		);
 		
-
 		$module_center=array(
 		    array("action_pagar"=>"PAGAR"),
 		    array("action_abonar"=>"ABONAR"),

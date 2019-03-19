@@ -218,8 +218,8 @@
 			$option["from"]		="
 				(
 				SELECT  
-					(CASE WHEN tipo=\"PV\" then total else 0 end) as PAGO,
-					(CASE WHEN tipo=\"OV\" then total else 0 end) as ORDEN,		
+					(CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end) as PAGO,
+					(CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end) as ORDEN,		
 					m.*
 				FROM movimiento m WHERE tipo in (\"PV\", \"OV\")			
 				) m1

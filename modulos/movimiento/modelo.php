@@ -224,8 +224,7 @@
 				FROM movimiento m WHERE tipo in (\"PV\", \"OV\")			
 				) m1
 			";
-
-
+			$option["echo"]		="movimiento";
 			$option["group"]	="empresa_id";
 	    		
 			return parent::__BROWSE($option);

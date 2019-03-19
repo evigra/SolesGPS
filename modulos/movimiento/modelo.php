@@ -221,10 +221,10 @@
 					(CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end) as PAGO,
 					(CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end) as ORDEN,		
 					m.*
-				FROM movimiento m WHERE tipo in (\"PV\", \"OV\")			
+				FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 				) m1
 			";
-			$option["echo"]		="movimiento";
+			#$option["echo"]		="movimiento";
 			$option["group"]	="empresa_id";
 	    		
 			return parent::__BROWSE($option);

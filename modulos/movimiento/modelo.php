@@ -211,7 +211,8 @@
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, SUM(m1.orden)-SUM(m1.pago),'')"]="deudor"; 
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),'')"]="acreedor";
 			
-
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, 'red','green')"]="color"; 
+			
 			$option["from"]		="
 				(
 				SELECT  

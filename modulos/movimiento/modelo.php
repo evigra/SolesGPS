@@ -208,8 +208,8 @@
 			$option["select"][]	="m1.*";
 			$option["select"]["SUM(m1.pago)"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, SUM(m1.orden)-SUM(m1.pago),0)"]="debito"; 
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),0)"]="credito";
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, SUM(m1.orden)-SUM(m1.pago),0)"]="deudor"; 
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),0)"]="acreedor";
 			
 
 			$option["from"]		="

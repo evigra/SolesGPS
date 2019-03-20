@@ -260,7 +260,7 @@
 			$option["select"]["CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end"]="orden";
 			
 			$option["where"][]="tipo in (\"PV\", \"OV\",\"PC\", \"OC\")";
-			$option["group"]="empresa_id";
+			$option["group"]="empresa_id,tipo";
 
 #*/	    		
 			return parent::__BROWSE($option);

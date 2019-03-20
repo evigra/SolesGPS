@@ -211,12 +211,18 @@
 			$option["select"]["
 				CASE 
 					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.orden)-SUM(m1.pago)
-					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  
-				
-				END
-				
+					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  				
+				END				
 			"]="deudor"; 
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),'')"]="acreedor";
+			$option["select"]["
+				CASE 
+					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='OV' THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='PC' THEN SUM(m1.pago)-SUM(m1.orden)  				
+				END				
+
+
+				IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),'')"
+			]="acreedor";
 			
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, '#ff0000','')"]="color1";
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, '#1bce54','')"]="color2";    

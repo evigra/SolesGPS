@@ -205,7 +205,7 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 
-/*			
+#/*			
 			$option["select"][]	="m1.*";
 			$option["select"]["
 				CASE 
@@ -251,10 +251,10 @@
 				) m1
 			";
 			#$option["echo"]		="movimiento";
-			$option["group"]	="empresa_id";
+			$option["group"]	="empresa_id,tipo";
 */
 
-#/*
+/*
 			$option["select"]["*"];
 			$option["select"]["CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end"]="pago";
 			$option["select"]["CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end"]="orden";

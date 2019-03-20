@@ -208,7 +208,8 @@
 			$option["select"][]	="m1.*";
 			$option["select"]["
 				CASE 
-					WHEN SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.pago)					
+					WHEN SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.pago)
+					WHEN SUM(m1.pago)>0 AND tipo='PC' THEN SUM(m1.pago)
 				END				
 			"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";

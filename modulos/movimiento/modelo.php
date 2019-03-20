@@ -255,8 +255,10 @@
 */
 
 #/*
+			$option["select"]["*"];
 			$option["select"]["CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end"]="PAGO";
 			$option["select"]["CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end"]="ORDEN";
+			
 			$option["where"][]="tipo in (\"PV\", \"OV\",\"PC\", \"OC\")";
 			
 

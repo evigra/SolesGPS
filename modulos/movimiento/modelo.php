@@ -238,7 +238,7 @@
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 				) m1
 			";
-			#$option["echo"]		="movimiento";
+			$option["echo"]		="movimiento";
 			$option["group"]	="empresa_id";
 #*/
 

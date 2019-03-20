@@ -206,18 +206,23 @@
 			if(!isset($option["select"]))	$option["select"]	=array();
 			
 			$option["select"][]	="m1.*";
-			$option["select"]["SUM(m1.pago)"]	="pago";
+			$option["select"]["
+				CASE 
+					WHEN SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.pago)					
+				END				
+			"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";
 			$option["select"]["
 				CASE 
 					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.orden)-SUM(m1.pago)
 					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  				
-					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='PV' THEN SUM(m1.orden)-SUM(m1.pago)
-					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  				
+					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='PC' THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='OV' THEN SUM(m1.pago)-SUM(m1.orden)  				
 					
 				END				
 			"]="deudor"; 
 			$option["select"]["
+				
 				CASE 
 					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='OV' THEN SUM(m1.orden)-SUM(m1.pago) 
 					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='PC' THEN SUM(m1.pago)-SUM(m1.orden)  				

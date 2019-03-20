@@ -215,8 +215,8 @@
 
 			$option["select"]["
 				CASE 
-					WHEN SUM(m1.pago)>0 THEN SUM(m1.pago)
-					WHEN SUM(m1.pago)>0 THEN SUM(m1.pago)
+					WHEN SUM(m1.pago)>0 AND m1.tipo='PC' THEN SUM(m1.pago)
+					WHEN SUM(m1.pago)>0 AND m1.tipo='PV' THEN SUM(m1.pago)
 				END				
 			"]	="pago";
 			$option["select"]["

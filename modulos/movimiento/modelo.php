@@ -204,7 +204,8 @@
 			if(!isset($option["where"]))	$option["where"]	=array();
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
-			
+
+/*			
 			$option["select"][]	="m1.*";
 			$option["select"]["
 				CASE 
@@ -214,9 +215,9 @@
 			"]	="orden";
 
 			$option["select"]["
-				CASE 
+				CASE
+					WHEN SUM(m1.pago)>0 AND m1.tipo='PV' THEN SUM(m1.pago) 
 					WHEN SUM(m1.pago)>0 AND m1.tipo='PC' THEN SUM(m1.pago)
-					WHEN SUM(m1.pago)>0 AND m1.tipo='PV' THEN SUM(m1.pago)
 				END				
 			"]	="pago";
 			$option["select"]["
@@ -251,7 +252,15 @@
 			";
 			#$option["echo"]		="movimiento";
 			$option["group"]	="empresa_id";
-	    		
+*/
+
+#/*
+			$option["select"]["CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end"]="PAGO";
+			$option["select"]["CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end"]="ORDEN";
+			$option["where"][]="tipo in (\"PV\", \"OV\",\"PC\", \"OC\")";
+			
+
+#*/	    		
 			return parent::__BROWSE($option);
 		}							
 	}

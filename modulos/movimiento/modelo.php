@@ -212,7 +212,7 @@
 			$option["select"]["
 				CASE
 					#WHEN SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.pago)-SUM(m1.orden)  				  				 
-					WHEN venta=1 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.orden)-SUM(m1.pago)
 					
 					#WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN (SUM(m1.pago)*-1)+SUM(m1.orden)
 				END				

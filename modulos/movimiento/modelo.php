@@ -210,14 +210,12 @@
 			$option["select"]["
 				CASE 
 					WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)
-					WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)
 				END							
 			"]	="orden";
 
 			$option["select"]["
 				CASE
-					WHEN SUM(m1.pago)>0 AND m1.tipo='PV' THEN SUM(m1.pago) 
-					WHEN SUM(m1.pago)>0 AND m1.tipo='PC' THEN SUM(m1.pago)
+					WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) 
 				END				
 			"]	="pago";
 			$option["select"]["
@@ -251,8 +249,8 @@
 				) m1
 			";
 			#$option["echo"]		="movimiento";
-			$option["group"]	="empresa_id,tipo";
-*/
+			$option["group"]	="empresa_id";
+#*/
 
 /*
 			$option["select"]["*"];

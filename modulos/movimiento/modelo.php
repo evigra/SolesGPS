@@ -213,10 +213,9 @@
 				END				
 			"]	="pago";
 			$option["select"]["
-				CASE
-					WHEN SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.pago) 
+				CASE 
 					WHEN SUM(m1.orden)>0 AND tipo='OV' THEN SUM(m1.orden)
-					
+					WHEN SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.pago)
 				END				
 			
 			"]	="orden";

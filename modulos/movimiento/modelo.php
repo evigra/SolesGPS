@@ -209,7 +209,7 @@
 			$option["select"]["
 				CASE 
 					WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)
-					WHEN SUM(m1.orden)>0THEN SUM(m1.orden)
+					WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)
 				END							
 			"]	="orden";
 

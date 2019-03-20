@@ -208,7 +208,10 @@
 			$option["select"][]	="m1.*";
 			$option["select"]["SUM(m1.pago)"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, SUM(m1.orden)-SUM(m1.pago),'')"]="deudor"; 
+			$option["select"]["
+				IF(SUM(m1.orden)-SUM(m1.pago)>0, SUM(m1.orden)-SUM(m1.pago),'')
+				
+			"]="deudor"; 
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),'')"]="acreedor";
 			
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)>0, '#ff0000','')"]="color1";
@@ -218,8 +221,8 @@
 			$option["from"]		="
 				(
 					SELECT  
-						(CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end) as PAGO,
-						(CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end) as ORDEN,		
+						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
+						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						m.*
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 				) m1

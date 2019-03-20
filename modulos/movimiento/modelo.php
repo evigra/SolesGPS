@@ -209,7 +209,11 @@
 			$option["select"]["SUM(m1.pago)"]	="pago";
 			$option["select"]["SUM(m1.orden)"]	="orden";
 			$option["select"]["
-				CASE WHEN SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago) END
+				CASE 
+					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='PV' THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  
+				
+				END
 				
 			"]="deudor"; 
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)<0, SUM(m1.orden)-SUM(m1.pago),'')"]="acreedor";

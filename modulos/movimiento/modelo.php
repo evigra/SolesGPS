@@ -212,7 +212,7 @@
 			$option["select"]["
 				CASE 
 					WHEN SUM(m1.orden)-SUM(m1.pago)>0 AND tipo='OC' THEN SUM(m1.pago)-SUM(m1.orden)  				
-					WHEN SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN SUM(m1.orden)-SUM(m1.pago)>0 THEN (SUM(m1.pago)*-1)-SUM(m1.orden)
 
 				END				
 			"]="deudor"; 

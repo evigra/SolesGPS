@@ -217,11 +217,11 @@
 			
 			$option["from"]		="
 				(
-				SELECT  
-					(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
-					(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
-					m.*
-				FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
+					SELECT  
+						(CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end) as PAGO,
+						(CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end) as ORDEN,		
+						m.*
+					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 				) m1
 			";
 			$option["echo"]		="movimiento";

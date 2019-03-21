@@ -410,13 +410,13 @@
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
-					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 15 DAY)< now() )
 					AND md5(d.id)={$this->request["a"]}
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 			
 			#$this->__PRINT($datas);
-			/*
+			#/*
 			foreach($datas as $row)
 			{
 				$respuesta=$this->WS_TAECEL($row);					
@@ -443,7 +443,7 @@
 				}
 							
 			}
-			*/
+			#*/
     		
 		}
 		public function cron_saldo()
@@ -459,7 +459,7 @@
 
 
 			$comando_sql		="
-				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL050' as producto
+				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND (bloqueo!=1 OR bloqueo is NULL)
@@ -524,10 +524,10 @@
 			$telefonos_recargados=$response->data;
 
 			$comando_sql		="
-				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL050' as producto
+				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL030' as producto
 				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
-					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >14
+					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >25
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:15:00';    
 			";
@@ -593,7 +593,7 @@
 				array("referencia"=>"9854123547", "producto"=>"MEG000", "monto"=>"131"),
 				array("referencia"=>"27458965324125", "producto"=>"DSH000", "monto"=>"103"),
 				array("referencia"=>"4578326541", "producto"=>"IZZ000", "monto"=>"155"),
-				array("referencia"=>"3456987", "producto"=>"MAX000", "monto"=>"177"),			
+					array("referencia"=>"3456987", "producto"=>"MAX000", "monto"=>"177"),			
 			);		    		
 
 			foreach($datas as $row)

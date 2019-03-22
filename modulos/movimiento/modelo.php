@@ -245,7 +245,7 @@
 						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						vc.*,
-						''
+						vc.''
 					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					GROUP BY tipo					
 				) m1

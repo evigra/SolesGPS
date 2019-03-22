@@ -241,8 +241,8 @@
 					UNION
 					
 					SELECT  
-						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
-						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
+						SUM(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
+						SUM(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						vc.*
 					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					GROUP BY tipo					

@@ -198,14 +198,13 @@
 			return parent::__BROWSE($option);
 		}							
 		
-   		public function __BROWSE_KANBAN($option="")
+   		public function __BROWSE_CUENTAS($option="")
     	{			    	
 			if($option=="")					$option				=array();			
 			if(!isset($option["where"]))	$option["where"]	=array();
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 
-#/*			
 			$option["select"][]	="m1.*";
 			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
 			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";
@@ -237,9 +236,44 @@
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						m.*
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
-					
-					UNION
-					
+				) m1
+			";
+			$option["group"]	="m1.empresa_id";
+			return parent::__BROWSE($option);
+		}
+   		public function __BROWSE_TOTALES($option="")
+    	{			    	
+			if($option=="")					$option				=array();			
+			if(!isset($option["where"]))	$option["where"]	=array();
+			
+			if(!isset($option["select"]))	$option["select"]	=array();
+
+			$option["select"][]	="m1.*";
+			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
+			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";
+			$option["select"]["
+				CASE					
+					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN venta=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
+
+					WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.pago)-SUM(m1.orden)
+					#WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					#WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
+				END				
+			"]="deudor"; 
+			$option["select"]["				
+				CASE 
+					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN ''
+				END				
+			"]="acreedor";
+			
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND VENTA=1, '#1bce54','')"]="color2";    
+			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)=0, '#ccc','')"]="color3";
+
+			$option["from"]		="
+				(
 					SELECT  
 						SUM(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						SUM(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
@@ -249,20 +283,8 @@
 					GROUP BY tipo					
 				) m1
 			";
-			#$option["echo"]		="movimiento";
 			$option["group"]	="m1.empresa_id";
-#*/	
-
-/*
-			$option["select"]["*"];
-			$option["select"]["CASE WHEN tipo IN (\"PV\",\"PC\") then total else 0 end"]="pago";
-			$option["select"]["CASE WHEN tipo IN (\"OV\",\"OC\") then total else 0 end"]="orden";
-			
-			$option["where"][]="tipo in (\"PV\", \"OV\",\"PC\", \"OC\")";
-			$option["group"]="empresa_id,tipo";
-
-#*/	    		
 			return parent::__BROWSE($option);
-		}							
+		}									
 	}
 ?>

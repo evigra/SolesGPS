@@ -99,7 +99,7 @@
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$template_body								=$objeto->sys_module . "html/kanban";
-	   	$data										=$objeto->__BROWSE_KANBAN();
+	   	$data										=$objeto->__BROWSE_CUENTAS();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }    
     else

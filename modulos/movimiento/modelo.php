@@ -252,7 +252,7 @@
 				) m1
 			";
 			#$option["echo"]		="movimiento";
-			$option["group"]	="empresa_id";
+			$option["group"]	="m1.empresa_id";
 #*/
 
 /*

@@ -205,7 +205,7 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 
-#/*			
+/*			
 			$option["select"][]	="m1.*";
 			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
 			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";
@@ -229,7 +229,7 @@
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND VENTA=1, '#1bce54','')"]="color2";    
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)=0, '#ccc','')"]="color3";
-			
+			*/
 			$option["from"]		="
 				(
 					SELECT  

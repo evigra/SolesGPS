@@ -205,7 +205,7 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 
-/*			
+#/*			
 			$option["select"][]	="m1.*";
 			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
 			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";
@@ -229,14 +229,13 @@
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND VENTA=1, '#1bce54','')"]="color2";    
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)=0, '#ccc','')"]="color3";
-			*/
+
 			$option["from"]		="
 				(
 					SELECT  
 						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
-						m.*, 
-						m.company_id
+						m.*
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					
 					UNION
@@ -244,11 +243,9 @@
 					SELECT  
 						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
-						vc.*,
-						vc.company_id=''
+						vc.*
 					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
-					GROUP BY tipo
-					
+					GROUP BY tipo					
 				) m1
 			";
 			#$option["echo"]		="movimiento";

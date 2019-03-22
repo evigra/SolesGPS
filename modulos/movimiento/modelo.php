@@ -218,7 +218,6 @@
 					WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.pago)-SUM(m1.orden)
 					#WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
 					#WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
-
 				END				
 			"]="deudor"; 
 			$option["select"]["				
@@ -238,6 +237,17 @@
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						m.*
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
+					
+					UNION
+					
+					SELECT  
+						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
+						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
+						m.*,
+						company_id=''
+					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
+					GROUP BY tipo
+					
 				) m1
 			";
 			#$option["echo"]		="movimiento";

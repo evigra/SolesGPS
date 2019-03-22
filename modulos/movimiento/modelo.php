@@ -218,8 +218,9 @@
 			"]="deudor"; 
 			$option["select"]["				
 				CASE 
-					WHEN SUM(m1.orden)-SUM(m1.pago)<0 AND tipo='OV' THEN (SUM(m1.orden)*-1)-SUM(m1.pago) 
-					WHEN SUM(m1.orden)-SUM(m1.pago)<0 THEN (SUM(m1.orden)*-1)-SUM(m1.pago)
+					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
 				END				
 			"]="acreedor";
 			

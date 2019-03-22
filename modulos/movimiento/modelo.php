@@ -243,9 +243,8 @@
 					SELECT  
 						SUM(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						SUM(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
-						vc.id,company_id,'',registro,tipo,compra,venta,fecha,movimiento_id,folio,
+						vc.id,company_id,'COMPRA',registro,tipo,compra,venta,fecha,movimiento_id,folio,
 						caducidad,estatus,cron_cantidad,cron_unidad,trabajador_id,subtotal,iva,total,subtipo
-
 					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					GROUP BY tipo					
 				) m1

@@ -215,7 +215,7 @@
 					WHEN venta=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
 					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
 
-					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.orden)-SUM(m1.pago)
+					WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.pago)-SUM(m1.orden)
 					#WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
 					#WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
 

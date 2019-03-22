@@ -236,7 +236,7 @@
 						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						m.*, 
-						company_id
+						m.company_id
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					
 					UNION
@@ -245,7 +245,7 @@
 						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						vc.*,
-						company_id=''
+						vc.company_id=''
 					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 					GROUP BY tipo
 					

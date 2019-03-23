@@ -39,6 +39,7 @@
 
 	for($a=0; $a<10; $a++)
 	{
+		echo $pre_path	."modulos/{$sys_class}/modelo.php";
 		if(!class_exists("general") AND @file_exists($pre_path	."nucleo/general.php"))
 		{
 			require_once($pre_path	."nucleo/basededatos.php");
@@ -47,7 +48,7 @@
 		}
 		if(!class_exists($sys_class) AND @file_exists($pre_path	."modulos/{$sys_class}/modelo.php"))		
 		{
-			echo $pre_path	."modulos/{$sys_class}/modelo.php";
+			
 		
 			require_once($pre_path	."modulos/{$sys_class}/modelo.php");
 		}				

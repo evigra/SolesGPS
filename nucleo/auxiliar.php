@@ -745,9 +745,13 @@
 						require_once($pre_path	."nucleo/auxiliar.php");
 						require_once($pre_path	."nucleo/general.php");													
 					}
+					echo $pre_path	."modulos/{$valor["class_name"]}/modelo.php";
 					if(!class_exists($valor["class_name"]) AND @file_exists($pre_path	."modulos/{$valor["class_name"]}/modelo.php"))		
+					{
+					
+					
 						require_once($pre_path	."modulos/{$valor["class_name"]}/modelo.php");
-									
+					}				
 					$pre_path.="../";
 				}
 

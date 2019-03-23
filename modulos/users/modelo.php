@@ -78,7 +78,8 @@
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_modulos",
 			    "relation"          => "one2many",			    
-			    "class_name"       	=> "modulo",
+			    #"class_name"       	=> "modulo",
+			    "class_name"       	=> "menu",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "sesion_start",
 			    "class_field_m"    	=> "menu",			    
@@ -90,7 +91,6 @@
 			    "type"              => "input",
 			    "relation"          => "one2many",
 			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
 			    "class_field_o"    	=> "company_id",
 			    "class_field_m"    	=> "id",
 			),						
@@ -137,18 +137,19 @@
 		public function __CONSTRUCT()
 		{
 			#echo "<br>USER :: CONSTRUC INI";
-
+			/*
 			$option		=array(		
 				"name"			=>"files_obj",		
 				"memory"		=>"files_obj",
 			);			
-			$this->obj_files_id		=new files($option);
-			files_id
+			#$this->obj_files_id		=new files($option);
+			
 			$option		=array(	
 				"name"			=>"menu_obj",		
 				"memory"		=>"menu_obj",
 			);						
 			$this->menu_obj			=new menu($option);
+			*/
 			#$this->device_obj		=new device();
 			#$this->usergroup_obj	=new user_group();
 
@@ -227,7 +228,7 @@
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);
 			
-			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
+			$this->words["permisos"]	    =$this->obj_sesion_start->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
 			#/*
 			#$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
 			#*/

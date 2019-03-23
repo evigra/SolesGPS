@@ -737,29 +737,26 @@
 			#if(count($_REQUEST)>6)
 			if(is_array(@$this->sys_fields))
 			{
-				for($a=0; $a<10; $a++)
-				{
-					if(!class_exists("general") AND @file_exists($pre_path	."nucleo/general.php"))
-					{
-						require_once($pre_path	."nucleo/basededatos.php");
-						require_once($pre_path	."nucleo/auxiliar.php");
-						require_once($pre_path	."nucleo/general.php");													
-					}
-					echo $pre_path	."modulos/{$valor["class_name"]}/modelo.php";
-					if(!class_exists($valor["class_name"]) AND @file_exists($pre_path	."modulos/{$valor["class_name"]}/modelo.php"))		
-					{
-					
-					
-						require_once($pre_path	."modulos/{$valor["class_name"]}/modelo.php");
-					}				
-					$pre_path.="../";
-				}
-
-
 				foreach($this->sys_fields as $campo =>$valor)
 				{				
 					if(isset($valor["class_name"]))
-					{				
+					{			
+						for($a=0; $a<10; $a++)
+						{
+							if(!class_exists("general") AND @file_exists($pre_path	."nucleo/general.php"))
+							{
+								require_once($pre_path	."nucleo/basededatos.php");
+								require_once($pre_path	."nucleo/auxiliar.php");
+								require_once($pre_path	."nucleo/general.php");													
+							}
+							if(!class_exists($valor["class_name"]) AND @file_exists($pre_path	."modulos/{$valor["class_name"]}/modelo.php"))		
+							{
+								require_once($pre_path	."modulos/{$valor["class_name"]}/modelo.php");
+							}				
+							$pre_path.="../";
+						}
+
+						
 						$eval="
 							$"."option"."_obj_$campo	=array(
 								\"name\"			=>\"$campo"."_obj\",		

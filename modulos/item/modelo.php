@@ -31,11 +31,11 @@
 			),
 			"descripcion_venta"	  	=>array(
 			    "title"             => "Descripcion de Venta",
-			    "type"              => "input",
+			    "type"              => "textarea",
 			),
 			"descripcion_compra"  	=>array(
 			    "title"             => "Descripcion de Compra",
-			    "type"              => "input",
+			    "type"              => "textarea",
 			),
 
 			"servicio"	    =>array(

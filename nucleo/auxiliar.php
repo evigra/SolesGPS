@@ -741,6 +741,7 @@
 				{				
 					if(isset($valor["class_name"]))
 					{			
+						$pre_path="";
 						for($a=0; $a<10; $a++)
 						{
 							if(!class_exists("general") AND @file_exists($pre_path	."nucleo/general.php"))

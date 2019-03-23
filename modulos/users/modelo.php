@@ -60,7 +60,6 @@
 			    "type"              => "file",
 			    "relation"          => "one2many",
 			    "class_name"       	=> "files",
-			    "class_path"        => "modulos/files/modelo.php",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
 			),
@@ -143,7 +142,8 @@
 				"name"			=>"files_obj",		
 				"memory"		=>"files_obj",
 			);			
-			$this->files_obj		=new files($option);
+			$this->obj_files_id		=new files($option);
+			files_id
 			$option		=array(	
 				"name"			=>"menu_obj",		
 				"memory"		=>"menu_obj",
@@ -174,7 +174,7 @@
 				else
 					unset($datas["password"]);    
 			    
-			    $files_id					=$this->files_obj->__SAVE();    	    
+			    $files_id					=$this->obj_files_id->__SAVE();    	    
 			    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
 
 			    $user_id=parent::__SAVE($datas,$option);
@@ -234,7 +234,7 @@
 			
 			
 			if(isset($this->sys_fields["files_id"]["value"]))    	
-				$this->words["img_files_id"]	            =$this->files_obj->__GET_FILE($this->sys_fields["files_id"]["value"]);
+				$this->words["img_files_id"]	            =$this->obj_files_id->__GET_FILE($this->sys_fields["files_id"]["value"]);
 			else	$this->words["img_files_id"]="";	
 			
 			return $this->words;

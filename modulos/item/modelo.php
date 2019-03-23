@@ -29,10 +29,15 @@
 			    "title"             => "modulo",
 			    "type"              => "hidden",
 			),
-			"descripcion"	    	=>array(
-			    "title"             => "Descripcion",
-			    "type"              => "input",
+			"descripcion_venta"	  	=>array(
+			    "title"             => "Descripcion de Venta",
+			    "type"              => "textarea",
 			),
+			"descripcion_compra"  	=>array(
+			    "title"             => "Descripcion de Compra",
+			    "type"              => "textarea",
+			),
+
 			"servicio"	    =>array(
 			    "title"             => "Servicio",
 			    "type"              => "checkbox",

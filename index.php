@@ -1,4 +1,14 @@
 <?php
+	$path											=$_GET["sys_vpath"];
+	$vpath2											="modulos/$path"."index.php";
+	
+	$_SESSION["module"]								=array(
+		"name"=>"$path"
+	);				   	    			
+	
+	#$aux_REQUEST["sys_vpath"]						=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+	$sys_class										=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+
 	require_once("nucleo/sesion.php");
     
     if(@$_REQUEST["setting_company"]>0)
@@ -16,15 +26,6 @@
 			$_SESSION["company"]					=$modulo;
 		}
 	}	
-	$path											=$_GET["sys_vpath"];
-	$vpath2											="modulos/$path"."index.php";
-	
-	$_SESSION["module"]								=array(
-		"name"=>"$path"
-	);				   	    			
-	
-	#$aux_REQUEST["sys_vpath"]						=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
-	$sys_class										=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
 		
 	if(array_key_exists("sys_vpath",$_REQUEST) AND $_REQUEST["sys_vpath"]!="")
 	{

@@ -44,6 +44,7 @@
 			require_once($pre_path	."nucleo/basededatos.php");
 			require_once($pre_path	."nucleo/auxiliar.php");
 			require_once($pre_path	."nucleo/general.php");													
+			require_once($pre_path	."modulos/company/modelo.php");
 		}
 		if(!class_exists($sys_class) AND @file_exists($pre_path	."modulos/{$sys_class}/modelo.php"))		
 		{

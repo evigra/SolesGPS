@@ -58,7 +58,6 @@
 			    "title"             => "Imagen",
 			    "showTitle"         => "si",
 			    "type"              => "file",
-			    "relation"          => "one2many",
 			    "class_name"       	=> "files",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    

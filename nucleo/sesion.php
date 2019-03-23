@@ -1,4 +1,5 @@
 <?php	
+
 	if(!isset($_SESSION))
 	{
 		#ini_set('display_errors', 0);
@@ -23,6 +24,17 @@
 			Header ("Location: $destino");			
 		}	
 	}
+	$path											=$_GET["sys_vpath"];
+	$vpath2											="modulos/$path"."index.php";
+	
+	$_SESSION["module"]								=array(
+		"name"=>"$path"
+	);				   	    			
+	
+	#$aux_REQUEST["sys_vpath"]						=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+	$sys_class										=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+
+
 	$pre_path="";
 
 	for($a=0; $a<10; $a++)

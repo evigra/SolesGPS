@@ -87,12 +87,8 @@
 			),
 			"files_id"	    =>array(
 			    "title"             => "Logo",
-			    "showTitle"         => "si",
 			    "type"              => "file",
-			    "class_name"       	=> "files",
-			    "class_field_o"    	=> "files_id",
-			    "class_field_m"    	=> "id",			    
-			),
+			),			
 			#/*
 			"img_files_id"	    =>array(
 			    "title"             => "Logo",
@@ -187,7 +183,7 @@
 		##############################################################################		
 		public function __CONSTRUCT()
 		{
-			#$this->files_obj	=new files();
+			$this->files_obj	=new files();
 			parent::__CONSTRUCT();
 		}
 		public function __SAVE($datas=NULL,$option=NULL)

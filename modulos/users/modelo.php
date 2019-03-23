@@ -58,7 +58,9 @@
 			    "title"             => "Imagen",
 			    "showTitle"         => "si",
 			    "type"              => "file",
+			    "relation"          => "one2many",
 			    "class_name"       	=> "files",
+			    "class_path"        => "modulos/files/modelo.php",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
 			),
@@ -77,8 +79,7 @@
 			    "value"             => "",			    
 			    "procedure"       	=> "autocomplete_modulos",
 			    "relation"          => "one2many",			    
-			    #"class_name"       	=> "modulo",
-			    "class_name"       	=> "menu",
+			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "sesion_start",
 			    "class_field_m"    	=> "menu",			    
@@ -90,6 +91,7 @@
 			    "type"              => "input",
 			    "relation"          => "one2many",
 			    "class_name"       	=> "company",
+			    "class_path"        => "modulos/company/modelo.php",
 			    "class_field_o"    	=> "company_id",
 			    "class_field_m"    	=> "id",
 			),						
@@ -136,19 +138,17 @@
 		public function __CONSTRUCT()
 		{
 			#echo "<br>USER :: CONSTRUC INI";
-			/*
+
 			$option		=array(		
 				"name"			=>"files_obj",		
 				"memory"		=>"files_obj",
 			);			
-			#$this->obj_files_id		=new files($option);
-			
+			$this->files_obj		=new files($option);
 			$option		=array(	
 				"name"			=>"menu_obj",		
 				"memory"		=>"menu_obj",
 			);						
 			$this->menu_obj			=new menu($option);
-			*/
 			#$this->device_obj		=new device();
 			#$this->usergroup_obj	=new user_group();
 
@@ -174,7 +174,7 @@
 				else
 					unset($datas["password"]);    
 			    
-			    $files_id					=$this->obj_files_id->__SAVE();    	    
+			    $files_id					=$this->files_obj->__SAVE();    	    
 			    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
 
 			    $user_id=parent::__SAVE($datas,$option);
@@ -227,14 +227,14 @@
 		{	
 			$this->words					=parent::__INPUT($words,$sys_fields);
 			
-			$this->words["permisos"]	    =$this->obj_sesion_start->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
+			$this->words["permisos"]	    =$this->menu_obj->grupos_html(@$this->sys_fields["usergroup_ids"]["values"]);
 			#/*
 			#$this->words["flotilla"]	    =$this->device_obj->devices_user($this->sys_primary_id);
 			#*/
 			
 			
 			if(isset($this->sys_fields["files_id"]["value"]))    	
-				$this->words["img_files_id"]	            =$this->obj_files_id->__GET_FILE($this->sys_fields["files_id"]["value"]);
+				$this->words["img_files_id"]	            =$this->files_obj->__GET_FILE($this->sys_fields["files_id"]["value"]);
 			else	$this->words["img_files_id"]="";	
 			
 			return $this->words;

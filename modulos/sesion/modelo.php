@@ -15,16 +15,7 @@
 			    "title"             => "Usuario",
 			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "class_name"       	=> "users",
-			    "class_field_l"    	=> "nombre",				# Label
 			),
-			"company"	    =>array(
-			    "title"             => "company",
-			    "showTitle"         => "si",
-			    "type"              => "input",
-			    "class_name"       	=> "company_gps",
-			),
-
 			"pass"	    =>array(
 			    "title"             => "Password",
 			    "showTitle"         => "si",		
@@ -111,10 +102,8 @@
 
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-
-
-    		#$this->obj_user   		=new users();
-    		#$this->obj_company   	=new company_gps();
+    		$this->obj_user   		=new users();
+    		$this->obj_company   	=new company_gps();
     		
     	    
     		$this->words["mensaje_sesion"]	= 	"

@@ -22,7 +22,7 @@
 			    "title"             => "company",
 			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "class_name"       	=> "company",
+			    "class_name"       	=> "company_gps",
 			),
 
 			"pass"	    =>array(
@@ -114,7 +114,7 @@
 
 
     		#$this->obj_user   		=new users();
-    		$this->obj_company   	=new company_gps();
+    		#$this->obj_company   	=new company_gps();
     		
     	    
     		$this->words["mensaje_sesion"]	= 	"

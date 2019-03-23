@@ -9,8 +9,8 @@
 				admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0) as img_files_id_med, c.*		
 			FROM company c WHERE id={$_REQUEST["setting_company"]}
 		";		
-		$modulos 		=$objeto->__EXECUTE($comando_sql);    
-		$objeto=null;					
+		$modulos 									=$objeto->__EXECUTE($comando_sql);    
+		$objeto										=null;					
 		foreach($modulos as $modulo)
 		{
 			$_SESSION["company"]					=$modulo;
@@ -23,8 +23,8 @@
 		"name"=>"$path"
 	);				   	    			
 	
-	
-	$aux_REQUEST["sys_vpath"]						=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+	#$aux_REQUEST["sys_vpath"]						=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
+	$sys_class										=@substr($_REQUEST["sys_vpath"],0, strpos($_REQUEST["sys_vpath"], "/"+1));
 		
 	if(array_key_exists("sys_vpath",$_REQUEST) AND $_REQUEST["sys_vpath"]!="")
 	{

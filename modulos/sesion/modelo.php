@@ -15,7 +15,7 @@
 			    "title"             => "Usuario",
 			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "class_name"       	=> "user",
+			    "class_name"       	=> "users",
 			    "class_field_l"    	=> "nombre",				# Label
 			),
 			"company"	    =>array(

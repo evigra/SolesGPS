@@ -47,8 +47,6 @@
 		}
 		if(!class_exists($sys_class) AND @file_exists($pre_path	."modulos/{$sys_class}/modelo.php"))		
 		{
-			
-		
 			require_once($pre_path	."modulos/{$sys_class}/modelo.php");
 		}				
 		$pre_path.="../";

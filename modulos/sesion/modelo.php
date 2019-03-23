@@ -15,7 +15,16 @@
 			    "title"             => "Usuario",
 			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "class_name"       	=> "user",
+			    "class_field_l"    	=> "nombre",				# Label
 			),
+			"company"	    =>array(
+			    "title"             => "company",
+			    "showTitle"         => "si",
+			    "type"              => "input",
+			    "class_name"       	=> "company",
+			),
+
 			"pass"	    =>array(
 			    "title"             => "Password",
 			    "showTitle"         => "si",		
@@ -102,7 +111,9 @@
 
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->obj_user   		=new users();
+
+
+    		#$this->obj_user   		=new users();
     		$this->obj_company   	=new company_gps();
     		
     	    

@@ -1080,7 +1080,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_true"]$this->sys_print))					        
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";

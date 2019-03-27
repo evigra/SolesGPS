@@ -13,6 +13,10 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
+		function __CONSTRUCT($option=array()) 
+		{
+			$this->__PRINT_R("aaaa");
+		} 		
 		public function __CONSTRUCT($option=array())
 		{  	
 			if(!isset($this->sys_fields))			$this->sys_fields=array();

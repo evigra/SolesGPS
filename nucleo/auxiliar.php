@@ -5,55 +5,7 @@
 	
 	class auxiliar extends basededatos 
 	{   
-		##############################################################################	
-		##  PROPIEDADES
-		##############################################################################
-		var $request			=array();	# este arrat recibe las variables del POST		
-		static $sys_true		=array(1,"1","true", "si");
-		static $sys_import		=array(
-									"type"		=>"replace",
-									"fields"	=>",",
-									"enclosed"	=>"\"",
-									"lines"		=>"\\n",
-									"ignore"	=>"1",
-								);
-		static $sys_false	    =array(0,"0","false", "no");
-		static $sys_modules	    =array(
-									"historico","menu","user_group","tareas", 
-									"group","modulos","permiso","sesion","cron",
-									"cron_history","position","positions","crons_history"
-								);
-		static $sys_print	   	=array("print_report","print_excel","print_pdf");
-		var $sys_section	    ="";
-		var $sys_action		    ="";
-		var $html				="";
-		var $sitio_web			="";		
-		var	$jquery				="";
-		var	$jquery_aux			="";	
-		var $sys_html           ="sitio_web/html/";
-		
-		static $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
-		static $sys_server_error=array("localhost","developer.solesgps.com");
 
-		
-		var $sys_date; 
-		var $sys_object; 
-		var $sys_name; 
-		var $sys_table; 
-		var $sys_memory			=""; 
-		
-		var $__PRINT			="";
-		var $__PRINT_OPTION		=array();
-		var $__PRINT_JS			="";
-		
-		var $sys_historico;
-			
-		/*		
-		var $words              =array(
-		    "html_head_title"           => "ESTE ES EL TITULO DE LA VENTANA :: words[html_head_title]",
-		    "html_head_description"     => "ESTA ES LA DESCRIPCION OCULTA DEL MODULO :: words[html_head_description]",		
-		);
-		*/
 		##############################################################################	
 		##  METODOS	
 		##############################################################################

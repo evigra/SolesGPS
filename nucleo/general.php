@@ -8,7 +8,7 @@
 		var $sys_fields_l18n	=NULL;
 		var $sys_enviroments	="PRODUCTION";
 		var $request			=array();	# este arrat recibe las variables del POST		
-		protected $sys_true			=array(1,"1","true", "si");
+		var $sys_true			=array(1,"1","true", "si");
 		var $sys_import			=array(
 									"type"		=>"replace",
 									"fields"	=>",",
@@ -16,13 +16,13 @@
 									"lines"		=>"\\n",
 									"ignore"	=>"1",
 								);
-		protected $sys_false		    =array(0,"0","false", "no");
-		protected $sys_modules	    =array(
+		var $sys_false		    =array(0,"0","false", "no");
+		private $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 
 									"group","modulos","permiso","sesion","cron",
 									"cron_history","position","positions","crons_history"
 								);
-		protected $sys_print	    	=array("print_report","print_excel","print_pdf");
+		var $sys_print	    	=array("print_report","print_excel","print_pdf");
 		var $sys_section	    ="";
 		var $sys_action		    ="";
 		var $html				="";
@@ -31,8 +31,8 @@
 		var	$jquery_aux			="";	
 		var $sys_html           ="sitio_web/html/";
 		
-		protected $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
-		protected $sys_server_error	=array("localhost","developer.solesgps.com");
+		var $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
+		var $sys_server_error	=array("localhost","developer.solesgps.com");
 
 		
 		var $sys_date; 

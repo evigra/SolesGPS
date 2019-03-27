@@ -16,6 +16,7 @@
 		function __AUTOLOAD($option=array()) 
 		{
 			echo "AAA";
+			return true;
 		} 		
 		public function __CONSTRUCT($option=array())
 		{  	

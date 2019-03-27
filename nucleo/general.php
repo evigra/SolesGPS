@@ -20,18 +20,23 @@
 			#if(!isset($_SESSION["obj"]))
 			{
 				@$_SESSION["obj"]					=array(
-					"sys_modules"		=>array(
-						"historico","menu","user_group","tareas", 
-						"group","modulos","permiso","sesion","cron",
-						"cron_history","position","positions","crons_history"
-					),
 					"sys_false"			=>array(0,"0","false", "no"),
 					"sys_true"			=>array(1,"1","true", "yes","si"),
 					"sys_server_true"	=>array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com"),
 					"sys_server_error"	=>array("localhost","developer.solesgps.com"),
 					"sys_print"	    	=>array("print_report","print_excel","print_pdf"),
-					
-					
+					"sys_import"		=>array(
+										"type"		=>"replace",
+										"fields"	=>",",
+										"enclosed"	=>"\"",
+										"lines"		=>"\\n",
+										"ignore"	=>"1",
+					),		
+					"sys_modules"		=>array(
+										"historico","menu","user_group","tareas", 
+										"group","modulos","permiso","sesion","cron",
+										"cron_history","position","positions","crons_history"
+					),					
 				);
 			}
 

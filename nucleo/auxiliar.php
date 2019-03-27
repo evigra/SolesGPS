@@ -48,12 +48,12 @@
 		
 		var $sys_historico;
 			
-		
+		/*		
 		var $words              =array(
 		    "html_head_title"           => "ESTE ES EL TITULO DE LA VENTANA :: words[html_head_title]",
 		    "html_head_description"     => "ESTA ES LA DESCRIPCION OCULTA DEL MODULO :: words[html_head_description]",		
 		);
-
+		*/
 		##############################################################################	
 		##  METODOS	
 		##############################################################################

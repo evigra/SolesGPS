@@ -82,11 +82,11 @@
 			
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_error"]))
 			{	
-				error_reporting(-1);
+				#error_reporting(-1);
 			}
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_true"]))
 			{	
-				ini_set('display_errors', 0);	
+				#ini_set('display_errors', 0);	
 			}
 
 			ini_set('display_errors', 1);				

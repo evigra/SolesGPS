@@ -73,7 +73,7 @@
 				{
 					if(is_array($_SESSION["user"]))
 					{
-						if(array_key_exists("name",$_SESSION["user"]))
+						if(array_key_exists("name",$_SESSION["user"]) AND $_SESSION["user"]["name"]!="")
 							$redireccionar= "";					
 					}					
 				}			

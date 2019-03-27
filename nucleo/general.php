@@ -15,11 +15,11 @@
 		##############################################################################		
 		function __AUTOLOAD($option=array()) 
 		{
-			$this->__PRINT_R("aaaa");
+			echo "AAA";
 		} 		
 		public function __CONSTRUCT($option=array())
 		{  	
-			$this->__PRINT_R("bbbb");
+			echo "bbbb";
 			if(!isset($this->sys_fields))			$this->sys_fields=array();
 			
 			if(!isset($option))						$option=Array();

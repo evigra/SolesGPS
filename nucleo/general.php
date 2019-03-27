@@ -131,6 +131,7 @@
 				}											
 				$this->__FIND_FIELDS(@$this->sys_primary_id);
 			}	
+			$this->__PRINT_R($this);
 		}
 		public function __BROWSE($option=array())
     	{    	

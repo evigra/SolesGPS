@@ -27,7 +27,8 @@
 					),
 					"sys_false"			=>array(0,"0","false", "no"),
 					"sys_server_true"	=>array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com"),
-					"sys_server_error"	=>array("localhost","developer.solesgps.com")
+					"sys_server_error"	=>array("localhost","developer.solesgps.com"),
+					"sys_print"	    	=>array("print_report","print_excel","print_pdf"),
 					
 					
 				);

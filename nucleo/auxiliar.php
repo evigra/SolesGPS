@@ -1711,7 +1711,7 @@
 			$sys_id			=@$this->request["sys_id_".$this->sys_name];
 		
 			$view2="";
-			if(!in_array(@$this->request["sys_action"],$this->sys_print))	
+			if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))	
 			{
 				$view2="
 					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">

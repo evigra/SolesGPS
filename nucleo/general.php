@@ -17,7 +17,7 @@
 			if(!isset($_SESSION))
 				@$_SESSION							=array();
 				
-			if(!isset($_SESSION["obj"]))
+			#if(!isset($_SESSION["obj"]))
 			{
 				@$_SESSION["obj"]					=array(
 					"sys_modules"		=>array(

@@ -663,11 +663,12 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							
-							if($this->sys_recursive<5)
+							if($this->sys_recursive<3)
 							{
+								$recursive=$this->sys_recursive+1;
 								$eval="\																			
 									$"."option"."_obj_$campo		=array(
-										\"recursive\"	=>{$this->sys_recursive},
+										\"recursive\"	=>$recursive,
 										\"name\"		=>\"$campo"."_obj\"
 									);			
 									$"."this->$campo"."_obj			=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												

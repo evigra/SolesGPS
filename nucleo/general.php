@@ -490,7 +490,7 @@
 						{
 							$id =   $return["data"]["$indice"][$class_field_o];
 							$eval="
-								##if(!isset($"."this->sys_memory))
+								if($"."this->sys_recursive<3)
 								{
 									$"."option_$campo=array(
 										\"where\"		=>array(\"$class_field_m='$id'\")
@@ -512,10 +512,13 @@
 							#$id =   $return["data"]["$indice"][$class_field_o];
 							
 							$eval="
-								$"."option_$campo	=array();	
-								$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
-								
-								$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+								if($"."this->sys_recursive<3)
+								{
+									$"."option_$campo	=array();	
+									$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
+									
+									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
+								}
 							";
 
 							eval($eval);

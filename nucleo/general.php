@@ -13,12 +13,13 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
-		function __CONSTRUCT($option=array()) 
+		function __AUTOLOAD($option=array()) 
 		{
 			$this->__PRINT_R("aaaa");
 		} 		
 		public function __CONSTRUCT($option=array())
 		{  	
+			$this->__PRINT_R("bbbb");
 			if(!isset($this->sys_fields))			$this->sys_fields=array();
 			
 			if(!isset($option))						$option=Array();

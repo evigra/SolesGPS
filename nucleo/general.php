@@ -70,7 +70,7 @@
 
 			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
-			if(!isset($this->sys_recursive) OR $this->sys_recursive=0) 				$this->sys_recursive			= 4;
+			if(!isset($this->sys_recursive) OR $this->sys_recursive=0) 				$this->sys_recursive			= 3;
 			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			

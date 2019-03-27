@@ -2307,7 +2307,7 @@
 					
 					$height_render="height:{$option["height"]};";
 					$min_height		="min-height: 140px;";
-					if(in_array(@$option["height"],$this->sys_false))
+					if(in_array(@$option["height"],$_SESSION["obj"]["sys_false"]))
 					{
 						$height_render	="";
 						$min_height		="";

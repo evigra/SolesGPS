@@ -2,7 +2,7 @@
 	
 	class basededatos 
 	{    
-		private  $OPHP_database=array(
+		protected  $OPHP_database=array(
 			"user"		=>"admin_evigra",
 			"pass"		=>"EvG30JiC06",
 			#"name"		=>"admin_server",			

@@ -133,14 +133,7 @@
 						{														
 							if($value["relation"]=="one2many")
 							{
-								/*
-								$eval="
-									$"."option=array(\"name\"=>\"$field"."_obj\");
-									$"."this->$field"."_obj			=new {$value["class_name"]}($"."option);
-								";
-								if(@eval($eval)===false)	
-									echo "$eval"; #$eval; ---------------------------								        			
-								*/	
+ 
 							}		
 							if($value["relation"]=="many2one")
 							{						
@@ -741,15 +734,19 @@
 				{
 					if(isset($valor["class_name"]))
 					{				
-						$eval="
-							$"."option"."_obj_$campo	=array(
-								\"name\"			=>\"$campo"."_obj\",		
-								\"memory\"			=>\"$campo\",
-								\"class_one\"		=>\"{$this->sys_name}\",
-							);													
-							$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
-						";		
-						eval($eval);					
+						if($this->sys_recursive<5)
+						{					
+							$eval="
+								$"."option"."_obj_$campo	=array(
+									\"recursive\"		=>{$this->sys_recursive},
+									\"name\"			=>\"$campo"."_obj\",		
+									\"memory\"			=>\"$campo\",
+									\"class_one\"		=>\"{$this->sys_name}\",
+								);													
+								$"."this->obj_$campo   	=new {$valor["class_name"]}($"."option"."_obj_$campo);
+							";		
+							eval($eval);					
+						}	
 					}
 				
 					$request_campo		="{$this->sys_name}_$campo";
@@ -1444,20 +1441,6 @@
 						#*/
 					    if($valor["type"]=="class")	
 					    {					    
-							if(isset($valor["relation"]) AND $valor["relation"]=="one2many")
-							{
-								/*
-								$eval="";
-								$eval="
-									$"."option							=array(\"name\"=>\"$campo"."_obj\");								
-									$"."this->obj_$campo"."				=new {$valor["class_name"]}($"."option);
-								";	
-								
-								if(@eval($eval)===false)	
-									echo ""; #$eval; ---------------------------								        			
-									*/
-							}			        		
-					    	#$words["$campo"]  =$data["html"];
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {

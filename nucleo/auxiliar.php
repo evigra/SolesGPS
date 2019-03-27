@@ -11,7 +11,7 @@
 		var $sys_fields_l18n	=NULL;
 		var $sys_enviroments	="PRODUCTION";
 		var $request			=array();	# este arrat recibe las variables del POST		
-		var $sys_true			=array(1,"1","true", "si");
+		#var $sys_true			=array(1,"1","true", "si");
 		var $sys_import			=array(
 									"type"		=>"replace",
 									"fields"	=>",",
@@ -19,7 +19,7 @@
 									"lines"		=>"\\n",
 									"ignore"	=>"1",
 								);
-		var $sys_false		    =array(0,"0","false", "no");
+		#var $sys_false		    =array(0,"0","false", "no");
 		/*
 		var $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 

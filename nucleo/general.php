@@ -805,7 +805,7 @@
 			{
 				$resultado	= @$this->OPHP_conexion->query($comando_sql);
 				
-				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_error"]) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
 				{					
 					#$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 					echo "

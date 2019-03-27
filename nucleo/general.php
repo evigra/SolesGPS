@@ -8,21 +8,21 @@
 		var $sys_fields_l18n	=NULL;
 		var $sys_enviroments	="PRODUCTION";
 		var $request			=array();	# este arrat recibe las variables del POST		
-		var $sys_true			=array(1,"1","true", "si");
-		var $sys_import			=array(
+		static $sys_true			=array(1,"1","true", "si");
+		static $sys_import			=array(
 									"type"		=>"replace",
 									"fields"	=>",",
 									"enclosed"	=>"\"",
 									"lines"		=>"\\n",
 									"ignore"	=>"1",
 								);
-		var $sys_false		    =array(0,"0","false", "no");
-		var $sys_modules	    =array(
+		static $sys_false		    =array(0,"0","false", "no");
+		static $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 
 									"group","modulos","permiso","sesion","cron",
 									"cron_history","position","positions","crons_history"
 								);
-		var $sys_print	    	=array("print_report","print_excel","print_pdf");
+		static $sys_print	    	=array("print_report","print_excel","print_pdf");
 		var $sys_section	    ="";
 		var $sys_action		    ="";
 		var $html				="";
@@ -31,8 +31,8 @@
 		var	$jquery_aux			="";	
 		var $sys_html           ="sitio_web/html/";
 		
-		var $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
-		var $sys_server_error	=array("localhost","developer.solesgps.com");
+		static $sys_server_true	=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
+		static $sys_server_error	=array("localhost","developer.solesgps.com");
 
 		
 		var $sys_date; 
@@ -48,7 +48,7 @@
 		var $sys_historico;
 			
 		
-		var $words              =array(
+		static $words              =array(
 		    "html_head_title"           => "ESTE ES EL TITULO DE LA VENTANA :: words[html_head_title]",
 		    "html_head_description"     => "ESTA ES LA DESCRIPCION OCULTA DEL MODULO :: words[html_head_description]",		
 		);

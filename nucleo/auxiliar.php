@@ -12,7 +12,6 @@
 		var $sys_enviroments	="PRODUCTION";
 		var $request			=array();	# este arrat recibe las variables del POST		
 		#var $sys_true			=array(1,"1","true", "si");
-		/*
 		var $sys_import			=array(
 									"type"		=>"replace",
 									"fields"	=>",",
@@ -20,8 +19,8 @@
 									"lines"		=>"\\n",
 									"ignore"	=>"1",
 								);
-		var $sys_false		    =array(0,"0","false", "no");
-		
+		#var $sys_false		    =array(0,"0","false", "no");
+		/*
 		var $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 
 									"group","modulos","permiso","sesion","cron",
@@ -740,12 +739,11 @@
 				{
 					if(isset($valor["class_name"]))
 					{				
-						if($this->sys_recursive<3)
+						if($this->sys_recursive<5)
 						{					
-							$recursive=$this->sys_recursive+1;
 							$eval="
 								$"."option"."_obj_$campo	=array(
-									\"recursive\"		=>{$recursive},
+									\"recursive\"		=>{$this->sys_recursive},
 									\"name\"			=>\"$campo"."_obj\",		
 									\"memory\"			=>\"$campo\",
 									\"class_one\"		=>\"{$this->sys_name}\",
@@ -1082,7 +1080,7 @@
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
-					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					        
+					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_true"]$this->sys_print))					        
 					        {
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
@@ -1093,7 +1091,7 @@
 					    if($valor["type"]=="date")	
 					    {
 					    	$js_auto="";
-					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					        
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
@@ -1116,7 +1114,7 @@
 					    if($valor["type"]=="datetime")	
 					    {
 					    	$js_auto="";
-					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					        
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
@@ -1161,7 +1159,7 @@
 								
 								$js_multidate="addDates: [$days_value]";
 					        }
-   							if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+   							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{					        
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
@@ -1249,7 +1247,7 @@
 					    if($valor["type"]=="select")	
 					    {
 					        $options="";
-							if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{					        
 							    foreach($valor["source"] as $value =>$text)
 							    {
@@ -1327,7 +1325,7 @@
 							if(isset($valor["vars"]))	$vars	=$valor["vars"];
 							else						$vars	="";
 					    
-							if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+							if(!in_array(@$this->request["sys_action"],$this->sys_print))
 							{							
 								$js="
 											$(\"div#auto_$campo\").hide();
@@ -1451,7 +1449,7 @@
 					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
-					        if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					        
+					        if(!in_array(@$this->request["sys_action"],$this->sys_print))					        
 					        {
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="";
@@ -2161,7 +2159,7 @@
 		    	    $view_search     				=$this->__TEMPLATE($option["template_search"]);		    	    
 		    	    $view_search					=str_replace("<td>", "<td class=\"title\">", $view_search);
 		    	    
-		    	    if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))			    	    
+		    	    if(!in_array(@$this->request["sys_action"],$this->sys_print))			    	    
 					{
 						$view_search="
 		        			<div id=\"search_$name\" title=\"Filtrar Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737; padding:0px; margin:0px;\">
@@ -2227,7 +2225,7 @@
                 {                	
                 	if(@$this->request["sys_action"]=="print")	$view_head="";                	                
                 	
-                	elseif(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))	
+                	elseif(!in_array(@$this->request["sys_action"],$this->sys_print))	
                 	{	
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
@@ -2237,7 +2235,7 @@
 									<tr>
 										<td width=\"10\"></td>
 						";
-						if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))	
+						if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 						{
 							$view_head.="						
 										$button_search
@@ -2263,7 +2261,7 @@
 										</td>								
 										<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
 						";
-						if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))	
+						if(!in_array(@$this->request["sys_action"],$this->sys_print))	
 						{
 							if(@!$this->request["sys_row_$name"]) $this->request["sys_row_$name"]=50; 	
 							$array=array(1,20,50,100,200,500);
@@ -2308,7 +2306,7 @@
 					
 					$height_render="height:{$option["height"]};";
 					$min_height		="min-height: 140px;";
-					if(in_array(@$option["height"],$_SESSION["obj"]["sys_false"]))
+					if(in_array(@$option["height"],$this->sys_false))
 					{
 						$height_render	="";
 						$min_height		="";
@@ -2316,7 +2314,7 @@
 
 					$button_create_js="";
 					
-					if(isset($template_option) AND !in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+					if(isset($template_option) AND !in_array(@$this->request["sys_action"],$this->sys_print))
 					{						
 						$button_create_js="
 							if($(\"font#create_$name\").length>0)
@@ -2367,7 +2365,7 @@
 					$report_class="";
 					if(!isset($option["template_option"]))	$report_class="report_class";
 
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 					{
 						@$return["js"].="			
 								$button_create_js
@@ -2438,22 +2436,22 @@
 					}
 					
 					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					";		
 
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						@$view.="{$return["report"]}";
 					else	
 						@$view.="{$return["pdf"]}";
 
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))					
 						$view.="						
 						</div>		
 					";
 
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{
 						$view.="
 							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
@@ -2480,7 +2478,7 @@
 							}							
 						}	
 					}									
-					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
+					if(!in_array(@$this->request["sys_action"],$this->sys_print))
 					{				
 						$view.="
 							$view_search

@@ -17,7 +17,7 @@
 									"ignore"	=>"1",
 								);
 		var $sys_false		    =array(0,"0","false", "no");
-		private $sys_modules	    =array(
+		var $sys_modules	    =array(
 									"historico","menu","user_group","tareas", 
 									"group","modulos","permiso","sesion","cron",
 									"cron_history","position","positions","crons_history"
@@ -66,6 +66,17 @@
 						
 			if(!isset($_SESSION))
 				@$_SESSION							=array();
+				
+			if(!isset($_SESSION["obj"]))
+			{
+				@$_SESSION["obj"]					=array(
+					"sys_modules"	=>array(
+						"historico","menu","user_group","tareas", 
+						"group","modulos","permiso","sesion","cron",
+						"cron_history","position","positions","crons_history"
+					)
+				);
+			}
 
 			if(!isset($_SESSION["user"]))
 				@$_SESSION["user"]					=array();
@@ -735,7 +746,7 @@
 							}	
 						}
 						
-						if(!in_array($this->sys_table,$this->sys_modules))
+						if(!in_array($this->sys_table,$_SESSION["obj"]["sys_modules"]))
 						{	
 							if(!isset($data_historicos))	$data_historicos="";								
 							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave=$this->sys_primary_id	";						

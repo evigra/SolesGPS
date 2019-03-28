@@ -64,8 +64,9 @@
 			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
 			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
 			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
-
-			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
+			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];			
+			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
+			
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
 			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
@@ -87,13 +88,13 @@
 				#ini_set('display_errors', 0);	
 			}
 
-			ini_set('display_errors', 1);				
+			#ini_set('display_errors', 1);				
 			
+			
+			$this->__REQUEST();
 			
 			if($this->sys_name!="general")
 			{                
-				if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-				$this->__REQUEST();
 
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			

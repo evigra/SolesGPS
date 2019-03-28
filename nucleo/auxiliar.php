@@ -1641,7 +1641,7 @@
 		public function __SYS_HISTORY()
 		{  
 			
-	  		if(@$this->sys_primary_id!="" AND $this->sys_recursive<3)	
+	  		if(@$this->sys_primary_id!="")	
 	  		{
 	  			$option						=array();	
 	  			$option["name"]				="historico";

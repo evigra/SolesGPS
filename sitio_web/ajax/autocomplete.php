@@ -9,17 +9,8 @@
 		$procedure										=@$_REQUEST["procedure"];
 
 	$eval="
-		$"."option"."_obj_{$class_name}	=array(
-			\"recursive\"		=>2,
-			\"name\"			=>\"{$class_name}"."_obj\",		
-		);													
-		$"."objeto   	=new {$class_name}($"."option"."_obj_{$class_name});
+		$"."objeto		=new {$class_name}();		
 	";		
-	eval($eval);					
-
-
-	
-	
 	if(isset($procedure))
 	{
 		$datas										=array();

@@ -2,16 +2,10 @@
 	require_once("../../nucleo/sesion.php");
 	#require_once("../../../nucleo/general.php");
 	
-
 	$eval="
-		$"."option"."_obj_{$_REQUEST["class"]}	=array(
-			\"recursive\"		=>2,
-			\"name\"			=>\"{$_REQUEST["class"]}"."_obj\",		
-		);													
-		$"."objeto   	=new {$_REQUEST["class"]}($"."option"."_obj_{$_REQUEST["class"]});
-	";		
-	eval($eval);		
-	
+		$"."objeto=new {$_REQUEST["class"]}();		
+	";	
+	eval($eval);
 	
 	$data_json=array();
 	foreach($objeto->sys_fields as $field => $data_field)

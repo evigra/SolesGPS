@@ -95,7 +95,10 @@
 			
 			if($this->sys_name!="general")
 			{                
-
+				echo "<br>{$this->sys_name}<br>";
+				print_r($option);
+				echo "<br>";
+				
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			

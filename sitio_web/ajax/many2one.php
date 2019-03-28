@@ -13,11 +13,15 @@
 	
 	$row											=$objeto_json["row"];
 		
-	$eval="
-		$"."objeto									=new {$class_one}();		
-	";
 
-	eval($eval);	
+	$eval="
+		$"."option"."_obj_{$class_one}	=array(
+			\"recursive\"		=>2,
+			\"name\"			=>\"{$class_one}"."_obj\",		
+		);													
+		$"."objeto   	=new {$class_one}($"."option"."_obj_{$class_one});
+	";		
+	eval($eval);					
 		
 	$obj											=$objeto_json;			
 	$objeto->__SESSION();		

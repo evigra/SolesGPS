@@ -2,8 +2,6 @@
 	#include('auxiliar.php');	
 	class general extends auxiliar
 	{   
-
-			
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
@@ -74,8 +72,6 @@
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
 			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
 
-			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-			echo "<br>$this->sys_object {$this->sys_recursive}";
 
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
@@ -96,6 +92,9 @@
 			
 			if($this->sys_name!="general")
 			{                
+				if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
+				echo "<br>$this->sys_object {$this->sys_recursive}";
+
 				$this->__REQUEST();
 
 				$this->sys_module               			="modulos/".$this->sys_object."/";		

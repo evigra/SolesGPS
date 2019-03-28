@@ -739,7 +739,7 @@
 				{
 					if(isset($valor["class_name"]))
 					{				
-						if($this->sys_recursive<3)
+						if($this->sys_recursive<5)
 						{			
 							$recursive=$this->sys_recursive+1;
 								

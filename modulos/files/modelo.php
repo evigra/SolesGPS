@@ -72,9 +72,9 @@
 		##############################################################################&sys_action=__SAVE
 
 
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
-			parent::__CONSTRUCT();
+			parent::__CONSTRUCT($option);
 		}
 				
 

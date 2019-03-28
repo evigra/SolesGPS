@@ -94,8 +94,7 @@
 			$this->__REQUEST();
 			
 			if($this->sys_name!="general")
-			{
-                
+			{                
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			

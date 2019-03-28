@@ -69,17 +69,14 @@
 
 			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
-			
-			
-			
-			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-			echo "<br>{$this->sys_recursive}";
-			
-													
 			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
 			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
+
+			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
+			echo "<br>$this->sys_object {$this->sys_recursive}";
+
 					
 			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
 			

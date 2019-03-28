@@ -680,7 +680,6 @@
 									$"."memory						=$"."this->sys_memory;
 									$"."class_one					=$"."this->class_one;
 
-
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m			=@$"."valor_campo[\"class_field_m\"];	
 									foreach($"."valores as $"."valor)

@@ -739,7 +739,7 @@
 				{
 					if(isset($valor["class_name"]))
 					{				
-						if($this->sys_recursive<5)
+						if($this->sys_recursive<3)
 						{					
 							$eval="
 								$"."option"."_obj_$campo	=array(
@@ -1640,7 +1640,8 @@
 		}
 		public function __SYS_HISTORY()
 		{  
-	  		if(@$this->sys_primary_id!="")	
+			
+	  		if(@$this->sys_primary_id!="" AND $this->sys_recursive<3)	
 	  		{
 	  			$option						=array();	
 	  			$option["name"]				="historico";

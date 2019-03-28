@@ -11,9 +11,13 @@
 	$row											=@$objeto_json["row"];
 	
 	$obj											=$objeto_json;			
-
+	
 	$eval="
-		$"."objeto									=new {$class_one}();				
+		$"."option"."_obj_{$class_one}	=array(
+			\"recursive\"		=>2,
+			\"name\"			=>\"{$class_one}"."_obj\",		
+		);													
+		$"."objeto   	=new {$class_one}($"."option"."_obj_{$class_one});
 		$"."objeto->__SESSION();	
 				
 		$"."valor									=$"."objeto->sys_fields[$"."class_field];
@@ -22,8 +26,11 @@
 		{
 			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
 		}
+
 	";		
-	eval($eval);	
+	eval($eval);					
+	
+	
 	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
 

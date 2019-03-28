@@ -61,7 +61,6 @@
 			if(!is_array($option)) 					$option=array();
 			
 			
-			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
 			if(isset($option["object"])) 			$this->sys_object				=$option["object"];
 			if(isset($option["name"])) 				$this->sys_name					=$option["name"];
 			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
@@ -72,9 +71,6 @@
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
 			
 			
-			echo "<br>{$this->sys_recursive}";
-			if(!isset($this->sys_recursive) OR $this->sys_recursive<1) 				
-													$this->sys_recursive			= 1;
 			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
@@ -95,10 +91,18 @@
 
 			ini_set('display_errors', 1);				
 			
-			$this->__REQUEST();
 			
 			if($this->sys_name!="general")
 			{                
+				echo "<br>{$this->sys_recursive}";
+				if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
+				if(!isset($this->sys_recursive) OR $this->sys_recursive<1) 				
+														$this->sys_recursive			= 1;
+
+
+
+				$this->__REQUEST();
+
 				$this->sys_module               			="modulos/".$this->sys_object."/";		
 				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
 			

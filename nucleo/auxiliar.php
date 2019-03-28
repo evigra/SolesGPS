@@ -764,14 +764,17 @@
 						unset($_REQUEST["$request_campo"]);
 					}
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
-					{											
-						$eval="
-							$"."this->sys_fields[\"$campo\"][\"value\"]		=\"0\";
-							$"."this->$campo								=\"0\";
-							$"."this->request[\"$campo\"]					=\"0\";
-						";
-						if(eval($eval)===false)	
-							echo ""; #$eval; ---------------------------					
+					{								
+						if($this->sys_recursive<3)
+						{			
+							$eval="
+								$"."this->sys_fields[\"$campo\"][\"value\"]		=\"0\";
+								$"."this->$campo								=\"0\";
+								$"."this->request[\"$campo\"]					=\"0\";
+							";
+							if(eval($eval)===false)	
+								echo ""; #$eval; ---------------------------					
+						}		
 					}			
 				}
 			}	

@@ -93,10 +93,6 @@
 			if($this->sys_name!="general")
 			{                
 				if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-				echo "<br>$this->sys_object {$this->sys_recursive}<br>";
-				print_r($option);
-				echo "<br>";
-
 				$this->__REQUEST();
 
 				$this->sys_module               			="modulos/".$this->sys_object."/";		

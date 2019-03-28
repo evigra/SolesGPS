@@ -740,10 +740,12 @@
 					if(isset($valor["class_name"]))
 					{				
 						if($this->sys_recursive<3)
-						{					
+						{			
+							$recursive=$this->sys_recursive+1;
+								
 							$eval="
 								$"."option"."_obj_$campo	=array(
-									\"recursive\"		=>{$this->sys_recursive},
+									\"recursive\"		=>{$recursive},
 									\"name\"			=>\"$campo"."_obj\",		
 									\"memory\"			=>\"$campo\",
 									\"class_one\"		=>\"{$this->sys_name}\",

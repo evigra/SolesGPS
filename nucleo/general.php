@@ -670,7 +670,7 @@
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
 							
-							if($this->sys_recursive<5)
+							if($this->sys_recursive<3)
 							{
 								$recursive=	$this->sys_recursive + 1;
 								$eval="																			

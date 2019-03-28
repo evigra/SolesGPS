@@ -57,7 +57,7 @@
 			$nuevafecha								= strtotime ( '-7 hour' , strtotime ( $this->sys_date ) ) ;
 			$this->sys_date 						= date ( 'Y-m-d H:i:s' , $nuevafecha );
 			 
-			
+			$this->sys_recursive					= 1;			
 			if(!is_array($option)) 					$option=array();
 			
 			
@@ -71,6 +71,11 @@
 			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
 			
 			
+			
+			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
+			echo "<br>{$this->sys_recursive}";
+			
+													
 			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
@@ -94,13 +99,6 @@
 			
 			if($this->sys_name!="general")
 			{                
-				echo "<br>{$this->sys_recursive}";
-				if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-				if(!isset($this->sys_recursive) OR $this->sys_recursive<1) 				
-														$this->sys_recursive			= 1;
-
-
-
 				$this->__REQUEST();
 
 				$this->sys_module               			="modulos/".$this->sys_object."/";		

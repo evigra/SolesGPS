@@ -1497,8 +1497,8 @@
 			}
 						
 			$eval="
-				##if(!isset($"."this->sys_memory))
-				{
+				if($"."this->sys_recursive<3)
+				{			
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field								=$"."this->obj_$campo"."->sys_primary_field;

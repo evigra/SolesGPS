@@ -769,7 +769,6 @@
 					{								
 						if($this->sys_recursive<3)
 						{			
-							echo "-{$this->sys_recursive}-";
 							$eval="
 								$"."this->sys_fields[\"$campo\"][\"value\"]		=\"0\";
 								$"."this->$campo								=\"0\";

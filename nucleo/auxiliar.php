@@ -2223,15 +2223,16 @@
 						$view_body					=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 						$view_body_pdf				=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
-
-					if($view_body_pdf=="")	$view_body_pdf=$view_body;
 					
+					/*
+					if($view_body_pdf=="")	$view_body_pdf=$view_body;	
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
 							$view_title_pdf
 							$view_body_pdf
 						</table>					
 					";
+					*/
 		    	}    
                 #if(isset($inicio) AND $return["total"]>0)
                 {                	
@@ -2443,9 +2444,14 @@
 							<script>
 								{$return["js"]}
 							</script>
-						";
-						
+						";						
 					}
+					$return["pdf"]	="
+						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+							$view_title_pdf
+							$view_body_pdf
+						</table>					
+					";
 					
 					#<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-40\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
 					if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))					

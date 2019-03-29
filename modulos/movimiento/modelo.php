@@ -29,8 +29,7 @@
 			"empresa_id"	=>array(
 			    "title"             => "Empresa",
 			    "title_filter"      => "Empresa",	
-			    "type"              => "autocomplete",
-			    "value"             => "",			    
+			    "type"              => "autocomplete",	
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "company",
@@ -41,6 +40,7 @@
 			#/*
 			"movimiento_id"	    =>array(
 			    "type"              => "autocomplete",
+			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "movimiento",			    
 			    "class_field_o"    	=> "movimiento_id",

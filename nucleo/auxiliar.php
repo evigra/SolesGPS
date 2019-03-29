@@ -1331,7 +1331,8 @@
 							else						$vars	="";
 					    
 							if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
-							{							
+							{						
+								if(!isset($valor["procedure"]))	$valor["procedure"]="__AUTOCOMPLETE";	
 								$js="
 											$(\"div#auto_$campo\").hide();
 											$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(

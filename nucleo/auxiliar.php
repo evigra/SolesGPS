@@ -1332,7 +1332,10 @@
 					    
 							if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))
 							{						
-								if(!isset($valor["procedure"]))	$valor["procedure"]="__AUTOCOMPLETE";	
+								if(!isset($valor["procedure"]))			$valor["procedure"]			="__AUTOCOMPLETE";
+								if(!isset($valor["class_field_l"]))		$valor["class_field_l"]		="nombre";
+								if(!isset($valor["class_field_m"]))		$valor["class_field_m"]		="";				
+
 								$js="
 											$(\"div#auto_$campo\").hide();
 											$(\"input#auto_$campo".".{$this->sys_name}\").autocomplete(

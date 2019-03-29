@@ -2089,7 +2089,9 @@
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
 		
 				#/*		
-		    	if(isset($option["data"]))          			$return["data"] =$option["data"];	
+				
+				#if(!in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))			    	    
+		    	if(isset($option["data"]) AND !in_array(@$this->request["sys_action"],$_SESSION["obj"]["sys_print"]))          			$return["data"] =$option["data"];	
 		    	else  	#*/
 		    	{			    		
 		    	

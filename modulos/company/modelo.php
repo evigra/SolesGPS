@@ -40,6 +40,8 @@
 			    "class_field_o"    	=> "responsable_id",
 			    "class_field_m"    	=> "id",			    
 			),
+
+			*/			
 			"trabajador_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -49,8 +51,6 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "company_id",				
 			),
-
-			*/			
 			
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",

@@ -130,7 +130,7 @@
         
 		public function __CONSTRUCT($option=NULL)
 		{	
-			parent::__CONSTRUCT($option);					
+			return parent::__CONSTRUCT($option);					
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{

@@ -12,10 +12,6 @@
 			"type"		=>"mysql",
 		);
 		#*/
-		public function __CONSTRUCT()
-		{  
-			
-	    }				
 		public function __NIVEL_SESION($nivel)
 		{  
 			$return=false;

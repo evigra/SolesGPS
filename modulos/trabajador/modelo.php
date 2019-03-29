@@ -14,7 +14,7 @@
 		public function __CONSTRUCT($option=NULL)
 		{	
 			#$this->files_obj	=new files();
-			parent::__CONSTRUCT($option);
+			return parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{  		    	    

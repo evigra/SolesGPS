@@ -46,13 +46,14 @@
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
 
 	$js												="";
+	$js_data										="";
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	
 	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 	foreach($row as $field=>$value)
 	{
-		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete")
+		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete" AND !is_array($value) AND $value!="")
 		{
 			$obj_class->__FIND_FIELDS($row[$obj_class->sys_primary_field]);													
 							
@@ -66,16 +67,21 @@
 			if(isset($obj_class->sys_fields[$field]["values"][0]))
 				$value_auto	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
 				
-			$js.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	
+			$js_data.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	
 			$(\"#$field".".$class_field\").val(\"$value\");
 			";
 		}
-		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value))
+		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value) AND $value!="")
+			$js_data.="$(\"#$field".".$class_field\").val(\"$value\");
+			";
+		else 
 			$js.="$(\"#$field".".$class_field\").val(\"$value\");
 			";
+
 	}
 	echo "
 		<script>
+			$js_data
 			$js
 		</script>
 	";

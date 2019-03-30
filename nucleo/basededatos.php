@@ -2,6 +2,7 @@
 	
 	class basededatos 
 	{    
+		/*
 		var $OPHP_database=array(
 			"user"		=>"admin_evigra",
 			"pass"		=>"EvG30JiC06",
@@ -11,7 +12,19 @@
 			#"host"		=>"localhost",
 			"type"		=>"mysql",
 		);
+		*/
+		
 		#*/
+		public function __SYS_DB()
+		{  
+			return array(
+			"user"		=>"admin_evigra",
+			"pass"		=>"EvG30JiC06",
+			"name"		=>"admin_server",
+			"host"		=>"solesgps.com",
+			"type"		=>"mysql",
+		);
+		}
 		public function __NIVEL_SESION($nivel)
 		{  
 			$return=false;
@@ -37,17 +50,18 @@
 	    
 		function abrir_conexion()
 		{
-			if($this->OPHP_database["type"]=="mysql")	        	
+			$OPHP_database=$this->__SYS_DB();
+			if($OPHP_database["type"]=="mysql")	        	
 			{			
-				$this->OPHP_conexion = @mysqli_connect("localhost", $this->OPHP_database["user"], $this->OPHP_database["pass"], $this->OPHP_database["name"]) OR $this->reconexion();
+				$this->OPHP_conexion = @mysqli_connect("localhost", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();
 			}
 		}
 
 		function reconexion()
 		{
-			if($this->OPHP_database["type"]=="mysql")	        	
+			if($OPHP_database["type"]=="mysql")	        	
 			{
-				$this->OPHP_conexion = @mysqli_connect("solesgps.com", $this->OPHP_database["user"], $this->OPHP_database["pass"], $this->OPHP_database["name"]);
+				$this->OPHP_conexion = @mysqli_connect("solesgps.com", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]);
 			}
 		}
 		

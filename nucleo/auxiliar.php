@@ -691,9 +691,6 @@
 					$valor	=htmlentities($valor);
 		
 		
-			
-			
-			
 			$this->request["$campo"]		=$valor;
 			$_SESSION["request"]["$campo"]	=$valor;									
 			if(is_array($valor))
@@ -730,7 +727,8 @@
 			# ASIGNA TODAS LAS VARIABLES QUE CONTENGAN VALOR
 			# AL ARRAY DECLARADO $this->sys_fields EN EL MODEDLO
 			# O CREANDO UNA NUEVA PROPIEDAD 
-			
+
+			$this->__PRINT_R($_REQUEST);			
 			#if(count($_REQUEST)>6)
 			if(is_array(@$this->sys_fields))
 			{

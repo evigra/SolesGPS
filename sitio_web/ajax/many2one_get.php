@@ -21,19 +21,22 @@
 		$"."objeto->__SESSION();	
 				
 		$"."valor									=$"."objeto->sys_fields[$"."class_field];
+		$"."class_name								=$"."valor"."[\"class_name\"];
+	";		
+	eval($eval);					
 		
 		
-		
+	$eval="	
 		/////////////////////////////////////////////////
 		if(isset($"."valor[\"class_name\"]))
 		{
-			$"."class_name								=$"."valor"."[\"class_name\"];
+			
 		
-			$"."option"."_obj_\" . $"."class_name	=array(
+			$"."option"."_obj_$class_name	=array(
 				\"recursive\"		=>2,
-				\"name\"			=>\"$"."class_name"."_obj\",		
+				\"name\"			=>\"$class_name"."_obj\",		
 			);													
-			$"."obj_class   	=new $"."class_name($"."option"."_obj_\" . $"."class_name);
+			$"."obj_class   	=new $class_name($"."option"."_obj_$class_name);
 		}
 
 	";		

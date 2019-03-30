@@ -1512,8 +1512,10 @@
 					
 					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
 					
-					$"."this->obj_$campo"."->words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
-					$"."this->obj_$campo"."->words							=$"."this->obj_$campo"."->__INPUT($"."this->obj_$campo"."->words,$"."this->obj_$campo"."->sys_fields);    
+					$"."obj_$campo"."words									=$"."this->obj_$campo"."->words;
+					
+					$"."obj_$campo"."words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
+					$"."obj_$campo"."words							=$"."this->obj_$campo"."->__INPUT($"."obj_$campo"."words,$"."this->obj_$campo"."->sys_fields);    
 													
 					$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
 									
@@ -1535,8 +1537,8 @@
 					
 					$"."this->obj_$campo"."->__VIEW_REPORT					=$"."this->obj_$campo"."->__VIEW_REPORT($"."option_report);
 
-					$"."this->obj_$campo"."->words[\"many2one_report\"]		=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
-					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
+					$"."obj_$campo"."words[\"many2one_report\"]				=$"."this->obj_$campo"."->__VIEW_REPORT[$"."index];				
+					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);									
 						
 				";											
 				eval($eval);	

@@ -187,8 +187,8 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{    	
-    	    $files_id							=$_SESSION["obj"]["files_obj"]->__SAVE($this->sys_table);    	    
-    	    if(!is_null($files_id))				$datas["files_id"]			=$files_id;    		
+    	    #$files_id							=$_SESSION["obj"]["files_obj"]->__SAVE($this->sys_table);    	    
+    	    #if(!is_null($files_id))				$datas["files_id"]			=$files_id;    		
 
 			
 

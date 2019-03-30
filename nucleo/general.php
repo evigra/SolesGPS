@@ -17,10 +17,11 @@
 				
 			#if(!isset($_SESSION["obj"]))
 			{
+				/*
 				@$_SESSION["obj"]		=array(
 					"files_obj"			=>new files()			
 				);
-
+				*/
 				@$_SESSION["obj"]					=array(
 					"sys_false"			=>array(0,"0","false", "no"),
 					"sys_true"			=>array(1,"1","true", "yes","si"),

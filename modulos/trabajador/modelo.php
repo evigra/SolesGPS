@@ -30,8 +30,8 @@
 			if(!isset($option["select"]))   $option["select"]	=array();
 
 
-			if($this->sys_recursive==1)		$option["where"][]	="tipo_company='{$this->company_type}'";
-			else	$this->__PRINT_R($this);
+			$option["where"][]	="tipo_company='{$this->company_type}'";
+			
 			
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

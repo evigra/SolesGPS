@@ -69,7 +69,7 @@
 			$js.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	";
 			$js.="$(\"#$field".".$class_field\").val(\"$value\");";
 		}
-		else if(@$obj_class->sys_fields[$field]["type"]!="show_file")
+		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value))
 			$js.="$(\"#$field".".$class_field\").val(\"$value\");";
 	}
     echo $js;

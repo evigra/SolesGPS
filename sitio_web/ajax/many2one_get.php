@@ -13,18 +13,17 @@
 	$obj											=$objeto_json;			
 	
 	$eval="
-		$"."option"."_obj_{$class_one}	=array(
-			\"recursive\"		=>2,
-			\"name\"			=>\"{$class_one}"."_obj\",		
-		);													
-		$"."objeto   	=new {$class_one}($"."option"."_obj_{$class_one});
-		$"."objeto->__SESSION();	
-				
-		$"."valor									=$"."objeto->sys_fields[$"."class_field];
 		
 		if(isset($"."valor[\"class_name\"]))
 		{
-			$"."obj_class							=new $"."valor"."[\"class_name\"]();							
+			$"."option"."_obj_{$"."valor"."[\"class_name\"]}	=array(
+				\"recursive\"		=>2,
+				\"name\"			=>\"{$"."valor"."[\"class_name\"]}"."_obj\",		
+			);													
+			$"."obj_class   	=new {$class_one}($"."option"."_obj_{$"."valor"."[\"class_name\"]});
+			$"."obj_class->__SESSION();	
+					
+			$"."valor									=$"."objeto->sys_fields[$"."class_field];
 		}
 
 	";		

@@ -58,7 +58,7 @@
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "trabajador",			    
 			    "class_field_o"    	=> "id",
-			    "class_field_m"    	=> "trabajador_ids",				
+			    "class_field_m"    	=> "trabajador",				
 			),
 			
 			"razonSocial"	    	=>array(

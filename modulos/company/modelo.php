@@ -218,8 +218,7 @@
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
 			else if(isset($this->sys_id_company))	
 				$option["where"][]      		="company_id={$this->sys_id_company}";
-			$return 							=parent::__BROWSE($option);
-			
+			$return 							=parent::__BROWSE($option);		
 			
 			return	$return;     	
 		}				

@@ -52,12 +52,8 @@
 			array("create"=>"Crear"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
-    	);
-		$option=array();
-		$option["template_title"]				= $objeto->sys_module . "html/report_title";
-		$option["template_body"]				= $objeto->sys_module . "html/report_body";
-		
-		$data									=$objeto->__VIEW_REPORT($option);
+    	);		
+		$data									=$objeto->__VIEW_REPORT();
 		$objeto->words["module_body"]			=$data["html"];	
 				
    	}	

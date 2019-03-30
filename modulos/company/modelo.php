@@ -53,7 +53,7 @@
 
 #*/
 						
-			"trabajador_ids"	    =>array(
+			"trabajador"	    =>array(
 			    "type"              => "form",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "trabajador",			    

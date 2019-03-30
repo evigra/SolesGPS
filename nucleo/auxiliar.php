@@ -1513,6 +1513,8 @@
 					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
 					
 					$"."obj_$campo"."words									=$"."this->obj_$campo"."->words;
+
+					$"."this->__PRINT_R($"."this->obj_$campo"."->sys_module);
 					
 					$"."obj_$campo"."words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
 					$"."obj_$campo"."words							=$"."this->obj_$campo"."->__INPUT($"."obj_$campo"."words,$"."this->obj_$campo"."->sys_fields);    

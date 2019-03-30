@@ -55,7 +55,6 @@
     	);		
 		$data									=$objeto->__VIEW_REPORT();
 		$objeto->words["module_body"]			=$data["html"];	
-				
    	}	
 	else
 	{

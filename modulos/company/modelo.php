@@ -183,12 +183,11 @@
 		##############################################################################		
 		public function __CONSTRUCT($option=NULL)
 		{
-			$this->files_obj	=new files();
 			return parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
-    	{
-    	    $files_id							=$this->files_obj->__SAVE($this->sys_table);    	    
+    	{    	
+    	    $files_id							=$_SESSION["obj"]["files_obj"]->__SAVE($this->sys_table);    	    
     	    if(!is_null($files_id))				$datas["files_id"]			=$files_id;    		
 
 			

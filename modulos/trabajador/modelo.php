@@ -13,7 +13,7 @@
 		##############################################################################		
 		public function __CONSTRUCT($option=NULL)
 		{	
-			#$this->files_obj	=new files();
+
 			return parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)

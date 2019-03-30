@@ -198,7 +198,7 @@
     	    $datas["company_id"]		=$_SESSION["company"]["id"];
     	    $datas["modulo"]			=$this->modulo;
     	    
-			$this->files_obj	=new files();
+			#$this->files_obj	=new files();
 
     		parent::__SAVE($datas,$option);
 		}		

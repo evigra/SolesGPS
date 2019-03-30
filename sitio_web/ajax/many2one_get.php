@@ -25,7 +25,6 @@
 	";		
 	eval($eval);					
 		
-		
 	$eval="	
 		/////////////////////////////////////////////////
 		if(isset($"."valor[\"class_name\"]))
@@ -40,7 +39,6 @@
 		}
 
 	";		
-	echo $eval;
 	eval($eval);					
 	
 	
@@ -74,7 +72,7 @@
 		$js.="$(\"#$field".".$class_field\").val(\"$value\");
 		";
 	}
-
+    echo $js;
 	echo "
 		<script>
 			$js

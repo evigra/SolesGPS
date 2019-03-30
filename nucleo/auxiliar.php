@@ -1517,7 +1517,7 @@
 													
 					$"."this->obj_$campo"."->words[\"many2one_report_id\"]	=$"."campo;
 									
-					if(isset($"."words[\"html_head_js\"]))								
+					if(isset($"."words[\"html_head_js\"]) AND isset($"."this->obj_$campo"."->words[\"html_head_js\"]))								
 						$"."words[\"html_head_js\"] 						.= $"."this->obj_$campo"."->words[\"html_head_js\"];
 									
 					$"."option_report										=array();				

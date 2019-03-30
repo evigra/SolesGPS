@@ -3,26 +3,30 @@
              <table border="0" width="100%">
                 <tr>
                     <td width="33%" rowspan="2" align="center">                       
-                        {img_files_id}
+                        {img_files_id_chi}
                     </td>                        
-                    <td colspan="2" width="66%">                       
+                    <td colspan="2">                       
                     	{nombre}                        
+                    </td>        
+                    <td width="40">                       
+                  		
+                    </td>        
+                    <td width="40">                       
+                  		
                     </td>        
                 </tr>          
                 <tr>
-                    <td>
+                    <td width="17%">
                         {estatus}
                     </td>        
-                    <td>                        
-                        {lema}
+                    <td colspan="3">                        
+                        {files_id}
                     </td>        
                 </tr>          
             </table> 
-			<div id="trabajador" class="form">
+			<div id="tabs" class="form">
 				<ul>
 					<li  class="form"><a href="#tabs-1">Contacto</a></li>
-					<li  class="form"><a href="#tabs-2">Datos Fiscales</a></li>
-					<li  class="form"><a href="#tabs-3">Configuracion</a></li>
 				</ul>
 				<div id="tabs-1" class="form">
 					<table border="0">
@@ -30,39 +34,22 @@
 				            <td width="33%">{email}</td>         
 				            <td width="17%">{telefono}</td>        
 				            <td width="16%">{extension}</td>                            
-				            <td width="17%">{cliente}</td>
-				            <td width="16%">{proveedor}</td>
-				        </tr>          
+				            <td width="17%"></td>
+				            <td width="16%"></td>
+				        </tr>
+				        <tr>
+							<td colspan="4">{domicilio_fiscal}</td>    
+				            <td width="17%"></td>
+				            <td width="16%"></td>
+				        </tr>				        
+				                  
 					</table> 
-				</div>
-				<div id="tabs-2"  class="form">
-				    <table border="0" width="100%">
-				        <tr>
-				            <td width="33%">{RFC} </td>                        
-				            <td colspan="2">{razonSocial}</td>        
-				        </tr>          
-				        <tr>                        
-				             <td colspan="2">{domicilio_fiscal}</td>                
-				        </tr>          
-				    </table>
-				</div>
-				<div id="tabs-3"  class="form">
-				    <table border="0" width="100%">
-				        <tr>
-				            <td width="33%">{web} </td>                        
-				            <td colspan="2">{sistema_web}</td>        
-				        </tr>          
-				        <tr>                        
-				        	<td>{files_id}</td>                        
-				            <td colspan="2">{chat_whatsapp}</td>
-				        </tr>            
-				    </table>
 				</div>
 			</div>
 </div>            
   <script>
   $(function() {
-    $( "#trabajador" ).tabs();
+    $( "#tabs" ).tabs();
   });
   </script>        
 

@@ -27,7 +27,7 @@
 			    "class_field_o"    	=> "responsable_id",
 			    "class_field_m"    	=> "id",			    
 			),
-			*/			
+						
 			"departamento_id"	    =>array(
 			    "title"             => "Departamento",
 			    "description"       => "Responsable del dispositivo",
@@ -41,7 +41,7 @@
 			    "class_field_m"    	=> "id",			    
 			),
 
-						
+			*/			
 			"trabajador_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",

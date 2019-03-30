@@ -1551,6 +1551,7 @@
     	##############################################################################    
 		public function __MANY2MANY($option)		
 		{
+			
 			$class_id			=@$option["class_id"];
 			$class_one			=$option["class_one"];
 			$class_one_id		=$option["class_one_id"];
@@ -1561,7 +1562,7 @@
 			
 			$words				=$option["words"];                                                                                                                                                                                                                                                          
 			$index				=$option["view"];
-
+			/*
 			if($this->sys_recursive<3)
 			{
 				if(isset($option["json"]))
@@ -1605,7 +1606,8 @@
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
 				";				
 				eval($eval);	
-			}			
+			}	
+			*/		
 			return $words;
 		}
 

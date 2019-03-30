@@ -17,7 +17,7 @@
 				
 			#if(!isset($_SESSION["obj"]))
 			{
-				@$_SESSION["obj"]					=array(
+				@$_SESSION["obj"]		=array(
 					"files_obj"			=>new files()			
 				);
 

@@ -319,7 +319,6 @@
 
 		public function __VIEW($template)
 		{ 
-			
 			#/*
 			if (isset($_COOKIE)) 
 			{

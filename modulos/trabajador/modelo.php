@@ -13,7 +13,6 @@
 		##############################################################################		
 		public function __CONSTRUCT($option=NULL)
 		{	
-
 			return parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
@@ -29,9 +28,7 @@
 			if(!isset($option["where"]))    $option["where"]	=array();
 			if(!isset($option["select"]))   $option["select"]	=array();
 
-
 			$option["where"][]	="tipo_company='{$this->company_type}'";
-			
 			
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

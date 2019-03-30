@@ -1,6 +1,6 @@
 <?php
 	$objeto										=new trabajador();
-	$objeto->__PRINT_R($objeto);
+	#$objeto->__PRINT_R($objeto);
 	$objeto->__SESSION();
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO

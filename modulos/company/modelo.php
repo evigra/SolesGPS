@@ -215,6 +215,8 @@
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
 			$return 							=parent::__BROWSE($option);
+			
+			$this->__PRINT_R($this);
 			return	$return;     	
 		}				
 		public function __AUTOCOMPLETE()		

@@ -1264,7 +1264,7 @@
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
 								else							    			            
-									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
+									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\">
 											$options
 										</select><br>$titulo
 									";

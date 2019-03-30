@@ -1976,7 +1976,7 @@
 					$view	=$this->__REPLACE($view,$actions_lang);
 	        	}                                        			    
 			}    
-			$view =$this->__VIEW_INPUTSECTION($view, $option);
+			#$view =$this->__VIEW_INPUTSECTION($view, $option);
 			return $view;
 		}    	
     	##############################################################################        
@@ -2442,6 +2442,10 @@
 										$view_title
 										$view_body
 									</table>
+						" .
+						$this->__VIEW_INPUTSECTION("", $option_kanban)
+						. "			
+									
 								</div>
 							</div>
 							<script>

@@ -691,6 +691,9 @@
 					$valor	=htmlentities($valor);
 		
 		
+			
+			
+			
 			$this->request["$campo"]		=$valor;
 			$_SESSION["request"]["$campo"]	=$valor;									
 			if(is_array($valor))
@@ -727,8 +730,7 @@
 			# ASIGNA TODAS LAS VARIABLES QUE CONTENGAN VALOR
 			# AL ARRAY DECLARADO $this->sys_fields EN EL MODEDLO
 			# O CREANDO UNA NUEVA PROPIEDAD 
-
-			$this->__PRINT_R($_REQUEST);			
+			
 			#if(count($_REQUEST)>6)
 			if(is_array(@$this->sys_fields))
 			{
@@ -1262,7 +1264,7 @@
 								if(@$this->request["sys_section_".$this->sys_name]=="show")
 									$words["$campo"]  ="{$valor["value"]}<br>$titulo";
 								else							    			            
-									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\">
+									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
 											$options
 										</select><br>$titulo
 									";
@@ -1511,8 +1513,6 @@
 					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
 					
 					$"."obj_$campo"."words									=$"."this->obj_$campo"."->words;
-
-					$"."this->__PRINT_R($"."this->obj_$campo"."->sys_module);
 					
 					$"."obj_$campo"."words[\"many2one_form\"]		=$"."this->obj_$campo"."->__VIEW_CREATE($"."this->obj_$campo"."->sys_module . \"html/create\");	
 					$"."obj_$campo"."words							=$"."this->obj_$campo"."->__INPUT($"."obj_$campo"."words,$"."this->obj_$campo"."->sys_fields);    
@@ -1549,7 +1549,6 @@
     	##############################################################################    
 		public function __MANY2MANY($option)		
 		{
-			
 			$class_id			=@$option["class_id"];
 			$class_one			=$option["class_one"];
 			$class_one_id		=$option["class_one_id"];
@@ -1560,7 +1559,7 @@
 			
 			$words				=$option["words"];                                                                                                                                                                                                                                                          
 			$index				=$option["view"];
-			/*
+
 			if($this->sys_recursive<3)
 			{
 				if(isset($option["json"]))
@@ -1604,8 +1603,7 @@
 					$"."words[\"$campo\"]  									=$"."this->__REPLACE($"."view,$"."this->obj_$campo"."->words);									
 				";				
 				eval($eval);	
-			}	
-			*/		
+			}			
 			return $words;
 		}
 
@@ -1850,7 +1848,6 @@
 						$write	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-pencil\"></font>";
 						$delete	="<font class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\" class=\"sys_report_memory ui-icon ui-icon-trash\"></font>";
 						$check	="<input class=\"view_report\" class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" id=\"{id}\" class_one=\"{$this->class_one}\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"{id}\">";
-						$check	="<input class=\"view_report\" class_field=\"{$this->sys_memory}\" class_field_id=\"$row_id\" class_one=\"{$this->class_one}\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"{id}\">";
 					}				
 					else	
 					{			
@@ -1977,7 +1974,7 @@
 					$view	=$this->__REPLACE($view,$actions_lang);
 	        	}                                        			    
 			}    
-			#$view =$this->__VIEW_INPUTSECTION($view, $option);
+			$view =$this->__VIEW_INPUTSECTION($view, $option);
 			return $view;
 		}    	
     	##############################################################################        
@@ -2443,10 +2440,6 @@
 										$view_title
 										$view_body
 									</table>
-						" .
-						$this->__VIEW_INPUTSECTION("", $option_kanban)
-						. "			
-									
 								</div>
 							</div>
 							<script>

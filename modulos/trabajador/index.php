@@ -1,6 +1,5 @@
 <?php
 	$objeto										=new trabajador();
-	#$objeto->__PRINT_R($objeto);
 	$objeto->__SESSION();
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
@@ -24,8 +23,8 @@
 	    	);
 		$objeto->sys_fields["bastidor"]["type"]	="input";
 	
-    	$objeto->words["module_body"]			=$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
-    	$objeto->words                			=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
+	    	$objeto->words["module_body"]		=$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+	    	$objeto->words                		=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 	    	   
     }	
     elseif($objeto->sys_section=="write")
@@ -56,6 +55,7 @@
     	);		
 		$data									=$objeto->__VIEW_REPORT();
 		$objeto->words["module_body"]			=$data["html"];	
+				
    	}	
 	else
 	{

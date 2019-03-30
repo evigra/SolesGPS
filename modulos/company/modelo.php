@@ -41,7 +41,7 @@
 			    "class_field_m"    	=> "id",			    
 			),
 
-						
+			*/			
 			"trabajador_ids"	    =>array(
 			    "title"             => "Horario",
 			    "showTitle"         => "si",
@@ -51,7 +51,7 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "company_id",				
 			),
-			*/
+			
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",
@@ -216,23 +216,12 @@
 						
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
-			#else if(isset($this->sys_id_company))	
-			#	$option["where"][]      		="company_id={$this->sys_id_company}";
+			else if(isset($this->sys_id_company))	
+				$option["where"][]      		="company_id={$this->sys_id_company}";
 			$return 							=parent::__BROWSE($option);		
 			
 			return	$return;     	
-		}		
-		public function __VIEW_REPORT($option=NULL)
-    	{    		
-    		if(is_null($option))	$option=array();		
-
-			if(!isset($option["template_title"])) 	$option["template_title"]	= $this->sys_module . "html/report_title";
-			if(!isset($option["template_body"]))	$option["template_body"]	= $this->sys_module . "html/report_body";
-    		    			
-			$return 				=parent::__VIEW_REPORT($option);
-			return	$return;     	
-		}						
-				
+		}				
 		public function __AUTOCOMPLETE()		
     	{	
     		$option								=array();

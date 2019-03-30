@@ -72,7 +72,6 @@
 		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value))
 			$js.="$(\"#$field".".$class_field\").val(\"$value\");";
 	}
-    echo $js;
 	echo "
 		<script>
 			$js

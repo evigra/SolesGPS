@@ -37,6 +37,7 @@
 		}
 
 	";		
+	echo $eval;
 	eval($eval);					
 	
 	

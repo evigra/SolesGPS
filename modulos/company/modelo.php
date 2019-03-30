@@ -215,13 +215,9 @@
 			$option["from"]						="company";			
 						
 			if($this->sys_recursive==1 AND isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
-			{
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
-			}
 			else
-			{
 				$option["where"][]      		="company_id=3";
-			}	
 			$return 							=parent::__BROWSE($option);
 			return	$return;     	
 		}				

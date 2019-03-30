@@ -41,17 +41,26 @@
 			    "class_field_m"    	=> "id",			    
 			),
 
+			#"movimiento_id"	    =>array(
+			#    "type"              => "autocomplete",
+			#    "procedure"       	=> "__AUTOCOMPLETE",
+			#    "relation"          => "one2many",			    
+			#    "class_name"       	=> "movimiento",			    
+			#    "class_field_l"    	=> "nombre",				# Label
+			#    "class_field_o"    	=> "movimiento_id",
+			#    "class_field_m"    	=> "id",			    
+			#),
+
+#*/
 						
 			"trabajador_ids"	    =>array(
-			    "title"             => "Horario",
-			    "showTitle"         => "si",
 			    "type"              => "form",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "trabajador",			    
 			    "class_field_o"    	=> "id",
-			    "class_field_m"    	=> "company_id",				
+			    "class_field_m"    	=> "trabajador_ids",				
 			),
-			#*/
+			
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",

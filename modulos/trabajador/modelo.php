@@ -38,7 +38,7 @@
     		if(is_null($option))	$option=array();		
 
 			if(!isset($option["template_title"])) 	$option["template_title"]	= $this->sys_module . "html/report_title";
-			if(!isset($option["template_body"]))	$option["template_body"]	s= $this->sys_module . "html/report_body";
+			if(!isset($option["template_body"]))	$option["template_body"]	= $this->sys_module . "html/report_body";
     		    			
 			$return 				=parent::__VIEW_REPORT($option);
 			return	$return;     	

@@ -74,7 +74,7 @@
 		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value) AND $value!="")
 			$js_data.="$(\"#$field".".$class_field\").val(\"$value\");
 			";
-		else 
+		else if(!is_array($value))
 			$js.="$(\"#$field".".$class_field\").val(\"$value\");
 			";
 

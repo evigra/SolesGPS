@@ -67,15 +67,21 @@
 			if(isset($obj_class->sys_fields[$field]["values"][0]))
 				$value_auto	=$obj_class->sys_fields[$field]["values"][0][$obj_class->sys_fields[$field]["class_field_l"]];
 				
-			$js_data.="$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	
-			$(\"#$field".".$class_field\").val(\"$value\");
+			$js_data.="
+				if($(\"#$field".".$class_field\").length>0)
+				{
+					$(\"#auto_$field".".$class_field\").val(\"$value_auto\");	
+					$(\"#$field".".$class_field\").val(\"$value\");
+				}
 			";
 		}
 		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value) AND $value!="")
-			$js_data.="$(\"#$field".".$class_field\").val(\"$value\");
+			$js_data.="
+				if($(\"#$field".".$class_field\").length>0)			$(\"#$field".".$class_field\").val(\"$value\");
 			";
 		else if(@$obj_class->sys_fields[$field]["type"]!="show_file" AND !is_array($value))
-			$js.="$(\"#$field".".$class_field\").val(\"$value\");
+			$js.="
+				if($(\"#$field".".$class_field\").length>0)			$(\"#$field".".$class_field\").val(\"$value\");
 			";
 
 	}

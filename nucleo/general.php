@@ -677,7 +677,8 @@
 								$eval="																			
 									$"."option"."_obj_$campo		=array(
 										\"recursive\"	=>$recursive,
-										\"name\"		=>\"$campo"."_obj\"
+										\"name\"		=>\"$campo"."_obj\",
+										\"object\"		=>\"{$valor_campo["class_name"]}\"
 									);			
 									$"."this->$campo"."_obj			=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
 									

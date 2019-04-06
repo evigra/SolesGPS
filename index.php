@@ -18,6 +18,8 @@
 	}	
 	$path											=$_GET["sys_vpath"];
 	$vpath2											="modulos/$path"."index.php";
+
+
 	
 	$_SESSION["module"]								=array(
 		"name"=>"$path"

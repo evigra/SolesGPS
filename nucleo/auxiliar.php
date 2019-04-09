@@ -2225,7 +2225,7 @@
 						$view_body_pdf				=$this->__VIEW_KANBAN2($template."_pdf",$return["data"],$option_kanban);
 					}
 					
-					/*
+					#/*
 					if($view_body_pdf=="")	$view_body_pdf=$view_body;	
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
@@ -2233,7 +2233,7 @@
 							$view_body_pdf
 						</table>					
 					";
-					*/
+					#*/
 		    	}    
                 #if(isset($inicio) AND $return["total"]>0)
                 {                	

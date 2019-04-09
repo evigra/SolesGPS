@@ -2450,7 +2450,7 @@
 					$return["pdf"]	="
 						<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
 							$view_title_pdf
-							$view_body_pdf
+							$view_body
 						</table>					
 					";
 					

@@ -77,7 +77,7 @@
 		public function __CONSTRUCT($option=array())
 		{	
 			parent::__CONSTRUCT($option);			
-			$this->words["html_head_js"]              	=$this->__FILE_JS(array("../".$this->sys_module."js/index"));			
+			$this->words["html_head_js"]              	=$this->__FILE_JS();			
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    		
@@ -107,7 +107,6 @@
 				);			
 				$return["js"]=$this->__JS_SET_INPUT($datas);
 				
-				#	$this->__PRINT_R($return["js"]);
 			}			
     	    return $return;
 		}

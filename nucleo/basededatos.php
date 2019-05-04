@@ -18,12 +18,12 @@
 		public function __SYS_DB()
 		{  
 			return array(
-			"user"		=>"admin_evigra",
-			"pass"		=>"EvG30JiC06",
-			"name"		=>"admin_server",
-			"host"		=>"solesgps.com",
-			"type"		=>"mysql",
-		);
+				"user"		=>"admin_evigra",
+				"pass"		=>"EvG30JiC06",
+				"name"		=>"admin_server",
+				"host"		=>"solesgps.com",
+				"type"		=>"mysql",
+			);
 		}
 		public function __NIVEL_SESION($nivel)
 		{  
@@ -53,13 +53,13 @@
 			$OPHP_database=$this->__SYS_DB();
 			if($OPHP_database["type"]=="mysql")	        	
 			{			
-				#$this->OPHP_conexion = @mysqli_connect("localhost", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();
-				$this->OPHP_conexion = @mysqli_connect("solesgps.com", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();
+				$this->OPHP_conexion = @mysqli_connect($OPHP_database["host"], $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();
 			}
 		}
 
 		function reconexion()
 		{
+			$OPHP_database=$this->__SYS_DB();
 			if($OPHP_database["type"]=="mysql")	        	
 			{
 				$this->OPHP_conexion = @mysqli_connect("solesgps.com", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]);
@@ -73,8 +73,10 @@
 		
 		
 		///////////////////////////////////////////////////////////
-		public function __FILE_JS($data)
+		public function __FILE_JS($data=null)
 		{
+			if(is_null($data))						$data=array("../" . $this->sys_var["module_path"] . "js/index");
+						
 		    $return="";  
             foreach($data as $valor)
     		{    		    													   

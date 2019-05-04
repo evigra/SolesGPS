@@ -1,22 +1,27 @@
 <div id = "contenedor" style="background-color:#373737;"> 
-  <img height="130" src="../sitio_web/img/logo.png" alt=" " />             
-  <div style=" height:35px; width:700px;">
-	  {mensaje_sesion}
+	<table border="0">
+		<tr>
+			<td width="30"></td>
+			<td colspan="2"><img height="130" align="center" src="../sitio_web/img/logo.png" alt=" " /></td>
+			<td width="30"></td>
+		</tr>
+		<tr><td  align="center" colspan="4" height="60">{mensaje_sesion}</td></tr>
+		<tr>
+			<td width="30"></td>
+			<td width="30" align="center">
+				<div class="login">
+					<p>
+						{user}
+						{pass}
+					</p>
+					<p class="login-submit">
+						<button id="action" type="submit" class="login-button">Login</button>
+					</p>      
+					<a href="index.html">Recuperar Contraseña?</a>
+				</div>  			
+			</td>
+			<td width="5"></td>
+			<td width="30"></td>
+		</tr>
+	<table>
   </div>
-  <div class="login">
-      <p>
-        <label for="user">Usuario:</label>
-        <input type="text" name="user" id="user" >
-      </p>
-      <p>
-        <label for="pass">Contraseña:</label>
-        <input type="password" name="pass" id="pass" >
-      </p>
-     <p class="login-submit">
-        <button id="action" type="submit" class="login-button">Login</button>
-      </p>      
-      <p class="forgot-password">
-        <a href="index.html">Recuperar Contraseña?</a>
-      </p>
-  </div>  
-</div>

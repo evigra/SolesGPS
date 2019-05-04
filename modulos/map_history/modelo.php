@@ -1,7 +1,7 @@
 <?php
 	class map_history extends position
 	{   
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
 			$this->sys_fields["start"]["type"]		="datetime";
 			$this->sys_fields["start"]["title"]		="Fecha Inicial";
@@ -18,7 +18,7 @@
 			$this->sys_table						="position";
 			$this->sys_module						="map_history";
 			
-			parent::__CONSTRUCT();
+			parent::__CONSTRUCT($option);
 		}	
 	}
 ?>

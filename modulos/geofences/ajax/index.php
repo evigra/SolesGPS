@@ -34,7 +34,6 @@
 			}
 			$latLang				=substr($latLang,0,strlen($latLang)-1);
 			$geofences.= "
-
 				var flightPlanCoordinates=[
 				$latLang
 				];

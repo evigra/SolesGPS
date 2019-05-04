@@ -8,49 +8,30 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"ejecucion"	    =>array(
 			    "title"             => "Ejecutado",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"now_time"	    =>array(
 			    "title"             => "Siguiente Ejecucion",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"codigo"	    =>array(
 			    "title"             => "Codigo",
-			    "showTitle"         => "si",
 			    "type"              => "textarea",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"CANTIDAD"	    =>array(
 			    "title"             => "Tiempo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"TYPE_TIME"	    =>array(
 			    "title"             => "Unidad de Tiempo",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "source"           	=> array(
 			    	"MINUTE"        => "Minutos",
@@ -65,10 +46,10 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
 			#echo "<br>CONSTRUCTOR TAREAS";
-			parent::__CONSTRUCT();			
+			parent::__CONSTRUCT($option);			
 			
 		}
    		public function __SAVE($datas=NULL,$option=NULL)

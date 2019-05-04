@@ -21,6 +21,7 @@
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "trabajador_id",
@@ -32,6 +33,7 @@
 			    "type"              => "autocomplete",	
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "company",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "empresa_id",
@@ -42,6 +44,7 @@
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "movimiento",			    
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "movimiento_id",

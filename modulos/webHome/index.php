@@ -10,7 +10,7 @@
 	# ARCHIVOS JS DEL MODULO
 	$files_js=array();
 	
-	$files_js[]="../{$objeto->sys_module}js/index";
+	$files_js[]="../{$objeto->sys_var["module_path"]}js/index";
 	$files_js[]="../sitio_web/js/webEasing";
 	$files_js[]="../sitio_web/js/webJquery.min";
 	$files_js[]="../sitio_web/js/webJquery.mixitup.min";
@@ -31,9 +31,9 @@
 	#$files_css[]="../sitio_web/css/font1";
 	#$files_css[]="../sitio_web/css/font2";
 
-	$objeto->words["html_head_css"] =$objeto->__FILE_CSS($files_css);		
+	$objeto->words["html_head_css"] 			=$objeto->__FILE_CSS($files_css);		
 
-	$objeto->words["system_module"]             =$objeto->__VIEW_CREATE($objeto->sys_module . "html/show");	
+	$objeto->words["system_module"]             =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/show");	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
 	$objeto->words["module_title"]              ="Pagina";

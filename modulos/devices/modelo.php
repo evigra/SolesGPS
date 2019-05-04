@@ -10,33 +10,27 @@
 		var $sys_fields		=array(
 				"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			),		
 			"name"	    	=>array(
 			    "title"             => "Numero Economico",
 			    "title_filter"		=> "Dispositivo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"attributes"	    	=>array(
 			    "title"             => "atributos",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"bastidor"	    	=>array(
 			    "title"             => "Bastidor",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"uniqueid"	    =>array(
 			    "title"             => "Imei",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),	
 			"status"	    =>array(
 			    "title"             => "Alertas",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "source"			=>array(
 			    	"1"		=>	"Activa",
@@ -46,7 +40,6 @@
 			),
 			"bloqueo"	    =>array(
 			    "title"             => "Bloqueo",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "source"			=>array(			    	
 			    	"0"		=>	"Inactiva",
@@ -56,17 +49,14 @@
 
 			"dataId"	    =>array(
 			    "title"             => "Clave Datos",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),						
 			"positionid"	    =>array(
 			    "title"             => "Posicion Actual",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),						
 			"transmision"	    =>array(
 			    "title"             => "Transmision",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "source"			=>array(
 			    	"Automatica"	=>	"Automatica",
@@ -75,47 +65,38 @@
 			),
 			"tipoCombustible"   =>array(
 			    "title"             => "Tipo de Combustible",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"emisionesCO2"      =>array(
 			    "title"             => "Emisiones CO2",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"caballosPotencia"   =>array(
 			    "title"             => "Caballos de Potencia",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"fechaAdquisicion"   =>array(
 			    "title"             => "Fecha de Adquisicion",
-			    "showTitle"         => "si",
 			    "type"              => "date",
 			),
 			"valorCoche"   =>array(
 			    "title"             => "Costo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"numAsientos"   =>array(
 			    "title"             => "Numero de Asientos",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"numPuertas"   =>array(
 			    "title"             => "Numero de Puertas",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"color"   =>array(
 			    "title"             => "Color",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"image"   =>array(
 			    "title"             => "Imagen",
-			    "showTitle"         => "si",
 			    "type"              => "select",
 			    "default"           => "",
 			    "value"             => "",
@@ -135,38 +116,31 @@
 			),			
 			"vehicle"	    =>array(
 			    "title"             => "Vehiculo",
-			    "showTitle"         => "si",
 			    "type"              => "checkbox",
 			),						
 			"telcel"	    =>array(
 			    "title"             => "Telcel",
-			    "showTitle"         => "si",
 			    "type"              => "checkbox",
 			),						
 			"telefono"   =>array(
 			    "title"             => "Telefono",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),			
 			"recargado"   =>array(
 			    "title"             => "Recargado",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"file_id"	    =>array(
 			    "title"             => "Imagen",
-			    "showTitle"         => "no",
 			    "type"              => "file",
 			),	
 			"company_id"	    =>array(
 			    "title"             => "Compania",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"responsable_id"	    =>array(
 			    "title"             => "Chofer",
 			    "description"       => "Responsable del dispositivo",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
@@ -178,7 +152,6 @@
 			"responsable_fisico_id"	=>array(
 			    "title"             => "Supervisor",
 			    "description"       => "Supervisor de distintos dispositivos",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_user",
 			    "relation"          => "one2many",			    
@@ -190,48 +163,36 @@
 			"placas"	    		=>array(
 			    "title"             => "Placas",
 			    "title_filter"		=> "Placas",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"speed_max"	    		=>array(
 			    "title"             => "Velocidad Maxima",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"mail_speed"	    		=>array(
 			    "title"             => "Mail por exceso de velocidad",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"lastupdate"	    =>array(
 			    "title"             => "Ultima Actualizacion",
-			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 		);				
 		##############################################################################	
 		##  Metodos	
-		##############################################################################&sys_action=__SAVE
-
-
-		public function __CONSTRUCT()
+		##############################################################################
+		public function __CONSTRUCT($option=NULL)
 		{
-			
 			$this->files_obj	=new files();	
-			parent::__CONSTRUCT();
+			return parent::__CONSTRUCT($option);
 		}
-				
-
    		public function __SAVE($datas=NULL,$option=NULL)
     	{   
-    		#$this->__PRINT_R($datas);
     	    $datas["company_id"]		=@$_SESSION["company"]["id"];
 
     	    $files_id					=$this->files_obj->__SAVE();    	    
     	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
     	    
-    	    #$this->__PRINT_R($datas);
-
     		return parent::__SAVE($datas,$option);
 		}		
 		public function devices_time()
@@ -283,6 +244,7 @@
 
 			$option["where"][]      ="d.company_id={$_SESSION["company"]["id"]}";
 			$option["where"][]      ="ug.menu_id=2";
+			#$option["echo"]      	="DEVICES";
 			$option["where"][]      ="
 				(		
 					(
@@ -302,7 +264,6 @@
 			$option["color"]["orange"]	="$"."row[\"status\"]=='Inactiva'";
 
 			$return =$this->__VIEW_REPORT($option);			
-			#$this->__PRINT_R($this->sys_sql);			
 			return	$return;     	
 		}
 		public function autocomplete_devices()		

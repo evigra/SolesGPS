@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("../menu/modelo.php")) require_once("../menu/modelo.php");
-	
 	class alerts extends general
 	{   
 		##############################################################################	
@@ -63,10 +61,10 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
 			#$this->menu_obj=new menu();
-			parent::__CONSTRUCT();
+			parent::__CONSTRUCT($option);
 
 		}
 		public function device($option=NULL)		
@@ -77,7 +75,7 @@
 		}
 		public function save_device($datas,$alert_id=NULL)		
     	{	
-			$devices=$this->obj_devices_ids->devices_data();
+			$devices=$this->sys_fields["devices_ids"]["obj"]->devices_data();
 			
     		foreach($devices as $device)
     		{
@@ -109,7 +107,7 @@
 		}
 		public function save_geofence($datas,$alert_id=NULL)		
     	{	
-			$geofences=$this->obj_geofences_ids->geofences_data();
+			$geofences=$this->sys_fields["geofences_ids"]["obj"]->geofences_data();
     		foreach($geofences as $geofence)
     		{
     			$status ="status=0";
@@ -135,23 +133,12 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		## GUARDAR USUARIO
-    		#$option["echo"]="ALERTS";
     		$datas["company_id"]    =$_SESSION["company"]["id"];
     		
-    		/*
-    		$option=array(
-    			"e_open"=>"SAVE alerts",
-    			"e_close"=>"SAVE alerts",
-     		);
-    		*/
-    	    $alert_id				=parent::__SAVE($datas,$option);
-    	    
-    	    #$this->__PRINT_R($alert_id);
+    	    $alert_id				=parent::__SAVE($datas,$option);    	    
     	    
 			$this->save_geofence($datas,$alert_id);
 			$this->save_device($datas,$alert_id);
-    	    #echo "<br>USUARIO=$user_id<br>";
-    	    ## GUARDAR PERFILES DE USUARIO
 		}				
 		public function alerts($option=NULL)		
     	{	
@@ -164,12 +151,10 @@
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
 			$option["where"][]  ="a.company_id={$_SESSION["company"]["id"]}";
-			#$option["order"]	="menu_name asc, nivel asc";
 			
 			$return =$this->__VIEW_REPORT($option);    				
 			return $return;
-		}
-		
+		}		
 	}
 ?>
 

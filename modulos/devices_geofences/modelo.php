@@ -11,52 +11,34 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"company_id"	    =>array(
 			    "title"             => "Compania",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			"time"	    =>array(
 			    "title"             => "Entrada",
 			    "title_filter"      => "Entrada",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"time_end"	    =>array(
 			    "title"             => "Salida",
 			    "title_filter"      => "Salida",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"diferencia"	    =>array(
 			    "title"             => "Tiempo",
 			    "title_filter"      => "Tiempo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 
 			"deviceid"	=>array(
 			    "title"             => "Dispositivo",
 			    "title_filter"      => "Dispositivo",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "source"           	=> "../modulos/devices/ajax/autocomplete.php",
-			    "value"             => "",			    
-			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "devices",
 			    "class_field_l"    	=> "name",				# Label
@@ -67,11 +49,8 @@
 			    "title"             => "Geocerca",
 			    "title_filter"      => "Geocerca",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
-			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/geofences/ajax/autocomplete.php",
-			    "value"             => "",			    
-			    
+			    "source"           	=> "../modulos/geofences/ajax/autocomplete.php",			    
 			    "relation"          => "one2many",			    
 			    "class_name"       	=> "geofences",
 			    "class_field_l"    	=> "name",				# Label
@@ -85,11 +64,11 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
 			#$this->menu_obj=new menu();
 			#$this->__PRINT_R($_SESSION);
-			parent::__CONSTRUCT();
+			parent::__CONSTRUCT($option);
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
@@ -126,8 +105,8 @@
 
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";
 						
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
@@ -156,8 +135,8 @@
 			
 			$option["where"][]							="left(time,10)=left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";			
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";			
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";			
 
 			$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
 
@@ -187,8 +166,8 @@
 			#$option["where"][]								="time BETWEEN SUBDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10))) AND ADDDATE(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10),6-WEEKDAY(left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)))";
 			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";
 			
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
@@ -227,10 +206,10 @@
 			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
 			if(!isset($option["template_title"]))
-				$option["template_title"]	           	    = $this->sys_module . "html/report_especifico/title";
+				$option["template_title"]	           	    = $this->sys_var["module_path"] . "html/report_especifico/title";
 				
 			if(!isset($option["template_body"]))	
-				$option["template_body"]	           		= $this->sys_module . "html/report_especifico/body";
+				$option["template_body"]	           		= $this->sys_var["module_path"] . "html/report_especifico/body";
 			
 			if(!isset($option["group"]))			
 				$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
@@ -257,8 +236,8 @@
 			
 			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";
 
 			if(!isset($this->request["sys_order_devices_geofences"]))
 				$option["order"]="time desc";
@@ -289,8 +268,8 @@
 			
 			$option["where"][]								="time BETWEEN '$first 00:00:00' AND '$last 23:59:59'";
 
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";
 			
 			if(!isset($option["group"]))
 				$option["group"]	                		= "deviceid, geofenceid, left(time,10)";
@@ -450,8 +429,8 @@
 			$option["select"][]								="*";
 			$option["select"]["TIMEDIFF(time_end,time)"]	="diferencia";
 			
-			$option["template_title"]	            	    = $this->sys_module . "html/report_especifico/title";
-			$option["template_body"]	           		    = $this->sys_module . "html/report_especifico/body";
+			$option["template_title"]	            	    = $this->sys_var["module_path"] . "html/report_especifico/title";
+			$option["template_body"]	           		    = $this->sys_var["module_path"] . "html/report_especifico/body";
 			
 			#$option["where"][]							="estatus = 'APROVADO'";
 

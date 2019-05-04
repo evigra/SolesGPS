@@ -33,16 +33,5 @@
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}						
-		public function __VIEW_REPORT($option=NULL)
-    	{    		
-    		if(is_null($option))	$option=array();		
-
-			$option["template_title"]				= $this->sys_module . "html/report_title";
-			$option["template_body"]				= $this->sys_module . "html/report_body";
-    		    			
-			$return 				=parent::__VIEW_REPORT($option);
-			return	$return;     	
-		}						
-
 	}
 ?>

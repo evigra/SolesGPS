@@ -8,8 +8,7 @@
 		
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 		
 	$module_left	="";
 	$module_center	="";	
@@ -17,7 +16,7 @@
         
     $module_title	="";
     $template		="system";
-    if($objeto->sys_section=="show")
+    if($objeto->sys_private["section"]=="show")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Mostrar ";
@@ -30,12 +29,9 @@
 			array("report"=>"Reporte"),
 	    );
 
-		#$template="system_module_not";
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW();
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	
-    	#$objeto->__PRINT_R($objeto->sys_fields);
     }	
 
     else
@@ -67,14 +63,9 @@
 			),
 	    );
 	    $module_center=$objeto->__BUTTON($module_center);
-
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
 		$option     					=	array();
-		$option["template_title"]		=	$objeto->sys_module."html/report_title";
-		$option["template_body"]		=	$objeto->sys_module."html/report_body";
-	
-	
 		$option["order"]="id DESC";
 		$data								=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]	=	$data["html"];	

@@ -6,8 +6,6 @@
 		##############################################################################		
 		public function __CONSTRUCT($option=array())
 		{			
-			
-								  	
 			if(!isset($option))							$option				=array();
 			if(!is_array($option))						$option				=array();						
 			if(!isset($this->sys_fields))				$this->sys_fields	=array();			
@@ -20,7 +18,6 @@
 			@$_SESSION["user"]["huso_h"]				=5;
 			@$_SESSION["user"]["huso_h"]				=6;
 						 
-			#
 			if(!is_array($option)) 						$option=array();
 						
 			if(isset($option["object"])) 				$this->sys_object				=$option["object"];
@@ -35,11 +32,14 @@
 			if(!isset($this->sys_object)) 				$this->sys_object				= get_class($this);
 			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;			
 			if(!isset($this->sys_table)) 				$this->sys_table				= $this->sys_object;			
-			#if(!isset($this->sys_module)) 				$this->sys_module               =$this->sys_object."/";
 			if(!isset($this->sys_var))					$this->sys_var					=array();
 			if(!isset($this->sys_recursive))			$this->sys_recursive			= 1;			
 			
-			
+			$this->sys_var["module_path"]				="modulos/".$this->sys_object."/";
+			$this->sys_var["module"]					=$this->sys_object."/";
+			$this->sys_var["l18n"]						=$this->sys_var["module_path"] . "l18n/";
+
+						
 			#$this->sys_l18n    		    		   		 =$this->sys_module."l18n/";			
 			
 			#ini_set('display_errors', 1);				
@@ -53,18 +53,14 @@
 				#ini_set('display_errors', 0);	
 			}
 
-			#ini_set('display_errors', 1);				
-			
+			#ini_set('display_errors', 1);							
 						
-			if($this->sys_name!="general")
+			if($this->sys_name!="general" AND $this->sys_recursive<3)
 			{
+				#echo "<br><br>{$this->sys_name} :: {$this->sys_recursive}";
 				$this->__REQUEST();		
 				$this->__CREATE_OBJ();
-				
-				$this->sys_var["module_path"]				="modulos/".$this->sys_object."/";
-				$this->sys_var["module"]					=$this->sys_object."/";
-				$this->sys_var["l18n"]						=$this->sys_var["module_path"] . "l18n/";
-				
+								
 				if(file_exists($this->sys_var["l18n"] . @$_SESSION["user"]["l18n"].".php"))
 				{				
 					include($this->sys_var["l18n"] . @$_SESSION["user"]["l18n"].".php");				

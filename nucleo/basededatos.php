@@ -75,22 +75,26 @@
 		///////////////////////////////////////////////////////////
 		public function __FILE_JS($data=null)
 		{
-			if(is_null($data))						$data=array("../" . $this->sys_var["module_path"] . "js/index");
+			$return="";
+			if(is_null($data) AND isset($this->sys_var["module_path"]))									
+				$data=array("../" . $this->sys_var["module_path"] . "js/index");
 						
-		    $return="";  
-            foreach($data as $valor)
-    		{    		    													   
-    		    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
-    		    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
-    		    else if($valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
-    		    else                                $file="$valor.js";
-    		        		        		    
-    		    $return.="<script src=\"$file\"></script>";    		        		    
-    		        		    
-    		    if($valor=="maps")	$return.="
-    		    	<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
-    		    ";    		    
-			}		
+		    if(is_array($data))
+		    {
+		        foreach($data as $valor)
+				{    		    													   
+				    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
+				    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
+				    else if($valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
+				    else                                $file="$valor.js";
+				        		        		    
+				    $return.="<script src=\"$file\"></script>";    		        		    
+				        		    
+				    if($valor=="maps")	$return.="
+				    	<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
+				    ";    		    
+				}		
+			}
 			return $return;
     	} 
     	public function __HTML_USER()

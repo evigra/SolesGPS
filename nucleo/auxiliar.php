@@ -1758,7 +1758,7 @@
 					foreach($row as $field=>$fieldvalue)			
 					{							
 							
-						if($this->sys_private["field"]==$field)
+						if(isset($this->sys_private["field"]) AND $this->sys_private["field"]==$field)
 						{
 							$this->__FIND_FIELDS($fieldvalue);												
 						}									

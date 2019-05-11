@@ -62,7 +62,7 @@
 			$OPHP_database=$this->__SYS_DB();
 			if($OPHP_database["type"]=="mysql")	        	
 			{
-				$this->OPHP_conexion = @mysqli_connect("solesgps.com", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]);
+				$this->OPHP_conexion = @mysqli_connect("localhost", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]);
 			}
 		}
 		

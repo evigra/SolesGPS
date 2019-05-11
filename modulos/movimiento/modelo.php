@@ -167,7 +167,7 @@
     	    $this->words =parent::__INPUT($words, $fields);    	    
     	    
     	    if(isset($this->tipo_movimiento) AND !in_array($this->tipo_movimiento,array("PV","PC")) )
-	    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
+	    	    $this->__TOTALES($this->sys_fields["movimientos_ids"]["obj"]->__VIEW_REPORT);
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
@@ -177,7 +177,7 @@
     		$this->sys_fields["subtotal"]["value"]	=0;
     		$this->sys_fields["iva"]["value"]		=0;
     		$this->sys_fields["total"]["value"]		=0;
-    		foreach($option["data"] as $row)
+    		foreach(@$option["data"] as $row)
     		{
 				$this->sys_fields["subtotal"]["value"]	+=$row["subtotal"];
 				$this->sys_fields["iva"]["value"]		+=$row["impuesto"];

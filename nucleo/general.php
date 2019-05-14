@@ -709,8 +709,8 @@
 					}		
 					$valor_campo="";
 					
-					if(isset($this->sys_fields[$this->sys_private["primary"]]["value"]))		
-						$valor_campo	=$this->sys_fields[$this->sys_private["primary"]]["value"];
+					if(isset($this->sys_fields[$this->sys_private["field"]]["value"]))		
+						$valor_campo	=$this->sys_fields[$this->sys_private["field"]]["value"];
 	
 					$row														=$datas["row"];				
 

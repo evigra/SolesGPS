@@ -196,7 +196,7 @@
 			if(isset($_SESSION["company"]["id"]))
 	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
 	    		
-			if(!isset($this->sys_private["order"])
+			if(!isset($this->sys_private["order"]))
 				$option["order"]="id desc";
 	    		
 			return parent::__BROWSE($option);

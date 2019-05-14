@@ -32,12 +32,11 @@
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 			
 			if(!isset($this->sys_private["order"]) OR $this->sys_private["order"]=="")
-				$option["order"]="id desc";			
+				$option["order"]="id desc";
+				
+			$option["echo"]="ORDEN VENTA";	
 			
 			$return= parent::__BROWSE($option);
-			
-			#$this->__PRINT_R($return);
-			
 			return $return;
 		}							
 	}

@@ -145,7 +145,7 @@
 				$datas["iva"]				=0;				
 				$datas["total"]				=$datas["subtotal"];
 			}					
-			if($this->request["sys_section_". $this->sys_object]=="create")
+			if($this->sys_private["section"]=="create")
 			{
 				$option_folios=array();
 				$option_folios["tipo"]			=$datas["tipo"];
@@ -196,7 +196,7 @@
 			if(isset($_SESSION["company"]["id"]))
 	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
 	    		
-			if(!isset($this->request["sys_order_". $this->sys_object]))
+			if(!isset($this->sys_private["order"])
 				$option["order"]="id desc";
 	    		
 			return parent::__BROWSE($option);

@@ -551,7 +551,8 @@
 									}	
 								}
 							}	
-						}	
+						}
+						else			$fields	.="$campo='$valor',";
 					}    
 				}
 				if($fields!="")
@@ -572,12 +573,6 @@
 						remote_addr='{$_SERVER["REMOTE_ADDR"]}',												
 					";
 
-
-					#$this->__PRINT_R($this->sys_private);
-					
-					
-					
-					
 					
 					if(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]=="") 
 					{

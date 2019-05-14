@@ -15,9 +15,9 @@
 		##  Metodos	
 		##############################################################################
         
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{	
-			parent::__CONSTRUCT();		
+			parent::__CONSTRUCT($option);		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    					

@@ -704,6 +704,7 @@
 				
 				if(isset($datas["class_one"]) AND $_SESSION["var"]["modulo"]==$datas["class_one"])
 				{		
+					
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
 					

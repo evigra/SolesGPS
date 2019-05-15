@@ -2076,8 +2076,8 @@
 		    		
 		    		#$this->__PRINT_R($browse);
 		    		 
-					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]))															
-						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
+					#if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]))															
+					#	$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					
 					
 					##################################

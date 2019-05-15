@@ -124,9 +124,9 @@
 							}		
 							if($value["relation"]=="many2one")
 							{						
-								if(@$this->request["sys_action_" . $this->sys_object ]=="__clean_session")
+								if(@$this->sys_private["action"]=="__clean_session")
 									unset($_SESSION["SAVE"][$this->sys_object]);			
-								#if(@$this->request["sys_action_" . $this->sys_object ]=="__SAVE")
+								#if(@$this->sys_private["action"]=="__SAVE")
 								#	unset($_SESSION["SAVE"][$this->sys_object][$field]);			
 								
 							}			        									
@@ -2026,7 +2026,7 @@
 				{						
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
-					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
+					$option["total"]	 	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				
 				}

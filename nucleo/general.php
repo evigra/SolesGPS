@@ -637,12 +637,16 @@
 								$eval="																			
 									$"."option"."_obj_$campo		=array(
 										\"recursive\"	=>$recursive,
-										\"name\"		=>\"$campo"."_obj\"
+										\"name\"		=>\"$campo"."_obj\",
+										\"object\"		=>\"{$valor_campo["class_name"]}\"									
 									);			
+									
+									
 									$"."this->sys_fields[\"$campo\"][\"obj\"]	=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);
 									
 									$"."memory						=$"."this->sys_memory;
-									#$"."class_one					=$"."this->class_one;
+									$"."class_one					=$"."this->class_one;
+
 
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m			=@$"."valor_campo[\"class_field_m\"];	
@@ -653,7 +657,7 @@
 											if(isset($"."class_field_m))
 											{			
 												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))
-												 	$"."valor[$"."class_field_m]						=$"."this->sys_private[\"field\"];
+												 	$"."valor[$"."class_field_m]						=$"."this->sys_private[\"id\"];
 											}
 											$"."primary_field					=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
 											
@@ -668,8 +672,8 @@
 											$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."valor);
 										}	
 									}	
-									#$"."this->sys_memory	=$"."memory;
-									#$"."this->class_one		=$"."class_one;
+									$"."this->sys_memory	=$"."memory;
+									$"."this->class_one		=$"."class_one;
 								";
 								eval($eval);														
 								unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
@@ -694,10 +698,16 @@
 				###########################################################	
 				##################  MEMORIA ###############################
 				###########################################################
+				
+				$_SESSION["SAVE"]="";
+				
+				
 				if(isset($datas["class_one"]))
 				{		
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
+					
+					
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]))
 					{	

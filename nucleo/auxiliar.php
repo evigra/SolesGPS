@@ -1465,7 +1465,7 @@
 				$eval="
 					if(isset($"."json))
 					{								
-						$"."sys_primary_field								=$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"];
+						$"."sys_primary_field								=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"];
 				
 						if(isset($"."class_id) AND $"."class_id>0)
 							$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
@@ -1473,7 +1473,7 @@
 						$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 					}
 					
-					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");									
+					$"."view   												=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");
 					
 					$"."obj_$campo"."words									=$"."this->sys_fields[\"$campo\"][\"obj\"]->words;
 					

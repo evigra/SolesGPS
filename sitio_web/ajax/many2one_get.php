@@ -55,7 +55,7 @@
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete" AND !is_array($value) AND $value!="")
 		{
-			$obj_class->__FIND_FIELDS($row[$obj_class->sys_primary_field]);													
+			$obj_class->__FIND_FIELDS($row[$obj_class->sys_private["field"]]);													
 							
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		

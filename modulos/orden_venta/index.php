@@ -132,8 +132,8 @@
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
   
-	#$_SESSION["SAVE"]=array();
-  	#$objeto->__PRINT_R($_SESSION);
+	$_SESSION["SAVE"]=array();
+  	$objeto->__PRINT_R($_SESSION);
     $objeto->__VIEW($objeto->html);
     
 ?>

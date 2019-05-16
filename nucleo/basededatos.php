@@ -22,7 +22,7 @@
 				"pass"		=>"EvG30JiC06",
 				"name"		=>"admin_server",
 				"host"		=>"solesgps.com",
-				"host"		=>"localhost",
+				#"host"		=>"localhost",
 				"type"		=>"mysql",
 			);
 		}

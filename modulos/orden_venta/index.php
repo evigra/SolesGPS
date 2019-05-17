@@ -7,7 +7,7 @@
 	$objeto->words["system_module"]             	=$objeto->__TEMPLATE($objeto->sys_html."system_module");	
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
-	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."js/index"));
+	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS();
 		
 	$module_left		="";	
 	$module_right		="";	

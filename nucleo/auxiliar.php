@@ -2066,7 +2066,8 @@
 		
 				#/*		
 				
-		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			$return["data"] =$option["data"];	
+		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
+		    		$return["data"] =$option["data"];	
 		    	else  	#*/
 		    	{			    		
 		    	
@@ -2076,7 +2077,7 @@
 		    		
 		    		#$this->__PRINT_R($browse);
 		    		 
-		    		$this->__PRINT_R(array(@$this->class_one,@$_SESSION["var"]["modulo"])); 
+		    		#$this->__PRINT_R(array(@$this->class_one,@$_SESSION["var"]["modulo"])); 
 					#if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
 					#	$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					

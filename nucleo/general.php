@@ -1,117 +1,72 @@
 <?php
-	#include('auxiliar.php');	
 	class general extends auxiliar
 	{   
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
 		public function __CONSTRUCT($option=array())
-		{  	
-			if(!isset($this->sys_fields))			$this->sys_fields=array();
-			
-			if(!isset($option))						$option=Array();
-			if(!is_array($option))					$option=Array();
-						
-			if(!isset($_SESSION))
-				@$_SESSION							=array();
+		{			
+			if(!isset($option))							$option				=array();
+			if(!is_array($option))						$option				=array();						
+			if(!isset($this->sys_fields))				$this->sys_fields	=array();			
+			if(!isset($_SESSION))						@$_SESSION			=array();
 				
-			#if(!isset($_SESSION["obj"]))
-			{
-				/*
-				@$_SESSION["obj"]		=array(
-					"files_obj"			=>new files()			
-				);
-				*/
-				@$_SESSION["obj"]					=array(
-					"sys_false"			=>array(0,"0","false", "no"),
-					"sys_true"			=>array(1,"1","true", "yes","si"),
-					"sys_server_true"	=>array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com"),
-					"sys_server_error"	=>array("localhost","developer.solesgps.com"),
-					"sys_print"	    	=>array("print_report","print_excel","print_pdf"),
-					"sys_import"		=>array(
-										"type"		=>"replace",
-										"fields"	=>",",
-										"enclosed"	=>"\"",
-										"lines"		=>"\\n",
-										"ignore"	=>"1",
-					),		
-					"sys_modules"		=>array(
-										"historico","menu","user_group","tareas", 
-										"group","modulos","permiso","sesion","cron",
-										"cron_history","position","positions","crons_history"
-					),					
-				);
-			}
-
-			if(!isset($_SESSION["user"]))
-				@$_SESSION["user"]					=array();
-    		if(!isset($_SESSION["user"]["huso_h"]))
-   				@$_SESSION["user"]["huso_h"]		=5;
-				
-			if(!isset($_SESSION["user"]["l18n"])) 
-				@$_SESSION["user"]["l18n"]			="es_MX";
+			if(!isset($_SESSION["user"]))				@$_SESSION["user"]					=array();
+    		if(!isset($_SESSION["user"]["huso_h"]))		@$_SESSION["user"]["huso_h"]		=5;				
+			if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]			="es_MX";
 			
-			@$_SESSION["user"]["huso_h"]			=5;
-			#@$_SESSION["user"]["huso_h"]			=6;
-			
-			$this->sys_date							=date("Y-m-d H:i:s");
-			$this->sys_date2						=date("Y-m-d");
+			@$_SESSION["user"]["huso_h"]				=5;
+			@$_SESSION["user"]["huso_h"]				=6;
+						 
+			if(!is_array($option)) 						$option=array();
 						
-			$nuevafecha								= strtotime ( '-7 hour' , strtotime ( $this->sys_date ) ) ;
-			$this->sys_date 						= date ( 'Y-m-d H:i:s' , $nuevafecha );
-			 
-			$this->sys_recursive					= 1;			
-			if(!is_array($option)) 					$option=array();
+			if(isset($option["object"])) 				$this->sys_object				=$option["object"];
+			if(isset($option["name"])) 					$this->sys_name					=$option["name"];
+			if(isset($option["table"])) 				$this->sys_table				=$option["table"];
+			if(isset($option["memory"])) 				$this->sys_memory				=$option["memory"];
+			if(isset($option["class_one"])) 			$this->class_one				=$option["class_one"];
+			if(isset($option["sys_enviroments"])) 		$this->sys_enviroments			=$option["sys_enviroments"];			
+			if(isset($option["recursive"])) 			$this->sys_recursive			=$option["recursive"];
 			
+			if(!isset($this->sys_enviroments)) 			$this->sys_enviroments			="PRODUCTION";
+			if(!isset($this->sys_object)) 				$this->sys_object				= get_class($this);
+			if(!isset($this->sys_name)) 				$this->sys_name					= $this->sys_object;			
+			if(!isset($this->sys_table)) 				$this->sys_table				= $this->sys_object;			
+			if(!isset($this->sys_var))					$this->sys_var					=array();
+			if(!isset($this->sys_recursive))			$this->sys_recursive			= 1;			
 			
-			if(isset($option["object"])) 			$this->sys_object				=$option["object"];
-			if(isset($option["name"])) 				$this->sys_name					=$option["name"];
-			if(isset($option["table"])) 			$this->sys_table				=$option["table"];
-			if(isset($option["memory"])) 			$this->sys_memory				=$option["memory"];
-			if(isset($option["class_one"])) 		$this->class_one				=$option["class_one"];
-			if(isset($option["sys_enviroments"])) 	$this->sys_enviroments			=$option["sys_enviroments"];			
-			if(isset($option["recursive"])) 		$this->sys_recursive			=$option["recursive"];
-			
-			if(!isset($this->sys_enviroments)) 		$this->sys_enviroments			="PRODUCTION";
-			if(!isset($this->sys_object)) 			$this->sys_object				= get_class($this);
-			if(!isset($this->sys_name)) 			$this->sys_name					= $this->sys_object;			
-			if(!isset($this->sys_table)) 			$this->sys_table				= $this->sys_object;			
-			if(!isset($this->sys_module)) 			$this->sys_module               ="modulos/".$this->sys_object."/";
+			$this->sys_var["module_path"]				="modulos/".$this->sys_object."/";
+			$this->sys_var["module"]					=$this->sys_object."/";
+			$this->sys_var["l18n"]						=$this->sys_var["module_path"] . "l18n/";
 
-
-					
-			$this->sys_l18n    		       		 =$this->sys_module."l18n/";			
+						
+			#$this->sys_l18n    		    		   		 =$this->sys_module."l18n/";			
 			
 			#ini_set('display_errors', 1);				
 			
-			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_error"]))
+			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]))
 			{	
 				#error_reporting(-1);
 			}
-			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_true"]))
+			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))
 			{	
 				#ini_set('display_errors', 0);	
 			}
-			error_reporting(-1);
-			#ini_set('display_errors', 1);				
-			
-			
-			$this->__REQUEST();
-			
-			if($this->sys_name!="general")
-			{                				
-				$this->sys_module               			="modulos/".$this->sys_object."/";		
-				$this->sys_l18n    		       	 			=$this->sys_module."l18n/";			
-			
-				if(file_exists($this->sys_l18n . @$_SESSION["user"]["l18n"].".php"))
+
+			#ini_set('display_errors', 1);							
+						
+			if($this->sys_name!="general" AND $this->sys_recursive<3)
+			{
+				#echo "<br><br>{$this->sys_name} :: {$this->sys_recursive}";
+				$this->__REQUEST();		
+				$this->__CREATE_OBJ();
+								
+				if(file_exists($this->sys_var["l18n"] . @$_SESSION["user"]["l18n"].".php"))
 				{				
-					include($this->sys_l18n . @$_SESSION["user"]["l18n"].".php");				
+					include($this->sys_var["l18n"] . @$_SESSION["user"]["l18n"].".php");				
 				}	
 				@include("nucleo/l18n/" . @$_SESSION["user"]["l18n"].".php");
 			
-				$this->sys_date								=date("Y-m-d H:i:s");
-				$this->sys_date2							=date("Y-m-d");
-				
 		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
 				
 				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=@$this->words["module_title"];
@@ -124,36 +79,24 @@
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
 				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
-										
-				$eval="
-					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]==\"delete\")
-					{
-						$"."this->__DELETE(@$"."this->request[\"sys_id_".$this->sys_name."\"]);
-					}
-					if(@$"."this->request[\"sys_section_".$this->sys_name."\"]!=\"\")
-					{
-						$"."this->sys_action	=@$"."this->request[\"sys_action_".$this->sys_name."\"];
-						$"."this->sys_section	=@$"."this->request[\"sys_section_".$this->sys_name."\"];
-					
-						#if(isset($"."this->request[\"sys_id_".$this->sys_name."\"]))
-					
-						$"."this->request[\"sys_id\"]	=@$"."this->request[\"sys_id_".$this->sys_name."\"];					
-					}	
-				";
-				eval($eval);							
-
+				
+				
+				if(@$this->sys_private["section"]=="delete")
+				{
+					$this->__PRE_DELETE(@$this->sys_private["id"]);				
+				}
+				
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
-
-				if(@$this->sys_vpath==$this->sys_name."/" AND substr(@$this->sys_action,0,6)=="__SAVE")
-				{
+								
+				if($_SESSION["var"]["vpath"]==$this->sys_name."/" AND substr(@$this->sys_private["action"],0,6)=="__SAVE")
+				{	
 					$this->__PRE_SAVE();
 				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
 				    $words["system_js"]     				=@$this->__SAVE_JS;	            
-				}											
-				$this->__FIND_FIELDS(@$this->sys_primary_id);
+				}									
+				$this->__FIND_FIELDS(@$this->sys_private["id"]);
 			}	
-			#$this->__PRINT_R($this);
 		}
 		public function __BROWSE($option=array())
     	{    	
@@ -172,8 +115,8 @@
     			$id		=$option;
     			$option	=array();
 				
-    			$option["where"]=array(
-    				"{$this->sys_primary_field}='$id'"
+    			$option["where"]=array(    			
+    				"{$this->sys_private["field"]}='{$this->sys_private["id"]}'"
     			);
     		}
 
@@ -182,8 +125,8 @@
     	
 	    	if(!isset($option["js"]))    					$option["js"]					="";
             
-			if(isset($this->request["sys_order_$name"]))	$option["sys_order_$name"]		=$this->request["sys_order_$name"];
-			if(isset($this->request["sys_torder_$name"]))	$option["sys_torder_$name"]		=$this->request["sys_torder_$name"];
+			if(isset($this->sys_private["order"]))	$option["sys_order_$name"]		=$this->sys_private["order"];
+			if(isset($this->sys_private["torder"]))	$option["sys_torder_$name"]		=$this->sys_private["torder"];
     		
     		
     		if(!isset($option["sys_torder_$name"]))			$sys_torder						="ASC";
@@ -219,7 +162,7 @@
     						else				    $select		    .=", $title";
     						$sys_order	=$title;    						
 						}
-						/*
+						#/*
 						if(!isset($html_title["$title"]))	
 						{
 							$option_report_titles=array(
@@ -231,10 +174,11 @@
 							$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 													
 							$html_title["$campo"]			=$__REPORT_TITLES["html"];	
-							$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
+							/////////////////////////////////////
+							$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
 						}
-						*/	
-    				}    	
+						#*/
+    				}
     			}
     			else 
     			{
@@ -360,7 +304,7 @@
 
     		if(isset($option["sys_page_$name"]))		
     		{
-    			if(isset($this->request["sys_row_$name"])) 		$option["sys_row_$name"]    =$this->request["sys_row_$name"];
+    			if(isset($this->sys_private["row"])) 		$option["sys_row_$name"]    =$this->sys_private["row"];
     			
     			if(!isset($option["sys_row_$name"]) OR $option["sys_row_$name"]=="")	   			$option["sys_row_$name"]	=50;
     			
@@ -380,38 +324,33 @@
     		
     		#####################    		
     		if(isset($option["total"]))
-    			$this->sys_sql					="SELECT count(*) as total FROM $from $where  $group $having";
+    			$this->sys_sql					="SELECT count(*) as sys_total FROM $from $where  $group $having";
     		else	
     		{
     			if($select=="*") 				$select="$from.*";     				
-    			$this->sys_sql					="SELECT count(*) as total, $select FROM $from $where  $group $having";
+    			$this->sys_sql					="SELECT count(*) as sys_total, $select FROM $from $where  $group $having";
     		}	
     		
     		$total 	            = $this->__EXECUTE($this->sys_sql);
                         
             $subtotal			=count($total);
-            #echo $subtotal;
     		if($subtotal>1)         $return["total"]    =$subtotal;
     		elseif($subtotal=1)     
     		{    			
     			if(is_array(@$total[0]))
-	    			$return["total"]    =$total[0]["total"];
+	    			$return["total"]    =$total[0]["sys_total"];
     		}	
 
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
     		
-    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
+    		#$option["echo"]="GENERAL :: {$this->sys_object}";
+    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]))
     		{
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			}
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
 
-			if($this->sys_object=="movimientos")	
-			{
-				#$this->__PRINT_R($return);
 			
-			
-			}
 
 			if(is_array(@$return["data"][0]))
 			{			
@@ -420,7 +359,6 @@
 					$font								=$title;
 					if(is_string($campo))				$sys_order	=$campo;							
 					else								$sys_order	=$title;    						
-
 					if(!isset($html_title["$campo"]))	
 					{			
 						$option_report_titles=array(
@@ -431,15 +369,18 @@
 						);
 						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
-						$html_title["$campo"]			=$__REPORT_TITLES["html"];	
-						$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
-					}	
+						$html_title["$campo"]			=$__REPORT_TITLES["html"];
+						//////////////////////	
+						$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
+					}
 				}    			
 			}
 			
-			if(!is_array(@$html_title))
-			{
-				$return["data_0"][0]=array();	
+			
+			#if(!is_array(@$html_title))
+			{	
+				if(isset($return["data_0"]))			
+					$return["data_0"][0]=array();	
 				foreach($this->sys_fields as $campo => $value)
 				{	
 					$return["data_0"][0]["$campo"]="";
@@ -448,7 +389,8 @@
 					
 					if(is_string($campo))				$sys_order	=$campo;									
 					else								$sys_order	=$title;    						
-
+					
+					#/*
 					if(!isset($html_title["$campo"]))	
 					{						
 						$option_report_titles=array(
@@ -460,10 +402,13 @@
 						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
 						$html_title["$campo"]			=$__REPORT_TITLES["html"];	
-						$html_title_clean["$campo"]		=$__REPORT_TITLES["pdf"];								
+						$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
 					}
+					#*/
 				}	
 			}	
+   			
+   			
    			
 			$this->sys_title		=$html_title;
 			$this->sys_title_pdf	=$html_title;
@@ -487,6 +432,8 @@
     		
 			if(is_array(@$return["data"]))
 			{
+				
+			
 				foreach($this->sys_fields as $campo => $value)
 				{	
 					if(@$this->sys_fields[$campo]["relation"]=="many2one")
@@ -501,7 +448,7 @@
 										\"where\"		=>array(\"$class_field_m='$id'\")
 									);
 									
-									$"."data_$campo	=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
+									$"."data_$campo	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);
 									
 									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 								}	
@@ -520,7 +467,7 @@
 								if($"."this->sys_recursive<3)
 								{
 									$"."option_$campo	=array();	
-									$"."data_$campo		=$"."this->obj_$campo"."->__BROWSE($"."option_$campo);
+									$"."data_$campo		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);
 									
 									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 								}
@@ -538,7 +485,7 @@
 		##############################################################################		 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		if($this->sys_primary_field=="")
+    		if(!isset($this->sys_private["field"]) OR $this->sys_private["field"]=="")
 	    		$this->__FIND_FIELD_ID();
     	
 			if(!isset($this->sys_memory) OR $this->sys_memory=="")
@@ -559,10 +506,10 @@
 				if(!array_key_exists("title",$option))   
 					$option["title"]="MENSAJE DEL SISTEMA";
 								
-				if(!(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id==""))
+				if(!(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]==""))
 				{
 					$option_browse=array();
-					$option_browse["where"]=array("{$this->sys_primary_field}='{$this->sys_primary_id}'");
+					$option_browse["where"]=array("{$this->sys_private["field"]}='{$this->sys_private["id"]}'");
 					$data_anterior=$this->__BROWSE($option_browse);				
 				}		
 				if(is_array($datas))
@@ -571,32 +518,41 @@
 					{					
 						if(is_array($valor))
 						{
-							$many2one["$campo"]=$valor;						
+							if(isset($valor["tmp_name"]))
+							{
+								# IMAGENES
+								$this->sys_fields["$campo"]["value"]=$this->sys_fields["$campo"]["obj"]->__SAVE($valor);								
+							}		
+							else
+								# 
+								$many2one["$campo"]=$valor;						
 						}				
-						if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
+						elseif(!isset($this->sys_fields["$campo"]["relation"]))
 						{
-							#if(count(@$this->sys_fields["$campo"])>1 and $valor!="")
-							if(count(@$this->sys_fields["$campo"])>1 )
+							if(is_null(@$this->sys_private["field"]) OR @$this->sys_private["id"]=="") 
 							{
-								if(!is_array($valor))	
-									$fields	.="$campo='$valor',";
+								if(count(@$this->sys_fields["$campo"])>1 )
+								{
+									if(!is_array($valor))	
+										$fields	.="$campo='$valor',";
+								}
 							}
+							else
+							{
+								if(count(@$this->sys_fields["$campo"])>2 and @$this->sys_fields["$campo"]["type"]!='primary key')
+								{
+									if(!is_array($valor))	
+									{					
+										if(@$data_anterior["data"][0][$campo]!=$valor)		
+											@$modificados.=" 
+												<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
+											";
+										$fields	.="$campo='$valor',";
+									}	
+								}
+							}	
 						}
-						else
-						{
-							#if(count(@$this->sys_fields["$campo"])>1 and $valor!="" and @$this->sys_fields["$campo"]["type"]!='primary key')
-							if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
-							{
-								if(!is_array($valor))	
-								{					
-									if(@$data_anterior["data"][0][$campo]!=$valor)		
-										@$modificados.=" 
-											<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
-										";
-									$fields	.="$campo='$valor',";
-								}	
-							}
-						}	
+						else			$fields	.="$campo='$valor',";
 					}    
 				}
 				if($fields!="")
@@ -613,11 +569,12 @@
 						objeto='$this->sys_object',
 						user_id='$user_id',
 						user_name='$user_name',
-						fecha='$this->sys_date',
+						fecha='{$_SESSION["var"]["datetime"]}',
 						remote_addr='{$_SERVER["REMOTE_ADDR"]}',												
 					";
+
 					
-					if(is_null(@$this->sys_primary_id) OR @$this->sys_primary_id=="") 
+					if(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]=="") 
 					{
 						$insert=1;
 						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
@@ -631,7 +588,8 @@
 					}	
 					else 
 					{	
-						$this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_primary_field}='{$this->sys_primary_id}'";					
+						
+						$this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_private["field"]}='{$this->sys_private["id"]}'";					
 						if(@$modificados!="")
 						{
 							$data_historicos="descripcion='<font>$user_name</font> <b>MODIFICO</b> los valores $modificados'";	
@@ -641,9 +599,10 @@
 
 					$option["open"]	=1;
 					#$option_conf["close"]	=1;
+					
 					$this->__EXECUTE($this->sys_sql,$option);
 					
-
+					#$this->__PRINT_R($this->sys_sql);
 					
 					if(@$this->OPHP_conexion->error=="")
 					{					
@@ -656,31 +615,34 @@
 						
 						if($insert==1)
 						{
-							#$option_conf["open"]	=1;
 							$option["close"]	=1;
 						
-							#echo "ENTRO {$this->sys_object}";
 							$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
 							unset($option["close"]);
-							$this->sys_primary_id=$data[0]["ID"];
+							$this->sys_private["id"]=$data[0]["ID"];
 						}	
-						$return=@$this->sys_primary_id;
+						$return=@$this->sys_private["id"];
 						
-
 						foreach($many2one as $campo =>$valores)	
 						{										
 							$valor_campo	=$this->sys_fields["$campo"];
+
+							$recursive=0;
+							if(isset($this->sys_fields["$campo"]["recursive"]) AND $this->sys_fields["$campo"]["recursive"]>$this->sys_recursive)
+								$recursive=$this->sys_fields["$campo"]["recursive"];
 							
 							if($this->sys_recursive<3)
-							{
-								$recursive=	$this->sys_recursive + 1;
+							{								
+								if($recursive=0)	$recursive=	$this->sys_recursive + 1;
 								$eval="																			
 									$"."option"."_obj_$campo		=array(
 										\"recursive\"	=>$recursive,
 										\"name\"		=>\"$campo"."_obj\",
-										\"object\"		=>\"{$valor_campo["class_name"]}\"
+										\"object\"		=>\"{$valor_campo["class_name"]}\"									
 									);			
-									$"."this->$campo"."_obj			=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+									
+									
+									$"."this->sys_fields[\"$campo\"][\"obj\"]	=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);
 									
 									$"."memory						=$"."this->sys_memory;
 									$"."class_one					=$"."this->class_one;
@@ -694,20 +656,20 @@
 										{								
 											if(isset($"."class_field_m))
 											{			
-												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
-												 	$"."valor[$"."class_field_m]						=$"."this->sys_primary_id;								
+												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))
+												 	$"."valor[$"."class_field_m]						=$"."this->sys_private[\"id\"];
 											}
-											$"."primary_field					=@$"."this->$campo"."_obj->sys_primary_field;
+											$"."primary_field					=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
 											
 											if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
 											{
-												$"."this->$campo"."_obj->sys_primary_id		=@$"."valor[$"."primary_field];
+												$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"]		=@$"."valor[$"."primary_field];
 											}	
 											else
 											{
-												$"."this->$campo"."_obj->sys_primary_id		=\"\";
+												$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"]		=\"\";
 											}
-											$"."this->$campo"."_obj->__SAVE($"."valor);
+											$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."valor);
 										}	
 									}	
 									$"."this->sys_memory	=$"."memory;
@@ -718,10 +680,10 @@
 							}	
 						}
 						
-						if(!in_array($this->sys_table,$_SESSION["obj"]["sys_modules"]))
+						if(!in_array($this->sys_table,$_SESSION["var"]["modules"]))
 						{	
 							if(!isset($data_historicos))	$data_historicos="";								
-							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave=$this->sys_primary_id	";						
+							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave={$this->sys_private["field"]}	";						
 							if(@$data_historicos!="")
 							{	
 								$this->__EXECUTE($comando_sql);					
@@ -736,8 +698,13 @@
 				###########################################################	
 				##################  MEMORIA ###############################
 				###########################################################
-				if(isset($datas["class_one"]))
+				
+				
+				
+				
+				if(isset($datas["class_one"]) AND $_SESSION["var"]["modulo"]==$datas["class_one"])
 				{		
+					
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
 					
@@ -751,13 +718,13 @@
 					}		
 					$valor_campo="";
 					
-					if(isset($this->sys_fields[$this->sys_primary_field]["value"]))		
-						$valor_campo	=$this->sys_fields[$this->sys_primary_field]["value"];
+					if(isset($this->sys_fields[$this->sys_private["field"]]["value"]))		
+						$valor_campo	=$this->sys_fields[$this->sys_private["field"]]["value"];
 	
 					$row														=$datas["row"];				
 
-					if(!isset($row[$this->sys_primary_field]))		
-						$row[$this->sys_primary_field]=@$this->sys_primary_id;
+					if(!isset($row[$this->sys_private["field"]]))		
+						$row[$this->sys_private["field"]]=@$this->sys_private["id"];
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
 					{
@@ -784,7 +751,7 @@
 		public function __DELETE($option)
     	{
     		$this->__FIND_FIELD_ID();
-			$comando_sql	="DELETE FROM {$this->sys_table} WHERE {$this->sys_primary_field}='$option'";					
+			$comando_sql	="DELETE FROM {$this->sys_table} WHERE {$this->sys_private["field"]}='$option'";					
 			$this->__EXECUTE($comando_sql);
 		}
     	##############################################################################	   	
@@ -801,10 +768,6 @@
     		
 	   		if(is_array($option))
     		{
-    			#echo "<br>RESULTADO ABIERTO $comando_sql ";    			
-    			#if(!isset($option["open"]))	$option["open"]=1;    		
-    			
-
 				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
 				{
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
@@ -822,11 +785,10 @@
 			{
 				$resultado	= @$this->OPHP_conexion->query($comando_sql);
 				
-				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["sys_server_error"]) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
 				{					
-					#$this->__PRINT_R($_SERVER["SERVER_NAME"]);
 					echo "
-						<div class=\"echo\" style=\"display:none;\" title=\"Error\">
+						<div class=\"echo\" style=\"display:none;\" title=\"ERROR {$this->sys_object}\">
 							{$this->OPHP_conexion->error}
 							<br><br>
 							$comando_sql
@@ -863,11 +825,10 @@
 
 			$this->__MESSAGE_EXECUTE="";
        		if(isset($this->OPHP_conexion->error) AND $this->OPHP_conexion->error!="")
-       		{
-       			
+       		{       			
        			$sql="INSERT INTO sql_errores SET sql=\"$comando_sql\", modelo=\"{$this->sys_object}\"";
-       			$this->__PRINT_R($this->OPHP_conexion->error);
-				@mysql_query($comando_sql);
+       			#$this->__PRINT_R($this->OPHP_conexion->error);
+				#@mysql_query($comando_sql);
        		    #$this->__MESSAGE_EXECUTE    =$error;
        		}
        		#/*
@@ -876,7 +837,7 @@
     			if(isset($option["close"]))	
     			{
     				$this->cerrar_conexion();
-    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$this->sys_server_error))
+    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]))
     					echo "<br><b>CONECCION CERRADA</b><br>{$option["e_close"]}";
     			}	
     		}

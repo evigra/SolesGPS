@@ -15,10 +15,10 @@
 		##  Metodos	
 		##############################################################################
         
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{	
 			#$this->movimiento_obj		=new movimiento();			
-			parent::__CONSTRUCT();		
+			parent::__CONSTRUCT($option);		
 		}
 		/*
    		public function __SAVE($datas=NULL,$option=NULL)
@@ -58,7 +58,7 @@
 		
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->sys_primary_id				=$rows["id"];
+				$this->sys_private["id"]				=$rows["id"];
 				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);
 				
@@ -81,7 +81,7 @@
 					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
 								
-				$this->sys_primary_id		="";
+				$this->sys_private["id"]		="";
 				$this->__SAVE($rows);
 			}
 		}		

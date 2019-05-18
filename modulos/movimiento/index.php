@@ -7,7 +7,7 @@
 	$objeto->words["system_module"]             	=$objeto->__TEMPLATE($objeto->sys_html."system_module");	
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
-	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS();
 	#$objeto->words["html_head_css"]             	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left		="";	
@@ -16,7 +16,7 @@
 	
 	$module_title									="";
 	
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
@@ -32,10 +32,10 @@
 		);
 		
 		$module_title								="Crear ";
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    	
     }	
-    elseif($objeto->sys_section=="write")
+    elseif($objeto->sys_private["section"]=="write")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
@@ -61,12 +61,12 @@
 		);		
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 		
     	$module_title								="Modificar ";
     }	
-    elseif($objeto->sys_section=="show")
+    elseif($objeto->sys_private["section"]=="show")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
@@ -81,12 +81,12 @@
 		    array("report"=>"Reporte"),
 		);		
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/show");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_var["module_path"] . "html/show");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     		    
     	$module_title								="Formato ";
     }	
-	elseif($objeto->sys_section=="kanban")
+	elseif($objeto->sys_private["section"]=="kanban")
 	{
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -97,7 +97,7 @@
 		);
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$template_body								=$objeto->sys_module . "html/kanban";
+		$template_body								=$objeto->sys_var["module_path"] . "html/kanban";
 	   	$data										=$objeto->__BROWSE_CUENTAS();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }    
@@ -114,18 +114,13 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
-		
-				
+		$option=array();	
 		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
     
 	$objeto->words["module_title"]              ="$module_title Movimientos";
-	
-	
 	
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);

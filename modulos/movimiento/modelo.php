@@ -21,6 +21,7 @@
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "trabajador_id",
@@ -32,6 +33,7 @@
 			    "type"              => "autocomplete",	
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "company",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "empresa_id",
@@ -42,6 +44,7 @@
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
 			    "relation"          => "one2many",			    
+			    "recursive"         => "2",
 			    "class_name"       	=> "movimiento",			    
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "movimiento_id",
@@ -142,7 +145,7 @@
 				$datas["iva"]				=0;				
 				$datas["total"]				=$datas["subtotal"];
 			}					
-			if($this->request["sys_section_". $this->sys_object]=="create")
+			if($this->sys_private["section"]=="create")
 			{
 				$option_folios=array();
 				$option_folios["tipo"]			=$datas["tipo"];
@@ -164,7 +167,7 @@
     	    $this->words =parent::__INPUT($words, $fields);    	    
     	    
     	    if(isset($this->tipo_movimiento) AND !in_array($this->tipo_movimiento,array("PV","PC")) )
-	    	    $this->__TOTALES($this->obj_movimientos_ids->__VIEW_REPORT);
+	    	    $this->__TOTALES($this->sys_fields["movimientos_ids"]["obj"]->__VIEW_REPORT);
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
@@ -174,7 +177,7 @@
     		$this->sys_fields["subtotal"]["value"]	=0;
     		$this->sys_fields["iva"]["value"]		=0;
     		$this->sys_fields["total"]["value"]		=0;
-    		foreach($option["data"] as $row)
+    		foreach(@$option["data"] as $row)
     		{
 				$this->sys_fields["subtotal"]["value"]	+=$row["subtotal"];
 				$this->sys_fields["iva"]["value"]		+=$row["impuesto"];
@@ -193,7 +196,7 @@
 			if(isset($_SESSION["company"]["id"]))
 	    		$option["where"][]			="company_id={$_SESSION["company"]["id"]}";    		
 	    		
-			if(!isset($this->request["sys_order_". $this->sys_object]))
+			if(!isset($this->sys_private["order"]))
 				$option["order"]="id desc";
 	    		
 			return parent::__BROWSE($option);

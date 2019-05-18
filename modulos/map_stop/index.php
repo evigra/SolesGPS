@@ -1,18 +1,17 @@
 <?php
-	#require_once("modulos/position/modelo.php");
-	#require_once("modelo.php");
-
 	$objeto										=new map_stop();
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($objeto);
+
 	$_SESSION["module"]=array();
-	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
+	$_SESSION["module"]["sys_section"]			=$objeto->sys_private["section"];
 	
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");	
 	$files_js=array("maps","responsivevoice");
 	$files_js=array("maps");
+
+/*
 
 	if($objeto->sys_section=="report")
 	{
@@ -33,21 +32,25 @@
     }    
     else // $objeto->sys_section=map
     {
+    
+*/    
 		$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
-		$files_js[]="../{$objeto->sys_module}js/map";
+		$files_js[]="../{$objeto->sys_var["module_path"]}js/map";
     
     
-		$objeto->words["module_body"]   			=$objeto->__VIEW_CREATE($objeto->sys_module . "html/report_form");
+		$objeto->words["module_body"]   			=$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/report_form");
 		$objeto->words								=$objeto->__INPUT($objeto->words,$objeto->sys_fields); 
 
 		$form_map									=$objeto->words["module_body"];
 		$objeto->words["module_body"]				="";
 
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/map");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]  . "html/map");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     	
     	$objeto->words["form_map"]					=$form_map;
-    	//
+
+
+/*    	//
     }
     
     $module_left=array(
@@ -68,19 +71,15 @@
         	"group"	=>"",
         ),
     );
-        
+ */       
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO
 #	$objeto->words["html_head_css"]              =$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
-	#$files_css=array();
-	#$files_css[]="../{$objeto->sys_module}css/map1";
-	#$files_css[]="../{$objeto->sys_module}css/map2";
-	#$objeto->words["html_head_css"]             =$objeto->__FILE_CSS($files_css);								# ARCHIVOS CSS DEL MODULO
-
+	
     $objeto->words["system_submenu2"]           =$objeto->menu_vehicle();    	
 
 	$objeto->words["module_title"]              ="REPORTE DE POSICIONES";
-	$objeto->words["module_left"]               =$objeto->__CHECK($module_left,"DATE");
+	$objeto->words["module_left"]               ="";
 	$objeto->words["module_center"]             ="";
 	$objeto->words["module_right"]              =""; #$objeto->__BUTTON($module_right);
 	

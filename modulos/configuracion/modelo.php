@@ -10,7 +10,6 @@
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			),		
 			"company_id"	    	=>array(
@@ -57,9 +56,9 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
-		public function __CONSTRUCT()
+		public function __CONSTRUCT($option=NULL)
 		{
-			parent::__CONSTRUCT();
+			parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{

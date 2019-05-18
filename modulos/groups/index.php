@@ -7,8 +7,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 		
 	$module_left	="";
 	$module_center	="";	
@@ -16,7 +15,7 @@
         
     $module_title	="";
 	
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		# TITULO DEL MODULO
 		$module_title                	=	"Crear ";
@@ -34,13 +33,13 @@
 		);
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     	
-    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html();
+    	$objeto->words["permisos"]	            	=$objeto->sys_fields["permiso_ids"]["obj"]->permisos_html();
     }	
-    elseif($objeto->sys_section=="write")
+    elseif($objeto->sys_private["section"]=="write")
 	{
 		# TITULO DEL MODULO
 		$module_title                	=	"Crear ";
@@ -58,14 +57,14 @@
 		);
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	$module_title								="Modificar ";    	 
     	
     	$menu_id									=$objeto->sys_fields["menu_id"]["values"][0]["id"];  
-    	$objeto->words["permisos"]	            	=$objeto->obj_permiso_ids->permisos_html($objeto->sys_fields["permiso_ids"]["values"],$menu_id);
+    	$objeto->words["permisos"]	            	=$objeto->sys_fields["permiso_ids"]["obj"]->permisos_html($objeto->sys_fields["permiso_ids"]["values"],$menu_id);
     }	
-	elseif($objeto->sys_section=="kanban")
+	elseif($objeto->sys_private["section"]=="kanban")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Reporte Modular de ";
@@ -80,7 +79,7 @@
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
 
-		$template_body								=$objeto->sys_module . "html/kanban";
+		$template_body								=$objeto->sys_var["module_path"] . "html/kanban";
 	   	$data										=$objeto->__VIEW_REPORT();
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }    
@@ -98,8 +97,6 @@
 	    );	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  	
 		$option=array();
-		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 		$data										=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]				=$data["html"];

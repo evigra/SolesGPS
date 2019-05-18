@@ -5,14 +5,14 @@
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
-	$objeto->words["html_head_js"]              =$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]              =$objeto->__FILE_JS();
 	
     $module_left=array(
         array("action"=>"Guardar"),
         array("cancel"=>"Cancelar"),
     );
 
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		$module_title							="Crear ";
 		$module_right=array(
@@ -23,11 +23,11 @@
 	    	);
 		$objeto->sys_fields["bastidor"]["type"]	="input";
 	
-	    	$objeto->words["module_body"]		=$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+	    	$objeto->words["module_body"]		=$objeto->__VIEW_CREATE();	
 	    	$objeto->words                		=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 	    	   
     }	
-    elseif($objeto->sys_section=="write")
+    elseif($objeto->sys_private["section"]=="write")
 	{
 		$module_title							="Modificar ";
 		$module_right=array(
@@ -36,13 +36,13 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 	    	);	    	
-	    	$objeto->words["module_body"]   	=$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");		    	
+	    	$objeto->words["module_body"]   	=$objeto->__VIEW_WRITE();		    	
 	    	$objeto->words                  	=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 			
 			if($objeto->sys_fields["files_id"]["value"]!="")	$objeto->words["img_files_id"]	=$objeto->__SHOW_FILE($objeto->sys_fields["files_id"]["value"]);
 	    	else												$objeto->words["img_files_id"]	="";
     }	
-	elseif($objeto->sys_section=="report")
+	elseif($objeto->sys_private["section"]=="report")
 	{
 		$module_title							="Reporte de ";
 		$module_left							="";
@@ -53,9 +53,6 @@
 			#array("report"=>"Reporte"),
 	    	);
 		$option=array();
-		$option["template_title"]				= $objeto->sys_module . "html/report_title";
-		$option["template_body"]				= $objeto->sys_module . "html/report_body";
-		
 		$data									=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]			=$data["html"];	
 				
@@ -69,7 +66,7 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 	    	);
-		$template_body							=$objeto->sys_module . "html/kanban";
+		$template_body							=$objeto->sys_var["module_path"] . "html/kanban";
 	   	$data									=$objeto->__BROWSE();        	
 		$objeto->words["module_body"]   		=$objeto->__VIEW_KANBAN($template_body,$data["data"]);		
 

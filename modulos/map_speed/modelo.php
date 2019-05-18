@@ -42,7 +42,7 @@
 
 			$option["order"]	="date DESC";
 	
-			return $this->position($option);						
+			return $this->__BROWSE($option);						
 		}		
 		
 	}

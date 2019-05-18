@@ -60,21 +60,6 @@
 			foreach($datas as $data)
 			{    
 				$comando_sql        ="
-					select 					
-						CASE 
-							WHEN DATE_SUB(sysdate(),INTERVAL 25 MINUTE)>DATE_SUB(p.devicetime,INTERVAL 5 HOUR) 	THEN 'deviceOffline'
-		                    else                  e.type
-						END
-		                as cve_evento								
-					from 
-						positions p join
-						events e  on 
-							e.deviceid=p.deviceid 
-					where e.deviceid={$data["d_id"]}	       
-					ORDER BY e.id DESC
-					LIMIT 1
-				";
-				$comando_sql        ="
 					select 	
 						e.type         as type								
 					from 
@@ -85,7 +70,6 @@
 					ORDER BY e.id DESC
 					LIMIT 1
 				";
-
 				$datas_event     =$objeto->__EXECUTE($comando_sql);	
 		
 				#$objeto->__PRINT_R($data);
@@ -103,7 +87,6 @@
 				{
 					$data["estatus"]=1;
 				}
-
 			
 				$txt_streetview="";
 				#if($_SESSION["module"]["sys_section"]=="streetmap")
@@ -111,12 +94,8 @@
 					$txt_streetview="if(device_active=={$data["deviceid"]}) execute_streetMap(v);";
 				}			
 			
-				#$objeto->__PRINT_R($data["p_attributes"]);
-			
-				if($data["p_attributes"]!="")			
-					$ot="ot:{$data["p_attributes"]}";
-				else	
-					$ot="ot:\"\"";
+				if($data["p_attributes"]!="")		$ot="ot:{$data["p_attributes"]}";
+				else								$ot="ot:\"\"";
 			
 				$ajax.="
 			   		////////				        
@@ -130,20 +109,17 @@
 	else	$ajax_positions="
 		alert(\"SE PERDIO LA CONEXION\");			
 	";
-	
-	
-		$ajax_positions="";
-		echo "
-			<script>
-		        if (typeof del_locations == 'function') {
-		            del_locations();
-		        }		
-		        if (typeof fn_localizaciones == 'function') {
-		            $ajax
-		            $ajax_positions
-		            
-		            
-		        }            
-		    </script>
-		";
+		
+	$ajax_positions="";
+	echo "
+		<script>
+	        if (typeof del_locations == 'function') {
+	            del_locations();
+	        }		
+	        if (typeof fn_localizaciones == 'function') {
+	            $ajax
+	            $ajax_positions
+	        }            
+	    </script>
+	";
 ?>

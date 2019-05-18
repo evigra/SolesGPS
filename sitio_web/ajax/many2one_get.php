@@ -49,13 +49,13 @@
 	$js_data										="";
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	
-	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
+	#$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 	foreach($row as $field=>$value)
 	{
 		if(@$obj_class->sys_fields[$field]["type"]=="autocomplete" AND !is_array($value) AND $value!="")
 		{
-			$obj_class->__FIND_FIELDS($row[$obj_class->sys_primary_field]);													
+			$obj_class->__FIND_FIELDS($row[$obj_class->sys_private["field"]]);													
 							
 	    	if(isset($obj_class->sys_fields[$field]["class_field_l"]))
 	    	{					    		

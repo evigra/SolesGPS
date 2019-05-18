@@ -92,6 +92,7 @@
 		    array("report"=>"Reporte"),
 		);		
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
+		$objeto->__PRINT_R($objeto->sys_module);
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/show");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     		    

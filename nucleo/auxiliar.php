@@ -1680,7 +1680,7 @@
 			$view	=$this->__VIEW_INPUTSECTION($view);
 			return $view;
 		} 		
-
+		##############################################################################    
 		public function __VIEW_INPUTSECTION($view, $option=array())
 		{								
 			$sys_section	=@$this->sys_private["section"];
@@ -1743,6 +1743,7 @@
 		    
 		    return $return;
         }
+        ##############################################################################    
 		public function __VIEW_KANBAN2($template,$data,$option=NULL)
 		{			
 			$view="";
@@ -2011,6 +2012,7 @@
 		###################################    	
 		public function __VIEW_REPORT($option)
 		{
+			$this-__PRINT_R($option);
 			if(!isset($option["template_title"]))	$option["template_title"]	=$this->sys_var["module_path"]."html/report_title";
 			if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/report_body";			
 

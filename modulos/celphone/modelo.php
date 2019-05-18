@@ -1,7 +1,7 @@
 <?php
 	class celphone extends devices
 	{   
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{
 			$this->sys_table="devices";
 			
@@ -20,7 +20,7 @@
 		    	"92"	=>	"Celular Verde",
 		    	"93"	=>	"Celular Rojo",			    	
 		    );		
-			parent::__CONSTRUCT($option);
+			parent::__CONSTRUCT();
 		}	
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    

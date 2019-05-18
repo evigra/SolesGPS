@@ -8,7 +8,7 @@
 		
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
 	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left	="";
@@ -21,7 +21,7 @@
     
 	$date = strtotime(date("Y-m-d"));
     
-    if($objeto->sys_private["section"]=="create")
+    if($objeto->sys_section=="create")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Crear ";
@@ -39,11 +39,11 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/create");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
     }	
-    elseif($objeto->sys_private["section"]=="write")
+    elseif($objeto->sys_section=="write")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Modificar ";
@@ -61,11 +61,11 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_var["module_path"]."html/write");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }	
-    elseif($objeto->sys_private["section"]=="show")
+    elseif($objeto->sys_section=="show")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Modificar ";
@@ -84,11 +84,11 @@
 
 		#$template="system_module_not";
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW($objeto->sys_var["module_path"]."html/show");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW($objeto->sys_module."html/show");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }	
-    elseif($objeto->sys_private["section"]=="report_hoy")
+    elseif($objeto->sys_section=="report_hoy")
     {
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -103,7 +103,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte Actual";
     }
-    elseif($objeto->sys_private["section"]=="report_hoy_total")
+    elseif($objeto->sys_section=="report_hoy_total")
     {
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -119,7 +119,7 @@
 		$module_title								="Suma Actual";
     }
 
-    elseif($objeto->sys_private["section"]=="report_semana_actual")
+    elseif($objeto->sys_section=="report_semana_actual")
     {
 			$first = date('Y-m-d',strtotime('monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -138,7 +138,7 @@
 		$module_title								="Semana ($first al $last)";
     }
     
-    elseif($objeto->sys_private["section"]=="report_semana_actual_total")
+    elseif($objeto->sys_section=="report_semana_actual_total")
     {
 			$first = date('Y-m-d',strtotime('monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -156,7 +156,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Suma Semanal ($first al $last)";
     }    
-    elseif($objeto->sys_private["section"]=="report_semana_anterior")
+    elseif($objeto->sys_section=="report_semana_anterior")
     {
 			$first = date('Y-m-d',strtotime('last monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -174,7 +174,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Semana Anterior ($first al $last) ";
     }
-    elseif($objeto->sys_private["section"]=="report_semana_anterior_total")
+    elseif($objeto->sys_section=="report_semana_anterior_total")
     {
 			$first = date('Y-m-d',strtotime('last monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -192,7 +192,7 @@
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Suma Semanal Anterior ($first al $last)";
     }
-    elseif($objeto->sys_private["section"]=="report_especial_semana")
+    elseif($objeto->sys_section=="report_especial_semana")
     {
 			$first = date('Y-m-d',strtotime('monday -7 days'));
 			$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -211,11 +211,11 @@
 		$module_title								="Semana ($first al $last)";
 		
 		
-    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/create");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 		
     }
-    elseif($objeto->sys_private["section"]=="report_especial_anterior")
+    elseif($objeto->sys_section=="report_especial_anterior")
     {
 		$first = date('Y-m-d',strtotime('last monday -7 days'));
 		$last  = date ( 'Y-m-d' , strtotime ( '+6 day' , strtotime ( $first ) ) );			
@@ -234,7 +234,7 @@
 		$module_title								="Semana ($first al $last)";
 		
 		
-    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/create");	    	
+    	$objeto->words["module_body"]				=$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 		
     }

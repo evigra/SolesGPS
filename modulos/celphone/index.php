@@ -1,5 +1,6 @@
 <?php
 	$objeto							=	new celphone();
+
 	$objeto->__SESSION();
 	
 	# TEMPLATES O PLANTILLAS ELEJIDAS PARA EL MODULO
@@ -7,14 +8,15 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
+	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left	="";
 	$module_center	="";	
     $module_right	="";
         
     $module_title	="";
-    if($objeto->sys_private["section"]=="create")
+    if($objeto->sys_section=="create")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Crear ";
@@ -32,11 +34,11 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE();	    	
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	    	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     }	
-    elseif($objeto->sys_private["section"]=="write")
+    elseif($objeto->sys_section=="write")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Modificar ";
@@ -54,10 +56,10 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE();
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     }
-	elseif($objeto->sys_private["section"]=="kanban")
+	elseif($objeto->sys_section=="kanban")
 	{
 		# TITULO DEL MODULO
     	$module_title                	=	"Reporte Modular de ";
@@ -89,7 +91,11 @@
 	    );
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
-		$data							=	$objeto->celphones();		
+		$option     					=	array();
+		$option["template_title"]		=	$objeto->sys_module."html/report_title";
+		$option["template_body"]		=	$objeto->sys_module."html/report_body";
+		
+		$data							=	$objeto->celphones($option);		
 		$objeto->words["module_body"]	=	$data["html"];	
     }
 	

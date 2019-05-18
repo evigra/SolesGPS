@@ -14,8 +14,37 @@
 			    "title"             => "Company",
 			    "type"              => "input",
 			),
+			/*
+			"locacion_id"	    =>array(
+			    "title"             => "Locacion",
+			    "description"       => "Responsable del dispositivo",
+			    "showTitle"         => "si",
+			    "type"              => "autocomplete",
+			    "procedure"       	=> "__AUTOCOMPLETE",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "trabajador",
+			    "class_field_l"    	=> "nombre",				# Label
+			    "class_field_o"    	=> "responsable_id",
+			    "class_field_m"    	=> "id",			    
+			),
+						
+			"departamento_id"	    =>array(
+			    "title"             => "Departamento",
+			    "description"       => "Responsable del dispositivo",
+			    "showTitle"         => "si",
+			    "type"              => "autocomplete",
+			    "procedure"       	=> "__AUTOCOMPLETE",
+			    "relation"          => "one2many",			    
+			    "class_name"       	=> "trabajador",
+			    "class_field_l"    	=> "nombre",				# Label
+			    "class_field_o"    	=> "responsable_id",
+			    "class_field_m"    	=> "id",			    
+			),
+
+			*/			
 			"trabajador_ids"	    =>array(
 			    "title"             => "Horario",
+			    "showTitle"         => "si",
 			    "type"              => "form",
 			    "relation"          => "many2one",			    
 			    "class_name"       	=> "trabajador",			    
@@ -77,6 +106,8 @@
 			    "title"             => "Logo",
 			    "type"              => "show_file",
 			),
+
+			#*/						
 			"Id_detalleDatos"	=>array(
 			    "title"             => "Id Detalle Datos",
 			    "type"              => "input",
@@ -151,11 +182,14 @@
 		##  Metodos	
 		##############################################################################		
 		public function __CONSTRUCT($option=NULL)
-		{						
+		{
 			return parent::__CONSTRUCT($option);
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{    	
+    	    #$files_id							=$_SESSION["obj"]["files_obj"]->__SAVE($this->sys_table);    	    
+    	    #if(!is_null($files_id))				$datas["files_id"]			=$files_id;    		
+
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$datas["company_id"]			=$_SESSION["company"]["id"];
     	    
@@ -166,7 +200,6 @@
 		}		
 		public function __BROWSE($option=NULL)
     	{    		
-    		
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    	$option["where"]	=array();
 			if(!isset($option["select"]))   	$option["select"]	=array();
@@ -178,6 +211,8 @@
 			$option["select"][]					="company.*";			
 
 			$option["from"]						="company";			
+
+			#$this->__PRINT_R($this->sys_id_company);
 						
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";

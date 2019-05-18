@@ -14,85 +14,144 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
+			    "showTitle"         => "si",
 			    "type"              => "primary key",
+			    "default"           => "",
+			    "value"             => "",			    
 			),		
 			"devicetime"	    =>array(
 			    "title"             => "Hora",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			    
 			),			
 			"protocol"	    =>array(
 			    "title"             => "Protocolo",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			    
 			),
 			"deviceid"	    =>array(
 			    "title"             => "Dispositivo",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"latitude"	    =>array(
 			    "title"             => "Latitud",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"longitude"	    =>array(
 			    "title"             => "Longitud",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"altitude"	    =>array(
 			    "title"             => "Altura",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"speed_max"	    =>array(
 			    "title"             => "Velocidad Maxima",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"speed_start"	    =>array(
 			    "title"             => "Velocidad Inicio",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
 			"speed_end"	    =>array(
 			    "title"             => "Velocidad Fin",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
 			),						
+
 			"course"	    =>array(
 			    "title"             => "Curso",
+			    "showTitle"         => "si",
 			    "type"              => "font",
+			    "default"           => "",
+			    "value"             => "",
+			    "value"             => "",
 			),						
 			"address"	    =>array(
 			    "title"             => "Localizacion",
+			    "showTitle"         => "si",
 			    "type"              => "font",
-			),									
+			    "default"           => "",
+			    "value"             => "",
+			),						
+			
 			"ubicacion"	    =>array(
 			    "title"             => "Ubicacion",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+
 			),	
 			"leido"	    =>array(
 			    "title"             => "leido",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+
 			),
 			"event"	    =>array(
 			    "title"             => "Evento",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+
 			),	
 			"geofence"	    =>array(
 			    "title"             => "Geocerca",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+
 			),
 		);				
 		##############################################################################	
 		##  Metodos	
-		##############################################################################        
-		public function __CONSTRUCT($option=NULL)
+		##############################################################################
+
+        
+		public function __CONSTRUCT()
 		{
 			$this->sys_table="positions";
-			parent::__CONSTRUCT($option);
+			parent::__CONSTRUCT();
 		}
-		##############################################################################
+		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{    		
     		#echo "<br>SAVE MODULO";
     		#$this->__PRINT_R($datas);    		
     		parent::__SAVE($datas,$option);
+    		
 		}	
-		##############################################################################
 		public function cron_retraso()
     	{			    		
 			$comando_sql="
@@ -161,7 +220,6 @@
 			return "$retrasados Dispositivos retrazados";
 									
 		}
-		##############################################################################
 		public function cron_retraso_ALERTAS()
     	{			    		
 			$comando_sql="
@@ -186,7 +244,6 @@
 				}
 			}
 		}
-		##############################################################################
 		public function cron_retraso_WA()
     	{			    		
 			$comando_sql="
@@ -211,7 +268,7 @@
 				}
 			}
 		}
-		##############################################################################
+
 		public function cron_retraso_mayor()
     	{			    		
 			$comando_sql="
@@ -267,7 +324,8 @@
 				$this->send_mail($option);				
 			}						
 		}
-		##############################################################################
+
+
 		public function cron_delete_position()
     	{			    		
 			$comando_sql="
@@ -286,7 +344,6 @@
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			return "Posiciones borradas";
 		}
-		##############################################################################
 		public function cron_log_block()
     	{			    		
 			$comando_sql="	
@@ -296,7 +353,7 @@
 			
 			return "Log borrado";
 		}
-		##############################################################################
+
 		public function cron_distance()
     	{			    		
 			$comando_sql="
@@ -322,7 +379,7 @@
 			
 			return "Distancia calculada";
 		}
-		##############################################################################
+
 		public function cron_position()
     	{			 
     		$descripcion="";
@@ -604,7 +661,7 @@
 			return count($position_data) . " POSICIONES";				
             #*/
 		}
-		##############################################################################
+
 		public function cron_position_ausencia_senal($position=NULL,$option=NULL)
 		{
 				$comando_sql="
@@ -619,7 +676,6 @@
 				#$this->__EXECUTE($comando_sql);				
 
 		}
-		##############################################################################
 		public function mail_position($position=NULL,$option=NULL)
     	{		 
 			if(is_null($option))			$option				=array();
@@ -633,7 +689,6 @@
 			
 			$this->send_mail($option);
 		}
-		##############################################################################
 		public function position_description($position=NULL,$option)
     	{		 
     		$title="";
@@ -684,7 +739,7 @@
 			";								
 			return $return;
 		}
-		##############################################################################
+
 		public function geofences($position=NULL)
     	{		     		
            	$option						="";
@@ -876,8 +931,7 @@
 				}
 			}	
 			return $return;
-		}
-		##############################################################################		
+		}		
 		public function crear_route($points, $position)
     	{		     		
     		$ida	=array();
@@ -967,7 +1021,7 @@
 			
 			return $ida;
 		}		
-		##############################################################################
+		
 		
 		
 		
@@ -1114,8 +1168,7 @@
 				}
 			}	
 			return $return;
-		}
-		##############################################################################		
+		}		
 		public function cron_update_positionid()
     	{
 			$comando_sql        ="
@@ -1128,8 +1181,7 @@
 			";
 			$datas_event     =$this->__EXECUTE($comando_sql);	
 		}		
-		##############################################################################
-		/*
+
 		public function position($option=NULL)
     	{
     		if(is_null($option))	$option=array();
@@ -1144,29 +1196,9 @@
 			
 			if(!isset($option["order"]))
 				$option["order"]	="date DESC";			
-				
-			return $this->__VIEW_REPORT($option);						
-		}
-		*/
-		##############################################################################
-		public function __BROWSE($option=array())
-    	{
-    		if(is_null($option))	$option=array();
-
-			if(!isset($option["from"]))
-				$option["from"]		="
-					positions p	 	join 
-					devices d 		on p.deviceid=d.id
-				";	
-			if(isset($_SESSION["company"]["id"]))	
-				$option["where"][]	="d.company_id={$_SESSION["company"]["id"]}";
 			
-			if(!isset($option["order"]))
-				$option["order"]	="date DESC";			
-				
-			return parent::__BROWSE($option);						
-		}
-		##############################################################################		
+			return $this->__VIEW_REPORT($option);						
+		}		
 		public function distancias($option=NULL)
     	{
     		if(is_null($option))	$option=array();
@@ -1189,10 +1221,11 @@
 
 			if(!isset($option["order"]))
 				$option["order"]	="date DESC";
+			#$option["echo"]		="POSITION";
 			
 			return $this->__VIEW_REPORT($option);						
 		}		
-		##############################################################################
+
 		public function time_position($option=NULL)
     	{
     		if(is_null($option))	$option=array();
@@ -1219,8 +1252,9 @@
 				$option["having"]	=array("time > TIME(SEC_TO_TIME(60))");
 			$option["order"]	="date DESC";
 	
-			return $this->__BROWSE($option);						
+			return $this->position($option);						
 		}		
+
 		#################################################################################
 	}
 ?>

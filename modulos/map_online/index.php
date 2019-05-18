@@ -1,15 +1,19 @@
 <?php
+	require_once("modulos/position/modelo.php");
+	require_once("modelo.php");
+
 	$objeto										=new map_online();
-	
 	$objeto->__SESSION();
+	$_SESSION["module"]							=array();
+	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
-	$files_js									=array("maps","responsivevoice");
+	$files_js=array("maps","responsivevoice");
 
-	$files_js[]									="../{$objeto->sys_var["module_path"]}js/map";        
+	$files_js[]="../{$objeto->sys_module}js/map";        
 	
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
-	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/map");	
+	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/map");	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
 
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO

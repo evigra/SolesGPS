@@ -1,7 +1,7 @@
 <?php
 	class map_stop extends position
 	{   
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{
 			$this->sys_fields["start"]["type"]		="date";
 			$this->sys_fields["start"]["title"]		="Fecha Inicial";
@@ -21,7 +21,7 @@
 			$this->sys_table						="position";
 			$this->sys_module						="map_stop";
 						
-			parent::__CONSTRUCT($option);
+			parent::__CONSTRUCT();
 		}	
 	}
 ?>

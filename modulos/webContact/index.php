@@ -10,12 +10,12 @@
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	$files_js=array();
-	$files_js[]              ="../".$objeto->sys_var["module_path"]."js/index";								# ARCHIVOS JS DEL MODULO
+	$files_js[]              ="../".$objeto->sys_module."js/index";								# ARCHIVOS JS DEL MODULO
 	$objeto->words["html_head_js"] =$objeto->__FILE_JS($files_js);
 	
 	$files_css=array();
 	
-	$files_css[]="../".$objeto->sys_var["module_path"]."css/index";
+	$files_css[]="../".$objeto->sys_module."css/index";
 	$files_css[]="../sitio_web/css/webBootstrap";
 	$files_css[]="../sitio_web/css/webEstiloCustom";
 	$files_css[]="../sitio_web/css/webStyle";
@@ -27,7 +27,7 @@
 
 	$objeto->words["html_head_css"] =$objeto->__FILE_CSS($files_css);		
 
-	$objeto->words["system_module"]             =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/show");	
+	$objeto->words["system_module"]             =$objeto->__VIEW_CREATE($objeto->sys_module . "html/show");	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
 

@@ -6,7 +6,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
 	
 	$module_left=array(
         array("action"=>"Guardar"),
@@ -27,6 +27,9 @@
 
 	    $module_left	=	"";
 		$option     	=	array();
+
+		$option["template_title"]		=	$objeto->sys_module."html/report_title";
+		$option["template_body"]		=	$objeto->sys_module."html/report_body";
 		
 		$data							=	$objeto->__VIEW_REPORT($option);
 		

@@ -2,16 +2,13 @@
     require_once("../../../nucleo/sesion.php");
 	$objeto				=new map_stop();
 	
-	if($_REQUEST["device_active"]>0)
-		$option["where"][]	="deviceid = {$_REQUEST["device_active"]}";
+	if($_POST["device_active"]>0)
+		$option["where"][]	="deviceid = {$objeto->request["device_active"]}";
 
 
-	if(isset($objeto->sys_fields["start"]["value"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->sys_fields["start"]["value"]}'";
-	if(isset($objeto->sys_fields["end"]["value"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->sys_fields["end"]["value"]}'";
 
-
-#	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$objeto->request["start"]} 00:00:01'";
-#	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$objeto->request["end"]} 23:59:59'";
+	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>='{$objeto->request["start"]} 00:00:01'";
+	$option["where"][]	="DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<='{$objeto->request["end"]} 23:59:59'";
 
 	
 	$option["select"]	=array(
@@ -27,7 +24,7 @@
 	
 
 	if(!isset($option["having"]))	
-		$option["having"]	=array("time > TIME(SEC_TO_TIME({$objeto->sys_fields["tiempo"]["value"]}*60))");	
+		$option["having"]	=array("time > TIME(SEC_TO_TIME({$objeto->request["tiempo"]}*60))");	
 		
 	$data_position		=$objeto->time_position($option);			
     $datas              =$data_position["data"];

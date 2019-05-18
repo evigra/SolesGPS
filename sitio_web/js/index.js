@@ -1641,12 +1641,10 @@ styles:
 				}
 			);			    
 		}	    
-	    if($("#varias_hojas.form").length>0)
-	    {
 	    
 
 				$( "#varias_hojas.form" ).tabs();
-		}
+
 	    $("font#setting").click(function(){
 	        $("div#setting").dialog({
 	        	width:"700px"
@@ -1736,11 +1734,9 @@ styles:
         {
             $(".sys_order").click(function()
             {
-            	
                 var name        =$(this).attr("name");
-                var sys_order   =$(this).attr("sys_order");                
+                var sys_order   =$(this).attr("sys_order");
                 var sys_torder  =$(this).attr("sys_torder");
-                
                                 
 	            $("#sys_order_"+name).val(sys_order);
 	            $("#sys_torder_"+name).val(sys_torder);

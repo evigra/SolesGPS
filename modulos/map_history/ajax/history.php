@@ -12,14 +12,16 @@
 		"p.attributes"	=>"p_attributes",		
 	);	
 
-	if(isset($objeto->sys_fields["start"]["value"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->sys_fields["start"]["value"]}'";
-	if(isset($objeto->sys_fields["end"]["value"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->sys_fields["end"]["value"]}'";
+	#if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]} 00:00:01'";
+	if(isset($objeto->request["start"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->request["start"]}'";
+	#if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]} 23:59:59'";
+	if(isset($objeto->request["end"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->request["end"]}'";
 
-	$option["where"][]	="d.id={$_REQUEST["device_active"]}";
+	$option["where"][]	="d.id={$objeto->request["device_active"]}";
 	$option["limit"]	="40000";
 	$option["order"]	="p.devicetime DESC";
 
-	$datas				=$objeto->__BROWSE($option);
+	$datas				=$objeto->position($option);
 
 	$ajax="";
     foreach($datas["data"] as $data)
@@ -47,8 +49,7 @@
 			locationsMap(v);				
 		";        
     }
-
-    if(@$ajax=="") $ajax="
+    if($ajax=="") $ajax="
     	$(\"div#tablero\").html(\"No se encontraron datos\");
     	$(\"div#tablero2\").html(\"\");
     ";

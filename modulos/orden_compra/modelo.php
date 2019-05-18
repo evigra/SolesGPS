@@ -15,9 +15,9 @@
 		##  Metodos	
 		##############################################################################
         
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{	
-			parent::__CONSTRUCT($option);		
+			parent::__CONSTRUCT();		
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    					
@@ -31,7 +31,7 @@
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 			
-			if(!isset($this->sys_private["order"]) OR $this->sys_private["order"]=="")
+			if(!isset($this->request["sys_order_". $this->sys_object]) OR $this->request["sys_order_". $this->sys_object]=="")
 				$option["order"]="id desc";
 						
 			return parent::__BROWSE($option);

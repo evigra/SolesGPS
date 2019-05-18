@@ -77,7 +77,7 @@
 		public function __CONSTRUCT($option=array())
 		{	
 			parent::__CONSTRUCT($option);			
-			$this->words["html_head_js"]              	=$this->__FILE_JS();			
+			$this->words["html_head_js"]              	=$this->__FILE_JS(array("../".$this->sys_module."js/index"));			
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    		
@@ -101,12 +101,13 @@
 				$total=$subtotal+$impuesto;
 	
 				$datas=array(
-					"subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
-					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
-					"total[name='{$this->class_one}_total']"		=>"$total"
+					"#subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
+					"#iva[name='{$this->class_one}_iva']"			=>"$impuesto",
+					"#total[name='{$this->class_one}_total']"		=>"$total"
 				);			
 				$return["js"]=$this->__JS_SET_INPUT($datas);
 				
+				#	$this->__PRINT_R($return["js"]);
 			}			
     	    return $return;
 		}

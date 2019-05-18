@@ -9,7 +9,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
 	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left	="";
@@ -18,7 +18,7 @@
         
     $module_title	="";
 	
-    if($objeto->sys_private["section"]=="create")
+    if($objeto->sys_section=="create")
 	{
 		# TITULO DEL MODULO
 		$module_title                	=	"Crear ";
@@ -36,10 +36,10 @@
 		);
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/create");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     }	
-    elseif($objeto->sys_private["section"]=="write")
+    elseif($objeto->sys_section=="write")
 	{
 		# TITULO DEL MODULO
 		$module_title                	=	"Crear ";
@@ -59,14 +59,14 @@
 		
 		
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_var["module_path"] . "html/write");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     }	
 	else
 	{
 		$option=array();
-		$option["template_title"]	                = $objeto->sys_var["module_path"] . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_var["module_path"] . "html/report_body";
+		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
+		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
 		
 		
 		$option["select"]	="n.*";

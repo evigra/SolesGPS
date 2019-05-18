@@ -1,4 +1,6 @@
 <?php
+	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
+	
 	class geofences extends general
 	{   
 		##############################################################################	
@@ -7,37 +9,64 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
+			    "showTitle"         => "si",
 			    "type"              => "primary key",
+			    "default"           => "",
+			    "value"             => "",			    
 			),		
 			"name"	    =>array(
 			    "title"             => "Geocerca",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			    
 			),
 			
 			"points"	    =>array(
 			    "title"             => "Puntos",
+			    "showTitle"         => "si",
 			    "type"              => "hidden",
+			    #"type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
+			    
 			),
 			"area"	    =>array(
 			    "title"             => "Puntos",
+			    "showTitle"         => "si",
 			    "type"              => "hidden",
+			    "default"           => "",
+			    "value"             => "",			    
 			),
 
 			"geofence_email_in"	    =>array(
 			    "title"             => "Email al entrar",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
 			),			
 			"geofence_email_out"	    =>array(
 			    "title"             => "Email al salir",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
 			),			
 			"company_id"	    =>array(
 			    "title"             => "Compania",
+			    "showTitle"         => "si",
 			    "type"              => "input",
+			    "default"           => "",
+			    "value"             => "",
 			),				
 			"color"	    =>array(
 			    "title"             => "Color",
+			    "showTitle"         => "si",
 			    "type"              => "select",
+			    "default"           => "",
+			    "value"             => "",
 			    "source"			=>array(
 			    	"red"				=>	"Rojo",
 			    	"orange"			=>	"Anaranjado",
@@ -50,7 +79,10 @@
 			),				
 			"hidden"	    =>array(
 			    "title"             => "Oculto",
+			    "showTitle"         => "si",
 			    "type"              => "select",
+			    "default"           => "",
+			    "value"             => "",
 			    "source"			=>array(
 			    	"1"			=>	"SI",
 			    	"0"			=>	"NO",
@@ -64,19 +96,28 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{
-			return parent::__CONSTRUCT($option);
+			parent::__CONSTRUCT();
+			#$this->__PRINT_R($this->sys_fields["points"]);
+
 		}
 		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		/*
+    		echo "SAVE MODULO";
+    		
+    		*/
+    		#$this->__PRINT_R($datas["points"]);
     		if(isset($datas["points"]))
     		{
 				$datas["points"] =substr($datas["points"],0,strlen($datas["points"])-2);    		
 				$datas["points"] = str_replace(",", " ", $datas["points"]);
 				$datas["points"] = str_replace("|", ", ", $datas["points"]);
-								
+				
+						
+				
 				$datas["area"]    		="POLYGON(({$datas["points"]}))";
 				$datas["company_id"]    =$_SESSION["company"]["id"];
 				parent::__SAVE($datas,$option);
@@ -94,6 +135,7 @@
 		        if(!isset($option["where"]))		$option["where"]	=array();
 		        
 				$option["where"][]	="company_id={$_SESSION["company"]["id"]}";
+
 						
 				return $this->__VIEW_REPORT($option);
 			}
@@ -125,6 +167,7 @@
   				if(!is_null($option))
   				{
 					$comando_sql		="SELECT ag.* FROM alerts_geofence ag WHERE geofence_id={$geofence["id"]} AND alerts_id=$option";
+					#echo "<br>$comando_sql";
 					$alerts_geofence	=$this->__EXECUTE($comando_sql);
 					
   				
@@ -149,6 +192,7 @@
   				$data
   				</table>  			
   			";
+			#$this->__PRINT_R($devices);			
 			return $return;
 		}		
 	}

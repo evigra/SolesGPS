@@ -70,26 +70,29 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################&sys_action=__SAVE
+
+
 		public function __CONSTRUCT($option=NULL)
 		{
 			parent::__CONSTRUCT($option);
 		}
+				
+
    		public function __SAVE($datas=NULL,$option=NULL)
-    	{    	   
-    		#$this->__PRINT_R($datas); 
+    	{    	    
     		$option["table"]=$datas;
     	    $return =NULL;
-			if(@is_array($datas))
+			if(@is_array($this->request["files"]))
 			{							
 				if(is_null($option))	$option=array();				
 
-				if(isset($datas["error"]) AND $datas["error"]==0)
+				if(isset($this->request["files"]["error"]) AND $this->request["files"]["error"]==0)
 				{
 					$uploads_dir 			= 'modulos/files/file';
 					$datas					=array();
-					$tmp_name 				= $datas["tmp_name"];
-					$name 					= $datas["name"];
-					$type 					= $datas["type"];
+					$tmp_name 				= $this->request["files"]["tmp_name"];
+					$name 					= $this->request["files"]["name"];
+					$type 					= $this->request["files"]["type"];
 					
 					$vtype					=explode(".",$name);
 					$ctype					=count($vtype) - 1;
@@ -106,7 +109,9 @@
 					$return					=parent::__SAVE($datas);
 
 					$path					="$uploads_dir/$return.$extension";
-
+					#$path					="$uploads_dir/$name";
+					
+					#$this->__PRINT_R($datas);
 					move_uploaded_file($tmp_name, $path);							
 				}
 			}	
@@ -120,10 +125,10 @@
 			if(!is_null($id))
 			{
 				$data=$this->__BROWSE($id);
-				
-				#$this->__PRINT_R($data);
 				if(is_array($data) and count($data)>0)
 				{
+					#$this->__PRINT_R($id);
+					#$this->__PRINT_R($data);
 					if(array_key_exists("type",$data[0]))
 					{
 						if($data[0]["type"]=="image/png")		$return="<img src=\"../modulos/files/file/$id.png\">";
@@ -131,7 +136,53 @@
 					}		
 				}				
 			}					
+			#$return="";
 		    return $return;	
+		}
+		
+		/*
+		public function __FIND_FIELDS($id=NULL)
+		{
+			if(!is_null($id))
+			{
+				
+				$option=array("where"=>array("id='$id'",)	);	
+				
+				$datas	=$this->devices($option);
+				
+				#$this->__PRINT_R($datas);
+				
+				if(count($datas["data"])>0)
+				{
+					foreach(@$datas["data"][0] as $field =>$value)
+					{
+					    $eval="$"."this->sys_fields[\"$field\"]"."[\"value\"]=\"$value\";";
+					    eval($eval);
+					}
+				}
+				
+			}			    
+    	}
+    			
+		public function devices($option=NULL)
+    	{
+    		if(is_null($option))	$option=array();
+    		
+			$option["select"]   =array(
+					"device.*",
+					"IF(vehicle=1,'../modulos/device/img/car.png','../modulos/device/img/cell.png')"	=>"file_id",
+			);
+			$option["from"]     ="device";
+			
+			if(!isset($option["where"]))    $option["where"]    =array();
+			
+			$option["where"][]      ="company_id={$_SESSION["user"]["company_id"]}";
+			
+			#$this->__PRINT_R($option);
+			
+			return $this->__VIEW_REPORT($option);
+    	
 		}		
+		*/
 	}
 ?>

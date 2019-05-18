@@ -4,7 +4,7 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################&sys_action=__SAVE
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{
 			$this->sys_table="devices";
 			
@@ -25,9 +25,7 @@
 			$this->sys_fields["telcel"]["type"]		="hidden";					    
 			$this->sys_fields["vehicle"]["type"]	="hidden";
 		
-			$return=parent::__CONSTRUCT($option);			
-			
-			return $return;			
+			parent::__CONSTRUCT();			
 		}				
 
    		public function __SAVE($datas=NULL,$option=NULL)
@@ -60,7 +58,7 @@
 			$this->words["files_title"]				="";
 			$this->words["files_description"]		="";
 			
-			if(isset($this->sys_fields["file_id"]) AND isset($this->sys_fields["file_id"]["value"]) AND $this->sys_fields["file_id"]["value"]!="")
+			if($this->sys_fields["file_id"]["value"]!="")
 			{
 				$this->words["files_title"]				="<li  class=\"form\"><a href=\"#tabs-10\">Imagenes</a></li>";    		
 				$aux									="modulos/files/file/{$this->sys_fields["file_id"]["value"]}";

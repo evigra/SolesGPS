@@ -1,4 +1,9 @@
 <?php
+	#if(file_exists("../device/modelo.php")) 
+	#require_once("../device/modelo.php");
+	#if(file_exists("device/modelo.php")) 
+	#require_once("device/modelo.php");
+	
 	class modulo extends general
 	{   
 		##############################################################################	
@@ -9,24 +14,30 @@
 		var $sys_fields		=array( 
 			"id"	    =>array(
 			    "title"             => "id",
+			    "showTitle"         => "si",
 			    "type"              => "primary key",
 			),
 			"name"	    =>array(
 			    "title"             => "Nombre",
+			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"clase"	    =>array(
 			    "title"             => "Clase",
+			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"descripcion"	    =>array(
 			    "title"             => "Descripcion",
+			    "showTitle"         => "si",
 			    "type"              => "input",
 			),
 			"menu"	    =>array(
 			    "title"             => "URL",
+			    "showTitle"         => "si",
 			    "type"              => "input",
-			),			
+			),
+			
 		);						
 		##############################################################################	
 		##  Metodos	

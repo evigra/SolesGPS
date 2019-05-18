@@ -11,10 +11,10 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################		
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{	
 			$this->files_obj	=new files();
-			parent::__CONSTRUCT($option);
+			parent::__CONSTRUCT();
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{  		    	    

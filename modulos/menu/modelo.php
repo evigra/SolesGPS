@@ -45,14 +45,22 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT($option=NULL)
+		public function __CONSTRUCT()
 		{
-			parent::__CONSTRUCT($option);
+			#echo "<br>MENU :: CONSTRUC INI"; 
+			parent::__CONSTRUCT();
+			#echo "<br>MENU :: CONSTRUC FIN"; 
 		}
         #/*		
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+
+    		#echo "SAVE MODULO";
+    		#$this->__PRINT_R($datas);
+    	
     		parent::__SAVE($datas,$option);
+    		#$this->__PRINT_R($this->sys_sql);
+    		
 		}		
 		#*/
 	
@@ -165,6 +173,8 @@
     		else	  						
     			$menus	=$this->data_menu();
     		    		
+    		#$this->__PRINT_R($menus);
+    		
 			foreach($menus as $imenu => $menu)
 			{
 			    $data[]					=$menu;
@@ -186,11 +196,12 @@
 						
 	    	if(!isset($option["name"]))    	$option["name"]	=$this->sys_object;
 
-			$option["data"]								=$data;
-			$option["total"]							=count($data);
-			$option["inicio"]							=1;
-			$option["fin"]								=count($data);
-			$option["actions"]							=array("write"=>"1==1");
+
+			$option["data"]		=$data;
+			$option["total"]	=count($data);
+			$option["inicio"]	=1;
+			$option["fin"]		=count($data);
+			$option["actions"]	=array("write"=>"1==1");
 		
 			$option["actions"]	                		= array();
 			$option["actions"]["write"]           		= "true";
@@ -207,15 +218,16 @@
 			$option_conf["open"]	=1;
 			$option_conf["close"]	=1;    	
     	
-    		$retun					=array();
-    		$filtro					="";
+    		$retun=array();
+    		$filtro="";
     		
     		if(!(is_null($option) OR is_array($option)))
     			$filtro=" AND id=$option";
     			    			
-			$comando_sql        	="SELECT * FROM menu WHERE type='menu' $filtro";			
-			$return 				=$this->__EXECUTE($comando_sql, $option_conf);			
+			$comando_sql        ="SELECT * FROM menu WHERE type='menu' $filtro";			
+			$return =$this->__EXECUTE($comando_sql, $option_conf);			
 			
+			#$this->__PRINT_R($return);
 			return $return;
 		}		
 		public function data_submenu($menu)

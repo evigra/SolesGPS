@@ -929,7 +929,8 @@
     		{
 				if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 				{	
-					$return[$campo]=$_SESSION["SAVE"][$this->sys_object][$campo]["data"];
+					if(isset($_SESSION["SAVE"][$this->sys_object][$campo]["data"]))
+						$return[$campo]=$_SESSION["SAVE"][$this->sys_object][$campo]["data"];
 				}
 				else				
 				{					

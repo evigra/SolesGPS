@@ -302,7 +302,7 @@
 			#/*
 			if (isset($_COOKIE)) 
 			{
-				$this->__PRINT_R($_COOKIE);
+				#$this->__PRINT_R($_COOKIE);
 			}			
 			#*/
 			

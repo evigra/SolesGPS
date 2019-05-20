@@ -751,6 +751,7 @@
     	*/
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$this->__PRINT_R($datas);
     		if($this->sys_private["field"]=="")
 	    		$this->__FIND_FIELD_ID();
     	

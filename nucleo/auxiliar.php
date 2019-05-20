@@ -726,18 +726,7 @@
 					{								
 						if($this->sys_recursive<3)
 						{			
-							$this->sys_fields["$campo"]["value"]		="0";
-						
-							/*
-							$eval="
-								$"."this->sys_fields[\"$campo\"][\"value\"]		=\"0\";
-								###$"."this->$campo								=\"0\";
-								###$"."this->request[\"$campo\"]					=\"0\";
-
-							";
-							if(eval($eval)===false)	
-								echo ""; #$eval; ---------------------------					
-							#*/
+							$this->sys_fields["$campo"]["value"]		="0";						
 						}		
 					}			
 				}

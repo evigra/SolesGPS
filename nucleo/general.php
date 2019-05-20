@@ -483,6 +483,7 @@
     		return $return;    		
     	}		
 		##############################################################################		 		
+		/*
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
     		if(!isset($this->sys_private["field"]) OR $this->sys_private["field"]=="")
@@ -747,6 +748,250 @@
 				}		
 			}
     	}
+    	*/
+		public function __SAVE($datas=NULL,$option=NULL)
+    	{
+    		if($this->sys_private["field"]=="")
+	    		$this->__FIND_FIELD_ID();
+    	
+			if(!isset($this->sys_memory) OR $this->sys_memory=="")
+			{	
+				###########################################################	
+				##################  REAL ##################################
+				###########################################################		
+				$fields			="";
+				$return			="";
+				$many2one		=array();
+				
+				if(!isset($option) OR is_null($option))	$option=array();
+				
+				if(!array_key_exists("message",$option))   
+					$option["message"]="DATOS GUARDADOS CORRECTAMENTE";
+				if(!array_key_exists("time",$option))   
+					$option["time"]="1500";
+				if(!array_key_exists("title",$option))   
+					$option["title"]="MENSAJE DEL SISTEMA";
+								
+				if(!(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]==""))
+				{
+					$option_browse=array();
+					$option_browse["where"]=array("{$this->sys_private["field"]}='{$this->sys_private["id"]}'");
+					$data_anterior=$this->__BROWSE($option_browse);				
+				}		
+				if(is_array($datas))
+				{
+					foreach($datas as $campo=>$valor)
+					{					
+						if(is_array($valor))
+						{
+							$many2one["$campo"]=$valor;						
+						}				
+						if(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]=="") 
+						{
+							if(count(@$this->sys_fields["$campo"])>1 )
+							{
+								if(!is_array($valor))	
+									$fields	.="$campo='$valor',";
+							}
+						}
+						else
+						{
+							if(count(@$this->sys_fields["$campo"])>1 and @$this->sys_fields["$campo"]["type"]!='primary key')
+							{
+								if(!is_array($valor))	
+								{					
+									if(@$data_anterior["data"][0][$campo]!=$valor)		
+										@$modificados.=" 
+											<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
+										";
+									$fields	.="$campo='$valor',";
+								}	
+							}
+						}	
+					}    
+				}
+				if($fields!="")
+				{
+					$SAVE_JS="";
+					$fields				=substr($fields,0,strlen($fields)-1);
+					$insert=0;					
+					
+					$user_id			=@$_SESSION["user"]["id"];
+					$user_name			=@$_SESSION["user"]["name"];
+									
+					$data_historico="
+						tabla='$this->sys_table',
+						objeto='$this->sys_object',
+						user_id='$user_id',
+						user_name='$user_name',
+						fecha='$this->sys_date',
+						remote_addr='{$_SERVER["REMOTE_ADDR"]}',												
+					";
+					
+					if(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]=="") 
+					{
+						$insert=1;
+						$this->sys_sql	="INSERT INTO {$this->sys_table} SET $fields";
+						$this->__PRINT_JS.="
+							$(\"input[system!='yes']\").each(function(){                		
+								$(this).val(\"\");                			
+							})
+						";            
+						$data_historicos="descripcion='<font>$user_name</font> <b>CREO</b> El registro'";					
+						#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>CREO</b> El registro'";					
+					}	
+					else 
+					{	
+						$this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_private["field"]}='{$this->sys_private["id"]}'";					
+						if(@$modificados!="")
+						{
+							$data_historicos="descripcion='<font>$user_name</font> <b>MODIFICO</b> los valores $modificados'";	
+							#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>MODIFICO</b> los valores $modificados'";	
+						}	
+					}	
+
+					$option["open"]	=1;
+					#$option_conf["close"]	=1;
+					$this->__EXECUTE($this->sys_sql,$option);
+					
+
+					
+					if(@$this->OPHP_conexion->error=="")
+					{					
+						unset($option["open"]);
+									
+						$this->__MESSAGE_OPTION["text"]		=$option["message"];
+						$this->__MESSAGE_OPTION["time"]		=$option["time"];																	
+						$this->__MESSAGE_OPTION["title"]	=$option["title"];
+						$option["close"]=1;
+						
+						if($insert==1)
+						{
+							#$option_conf["open"]	=1;
+							$option["close"]	=1;
+						
+							#echo "ENTRO {$this->sys_object}";
+							$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
+							unset($option["close"]);
+							$this->sys_private["id"]=$data[0]["ID"];
+						}	
+						$return=@$this->sys_private["id"];
+						
+
+						foreach($many2one as $campo =>$valores)	
+						{										
+							$valor_campo	=$this->sys_fields["$campo"];
+							
+							if($this->sys_recursive<3)
+							{
+								$recursive=	$this->sys_recursive + 1;
+								$eval="																			
+									$"."option"."_obj_$campo		=array(
+										\"recursive\"	=>$recursive,
+										\"name\"		=>\"$campo"."_obj\",
+										\"object\"		=>\"{$valor_campo["class_name"]}\"
+									);			
+									$"."this->$campo"."_obj			=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);												
+									
+									$"."memory						=$"."this->sys_memory;
+									$"."class_one					=$"."this->class_one;
+
+
+									if(isset($"."valor_campo[\"class_field_m\"]))			
+										$"."class_field_m			=@$"."valor_campo[\"class_field_m\"];	
+									foreach($"."valores as $"."valor)
+									{	
+										if(is_array($"."valor))
+										{								
+											if(isset($"."class_field_m))
+											{			
+												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))									
+												 	$"."valor[$"."class_field_m]						=$"."this->sys_private[\"id\"];								
+											}
+											$"."primary_field					=@$"."this->$campo"."_obj->sys_private[\"field\"];
+											
+											if(isset($"."valor[$"."primary_field]) AND  @$"."valor[$"."primary_field]>0	)
+											{
+												$"."this->$campo"."_obj->sys_private[\"id\"]		=@$"."valor[$"."primary_field];
+											}	
+											else
+											{
+												$"."this->$campo"."_obj->sys_private[\"id\"]		=\"\";
+											}
+											$"."this->$campo"."_obj->__SAVE($"."valor);
+										}	
+									}	
+									$"."this->sys_memory	=$"."memory;
+									$"."this->class_one		=$"."class_one;
+								";
+								eval($eval);														
+								unset($_SESSION["SAVE"][$this->sys_object][$campo]);	
+							}	
+						}
+						
+						if(!in_array($this->sys_table,$_SESSION["obj"]["sys_modules"]))
+						{	
+							if(!isset($data_historicos))	$data_historicos="";								
+							$comando_sql="INSERT INTO historico SET $data_historico $data_historicos, clave=$this->sys_private[\"id\"]	";						
+							if(@$data_historicos!="")
+							{	
+								$this->__EXECUTE($comando_sql);					
+							}	
+						}					
+					}						
+				}				
+				return $return;
+			}
+			else
+			{
+				###########################################################	
+				##################  MEMORIA ###############################
+				###########################################################
+				if(isset($datas["class_one"]))
+				{		
+					$class_one		=$datas["class_one"];
+					$class_field	=$datas["class_field"];
+					
+					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]))
+					{	
+						$_SESSION["SAVE"]=array(
+							"$class_one"	=>array(						
+								"$class_field"	=> array()
+							)
+						);
+					}		
+					$valor_campo="";
+					
+					if(isset($this->sys_fields[$this->sys_private["field"]]["value"]))		
+						$valor_campo	=$this->sys_fields[$this->sys_private["field"]]["value"];
+	
+					$row														=$datas["row"];				
+
+					if(!isset($row[$this->sys_private["field"]]))		
+						$row[$this->sys_private["field"]]=@$this->sys_private["id"];
+					
+					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
+					{
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"]=array();
+						$_SESSION["SAVE"]["$class_one"][$class_field]["title"]=array();
+					}
+					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
+					{
+						$active_id		=$datas["class_field_id"];						
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
+					}
+					else
+					{	
+						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][]	=	$row;
+					}
+					
+					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
+			
+
+				}		
+			}
+    	}
+    	
     	##############################################################################	   	
 		public function __DELETE($option)
     	{

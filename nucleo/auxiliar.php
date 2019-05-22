@@ -1335,21 +1335,18 @@
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 							{								
-								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
+								if(!isset($valor["class_template"]))		
+									$valor["class_template"]="many2one_standar";					
 								
 								$campo_many					=@$valor["class_field_o"];
 								$value_many					=@$this->sys_fields["$campo_many"]["value"];								
-								
-								
-								
-								
+																
 								if($this->sys_private["section"]=="create" AND $this->sys_private["action"] == "__SAVE")
 									$value_many=0;	
 								
 								$option=array(
 									"class_one"				=>$this->sys_name,
-									"class_one_id"			=>$value_many,
-								
+									"class_one_id"			=>$value_many,								
 									"class_field"			=>$campo,
 									"class_field_id"		=>"",
 									"class_field_value"		=>$valor,
@@ -1434,6 +1431,7 @@
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"];
+						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
 				
 						if(isset($"."class_id) AND $"."class_id>0)
 							$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
@@ -1466,7 +1464,7 @@
 					
 					$"."option_report[\"name\"]	            		= '$campo';
 					
-					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
+					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);									

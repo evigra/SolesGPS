@@ -1,4 +1,4 @@
-s<?php		
+<?php		
 	$objeto_json									=json_decode($_REQUEST["many2one_json"], true);	
 	unset($_REQUEST["many2one_json"]);
 		

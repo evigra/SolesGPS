@@ -28,8 +28,7 @@
 	$eval="	
 		/////////////////////////////////////////////////
 		if(isset($"."valor[\"class_name\"]))
-		{
-			
+		{			
 		
 			$"."option"."_obj_$class_name	=array(
 				\"recursive\"		=>2,
@@ -41,15 +40,13 @@
 	";		
 	eval($eval);					
 	
-	
-	
 	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
 
 	$js												="";
 	$js_data										="";
 	$row 											=$_SESSION["SAVE"][$objeto->sys_object][$class_field]["data"][$class_field_id];
 	
-	#$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
+	$_SESSION["SAVE"][$objeto->sys_object][$class_field]["active_id"]			=$class_field_id;
 	
 	foreach($row as $field=>$value)
 	{
@@ -83,7 +80,6 @@
 			$js.="
 				if($(\"#$field".".$class_field\").length>0)			$(\"#$field".".$class_field\").val(\"$value\");
 			";
-
 	}
 	echo "
 		<script>

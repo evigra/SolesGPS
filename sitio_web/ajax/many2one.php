@@ -6,9 +6,9 @@
 	
 	print_r($objeto_json);
 	$class_one										=$objeto_json["class_one"];
-	#$class_one_id									=$objeto_json["class_one_id"];
+	$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];
-	#$class_section									=@$objeto_json["class_section"];
+	$class_section									=@$objeto_json["class_section"];
 	$class_field_id									=@$objeto_json["class_field_id"];
 	$class_field_value								=@$objeto_json["class_field_value"];
 	$class_id										=@$objeto_json["class_id"];

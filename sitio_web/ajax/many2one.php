@@ -3,6 +3,8 @@
 	unset($_REQUEST["many2one_json"]);
 		
 	require_once("../../nucleo/sesion.php");
+	
+	print_r($objeto_json);
 	$class_one										=$objeto_json["class_one"];
 	#$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];

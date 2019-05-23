@@ -1427,7 +1427,6 @@
 			{
 				$json	=$option["json"];										
 			}
-			#if($this->sys_recursive<3 AND (($class_one_id>0 AND $this->sys_private["section"]=="write") OR ($this->sys_private["section"]=="create")))
 			if($this->sys_recursive<3)
 			{
 				#$this->__PRINT_R($option);			
@@ -1470,13 +1469,11 @@
 					
 					$"."option_report[\"echo\"]	            		= 'AUX :: MANY2ONE $campo ';
 
-
-					
+		
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
-					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);									
-						
+					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
 				";											
 				eval($eval);	
 			}
@@ -1999,6 +1996,8 @@
 				$campo					=$template_option["class_field"];
 				
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
+				#if(isset($_SESSION["SAVE"][@$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][@$this->class_one]["$campo"])>0)
+
 				{						
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
@@ -2054,8 +2053,8 @@
 		    		#$this->__PRINT_R($browse);
 		    		 
 		    		#$this->__PRINT_R(array(@$this->class_one,@$_SESSION["var"]["modulo"])); 
-					#if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
-					#	$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
+					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
+						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					
 					
 					##################################

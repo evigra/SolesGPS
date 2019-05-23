@@ -1420,16 +1420,15 @@
 			
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
-			
-			
 																		
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
 			}
-			if($this->sys_recursive<3 AND (($class_one_id>0 AND $this->sys_private["section"]=="write") OR ($this->sys_private["section"]=="create")))
+			#if($this->sys_recursive<3 AND (($class_one_id>0 AND $this->sys_private["section"]=="write") OR ($this->sys_private["section"]=="create")))
+			if($this->sys_recursive<3)
 			{
-				$this->__PRINT_R($option);			
+				#$this->__PRINT_R($option);			
 				$eval="
 					if(isset($"."json))
 					{								

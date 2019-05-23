@@ -1436,11 +1436,10 @@
 						\"class_one\"		=>\"$class_one\",
 					);
 				
-					@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
+					#@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
 
 					if(isset($"."json))
 					{								
-						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"id\"];
 						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
 				
 						if(isset($"."class_id) AND $"."class_id>0)

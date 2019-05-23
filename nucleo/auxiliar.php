@@ -1427,7 +1427,7 @@
 			{
 				$json	=$option["json"];										
 			}
-			if($this->sys_recursive<3)
+			if($this->sys_recursive<3 AND $class_one_id>0)
 			{			
 				$eval="
 					if(isset($"."json))

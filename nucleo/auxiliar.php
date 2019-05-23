@@ -1427,7 +1427,7 @@
 			{
 				$json	=$option["json"];										
 			}
-			if($this->sys_recursive<3 AND $class_one_id>0)
+			if($this->sys_recursive<3 AND (($class_one_id>0 AND $this->sys_private["section"]=="write") OR ($this->sys_private["section"]=="create")))
 			{
 				$this->__PRINT_R($option);			
 				$eval="

@@ -448,7 +448,7 @@
 										\"where\"		=>array(\"$class_field_m='$id'\")
 									);
 									
-									$"."data_$campo	=$"."this->$campo"."_obj->__BROWSE($"."option_$campo);
+									$"."data_$campo	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);
 									
 									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 								}	

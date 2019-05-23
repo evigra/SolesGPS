@@ -1437,7 +1437,7 @@
 						\"class_one\"		=>\"$class_one\",
 					);
 				
-					if(!(isset($"."this->sys_fields[\"$campo\"]) AND isset($"."this->sys_fields[\"$campo\"][\"obj\"])) )
+					if((isset($"."this->sys_fields[\"$campo\"]) AND isset($"."this->sys_fields[\"$campo\"][\"obj\"])) )
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
 						
 					if(isset($"."json))

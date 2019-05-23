@@ -1421,14 +1421,15 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 			
-			$this->__PRINT_R($option);
+			
 																		
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
 			}
 			if($this->sys_recursive<3 AND $class_one_id>0)
-			{			
+			{
+				$this->__PRINT_R($option);			
 				$eval="
 					if(isset($"."json))
 					{								

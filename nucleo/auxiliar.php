@@ -1431,15 +1431,15 @@
 			{
 				#$this->__PRINT_R($option);			
 				$eval="
-					/*
+					
 					$"."option_$campo		=array(				
 						\"memory\"			=>\"$campo\",
 						\"class_one\"		=>\"$class_one\",
 					);
 				
-					#if(!isset(@$"."this->sys_fields[\"$campo\"]))
+					if(!(isset($"."this->sys_fields[\"$campo\"]) AND isset($"."this->sys_fields[\"$campo\"])) )
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
-					*/	
+						
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];

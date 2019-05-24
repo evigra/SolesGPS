@@ -1349,7 +1349,6 @@
 							{			
 					
 				
-								/*					
 								if(!isset($valor["class_template"]))		
 									$valor["class_template"]="many2one_standar";					
 								
@@ -1358,7 +1357,6 @@
 																
 								if($this->sys_private["section"]=="create" AND $this->sys_private["action"] == "__SAVE")
 									$value_many=0;	
-*/								
 								$option=array(
 									"class_one"				=>$this->sys_name,
 									"class_one_id"			=>$value_many,								
@@ -1439,8 +1437,6 @@
 
 
 			
-			//////
-			/*															
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
@@ -1501,7 +1497,6 @@
 				";											
 				eval($eval);	
 			}
-			*/
 			return $words;
 			
 		}

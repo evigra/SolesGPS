@@ -651,6 +651,15 @@
 		{  
 			if(is_array(@$this->sys_fields))
 			{
+				if(isset($this->sys_memory))
+				{				
+					$comando_sql 			="CREATE TEMPORARY TABLE IF NOT EXISTS temp_{$this->sys_table} LIKE {$this->sys_table};";						
+					$this->__EXECUTE($comando_sql);
+
+					$comando_sql 			="select * FROM temp_{$this->sys_table};";
+
+					$thi->__PRINT_R($this->__EXECUTE($comando_sql));
+				}			
 				foreach($this->sys_fields as $campo =>$valor)
 				{
 					if(isset($valor["class_name"]) AND $valor["class_name"]!="")
@@ -1346,7 +1355,7 @@
 																
 								if($this->sys_private["section"]=="create" AND $this->sys_private["action"] == "__SAVE")
 									$value_many=0;	
-								
+*/								
 								$option=array(
 									"class_one"				=>$this->sys_name,
 									"class_one_id"			=>$value_many,								
@@ -1356,7 +1365,7 @@
 									"words"					=>$words,
 									"view"					=>"html",			
 								);								
-*/
+
 								$words						=$this->__MANY2ONE($option);
 								
 							}
@@ -1410,9 +1419,7 @@
 
 			
 			return $words;
-		} 
-    	##############################################################################    
-		  		
+		} 		  		
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
@@ -1427,14 +1434,9 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 
-			$comando_sql 			="CREATE TEMPORARY TABLE IF NOT EXISTS temp_{$class_id} LIKE {$class_id};";						
-			#$this->__EXECUTE($comando_sql);
-			
-			$thi->__PRINT_R($this->__EXECUTE($comando_sql));
-			
-				
 
-
+			
+			//////
 			/*															
 			if(isset($option["json"]))
 			{
@@ -1442,9 +1444,7 @@
 			}
 			if($this->sys_recursive<3)
 			{
-				#$this->__PRINT_R($option);			
-				$eval="
-					
+				$eval="					
 					$"."option_$campo		=array(				
 						\"memory\"			=>\"$campo\",
 						\"class_one\"		=>\"$class_one\",
@@ -1453,11 +1453,6 @@
 					if(!is_object($"."this->sys_fields[\"$campo\"][\"obj\"]))
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
 
-
-
-
-
-						
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
@@ -1493,7 +1488,7 @@
 					
 					$"."option_report[\"name\"]	            		= '$campo';
 					
-					$"."option_report[\"echo\"]	            		= 'AUX :: MANY2ONE $campo ';
+					#$"."option_report[\"echo\"]	            		= 'AUX :: MANY2ONE $campo ';
 
 		
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);

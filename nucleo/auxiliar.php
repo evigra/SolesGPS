@@ -1422,7 +1422,7 @@
 			#$this->__EXECUTE($comando_sql,$option_conf);					
 
 		
-			/*
+			
 			$class_id			=@$option["class_id"];
 			$class_one			=@$option["class_one"];
 			$class_one_id		=@$option["class_one_id"];
@@ -1433,7 +1433,7 @@
 			
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
-																		
+			/*															
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
@@ -1501,8 +1501,9 @@
 				";											
 				eval($eval);	
 			}
-			return $words;
 			*/
+			return $words;
+			
 		}
     	##############################################################################    
 		public function __MANY2MANY($option)		

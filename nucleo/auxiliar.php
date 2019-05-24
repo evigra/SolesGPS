@@ -671,17 +671,17 @@
 								);													
 								$"."this->sys_fields[\"$campo\"][\"obj\"]   =new {$valor["class_name"]}($"."option"."_obj_$campo);
 								
-								$"."sys_table			=$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_table;
+								#$"."sys_table			=$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_table;
 							";		
 							eval($eval);					
-
+/*
 							$comando_sql 			="CREATE TABLE IF NOT EXISTS temp_{$sys_table} LIKE {$sys_table};";						
 							$this->__EXECUTE($comando_sql);
 
 							$comando_sql 			="select * FROM temp_{$sys_table};";
 
 							$this->__PRINT_R($this->__EXECUTE($comando_sql));
-
+*/
 						}	
 
 

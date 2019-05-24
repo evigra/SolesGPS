@@ -651,15 +651,6 @@
 		{  
 			if(is_array(@$this->sys_fields))
 			{
-				if(isset($this->sys_memory))
-				{				
-					$comando_sql 			="CREATE TABLE IF NOT EXISTS temp_{$this->sys_table} LIKE {$this->sys_table};";						
-					$this->__EXECUTE($comando_sql);
-
-					$comando_sql 			="select * FROM temp_{$this->sys_table};";
-
-					$this->__PRINT_R($this->__EXECUTE($comando_sql));
-				}			
 				foreach($this->sys_fields as $campo =>$valor)
 				{
 					if(isset($valor["class_name"]) AND $valor["class_name"]!="")
@@ -679,9 +670,21 @@
 									\"class_one\"		=>\"{$this->sys_name}\",
 								);													
 								$"."this->sys_fields[\"$campo\"][\"obj\"]   =new {$valor["class_name"]}($"."option"."_obj_$campo);
+								
+								$"."sys_table			=$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_table;
 							";		
 							eval($eval);					
+
+							$comando_sql 			="CREATE TABLE IF NOT EXISTS temp_{$sys_table} LIKE {$sys_table};";						
+							$this->__EXECUTE($comando_sql);
+
+							$comando_sql 			="select * FROM temp_{$sys_table};";
+
+							$this->__PRINT_R($this->__EXECUTE($comando_sql));
+
 						}	
+
+
 					}
 				}
 			}	

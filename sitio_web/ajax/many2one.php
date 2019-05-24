@@ -4,7 +4,7 @@
 		
 	require_once("../../nucleo/sesion.php");
 	
-	print_r($objeto_json);
+	#print_r($objeto_json);
 	$class_one										=$objeto_json["class_one"];
 	#$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];
@@ -18,7 +18,7 @@
 
 	$eval="
 		$"."option"."_obj_{$class_one}	=array(
-			\"recursive\"		=>2,
+			#\"recursive\"		=>2,
 			#\"name\"			=>\"{$class_one}"."_obj\",		
 		);													
 		$"."objeto   	=new {$class_one}($"."option"."_obj_{$class_one});

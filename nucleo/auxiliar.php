@@ -1414,6 +1414,7 @@
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
+			/*
 			$class_id			=@$option["class_id"];
 			$class_one			=@$option["class_one"];
 			$class_one_id		=@$option["class_one_id"];
@@ -1493,6 +1494,7 @@
 				eval($eval);	
 			}
 			return $words;
+			*/
 		}
     	##############################################################################    
 		public function __MANY2MANY($option)		

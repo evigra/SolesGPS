@@ -1356,9 +1356,9 @@
 									"words"					=>$words,
 									"view"					=>"html",			
 								);								
-
+*/
 								$words						=$this->__MANY2ONE($option);
-								*/
+								
 							}
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2many")
 							{								

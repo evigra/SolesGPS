@@ -1335,6 +1335,8 @@
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 							{			
+					
+				
 								/*					
 								if(!isset($valor["class_template"]))		
 									$valor["class_template"]="many2one_standar";					
@@ -1414,6 +1416,12 @@
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
+			$this->__PRINT_R($_SESSION);
+
+			#$comando_sql 			="CREATE TABLE {$this->sys_table} LIKE {$this->sys_table};";						
+			#$this->__EXECUTE($comando_sql,$option_conf);					
+
+		
 			/*
 			$class_id			=@$option["class_id"];
 			$class_one			=@$option["class_one"];

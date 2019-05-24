@@ -19,7 +19,7 @@
 	$eval="
 		$"."option"."_obj_{$class_one}	=array(
 			\"recursive\"		=>2,
-			\"name\"			=>\"{$class_one}"."_obj\",		
+			#\"name\"			=>\"{$class_one}"."_obj\",		
 		);													
 		$"."objeto   	=new {$class_one}($"."option"."_obj_{$class_one});
 	";		
@@ -37,7 +37,7 @@
 		"class_one"									=>$class_one,
 		"class_one_id"								=>"",
 		"class_field"								=>$class_field,
-		"class_section"								=>$class_section,				
+		"class_section"								=>"EXTERNO",				
 		"class_field_id"							=>$class_field_id,				
 		"class_field_value"							=>$valor,		
 		"words"										=>$objeto->words,		

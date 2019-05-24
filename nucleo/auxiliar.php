@@ -1416,13 +1416,6 @@
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
-			$this->__PRINT_R($_SESSION);
-
-			#$comando_sql 			="CREATE TABLE {$this->sys_table} LIKE {$this->sys_table};";						
-			#$this->__EXECUTE($comando_sql,$option_conf);					
-
-		
-			
 			$class_id			=@$option["class_id"];
 			$class_one			=@$option["class_one"];
 			$class_one_id		=@$option["class_one_id"];
@@ -1433,6 +1426,15 @@
 			
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
+
+			$comando_sql 			="CREATE TEMPORARY TABLE IF NOT EXISTS temp_{$class_id} LIKE {$class_id};";						
+			#$this->__EXECUTE($comando_sql);
+			
+			$thi->__PRINT_R($this->__EXECUTE($comando_sql));
+			
+				
+
+
 			/*															
 			if(isset($option["json"]))
 			{

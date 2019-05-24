@@ -1334,7 +1334,8 @@
 					    if($valor["type"]=="form")	
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
-							{								
+							{			
+								/*					
 								if(!isset($valor["class_template"]))		
 									$valor["class_template"]="many2one_standar";					
 								
@@ -1355,6 +1356,7 @@
 								);								
 
 								$words						=$this->__MANY2ONE($option);
+								*/
 							}
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2many")
 							{								

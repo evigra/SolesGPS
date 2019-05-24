@@ -1,4 +1,5 @@
 <?php		
+/*
 	$objeto_json									=json_decode($_REQUEST["many2one_json"], true);	
 	unset($_REQUEST["many2one_json"]);
 		
@@ -47,4 +48,5 @@
 	$words											=$objeto->__MANY2ONE($option);		
 		
 	echo $words["$class_field"];
+	*/
 ?>

@@ -653,7 +653,7 @@
 			{
 				if(isset($this->sys_memory))
 				{				
-					$comando_sql 			="CREATE TEMPORARY TABLE IF NOT EXISTS temp_{$this->sys_table} LIKE {$this->sys_table};";						
+					$comando_sql 			="CREATE TABLE IF NOT EXISTS temp_{$this->sys_table} LIKE {$this->sys_table};";						
 					$this->__EXECUTE($comando_sql);
 
 					$comando_sql 			="select * FROM temp_{$this->sys_table};";

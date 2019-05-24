@@ -726,7 +726,7 @@
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
 					{
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"]=array();
-						$_SESSION["SAVE"]["$class_one"][$class_field]["title"]=array();
+						#$_SESSION["SAVE"]["$class_one"][$class_field]["title"]=array();
 					}
 					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
 					{

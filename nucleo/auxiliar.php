@@ -658,7 +658,7 @@
 
 					$comando_sql 			="select * FROM temp_{$this->sys_table};";
 
-					$thi->__PRINT_R($this->__EXECUTE($comando_sql));
+					$this->__PRINT_R($this->__EXECUTE($comando_sql));
 				}			
 				foreach($this->sys_fields as $campo =>$valor)
 				{

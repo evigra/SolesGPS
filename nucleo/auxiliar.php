@@ -712,7 +712,7 @@
 			elseif($campo=="sys_order_{$this->sys_name}")	$this->sys_private["order"]				=$valor;
 			elseif($campo=="sys_row_{$this->sys_name}")		$this->sys_private["row"]				=$valor;						
 			elseif($campo=="sys_rows_{$this->sys_name}")	$this->sys_private["rows"]				=$valor;
-			elseif($campo=="sys_filter_{$this->sys_name}") 	$this->sys_fields["$campo"]["filter"]	=$valor;
+			elseif($campo=="sys_filter_{$this->sys_name}_$campo") 	$this->sys_fields["$campo"]["filter"]	=$valor;
 			elseif(isset($this->sys_fields["$campo"])) 		$this->sys_fields["$campo"]["value"]	=$valor;
 			
 			
@@ -763,7 +763,7 @@
 			if(!isset($this->request["sys_view"]))	$this->request["sys_view"]	="";	
 			
 			if($this->sys_name=="orden_venta")
-			$this->__PRINT_R($this->sys_fields);
+				$this->__PRINT_R($this->sys_fields);
 		} 
 		##############################################################################
 

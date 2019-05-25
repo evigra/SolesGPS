@@ -736,6 +736,15 @@
 						$this->__REQUEST_AUX($campo,$valor);						
 						unset($_REQUEST["$request_campo"]);
 					}
+					else if(isset($_REQUEST["sys_filter_". $request_campo]))
+					{
+						$valor					=$_REQUEST["sys_filter_". $request_campo];
+						if(!is_array($valor)) 	$valor	=htmlentities($valor);						
+						$this->__REQUEST_AUX($campo,$valor);						
+						unset($_REQUEST["sys_filter_". $request_campo]);
+					
+					}
+					
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 					{								
 						if($this->sys_recursive<3)

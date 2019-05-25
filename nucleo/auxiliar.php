@@ -712,7 +712,9 @@
 			elseif($campo=="sys_order_{$this->sys_name}")	$this->sys_private["order"]				=$valor;
 			elseif($campo=="sys_row_{$this->sys_name}")		$this->sys_private["row"]				=$valor;						
 			elseif($campo=="sys_rows_{$this->sys_name}")	$this->sys_private["rows"]				=$valor;
+			elseif($campo=="sys_filter_{$this->sys_name}") 	$this->sys_fields["$campo"]["filter"]	=$valor;
 			elseif(isset($this->sys_fields["$campo"])) 		$this->sys_fields["$campo"]["value"]	=$valor;
+			
 			
 		}
 		##############################################################################
@@ -2202,6 +2204,7 @@
                 	
                 	elseif(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
                 	{	
+                		/////$this->sys_fields["$campo"]["filter"]
 						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
 				
                 		$view_head="
@@ -2445,14 +2448,14 @@
 					{
 						foreach($this->sys_fields as $campo=>$valor)
 						{        								
-							if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
+							if(@$this->sys_fields["$campo"]["filter"])
 							{	
 								if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
 									$this->request["sys_where_{$this->sys_name}_{$campo}"] = "LIKE";
 									
 								$sys_filter=$this->request["sys_where_{$this->sys_name}_{$campo}"];	
 								$filter_autocomplete.="
-									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->request["sys_filter_{$this->sys_name}_{$campo}"]}\",\"$name\",\"$sys_filter\");											
+									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->sys_fields["$campo"]["filter"]}\",\"$name\",\"$sys_filter\");
 									$(\"#filter_fields_$name\").append(filter);
 								";
 							}							

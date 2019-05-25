@@ -202,7 +202,7 @@
 						$class_field_m			=@$valor["class_field_m"];
 						$class_field_l			=@$valor["class_field_l"];
 					}
-					if(@$this->request["sys_filter_{$this->sys_name}_{$campo}"])
+					if(@$this->sys_fields["$campo"]["filter"])
 					{	
 						if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
 							$this->request["sys_where_{$this->sys_name}_{$campo}"]=" LIKE ";
@@ -219,7 +219,7 @@
 						}
 						if(!isset($option["where"]))    $option["where"]=array();		
 
-						$busqueda					=$this->request["sys_filter_{$this->sys_name}_{$campo}"];
+						$busqueda					=$this->sys_fields["$campo"]["filter"];
 						
 						if(@$this->sys_fields[$campo]["relation"]=="one2many")
 						{							

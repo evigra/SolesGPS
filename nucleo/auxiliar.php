@@ -705,15 +705,15 @@
 				$this->sys_private["action"]			=$valor;
 			}
 			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	$this->sys_private["action"]			=$valor;
-			elseif($campo=="sys_id_{$this->sys_name}")		$this->sys_private["id"]				=$valor;
-			elseif($campo=="sys_order_{$this->sys_name}")	$this->sys_private["order"]				=$valor;
-			elseif($campo=="sys_torder_{$this->sys_name}")	$this->sys_private["torder"]			=$valor;
-			elseif($campo=="sys_page_{$this->sys_name}")	$this->sys_private["page"]				=$valor;
-			elseif($campo=="sys_order_{$this->sys_name}")	$this->sys_private["order"]				=$valor;
-			elseif($campo=="sys_row_{$this->sys_name}")		$this->sys_private["row"]				=$valor;						
-			elseif($campo=="sys_rows_{$this->sys_name}")	$this->sys_private["rows"]				=$valor;
-			elseif($campo=="sys_filter_{$this->sys_name}_$campo") 	$this->sys_fields["$campo"]["filter"]	=$valor;
-			elseif(isset($this->sys_fields["$campo"])) 		$this->sys_fields["$campo"]["value"]	=$valor;
+			elseif($campo=="sys_id_{$this->sys_name}")				$this->sys_private["id"]				=$valor;
+			elseif($campo=="sys_order_{$this->sys_name}")			$this->sys_private["order"]				=$valor;
+			elseif($campo=="sys_torder_{$this->sys_name}")			$this->sys_private["torder"]			=$valor;
+			elseif($campo=="sys_page_{$this->sys_name}")			$this->sys_private["page"]				=$valor;
+			elseif($campo=="sys_order_{$this->sys_name}")			$this->sys_private["order"]				=$valor;
+			elseif($campo=="sys_row_{$this->sys_name}")				$this->sys_private["row"]				=$valor;						
+			elseif($campo=="sys_rows_{$this->sys_name}")			$this->sys_private["rows"]				=$valor;
+			elseif($campo=="sys_filter_{$this->sys_name}_{$campo}") $this->sys_fields["$campo"]["filter"]	=$valor;
+			elseif(isset($this->sys_fields["$campo"])) 				$this->sys_fields["$campo"]["value"]	=$valor;
 			
 			
 		}

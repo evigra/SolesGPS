@@ -712,10 +712,9 @@
 			elseif($campo=="sys_order_{$this->sys_name}")			$this->sys_private["order"]				=$valor;
 			elseif($campo=="sys_row_{$this->sys_name}")				$this->sys_private["row"]				=$valor;						
 			elseif($campo=="sys_rows_{$this->sys_name}")			$this->sys_private["rows"]				=$valor;
-			elseif($campo=="sys_filter_{$this->sys_name}_{$campo}") $this->sys_fields["$campo"]["filter"]	=$valor;
 			elseif(isset($this->sys_fields["$campo"])) 				$this->sys_fields["$campo"]["value"]	=$valor;
 			
-			
+			return 	$valor;		
 		}
 		##############################################################################
 		public function __REQUEST()
@@ -732,17 +731,18 @@
 					if(isset($_REQUEST[$request_campo]))
 					{
 						$valor					=$_REQUEST[$request_campo];
-						if(!is_array($valor)) 	$valor	=htmlentities($valor);						
-						$this->__REQUEST_AUX($campo,$valor);						
+						$valor					=$this->__REQUEST_AUX($campo,$valor);
+						$this->sys_fields["$campo"]["value"]	=$valor;
+						
 						unset($_REQUEST["$request_campo"]);
 					}
 					else if(isset($_REQUEST["sys_filter_". $request_campo]))
 					{
 						$valor					=$_REQUEST["sys_filter_". $request_campo];
-						if(!is_array($valor)) 	$valor	=htmlentities($valor);						
-						$this->__REQUEST_AUX("sys_filter_". $request_campo,$valor);						
-						unset($_REQUEST["sys_filter_". $request_campo]);
-					
+						$valor					=$this->__REQUEST_AUX($campo,$valor);						
+
+						$this->sys_fields["$campo"]["filter"]	=$valor;
+						unset($_REQUEST["sys_filter_" . $request_campo]);
 					}
 					
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))

@@ -740,7 +740,7 @@
 					{
 						$valor					=$_REQUEST["sys_filter_". $request_campo];
 						if(!is_array($valor)) 	$valor	=htmlentities($valor);						
-						$this->__REQUEST_AUX($campo,$valor);						
+						$this->__REQUEST_AUX("sys_filter_". $request_campo,$valor);						
 						unset($_REQUEST["sys_filter_". $request_campo]);
 					
 					}

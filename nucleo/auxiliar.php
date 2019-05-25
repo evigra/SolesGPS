@@ -1347,8 +1347,6 @@
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 							{			
-					
-				
 								if(!isset($valor["class_template"]))		
 									$valor["class_template"]="many2one_standar";					
 								

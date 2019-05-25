@@ -229,7 +229,7 @@
 										\"$class_field_l $sys_where '%{$busqueda}%'\"
 									)
 								);									
-								$"."data_$campo					=$"."obj_$campo"."->__BROWSE($"."option_$campo);								
+								$"."data_$campo					=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);								
 								$"."busqueda					=\"\";
 								foreach($"."data_$campo"."[\"data\"] as $"."row_$campo)
 								{									

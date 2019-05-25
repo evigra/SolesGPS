@@ -761,6 +761,8 @@
 			}	
 						
 			if(!isset($this->request["sys_view"]))	$this->request["sys_view"]	="";	
+			
+			$this->__PRINT_R($this->sys_fields);
 		} 
 		##############################################################################
 

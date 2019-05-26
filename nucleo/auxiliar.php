@@ -2043,78 +2043,76 @@
 			$inicio			=$option["inicio"];
 			$fin			=$option["fin"];
 			$total			=$option["total"];
-						
 			
-                	if(@$this->sys_private["action"]=="print")	$view_head="";                	                                	
-                	elseif(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-                	{	
-						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
-				
-                		$view_head="
-							<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
-								<table width=\"100%\" height=\"100%\" style=\"padding:0px; margin:0px;\">
-									<tr>
-										<td width=\"10\"></td>
-						";
-						if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-						{
-							$view_head.="						
-										$button_search
-										$button_create
-										<td width=\"1\">
-											<table>
-												<tr id=\"filter_fields_$name\">
-												</tr>
-											</table>
-										</td>
-										<td>											
-											<input style=\"paddin:8px; height:29px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
-										</td>
-										<td width=\"30\">
-											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
-										</td>
-							";
-						}
-						$view_head.="						
-										
-										<td align=\"right\">
-											<b> $inicio - $fin / $total</b>
-										</td>								
-										<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
-						";
-						if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-						{
-							if(@!$this->sys_private["row"]) $this->sys_private["row"]=50; 	
-							$array=array(1,20,50,100,200,500);
-							$option_select="";
-							foreach($array as $index)
-							{
-								$selected		="";	
-								if($index==$this->sys_private["row"]) 	$selected="selected";
-								$option_select.="<option value=\"$index\" $selected>$index</option>";
-							}							
-							
-							$view_head.="
-											<select type=\"report\" name=\"sys_rows_$name\" id=\"sys_rows_$name\">
-												$option_select		
-											</select>
-							";
-						}					
-						$view_head.="	
-										</td>
-										<td  width=\"20\" align=\"center\" >
-											<font action=\"-\" name=\"$name\" class=\"page ui-button\">Anterior</font>
-										</td>										
-										<td width=\"20\" align=\"center\" >
-											<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
-										</td>
-									</tr>
-								</table>		
-								
-							</div>                
-                		";
-                	}
-					#
+        	if(@$this->sys_private["action"]=="print")	$view_head="";                	                                	
+        	elseif(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
+        	{	
+				if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
+		
+        		$view_head="
+					<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
+						<table width=\"100%\" height=\"100%\" style=\"padding:0px; margin:0px;\">
+							<tr>
+								<td width=\"10\"></td>
+				";
+				if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
+				{
+					$view_head.="						
+								$button_search
+								$button_create
+								<td width=\"1\">
+									<table>
+										<tr id=\"filter_fields_$name\">
+										</tr>
+									</table>
+								</td>
+								<td>											
+									<input style=\"paddin:8px; height:29px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
+								</td>
+								<td width=\"30\">
+									<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
+								</td>
+					";
+				}
+				$view_head.="																
+								<td align=\"right\">
+									<b> $inicio - $fin / $total</b>
+								</td>								
+								<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
+				";
+				if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
+				{
+					if(@!$this->sys_private["row"]) $this->sys_private["row"]=50; 	
+					$array=array(1,20,50,100,200,500);
+					$option_select="";
+					foreach($array as $index)
+					{
+						$selected		="";	
+						if($index==$this->sys_private["row"]) 	$selected="selected";
+						$option_select.="<option value=\"$index\" $selected>$index</option>";
+					}							
+					
+					$view_head.="
+									<select type=\"report\" name=\"sys_rows_$name\" id=\"sys_rows_$name\">
+										$option_select		
+									</select>
+					";
+				}					
+				$view_head.="	
+								</td>
+								<td  width=\"20\" align=\"center\" >
+									<font action=\"-\" name=\"$name\" class=\"page ui-button\">Anterior</font>
+								</td>										
+								<td width=\"20\" align=\"center\" >
+									<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
+								</td>
+							</tr>
+						</table>		
+						
+					</div>                
+        		";
+        	}
+			#
 			return $view_head;
 		}		
 		###################################
@@ -2176,8 +2174,6 @@
 		    	else											$name		=$option["name"];
 				
 				$this->sys_name			=$name;		
-
-				
 		    	
 		    	if(isset($this->sys_private["page"]))			$sys_page	=$this->sys_private["page"];
 		    	else											$sys_page	=1;
@@ -2234,8 +2230,6 @@
 				#######################											
 				#/*	
 				$view_title		=$this->__VIEW_TEMPLATE_TITLE($option);		
-
-
 				#*/
 								
 		    	$view_create			="";
@@ -2321,8 +2315,6 @@
 					{	
 						$view_body					=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 					}
-					
-					
 		    	}    
                 #if(isset($inicio) AND $return["total"]>0)
                 {     

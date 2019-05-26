@@ -1738,9 +1738,25 @@
 	    
 		    
 		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
+		    
+		    
+        	$option_head=array(
+        		"name"				=>"$name",
+        		"button_search"		=>"$button_search",
+        		"button_create"		=>"$button_create",
+        		"inicio"			=>"$inicio",
+        		"fin"				=>"$fin",
+        		"total"				=>"$total",
+        		
+        	);
+        	
+        	$view_head=$this->__VIEW_HEAD($option_head);		    
+		    
 		    $return="
+		    
                 <div id=\"base_{$option["name"]}\" style=\"position:relative; height:100%; width:100%;\">
                     <div id=\"div_{$option["name"]}\" style=\"height:100px; overflow:hidden; width:100%; \">	
+                    	$view_head
                         $return
                     </div>
                 </div>

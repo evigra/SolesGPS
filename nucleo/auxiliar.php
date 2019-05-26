@@ -744,6 +744,14 @@
 						$this->sys_fields["$campo"]["filter"]	=$valor;
 						unset($_REQUEST["sys_filter_" . $request_campo]);
 					}
+					else if(isset($_REQUEST["sys_where_". $request_campo]))
+					{
+						$valor					=$_REQUEST["sys_where_". $request_campo];
+						$valor					=$this->__REQUEST_AUX($campo,$valor);						
+
+						$this->sys_fields["$campo"]["where"]	=$valor;
+						unset($_REQUEST["sys_where_" . $request_campo]);
+					}
 					
 					if(@$this->sys_fields[$campo]["type"]=="checkbox" and (@$this->sys_fields[$campo]["value"]=="" OR @$this->sys_fields[$campo]["value"]==0))
 					{								
@@ -2462,10 +2470,10 @@
 						{        								
 							if(@$this->sys_fields["$campo"]["filter"])
 							{	
-								if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
-									$this->request["sys_where_{$this->sys_name}_{$campo}"] = "LIKE";
+								if(!isset($this->sys_fields["$campo"]["where"]))
+									$this->sys_fields["$campo"]["where"] = "LIKE";
 									
-								$sys_filter=$this->request["sys_where_{$this->sys_name}_{$campo}"];	
+								$sys_filter=$this->sys_fields["$campo"]["where"];	
 								$filter_autocomplete.="
 									var filter=filter_html(\"$campo\",\"{$valor["title_filter"]}\",\"{$this->sys_fields["$campo"]["filter"]}\",\"$name\",\"$sys_filter\");
 									$(\"#filter_fields_$name\").append(filter);

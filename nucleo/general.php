@@ -223,7 +223,7 @@
 						
 						if(@$this->sys_fields[$campo]["relation"]=="one2many")
 						{							
-							$eval.="								
+							@$eval.="								
 								$"."option_$campo=array(
 									\"where\"=>array(
 										\"$class_field_l $sys_where '%{$busqueda}%'\"

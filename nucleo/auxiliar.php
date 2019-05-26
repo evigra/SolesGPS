@@ -746,6 +746,7 @@
 					}
 					else if(isset($_REQUEST["sys_where_". $request_campo]))
 					{
+						$this->__PRINT_R($_REQUEST);
 						$valor					=$_REQUEST["sys_where_". $request_campo];
 
 						$this->sys_fields["$campo"]["where"]	=$valor;

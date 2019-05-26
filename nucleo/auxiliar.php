@@ -2038,8 +2038,8 @@
 		public function __VIEW_HEAD($option)
 		{
 			$name			=$option["name"];
-			$button_search	=$this->button_search($name);
-			$button_create	=$this->button_create($name);
+			$button_search	=$option["button_search"];;
+			$button_create	=$option["button_create"];;
 			$inicio			=$option["inicio"];
 			$fin			=$option["fin"];
 			$total			=$option["total"];
@@ -2335,11 +2335,9 @@
                 		"button_create"		=>"$button_create",
                 		"inicio"			=>"$inicio",
                 		"fin"				=>"$fin",
-                		"total"				=>"$total",
-                		
-                	);
-                	
-                	$view_head=$this->__VIEW_HEAD($option_head);
+                		"total"				=>"$total",                		
+                	);                	
+                	$view_head				=$this->__VIEW_HEAD($option_head);
 										
 					if(!isset($option["header"]))	
 						$option["header"]		="true";					

@@ -2138,8 +2138,15 @@
 		###################################
 		public function __SYS_REPORT($option)
 		{
-			if(!isset($option["template_title"]))	$option["template_title"]	=$this->sys_var["module_path"]."html/report_title";
-			if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/report_body";			
+			if($option["type_view"]=="report")
+			{
+				if(!isset($option["template_title"]))	$option["template_title"]	=$this->sys_var["module_path"]."html/report_title";
+				if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/report_body";			
+			}
+			else
+			{
+				if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/kanban";						
+			}
 
 			if(isset($option["template_option"]))	$template_option		=$option["template_option"];
 			

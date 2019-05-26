@@ -118,12 +118,9 @@
 	    );
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
-		$option     					=	array();
-		$option["template_title"]		=	$objeto->sys_var["module_path"]."html/report_title";
-		$option["template_body"]		=	$objeto->sys_var["module_path"]."html/report_body";
-		
-		$data							=	$objeto->cars($option);		
-		$objeto->words["module_body"]	=	$data["html"];	
+    	$option										=$objeto->cars();
+		$data										=$objeto->__VIEW_REPORT($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }
 	
 	$objeto->words["module_title"]	=	"$module_title Dispositivos";

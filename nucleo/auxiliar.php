@@ -1744,9 +1744,9 @@
         		"name"				=>$option["name"],
         		"button_search"		=>$this->button_search($option["name"]),
         		"button_create"		=>$this->button_create($option["name"]),
-        		"inicio"			=>"$inicio",
-        		"fin"				=>"$fin",
-        		"total"				=>"$total",
+        		"inicio"			=>"1",
+        		"fin"				=>count($data),
+        		"total"				=>count($data),
         		
         	);
         	

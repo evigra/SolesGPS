@@ -1730,16 +1730,15 @@
 			return $view;
 		}    	
 
-    	##############################################################################    
+    	##############################################################################
+    	/*    
 		public function __VIEW_KANBAN($template,$data,$option=NULL)
 		{
 		    if(is_null($option))	$option=array();
 		    if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
-	    
-		    
+	    		    
 		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
-		    
-		    
+		    		    
         	$option_head=array(
         		"name"				=>$option["name"],
         		"button_search"		=>$this->button_search($option["name"]),
@@ -1752,8 +1751,7 @@
         	
         	$view_head=$this->__VIEW_HEAD($option_head);		    
 		    
-		    $return="
-		    
+		    $return="		    
                 <div id=\"base_{$option["name"]}\" style=\"position:relative; height:100%; width:100%;\">
                     <div id=\"div_{$option["name"]}\" style=\"height:100px; overflow:hidden; width:100%; \">	
                     	$view_head
@@ -1764,10 +1762,11 @@
 					var alto_{$option["name"]}	    =$(\"#base_{$option["name"]}\").height() -20;
 					$(\"div#div_{$option["name"]}\").attr({\"style\":\"height:\"+alto_{$option["name"]}+\"px; overflow:auto; width:100%;\"});													
 				</script>                
-            ";
-		    
+            ";		    
 		    return $return;
         }
+        */
+
         ##############################################################################    
 		public function __VIEW_KANBAN2($template,$data,$option=NULL)
 		{			
@@ -1881,22 +1880,17 @@
                     	$eval="
                     		if({$option["actions"]["show"]}) 						$"."show='$show';
                     		else													$"."show='';
-                    		
                     		if({$option["actions"]["write"]}) 						$"."write='$write';
                     		else													$"."write='';
-                    		
                     		if({$option["actions"]["delete"]}) 						$"."delete='$delete';
                     		else													$"."delete='';
-                    		                    		
                     		if({$option["actions"]["check"]}) 						$"."check='$check';
                     		else													$"."check='';                    		
                     	";
                     	$eval_color="";
-                    	if(!isset($option["color"]))				$option["color"]=array();
-                    	
+                    	if(!isset($option["color"]))				$option["color"]=array();                    	
                     	if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
-                    
-                    	
+                                        	
                     	foreach($option["color"] as $color => $filter)
                     	{							
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
@@ -1955,7 +1949,6 @@
 				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    }	
 				    $view   .=$html_template;
-				    
 				    $view	=$this->__REPLACE($view,$row);			
 			    }		
 
@@ -2090,8 +2083,7 @@
 						$selected		="";	
 						if($index==$this->sys_private["row"]) 	$selected="selected";
 						$option_select.="<option value=\"$index\" $selected>$index</option>";
-					}							
-					
+					}												
 					$view_head.="
 									<select type=\"report\" name=\"sys_rows_$name\" id=\"sys_rows_$name\">
 										$option_select		
@@ -2107,12 +2099,10 @@
 									<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
 								</td>
 							</tr>
-						</table>		
-						
+						</table>								
 					</div>                
         		";
         	}
-			#
 			return $view_head;
 		}		
 		###################################
@@ -2133,10 +2123,16 @@
 				</td>	
 			";		    	    
 		}
+    	##############################################################################    
+		public function __VIEW_KANBAN($option)
+		{
+			$option["type_view"]="kanban";
+			return $this->__SYS_REPORT($option);
+        }				
 		###################################
 		public function __VIEW_REPORT($option)
 		{
-			
+			$option["type_view"]="report";
 			return $this->__SYS_REPORT($option);
 		}
 		###################################
@@ -2204,8 +2200,7 @@
 					
 					##################################
 					
-		    		$return["data"]								= $browse["data"];
-		    				    		
+		    		$return["data"]								= $browse["data"];		    				    		
 		    		$option["title"]							= @$this->sys_title;
 																					
 		    		if(isset($browse["total"]))		
@@ -2384,8 +2379,6 @@
 						";
 					}		
 							
-
-					#template_option
 					$report_class="";
 					if(!isset($option["template_option"]))	$report_class="report_class";
 
@@ -2440,32 +2433,60 @@
 									}	
 								});	
 						";						
-
-
-						$return["report"]="
-							$view_head	
-																				
-							<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
-								<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-									<table width=\"100%\" class=\"view_report_t1\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
-										$view_title
-										$view_body
-									</table>
+						if($option["type_view"]=="report")
+						{
+							$return["report"]="
+								$view_head																					
+								<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
+									<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+										<table width=\"100%\" class=\"view_report_t1\" style=\"background-color:#fff; color:#000;  padding:0px; margin:0px;\">
+											$view_title
+											$view_body
+										</table>
+									</div>
 								</div>
-							</div>
-							<script>
-								{$return["js"]}
-							</script>
-						";						
+								<script>
+									{$return["js"]}
+								</script>
+							";						
+						}
+						else
+						{
+							$return["report"]="
+								$view_head																					
+								<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
+									<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+											$view_body
+									</div>
+								</div>
+								<script>
+									{$return["js"]}
+								</script>
+							";												
+						}	
 					}
 					else
 					{					
-						$return["report"]="
-							<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-								$view_title
-								$view_body
-							</table>					
-						";
+						if($option["type_view"]=="report")
+						{
+							$return["report"]="
+								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+									$view_title
+									$view_body
+								</table>					
+							";
+						}
+						else
+						{
+							$return["report"]="
+								<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 100%;\">
+									<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+											$view_body
+									</div>
+								</div>
+							";
+						
+						}	
 					}
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="

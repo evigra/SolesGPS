@@ -775,8 +775,8 @@
 						
 			if(!isset($this->request["sys_view"]))	$this->request["sys_view"]	="";	
 			
-			if($this->sys_name=="orden_venta")
-				$this->__PRINT_R($this->sys_fields);
+			#if($this->sys_name=="orden_venta")
+			#	$this->__PRINT_R($this->sys_fields);
 		} 
 		##############################################################################
 

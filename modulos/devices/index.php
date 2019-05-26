@@ -56,17 +56,17 @@
 	elseif($objeto->sys_private["section"]=="kanban")
 	{
 	    $module_title			="Reporte Modular de ";
-
 	    $module_left	=	"";
 
 	   	$module_right=array(
-        array("create"=>"Crear"),        
-        array("report"=>"Reporte"),
+		    array("create"=>"Crear"),        
+		    array("report"=>"Reporte"),
     	); 	
 
-		$template_body					=	$objeto->sys_var["module_path"]."html/kanban";	
-	   	$data							=	$objeto->devices();        	
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+    	$option										=$objeto->devices();
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }	
 	elseif($objeto->sys_private["section"]=="saldo_correo")
 	{
@@ -87,9 +87,11 @@
     else
     {
 	    $module_left	=	"";
-		$data							=	$objeto->devices();
-		
-		$objeto->words["module_body"]	=	$data["html"];	
+	    
+    	$option										=$objeto->devices();
+		$data										=$objeto->__VIEW_REPORT($option);		
+		$objeto->words["module_body"]				=$data["html"];
+
 		$module_title                	=	"Reporte de ";	
     }
 	

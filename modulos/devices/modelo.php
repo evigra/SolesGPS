@@ -263,8 +263,8 @@
 			
 			$option["color"]["orange"]	="$"."row[\"status\"]=='Inactiva'";
 
-			$return =$this->__VIEW_REPORT($option);			
-			return	$return;     	
+			#$return =$this->__VIEW_REPORT($option);			
+			return	$option;     	
 		}
 		public function autocomplete_devices()		
     	{	

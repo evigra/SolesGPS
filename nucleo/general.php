@@ -204,10 +204,10 @@
 					}
 					if(@$this->sys_fields["$campo"]["filter"])
 					{	
-						if(!isset($this->request["sys_where_{$this->sys_name}_{$campo}"]))
-							$this->request["sys_where_{$this->sys_name}_{$campo}"]=" LIKE ";
+						if(!isset($this->sys_fields["$campo"]["where"]))
+							$this->sys_fields["$campo"]["where"]=" LIKE ";
 						
-						$sys_where	=$this->request["sys_where_{$this->sys_name}_{$campo}"];	
+						$sys_where	=$this->sys_fields["$campo"]["where"];	
 						
 						if($sys_where=="mayor")	$sys_where=">";
 						if($sys_where=="menor")	$sys_where="<";

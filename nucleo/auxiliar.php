@@ -2120,7 +2120,7 @@
 		###################################
 		public function button_create($name)
 		{
-			return	="
+			return	"
 				<td width=\"15\" align=\"center\">
 					<font id=\"create_$name\" active=\"$name\" class=\"ui-button show_form\">Formulario</font>
 				</td>	
@@ -2129,7 +2129,7 @@
 		###################################
 		public function button_search($name)
 		{
-			return	="
+			return	"
 				<td width=\"25\" align=\"center\">
 					<font id=\"search_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-search\"></font>
 				</td>	

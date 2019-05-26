@@ -71,9 +71,9 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-		$template_body					=	$objeto->sys_module."html/kanban";	
-	   	$data							=	$objeto->celphones();        	
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+    	$option										=$objeto->celphones();
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }	
 	else
 	{
@@ -89,8 +89,10 @@
 	    );
 	    
 	    # CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA  
-		$data							=	$objeto->celphones();		
-		$objeto->words["module_body"]	=	$data["html"];	
+    	$option										=$objeto->celphones();
+		$data										=$objeto->__VIEW_REPORT($option);		
+		$objeto->words["module_body"]				=$data["html"];
+
     }
 	
 	$objeto->words["module_title"]	=	"$module_title Celulares";

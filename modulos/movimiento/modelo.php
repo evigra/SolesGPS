@@ -243,7 +243,8 @@
 				) m1
 			";
 			$option["group"]	="m1.empresa_id";
-			return parent::__BROWSE($option);
+			#return parent::__BROWSE($option);
+			return $option;
 		}
    		public function __BROWSE_TOTALES($option="")
     	{			    	

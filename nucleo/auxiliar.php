@@ -1742,8 +1742,8 @@
 		    
         	$option_head=array(
         		"name"				=>$option["name"],
-        		"button_search"		=>button_search($option["name"]),
-        		"button_create"		=>button_create($option["name"]),
+        		"button_search"		=>$this->button_search($option["name"]),
+        		"button_create"		=>$this->button_create($option["name"]),
         		"inicio"			=>"$inicio",
         		"fin"				=>"$fin",
         		"total"				=>"$total",
@@ -2038,8 +2038,8 @@
 		public function __VIEW_HEAD($option)
 		{
 			$name			=$option["name"];
-			$button_search	=button_search($name);
-			$button_create	=button_create($name);
+			$button_search	=$this->button_search($name);
+			$button_create	=$this->button_create($name);
 			$inicio			=$option["inicio"];
 			$fin			=$option["fin"];
 			$total			=$option["total"];
@@ -2297,7 +2297,7 @@
 			        			</script>	            			
 		        			</div>
 						";		    	    
-						$button_search=button_search($name);
+						$button_search=$this->button_search($name);
 					}	
 		    	}    
                 $view_body="";

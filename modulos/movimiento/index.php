@@ -92,7 +92,7 @@
 		$module_right=array(
 		    array("create"=>"Crear"),
 		    #array("write"=>"Modificar"),
-		    #array("kanban"=>"Kanban"),
+		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);
 	
@@ -101,7 +101,8 @@
 	   	#$data										=$objeto->__BROWSE_CUENTAS();
     	#$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);
     	$option=array();
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($option);		
+		$data										= $objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }    
     else
     {

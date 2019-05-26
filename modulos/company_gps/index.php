@@ -51,8 +51,7 @@
 			array("kanban"=>"Kanban"),
 			#array("report"=>"Reporte"),
 	    	);
-		$option=array();
-		
+		$option=array();		
 		$data									=$objeto->__VIEW_REPORT($option);
 		$objeto->words["module_body"]			=$data["html"];	
 
@@ -66,11 +65,10 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
     	);
-		$template_body							=$objeto->sys_var["module_path"] . "html/kanban";
-	   	$data									=$objeto->__BROWSE();        	
-		$objeto->words["module_body"]   		=$objeto->__VIEW_KANBAN($template_body,$data["data"]);		
-				
-
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+    	$option										=array();
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }
 	$objeto->words["module_title"]              ="$module_title Compañias";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);

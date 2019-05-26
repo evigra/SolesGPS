@@ -94,12 +94,8 @@
 		    #array("write"=>"Modificar"),
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
-		);
-	
+		);	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		#$template_body								=$objeto->sys_var["module_path"] . "html/kanban";
-	   	#$data										=$objeto->__BROWSE_CUENTAS();
-    	#$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);
     	$option										=$objeto->__BROWSE_CUENTAS();
 		$data										=$objeto->__VIEW_KANBAN($option);		
 		$objeto->words["module_body"]				=$data["html"];

@@ -1742,8 +1742,8 @@
 		    
         	$option_head=array(
         		"name"				=>$option["name"],
-        		"button_search"		=>"$button_search",
-        		"button_create"		=>"$button_create",
+        		"button_search"		=>button_search($option["name"]),
+        		"button_create"		=>button_create($option["name"]),
         		"inicio"			=>"$inicio",
         		"fin"				=>"$fin",
         		"total"				=>"$total",

@@ -100,8 +100,8 @@
 		#$template_body								=$objeto->sys_var["module_path"] . "html/kanban";
 	   	#$data										=$objeto->__BROWSE_CUENTAS();
     	#$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);
-    	$option										=$this->__BROWSE_CUENTAS();
-		$data										= $objeto->__VIEW_KANBAN($option);		
+    	$option										=$objeto->__BROWSE_CUENTAS();
+		$data										=$objeto->__VIEW_KANBAN($option);		
 		$objeto->words["module_body"]				=$data["html"];
     }    
     else

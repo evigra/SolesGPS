@@ -2136,6 +2136,12 @@
 		###################################
 		public function __VIEW_REPORT($option)
 		{
+			
+			return $this->__SYS_REPORT($option);
+		}
+		###################################
+		public function __SYS_REPORT($option)
+		{
 			if(!isset($option["template_title"]))	$option["template_title"]	=$this->sys_var["module_path"]."html/report_title";
 			if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/report_body";			
 
@@ -2148,8 +2154,6 @@
 				$campo					=$template_option["class_field"];
 				
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
-				#if(isset($_SESSION["SAVE"][@$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][@$this->class_one]["$campo"])>0)
-
 				{						
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
@@ -2177,32 +2181,23 @@
 		    	
 		    	if(isset($this->sys_private["page"]))			$sys_page	=$this->sys_private["page"];
 		    	else											$sys_page	=1;
-
-		    	if(isset($this->sys_private["order"]))			$sys_order	=$this->sys_private["order"];
-		    	
-		    	if(isset($this->sys_private["torder"]))			$sys_torder	=$this->sys_private["torder"];
-		    	
+		    	if(isset($this->sys_private["order"]))			$sys_order	=$this->sys_private["order"];		    	
+		    	if(isset($this->sys_private["torder"]))			$sys_torder	=$this->sys_private["torder"];		    	
 		    	if(isset($this->sys_private["row"]))	    	$sys_row	=$this->sys_private["row"];
 		    	else                                            $sys_row	=50;
 				
 				if($sys_row=="")								$sys_row	=50;
 
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
-		
-				#/*		
 				
 		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
 		    		$return["data"] =$option["data"];	
-		    	else  	#*/
-		    	{			    		
-		    	
+		    	else  
+		    	{			    				    	
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		
 		    		
-		    		#$this->__PRINT_R($browse);
-		    		 
-		    		#$this->__PRINT_R(array(@$this->class_one,@$_SESSION["var"]["modulo"])); 
 					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					
@@ -2223,14 +2218,12 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}
-		    	$total=$return["total"];
+		    	$total											=$return["total"];
 		    	if(!isset($browse))			$browse				=array("");	
 		    	if(!isset($browse["js"]))	$browse["js"]		="";	
 		    			    	
 				#######################											
-				#/*	
 				$view_title		=$this->__VIEW_TEMPLATE_TITLE($option);		
-				#*/
 								
 		    	$view_create			="";
 		    	$button_create			="";
@@ -2252,7 +2245,7 @@
             			</div>
 					";		    	
 					
-					$button_create=button_create($name);										
+					$button_create=$this->button_create($name);										
 		    	}    
 
 		    	$view_search="";
@@ -2317,8 +2310,7 @@
 					}
 		    	}    
                 #if(isset($inicio) AND $return["total"]>0)
-                {     
-                	           	
+                {                     	           	
                 	if(@$this->sys_private["action"]=="print")	$view_head="";
                 	
                 	$option_head=array(
@@ -2331,17 +2323,15 @@
                 	);                	
                 	$view_head				=$this->__VIEW_HEAD($option_head);
 										
-					if(!isset($option["header"]))	
-						$option["header"]		="true";					
+					if(!isset($option["header"]))		$option["header"]		="true";															
+					if(@$option["header"]!="true")		$view_head				="";
 										
-					if(@$option["header"]!="true")		$view_head="";
-										
-					$return["title"]=$view_title;
+					$return["title"]					=$view_title;
 
-					if(!isset($option["height"]))					$option["height"]="100%";
+					if(!isset($option["height"]))		$option["height"]="100%";
 					
-					$height_render="height:{$option["height"]};";
-					$min_height		="min-height: 140px;";
+					$height_render						="height:{$option["height"]};";
+					$min_height							="min-height: 140px;";
 					if(in_array(@$option["height"],$_SESSION["var"]["false"]))
 					{
 						$height_render	="";
@@ -2383,7 +2373,6 @@
 													many2one_post(options);
 													$( this ).dialog(\"close\");
 												},
-
 												\"Cerrar\": function() {
 													$( this ).dialog(\"close\");
 												}
@@ -2393,7 +2382,6 @@
 	            				});
 							}						
 						";
-						
 					}		
 							
 

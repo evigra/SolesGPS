@@ -2038,8 +2038,8 @@
 		public function __VIEW_HEAD($option)
 		{
 			$name			=$option["name"];
-			$button_search	=$option["button_search"];
-			$button_create	=$option["button_create"];
+			$button_search	=button_search($name);
+			$button_create	=button_create($name);
 			$inicio			=$option["inicio"];
 			$fin			=$option["fin"];
 			$total			=$option["total"];
@@ -2117,6 +2117,24 @@
 					#
 			return $view_head;
 		}		
+		###################################
+		public function button_create($name)
+		{
+			return	="
+				<td width=\"15\" align=\"center\">
+					<font id=\"create_$name\" active=\"$name\" class=\"ui-button show_form\">Formulario</font>
+				</td>	
+			";		    	    
+		}
+		###################################
+		public function button_search($name)
+		{
+			return	="
+				<td width=\"25\" align=\"center\">
+					<font id=\"search_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-search\"></font>
+				</td>	
+			";		    	    
+		}
 		###################################
 		public function __VIEW_REPORT($option)
 		{
@@ -2238,12 +2256,9 @@
             			<div id=\"create_$name\" title=\"Crear Resgistro\" class=\"report_search d_none\" style=\"width:100%; background-color:#373737;\">
 	            			$view_create
             			</div>
-					";		    	    
-					$button_create="
-						<td width=\"15\" align=\"center\">
-							<font id=\"create_$name\" active=\"$name\" class=\"ui-button show_form\">Formulario</font>
-						</td>	
-					";					
+					";		    	
+					
+					$button_create=button_create($name);										
 		    	}    
 
 		    	$view_search="";
@@ -2282,11 +2297,7 @@
 			        			</script>	            			
 		        			</div>
 						";		    	    
-						$button_search="
-							<td width=\"25\" align=\"center\">
-								<font id=\"search_$name\" active=\"$name\" class=\"show_form ui-icon ui-icon-search\"></font>
-							</td>	
-						";		    	    
+						$button_search=button_search($name);
 					}	
 		    	}    
                 $view_body="";
@@ -2318,8 +2329,6 @@
                 	           	
                 	if(@$this->sys_private["action"]=="print")	$view_head="";
                 	
-                	
-                	
                 	$option_head=array(
                 		"name"				=>"$name",
                 		"button_search"		=>"$button_search",
@@ -2331,79 +2340,6 @@
                 	);
                 	
                 	$view_head=$this->__VIEW_HEAD($option_head);
-                	/*
-                	elseif(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-                	{	
-                		/////$this->sys_fields["$campo"]["filter"]
-						if(!isset($this->request["sys_filter_$name"]))	$this->request["sys_filter_$name"]="";
-				
-                		$view_head="
-							<div id=\"report_$name\" style=\"height:35px; width:100%;  padding:0px; margin:0px;\" class=\"ui-widget-header\">
-								<table width=\"100%\" height=\"100%\" style=\"padding:0px; margin:0px;\">
-									<tr>
-										<td width=\"10\"></td>
-						";
-						if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-						{
-							$view_head.="						
-										$button_search
-										$button_create
-										<td width=\"1\">
-											<table>
-												<tr id=\"filter_fields_$name\">
-												</tr>
-											</table>
-										</td>
-										<td>											
-											<input style=\"paddin:8px; height:29px;\" name=\"sys_filter_$name\" system=\"yes\" id=\"sys_filter_$name\" class=\"formulario $name\" type=\"text\" value=\"{$this->request["sys_filter_$name"]}\" placeholder=\"Filtrar reporte\">													
-										</td>
-										<td width=\"30\">
-											<font id=\"sys_search_$name\" class=\"sys_seach ui-button\">Filtrar</font>
-										</td>
-							";
-						}
-						$view_head.="						
-										
-										<td align=\"right\">
-											<b> $inicio - $fin / $total</b>
-										</td>								
-										<td width=\"50\" style=\"padding-left:8px; padding-right:8px;\">
-						";
-						if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
-						{
-							if(@!$this->sys_private["row"]) $this->sys_private["row"]=50; 	
-							$array=array(1,20,50,100,200,500);
-							$option_select="";
-							foreach($array as $index)
-							{
-								$selected		="";	
-								if($index==$this->sys_private["row"]) 	$selected="selected";
-								$option_select.="<option value=\"$index\" $selected>$index</option>";
-							}							
-							
-							$view_head.="
-											<select type=\"report\" name=\"sys_rows_$name\" id=\"sys_rows_$name\">
-												$option_select		
-											</select>
-							";
-						}					
-						$view_head.="	
-										</td>
-										<td  width=\"20\" align=\"center\" >
-											<font action=\"-\" name=\"$name\" class=\"page ui-button\">Anterior</font>
-										</td>										
-										<td width=\"20\" align=\"center\" >
-											<font action=\"+\" name=\"$name\" class=\"page ui-button\">Siguiente</font>
-										</td>
-									</tr>
-								</table>		
-								
-							</div>                
-                		";
-                	}
-					#
-					*/
-					
 										
 					if(!isset($option["header"]))	
 						$option["header"]		="true";					

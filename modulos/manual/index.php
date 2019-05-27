@@ -12,12 +12,12 @@
 
 	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE();
 	
-	if($objeto->sys_section=="metodos")
+	if($objeto->sys_private["section"]=="metodos")
 	{
 		$objeto->words["module_title"]	=	"Manual :: Metodos";
 		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/metodos");		
 	}
-	elseif($objeto->sys_section=="input")
+	elseif($objeto->sys_private["section"]=="input")
 	{
 		$objeto->words["module_title"]	=	"Manual :: Input";
 		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/input");		

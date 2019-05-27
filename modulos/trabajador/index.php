@@ -60,17 +60,20 @@
    	}	
 	else
 	{
+		# TITULO DEL MODULO
 		$module_title							="Reporte Modular de ";
+
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
 		$module_left							="";
 		$module_right=array(
 			array("create"=>"Crear"),
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
     	);
-		$template_body							=$objeto->sys_var["module_path"] . "html/kanban";
-	   	$data									=$objeto->__BROWSE();        	
-		$objeto->words["module_body"]   		=$objeto->__VIEW_KANBAN($template_body,$data["data"]);		
-
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+    	$option										=array();
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }
 	$objeto->words["module_title"]              ="$module_title Trabajador";
 	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);

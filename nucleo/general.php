@@ -645,7 +645,7 @@
 									
 									$"."this->sys_fields[\"$campo\"][\"obj\"]	=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);
 									
-									$"."memory						=@$"."this->sys_memory;
+									$"."memory						=$"."this->sys_memory;
 									$"."class_one					=@$"."this->class_one;
 
 

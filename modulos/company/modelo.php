@@ -185,6 +185,8 @@
 				$option["where"][]      		="company_id={$this->sys_id_company}";
 			$return 							=parent::__BROWSE($option);		
 			
+			$this->__PRINT_R($this);
+			
 			return	$return;     	
 		}				
 		public function __AUTOCOMPLETE()		

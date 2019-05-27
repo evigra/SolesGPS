@@ -4,28 +4,26 @@
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 		
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 
 	$module_title                	=	"Crear ";
 
 
 
-	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");
+	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE();
 	
 	if($objeto->sys_section=="metodos")
 	{
 		$objeto->words["module_title"]	=	"Manual :: Metodos";
-		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/metodos");		
+		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/metodos");		
 	}
 	elseif($objeto->sys_section=="input")
 	{
 		$objeto->words["module_title"]	=	"Manual :: Input";
-		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/input");		
+		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/input");		
 	}
 	
 	
-	#$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
-
 	
 	$objeto->words["module_title"]	=	"$module_title Manual";
 

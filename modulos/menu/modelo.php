@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("../device/modelo.php")) require_once("../device/modelo.php");
-	
 	class menu extends general
 	{   
 		##############################################################################	
@@ -20,7 +18,7 @@
 			    "type"              => "input",
 			),
 			"variables"	    =>array(
-			    "title"             => "fariables",
+			    "title"             => "variables",
 			    "type"              => "input",
 			    "htmlentities"      => "false",
 			),

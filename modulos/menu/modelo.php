@@ -13,8 +13,7 @@
 			),
 			"name"	    =>array(
 			    "title"             => "Menu",
-			    "type"              => "input",
-		    
+			    "type"              => "input",		    
 			),
 			"link"	    =>array(
 			    "title"             => "Link",
@@ -43,8 +42,6 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################
-
-        
 		public function __CONSTRUCT($option=NULL)
 		{
 			parent::__CONSTRUCT($option);
@@ -200,6 +197,8 @@
 						
 			return $this->__VIEW_REPORT($option);
 		}		
+		
+		
 		public function data_menu($option=NULL)
     	{
 			$option_conf=array();

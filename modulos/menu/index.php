@@ -9,8 +9,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."js/index"));
-	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 		
 	$module_left	="";
 	$module_center	="";	
@@ -36,7 +35,7 @@
 		);
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/create");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     }	
     elseif($objeto->sys_private["section"]=="write")
@@ -55,19 +54,14 @@
 			array("kanban"=>"Kanban"),
 			array("report"=>"Reporte"),
 		);
-
-		
 		
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_var["module_path"] . "html/write");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     }	
 	else
 	{
-		$option=array();
-		$option["template_title"]	                = $objeto->sys_var["module_path"] . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_var["module_path"] . "html/report_body";
-		
+		$option=array();		
 		
 		$option["select"]	="n.*";
 		$option["from"]		="

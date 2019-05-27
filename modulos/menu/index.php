@@ -63,7 +63,7 @@
 	{
 		$option=array();		
 		
-		$option["select"]	="n.*";
+		$option["select"]	="n.*, n.id";
 		$option["from"]		="
 			admin_server.menu p 
 			join  admin_server.menu h on p.type='menu'
@@ -77,8 +77,7 @@
 			h.parent,h.id,
 			n.parent,n.id
 		";
-		$data										=$objeto->__VIEW_REPORT($option);
-		
+		$data										=$objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];		
     }
     $module_left=array(

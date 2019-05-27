@@ -7,7 +7,6 @@
 	
 	
 	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
-	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
 	$module_left=array(
         array("action"=>"Guardar"),
@@ -51,33 +50,37 @@
 	    	);	
 
     	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE();	
-    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-    	
+    	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    	
     }
 	elseif($objeto->sys_private["section"]=="kanban")
 	{
+		# TITULO DEL MODULO
 	    $module_title			="Reporte Modular de ";
 
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
 	    $module_left	=	"";
-
 	   	$module_right=array(
         array("create"=>"Crear"),        
         array("report"=>"Reporte"),
     	); 	
 
-		$template_body					=	$objeto->sys_var["module_path"]."html/kanban";	
-	   	$data							=	$objeto->__BROWSE();        	
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+    	$option										=array();
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }	
 	else
 	{
-	    $module_left	=	"";
-		$option     	=	array();
-
-		$data							=	$objeto->__VIEW_REPORT($option);
-		
-		$objeto->words["module_body"]	=	@$data["html"];	
+		# TITULO DEL MODULO
 		$module_title                	=	"Reporte de ";
+		
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
+	    $module_left	=	"";		
+
+		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
+		$option     	=	array();
+		$data							=	$objeto->__VIEW_REPORT($option);		
+		$objeto->words["module_body"]	=	@$data["html"];			
     }
 	
 	$objeto->words["module_title"]	=	"$module_title Items";

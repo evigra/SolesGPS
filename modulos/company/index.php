@@ -59,7 +59,10 @@
    	}	
 	else
 	{
+		# TITULO DEL MODULO
 		$module_title							="Reporte Modular de ";
+		
+		# PRECARGANDO LOS BOTONES PARA LA VISTA SELECCIONADA
 		$module_left							="";
 		$module_right=array(
 			array("create"=>"Crear"),

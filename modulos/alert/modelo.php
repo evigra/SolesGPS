@@ -32,8 +32,8 @@
 			    "description"       => "Dispositivo GPS",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_devices",  
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "devices",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "device_id",
@@ -44,8 +44,8 @@
 			    "title_filter"      => "Geocerca",
 			    "description"       => "Son cercas geograficas",
 			    "type"              => "autocomplete",
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "geofences",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "geofence_id",

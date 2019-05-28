@@ -18,8 +18,7 @@
 			"pass"	    =>array(
 			    "title"             => "Password",
 			    "type"              => "password",
-			),
-			
+			),			
 			"user_id"	    =>array(
 			    "title"             => "Nombre",
 			    "type"              => "input",

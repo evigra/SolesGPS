@@ -40,6 +40,7 @@
     		$objeto->words["img_files_id"]	=$objeto->__SHOW_FILE($objeto->sys_fields["files_id"]["value"]);
     	else	
     		$objeto->words["img_files_id"]	="";
+    	$objeto->__PRINT_R($objeto);	
     }	
 	elseif($objeto->sys_private["section"]=="report")
 	{

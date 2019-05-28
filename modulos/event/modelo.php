@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
-	
 	class event extends general
 	{   
 		##############################################################################	
@@ -9,45 +7,27 @@
 		var $sys_fields		=array(
 				"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),		
 			"protocolo"	    	=>array(
 			    "title"             => "Protocolo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"codigo"	    =>array(
 			    "title"             => "Codigo del Evento",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),	
 			"descripcion"	    =>array(
 			    "title"             => "Descripcion",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),
 			"estatus"	    =>array(
 			    "title"             => "Estatus",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),						
 			"fechaRegistro"	    =>array(
 			    "title"             => "Fecha de Registro",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			
 		);				
@@ -74,8 +54,7 @@
 			if(!is_null($id))
 			{
 				
-				$option=array("where"=>array("id='$id'",)	);	
-				
+				$option=array("where"=>array("id='$id'",)	);					
 				$datas	=$this->events($option);
 				
 				#$this->__PRINT_R($datas);
@@ -101,12 +80,6 @@
 					//"IF(vehicle=1,'../modulos/device/img/car.png','../modulos/device/img/cell.png')"	=>"file_id",
 			);
 			$option["from"]     ="event";
-			
-			#if(!isset($option["where"]))    $option["where"]    =array();
-			
-			//$option["where"][]      ="company_id={$_SESSION["user"]["company_id"]}";
-			
-			#$this->__PRINT_R($option);
 			
 			return $this->__VIEW_REPORT($option);
     	

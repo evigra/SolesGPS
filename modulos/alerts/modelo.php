@@ -46,13 +46,15 @@
 			"geofences_ids"	    =>array(
 			    "title"             => "Menu",
 			    "type"              => "input",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "class_name"       	=> "geofences",
 			),			
 			"devices_ids"	    =>array(
 			    "title"             => "Menu",
 			    "type"              => "input",			    
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "class_name"       	=> "devices",
 			),			
 		);				

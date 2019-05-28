@@ -20,7 +20,8 @@
 			    "description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "recursive"         => "2",
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
@@ -32,7 +33,8 @@
 			    "title_filter"      => "Empresa",	
 			    "type"              => "autocomplete",	
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "recursive"         => "2",
 			    "class_name"       	=> "company",
 			    "class_field_l"    	=> "nombre",				# Label
@@ -43,7 +45,8 @@
 			"movimiento_id"	    =>array(
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "recursive"         => "2",
 			    "class_name"       	=> "movimiento",			    
 			    "class_field_l"    	=> "nombre",				# Label

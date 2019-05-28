@@ -10,60 +10,36 @@
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),	
 			"file"	    	=>array(
 			    "title"             => "archivo",
-			    "showTitle"         => "si",
 			    "type"              => "file",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"type"	    	=>array(
 			    "title"             => "Tipo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 
 			"object"	    =>array(
 			    "title"             => "Modulo",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),	
 			"company_id"	    =>array(
 			    "title"             => "Compañia",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),
 			"user_id"	    =>array(
 			    "title"             => "Usuario",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),						
 			"fecha"	    =>array(
 			    "title"             => "Fecha",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",
 			),						
 			"extension"	    =>array(
 			    "title"             => "Fecha",
-			    "showTitle"         => "si",
 			    "type"              => "hidden",
-			    "default"           => "",
-			    "value"             => "",
 			),			
 			
 		);				
@@ -76,7 +52,6 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	   
-    		#$this->__PRINT_R($datas); 
     		$option["table"]=$datas;
     	    $return =NULL;
 			if(@is_array($datas))
@@ -121,7 +96,6 @@
 			{
 				$data=$this->__BROWSE($id);
 				
-				#$this->__PRINT_R($data);
 				if(is_array($data) and count($data)>0)
 				{
 					if(array_key_exists("type",$data[0]))

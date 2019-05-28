@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("nucleo/general.php")) require_once("nucleo/general.php");
-	#require_once("modulos/files/modelo.php");
 	class configuracion extends general
 	{   
 		##############################################################################	
@@ -36,7 +34,8 @@
 			    "title"             => "Objeto",
 			    "type"              => "autocomplete",	    
 			    "procedure"       	=> "autocomplete_modulos",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "objeto",

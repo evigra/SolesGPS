@@ -56,7 +56,8 @@
 			#*/
 			"movimientos_ids"	    =>array(
 			    "type"              => "form",
-			    "relation"          => "many2one",			    
+			    #"relation"          => "many2one",
+			    "relation"          => "one2many",
 			    "class_name"       	=> "movimientos",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "movimiento_id",				

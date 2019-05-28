@@ -1365,8 +1365,7 @@
 					    {					    
 							if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 							{			
-								if(!isset($valor["class_template"]))		
-									$valor["class_template"]="many2one_standar";					
+								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
 								
 								$campo_many					=@$valor["class_field_o"];
 								$value_many					=@$this->sys_fields["$campo_many"]["value"];								
@@ -1382,11 +1381,9 @@
 									"words"					=>$words,
 									"view"					=>"html",			
 								);								
-
-								$words						=$this->__MANY2ONE($option);
-								
+								$words						=$this->__MANY2ONE($option);								
 							}
-							if(isset($valor["relation"]) AND $valor["relation"]=="many2many")
+							else if(isset($valor["relation"]) AND $valor["relation"]=="many2many")
 							{								
 								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
 								
@@ -1410,9 +1407,6 @@
 							}
 						}	
 						#*/
-					    if($valor["type"]=="class")	
-					    {					    
-					    }					    
 					    if($valor["type"]=="hidden")	
 					    {
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        

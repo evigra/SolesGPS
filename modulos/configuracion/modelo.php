@@ -34,8 +34,8 @@
 			    "title"             => "Objeto",
 			    "type"              => "autocomplete",	    
 			    "procedure"       	=> "autocomplete_modulos",
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "objeto",

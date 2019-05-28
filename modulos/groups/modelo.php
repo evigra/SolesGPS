@@ -1,6 +1,4 @@
 <?php
-	#if(file_exists("../menu/modelo.php")) require_once("../menu/modelo.php");
-	
 	class groups extends general
 	{   
 		##############################################################################	

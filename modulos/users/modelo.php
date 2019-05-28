@@ -80,7 +80,8 @@
 			"usergroup_ids"	    	=>array(
 			    "title"             => "Permisos",
 			    "type"              => "input",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",			    
 			    "class_name"       	=> "user_group",
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "user_id",

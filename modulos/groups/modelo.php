@@ -36,8 +36,8 @@
 			    "showTitle"         => "si",
 			    "type"              => "autocomplete",
 			    "procedure"         => "autocomplete",			    
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "menu",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "menu_id",			# Origen
@@ -47,8 +47,8 @@
 			"permiso_ids"	    =>array(
 			    "title"             => "Menu",
 			    "type"              => "input",
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "permiso",
 			    "class_field_o"    	=> "id",					# Origen
 			    "class_field_m"    	=> "usergroup_id",			# Destino	    

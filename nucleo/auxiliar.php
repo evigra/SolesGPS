@@ -118,17 +118,10 @@
 					{					
 						if(isset($value["relation"]))
 						{														
-							if($value["relation"]=="one2many")
-							{
- 
-							}		
 							if($value["relation"]=="many2one")
 							{						
 								if(@$this->sys_private["action"]=="__clean_session")
-									unset($_SESSION["SAVE"][$this->sys_object]);			
-								#if(@$this->sys_private["action"]=="__SAVE")
-								#	unset($_SESSION["SAVE"][$this->sys_object][$field]);			
-								
+									unset($_SESSION["SAVE"][$this->sys_object]);											
 							}			        									
 						}			        		
 					}
@@ -153,7 +146,8 @@
 							{			        	
 								if(isset($value["type"]) AND $value["type"]!="class")	
 								{
-									if(isset($value["relation"]) AND $value["relation"]=="one2many" AND isset($value["class_field_m"]))
+									#if(isset($value["relation"]) AND $value["relation"]=="one2many" AND isset($value["class_field_m"]))
+									if(isset($value["relation"]) AND $value["relation"]=="2to1" AND isset($value["class_field_m"]))
 									{
 										if($this->sys_recursive<3)
 										{

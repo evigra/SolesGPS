@@ -12,10 +12,8 @@
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	
-	$objeto->words["html_head_js"]              =$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	$objeto->words["html_head_css"]              =$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]              =$objeto->__FILE_JS();
 	
-	#$objeto->sys_section="kanban";
     $module_center="";
     
     $module_left=array(
@@ -26,12 +24,12 @@
     
     if($objeto->sys_section=="create")
 	{
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     }	
     elseif($objeto->sys_section=="write")
 	{
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     }	
 	elseif($objeto->sys_section=="kanban")
@@ -45,17 +43,13 @@
 	{
 	    $module_left                                ="";
 		$option=array();
-
-		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
-		
 		$data										=$objeto->events($option);
 		$objeto->words["module_body"]				=$data["html"];	
     }
     else
     {
         $module_left                                ="";
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/show");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     }
     $module_right=array(

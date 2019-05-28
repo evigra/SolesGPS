@@ -437,7 +437,8 @@
 			
 				foreach($this->sys_fields as $campo => $value)
 				{	
-					if(@$this->sys_fields[$campo]["relation"]=="many2one")
+					#if(@$this->sys_fields[$campo]["relation"]=="many2one")
+					if(@$this->sys_fields[$campo]["relation"]=="one2many")
 					{
 						foreach($return["data"] as $indice => $valor)
 						{
@@ -447,14 +448,11 @@
 								{
 									$"."option_$campo=array(
 										\"where\"		=>array(\"$class_field_m='$id'\")
-									);
-									
+									);	
 									$"."data_$campo	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);
-									
 									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 								}	
 							";
-
 							eval($eval);
 						}												
 					}
@@ -462,18 +460,15 @@
 					{
 						foreach($return["data"] as $indice => $valor)
 						{
-							#$id =   $return["data"]["$indice"][$class_field_o];
-							
+							#$id =   $return["data"]["$indice"][$class_field_o];							
 							$eval="
 								if($"."this->sys_recursive<3)
 								{
 									$"."option_$campo	=array();	
-									$"."data_$campo		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);
-									
+									$"."data_$campo		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__BROWSE($"."option_$campo);			
 									$"."return[\"data\"][\"$indice\"][\"$campo\"]	=$"."data_$campo"."[\"data\"];
 								}
 							";
-
 							eval($eval);
 						}												
 					}

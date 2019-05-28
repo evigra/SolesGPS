@@ -26,7 +26,8 @@
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_item",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",			    
+			    "relation"          => "2to1",
 			    "class_name"       	=> "item",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "item_id",

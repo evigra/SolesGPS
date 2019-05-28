@@ -141,8 +141,8 @@
 			    "description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
 			    "class_field_o"    	=> "responsable_id",
@@ -153,8 +153,8 @@
 			    "description"       => "Supervisor de distintos dispositivos",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_user",
-			    #"relation"          => "one2many",			    
-			    "relation"          => "2to1",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "users",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "responsable_fisico_id",

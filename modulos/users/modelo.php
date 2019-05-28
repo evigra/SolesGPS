@@ -15,7 +15,7 @@
 			    #"description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    "relation"          => "one2many",
+			    #"relation"          => "one2many",
 			    "relation"          => "2to1",
 			    "class_name"       	=> "trabajador",
 			    "class_field_l"    	=> "nombre",				# Label
@@ -43,7 +43,8 @@
 			"files_id"	    =>array(
 			    "title"             => "Imagen",
 			    "type"              => "file",
-			    "relation"          => "one2many",
+			    #"relation"          => "one2many",
+			    "relation"          => "2to1",
 			    "class_name"       	=> "files",
 			    "class_field_o"    	=> "files_id",
 			    "class_field_m"    	=> "id",			    
@@ -56,7 +57,8 @@
 			    "title"             => "Modulo de inicio",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_modulos",
-			    "relation"          => "one2many",			    
+			    #"relation"          => "one2many",
+			    "relation"          => "2to1",
 			    "class_name"       	=> "modulo",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "sesion_start",
@@ -65,9 +67,9 @@
 			"company_id"	    =>array(
 			    "title"             => "Compania",
 			    "type"              => "input",
-			    "relation"          => "one2many",
+			    #"relation"          => "one2many",
+			    "relation"          => "2to1",
 			    "class_name"       	=> "company",
-			    "class_path"        => "modulos/company/modelo.php",
 			    "class_field_o"    	=> "company_id",
 			    "class_field_m"    	=> "id",
 			),						

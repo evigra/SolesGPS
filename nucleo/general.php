@@ -222,7 +222,7 @@
 						$busqueda					=$this->sys_fields["$campo"]["filter"];
 						
 						#if(@$this->sys_fields[$campo]["relation"]=="one2many")
-						if(@$this->sys_fields[$campo]["relation"]=="2to1")
+						if(@$this->sys_fields[$campo]["relation"]=="many2one")
 						{							
 							@$eval.="								
 								$"."option_$campo=array(

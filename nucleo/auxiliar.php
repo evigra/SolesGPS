@@ -148,7 +148,7 @@
 								if(isset($value["type"]) AND $value["type"]!="class")	
 								{
 									#if(isset($value["relation"]) AND $value["relation"]=="one2many" AND isset($value["class_field_m"]))
-									if(isset($value["relation"]) AND $value["relation"]=="2to1" AND isset($value["class_field_m"]))
+									if(isset($value["relation"]) AND $value["relation"]=="many2one" AND isset($value["class_field_m"]))
 									{
 										if($this->sys_recursive<3)
 										{

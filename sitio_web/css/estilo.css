@@ -48,14 +48,15 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td table.cBotones 
 }
 .module_subtitle2{
 	color:				SteelBlue; 
-	font-size:			20; 
-	text-align:			left;  
+	font-size:			18; 
+	text-align:			left; 
+	font-weight:		bold;  
 	padding-top:		15px; 
 	padding-bottom:		10px;
 }
 .module_subtitle3{
 	color:				SteelBlue; 
-	font-size:			17; 
+	font-size:			16; 
 	text-align:			left; 
 	font-weight:		bold; 
 	padding-top:		15px; 
@@ -63,7 +64,7 @@ div.view_report_d1 div.view_report_d2 table.view_report_t1 tr td table.cBotones 
 }
 .module_subtitle4{
 	color:				SteelBlue; 
-	font-size:			17; 
+	font-size:			14; 
 	text-align:			left; 
 	font-weight:		bold; 
 	padding-top:		15px; 

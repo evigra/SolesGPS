@@ -1,5 +1,6 @@
 <?php
 	$objeto							=	new manual();
+	$objeto->__PRINT_R($_REQUEST);
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
@@ -7,7 +8,6 @@
 	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 
 	$module_title                	=	"Crear ";
-
 
 
 	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE();
@@ -22,9 +22,7 @@
 		$objeto->words["module_title"]	=	"Manual :: Input";
 		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/input");		
 	}
-	
-	
-	
+		
 	$objeto->words["module_title"]	=	"$module_title Manual";
 
 	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";	

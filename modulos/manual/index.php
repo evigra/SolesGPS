@@ -1,6 +1,5 @@
 <?php
 	$objeto							=	new manual();
-	$objeto->__PRINT_R($_REQUEST);
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");

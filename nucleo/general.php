@@ -525,6 +525,14 @@
 						}				
 						elseif(!isset($this->sys_fields["$campo"]["relation"]))
 						{
+								if(count(@$this->sys_fields["$campo"])>1 )
+								{
+									$fields	.="$campo='$valor',";
+								}
+
+
+							
+							/*
 							if(is_null(@$this->sys_private["field"]) OR @$this->sys_private["id"]=="") 
 							{
 								if(count(@$this->sys_fields["$campo"])>1 )
@@ -546,7 +554,8 @@
 										$fields	.="$campo='$valor',";
 									}	
 								}
-							}	
+							}
+							*/	
 						}
 						else			$fields	.="$campo='$valor',";
 					}    

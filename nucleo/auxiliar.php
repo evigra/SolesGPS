@@ -359,8 +359,6 @@
 						
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
-					
-				
 				if(!isset($words["sys_titulo"]))						$words["sys_titulo"]					=$this->words["module_title"];
 				if(!isset($words["sys_subtitulo"]))						$words["sys_subtitulo"]					=$this->words["module_subtitle"];
 				if(!isset($words["sys_asunto"]))						$words["sys_asunto"]					="";

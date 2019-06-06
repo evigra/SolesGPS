@@ -57,7 +57,6 @@
 						
 			if($this->sys_name!="general" AND $this->sys_recursive<3)
 			{
-				#echo "<br><br>{$this->sys_name} :: {$this->sys_recursive}";
 				$this->__REQUEST();		
 				$this->__CREATE_OBJ();
 								

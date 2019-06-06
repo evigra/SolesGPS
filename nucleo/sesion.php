@@ -18,9 +18,7 @@
 		if(!isset($_SESSION["var"]["menu"]))	$_SESSION["var"]["menu"]			="";
 		if(isset($_REQUEST["sys_menu"]))		$_SESSION["var"]["menu"]			=$_REQUEST["sys_menu"];
 		if(isset($_REQUEST["sys_vpath"]))		$_SESSION["var"]["vpath"]			=@$_REQUEST["sys_vpath"];
-				
-		
-		
+						
 		$_SESSION["var"]["false"]			=array(0,"0","false", "no");
 		$_SESSION["var"]["true"]			=array(1,"1","true", "yes","si");
 		$_SESSION["var"]["server_true"]		=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
@@ -57,11 +55,30 @@
 	
 	for($a=0; $a<10; $a++)
 	{
+		$path_instalacion="modulos/instalacion/";
+
+		#/*
+
+		if(@file_exists($path_instalacion . "index.php"))
+		{
+			require_once($pre_path	."nucleo/basededatos.php");
+			require_once($pre_path	."nucleo/auxiliar.php");
+			require_once($pre_path	."nucleo/general.php");		
+
+			require_once($pre_path	.$path_instalacion . "modelo.php");	
+			break;
+			exit;
+		}
+		else
+		#*/ 
+		
 		if(@file_exists($pre_path	."nucleo/general.php"))
 		{
 			require_once($pre_path	."nucleo/basededatos.php");
 			require_once($pre_path	."nucleo/auxiliar.php");
 			require_once($pre_path	."nucleo/general.php");		
+
+
 							
 			$objeto					=new general();         
 
@@ -84,17 +101,10 @@
 				$modulos 		=$objeto->__EXECUTE($comando_sql);    
 				$objeto=null;					
 				foreach($modulos as $modulo)
-				{
 					$_SESSION["company"]					=$modulo;
-				}
 			}
-
 			break;
-
-
 		}				
 		$pre_path.="../";
 	}
-	
-	
 ?>	

@@ -7,12 +7,12 @@
 	$objeto->words["html_head_title"]           ="SOLES GPS :: Error";
 
 	$objeto->words["html_head_css"]		= $objeto->__FILE_CSS(array(
-		"../".$objeto->sys_module."css/index",		
+		"../".$objeto->sys_var["module_path"]."css/index",		
 		));	
 	
-	$objeto->words["html_head_js"] 		= $objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));	
+	$objeto->words["html_head_js"] 		= $objeto->__FILE_JS();	
 
-	$objeto->words["system_module"]		= $objeto->__VIEW_CREATE($objeto->sys_module . "html/show");		
+	$objeto->words["system_module"]		= $objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/show");		
 	$objeto->words                 		= $objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 	$objeto->words["system_menu"]   	= $objeto->__TEMPLATE($objeto->sys_html."system_menu");    
 	$view	="front_end";

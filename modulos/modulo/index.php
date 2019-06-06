@@ -73,9 +73,8 @@
 	    );
 
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-		$template_body								=	$objeto->sys_var["module_path"]."html/kanban";	
-	   	$data										=$objeto->__BROWSE();
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }        
 	else
 	{

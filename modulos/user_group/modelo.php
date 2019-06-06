@@ -10,39 +10,23 @@
 		var $sys_fields		=array(
 			"id"	    =>array(
 			    "title"             => "id",
-			    "showTitle"         => "si",
 			    "type"              => "primary key",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"user_id"	    =>array(
 			    "title"             => "Usuario",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"menu_id"	    =>array(
 			    "title"             => "Menu",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    "default"           => "",
-			    "value"             => "",			    
 			),
 			"company_id"	    =>array(
 			    "title"             => "Compania",
-			    "showTitle"         => "si",
 			    "type"              => "input",
-			    #"source"            => "../modulos/company/ajax/index.php",
-			    "default"           => "",
-			    "value"             => "",			    
 			),						
 			"active"	    =>array(
 			    "title"             => "Activo",
-			    "showTitle"         => "si",
 			    "type"              => "password",
-			    "default"           => "",
-			    "value"             => "",			    
 			),			
 
 		);				

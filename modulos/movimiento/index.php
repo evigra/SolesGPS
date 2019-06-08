@@ -99,14 +99,16 @@
 		
 		$option=array();
 		if($objeto->sys_private["action"]=="clientes")	
+		{
+		
 			$option["having"]=array(
 				"deudor=''",
 				"acreedor=''",
 			);
-
+		}
 		
 		
-    	$option										=$objeto->__BROWSE_CUENTAS();
+    	$option										=$objeto->__BROWSE_CUENTAS($option);
 		$data										=$objeto->__VIEW_KANBAN($option);		
 		$objeto->words["module_body"]				=$data["html"];
     }    

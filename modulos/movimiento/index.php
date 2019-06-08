@@ -101,12 +101,9 @@
 		#/*
 		if($objeto->sys_private["action"]=="clientes")	
 		{
-			# $objeto->__PRINT_R($objeto->sys_private["action"]);
-		
-			#$option["echo"]="aaaa";
 			$option["having"]=array(
 				"deudor !=''",
-				"acreedor IS NOT NULL",
+				#"acreedor IS NOT NULL",
 			);
 		}
 		#*/

@@ -709,6 +709,8 @@
 				$valor	=htmlentities($valor);
 													
 			if($campo=="sys_section_{$this->sys_name}")		$this->sys_private["section"]			=$valor;
+			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	$this->sys_private["action"]			=$valor;
+			
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
 				$this->sys_private["section"]			=$valor;
@@ -716,8 +718,7 @@
 			elseif($campo=="sys_action" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
 				$this->sys_private["action"]			=$valor;
-			}
-			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	$this->sys_private["action"]			=$valor;
+			}			
 			elseif($campo=="sys_id_{$this->sys_name}")				$this->sys_private["id"]				=$valor;
 			elseif($campo=="sys_order_{$this->sys_name}")			$this->sys_private["order"]				=$valor;
 			elseif($campo=="sys_torder_{$this->sys_name}")			$this->sys_private["torder"]			=$valor;

@@ -101,7 +101,7 @@
 		#/*
 		if($objeto->sys_private["action"]=="clientes")	
 		{
-			#$objeto->__PRINT_R($objeto->sys_private["action"]);
+			# $objeto->__PRINT_R($objeto->sys_private["action"]);
 		
 			#$option["echo"]="aaaa";
 			$option["having"]=array(

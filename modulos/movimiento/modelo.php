@@ -244,7 +244,7 @@
 						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						m.*
 					FROM movimiento m WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
-				) m1
+				) m1 
 			";
 			$option["group"]	="m1.empresa_id";
 			#return parent::__BROWSE($option);

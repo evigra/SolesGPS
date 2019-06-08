@@ -713,7 +713,7 @@
 			
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
-				$this->sys_private["section"]			=$valor;
+				$this->sys_private["section"]			=$valor; 
 			}
 			elseif($campo=="sys_action" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{

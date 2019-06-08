@@ -105,8 +105,8 @@
 		
 			#$option["echo"]="aaaa";
 			$option["having"]=array(
-				"deudor!=''",
-				"acreedor NOT IS NULL",
+				"deudor !=''",
+				"acreedor IS NOT NULL",
 			);
 		}
 		#*/

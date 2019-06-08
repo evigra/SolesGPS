@@ -100,7 +100,7 @@
 		$option=array();
 		if($objeto->sys_private["action"]=="clientes")	
 		{
-			#$this->__PRINT_R($objeto->sys_private["action"]);
+			$objeto->__PRINT_R($objeto->sys_private["action"]);
 		
 			$option["having"]=array(
 				"deudor!=''",

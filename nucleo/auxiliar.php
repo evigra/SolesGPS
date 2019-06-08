@@ -307,7 +307,6 @@
 
 			if(@$this->__MESSAGE_OPTION["text"]!="")
 			{				
-				
 				$this->__SYSTEM_MESSAGE="
 					<div class=\"echo message\"  title=\"{$this->__MESSAGE_OPTION["title"]}\">
 						{$this->__MESSAGE_OPTION["text"]}				
@@ -325,7 +324,11 @@
 			if(@$this->sys_var["module"]==$this->sys_name."/" AND @$this->sys_private["action"]=="__SAVE" AND ($this->sys_private["section"]=="create" OR $this->sys_private["section"]=="write"))
 			{
 		        $words["system_message"]    		=@$this->__SYSTEM_MESSAGE;		        
-		        $words["system_js"]     			=@$this->__SAVE_JS;		        
+		        $words["system_js"]     			.=@$this->__SAVE_JS;		        
+			}
+			if(isset($this->__PRINT_JS))
+			{        
+		        $words["system_js"]     			.=@$this->__PRINT_JS;		        
 			}
 			
 			if(array_key_exists("user",$_SESSION))
@@ -364,8 +367,6 @@
 				if(!isset($words["sys_asunto"]))						$words["sys_asunto"]					="";
 				if(!isset($words["sys_pie"]))							$words["sys_pie"]						="";
 				
-				
-				
 				if(isset($_SESSION["pdf"]["sys_titulo"]))				$words["sys_titulo"]					=$_SESSION["pdf"]["sys_titulo"];
 				if(isset($_SESSION["pdf"]["sys_subtitulo"]))			$words["sys_subtitulo"]					=$_SESSION["pdf"]["sys_subtitulo"];
 				
@@ -375,8 +376,7 @@
 				if(!isset($_SESSION["pdf"]["template"]))				
 				{	
 					$_SESSION["pdf"]["template"]				=$template;
-					
-					
+
 					$words										=array_merge(array("sys_modulo" => $template),$words);					
 					@$template									=$this->__TEMPLATE("sitio_web/html/PDF_FORMATO");														
 					$template_lab              					=$this->__REPLACE($template,$words); 			
@@ -402,7 +402,6 @@
 				exit;
 			}			
 			echo $template;	
-		    
     	}
     	 
         ##############################################################################
@@ -479,6 +478,7 @@
 			            AND u.id={$_SESSION["user"]["id"]}
 			        GROUP BY  m.id    
 				";
+				
 				$datas_menu =$this->__EXECUTE($comando_sql, $option_conf);			
 			
 				$menu_html								="";
@@ -707,9 +707,12 @@
 								
 			if(isset($this->sys_fields["$campo"]["htmlentities"]) AND in_array($this->sys_fields["$campo"]["htmlentities"], $_SESSION["var"]["true"]))
 				$valor	=htmlentities($valor);
-					
-								
+													
 			if($campo=="sys_section_{$this->sys_name}")		$this->sys_private["section"]			=$valor;
+			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
+			{
+				$this->sys_private["section"]			=$valor;
+			}
 			elseif($campo=="sys_action" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
 				$this->sys_private["action"]			=$valor;
@@ -1012,7 +1015,39 @@
 
 			return $style;		
 		}
-
+    	##############################################################################    
+		public function PDF_PRINT($option=null)
+		{						
+			if(!is_array($option))
+				$option=array(
+					"id"		=>"$option",
+					"section"	=>"write"					
+				);
+		
+			@$this->__PRINT_JS.="
+				setTimeout(function()
+				{  	
+					var sys_section_{$this->sys_name} = $(\"#sys_section_{$this->sys_name}\").val();
+					var sys_action_{$this->sys_name} = $(\"#sys_action_{$this->sys_name}\").val();
+							
+					$(\"#sys_id_{$this->sys_name}\").val(\"{$option["id"]}\");				
+					$(\"#sys_section_{$this->sys_name}\").val(\"{$option["section"]}\");
+					$(\"#sys_action_{$this->sys_name}\").val(\"print_pdf\");
+				
+					$(\"form\")
+						.attr(\"target\",\"_blank\")
+						.submit();
+					$(\"form\")
+						.removeAttr(\"target\");			
+						
+				 	$(\"#sys_section_{$this->sys_name}\").val(sys_section_{$this->sys_name});
+				 	$(\"#sys_action_{$this->sys_name}\").val(sys_action_{$this->sys_name});		
+				 	$(\"#sys_id_{$this->sys_name}\").val(\"\");					
+				},1500);			
+			
+			
+			";
+		}
     	##############################################################################    
 		public function __INPUT($words=NULL, $fields=NULL)
 		{							
@@ -1935,6 +1970,9 @@
 			if(!isset($option["subtipo"]))		$option["subtipo"]		="";
 			if(!isset($option["objeto"]))		$option["objeto"]		="";
 			if(!isset($option["company_id"]))	$option["company_id"]	=$_SESSION["company"]["id"];
+			
+			
+			
 			
 			$sql    	="
 				SELECT * FROM configuracion 

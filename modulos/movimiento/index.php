@@ -103,8 +103,8 @@
 			#$this->__PRINT_R($objeto->sys_private["action"]);
 		
 			$option["having"]=array(
-				"deudor=''",
-				"acreedor=''",
+				"deudor!=''",
+				"acreedor!=''",
 			);
 		}
 		

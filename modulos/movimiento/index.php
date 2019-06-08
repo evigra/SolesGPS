@@ -98,6 +98,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		
 		$option=array();
+		/*
 		if($objeto->sys_private["action"]=="clientes")	
 		{
 			#$objeto->__PRINT_R($objeto->sys_private["action"]);
@@ -108,7 +109,7 @@
 				"acreedor!=''",
 			);
 		}
-		
+		*/
 		
     	$option										=$objeto->__BROWSE_CUENTAS($option);
 		$data										=$objeto->__VIEW_KANBAN($option);		

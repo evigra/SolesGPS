@@ -222,16 +222,6 @@
 			mail($para, $titulo, $mensaje, $cabeceras);			
 
     	}		
-		public function autocomplete_devices()		
-    	{	
-    		$option					=array();
-    		$option["where"]		=array();    		
-    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
-    		$option["where"][]		="company_id={$_SESSION["company"]["id"]}";
-    		
-			$return =$this->__BROWSE($option);    				
-			return $return;			
-		}				
 
 		public function devices($option=NULL)
     	{

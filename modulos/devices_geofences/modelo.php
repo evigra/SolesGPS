@@ -32,19 +32,20 @@
 			    "title_filter"      => "Tiempo",
 			    "type"              => "input",
 			),
-
 			"deviceid"	=>array(
 			    "title"             => "Dispositivo",
 			    "title_filter"      => "Dispositivo",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/devices/ajax/autocomplete.php",
-			    "relation"          => "one2many",			    
+			    "procedure"       	=> "autocomplete_devices",
+			    #"relation"          => "one2many",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "devices",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "deviceid",
 			    "class_field_m"    	=> "id",			    
 			),
+			
 			"geofenceid"	=>array(
 			    "title"             => "Geocerca",
 			    "title_filter"      => "Geocerca",

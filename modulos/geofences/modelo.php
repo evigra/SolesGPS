@@ -79,9 +79,8 @@
 								
 				$datas["area"]    		="POLYGON(({$datas["points"]}))";
 				$datas["company_id"]    =$_SESSION["company"]["id"];
-				
 			}	
-			parent::__SAVE($datas,$option);			
+			return parent::__SAVE($datas,$option);			
 		}	
 		public function geofence($option=NULL)
     	{

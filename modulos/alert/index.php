@@ -40,7 +40,7 @@
 
 		$vars=array();		
 		$vars["telefono"]		="5213414208060";
-		$vars["mensaje"]		=$objeto->sys_fields["asunto"]["value"];				
+		$vars["mensaje"]		="{$objeto->sys_fields["device_id"]["value"]} {$objeto->sys_fields["asunto"]["value"]} ";				
 		
 		$objeto->__WA($vars);
 

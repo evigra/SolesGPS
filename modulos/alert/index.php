@@ -40,11 +40,11 @@
 
 		$vars=array();		
 		$vars["telefono"]		="5213414208060";
-		$vars["mensaje"]		="{$objeto->sys_fields["device_id"]["value"]} {$objeto->sys_fields["asunto"]["value"]} ";				
+		$vars["mensaje"]		="{$objeto->sys_fields["device_id"]["values"][0]["name"]} {$objeto->sys_fields["asunto"]["value"]} ";				
 		
-		$objeto->__PRINT_R($objeto->sys_fields["device_id"]);
+		#$objeto->__PRINT_R($objeto->sys_fields["device_id"]);
 		
-		#$objeto->__WA($vars);
+		$objeto->__WA($vars);
 
     }	
 

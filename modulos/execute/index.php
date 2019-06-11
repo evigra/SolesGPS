@@ -5,7 +5,6 @@
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 		
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS();
-	$objeto->words["html_head_css"]            	=$objeto->__FILE_CSS();
 	
 	#$objeto->sys_private["section"]="kanban";
 	$module_title									="";

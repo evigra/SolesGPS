@@ -418,7 +418,6 @@
 
 			$telefonos_recargados=$response->data;
 
-
 			$comando_sql		="
 				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto
 				FROM devices d join company c on c.id=d.company_id  
@@ -426,7 +425,7 @@
 					AND (bloqueo!=1 OR bloqueo is NULL)
 					AND c.estatus!=0
 					AND d.telcel=1
-					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 29 DAY)< now() )
+					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL dias_recarga DAY)< now() )
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

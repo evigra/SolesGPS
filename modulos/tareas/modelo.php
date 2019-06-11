@@ -118,8 +118,8 @@
 			foreach($crons_data["data"] as $row)
 			{
 				echo "<br>## TAREA {$row["name"]} ##################################";
-				$this->sys_primary_field	="id";
-				$this->sys_primary_id		=$row["id"];				
+				$this->sys_private["field"]	="id";
+				$this->sys_private["id"]		=$row["id"];				
 				$data=array(
 					"now_time"		=>	$row["next_time1"],
 					"ejecucion"		=>	$row["now_time"],

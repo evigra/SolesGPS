@@ -238,11 +238,12 @@
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			$vars["number"]		=$data["telefono"];
+			
+			
 			$vars["number"]		="5213414208060";
 			$vars["text"]		=$data["mensaje"];
 
-			$option				=array("url"=>$url,"post"=>$vars);
-			
+			$option				=array("url"=>$url,"post"=>$vars);			
 			$respuesta			=$this->__curl($option);			
     	}			
 		public function WS_TAECEL($data)

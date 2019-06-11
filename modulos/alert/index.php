@@ -43,8 +43,7 @@
 		$vars["mensaje"]		="{$objeto->sys_fields["device_id"]["values"][0]["name"]} {$objeto->sys_fields["asunto"]["value"]} ";				
 		
 		#$objeto->__PRINT_R($objeto->sys_fields["device_id"]);
-		
-		$objeto->__WA($vars);
+		#$objeto->__WA($vars);
 
     }	
 

@@ -36,9 +36,11 @@
     	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW();
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
+
+
 		$vars=array();		
 		$vars["telefono"]		="5213414208060";
-		$vars["mensaje"]		="PRUEBA DE WA";				
+		$vars["mensaje"]		=$objeto->sys_fields["asunto"]["val"];				
 		
 		$objeto->__WA($vars);
 

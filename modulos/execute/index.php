@@ -4,23 +4,23 @@
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");
 		
-	$objeto->words["html_head_js"]              =$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	$objeto->words["html_head_css"]            	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]              =$objeto->__FILE_JS();
+	$objeto->words["html_head_css"]            	=$objeto->__FILE_CSS();
 	
-	#$objeto->sys_section="kanban";
+	#$objeto->sys_private["section"]="kanban";
 	$module_title									="";
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
     }	
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
     }	
     
-    if($objeto->sys_section=="saldo_correo")
+    if($objeto->sys_private["section"]=="saldo_correo")
 	{
 	
     	$module_title                	=	"Saldo por correo";

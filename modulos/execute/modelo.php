@@ -19,6 +19,7 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################        
+		/*
 		public function __CONSTRUCT()
 		{
 			parent::__CONSTRUCT();
@@ -26,7 +27,8 @@
 			#$ultima_linea = passthru('ls', $var);		
 			
 			#echo $var;	
-		}			
+		}
+		*/			
 		public function saldo_correo()
     	{
 			$comando_sql		="

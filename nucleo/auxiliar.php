@@ -231,10 +231,14 @@
 		public function __WA($data)
     	{    		    		    	
 			$sesion 			=array("apikey"=>"AO7K3A1BOEO8O0PX4KK4");
+			$sesion 			=array("apikey"=>"RDWMLI6LRUXABYXQZFZ4");
+			
+			
 
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			$vars["number"]		=$data["telefono"];
+			$vars["number"]		="5213414208060";
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);

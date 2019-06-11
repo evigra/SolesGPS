@@ -27,8 +27,6 @@
 		$objeto->words["module_body"]	=	"";	
     	#$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
     	#$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-	
-        
     }	
        
     

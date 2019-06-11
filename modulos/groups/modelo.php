@@ -60,12 +60,6 @@
 		##############################################################################
 
         
-		public function __CONSTRUCT()
-		{
-			#$this->menu_obj=new menu();
-			parent::__CONSTRUCT();
-
-		}
 		public function __VIEW_REPORT($option=NULL)		
     	{	
     		if(is_null($option))	$option=array();
@@ -103,12 +97,12 @@
 						"usergroup_id	=$group_id",
 						"menu_id		={$index}",
 					);    	    		    	    		
-					$usergroup_data						=$this->obj_permiso_ids->__BROWSE($usergroup_option);
+					$usergroup_data						=$this->sys_fields["permiso_ids"]["obj"]->__BROWSE($usergroup_option);
 					
 					#$this->__PRINT_R($usergroup_data);
 
-					if($usergroup_data["total"]>0)		$this->obj_permiso_ids->sys_primary_id=$usergroup_data["data"][0]["id"];
-					else								$this->obj_permiso_ids->sys_primary_id=NULL;
+					if($usergroup_data["total"]>0)		$this->sys_fields["permiso_ids"]["obj"]->sys_private["id"]=$usergroup_data["data"][0]["id"];
+					else								$this->sys_fields["permiso_ids"]["obj"]->sys_private["id"]=NULL;
 
 					$usergroup_save=array(
 						"usergroup_id"	=>"$group_id",
@@ -120,7 +114,7 @@
 					if(isset($data["w"]))			$usergroup_save["w"	]="{$data["w"]}";
 					if(isset($data["d"]))			$usergroup_save["d"]="{$data["d"]}";
 
-					$this->obj_permiso_ids->__SAVE($usergroup_save);
+					$this->sys_fields["permiso_ids"]["obj"]->__SAVE($usergroup_save);
 			    }	
 			}    
 		}				

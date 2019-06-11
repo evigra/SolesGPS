@@ -18,6 +18,9 @@
     $template		="system";
     if($objeto->sys_private["section"]=="show")
 	{
+
+
+
 		# TITULO DEL MODULO
     	$module_title                	=	"Mostrar ";
 
@@ -32,6 +35,13 @@
 		# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
     	$objeto->words["module_body"]				=$objeto->__VIEW_SHOW();
     	$objeto->words               				=$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+
+		$vars=array();		
+		$vars["telefono"]		="5213414208060";
+		$vars["mensaje"]		="PRUEBA DE WA";				
+		
+		$objeto->__WA($vars);
+
     }	
 
     else

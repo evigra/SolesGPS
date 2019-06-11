@@ -107,6 +107,17 @@
     		$comando_sql	="SELECT g.* FROM geofences g WHERE company_id={$_SESSION["company"]["id"]} ORDER BY name";
     		return		$this->__EXECUTE($comando_sql);
     	}	
+		public function autocomplete_geofences()		
+    	{	
+    		$option					=array();
+    		$option["where"]		=array();    		
+    		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
+    		$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+    		
+			$return =$this->__BROWSE($option);    				
+			return $return;			
+		}				
+    	
 		public function geofences_html($option=NULL)
     	{
     		$geofences		=$this->geofences_data();

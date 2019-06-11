@@ -51,8 +51,9 @@
 			    "title_filter"      => "Geocerca",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "type"              => "autocomplete",
-			    "source"           	=> "../modulos/geofences/ajax/autocomplete.php",			    
-			    "relation"          => "one2many",			    
+			    #"source"           	=> "../modulos/geofences/ajax/autocomplete.php",			    
+			    "procedure"       	=> "autocomplete_geofences",
+			    "relation"          => "many2one",
 			    "class_name"       	=> "geofences",
 			    "class_field_l"    	=> "name",				# Label
 			    "class_field_o"    	=> "geofenceid",

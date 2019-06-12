@@ -380,8 +380,10 @@
             foreach($position_data as $row)
             {
            
-            	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########";
-            	print_r($row);
+            	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########
+            		{$row["event"]} :: 
+            	";
+            	
             	$data_update	=array();
             	
             	$data_update["geofence"]	="{$this->geofences($row)}";            	
@@ -582,7 +584,7 @@
 					if($enviar_mail==1)
 						$this->mail_position($row_new,$option_mail);					
             	}	            	
-                $this->sys_primary_id		=$row["pos_id"];
+                $this->sys_private["id"]		=$row["pos_id"];
                 $data_update["leido"]		="1";
                 $data_update["status"]		="1";
                 $data_update["company_id"]	=$row["com_id"];

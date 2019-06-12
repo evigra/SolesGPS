@@ -603,6 +603,8 @@
 						AND d.id='{$row["dev_id"]}'
 				";		
 				#$this->__EXECUTE($comando_sql);				
+				echo "<br>{$row["event"]} ::  	";
+
                 
             }		
 			return count($position_data) . " POSICIONES";				

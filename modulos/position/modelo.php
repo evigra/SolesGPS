@@ -378,8 +378,7 @@
 			#/*
 			$aux_descripcion="";
             foreach($position_data as $row)
-            {
-           
+            {           
             	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########
             		{$row["event"]} :: 
             	";
@@ -399,8 +398,7 @@
 				}
                 if(@$data_update["event"]=="")
 	                $data_update["event"]		="{$row["event"]}";
-            	
-            	
+            	            	
             	$row_new					=$row;
             	$speed_end					="0000-00-00 00:00:00";
             	$speed_start				="0000-00-00 00:00:00";
@@ -427,8 +425,6 @@
             			";            			            			            			
             			$speed_start				=$row["devicetime"];
             			$speed_end					="0000-00-00 00:00:00";
-            	
-            			#$row_new["speed"]			=$row["speed"]*1.852;
             		}	
             	}   
             	$comando_sql_complemento="";         	            	
@@ -460,7 +456,6 @@
 						"title"		=>"SOLESGPS :: {$row["event"]}"
 					);						
 					$option_mail["to"].="{$row["mail_speed"]}";			
-            
             	
             		$comando_sql		="";
             		$PRE_comando_sql	="
@@ -489,7 +484,7 @@
 
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por exceso de velocidad";
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
+						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
             		{	# BATERIA BAJA
@@ -511,7 +506,7 @@
 						";		
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por falta de bateria";
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
+						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
             		{	# BATERIA BAJA
@@ -532,7 +527,7 @@
 						";														
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta SOS";
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
+						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
 					}	
             		else if($row["event"]=="ALERTA BATERIA BAJA")
             		{	# BATERIA BAJA
@@ -553,7 +548,7 @@
 						";		
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta bateria baja";
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["$c_telefono"], "mensaje"=>$mensaje));
+						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
 					}	
 
             		else
@@ -791,7 +786,7 @@
 									);
 									$position["geofence"]=$row["name"];
 									$this->mail_position($position,$option_mail);
-
+									$this->__WA(array("telefono"=>$position["c_telefono"], "mensaje"=>$option_mail["title"]));
 									$descripcion	="
 										Esta es una alerta ingreso a geocerca
 										$aux_descripcion
@@ -856,6 +851,8 @@
 								);
 								$position["geofence"]=$row["name"];
 								$this->mail_position($position,$option_mail);
+								$this->__WA(array("telefono"=>$position["c_telefono"], "mensaje"=>$option_mail["title"]));
+
 								$return.="{$row["name"]}";
 				    			$descripcion	="
 									Esta es una alerta por egreso de geocerca

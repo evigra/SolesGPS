@@ -381,6 +381,7 @@
             {
            
             	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########";
+            	print_r($row);
             	$data_update	=array();
             	
             	$data_update["geofence"]	="{$this->geofences($row)}";            	

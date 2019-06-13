@@ -332,6 +332,7 @@
 					p.id as pos_id,
 					d.id as dev_id,
 					c.id as com_id,
+					c.id as com_estatus,
 					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
 					c.*,
 					f.*,
@@ -483,8 +484,12 @@
 						";		
 
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por exceso de velocidad";
-						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						
+						if($row["com_estatus"]==1)
+						{
+							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						}	
 					}	
             		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
             		{	# BATERIA BAJA
@@ -505,8 +510,11 @@
 							color		='$color'
 						";		
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta por falta de bateria";
-						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						if($row["com_estatus"]==1)
+						{
+							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						}	
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
             		{	# BATERIA BAJA
@@ -547,8 +555,11 @@
 							color		='$color'
 						";		
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta bateria baja";
-						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						if($row["com_estatus"]==1)
+						{
+							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						}	
 					}	
 
             		else
@@ -568,6 +579,12 @@
 							opcion_id	='$opcion_id',
 							color		='$color'
 						";
+						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta General";
+						if($row["com_estatus"]==1)
+						{
+							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+						}	
 								
 					}	
 					
@@ -598,9 +615,7 @@
 						AND d.id='{$row["dev_id"]}'
 				";		
 				#$this->__EXECUTE($comando_sql);				
-				echo "<br>{$row["event"]} ::  	";
-
-                
+				echo "<br>{$row["event"]} ::  	";                
             }		
 			return count($position_data) . " POSICIONES";				
             #*/

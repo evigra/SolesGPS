@@ -241,7 +241,7 @@
 			
 			
 			$vars["number"]		="5213414208060";
-			$vars["text"]		=$data["mensaje"];
+			$vars["text"]		=$data["mensaje"] . "<br>Mensaje automatico del Sistema SolesGPS";
 
 			$option				=array("url"=>$url,"post"=>$vars);			
 			$respuesta			=$this->__curl($option);			

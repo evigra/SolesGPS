@@ -488,7 +488,16 @@
 						if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							#$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							$this->__WA(
+								array(
+									"telefono"=>$row["c_telefono"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Exceso de velocidad
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									"
+								)
+							);
+							
 						}	
 					}	
             		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
@@ -513,7 +522,14 @@
 						if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							$this->__WA(
+								array(
+									"telefono"=>$row["c_telefono"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Alerta por falta de bateria
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									"
+								)
+							);
 						}	
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
@@ -558,7 +574,14 @@
 						if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							$this->__WA(
+								array(
+									"telefono"=>$row["c_telefono"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Bateria baja
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									"
+								)
+							);
 						}	
 					}	
 
@@ -583,7 +606,14 @@
 						if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-							$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							$this->__WA(
+								array(
+									"telefono"=>$row["c_telefono"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Suceso desconocido
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									"
+								)
+							);
 						}	
 								
 					}	
@@ -719,7 +749,7 @@
 						geofences g on g.id=ag.geofence_id
 					WHERE 1=1
 						AND a.status='activo'	
-					 	AND a.company_id={$position["company_id"]}
+					 	AND a.company_id={$position["com_id"]}
 		                AND (
 							a.geofence_in!=''
 		                    OR a.geofence_out!=''
@@ -804,7 +834,9 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}"
+											"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}
+											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}\"
+											"
 										)
 									);
 									$descripcion	="
@@ -871,7 +903,14 @@
 								);
 								$position["geofence"]=$row["name"];
 								$this->mail_position($position,$option_mail);
-								$this->__WA(array("telefono"=>$position["c_telefono"], "mensaje"=>$option_mail["title"]));
+									$this->__WA(
+										array(
+											"telefono"=>$position["c_telefono"], 
+											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}
+											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}\"
+											"
+										)
+									);
 
 								$return.="{$row["name"]}";
 				    			$descripcion	="

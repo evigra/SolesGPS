@@ -240,7 +240,7 @@
 			
 			
 			$vars["number"]		="5213414208060";
-			$vars["text"]		=$data["mensaje"] . "\n\rMensaje automatico de SolesGPS";
+			$vars["text"]		=$data["mensaje"] . "\nMensaje automatico de SolesGPS";
 
 			$option				=array("url"=>$url,"post"=>$vars);			
 			$respuesta			=$this->__curl($option);			

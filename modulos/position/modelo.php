@@ -332,7 +332,7 @@
 					p.id as pos_id,
 					d.id as dev_id,
 					c.id as com_id,
-					c.id as com_estatus,
+					c.estatus as com_estatus,
 					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
 					c.*,
 					f.*,

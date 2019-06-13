@@ -233,7 +233,6 @@
 			$sesion 			=array("apikey"=>"AO7K3A1BOEO8O0PX4KK4");
 			$sesion 			=array("apikey"=>"RDWMLI6LRUXABYXQZFZ4");
 			
-			
 
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
@@ -241,7 +240,7 @@
 			
 			
 			$vars["number"]		="5213414208060";
-			$vars["text"]		=$data["mensaje"] . "<br>Mensaje automatico del Sistema SolesGPS";
+			$vars["text"]		=$data["mensaje"] . "\n\rMensaje automatico de SolesGPS";
 
 			$option				=array("url"=>$url,"post"=>$vars);			
 			$respuesta			=$this->__curl($option);			

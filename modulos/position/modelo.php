@@ -789,7 +789,7 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"[{$positioin["dispo"]}] :: Entrando a {$row["gnames"]}"
+											"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}"
 										)
 									);
 									$descripcion	="

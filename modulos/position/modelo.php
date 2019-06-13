@@ -696,7 +696,7 @@
     		#if(!isset($_SESSION["geofence"][$position["company_id"]]))	
 			{
 				$comando_sql				="
-					SELECT a.id as aid, a.*, ad.*, ag.*, ag.id as agid, g.*, g.id as gid
+					SELECT a.id as aid, a.*, ad.*, ag.*, ag.id as agid, g.*, g.id as gid, g.name as gname
 					FROM 
 						alerts a join
 						alerts_device ad on ad.alerts_id=a.id and ad.status=1 join
@@ -786,7 +786,12 @@
 									);
 									$position["geofence"]=$row["name"];
 									$this->mail_position($position,$option_mail);
-									$this->__WA(array("telefono"=>$position["c_telefono"], "mensaje"=>$option_mail["title"]));
+									$this->__WA(
+										array(
+											"telefono"=>$position["c_telefono"], 
+											"mensaje"=>"[{$positioin["dispo"]}] :: Entrando a {$row["gnames"]}"
+										)
+									);
 									$descripcion	="
 										Esta es una alerta ingreso a geocerca
 										$aux_descripcion

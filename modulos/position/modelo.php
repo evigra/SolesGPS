@@ -493,7 +493,7 @@
 								array(
 									"telefono"=>$row["c_telefono"], 
 									"mensaje"=>"[{$row["dispo"]}] :: Exceso de velocidad
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"
 								)
 							);
@@ -526,7 +526,7 @@
 								array(
 									"telefono"=>$row["c_telefono"], 
 									"mensaje"=>"[{$row["dispo"]}] :: Alerta por falta de bateria
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"
 								)
 							);
@@ -578,7 +578,7 @@
 								array(
 									"telefono"=>$row["c_telefono"], 
 									"mensaje"=>"[{$row["dispo"]}] :: Bateria baja
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"
 								)
 							);
@@ -610,7 +610,7 @@
 								array(
 									"telefono"=>$row["c_telefono"], 
 									"mensaje"=>"[{$row["dispo"]}] :: Suceso desconocido
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}\"
+									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"
 								)
 							);
@@ -835,7 +835,7 @@
 										array(
 											"telefono"=>$position["c_telefono"], 
 											"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}
-											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}\"
+											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
 											"
 										)
 									);
@@ -907,7 +907,7 @@
 										array(
 											"telefono"=>$position["c_telefono"], 
 											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}
-											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}\"
+											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
 											"
 										)
 									);

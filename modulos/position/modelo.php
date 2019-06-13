@@ -834,10 +834,13 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
-											[{$position["dispo"]}] :: Entrando a {$row["gname"]}
-											
-											"
+											"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}"
+										)
+									);
+									$this->__WA(
+										array(
+											"telefono"=>$position["c_telefono"], 
+											"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg"
 										)
 									);
 									$descripcion	="
@@ -907,9 +910,8 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}
-											http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
-											"
+											"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
+											[{$position["dispo"]}] :: Saliendo de {$row["gname"]}"
 										)
 									);
 

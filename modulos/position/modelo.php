@@ -840,7 +840,7 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+											"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
 										)
 									);
 									$descripcion	="
@@ -910,10 +910,16 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$position["latitude"]},{$position["longitude"]}&algo=.jpg
-											[{$position["dispo"]}] :: Saliendo de {$row["gname"]}"
+											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}"
 										)
 									);
+									$this->__WA(
+										array(
+											"telefono"=>$position["c_telefono"], 
+											"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+										)
+									);
+
 
 								$return.="{$row["name"]}";
 				    			$descripcion	="

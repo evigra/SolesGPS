@@ -609,6 +609,7 @@
 							$this->__WA(
 								array(
 									"telefono"=>$row["c_telefono"], 
+									"telefono"=>"5213143520972", 
 									"mensaje"=>"[{$row["dispo"]}] :: Suceso desconocido :: {$row["event"]}
 									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"

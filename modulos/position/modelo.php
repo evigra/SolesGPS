@@ -571,7 +571,7 @@
 							color		='$color'
 						";		
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta bateria baja";
-						if($row["com_estatus"]==1)
+						#if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(
@@ -603,7 +603,7 @@
 							color		='$color'
 						";
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta General";
-						if($row["com_estatus"]==1)
+						#if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(

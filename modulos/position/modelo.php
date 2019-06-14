@@ -837,7 +837,9 @@
 										$this->__WA(
 											array(
 												"telefono"=>$position["c_telefono"], 
-												"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}"
+												"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}\n
+													Sistema Automatico SolesGPS												
+												"
 											)
 										);
 										/*
@@ -919,7 +921,9 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}"
+											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}\n
+											Sistema Automatico SolesGPS
+											"
 										)
 									);
 									/*

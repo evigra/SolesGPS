@@ -758,9 +758,9 @@
 				";
 				#echo "<br><br>$comando_sql";
 				$geofence_data 				=$this->__EXECUTE($comando_sql);				
-				$_SESSION["geofence"][$position["com_id"]]=$geofence_data;									
+				#$_SESSION["geofence"][$position["com_id"]]=$geofence_data;									
 			}
-			$geofence_data					=$_SESSION["geofence"][$position["com_id"]];
+			#$geofence_data					=$_SESSION["geofence"][$position["com_id"]];
 			$return="";			
 
             foreach($geofence_data as $row)
@@ -852,7 +852,7 @@
 											geofenceid	={$row["gid"]}, 
 											time		='{$position["devicetime"]}',
 											positionid	='{$position["pos_id"]}',
-											company_id	={$row["company_id"]},
+											company_id	={$position["com_id"]},
 											tipo		='GEOFENCES',
 											status		=1
 									";			
@@ -916,6 +916,7 @@
 										WHERE 1=1
 											AND deviceid={$position["dev_id"]} 
 											AND geofenceid={$row["gid"]} 
+											AND company_id	={$position["com_id"]},
 											AND alertid={$row["aid"]}
 											AND tipo ='GEOFENCES'
 											AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
@@ -937,7 +938,7 @@
 										del=1 
 									WHERE 1=1
 										AND deviceid={$position["dev_id"]} 
-										AND geofenceid={$row["gid"]} 
+										AND geofenceid={$row["gid"]} 										
 										AND alertid={$row["aid"]}
 										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
@@ -948,6 +949,7 @@
 									WHERE 1=1
 										AND deviceid={$position["dev_id"]} 
 										AND geofenceid={$row["gid"]} 
+										AND company_id	={$position["com_id"]},
 										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
 								";

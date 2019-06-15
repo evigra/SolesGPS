@@ -823,7 +823,9 @@
 											company_id	={$row["company_id"]},
 											tipo		='GEOFENCES',
 											status		=1
-									";									
+									";			
+									echo "<br>$comando_sql<br><br>";
+															
 									$this->__EXECUTE($comando_sql);
 									
 									if($position["com_estatus"]==1)
@@ -885,6 +887,7 @@
 											AND tipo ='GEOFENCES'
 											AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
 									";
+									echo "<br>$comando_sql<br><br>";
 									$this->__EXECUTE($comando_sql);
 								}
 								
@@ -906,7 +909,7 @@
 										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
 								";
-								#echo "<br>AFUERA UPD :: $comando_sql";
+								echo "<br>$comando_sql<br><br>";
 								$this->__EXECUTE($comando_sql);
 								
 								$option_mail=array(

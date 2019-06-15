@@ -872,7 +872,7 @@
 											color		='$color'
 										";		
 									$this->__EXECUTE($comando_sql);
-									echo "<br>GEOCERCA -> $comando_sql";
+									#echo "<br>GEOCERCA -> $comando_sql";
 									
 								}
 								else
@@ -959,7 +959,7 @@
 										color		='$color'
 									";				
 								$this->__EXECUTE($comando_sql);
-								echo "<br>GEOCERCA -> $comando_sql";
+								#echo "<br>GEOCERCA -> $comando_sql";
 							}
 				    	}  
 		        	}          	

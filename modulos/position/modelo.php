@@ -678,7 +678,7 @@
 			
 			$option["html"]	=$mensaje;
 			
-			#$this->send_mail($option);
+			$this->send_mail($option);
 		}
 		##############################################################################
 		public function position_description($position=NULL,$option)

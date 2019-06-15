@@ -887,8 +887,8 @@
 											AND tipo ='GEOFENCES'
 											AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
 									";
-									echo "<br>$comando_sql<br><br>";
-									$this->__EXECUTE($comando_sql);
+									#echo "<br>$comando_sql<br><br>";
+									#$this->__EXECUTE($comando_sql);
 								}
 								
 							}    					

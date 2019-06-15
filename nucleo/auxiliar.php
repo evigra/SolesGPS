@@ -239,11 +239,11 @@
 			$vars["number"]		=$data["telefono"];
 			
 			
-			#$vars["number"]		="5213414208060";
+			$vars["number"]		="5213414208060";
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);			
-			#$respuesta			=$this->__curl($option);			
+			$respuesta			=$this->__curl($option);			
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	
@@ -258,7 +258,7 @@
 
 			$option				=array("url"=>$url,"post"=>$vars);
 			
-			$respuesta			=$this->__curl($option);			
+			#$respuesta			=$this->__curl($option);			
 			$respuesta1			=json_decode($respuesta["return"]);
 			
 			
@@ -268,7 +268,7 @@
 					
 			$option				=array("url"=>$url,"post"=>$vars);
 
-			$respuesta			=$this->__curl($option);			
+			#$respuesta			=$this->__curl($option);			
 			$respuesta2			=json_decode($respuesta["return"]);
 			
 			return array(

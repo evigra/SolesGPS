@@ -786,7 +786,7 @@
 								AND alertid		={$row["aid"]}
 								AND STATUS		='1' 						
 								AND tipo		='GEOFENCES'
-								AND del IS NULL
+								AND (del IS NULL OR del='') 
 						";				    	
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 						#echo "<br><br>$comando_sql";
@@ -903,7 +903,7 @@
 										AND deviceid={$position["dev_id"]} 
 										AND geofenceid={$row["gid"]} 
 										AND alertid={$row["aid"]}
-										AND time_end is NULL
+										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
 								";
 								#echo "<br>AFUERA UPD :: $comando_sql";

@@ -758,9 +758,9 @@
 				";
 				#echo "<br><br>$comando_sql";
 				$geofence_data 				=$this->__EXECUTE($comando_sql);				
-				$_SESSION["geofence"][$position["company_id"]]=$geofence_data;									
+				$_SESSION["geofence"][$position["com_id"]]=$geofence_data;									
 			}
-			$geofence_data					=$_SESSION["geofence"][$position["company_id"]];
+			$geofence_data					=$_SESSION["geofence"][$position["com_id"]];
 			$return="";			
 
             foreach($geofence_data as $row)

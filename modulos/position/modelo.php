@@ -794,7 +794,7 @@
 												
 				    	if($respueta=="DENTRO")
 				    	{   		        		
-				    		#echo "DENTRO >>>>>>>>> <br>";
+				    		echo "DENTRO {$row["name"]} >>>>>>>>> <br>";
 							$return="";					
 							if(count($devicegeofence_data)==0)
 							{
@@ -893,7 +893,7 @@
 				    	}
 				    	else if($respueta=="AFUERA")
 				    	{        		        		
-				    		#echo "AFUERA >>>>>>>>> <br>";							
+				    		echo "AFUERA {$row["name"]} >>>>>>>>>  <br>";							
 							if(count($devicegeofence_data)>0)
 							{
 								$comando_sql	="UPDATE devices_geofences SET 

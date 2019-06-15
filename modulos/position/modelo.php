@@ -777,7 +777,7 @@
 		        	{
 				    	#unset($polygon[$total]);            	            	
 				    	$respueta	=$this->pointInPolygon("{$position["latitude"]} {$position["longitude"]}", $polygon);
-				    	echo "RESPUESTA: $respueta<br>";
+				    	#echo "RESPUESTA: $respueta<br>";
 						$comando_sql="
 							select * from devices_geofences 
 							WHERE 1=1

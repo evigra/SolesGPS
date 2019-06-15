@@ -788,6 +788,17 @@
 								AND tipo		='GEOFENCES'
 								AND (del IS NULL OR del='') 
 						";				    	
+						$comando_sql="
+							select * from devices_geofences 
+							WHERE 1=1
+								AND deviceid	={$position["dev_id"]} 
+								AND geofenceid	={$row["gid"]}
+								AND STATUS		='1' 						
+								AND tipo		='GEOFENCES'
+								AND (del IS NULL OR del='') 
+						";				    	
+
+
 						$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 						#echo "<br><br>$comando_sql";
 						#$this->__PRINT_R(array($respueta,count($devicegeofence_data),$devicegeofence_data,$comando_sql));
@@ -809,6 +820,17 @@
 										AND tipo		='GEOFENCES'
 
 								";				    	
+								$comando_sql="
+									select * from devices_geofences 
+									WHERE 1=1
+										AND deviceid	={$position["dev_id"]} 
+										AND geofenceid	={$row["gid"]}
+										AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
+										AND STATUS		='1' 						
+										AND tipo		='GEOFENCES'
+
+								";				    	
+
 								$devicegeofence_data 		=$this->__EXECUTE($comando_sql);
 
 								if(count($devicegeofence_data)==0)
@@ -824,6 +846,17 @@
 											tipo		='GEOFENCES',
 											status		=1
 									";			
+									$comando_sql="
+										INSERT INTO devices_geofences SET 
+											deviceid	={$position["dev_id"]}, 
+											geofenceid	={$row["gid"]}, 
+											time		='{$position["devicetime"]}',
+											positionid	='{$position["pos_id"]}',
+											company_id	={$row["company_id"]},
+											tipo		='GEOFENCES',
+											status		=1
+									";			
+
 									echo "<br>$comando_sql<br><br>";
 															
 									$this->__EXECUTE($comando_sql);
@@ -909,6 +942,16 @@
 										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
 								";
+								$comando_sql	="UPDATE devices_geofences SET 
+										time_end='{$position["devicetime"]}', 
+										del=1 
+									WHERE 1=1
+										AND deviceid={$position["dev_id"]} 
+										AND geofenceid={$row["gid"]} 
+										AND (time_end is NULL OR time_end='')
+										AND tipo ='GEOFENCES'
+								";
+
 								echo "<br>$comando_sql<br><br>";
 								$this->__EXECUTE($comando_sql);
 								

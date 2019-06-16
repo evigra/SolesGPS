@@ -368,7 +368,7 @@
                     files f on c.files_id=f.id
 				where 1=1					
 					AND leido=0
-					AND protocol in ('meitrack','gps103','osmand','h02','tk103','' )
+					AND protocol in ('meitrack','gps103','osmand','h02','gt06','tk103','' )
 					AND valid=1
 				LIMIT 500
 			";		

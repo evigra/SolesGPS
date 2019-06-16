@@ -43,6 +43,7 @@
 			),
 			"estatus"	    =>array(
 			    "title"             => "Estatus",
+			    "title_filter"		=> "Estatus",
 			    "type"              => "select",
 			    "source"            => array(
 			    	"1"=>"Vigente",

@@ -931,10 +931,11 @@
 				    	else if($respueta=="AFUERA")
 				    	{        		        		
 				    		echo "<br>AFUERA {$row["name"]} >>>>>>>>> ";							
-				    		print_r($devicegeofence_data);
-				    		echo "<br>>>>>>>>>><br>";							
 							if(count($devicegeofence_data)>0)
 							{
+								print_r($devicegeofence_data);
+								echo "<br>>>>>>>>>><br>";							
+							
 								$comando_sql	="UPDATE devices_geofences SET 
 										time_end='{$position["devicetime"]}', 
 										del=1 

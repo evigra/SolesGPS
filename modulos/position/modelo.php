@@ -931,6 +931,8 @@
 				    	else if($respueta=="AFUERA")
 				    	{        		        		
 				    		echo "<br>AFUERA {$row["name"]} >>>>>>>>> ";							
+				    		print_r($devicegeofence_data);
+				    		echo "<br>>>>>>>>>><br>";							
 							if(count($devicegeofence_data)>0)
 							{
 								$comando_sql	="UPDATE devices_geofences SET 

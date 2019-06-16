@@ -916,7 +916,7 @@
 										WHERE 1=1
 											AND deviceid={$position["dev_id"]} 
 											AND geofenceid={$row["gid"]} 
-											AND company_id	={$position["com_id"]},
+											AND company_id	={$position["com_id"]}
 											AND alertid={$row["aid"]}
 											AND tipo ='GEOFENCES'
 											AND time_end > DATE_SUB('{$position["devicetime"]}',INTERVAL 4 MINUTE)
@@ -951,7 +951,7 @@
 									WHERE 1=1
 										AND deviceid={$position["dev_id"]} 
 										AND geofenceid={$row["gid"]} 
-										AND company_id	={$position["com_id"]},
+										AND company_id	={$position["com_id"]}
 										AND (time_end is NULL OR time_end='')
 										AND tipo ='GEOFENCES'
 								";

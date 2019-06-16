@@ -358,17 +358,13 @@
 					CASE
 						WHEN protocol='meitrack' 		THEN leido=0 AND p.protocol=e.protocolo AND EXTRACT_JSON(p.attributes,'event')=e.codigo
 						WHEN protocol='gps103' 			THEN leido=0 AND p.protocol=e.protocolo AND EXTRACT_JSON(p.attributes,'alarm')=e.codigo
-                        WHEN protocol='osmand' 			THEN leido=0 AND p.protocol=e.protocolo
-                        WHEN protocol='h02' 			THEN leido=0 
-                        WHEN protocol='tk103' 			THEN leido=0 AND p.protocol=e.protocolo
-                        ELSE  leido=0
+                        ELSE  leido=0 AND p.protocol=e.protocolo
                     END left join
                     devices d on p.deviceid=d.id join
                     company c on d.company_id=c.id left join
                     files f on c.files_id=f.id
 				where 1=1					
 					AND leido=0
-					AND protocol in ('meitrack','gps103','osmand','h02','gt06','tk103','' )
 					AND valid=1
 				LIMIT 500
 			";		

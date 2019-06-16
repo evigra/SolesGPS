@@ -239,7 +239,7 @@
 			$vars["number"]		=$data["telefono"];
 			
 			
-			$vars["number"]		="5213414208060";
+			#$vars["number"]		="5213414208060";
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);			

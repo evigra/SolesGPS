@@ -35,8 +35,8 @@
     	    $datas["type"]		=2;
     	    
     	    if($datas["long1"]=="")	unset($datas["long1"]);
-    	    if($datas["se_vende"]=="")	$datas["se_vende"]=1;
-    	    if($datas["se_compra"]=="")	$datas["se_compra"]=1;
+    	    $datas["se_vende"]=1;
+    	    $datas["se_compra"]=1;
     	    
     		parent::__SAVE($datas,$option);
 		}		

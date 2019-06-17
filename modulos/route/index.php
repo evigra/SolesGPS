@@ -6,7 +6,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps","../".$objeto->sys_var["module_path"]."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps",$objeto->sys_var["module_path"]."js/index"));
 	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
 	$module_left=array(
@@ -63,7 +63,7 @@
 		);    
 
 
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_var["module_path"]."html/write");	
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE();	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }
@@ -78,19 +78,14 @@
         array("report"=>"Reporte"),
     	); 	
 
-		$template_body					=	$objeto->sys_var["module_path"]."html/kanban";	
-	   	$data							=	$objeto->devices();        	
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		$option     	=	array();		
+        	
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($option);	
     }	
 	else
 	{
 	    $module_left	=	"";
-		$option     	=	array();
-
-		$option["template_title"]		=	$objeto->sys_var["module_path"]."html/report_title";
-		#$option["template_create"]		=	$objeto->sys_var["module_path"]."html/report_create";
-		$option["template_body"]		=	$objeto->sys_var["module_path"]."html/report_body";
-		
+		$option     	=	array();		
 		$data							=	$objeto->__VIEW_REPORT($option);
 		
 		$objeto->words["module_body"]	=	@$data["html"];	

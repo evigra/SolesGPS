@@ -6,7 +6,7 @@
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps","../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("maps","../".$objeto->sys_var["module_path"]."js/index"));
 	#$objeto->words["html_head_css"]	=	$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	
 	$module_left=array(
@@ -24,7 +24,7 @@
     $module_center	=	"";
     $module_title	=	"";
 
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
     	$module_title                	=	"Crear ";
 
@@ -41,11 +41,11 @@
 		    array("limpiar_punto"		=>"Limpiar"),
 		);    
 
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_module."html/create");	
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE();	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     }	
-    elseif($objeto->sys_section=="write")
+    elseif($objeto->sys_private["section"]=="write")
 	{
     	$module_title                	=	"Modificar ";
 
@@ -63,11 +63,11 @@
 		);    
 
 
-    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	
+    	$objeto->words["module_body"]	=	$objeto->__VIEW_WRITE($objeto->sys_var["module_path"]."html/write");	
     	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     	
     }
-	elseif($objeto->sys_section=="kanban")
+	elseif($objeto->sys_private["section"]=="kanban")
 	{
 	    $module_title			="Reporte Modular de ";
 
@@ -78,7 +78,7 @@
         array("report"=>"Reporte"),
     	); 	
 
-		$template_body					=	$objeto->sys_module."html/kanban";	
+		$template_body					=	$objeto->sys_var["module_path"]."html/kanban";	
 	   	$data							=	$objeto->devices();        	
     	$objeto->words["module_body"]	=	$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
     }	
@@ -87,9 +87,9 @@
 	    $module_left	=	"";
 		$option     	=	array();
 
-		$option["template_title"]		=	$objeto->sys_module."html/report_title";
-		#$option["template_create"]		=	$objeto->sys_module."html/report_create";
-		$option["template_body"]		=	$objeto->sys_module."html/report_body";
+		$option["template_title"]		=	$objeto->sys_var["module_path"]."html/report_title";
+		#$option["template_create"]		=	$objeto->sys_var["module_path"]."html/report_create";
+		$option["template_body"]		=	$objeto->sys_var["module_path"]."html/report_body";
 		
 		$data							=	$objeto->__VIEW_REPORT($option);
 		

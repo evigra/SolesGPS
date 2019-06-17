@@ -92,7 +92,7 @@
 		$module_title                	=	"Reporte de ";
     }
 	
-	$objeto->words["module_title"]	=	"$module_title Items";
+	$objeto->words["module_title"]	=	"$module_title Route";
 	$objeto->words["module_left"]  	=	$objeto->__BUTTON($module_left);
 	$objeto->words["module_center"]	=	$objeto->__BUTTON($module_center);
 	$objeto->words["module_right"]	=	$objeto->__BUTTON($module_right);

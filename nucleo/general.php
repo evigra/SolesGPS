@@ -241,9 +241,14 @@
 
 							$option["where"][]="$class_field_o IN ($busqueda)";			
 						}
+						if(@$this->sys_fields[$campo]["type"]=="select")
+						{							
+							$option["where"][]="$campo_aux ='$busqueda'";			
+						}
+
 						else
 							
-						$option["where"][]="$campo_aux $sys_where '%$busqueda%'";	
+							$option["where"][]="$campo_aux $sys_where '%$busqueda%'";	
 					}					
 				}	
 			}	

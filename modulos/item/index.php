@@ -4,8 +4,7 @@
 	
 	$objeto->words["system_body"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_body");	# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
-	
-	
+		
 	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS();
 	
 	$module_left=array(

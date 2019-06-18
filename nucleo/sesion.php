@@ -77,9 +77,7 @@
 			require_once($pre_path	."nucleo/basededatos.php");
 			require_once($pre_path	."nucleo/auxiliar.php");
 			require_once($pre_path	."nucleo/general.php");		
-
-
-							
+	
 			$objeto					=new general();         
 
 			$comando_sql			="SELECT * FROM modulos ";		
@@ -94,8 +92,8 @@
 			{
 				$comando_sql="
 					SELECT 
-						admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
-						admin_soles37.FN_ImgFile('../modulos/user/img/user.png',files_id,180,0) as img_files_id_med, c.*		
+						FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
+						FN_ImgFile('../modulos/user/img/user.png',files_id,180,0) as img_files_id_med, c.*		
 					FROM company c WHERE id={$_REQUEST["setting_company"]}
 				";		
 				$modulos 		=$objeto->__EXECUTE($comando_sql);    

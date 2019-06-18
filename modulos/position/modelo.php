@@ -743,7 +743,8 @@
 						alerts a join
 						alerts_device ad on ad.alerts_id=a.id and ad.status=1 join
 						alerts_geofence ag on ag.alerts_id=a.id and ag.status=1 join
-						geofences g on g.id=ag.geofence_id
+						geofences g on g.id=ag.geofence_id join 
+						devices d on d.id=ad.device_id and a.company_id=d.company_id
 					WHERE 1=1
 						AND a.status='activo'	
 					 	AND a.company_id={$position["com_id"]}

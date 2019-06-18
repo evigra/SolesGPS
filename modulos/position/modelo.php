@@ -857,15 +857,17 @@
 															
 									$this->__EXECUTE($comando_sql);
 									
+									$option_mail=array(
+										"to"		=>@$row["geofence_in"],
+										#"bbc"		=>@$row["geofence_email_out"],
+										"title"		=>"SOLESGPS ".$this->date2." :: Entrada de Geocercas"
+									);
+									$position["geofence"]=$row["name"];
+									
 									if($position["com_estatus"]==1)
 									{
-										$option_mail=array(
-											"to"		=>$row["geofence_in"],
-											#"bbc"		=>$row["geofence_email_in"],
-											"title"		=>"SOLESGPS ".$this->date2." :: Entrada a Geocercas"
-										);
-										$position["geofence"]=$row["name"];
-										$this->mail_position($position,$option_mail);
+										$this->mail_position($position,$option_mail);								
+										if($position["whatsapp"]==1)
 										$this->__WA(
 											array(
 												"telefono"=>$position["c_telefono"], 
@@ -931,17 +933,6 @@
 							{
 								print_r($devicegeofence_data);
 								echo "<br>>>>>>>>>><br>";							
-							
-								$comando_sql	="UPDATE devices_geofences SET 
-										time_end='{$position["devicetime"]}', 
-										del=1 
-									WHERE 1=1
-										AND deviceid={$position["dev_id"]} 
-										AND geofenceid={$row["gid"]} 										
-										AND alertid={$row["aid"]}
-										AND (time_end is NULL OR time_end='')
-										AND tipo ='GEOFENCES'
-								";
 								$comando_sql	="UPDATE devices_geofences SET 
 										time_end='{$position["devicetime"]}', 
 										del=1 
@@ -965,7 +956,8 @@
 								
 								if($position["com_estatus"]==1)
 								{
-									$this->mail_position($position,$option_mail);
+									$this->mail_position($position,$option_mail);								
+									if($position["whatsapp"]==1)
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 

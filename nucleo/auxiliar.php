@@ -631,7 +631,7 @@
 				WHERE 1=1
 					AND nombre is not null
 					AND estatus=1
-					AND tipo_company='GPS'
+					AND tipo_company='SYSTEM'
 			"; 
 
 		    $datas              =$this->__EXECUTE($comando_sql, $option_conf);

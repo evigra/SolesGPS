@@ -1,19 +1,22 @@
 {tipo_company}
 <div class="mainTable">    
-             <table border="1" width="100%">
+             <table border="0" width="100%">
                 <tr>
-                    <td width="33%" rowspan="2" align="center">{img_files_id}</td>                        
-                    <td colspan="2">{nombre}</td>
+                    <td width="33%" rowspan="3" align="center">{img_files_id}</td>                        
+                    <td height="20" colspan="2">{nombre}</td>
                     <td width="40">{cliente}</td>        
                     <td width="40">{proveedor}</td>
                 </tr>          
                 <tr>
-                	<td>{estatus}</td>        
+                	<td height="20">{estatus}</td>        
                     <td width="17%">{telefono}</td>        
                     <td width="40">{sms}</td>        
-                    <td width="40">{whatsapp}</td>
-                    
+                    <td width="40">{whatsapp}</td>                    
                 </tr>          
+                <tr>
+                	<td colspan="4"></td>        
+                </tr>          
+
             </table> 
 
 			<div id="tabs" class="form">
@@ -63,7 +66,9 @@
 				<div id="tabs-4"  class="form">
 					{trabajador_ids}
 				</div>
-			</div>			
+
+			</div>
+			
 </div>            
   <script>
   $(function() {

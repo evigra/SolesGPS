@@ -174,7 +174,7 @@
 													
 							$html_title["$campo"]			=$__REPORT_TITLES["html"];	
 							/////////////////////////////////////
-							$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
+							$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];															
 						}
 						#*/
     				}
@@ -416,6 +416,13 @@
    			
    			
 			$this->sys_title		=$html_title;
+			if(!isset($_SESSION["modules"]))					
+				$_SESSION["modules"]										=array();
+			if(!isset($_SESSION["modules"][$this->sys_object]))	
+				$_SESSION["modules"][$this->sys_object]						=array();
+			if(!isset($_SESSION["modules"][$this->sys_object]["title"]))	
+				$_SESSION["modules"][$this->sys_object]["title"]			=$html_title;
+						
 			$this->sys_title_pdf	=$html_title;
    			   			
    			if(isset($html_title))			

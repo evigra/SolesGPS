@@ -2197,14 +2197,19 @@
 		    	$option["sys_page_$name"]           			=$sys_page;		        		        
 				
 		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
+		    	{
 		    		$return["data"] =$option["data"];	
+
+								
+					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
+					$this->sys_title_pdf	=$this->sys_title;
+		    	}	
 		    	else  
 		    	{			    				    	
 		    	    $option["name"]                 			=$name;
 		    	   
 		    		$browse 									=$this->__BROWSE($option);		
 		    		
-    		    	$this->__PRINT_R($_SESSION);
 		    		
 					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												

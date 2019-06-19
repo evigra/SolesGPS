@@ -86,6 +86,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     		    
     	$module_title								="Formato ";
+    	$objeto->__PRINT_R($_SESSION);
     }	
 
 	elseif($objeto->sys_private["section"]=="kanban")
@@ -119,6 +120,8 @@
 		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
+		
+		
     }
 	$objeto->words["module_title"]              =$module_title . "Orden de Venta";
 	

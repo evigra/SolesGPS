@@ -2206,12 +2206,10 @@
 		    	else  
 		    	{			    				    	
 		    	    $option["name"]                 			=$name;
-		    	   
 		    		$browse 									=$this->__BROWSE($option);		
 		    		
-		    		
 					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
-						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;;												
+						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					
 					
 					##################################
@@ -2228,7 +2226,7 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}
-		    	$option["title"]							= @$this->sys_title;
+		    	$option["title"]								= @$this->sys_title;
 		    	
 		    	$total											=$return["total"];
 		    	if(!isset($browse))			$browse				=array("");	

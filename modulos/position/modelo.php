@@ -393,7 +393,7 @@
 	            	    $row["event"]				=$data_update["event"];
 	            	}    
 				}
-                if(@$data_update["event"]=="")2
+                if(@$data_update["event"]=="")
 	                $data_update["event"]		="{$row["event"]}";
             	            	
             	$row_new					=$row;

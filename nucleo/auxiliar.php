@@ -2199,7 +2199,6 @@
 		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
 		    	{
 		    		$return["data"] =$option["data"];	
-
 								
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
 					$this->sys_title_pdf	=$this->sys_title;
@@ -2218,8 +2217,7 @@
 					##################################
 					
 		    		$return["data"]								= $browse["data"];		    				    		
-		    		$option["title"]							= @$this->sys_title;
-																					
+		    																							
 		    		if(isset($browse["total"]))		
 		    		{
 						$return["total"]						= $browse["total"];	
@@ -2230,6 +2228,8 @@
 						else                            		$fin    =$return["total"];
 					}			    		
 		    	}
+		    	$option["title"]							= @$this->sys_title;
+		    	
 		    	$total											=$return["total"];
 		    	if(!isset($browse))			$browse				=array("");	
 		    	if(!isset($browse["js"]))	$browse["js"]		="";	

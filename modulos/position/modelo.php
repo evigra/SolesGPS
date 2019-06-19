@@ -496,12 +496,12 @@
 							
 						}	
 					}	
-            		else if($row["event"]=="ALERTA ALARMA DE BATERIA")
+            		else if($row["event"]=="ALERTA DE BATERIA")
             		{	# BATERIA BAJA
             			$enviar_mail=1;
             			$color			="yellow";
             			$descripcion	="
-		        			Esta es una alerta por exceso de velocidad
+		        			Esta es una alerta de bateria
 		        			$aux_descripcion
             			";        
             			    			            			            			
@@ -533,7 +533,7 @@
             			$enviar_mail=1;
             			$color			="red";
             			$descripcion	="
-		        			Esta es una alerta por SOS
+		        			Esta es una alerta por SOS presionado
 		        			$aux_descripcion
             			";            			            			
 						$comando_sql="

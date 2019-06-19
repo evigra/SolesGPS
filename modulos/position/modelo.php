@@ -393,7 +393,7 @@
 	            	    $row["event"]				=$data_update["event"];
 	            	}    
 				}
-                if(@$data_update["event"]=="")
+                if(@$data_update["event"]=="")2
 	                $data_update["event"]		="{$row["event"]}";
             	            	
             	$row_new					=$row;
@@ -411,8 +411,9 @@
             	$aux_descripcion			=$this->position_description($row,$option);
             	            	
             	if($asunto=="VELOCIDAD")
-            	{       
-            		#$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
+            	{   
+            		////////////////////////    
+            		$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
             		if($row["speed_start"]=="0000-00-00 00:00:00")
             		{            			
             			$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
@@ -872,7 +873,7 @@
 										$this->__WA(
 											array(
 												"telefono"=>$position["c_telefono"], 
-												"mensaje"=>"[{$position["dispo"]}] :: Entrando a {$row["gname"]}\n
+												"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nEntrando a {$row["gname"]} \n
 													Sistema Automatico SolesGPS												
 												"
 											)
@@ -962,8 +963,8 @@
 									$this->__WA(
 										array(
 											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"[{$position["dispo"]}] :: Saliendo de {$row["gname"]}\n
-											Sistema Automatico SolesGPS
+												"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nSaliendo de {$row["gname"]} \n
+													Sistema Automatico SolesGPS												
 											"
 										)
 									);

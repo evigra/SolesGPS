@@ -64,7 +64,7 @@
 	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-		
+				
     	$module_title								="";
     }	
     elseif($objeto->sys_private["section"]=="show")
@@ -85,8 +85,7 @@
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     		    
-    	$module_title								="Formato ";
-    	$objeto->__PRINT_R($_SESSION);
+    	$module_title								="Formato ";    	
     }	
 
 	elseif($objeto->sys_private["section"]=="kanban")

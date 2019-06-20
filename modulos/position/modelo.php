@@ -333,7 +333,6 @@
 					d.id as dev_id,
 					c.id as com_id,
 					c.estatus as com_estatus,
-					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
 					c.*,
 					f.*,
 					d.*,
@@ -351,7 +350,8 @@
 					CASE 
 						WHEN e.descripcion IS NOT NULL THEN e.descripcion
                         else 'REPORTE DE TIEMPO'
-					END	 as event 
+					END	 as event, 
+					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
 				from 
 					positions p left join 
 					event e on 
@@ -366,6 +366,7 @@
 				where 1=1					
 					AND leido=0
 					AND valid=1
+				ORDER BY devicetime DESC	
 				LIMIT 500
 			";		
 

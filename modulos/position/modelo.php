@@ -351,7 +351,7 @@
 						WHEN e.descripcion IS NOT NULL THEN e.descripcion
                         else 'REPORTE DE TIEMPO'
 					END	 as event, 
-					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
+					DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
 				from 
 					positions p left join 
 					event e on 

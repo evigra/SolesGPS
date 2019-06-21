@@ -1797,28 +1797,31 @@
 
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{				
-							$this->__PRINT_R($row);								
-					    	if(isset($this->sys_fields[$field]["class_field_l"]))
-					    	{					    		
-					    		if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
-					    		{
-					    			$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-								}
-								else $row[$field]="";
-							}				
-							else $row[$field]="";
-			
-							if(isset($this->sys_fields[$field]["values"][0]))
-								$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-							else $row[$field]="";							
-							
-							if($row[$field]=="" AND isset($row["auto_".$field]))
+							if($this->sys_memory=="")
 							{
-								$aux					=$row[$field];
-								$row[$field]			=$row["auto_".$field];
-								$row["auto_".$field]	=$aux;
+								#$this->__PRINT_R($row);								
+								if(isset($this->sys_fields[$field]["class_field_l"]))
+								{					    		
+									if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
+									{
+										$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+									}
+									else $row[$field]="";
+								}				
+								else $row[$field]="";
+				
+								if(isset($this->sys_fields[$field]["values"][0]))
+									$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+								else $row[$field]="";							
+								
+								if($row[$field]=="" AND isset($row["auto_".$field]))
+								{
+									$aux					=$row[$field];
+									$row[$field]			=$row["auto_".$field];
+									$row["auto_".$field]	=$aux;
+								}
+								#$this->__PRINT_R($row);
 							}
-							#$this->__PRINT_R($row);
 						}	
 					}			    
                     if($class=="odd")   

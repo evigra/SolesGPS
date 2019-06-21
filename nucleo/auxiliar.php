@@ -1790,6 +1790,11 @@
 						{										
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
 						}						
+						if(@$this->sys_fields[$field]["type"]=="check")
+						{										
+							#$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
+						}						
+
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{				
 							#$this->__PRINT_R($row);								

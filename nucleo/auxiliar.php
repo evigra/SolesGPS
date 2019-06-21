@@ -2209,9 +2209,9 @@
 								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);
 
 								if(isset($rows["auto_$field"]))	
-								{
-																		
-									$option["data"][$index][$field]=$rows["auto_$field"];									
+								{																		
+									$option["data"][$index][$field]=$rows["auto_$field"];																		
+									unset($option["data"][$index]["auto_$field"]);
 								}	
 							}					
 						}						

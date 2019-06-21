@@ -2171,15 +2171,16 @@
 							{								
 								if(isset($rows["auto_$field"]))	
 								{
-									$this->__PRINT_R($field);			
-									$option["data"][$index][$field]=$value;
+									
+									$option["data"][$index][$field]=$rows["auto_$field"];
+									
 								}	
 							}					
 						}
 						
 					}
 					
-					$this->__PRINT_R($option["data"]);
+					#$this->__PRINT_R($option["data"]);
 					
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		

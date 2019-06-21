@@ -1550,12 +1550,11 @@
 					$"."option_report[\"name\"]	            		= '$campo';
 					
 					#$"."option_report[\"echo\"]	            		= 'AUX :: MANY2ONE $campo ';
-
 		
-					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
+					#$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
-					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
-					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
+					#$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
+					#$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
 				";											
 				eval($eval);	
 			}

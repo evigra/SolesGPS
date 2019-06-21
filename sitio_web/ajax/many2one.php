@@ -4,7 +4,6 @@
 		
 	require_once("../../nucleo/sesion.php");
 	
-	#print_r($objeto_json);
 	$class_one										=$objeto_json["class_one"];
 	#$class_one_id									=$objeto_json["class_one_id"];
 	$class_field									=$objeto_json["class_field"];
@@ -14,7 +13,6 @@
 	$class_id										=@$objeto_json["class_id"];
 	
 	$row											=$objeto_json["row"];
-		
 
 	$eval="
 		$"."option"."_obj_{$class_one}	=array(
@@ -30,8 +28,7 @@
 	
 	$valor											=$objeto->sys_fields[$class_field];
 	
-	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";					
-	
+	if(!isset($valor["class_template"]))			$valor["class_template"]="many2one_standar";						
 	$option=array(
 		"class_id"									=>$class_id,
 		"class_one"									=>$class_one,

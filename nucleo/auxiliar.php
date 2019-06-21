@@ -2178,7 +2178,7 @@
 						
 					}
 					
-					#$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]["$campo"]);
+					$this->__PRINT_R($option["data"]);
 					
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		

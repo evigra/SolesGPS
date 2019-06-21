@@ -2204,22 +2204,18 @@
 						if(@$rows["sys_action"]=="__SAVE")
 						{
 							foreach($rows as $field => $value)
-							{		
-								if($field=="sys_action")						unset($option["data"][$index]["sys_action"]);
-								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);
-						
+							{																
 								if(isset($rows["auto_$field"]))	
 								{																		
 									$option["data"][$index][$field]=$rows["auto_$field"];																		
 									unset($option["data"][$index]["auto_$field"]);
 								}	
+								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);												
 							}					
 						}						
 					}
-
 		    		$return["data"] =$option["data"];	
-								
-								
+																
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
 					$this->sys_title_pdf	=$this->sys_title;
 		    	}	

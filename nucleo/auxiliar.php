@@ -2160,7 +2160,7 @@
 				
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
-					$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]["$campo"]);
+					
 				
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
@@ -2178,6 +2178,7 @@
 						
 					}
 					
+					$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]["$campo"]);
 					
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		

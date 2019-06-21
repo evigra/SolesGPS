@@ -757,7 +757,7 @@
 					
 					
 					
-					$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]);
+					#$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]);
 				}		
 			}
     	}

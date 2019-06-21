@@ -2217,8 +2217,24 @@
 				
 		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
 		    	{
+					foreach($option["data"] as $index => $rows)
+					{
+						if(@$rows["sys_action"]=="__SAVE")
+						{
+							foreach($rows as $field => $value)
+							{								
+								if(isset($rows["auto_$field"]))	
+								{									
+									$option["data"][$index][$field]=$rows["auto_$field"];									
+								}	
+							}					
+						}
+						
+					}
+
 		    		$return["data"] =$option["data"];	
 								
+				
 								
 								
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					

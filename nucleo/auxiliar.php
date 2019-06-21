@@ -1777,6 +1777,24 @@
 			
 			if(is_array($data))
 			{
+				/*
+					foreach($option["data"] as $index => $rows)
+					{
+						if(@$rows["sys_action"]=="__SAVE")
+						{
+							foreach($rows as $field => $value)
+							{								
+								if(isset($rows["auto_$field"]))	
+								{									
+									$option["data"][$index][$field]=$rows["auto_$field"];									
+								}	
+							}					
+						}
+						
+					}
+				
+				*/
+			
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
@@ -1791,7 +1809,8 @@
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
 						}						
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
-						{												
+						{				
+							$this->__PRINT_R($row);								
 					    	if(isset($this->sys_fields[$field]["class_field_l"]))
 					    	{					    		
 					    		if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
@@ -1812,6 +1831,7 @@
 								$row[$field]			=$row["auto_".$field];
 								$row["auto_".$field]	=$aux;
 							}
+							$this->__PRINT_R($row);
 						}	
 					}			    
                     if($class=="odd")   
@@ -2161,27 +2181,7 @@
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
 					$campo				=$template_option["class_field"];
-					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
-					
-					foreach($option["data"] as $index => $rows)
-					{
-						if(@$rows["sys_action"]=="__SAVE")
-						{
-							foreach($rows as $field => $value)
-							{								
-								if(isset($rows["auto_$field"]))	
-								{
-									
-									$option["data"][$index][$field]=$rows["auto_$field"];
-									
-								}	
-							}					
-						}
-						
-					}
-					
-					$this->__PRINT_R($option["data"]);
-					
+					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];										
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		
 					$option["title"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["title"];				

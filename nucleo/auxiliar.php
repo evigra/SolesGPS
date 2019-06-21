@@ -2168,10 +2168,12 @@
 						if(@$rows["sys_action"]=="__SAVE")
 						{
 							foreach($rows as $field => $value)
-							{
-								$this->__PRINT_R($field);			
+							{								
 								if(isset($rows["auto_$field"]))	
+								{
+									$this->__PRINT_R($field);			
 									$option["data"][$index][$field]=$value;
+								}	
 							}					
 						}
 						

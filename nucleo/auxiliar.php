@@ -2160,8 +2160,6 @@
 				
 				if(isset($this->class_one) AND isset($_SESSION["SAVE"][$this->class_one]["$campo"]) AND count($_SESSION["SAVE"][$this->class_one]["$campo"])>0)
 				{						
-					
-				
 					$campo				=$template_option["class_field"];
 					$option["data"]		=@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"];
 					
@@ -2171,6 +2169,7 @@
 						{
 							foreach($rows as $field => $value)
 							{
+								$this->__PRINT_R($field);			
 								if(isset($rows["auto_$field"]))	
 									$option["data"][$index][$field]=$value;
 							}					

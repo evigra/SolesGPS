@@ -2167,18 +2167,19 @@
 					
 					foreach($option["data"] as $index => $rows)
 					{
+						$this->__PRINT_R()
 						if(@$rows["sys_action"]=="__SAVE")
 						{
 							foreach($rows as $field => $value)
 							{
-								if($field=="auto_$field")	
+								if(isset($rows["auto_$field"]))	
 									$option["data"][$index][$field]=$value;
 							}					
 						}
 						
 					}
 					
-					$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]["$campo"]);
+					#$this->__PRINT_R($_SESSION["SAVE"][$this->class_one]["$campo"]);
 					
 					$option["total"]	=count(@$_SESSION["SAVE"][$this->class_one]["$campo"]["data"]);				
 					$option["inicio"]	=@$_SESSION["SAVE"][$this->class_one]["$campo"]["inicio"];		

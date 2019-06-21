@@ -1776,25 +1776,7 @@
 			if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
 			
 			if(is_array($data))
-			{
-				/*
-					foreach($option["data"] as $index => $rows)
-					{
-						if(@$rows["sys_action"]=="__SAVE")
-						{
-							foreach($rows as $field => $value)
-							{								
-								if(isset($rows["auto_$field"]))	
-								{									
-									$option["data"][$index][$field]=$rows["auto_$field"];									
-								}	
-							}					
-						}
-						
-					}
-				
-				*/
-			
+			{			
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
@@ -2222,9 +2204,15 @@
 						if(@$rows["sys_action"]=="__SAVE")
 						{
 							foreach($rows as $field => $value)
-							{								
+							{		
+								$this->__PRINT_R(substr($field,10));
+							
+								if($field=="sys_action")			unset($option["data"][$index]["sys_action"]);
+								if($field=="sys_action")			unset($option["data"][$index]["sys_action"]);
+
 								if(isset($rows["auto_$field"]))	
-								{									
+								{
+																		
 									$option["data"][$index][$field]=$rows["auto_$field"];									
 								}	
 							}					

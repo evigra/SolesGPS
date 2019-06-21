@@ -1797,7 +1797,7 @@
 
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{				
-							if($this->sys_memory=="")
+							#if($this->sys_memory=="")
 							{
 								#$this->__PRINT_R($row);								
 								if(isset($this->sys_fields[$field]["class_field_l"]))

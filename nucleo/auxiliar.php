@@ -1799,7 +1799,7 @@
 						{				
 							#if($this->sys_memory=="")
 							{
-								#$this->__PRINT_R($row);								
+								$this->__PRINT_R($row);								
 								if(isset($this->sys_fields[$field]["class_field_l"]))
 								{					    		
 									if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
@@ -2216,7 +2216,7 @@
 								if(isset($rows["auto_$field"]))	
 								{																		
 									$option["data"][$index][$field]=$rows["auto_$field"];																		
-									unset($option["data"][$index]["auto_$field"]);
+									#unset($option["data"][$index]["auto_$field"]);
 								}	
 								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);												
 							}					

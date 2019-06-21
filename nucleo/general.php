@@ -752,11 +752,12 @@
 					else
 					{	
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][]	=	$row;
-					}
-					
+					}					
 					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 					
-					#$this->__PRINT_R($_SESSION["SAVE"]["$class_one"]);
+					
+					
+					$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]);
 				}		
 			}
     	}

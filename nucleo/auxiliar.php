@@ -2167,7 +2167,6 @@
 					
 					foreach($option["data"] as $index => $rows)
 					{
-						$this->__PRINT_R()
 						if(@$rows["sys_action"]=="__SAVE")
 						{
 							foreach($rows as $field => $value)

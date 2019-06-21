@@ -2205,10 +2205,8 @@
 						{
 							foreach($rows as $field => $value)
 							{		
-								$this->__PRINT_R(substr($field,0,10));
-							
-								if($field=="sys_action")			unset($option["data"][$index]["sys_action"]);
-								if($field=="sys_action")			unset($option["data"][$index]["sys_action"]);
+								if($field=="sys_action")						unset($option["data"][$index]["sys_action"]);
+								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);
 
 								if(isset($rows["auto_$field"]))	
 								{

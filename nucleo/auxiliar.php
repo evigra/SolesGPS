@@ -1810,7 +1810,7 @@
 						}						
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{				
-							#$this->__PRINT_R($row);								
+							$this->__PRINT_R($row);								
 					    	if(isset($this->sys_fields[$field]["class_field_l"]))
 					    	{					    		
 					    		if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
@@ -2218,6 +2218,8 @@
 		    	if(isset($option["data"]) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))          			
 		    	{
 		    		$return["data"] =$option["data"];	
+								
+								
 								
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
 					$this->sys_title_pdf	=$this->sys_title;

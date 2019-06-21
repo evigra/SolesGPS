@@ -1796,10 +1796,10 @@
 						}						
 
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
-						{				
-							#if($this->sys_memory=="")
-							{
-								$this->__PRINT_R($row);								
+						{		
+							$this->__PRINT_R($row);		
+							if(!isset($row["auto_$field"])=="")
+							{																
 								if(isset($this->sys_fields[$field]["class_field_l"]))
 								{					    		
 									if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)

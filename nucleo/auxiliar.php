@@ -1831,7 +1831,7 @@
 								$row[$field]			=$row["auto_".$field];
 								$row["auto_".$field]	=$aux;
 							}
-							$this->__PRINT_R($row);
+							#$this->__PRINT_R($row);
 						}	
 					}			    
                     if($class=="odd")   

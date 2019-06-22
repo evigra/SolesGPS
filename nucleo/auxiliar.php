@@ -2133,12 +2133,14 @@
     	##############################################################################    
 		public function __VIEW_KANBAN($option)
 		{
+			if(!is_array($option))	$option=array();
 			$option["type_view"]="kanban";
 			return $this->__SYS_REPORT($option);
         }				
 		###################################
 		public function __VIEW_REPORT($option)
 		{
+			if(!is_array($option))	$option=array();
 			$option["type_view"]="report";
 			return $this->__SYS_REPORT($option);
 		}
@@ -2368,7 +2370,7 @@
 					}						
 
 					$button_create_js="";
-					
+					######### REPORTE HTML #############################################################
 					if(isset($template_option) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
 					{						
 						$button_create_js="
@@ -2499,10 +2501,9 @@
 							";												
 						}	
 					}
-					#/*
+					######### REPORTE PDF #############################################################	
 					else
-					{					
-											
+					{																
 						if($option["type_view"]=="report")
 						{
 							$return["report"]="
@@ -2525,13 +2526,7 @@
 								</div>
 							";
 						}	
-						
-						#$return["report"]="SYS_REPORT lalo222222222222";
-
-					}
-					#*/
-					#$return["report"]="SYS_REPORT lalo22";
-					
+					}					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">
@@ -2634,28 +2629,6 @@
 						";
 					}
 					$return["html"]	=$view;
-					/*
-					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
-					{
-						$return["html"]	="
-							<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-								$view_title
-								$view_body
-							</table>											
-						";	
-					}
-					else
-					{
-						$return["html"]	="
-							<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-								$view_title
-								$view_body
-							</table>											
-						";	
-						$return["html"]	="SYS_REPORT lalo html";
-					}
-					*/	
-					
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

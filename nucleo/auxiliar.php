@@ -366,17 +366,20 @@
 						
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
-				if(!isset($words["sys_titulo"]))						$words["sys_titulo"]					=$this->words["module_title"];
-				if(!isset($words["sys_subtitulo"]))						$words["sys_subtitulo"]					=$this->words["module_subtitle"];
-				if(!isset($words["sys_asunto"]))						$words["sys_asunto"]					="";
-				if(!isset($words["sys_pie"]))							$words["sys_pie"]						="";
+		    
+		    
+		    	if(!isset($words["sys_empresa"]))				$words["sys_empresa"]			=$this->words["sys_empresa"];
+				if(!isset($words["sys_titulo"]))				$words["sys_titulo"]			=$this->words["module_title"];
+				if(!isset($words["sys_subtitulo"]))				$words["sys_subtitulo"]			=$this->words["module_subtitle"];
+				if(!isset($words["sys_asunto"]))				$words["sys_asunto"]			="";
+				if(!isset($words["sys_pie"]))					$words["sys_pie"]				="";
 				
-				if(isset($_SESSION["pdf"]["sys_titulo"]))				$words["sys_titulo"]					=$_SESSION["pdf"]["sys_titulo"];
-				if(isset($_SESSION["pdf"]["sys_subtitulo"]))			$words["sys_subtitulo"]					=$_SESSION["pdf"]["sys_subtitulo"];
+				if(isset($_SESSION["pdf"]["sys_titulo"]))		$words["sys_titulo"]			=$_SESSION["pdf"]["sys_titulo"];
+				if(isset($_SESSION["pdf"]["sys_subtitulo"]))	$words["sys_subtitulo"]			=$_SESSION["pdf"]["sys_subtitulo"];
 				
-		    	if(!isset($_SESSION["pdf"]))							$_SESSION["pdf"]	=array();		    					
-				if(!isset($_SESSION["pdf"]["title"]))					$_SESSION["pdf"]["title"]					=$this->words["module_title"];
-				if(!isset($_SESSION["pdf"]["subject"]))					$_SESSION["pdf"]["subject"]					=$this->words["html_head_title"];
+		    	if(!isset($_SESSION["pdf"]))					$_SESSION["pdf"]				=array();		    					
+				if(!isset($_SESSION["pdf"]["title"]))			$_SESSION["pdf"]["title"]		=$this->words["module_title"];
+				if(!isset($_SESSION["pdf"]["subject"]))			$_SESSION["pdf"]["subject"]		=$this->words["html_head_title"];
 				if(!isset($_SESSION["pdf"]["template"]))				
 				{	
 					$_SESSION["pdf"]["template"]				=$template;

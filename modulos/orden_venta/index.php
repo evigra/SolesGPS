@@ -119,8 +119,6 @@
 		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
-		
-		
     }
 	$objeto->words["module_title"]              =$module_title . "Orden de Venta";
 	

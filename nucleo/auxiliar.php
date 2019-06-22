@@ -2408,7 +2408,7 @@
 							
 					$report_class="";
 					if(!isset($option["template_option"]))	$report_class="report_class";
-					$return["report"]="SYS_REPORT lalo";
+					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 					{
 						@$return["js"].="			
@@ -2494,7 +2494,6 @@
 					}
 					else
 					{					
-						$return["report"]="VIEW_REPORT lalo";
 						/*					
 						if($option["type_view"]=="report")
 						{
@@ -2520,6 +2519,7 @@
 						}	
 						*/
 					}
+					$return["report"]="SYS_REPORT lalo";
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">

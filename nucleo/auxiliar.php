@@ -1799,33 +1799,26 @@
 						{		
 							#$this->__PRINT_R($row);		
 							if(!isset($row["auto_$field"])=="")
-							{																
-								if(isset($this->sys_fields[$field]["class_field_l"]))
-								{					    		
-									if(isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
-									{
-										$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-									}
-									else $row[$field]="";
-								}				
+							{								
+								if(isset($this->sys_fields[$field]["values"][0]) AND isset($this->sys_fields[$field]["class_field_l"]) AND isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
+								{
+									$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+								}
 								else $row[$field]="";
 				
-								if(isset($this->sys_fields[$field]["values"][0]))
-									$row[$field]	=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-								else $row[$field]="";							
-								
 								if($row[$field]=="" AND isset($row["auto_".$field]))
 								{
 									$aux					=$row[$field];
 									$row[$field]			=$row["auto_".$field];
 									$row["auto_".$field]	=$aux;
 								}
-								
+								/*								
 							}
 							else
 							{
 								unset($row["auto_$field"]);
 							}	
+							*/
 							$this->__PRINT_R($row);
 
 						}

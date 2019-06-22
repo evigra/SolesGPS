@@ -1563,7 +1563,7 @@
 					}	
 					else
 					{
-						$"."words[\"$campo\"]  							=$"."obj_$campo"."words[\"many2one_report\"]
+						$"."words[\"$campo\"]  							=$"."obj_$campo"."words[\"many2one_report\"];
 					}
 
 				";											

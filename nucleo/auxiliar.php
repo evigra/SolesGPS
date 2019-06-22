@@ -1555,7 +1555,7 @@
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
-					$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
+					#$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
 				";											
 				eval($eval);	
 			}
@@ -2623,6 +2623,7 @@
 						";
 					}
 					$return["html"]	=$view;
+					$return["html"]	="SYS_REPORT lalo";
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

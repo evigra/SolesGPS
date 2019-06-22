@@ -2525,12 +2525,7 @@
 							";
 						}	
 						#*/
-							$return["report"]="
-								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-									$view_title
-									$view_body
-								</table>					
-							";
+						$return["report"]="SYS_REPORT lalo222222222222";
 
 					}
 					#$return["report"]="SYS_REPORT lalo";

@@ -1806,7 +1806,7 @@
 								{
 									$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
 								}
-								else $row[$field]="";
+								#else $row[$field]="";
 				
 								if($row[$field]=="" AND isset($row["auto_".$field]))
 								{

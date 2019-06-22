@@ -2408,7 +2408,7 @@
 							
 					$report_class="";
 					if(!isset($option["template_option"]))	$report_class="report_class";
-
+					$return["report"]="SYS_REPORT lalo";
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 					{
 						@$return["js"].="			

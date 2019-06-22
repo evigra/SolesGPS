@@ -1514,6 +1514,11 @@
 					if(!is_object($"."this->sys_fields[\"$campo\"][\"obj\"]))
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]		=new {$valor["class_name"]}($"."option_$campo);
 
+					if(in_array(@$"."this->sys_private[\"action\"],$"."_SESSION[\"var\"][\"print\"]))											
+						@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"action\"]=\"print_pdf\";
+
+
+
 					if(isset($"."json))
 					{								
 						$"."sys_primary_field						=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
@@ -1552,7 +1557,6 @@
 					#$"."option_report[\"echo\"]	            		= 'AUX :: MANY2ONE $campo ';
 		
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
-
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					#$"."this->__PRINT_R($"."obj_$campo"."words[\"many2one_report\"]);
@@ -2499,9 +2503,10 @@
 							";												
 						}	
 					}
+					/*
 					else
 					{					
-						#/*					
+											
 						if($option["type_view"]=="report")
 						{
 							$return["report"]="
@@ -2524,10 +2529,11 @@
 								</div>
 							";
 						}	
-						#*/
+						
 						#$return["report"]="SYS_REPORT lalo222222222222";
 
 					}
+					*/
 					#$return["report"]="SYS_REPORT lalo22";
 					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
@@ -2631,28 +2637,28 @@
 							</script>							
 						";
 					}
+					$return["html"]	=$view;
+					/*
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 					{
-						$return["html"]	=$view;
-
 						$return["html"]	="
-								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-									$view_title
-									$view_body
-								</table>											
+							<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+								$view_title
+								$view_body
+							</table>											
 						";	
-
 					}
 					else
 					{
 						$return["html"]	="
-								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
-									$view_title
-									$view_body
-								</table>											
+							<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+								$view_title
+								$view_body
+							</table>											
 						";	
 						$return["html"]	="SYS_REPORT lalo html";
-					}	
+					}
+					*/	
 					
 				}	
 		    }	

@@ -2528,7 +2528,7 @@
 						$return["report"]="SYS_REPORT lalo222222222222";
 
 					}
-					#$return["report"]="SYS_REPORT lalo";
+					$return["report"]="SYS_REPORT lalo22";
 					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="

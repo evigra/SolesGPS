@@ -1555,7 +1555,7 @@
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
-					$"."words[\"$campo\"]  							=\"lalo\";
+					#$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
 				";											
 				eval($eval);	
 			}
@@ -2494,7 +2494,7 @@
 					}
 					else
 					{					
-						$return["report"]="lalo";
+						$return["report"]="VIEW_REPORT lalo";
 						/*					
 						if($option["type_view"]=="report")
 						{

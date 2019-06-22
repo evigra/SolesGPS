@@ -1822,7 +1822,12 @@
 								}
 								#$this->__PRINT_R($row);
 							}
-						}	
+							else
+							{
+								unset($row["auto_".$field]);
+							}	
+
+						}
 					}			    
                     if($class=="odd")   
                     {

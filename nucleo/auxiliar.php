@@ -1797,7 +1797,7 @@
 
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{		
-							$this->__PRINT_R($row);		
+							#$this->__PRINT_R($row);		
 							if(!isset($row["auto_$field"])=="")
 							{																
 								if(isset($this->sys_fields[$field]["class_field_l"]))
@@ -1820,12 +1820,13 @@
 									$row[$field]			=$row["auto_".$field];
 									$row["auto_".$field]	=$aux;
 								}
-								#$this->__PRINT_R($row);
+								
 							}
 							else
 							{
 								unset($row["auto_".$field]);
 							}	
+							$this->__PRINT_R($row);
 
 						}
 					}			    

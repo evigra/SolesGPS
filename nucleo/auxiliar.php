@@ -2525,10 +2525,10 @@
 							";
 						}	
 						#*/
-						$return["report"]="SYS_REPORT lalo222222222222";
+						#$return["report"]="SYS_REPORT lalo222222222222";
 
 					}
-					$return["report"]="SYS_REPORT lalo22";
+					#$return["report"]="SYS_REPORT lalo22";
 					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="
@@ -2632,7 +2632,7 @@
 						";
 					}
 					$return["html"]	=$view;
-					#$return["html"]	="SYS_REPORT lalo";
+					$return["html"]	="SYS_REPORT lalo html";
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

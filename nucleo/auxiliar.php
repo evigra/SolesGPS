@@ -1555,6 +1555,7 @@
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
+					$"."words[\"$campo\"]  							=\"lalo\";
 				";											
 				eval($eval);	
 			}

@@ -1555,7 +1555,7 @@
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
-					#$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
+					$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
 				";											
 				eval($eval);	
 			}
@@ -2520,6 +2520,7 @@
 						*/
 					}
 					$return["report"]="SYS_REPORT lalo";
+					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="
 						<div id=\"base_$name\" class=\"render_h_origen\" diferencia_h=\"-20\" style=\"$height_render width:100%; overflow-y:auto; overflow-x:hidden; border: 	1px solid #ccc; padding:0px; margin:0px;\">

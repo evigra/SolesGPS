@@ -2645,6 +2645,7 @@
 						";	
 						$return["html"]	="SYS_REPORT lalo html";
 					}	
+					$return["html"]	="SYS_REPORT lalo html";
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

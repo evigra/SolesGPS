@@ -366,11 +366,8 @@
 						
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
-		    
-		    
-		    	if(!isset($words["sys_empresa"]))				$words["sys_empresa"]			=$this->words["sys_empresa"];
-				if(!isset($words["sys_titulo"]))				$words["sys_titulo"]			=$this->words["module_title"];
-				if(!isset($words["sys_subtitulo"]))				$words["sys_subtitulo"]			=$this->words["module_subtitle"];
+				if(!isset($words["sys_title"]))					$words["sys_title"]				=$this->words["module_title"];
+				if(!isset($words["sys_subtitle"]))				$words["sys_subtitle"]			=$this->words["module_subtitle"];
 				if(!isset($words["sys_asunto"]))				$words["sys_asunto"]			="";
 				if(!isset($words["sys_pie"]))					$words["sys_pie"]				="";
 				

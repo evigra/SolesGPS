@@ -1553,9 +1553,16 @@
 		
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
-					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
-					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
-					#$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";
+					if(!in_array(@$"."this->sys_private[\"action\"],$"."_SESSION[\"var\"][\"print\"]))					
+					{
+						$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
+						$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
+					}	
+					else
+					{
+						$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";					
+					}
+
 				";											
 				eval($eval);	
 			}
@@ -2494,7 +2501,7 @@
 					}
 					else
 					{					
-						/*					
+						#/*					
 						if($option["type_view"]=="report")
 						{
 							$return["report"]="
@@ -2517,9 +2524,9 @@
 								</div>
 							";
 						}	
-						*/
+						#*/
 					}
-					$return["report"]="SYS_REPORT lalo";
+					#$return["report"]="SYS_REPORT lalo";
 					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="
@@ -2623,7 +2630,7 @@
 						";
 					}
 					$return["html"]	=$view;
-					$return["html"]	="SYS_REPORT lalo";
+					#$return["html"]	="SYS_REPORT lalo";
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

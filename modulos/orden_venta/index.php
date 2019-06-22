@@ -99,13 +99,11 @@
 		);
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$template_body								=$objeto->sys_var["module_path"] . "html/kanban";
-	   	$data										=$objeto->__BROWSE();
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		$option										=array();
+    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($option);
     }    
     else
-    {
-    	
+    {    	
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
@@ -122,9 +120,9 @@
     }
 	$objeto->words["module_title"]              =$module_title . "Orden de Venta";
 	
-	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
-	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);
-	$objeto->words["module_right"]              =$objeto->__BUTTON($module_right);    
+	$objeto->words["module_left"]           =$objeto->__BUTTON($module_left);
+	$objeto->words["module_center"]         =$objeto->__BUTTON($module_center);
+	$objeto->words["module_right"]          =$objeto->__BUTTON($module_right);    
     
 	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";
 	
@@ -132,9 +130,5 @@
 	$objeto->words["html_head_keywords"]	=	"GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
-  
-	#$_SESSION["SAVE"]=array();
-  	#$objeto->__PRINT_R($_SESSION);
-    $objeto->__VIEW($objeto->html);
-    
+    $objeto->__VIEW($objeto->html);    
 ?>

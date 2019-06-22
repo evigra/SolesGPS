@@ -1553,19 +1553,17 @@
 		
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
+					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
+
+
 					if(!in_array(@$"."this->sys_private[\"action\"],$"."_SESSION[\"var\"][\"print\"]))					
 					{
-						
-					
-						$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
-						
-						$"."this->__PRINT_R($"."obj_$campo"."words[\"many2one_report\"]);
 						
 						$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
 					}	
 					else
 					{
-						$"."words[\"$campo\"]  							=\"MANY2ONE lalo\";					
+						$"."words[\"$campo\"]  							=$"."obj_$campo"."words[\"many2one_report\"]
 					}
 
 				";											

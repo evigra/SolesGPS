@@ -2631,8 +2631,18 @@
 							</script>							
 						";
 					}
-					$return["html"]	=$view;
-					$return["html"]	="SYS_REPORT lalo html";
+					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
+					{
+						$return["html"]	=$view;
+					}
+					else
+						$return["html"]	="
+								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+									$view_title
+									$view_body
+								</table>											
+						";	
+					#$return["html"]	="SYS_REPORT lalo html";
 				}	
 		    }	
 		    else $return["html"]="Es necesario un array para generar el reporte";

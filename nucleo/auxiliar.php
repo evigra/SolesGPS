@@ -2493,8 +2493,7 @@
 					}
 					else
 					{					
-						$return["report"]="
-						";
+						$return["report"]="lalo";
 						/*					
 						if($option["type_view"]=="report")
 						{

@@ -1824,7 +1824,7 @@
 							}
 							else
 							{
-								unset($row["auto_".$field]);
+								unset($row["auto_$field"]);
 							}	
 							$this->__PRINT_R($row);
 

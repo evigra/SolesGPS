@@ -2493,6 +2493,9 @@
 					}
 					else
 					{					
+						$return["report"]="
+						";
+						/*					
 						if($option["type_view"]=="report")
 						{
 							$return["report"]="
@@ -2514,8 +2517,8 @@
 									</div>
 								</div>
 							";
-						
 						}	
+						*/
 					}
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 						$view="

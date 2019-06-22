@@ -1127,6 +1127,8 @@ styles:
 				if(vehicle["sp"]>5 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
 				
 				
+				
+				
 				if(icon_status!="")
 				{
 					img_icon="<img width=\"20\" title=\""+ vehicle["ty"] +"\" src=\"../sitio_web/img/"+ icon_status +"\" >";

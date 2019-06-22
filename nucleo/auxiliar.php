@@ -1555,7 +1555,7 @@
 
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];				
-					$"."this->__PRINT_R($"."obj_$campo"."words[\"many2one_report\"]);
+					#$"."this->__PRINT_R($"."obj_$campo"."words[\"many2one_report\"]);
 
 					if(!in_array(@$"."this->sys_private[\"action\"],$"."_SESSION[\"var\"][\"print\"]))											
 						$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												

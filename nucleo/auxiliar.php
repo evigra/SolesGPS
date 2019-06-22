@@ -2634,6 +2634,14 @@
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 					{
 						$return["html"]	=$view;
+
+						$return["html"]	="
+								<table width=\"100%\" border=\"0\" style=\"background-color:#fff;  color:#000; padding:3px; margin:0px;\">								
+									$view_title
+									$view_body
+								</table>											
+						";	
+
 					}
 					else
 					{

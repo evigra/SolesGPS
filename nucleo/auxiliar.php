@@ -2646,6 +2646,9 @@
 				$view_title						=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
 				$this->sys_title["style_tr"]	="background-color:#D5D5D5; height:30px;";
+				$this->sys_title["sys_class"]	="background-color:#D5D5D5; height:30px;";
+				
+				
 				
 			} 
 			if(isset($this->sys_title))

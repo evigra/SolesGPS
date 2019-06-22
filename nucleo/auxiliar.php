@@ -2525,6 +2525,8 @@
 							";
 						}	
 						#*/
+						$return["report"]="SYS_REPORT lalo";
+
 					}
 					#$return["report"]="SYS_REPORT lalo";
 					

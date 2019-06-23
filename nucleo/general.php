@@ -145,7 +145,6 @@
     			{
     				$select				="";
     				$html_title			=array();
-					$html_title_clean	=array();
     				foreach($option["select"] as $campo => $title)
     				{
     					$font		=$title;
@@ -173,8 +172,6 @@
 							$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 													
 							$html_title["$campo"]			=$__REPORT_TITLES["html"];	
-							/////////////////////////////////////
-							$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];															
 						}
 						#*/
     				}
@@ -374,9 +371,7 @@
 						);
 						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
-						$html_title["$campo"]			=$__REPORT_TITLES["html"];
-						//////////////////////	
-						$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
+						$html_title["$campo"]			=$__REPORT_TITLES["html"];					
 					}
 				}    			
 			}
@@ -407,15 +402,13 @@
 						$__REPORT_TITLES				=$this->__REPORT_TITLES($option_report_titles);
 												
 						$html_title["$campo"]			=$__REPORT_TITLES["html"];	
-						$html_title_clean["$campo"]		=$__REPORT_TITLES["html"];								
 					}
-					#*/
 				}	
 			}	
    			
    			
    			
-			$this->sys_title		=$html_title;
+			$this->sys_title												=$html_title;
 			if(!isset($_SESSION["modules"]))					
 				$_SESSION["modules"]										=array();
 			if(!isset($_SESSION["modules"][$this->sys_object]))	
@@ -423,18 +416,6 @@
 			if(!isset($_SESSION["modules"][$this->sys_object]["title"]))	
 				$_SESSION["modules"][$this->sys_object]["title"]			=$html_title;
 						
-			$this->sys_title_pdf	=$html_title;
-   			   			
-   			if(isset($html_title))			
-   			{
-   				$this->sys_title		=$html_title;
-   				$this->sys_title_pdf	=$html_title;
-   			}		
-			if(isset($html_title_clean))	
-			{
-				$this->sys_title_pdf	= $html_title_clean;
-			}	
-			
     		if($id!="")						$return					= $return["data"];
 
     		if(!isset($return["total"]) AND isset($return["data"]))
@@ -444,8 +425,6 @@
     		
 			if(is_array(@$return["data"]))
 			{
-				
-			
 				foreach($this->sys_fields as $campo => $value)
 				{	
 					#if(@$this->sys_fields[$campo]["relation"]=="many2one")

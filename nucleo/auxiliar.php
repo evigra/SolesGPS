@@ -433,13 +433,6 @@
 
 			$return=array();
 			
-			/*
-			if(@$this->sys_private["action"]=="")
-			{
-			     if($sys_torder=="ASC") 			$iorder 						="<font class=\"ui-icon ui-icon-caret-1-n\"></font>";
-			     else                   			$iorder 						="<font class=\"ui-icon ui-icon-caret-1-s\"></font>";
-			}
-			#*/
 			if(@$this->sys_private["action"]=="print_pdf")
 				$return["html"]="<b>$title</b>";
 			else	
@@ -2222,7 +2215,6 @@
 		    		$return["data"] =$option["data"];	
 																
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
-					$this->sys_title_pdf	=$this->sys_title;
 		    	}	
 		    	else  
 		    	{			    				    	
@@ -2645,7 +2637,7 @@
 				$view_title     				=$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title						=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
-				#$this->sys_title["style_tr"]	="background-color:#D5D5D5; height:30px;";
+				$this->sys_title["style_tr"]	="background-color:#D5D5D5; height:30px;";
 				#$this->sys_title["sys_class"]	="background-color:#D5D5D5; height:30px;";
 				
 				

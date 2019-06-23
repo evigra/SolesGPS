@@ -1,20 +1,26 @@
 	<table border="0"  width="680">
 		<tr>
-			<td colspan="4" align="left">{empresa_id}</td>
-			<td width="10%" align="left"></td>                							
-			<td width="20%" align="left"><b style="font-size:25px;">{tipo}{folio}</b></td>			
+			<td align="left" colspan="4" >{empresa_id}</td>
+			<td align="left" width="10%" ></td>                							
+			<td align="left" width="20%" rowspan="3">
+				<table border="1"  width="100%">
+					<tr><td><b style="font-size:25px;">{tipo}{folio}</b></td></tr>
+					<tr><td><td align="left">{fecha}</td></tr>
+					<tr><td align="left">{caducidad}</td></tr>
+				</table>				
+			</td>			
 		</tr>   
 		<tr>
 			<td colspan="2" align="left">{trabajador_id}</td>                							
 			<td></td>
 			<td></td>                							
 			<td></td>                							
-			<td align="left">{fecha}</td>						
+									
 		</tr>   
 		<tr>
 			<td colspan="4"></td>           
 			<td></td>
-			<td align="left">{caducidad}</td>						
+									
 		</tr>   
 		
 		<tr>

@@ -348,9 +348,9 @@
 					    $words["sys_empresa"]        	=$_SESSION["company"]["nombre"];
 					    $words["system_company"]       	=$_SESSION["company"]["nombre"];
 					    $words["system_domicilio"]     	=$_SESSION["company"]["domilicio"];
-					    $words["system_rs"]     		=$_SESSION["company"]["razonsocial"];
-					    $words["system_rfc"]     		=$_SESSION["company"]["rfc"];
-					    $words["system_email"]     		=$_SESSION["company"]["mail"];
+					    $words["system_rs"]     		=$_SESSION["company"]["razonSocial"];
+					    $words["system_rfc"]     		=$_SESSION["company"]["RFC"];
+					    $words["system_email"]     		=$_SESSION["company"]["email"];
 					    $words["system_telefono"]     	=$_SESSION["company"]["telefono"];
 					    $words["system_user"]           =$_SESSION["user"]["name"];
 					    $words["system_logo"]           =$this->__SHOW_FILE($_SESSION["company"]["files_id"]);

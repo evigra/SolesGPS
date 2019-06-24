@@ -347,7 +347,7 @@
 				    {
 					    $words["sys_empresa"]        	=$_SESSION["company"]["nombre"];
 					    $words["system_company"]       	=$_SESSION["company"]["nombre"];
-					    $words["system_domicilio"]     	=$_SESSION["company"]["domilicio"];
+					    $words["system_domicilio"]     	=$_SESSION["company"]["domicilio_fiscal"];
 					    $words["system_rs"]     		=$_SESSION["company"]["razonSocial"];
 					    $words["system_rfc"]     		=$_SESSION["company"]["RFC"];
 					    $words["system_email"]     		=$_SESSION["company"]["email"];

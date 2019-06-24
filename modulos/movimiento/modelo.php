@@ -20,7 +20,6 @@
 			    "description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",
-			    #"relation"          => "one2many",			    
 			    "relation"          => "many2one",
 			    "recursive"         => "2",
 			    "class_name"       	=> "trabajador",
@@ -56,7 +55,6 @@
 			#*/
 			"movimientos_ids"	    =>array(
 			    "type"              => "form",
-			    #"relation"          => "many2one",
 			    "relation"          => "one2many",
 			    "class_name"       	=> "movimientos",			    
 			    "class_field_o"    	=> "id",

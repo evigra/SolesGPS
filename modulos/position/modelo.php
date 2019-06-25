@@ -410,11 +410,12 @@
             	}
             	$option						="";
             	$aux_descripcion			=$this->position_description($row,$option);
-            	            	
+            	      
+            	/*            	
             	if($asunto=="VELOCIDAD")
             	{   
             		////////////////////////    
-            		$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
+            		#$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
             		if($row["speed_start"]=="0000-00-00 00:00:00")
             		{            			
             			$row["event"]			="ALERTA EXCESO DE VELOCIDAD";     		
@@ -425,7 +426,8 @@
             			$speed_start				=$row["devicetime"];
             			$speed_end					="0000-00-00 00:00:00";
             		}	
-            	}   
+            	} 
+            	*/  
             	$comando_sql_complemento="";         	            	
 				if($speed_end!="0000-00-00 00:00:00" OR $speed_start!="0000-00-00 00:00:00")
 				{					

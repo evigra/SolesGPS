@@ -33,5 +33,13 @@
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}						
+		public function __REPORT_ACTIVO($option=NULL)
+    	{    		
+    		$this->sys_fields["estatus"]["filter"]="1";    		
+    		    		
+			$return 				=$this->__VIEW_REPORT($option);
+			return	$return;     	
+		}						
+
 	}
 ?>

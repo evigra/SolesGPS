@@ -57,6 +57,22 @@
 		$objeto->words["module_body"]			=$data["html"];	
 
    	}	
+	elseif($objeto->sys_private["section"]=="report_activo")
+	{
+		$module_title							="Reporte de ";
+		$module_left							="";
+		$module_right=array(
+			array("create"=>"Crear"),
+			#array("write"=>"Modificar"),
+			array("kanban"=>"Kanban"),
+			#array("report"=>"Reporte"),
+	    	);
+		$option=array();		
+		$data									=$objeto->__REPORT_ACTIVO($option);
+		$objeto->words["module_body"]			=$data["html"];	
+
+   	}	
+
 	else
 	{
 		$module_title							="Reporte Modular de ";

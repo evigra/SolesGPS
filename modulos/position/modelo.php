@@ -505,8 +505,7 @@
             			$descripcion	="
 		        			Esta es una alerta de bateria
 		        			$aux_descripcion
-            			";        
-            			    			            			            			
+            			";                    			    			            			            			
 						$comando_sql="
 							$PRE_comando_sql
 							descripcion='{$descripcion}',
@@ -523,9 +522,20 @@
 							$this->__WA(
 								array(
 									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: Alerta por falta de bateria
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
-									"
+									"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nAlerta por falta de bateria \n
+										Sistema Automatico SolesGPS"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
 								)
 							);
 						}	
@@ -549,7 +559,25 @@
 						";														
 						$mensaje		="SolesGPS [{$row["dispo"]}] :: Alerta SOS";
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-						$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
+							$this->__WA(
+								array(
+									"telefono"=>$row["c_telefono"], 
+									"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nAlerta por boton de panico SOS \n
+										Sistema Automatico SolesGPS"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
+								)
+							);
 					}	
             		else if($row["event"]=="ALERTA BATERIA BAJA")
             		{	# BATERIA BAJA
@@ -575,9 +603,20 @@
 							$this->__WA(
 								array(
 									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: Bateria baja
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
-									"
+									"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nAlerta por bateria baja \n
+										Sistema Automatico SolesGPS"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
 								)
 							);
 						}	
@@ -607,12 +646,23 @@
 							$this->__WA(
 								array(
 									"telefono"=>$row["c_telefono"], 
-									"telefono"=>"5213143520972", 
-									"mensaje"=>"[{$row["dispo"]}] :: Suceso desconocido :: {$row["event"]}
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
-									"
+									"mensaje"=>"[{$position["dispo"]}] :: {$position["devicetime"]}\nSuceso desconocido {$row["event"]} \n
+										Sistema Automatico SolesGPS"
 								)
 							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
+								)
+							);
+							$this->__WA(
+								array(
+									"telefono"=>$position["c_telefono"], 
+									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
+								)
+							);
+
 						}	
 								
 					}	

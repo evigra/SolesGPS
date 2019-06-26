@@ -711,9 +711,10 @@
 			if(isset($this->sys_fields["$campo"]["htmlentities"]) AND in_array($this->sys_fields["$campo"]["htmlentities"], $_SESSION["var"]["true"]))
 				$valor	=htmlentities($valor);
 													
-			if($campo=="sys_section_{$this->sys_name}")		$this->sys_private["section"]			=$valor;
-			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	$this->sys_private["action"]			=$valor;
-			
+			if($campo=="sys_section_{$this->sys_name}")		
+				$this->sys_private["section"]			=$valor;
+			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	
+				$this->sys_private["action"]			=$valor;			
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
 				$this->sys_private["section"]			=$valor; 
@@ -729,7 +730,11 @@
 			elseif($campo=="sys_order_{$this->sys_name}")			$this->sys_private["order"]				=$valor;
 			elseif($campo=="sys_row_{$this->sys_name}")				$this->sys_private["row"]				=$valor;						
 			elseif($campo=="sys_rows_{$this->sys_name}")			$this->sys_private["rows"]				=$valor;
-			elseif(isset($this->sys_fields["$campo"])) 				$this->sys_fields["$campo"]["value"]	=$valor;
+			elseif(isset($this->sys_fields["$campo"])) 				
+			{				
+				$this->sys_fields["$campo"]["value"]	=$valor;
+				unset($_REQUEST[$campo]);
+			}	
 			
 			return 	$valor;		
 		}
@@ -1736,42 +1741,6 @@
 			return $view;
 		}    	
 
-    	##############################################################################
-    	/*    
-		public function __VIEW_KANBAN($template,$data,$option=NULL)
-		{
-		    if(is_null($option))	$option=array();
-		    if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
-	    		    
-		    $return=$this->__VIEW_KANBAN2($template,$data,$option);
-		    		    
-        	$option_head=array(
-        		"name"				=>$option["name"],
-        		"button_search"		=>$this->button_search($option["name"]),
-        		"button_create"		=>$this->button_create($option["name"]),
-        		"inicio"			=>"1",
-        		"fin"				=>count($data),
-        		"total"				=>count($data),
-        		
-        	);
-        	
-        	$view_head=$this->__VIEW_HEAD($option_head);		    
-		    
-		    $return="		    
-                <div id=\"base_{$option["name"]}\" style=\"position:relative; height:100%; width:100%;\">
-                    <div id=\"div_{$option["name"]}\" style=\"height:100px; overflow:hidden; width:100%; \">	
-                    	$view_head
-                        $return
-                    </div>
-                </div>
-				<script>
-					var alto_{$option["name"]}	    =$(\"#base_{$option["name"]}\").height() -20;
-					$(\"div#div_{$option["name"]}\").attr({\"style\":\"height:\"+alto_{$option["name"]}+\"px; overflow:auto; width:100%;\"});													
-				</script>                
-            ";		    
-		    return $return;
-        }
-        */
 
         ##############################################################################    
 		public function __VIEW_KANBAN2($template,$data,$option=NULL)
@@ -1787,12 +1756,12 @@
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
-					{							
-							
+					{														
 						if(isset($this->sys_private["field"]) AND $this->sys_private["field"]==$field)
 						{
 							$this->__FIND_FIELDS($fieldvalue);												
 						}									
+						
 						if(@$this->sys_fields[$field]["type"]=="select")
 						{										
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
@@ -1978,8 +1947,6 @@
 			if(!isset($option["subtipo"]))		$option["subtipo"]		="";
 			if(!isset($option["objeto"]))		$option["objeto"]		="";
 			if(!isset($option["company_id"]))	$option["company_id"]	=$_SESSION["company"]["id"];
-			
-			
 			
 			
 			$sql    	="

@@ -734,7 +734,13 @@
 			{				
 				$this->sys_fields["$campo"]["value"]	=$valor;
 				unset($_REQUEST[$campo]);
-			}	
+			}
+			elseif($_SESSION["var"]["modulo"]==$this->sys_object)
+			{				
+				$this->request["$campo"]	=$valor;
+				unset($_REQUEST[$campo]);
+			}
+				
 			
 			return 	$valor;		
 		}

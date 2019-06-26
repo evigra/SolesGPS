@@ -96,10 +96,24 @@
 			
 				if($data["p_attributes"]!="")		$ot="ot:{$data["p_attributes"]}";
 				else								$ot="ot:\"\"";
+
+				$minuto_online	=($_SESSION["user"]["huso_h"] * 60) - 20; 
+				$tiempo			=strtotime ("-{$minuto_online} minute", strtotime(date("Y-m-d H:i:s")));	##	01:32 01:12
+				$tiempo_dispo	=strtotime($data["devicetime"]);											##  01:32 01:32
+
+				if($tiempo<$tiempo_dispo)
+				{
+					$icon_online="1";
+				}
+				else
+				{
+					$icon_online="0";
+				}
+
 			
 				$ajax.="
 			   		////////				        
-					var v 	={st:\"{$data["estatus"]}\",dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
+					var v 	={st:\"{$data["estatus"]}\",dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ho:\"{$icon_online}\" , ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
 					locationsMap(v);				
 					$txt_streetview			
 				";

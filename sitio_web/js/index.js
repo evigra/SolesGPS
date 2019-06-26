@@ -1119,7 +1119,11 @@ styles:
 				if(vehicle["ty"]=="deviceStopped")		icon_status="stop.png";
 				if(vehicle["ty"]=="deviceMoving")		icon_status="car_signal1.png";
 				if(vehicle["ty"]=="deviceOnline")		icon_status="car_signal1.png";
-				if(vehicle["ty"]=="deviceOffline")		icon_status="car_signal0.png";
+				if(vehicle["ty"]=="deviceOffline")		
+				{
+					icon_status="car_signal0.png";
+					if(vehicle["ho"]==1)	icon_status="car_signal1.png";
+				}	
 				if(vehicle["ty"]=="ignitionOn")			icon_status="swich_on.png";
 				if(vehicle["ty"]=="ignitionOff")		icon_status="swich_off.png";
 				

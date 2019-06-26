@@ -97,7 +97,7 @@
 				if($data["p_attributes"]!="")		$ot="ot:{$data["p_attributes"]}";
 				else								$ot="ot:\"\"";
 
-				$minuto_online	=($_SESSION["user"]["huso_h"] * 60) - 20; 
+				$minuto_online	=($_SESSION["user"]["huso_h"] * 60) - 30; 
 				$tiempo			=strtotime ("-{$minuto_online} minute", strtotime(date("Y-m-d H:i:s")));	##	01:32 01:12
 				$tiempo_dispo	=strtotime($data["devicetime"]);											##  01:32 01:32
 

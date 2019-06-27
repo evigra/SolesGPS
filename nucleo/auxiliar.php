@@ -1118,6 +1118,7 @@
 									$words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";						        
 					    } 
+
 					    if($valor["type"]=="date")	
 					    {
 					    	$js_auto="";
@@ -1269,6 +1270,34 @@
 					    	else					    
 					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\">{$valor["br"]}$titulo";
 					    }    
+					    if($valor["type"]=="flow")	
+					    {
+					        $options="";
+							if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
+							{					        
+							    foreach($valor["source"] as $value =>$text)
+							    {
+							    	$selected="";
+							    	if($valor["value"]==$value) 
+							    	
+							    		$selected="selected";
+							    	$options.="<a date=\"$value\">$text</a>";			            
+							    }
+								if(@$this->sys_private["section"]=="show")
+									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
+								else							    			            
+									$words["$campo"]  ="<div class=\"formulario {$this->sys_name} $class\">
+											$options
+										</div>
+										<script>
+											$(\"div#$campo".".{$class}\").controlgroup()
+										</script>			            	
+										
+									";
+							}					        
+							else	$words["$campo"]  =@$text."{$valor["br"]}$titulo";
+					    }			        
+
 					    if($valor["type"]=="select")	
 					    {
 					        $options="";
@@ -1285,7 +1314,7 @@
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
-									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\"\">
+									$words["$campo"]  ="<select id=\"$campo\" $style name=\"{$this->sys_name}_$campo\"  $attr class=\"formulario {$this->sys_name} $class\">
 											$options
 										</select>{$valor["br"]}$titulo
 									";

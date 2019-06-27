@@ -20,6 +20,7 @@
 				d.id as d_id,
 				d.*,p.*,c.*,g.*,
 				d.name as d_name,
+				d.telefono as d_telefono,
 				p.attributes as p_attributes,
 				truncate((admin_soles37.extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
 				DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
@@ -112,7 +113,7 @@
 			
 				$ajax.="
 			   		//////// $tiempo_dispo ## $tiempo				        
-					var v 	={st:\"{$data["estatus"]}\",dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ho:\"{$icon_online}\" , ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
+					var v 	={st:\"{$data["estatus"]}\", te:\"{$data["d_telefono"]}\",   dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ho:\"{$icon_online}\" , ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
 					locationsMap(v);				
 					$txt_streetview			
 				";

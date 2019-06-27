@@ -986,8 +986,6 @@ styles:
 	
     function odometro(item)	 
     {    	
-
-    	
     	if(item["ot"]["battery"])			item["ba"]  =item["ot"]["battery"];
     	else								item["ba"]  =0;
     	if(item["al"])						item["al"]  =item["al"];
@@ -1058,7 +1056,7 @@ styles:
 			var tablero="\
 				<table>\
 					<tr><td width=\"40\"  style=\"color:#fff;\"><a href=\"#\"onclick=\"command_device('Bloquear motor'," + item["de"] +")\"><img width=\"32\" src=\"../sitio_web/img/swich_off.png\"></a></td>\
-					<td style=\"color:#fff;\">" + tablero1 + "</td></tr>\
+					<td style=\"color:#fff;\"><a href=\"tel:" + item["te"] +"\">" + tablero1 + "</a></td></tr>\
 					<tr><td width=\"40\"  style=\"color:#fff;\"><a href=\"#\"onclick=\"command_device('Activar motor'," + item["de"] +")\"><img width=\"32\" src=\"../sitio_web/img/swich_on.png\"></a></td>\
 					<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
 				</table>\

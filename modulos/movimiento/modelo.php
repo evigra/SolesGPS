@@ -109,12 +109,13 @@
 			),
 			"flow"	    =>array(
 			    "title"             => "Estado",
-			    "type"              => "select",
+			    "type"              => "flow",
 			    "source"            => array(			    	
+			    	""     			=> "",
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",
 				    "flow3"  	   	=> "Presup. Confirmado",
-				    "flow0"     	=> "",
+				    
 				)
 			),			
 			"cron_cantidad"	    =>array(

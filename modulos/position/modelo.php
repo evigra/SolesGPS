@@ -100,7 +100,7 @@
 				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
-					AND reporto_hace>'00:05:00'
+					AND reporto_hace>'00:20:00'
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			
@@ -174,6 +174,7 @@
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			
+			#$this->__PRINT_R($position_data);
 			if(count($position_data)>0)
 			{								
 				foreach($position_data as $row)
@@ -181,7 +182,7 @@
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
 					#$row["TEL_COMPANY"]="5213143520972";
 					
-					$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
+					#$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
 					$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));
 				}
 			}
@@ -496,8 +497,7 @@
 									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
 									"
 								)
-							);
-							
+							);							
 						}	
 					}	
             		else if($row["event"]=="ALERTA DE BATERIA")

@@ -99,10 +99,24 @@
 			    "type"              => "hidden",
 			),	
 			"estatus"	    =>array(
-			    "title"             => "Activo",
-			    "type"              => "checkbox",
+			    "title"             => "Estatus",
+			    "type"              => "select",
+			    "source"            => array(
+				    "1"     		=> "Activo",
+				    "0" 	    	=> "Bloqueado",
+				    "-1"  	   		=> "Cancelado",
+				)
 			),
-			
+			"flow"	    =>array(
+			    "title"             => "Estado",
+			    "type"              => "select",
+			    "source"            => array(			    	
+				    "flow1"     	=> "Presupuesto",
+				    "flow2"     	=> "Pres. Enviado",
+				    "flow3"  	   	=> "Pres. Confirmado",
+				    "flow0"     	=> "",
+				)
+			),			
 			"cron_cantidad"	    =>array(
 			    "title"             => "Cantidad de Tiempo",
 			    "type"              => "input",

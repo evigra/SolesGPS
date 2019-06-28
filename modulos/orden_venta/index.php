@@ -49,7 +49,7 @@
 			array("action_enviar"=>"Enviar por email"),
 			array("action_confirmar"=>"Confirmar"),
 		    #array("action_pagar"=>"PAGAR"),
-		    #array("action_abonar"=>"ABONAR"),
+		    array("create_action"=>"CREATE ACCION"),
 		    array("action_cancelar"=>"Cancelar"),
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		

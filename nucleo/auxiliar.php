@@ -3118,13 +3118,13 @@
 			        		}
 			        		
 			        		
-		        			if(in_array($etiqueta,array("creates","writes","report","kanban")))	
-		        			{	##### BOTONES MODULO#################
+		        			if(in_array($etiqueta,array("create","write","report","kanban")))	
+		        			{	##### SOLO ICONO #################
 		        				$text="false";
 		        				$action="1";
 		        			}
 		        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
-		        			{
+		        			{	##### BOTONES MODULO : solo icono #################
 		        				$text="true";
 		        				$action="1";
 		        			}			        			

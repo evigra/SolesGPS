@@ -1083,6 +1083,7 @@
 						</div>
 					</div>										
 				";
+				if(!isset($words["flow_left"]))	$words["flow_left"]="";
 
 			    foreach($fields as $campo=>$valor)
 			    {		

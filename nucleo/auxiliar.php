@@ -1277,11 +1277,14 @@
 							{					        
 							    foreach($valor["source"] as $value =>$text)
 							    {
-							    	$selected="";
-							    	if($valor["value"]==$value) 
-							    	
-							    		$selected="selected";
-							    	$options.="<td><a date=\"$value\">$text</a></td>";			            
+							    	if($text!="")
+							    	{
+										$selected="";
+										if($valor["value"]==$value) 
+										
+											$selected="selected";
+										$options.="<td style=\"padding-left:7px; padding-right:7px;\"><a date=\"$value\">$text</a></td>";			            
+							    	}
 							    }
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";

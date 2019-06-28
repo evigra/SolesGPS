@@ -1069,6 +1069,21 @@
 		    if(!is_array($words))    $words=array();
 		    if(is_array($fields))
 		    {
+				$words["sys_flow"]  ="
+					<div class=\"ui-widget-header view_report_d1\" style=\"height: 35px;\">
+						<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+							<table width=\"100%\" height=\"100%\" border=\"0\"><tr>	
+								<td>
+									{flow_left}
+								</td>	
+								<td align=\"right\">
+									{flow}									
+								</td>													
+							</tr></table>												
+						</div>
+					</div>										
+				";
+
 			    foreach($fields as $campo=>$valor)
 			    {		
 			        if(!isset($valor["type"]))	        $valor["type"]			="input";
@@ -1153,7 +1168,7 @@
 							    $words["$campo"]  ="
 							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\">{$valor["br"]}$titulo
 					    			<script>
-										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
+										$(\"input#$campo+".".{$this->sys_name}\").datetimepicker({
 											dateFormat: 	\"yy-mm-dd\",
 											timeFormat: 	\"HH:mm:ss\",
 											showSecond: 	false,
@@ -1161,7 +1176,7 @@
 											showMicrosecond: false,
 											minuteText: 	\"Minutos\",
 											hourText: 		\"Horas\",
-											currentText: 	\"Ahora\",
+											currentText: 	\"Ahora\",	
 											closeText: 		\"Listo\",
 											dayNamesMin: 	[\"Do\", \"Lu\", \"Ma\", \"Mi\", \"Ju\", \"Vi\", \"Sa\"],
 											monthNames: 	[\"Enero\", \"Febrero\", \"Marzo\", \"Abril\", \"Mayo\", \"Junio\", \"Julio\", \"Agosto\", \"Septiembre\", \"Octubre\", \"Noviembre\", \"Diciembre\"],
@@ -1296,11 +1311,10 @@
 													<td>
 													</td>	
 													<td align=\"right\">
-															<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"1\"><tr>	$options </tr></table>
-
+														
+														<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"1\"><tr>	$options </tr></table>
 													</td>													
-												</tr></table>
-												
+												</tr></table>												
 											</div>
 										</div>										
 									";
@@ -1715,35 +1729,50 @@
 			}		
 			return $view;
 		}    	
+    	##############################################################################    
+		public function __VIEW_FORM($template=null)
+		{
+			$this->__SYS_HISTORY();
+			$view   =$this->__TEMPLATE("$template");
+			$view	=$this->__VIEW_INPUTSECTION($view);
+
+		/*
+			<div class=\"ui-widget-header view_report_d1\" style=\"height: 35px;\">
+				<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+					<table width=\"100%\" height=\"100%\" border=\"0\"><tr>	
+						<td>
+						</td>	
+						<td align=\"right\">
+							
+							<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"1\"><tr>	$options </tr></table>
+						</td>													
+					</tr></table>												
+				</div>
+			</div>										
+		
+		*/
+
+			
+			return $view;
+		}    	
 
     	##############################################################################    
 		public function __VIEW_CREATE($template=null)
 		{
 			if(is_null($template))	$template=$this->sys_var["module_path"]."html/create";
-			
-			$this->__SYS_HISTORY();
-			$view   =$this->__TEMPLATE("$template");
-			$view	=$this->__VIEW_INPUTSECTION($view);
-			return $view;
+			return $this->__VIEW_FORM($template);
 		}    	
     	##############################################################################    
 		public function __VIEW_WRITE($template=null)
 		{
 			if(is_null($template))	$template=$this->sys_var["module_path"]."html/write";
-			$this->__SYS_HISTORY();
-			$view   =$this->__TEMPLATE("$template");
-			$view	=$this->__VIEW_INPUTSECTION($view);
-			
-			return $view;
+			return $this->__VIEW_FORM($template);
 		}    	
     	##############################################################################    
 		public function __VIEW_SHOW($template=null)
 		{
 			if(is_null($template))	$template=$this->sys_var["module_path"]."html/show";
-			$this->__SYS_HISTORY();
-			$view   =$this->__TEMPLATE("$template");
-			$view	=$this->__VIEW_INPUTSECTION($view);
-			return $view;
+			return $this->__VIEW_FORM($template);
 		} 		
 		##############################################################################    
 		public function __VIEW_INPUTSECTION($view, $option=array())

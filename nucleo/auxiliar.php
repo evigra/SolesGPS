@@ -3091,20 +3091,17 @@
 			    	$action=0;
 			    	$titulo="";
 					$sys_input="";
+					
+					if(isset($data["icon"]))		$icon	=$data["icon"];
+					if(isset($data["text"]))		$text	=$data["text"];
+					if(isset($data["title"]))		$title	=$data["title"];
+					
+					
 			        foreach($data as $etiqueta =>$valor)
 			        {					       
-			        	if($etiqueta=="icon") 	
+			        	if(in_array($etiqueta,array("icon","text","title")))					       
 			        	{
-			        		$icon="$valor";
-			        	}		
-			        	elseif($etiqueta=="text") 	
-			        	{
-			        		$titulo="$valor";
-			        		$text="$valor";
-			        	}		    	
-			        	elseif($etiqueta=="title") 	
-			        	{
-			        		$title="$valor";		        		
+			        		unset($data["$etiqueta"]);
 			        	}		    	
 			        	else
 			        	{
@@ -3117,32 +3114,36 @@
 			        			if($etiqueta=="action") 	$icon="ui-icon-document";
 			        			if($etiqueta=="cancel") 	$icon="ui-icon-close";
 			        			
-			        			if($etiqueta=="import") 	$icon="ui-icon ui-icon-arrowthickstop-1-s";
-			        						        			
-			        			if(in_array($etiqueta,array("create","write","report","kanban")))	
-			        			{
-			        				$text="false";
-			        				$action="1";
-			        			}
-			        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
-			        			{
-			        				$text="true";
-			        				$action="1";
-			        			}			        			
-			        			elseif(in_array(substr($etiqueta,0,5),array("write")))	
-			        			{
-			        				$text="true";
-			        				$action="1";
-			        			}			        						        			
-			        			else
-			        			{
-					    			if(in_array($etiqueta,array("action")))	
-					    			{
-					    				$action="1";
-									}			        				
-			        				$text="true";			        			
-			        			}
+			        			if($etiqueta=="import") 	$icon="ui-icon ui-icon-arrowthickstop-1-s";			        						        			
 			        		}
+			        		
+			        		
+		        			if(in_array($etiqueta,array("creates","writes","report","kanban")))	
+		        			{	##### BOTONES MODULO#################
+		        				$text="false";
+		        				$action="1";
+		        			}
+		        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
+		        			{
+		        				$text="true";
+		        				$action="1";
+		        			}			        			
+		        			elseif(in_array(substr($etiqueta,0,5),array("write")))	
+		        			{
+		        				$text="true";
+		        				$action="1";
+		        			}			        						        			
+		        			else
+		        			{
+				    			if(in_array($etiqueta,array("action")))	
+				    			{
+				    				$action="1";
+								}			        				
+		        				$text="true";			        			
+		        			}
+			        		
+			        		
+			        		
 			        		if(@$action=="1")	
 			        		{
 			        			$font_id	="$etiqueta"."_{$this->sys_name}";
@@ -3162,6 +3163,8 @@
 			        if($value=="action")    $sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        else					
 			        {
+			        
+			        
 			        	$sys_input.="
 							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
 			        		$(\"#sys_section_{$this->sys_name}\").val(\"$value\");

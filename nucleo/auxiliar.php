@@ -1287,9 +1287,9 @@
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
 									$words["$campo"]  ="
-										<div id=\"div_$name\" class=\"$report_class view_report_d1\" obj=\"$name\" style=\"height: 30px;\">
-											<div id=\"div2_$name\" class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-											$options
+										<div class=\"$report_class view_report_d1\" style=\"height: 30px;\">
+											<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
+												$options
 											</div>
 										</div>										
 									";

@@ -1290,7 +1290,7 @@
 											$options
 										</div>
 										<script>
-											$(\"div#$campo".".{$class}\").controlgroup()
+											$(\"div#".".{$class}\").controlgroup();
 										</script>			            	
 										
 									";

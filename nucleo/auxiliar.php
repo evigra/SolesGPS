@@ -1286,13 +1286,9 @@
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
-									$words["$campo"]  ="<div class=\"formulario {$this->sys_name} $class\">
+									$words["$campo"]  ="<div style=\"position:absolute; left:0px; top:0px;\" class=\"ui-widget-header\">
 											$options
-										</div>
-										<script>
-											$(\"div#".".{$class}\").controlgroup();
-										</script>			            	
-										
+										</div>										
 									";
 							}					        
 							else	$words["$campo"]  =@$text."{$valor["br"]}$titulo";

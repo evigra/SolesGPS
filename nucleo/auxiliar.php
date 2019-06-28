@@ -1283,7 +1283,7 @@
 										if($valor["value"]==$value) 
 										
 											$selected="selected";
-										$options.="<td style=\"padding-left:7px; padding-right:7px;\"><a date=\"$value\">$text</a></td>";			            
+										$options.="<td style=\"padding-left:7px; padding-right:10px;\"><a date=\"$value\">$text</a></td>";			            
 							    	}
 							    }
 								if(@$this->sys_private["section"]=="show")

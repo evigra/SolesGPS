@@ -1281,7 +1281,7 @@
 							    	if($valor["value"]==$value) 
 							    	
 							    		$selected="selected";
-							    	$options.="<div><a date=\"$value\">$text</a></div>";			            
+							    	$options.="<a date=\"$value\">$text</a>";			            
 							    }
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";

@@ -1292,7 +1292,7 @@
 									$words["$campo"]  ="
 										<div class=\"ui-widget-header view_report_d1\" style=\"height: 40px;\">
 											<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-												<table width=\"100%\" height=\"100%\" border=\"1\"><tr>	
+												<table width=\"100%\" height=\"100%\" border=\"0\"><tr>	
 													<td>
 													</td>	
 													<td align=\"right\">

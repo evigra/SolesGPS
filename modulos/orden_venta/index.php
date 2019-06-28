@@ -43,12 +43,15 @@
 		    array("cancel"=>"Cancelar"),
 		);
 		
+		$module_center=array();
 
-		$module_center=array(
+		$flow_left=array(
 		    array("action_pagar"=>"PAGAR"),
 		    array("action_abonar"=>"ABONAR"),
 		    array("action_cancelar"=>"CANCELAR"),
 		);
+		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
+
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
 		$objeto->sys_fields["folio"]["type"]	="value";

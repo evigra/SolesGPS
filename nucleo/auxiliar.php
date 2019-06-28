@@ -1290,13 +1290,13 @@
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
 									$words["$campo"]  ="
-										<div class=\"ui-widget-header view_report_d1\" style=\"height: 40px;\">
+										<div class=\"ui-widget-header view_report_d1\" style=\"height: 35px;\">
 											<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
 												<table width=\"100%\" height=\"100%\" border=\"0\"><tr>	
 													<td>
 													</td>	
 													<td align=\"right\">
-															<table height=\"100%\" border=\"1\"><tr>	$options </tr></table>
+															<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"1\"><tr>	$options </tr></table>
 
 													</td>													
 												</tr></table>

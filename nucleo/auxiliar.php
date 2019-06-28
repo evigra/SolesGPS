@@ -1281,13 +1281,13 @@
 							    	if($valor["value"]==$value) 
 							    	
 							    		$selected="selected";
-							    	$options.="<a date=\"$value\">$text</a>";			            
+							    	$options.="<div class=\"ui-widget-header view_report_d1\"><a date=\"$value\">$text</a></div>";			            
 							    }
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
 									$words["$campo"]  ="
-										<div class=\"ui-widget-header 	$report_class view_report_d1\" style=\"height: 30px;\">
+										<div class=\"ui-widget-header view_report_d1\" style=\"height: 30px;\">
 											<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
 												$options
 											</div>

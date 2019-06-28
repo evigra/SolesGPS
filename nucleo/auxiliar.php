@@ -1281,7 +1281,7 @@
 							    	if($valor["value"]==$value) 
 							    	
 							    		$selected="selected";
-							    	$options.="<div class=\"ui-widget-header\"><a date=\"$value\">$text</a></div>";			            
+							    	$options.="<div><a date=\"$value\">$text</a></div>";			            
 							    }
 								if(@$this->sys_private["section"]=="show")
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";

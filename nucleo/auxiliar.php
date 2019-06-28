@@ -1287,7 +1287,7 @@
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
 									$words["$campo"]  ="
-										<div style=\"position:relative;\">	
+										<div style=\"position:relative; left:0px; top:0px; width:100%;\"\">	
 										<div style=\"position:absolute; left:0px; top:0px; width:100%;\" class=\"ui-widget-header\">
 											$options
 										</div>										

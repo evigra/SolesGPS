@@ -3084,7 +3084,6 @@
 			$return="";
 			if(is_array($datas))
 			{
-				
 			    foreach($datas as $data)
 			    {
 			    	$icon="";
@@ -3125,7 +3124,7 @@
 			        				$text="false";
 			        				$action="1";
 			        			}
-			        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanban")))	
+			        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
 			        			{
 			        				$text="true";
 			        				$action="1";
@@ -3134,8 +3133,7 @@
 			        			{
 			        				$text="true";
 			        				$action="1";
-			        			}			        			
-			        			
+			        			}			        						        			
 			        			else
 			        			{
 					    			if(in_array($etiqueta,array("action")))	

@@ -146,12 +146,12 @@
 		);				
 		##############################################################################	
 		##  Metodos	
-		##############################################################################
-        
+		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
 		{	
 			return parent::__CONSTRUCT($option);					
 		}
+		##############################################################################
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
   			if((!isset($datas["tipo"]) OR $datas["tipo"]=="") AND isset($this->tipo_movimiento) AND $this->tipo_movimiento!="")
@@ -178,7 +178,7 @@
 
     	    return parent::__SAVE($datas,$option);
 		}
-		
+		##############################################################################
    		public function __INPUT($words=NULL, $fields=NULL)
     	{
     	    $this->words =parent::__INPUT($words, $fields);    	    
@@ -188,7 +188,7 @@
     	    
     	    return parent::__INPUT($this->words, $this->sys_fields);    	        	    
 		}
-		
+		##############################################################################
    		public function __TOTALES($option=NULL)
     	{
     		$this->sys_fields["subtotal"]["value"]	=0;
@@ -205,6 +205,7 @@
     		$this->sys_fields["total"]["value"]		=$this->sys_fields["subtotal"]["value"] + $this->sys_fields["iva"]["value"];  			
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
 		}
+		##############################################################################
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			
@@ -218,7 +219,7 @@
 	    		
 			return parent::__BROWSE($option);
 		}							
-		
+		##############################################################################
    		public function __BROWSE_CUENTAS($option="")
     	{			    	
 			if($option=="")					$option				=array();			
@@ -262,6 +263,7 @@
 			$option["group"]	="m1.empresa_id";
 			return $option;
 		}
+		##############################################################################
    		public function __BROWSE_TOTALES($option="")
     	{			    	
 			if($option=="")					$option				=array();			

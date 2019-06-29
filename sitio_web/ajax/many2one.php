@@ -35,7 +35,7 @@
 		"class_one_id"								=>"",
 		"class_field"								=>$class_field,
 		"class_section"								=>"EXTERNO",				
-		"class_section"								=>"@$class_section",
+		"class_section"								=>@$class_section,
 		"class_field_id"							=>$class_field_id,				
 		"class_field_value"							=>$valor,		
 		"words"										=>$objeto->words,		

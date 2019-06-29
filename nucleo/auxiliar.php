@@ -3116,25 +3116,18 @@
 			        			if($etiqueta=="import") 	$icon="ui-icon ui-icon-arrowthickstop-1-s";			        						        			
 			        		}
 			        		
-			        		
 		        			if(in_array($etiqueta,array("create","write","report","kanban")))	
 		        			{	##### ICONO #################
 		        				$text	="false";
 		        				$action	="1";
 		        				$name	="$etiqueta";
 		        			}
-		        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
+		        			elseif(in_array(substr($etiqueta,0,5),array("creat","write","repor","kanba","actio")))	
 		        			{	##### TEXTO #################
 		        				$text	="true";
 		        				$action	="1";
 		        				$name	="$etiqueta";
 		        			}			        			
-		        			elseif(in_array(substr($etiqueta,0,5),array("write")))	
-		        			{	##### TEXTO #################
-		        				$text	="true";
-		        				$action	="1";
-		        				$name	="$etiqueta";
-		        			}			        						        			
 
 			        		if(@$action=="1")	
 			        		{
@@ -3142,14 +3135,12 @@
 			        			$funcion_id	="execute"."_{$this->sys_name}";
 			        		}	
 			        		else				$font_id="$etiqueta";
-			        		
-			        		
+			        					        		
 							if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n) AND isset($this->sys_view_l18n["$etiqueta"]))	
 							{			        	
 								$titulo		=$this->sys_view_l18n["$etiqueta"];
 							}			        	
-							if($titulo=="")	$titulo=$valor;
-							
+							if($titulo=="")	$titulo=$valor;							
 			        	}
 			        }
 			        
@@ -3158,11 +3149,10 @@
 			        {
 			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        }	
-					elseif(in_array(substr($name,0,6),array("create","report","kanwban","action")))	    
+					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio")))	    
 			        {
-			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$etiqueta\");";
+			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$name\");";
 			        }			        
-			        
 			        else					
 			        {
 			        	$sys_input.="

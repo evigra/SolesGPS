@@ -2424,6 +2424,7 @@
 								var options={};
 								options[\"class_one\"]			=\"{$template_option["class_one"]}\";
 								options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
+								options[\"class_section\"]		=\"{$template_option["class_section"]}\";
 								options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
 								options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
 

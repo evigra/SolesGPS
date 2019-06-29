@@ -30,7 +30,7 @@
    		public function action_enviar()
     	{   
     		$this->__PRINT_R($this->sys_fields["empresa_id"]["values"]); 		    				    		
-    	    $return=$this->__SAVE($this->sys_request);
+    	    #$return=$this->__SAVE($this->sys_request);
     	    
     	    
     	    return $return;

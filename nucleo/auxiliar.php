@@ -3095,8 +3095,7 @@
 					if(isset($data["icon"]))		$icon	=$data["icon"];
 					if(isset($data["text"]))		$text	=$data["text"];
 					if(isset($data["title"]))		$title	=$data["title"];
-					
-					
+										
 			        foreach($data as $etiqueta =>$valor)
 			        {					       
 			        	if(in_array($etiqueta,array("icon","text","title")))					       
@@ -3119,31 +3118,24 @@
 			        		
 			        		
 		        			if(in_array($etiqueta,array("create","write","report","kanban")))	
-		        			{	##### SOLO ICONO #################
-		        				$text="false";
-		        				$action="1";
+		        			{	##### ICONO #################
+		        				$text	="false";
+		        				$action	="1";
+		        				$name	="$etiqueta";
 		        			}
 		        			elseif(in_array(substr($etiqueta,0,6),array("create","report","kanwban","action")))	
-		        			{	##### BOTONES MODULO : solo icono #################
-		        				$text="true";
-		        				$action="1";
+		        			{	##### TEXTO #################
+		        				$text	="true";
+		        				$action	="1";
+		        				$name	="$etiqueta";
 		        			}			        			
 		        			elseif(in_array(substr($etiqueta,0,5),array("write")))	
-		        			{
-		        				$text="true";
-		        				$action="1";
+		        			{	##### TEXTO #################
+		        				$text	="true";
+		        				$action	="1";
+		        				$name	="$etiqueta";
 		        			}			        						        			
-		        			else
-		        			{
-				    			if(in_array($etiqueta,array("action")))	
-				    			{
-				    				$action="1";
-								}			        				
-		        				$text="true";			        			
-		        			}
-			        		
-			        		
-			        		
+
 			        		if(@$action=="1")	
 			        		{
 			        			$font_id	="$etiqueta"."_{$this->sys_name}";
@@ -3151,7 +3143,7 @@
 			        		}	
 			        		else				$font_id="$etiqueta";
 			        		
-			        		$value="$etiqueta";
+			        		$name	="$etiqueta";
 							if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n) AND isset($this->sys_view_l18n["$etiqueta"]))	
 							{			        	
 								$titulo		=$this->sys_view_l18n["$etiqueta"];
@@ -3159,12 +3151,20 @@
 							if($titulo=="")	$titulo=$valor;
 							
 			        	}
+			        }
+			        
+			        	
+			        if($name=="action")    
+			        {
+			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        }	
-			        if($value=="action")    $sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
+					elseif(in_array(substr($name,0,6),array("create","report","kanwban","action")))	    
+			        {
+			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$etiqueta\");";
+			        }			        
+			        
 			        else					
 			        {
-			        
-			        
 			        	$sys_input.="
 							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
 			        		$(\"#sys_section_{$this->sys_name}\").val(\"$value\");

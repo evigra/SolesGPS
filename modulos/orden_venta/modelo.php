@@ -28,8 +28,11 @@
 		}
 		##############################################################################
    		public function action_enviar()
-    	{    		    				    		
+    	{   
+    		$this->__PRINT_R($this->sys_fields["empresa_id"]); 		    				    		
     	    $return=$this->__SAVE($this->sys_request);
+    	    
+    	    
     	    return $return;
 		}
 		##############################################################################

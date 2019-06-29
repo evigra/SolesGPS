@@ -3143,7 +3143,7 @@
 			        		}	
 			        		else				$font_id="$etiqueta";
 			        		
-			        		$name	="$etiqueta";
+			        		
 							if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n) AND isset($this->sys_view_l18n["$etiqueta"]))	
 							{			        	
 								$titulo		=$this->sys_view_l18n["$etiqueta"];

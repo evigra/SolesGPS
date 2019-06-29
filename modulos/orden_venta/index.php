@@ -39,21 +39,20 @@
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
-		    array("action"=>"Guardar"),
-		    array("cancel"=>"Cancelar"),
+		    array("action"				=>"Guardar"),
+		    array("cancel"				=>"Cancelar"),
 		);
 		
 		$module_center=array();
 
 		$flow_left=array(
-			array("action_enviar"=>"Enviar por email"),
-			array("action_confirmar"=>"Confirmar"),
-		    #array("action_pagar"=>"PAGAR"),
-		    array("create_action"=>"CREATE ACCION"),
-		    array("action_cancelar"=>"Cancelar"),
+			array("action_enviar"		=>"Enviar por email"),
+			array("action_confirmar"	=>"Confirmar"),
+		    #array("action_pagar"		=>"PAGAR"),
+		    array("create_action"		=>"CREATE ACCION"),
+		    array("action_cancelar"		=>"Cancelar"),
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
-
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
 		$objeto->sys_fields["folio"]["type"]	="value";
@@ -65,8 +64,11 @@
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);		
-		#CARGANDO VISTA PARTICULAR Y CAMPOS
-	
+	   	if($objeto->sys_private["action"]=="action_enviar")
+		{
+			$objeto->__PRINT_R($objeto->sys_private);
+		}
+		#CARGANDO VISTA PARTICULAR Y CAMPOS	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 				

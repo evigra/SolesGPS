@@ -221,19 +221,6 @@
 							many2one_post(options);	
 						}
 					}					
-					/*					
-					for(ivariables in variables)
-					{
-						var input="";
-						if($("input#"+ivariables).length>0) {}
-						else	
-						{	
-							input="<input id=\""+ivariables+"\" name=\""+ivariables+"\" value=\"" + variables[ivariables] + "\" type=\"hidden1\">";						
-							$("form").append(input);
-						}			
-					}
-					*/	
-
 				});
 			}	   		
 		}	

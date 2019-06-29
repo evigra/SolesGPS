@@ -183,6 +183,15 @@
 					options["id"]				=id;					
 					options["object"]			=class_one;
 					options["class_many"]		=class_one;						
+
+					for(ivariables in variables)
+					{
+						if(variables[ivariables]=="write")
+							options["class_section"]	=variables[ivariables];	
+						if(variables[ivariables]=="delete")
+							options["class_section"]	=variables[ivariables];	
+
+					}
 										
 					many2one_get(options);													
 					for(ivariables in variables)

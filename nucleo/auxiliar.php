@@ -1796,6 +1796,7 @@
 									\"object\":\"{$this->sys_name}\",
 									\"class_one\":\"{$this->sys_object}\",
 								}
+								
 								many2one_post(options);
 						});										
 				";

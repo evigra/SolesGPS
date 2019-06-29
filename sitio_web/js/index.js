@@ -207,7 +207,8 @@
 							});							
 						}
 						if(variables[ivariables]=="delete")
-						{
+						{				
+							alert("borra memoria");		
 							many2one_post(options);	
 						}
 					}					

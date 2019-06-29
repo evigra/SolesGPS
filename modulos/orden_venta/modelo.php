@@ -13,20 +13,26 @@
 		
 		##############################################################################	
 		##  Metodos	
-		##############################################################################
-        
+		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
 		{	
 			
 			
 			parent::__CONSTRUCT($option);		
 		}
+		##############################################################################
    		public function __SAVE($datas=NULL,$option=NULL)
-    	{
-    		    					
+    	{    		    					
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}
+		##############################################################################
+   		public function action_enviar()
+    	{    		    				    		
+    	    $return=$this->__SAVE($this->sys_request, $opcion);
+    	    return $return;
+		}
+		##############################################################################
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")	$option=array();			

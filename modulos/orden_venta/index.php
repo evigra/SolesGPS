@@ -65,9 +65,8 @@
 		    array("report"=>"Reporte"),
 		);		
 	   	if($objeto->sys_private["action"]=="action_enviar")
-		{
-			
-			$objeto->__PRINT_R($objeto->sys_private);
+		{			
+			$this->action_enviar();
 		}
 		#CARGANDO VISTA PARTICULAR Y CAMPOS	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	

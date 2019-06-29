@@ -190,7 +190,6 @@
 							options["class_section"]	=variables[ivariables];	
 						if(variables[ivariables]=="delete")
 							options["class_section"]	=variables[ivariables];	
-
 					}
 										
 					many2one_get(options);													

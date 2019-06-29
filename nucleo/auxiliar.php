@@ -3151,7 +3151,11 @@
 			        }	
 					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio")))	    
 			        {
-			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$name\");";
+			        	$sys_input.="
+			        		$(\"#sys_action_{$this->sys_name}\").val(\"$name\");
+			        		$(\"#sys_section_{$this->sys_name}\").val(\"$name\");
+			        	";
+			        	
 			        }			        
 			        else					
 			        {

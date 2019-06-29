@@ -66,7 +66,7 @@
 		);		
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{			
-			$this->action_enviar();
+			$objeto->action_enviar();
 		}
 		#CARGANDO VISTA PARTICULAR Y CAMPOS	
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	

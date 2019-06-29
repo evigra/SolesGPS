@@ -3149,12 +3149,18 @@
 			        {
 			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        }	
-					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio")))	    
+			        elseif(in_array($etiqueta,array("create","write","report","kanban")))	
 			        {
 			        	$sys_input.="
-			        		$(\"#sys_action_{$this->sys_name}\").val(\"$name\");
-			        		$(\"#sys_section_{$this->sys_name}\").val(\"$name\");
+							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
+			        		$(\"#sys_section_{$this->sys_name}\").val(\"$value\");
+			        		$(\"#sys_id_{$this->sys_name}\").val(\"\");
+			        		$(\"input.{$this->sys_name}\").val(\"\");							
 			        	";
+			        }	
+					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio")))	    
+			        {
+			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$name\");";
 			        	
 			        }			        
 			        else					

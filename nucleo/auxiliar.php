@@ -3153,7 +3153,7 @@
 			        {
 			        	$sys_input.="
 							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
-			        		$(\"#sys_section_{$this->sys_name}\").val(\"$value\");
+			        		$(\"#sys_section_{$this->sys_name}\").val(\"$name\");
 			        		$(\"#sys_id_{$this->sys_name}\").val(\"\");
 			        		$(\"input.{$this->sys_name}\").val(\"\");							
 			        	";

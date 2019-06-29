@@ -29,7 +29,7 @@
 		##############################################################################
    		public function action_enviar()
     	{    		    				    		
-    	    $return=$this->__SAVE($this->sys_request, $opcion);
+    	    $return=$this->__SAVE($this->sys_request);
     	    return $return;
 		}
 		##############################################################################

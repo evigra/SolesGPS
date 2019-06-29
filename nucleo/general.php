@@ -78,8 +78,7 @@
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
 				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
-				
-				
+								
 				if(@$this->sys_private["section"]=="delete")
 				{
 					$this->__PRE_DELETE(@$this->sys_private["id"]);				
@@ -88,11 +87,9 @@
 				$this->__FIND_FIELD_ID();		
 				$this->__FIND_FIELDS();
 								
-				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/" AND substr(@$this->sys_private["action"],0,6)=="__SAVE")
+				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
 				{	
-					$this->__PRE_SAVE();
-				    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-				    $words["system_js"]     				=@$this->__SAVE_JS;	            
+					$words=$this->__PRE_SAVE($words);
 				}									
 				$this->__FIND_FIELDS(@$this->sys_private["id"]);
 			}	

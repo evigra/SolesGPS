@@ -960,18 +960,26 @@
     	}
 
 		##############################################################################
-		public function __PRE_SAVE()
+		public function __PRE_SAVE($words)
     	{
 			# ENVIA UN ARRAY AL METODO SAVE
 			# DE LAS VARIABLES DECLARADAS EN EL MODELO 
 			# $this->sys_fields
 
-			$fields	=$this->__FIELDS();		
-    					
-			$opcion=array(
-				"message"=>"DATOS GUARDADOS",
-			);	
-			$this->__SAVE($fields, $opcion);			
+			$this->__FIELDS();			
+			if(@$_SESSION["var"]["vpath"]==$this->sys_name."/" AND substr(@$this->sys_private["action"],0,6)=="__SAVE")
+			{	
+				$opcion=array(
+					"message"=>"DATOS GUARDADOS",
+				);
+					
+				$this->__SAVE($this->sys_request, $opcion);			
+
+			    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
+			    $words["system_js"]     				=@$this->__SAVE_JS;	            
+			}			
+			return $words;		
+							
     	}
 		##############################################################################    
 		public function __FIELDS()
@@ -980,8 +988,7 @@
 			# DE LAS VARIABLES DECLARADAS EN EL MODELO 
 			# $this->sys_fields
     	
-			$datas		=$this->sys_fields;
-			
+			$datas		=$this->sys_fields;			
 			$return		=array();
     		foreach($datas as $campo=>$valor)
     		{
@@ -998,8 +1005,8 @@
 						$return[$campo]=$valor["value"];
 					}					
 				}			
-    		}    		
-    		return $return;
+    		}    	
+    		$this->sys_request=$return;    			
     	}
 
     	##############################################################################    
@@ -3086,11 +3093,11 @@
 			{
 			    foreach($datas as $data)
 			    {
-			    	$icon="";
-					$title="";
-			    	$action=0;
-			    	$titulo="";
-					$sys_input="";
+			    	$icon		="";
+					$title		="";
+			    	$action		=0;
+			    	$titulo		="";
+					$sys_input	="";
 					
 					if(isset($data["icon"]))		$icon	=$data["icon"];
 					if(isset($data["text"]))		$text	=$data["text"];

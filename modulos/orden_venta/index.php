@@ -66,6 +66,7 @@
 		);		
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{
+			
 			$objeto->__PRINT_R($objeto->sys_private);
 		}
 		#CARGANDO VISTA PARTICULAR Y CAMPOS	

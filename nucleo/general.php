@@ -89,7 +89,7 @@
 								
 				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
 				{	
-					$words=$this->__PRE_SAVE($words);
+					$this->__PRE_SAVE();
 				}									
 				$this->__FIND_FIELDS(@$this->sys_private["id"]);
 			}	

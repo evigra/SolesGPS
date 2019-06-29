@@ -960,7 +960,7 @@
     	}
 
 		##############################################################################
-		public function __PRE_SAVE($words)
+		public function __PRE_SAVE()
     	{
 			# ENVIA UN ARRAY AL METODO SAVE
 			# DE LAS VARIABLES DECLARADAS EN EL MODELO 
@@ -974,12 +974,7 @@
 				);
 					
 				$this->__SAVE($this->sys_request, $opcion);			
-
-			    $words["system_message"]    			=@$this->__SAVE_MESSAGE;
-			    $words["system_js"]     				=@$this->__SAVE_JS;	            
-			}			
-			return $words;		
-							
+			}										
     	}
 		##############################################################################    
 		public function __FIELDS()

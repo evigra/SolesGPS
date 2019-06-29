@@ -1544,7 +1544,8 @@
 			$class_id			=@$option["class_id"];
 			$class_one			=@$option["class_one"];
 			$class_one_id		=@$option["class_one_id"];
-			
+			$class_section		=@$option["class_section"];
+						
 			$campo				=@$option["class_field"];
 			$class_field_id		=@$option["class_field_id"];
 			$valor				=@$option["class_field_value"];
@@ -1552,7 +1553,7 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 
-
+			$this->__PRINT_R($class_section);
 			
 			if(isset($option["json"]))
 			{

@@ -43,8 +43,9 @@
 	{								
 		class_one		=options["class_one"];
 		class_one_id	=options["class_one_id"];
+		class_section	=options["class_section"];
 		
-		class_field		=options["class_field"];
+		class_field		=options["class_field"];		
 		class_field_id	=options["class_field_id"];
 		
 		class_many		=options["class_many"];
@@ -54,7 +55,8 @@
 		var options_row={
 			"class_one":		class_one, 	
 			"class_one_id":		class_one_id, 	
-			"class_field":		class_field, 
+			"class_section":	class_section,
+			"class_field":		class_field, 						
 			"class_field_id":	class_field_id, 			
 		};				
 		$.ajax(

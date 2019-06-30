@@ -83,6 +83,7 @@
 		class_many		=options["class_many"];
 		object			=options["object"];		
 				
+		alert(class_section);		
 		var require="";				
 		$("." + class_field).each(function()
 		{

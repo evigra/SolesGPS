@@ -1587,6 +1587,7 @@
 
 						if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
 						{
+							$"."this->__PRINT_R(\"$class_section\");
 							$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 						}		
 						

@@ -83,7 +83,7 @@
 		class_many		=options["class_many"];
 		object			=options["object"];		
 				
-		alert(class_section);		
+		//alert(class_section);		
 		var require="";				
 		$("." + class_field).each(function()
 		{
@@ -198,9 +198,10 @@
 					many2one_get(options);													
 					for(ivariables in variables)
 					{
-						options["class_section"]	=variables[ivariables];	
+						
 						if(variables[ivariables]=="write")
 						{
+							options["class_section"]	=variables[ivariables];	
 							$("div#create_"+ class_field).dialog({
 								open: function(event, ui){
 									var dialog = $(this).closest('.ui-dialog');
@@ -219,6 +220,7 @@
 						}
 						if(variables[ivariables]=="delete")
 						{				
+							options["class_section"]	=variables[ivariables];	
 							many2one_post(options);	
 						}
 					}					

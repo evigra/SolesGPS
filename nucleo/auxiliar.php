@@ -1576,6 +1576,10 @@
 					{
 						$"."this->__PRINT_R(\"borrar\");
 					}		
+					if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
+					{
+						$"."this->__PRINT_R(\"$class_section\");
+					}		
 
 
 					if(isset($"."json))

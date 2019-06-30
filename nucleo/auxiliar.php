@@ -1572,10 +1572,6 @@
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"action\"]=\"print_pdf\";
 
 
-					if(\"$class_section\"==\"write\")
-					{
-						$"."this->__PRINT_R(\"modificar\");
-					}		
 					if(\"$class_section\"==\"delete\")
 					{
 						$"."this->__PRINT_R(\"borrar\");
@@ -1588,8 +1584,12 @@
 				
 						if(isset($"."class_id) AND $"."class_id>0)
 							$"."json[\"row\"][\"$"."sys_primary_field\"]	=$"."class_id;
+
+						if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
+						{
+							$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
+						}		
 						
-						$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 					}
 					
 					$"."view   										=$"."this->__TEMPLATE(\"sitio_web/html/" . $valor["class_template"]. "\");

@@ -1572,7 +1572,14 @@
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"action\"]=\"print_pdf\";
 
 
-					
+					if(\"$class_section\"==\"write\")
+					{
+						$"."this->__PRINT_R(\"modificar\");
+					}		
+					if(\"$class_section\"==\"delete\")
+					{
+						$"."this->__PRINT_R(\"borrar\");
+					}		
 
 
 					if(isset($"."json))

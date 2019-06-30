@@ -1553,8 +1553,6 @@
 			$words				=@$option["words"];                                                                                                                                                                                                                                                          
 			$index				=@$option["view"];
 
-			$this->__PRINT_R($class_section);
-			
 			if(isset($option["json"]))
 			{
 				$json	=$option["json"];										
@@ -1573,6 +1571,11 @@
 					if(in_array(@$"."this->sys_private[\"action\"],$"."_SESSION[\"var\"][\"print\"]))											
 						@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"action\"]=\"print_pdf\";
 
+
+					###if(\"$class_section\"==\"delete\")	
+					(	
+						$"."this->__PRINT_R(\"$class_section\");											
+					)
 
 
 					if(isset($"."json))

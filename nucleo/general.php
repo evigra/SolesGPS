@@ -696,6 +696,9 @@
 					
 					$class_one		=$datas["class_one"];
 					$class_field	=$datas["class_field"];
+					$class_section	=$datas["class_section"];
+					
+					$this->__PRINT_R($class_section);
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]))
 					{	

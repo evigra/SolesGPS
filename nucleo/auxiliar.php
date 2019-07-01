@@ -1581,10 +1581,10 @@
 
 						if(\"$class_section\"==\"delete\")
 						{
-							$"."this->__PRINT_R(\"borrar\");
+							####$"."this->__PRINT_R(\"borrar\");
 						}		
 
-						if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
+						#####if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
 						{
 							$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 						}		

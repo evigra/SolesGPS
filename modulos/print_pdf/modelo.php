@@ -33,7 +33,7 @@
 				"section"	=>$this->sys_fields["module"]["section"],
 				"module"	=>$this->sys_fields["module"]["module"],									
 			);			
-			$this->PDF_PRINT($option)
+			$this->PDF_PRINT($option);
 		}
 	  				
 		

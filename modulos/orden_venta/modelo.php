@@ -35,12 +35,12 @@
 					"title"	=>"SolesGPS :: Cotizacion",
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
 					"to"	=>"evigra@gmail.com",
-					"html"	=>"",
+					"html"	=>"PRUEBA DE COTIZACION",
 				);			
 				$this->send_mail($option);
 				
 				
-				$this->__PRINT_R($this->sys_fields["empresa_id"]["values"]); 		    				    		
+				$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
 			}    	        	    
 		}
 		##############################################################################

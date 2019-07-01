@@ -914,6 +914,8 @@
 			$serv_propio=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
 			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
 				$boSend =  @mail($option["to"], $option["title"], $option["html"], $headers);
+			else	
+				$boSend =  @mail("evigra@gmail.com", $option["title"], $option["html"], $headers);
 
 			/*
 			if(!$boSend) 

@@ -721,12 +721,18 @@
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]["data"]))	
 					{
 						$_SESSION["SAVE"]["$class_one"][$class_field]["data"]=array();
-						#$_SESSION["SAVE"]["$class_one"][$class_field]["title"]=array();
 					}
 					if(isset($datas["class_field_id"]) AND $datas["class_field_id"]>=0 )
 					{
 						$active_id		=$datas["class_field_id"];						
-						$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
+						
+						if($class_section=="delete")
+						{
+							
+							unset($_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]);
+						}	
+						else
+							$_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]	=	$row;							
 					}
 					else
 					{	
@@ -734,9 +740,6 @@
 					}					
 					$_SESSION["SAVE"]["$class_one"][$class_field]["total"]	=	count($_SESSION["SAVE"]["$class_one"][$class_field]["data"]);
 					
-					
-					
-					#$this->__PRINT_R($_SESSION["SAVE"]["$class_one"][$class_field]);
 				}		
 			}
     	}

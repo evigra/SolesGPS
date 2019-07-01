@@ -698,7 +698,7 @@
 					$class_field	=$datas["class_field"];
 					$class_section	=$datas["class_section"];
 					
-					$this->__PRINT_R($class_section);
+					$this->__PRINT_R($class_section . " SAVE memory");
 					
 					if(!isset($_SESSION["SAVE"]["$class_one"][$class_field]))
 					{	

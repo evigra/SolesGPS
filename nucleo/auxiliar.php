@@ -1582,13 +1582,8 @@
 						if(\"$class_section\"==\"delete\")
 						{
 							$"."this->sys_fields[\"$campo\"][\"obj\"]->__DELETE({$datas["class_section"]});
-							####$"."this->__PRINT_R(\"borrar\");
 						}		
-
-						#####if(\"$class_section\"==\"write\" OR \"$class_section\"==\"create\")
-						{
-							$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
-						}		
+						$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 						
 					}
 					

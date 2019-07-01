@@ -39,12 +39,9 @@
 				);			
 				$this->send_mail($option);
 				
-
-				
 				
 				$this->__PRINT_R($this->sys_fields["empresa_id"]["values"]); 		    				    		
 			}    	        	    
-    	    return $return;
 		}
 		##############################################################################
    		public function __BROWSE($option="")

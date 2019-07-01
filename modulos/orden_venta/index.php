@@ -64,13 +64,15 @@
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);		
+		#CARGANDO VISTA PARTICULAR Y CAMPOS	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
+    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{			
 			$objeto->action_enviar();
 		}
-		#CARGANDO VISTA PARTICULAR Y CAMPOS	
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
-    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+
 				
     	$module_title								="";
     }	

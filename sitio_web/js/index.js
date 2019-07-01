@@ -221,7 +221,12 @@
 						if(variables[ivariables]=="delete")
 						{				
 							options["class_section"]	=variables[ivariables];	
-							many2one_post(options);	
+							enviar = confirm("Borrar datos");														
+							if(enviar==true)
+							{
+								many2one_post(options);	
+							}		
+							
 						}
 					}					
 				});

@@ -29,10 +29,21 @@
 		##############################################################################
    		public function action_enviar()
     	{   
-    		$this->__PRINT_R($this->sys_fields["empresa_id"]["values"]); 		    				    		
-    	    #$return=$this->__SAVE($this->sys_request);
-    	    
-    	    
+    		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
+    		{
+				$option=array(
+					"title"	=>"SolesGPS :: Cotizacion",
+					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
+					"to"	=>"evigra@gmail.com",
+					"html"	=>"",
+				);			
+				$this->send_mail($option);
+				
+
+				
+				
+				$this->__PRINT_R($this->sys_fields["empresa_id"]["values"]); 		    				    		
+			}    	        	    
     	    return $return;
 		}
 		##############################################################################

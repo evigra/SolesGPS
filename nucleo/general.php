@@ -727,8 +727,7 @@
 						$active_id		=$datas["class_field_id"];						
 						
 						if($class_section=="delete")
-						{
-							
+						{							
 							unset($_SESSION["SAVE"]["$class_one"][$class_field]["data"][$active_id]);
 						}	
 						else

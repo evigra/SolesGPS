@@ -2432,6 +2432,7 @@
 
 	            				$(\"font#create_$name\").click(function()
 	            				{
+	            					$(\"div#create_{$template_option["class_field"]} .{$template_option["class_field"]}\").val(\"\");	
 	            				
 	            					$(\"div#create_$name\")
 	            						.dialog({

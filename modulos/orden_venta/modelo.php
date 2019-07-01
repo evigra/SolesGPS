@@ -41,7 +41,8 @@
 				
 				
 				$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
-			}    	        	    
+			}   
+			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
 		}
 		##############################################################################
    		public function __BROWSE($option="")

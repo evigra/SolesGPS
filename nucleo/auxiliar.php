@@ -1581,7 +1581,7 @@
 
 						if(\"$class_section\"==\"delete\")
 						{
-							$"."this->sys_fields[\"$campo\"][\"obj\"]->__DELETE({$datas["class_section"]});
+							$"."this->sys_fields[\"$campo\"][\"obj\"]->__DELETE({$class_id});
 						}		
 						$"."this->sys_fields[\"$campo\"][\"obj\"]->__SAVE($"."json);
 						

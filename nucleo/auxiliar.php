@@ -1581,7 +1581,7 @@
 
 						if(\"$class_section\"==\"delete\")
 						{
-							$"."this->sys_fields[\"$campo\"][\"obj\"]->__DELETE();
+							$"."this->sys_fields[\"$campo\"][\"obj\"]->__DELETE({$datas["class_section"]});
 							####$"."this->__PRINT_R(\"borrar\");
 						}		
 

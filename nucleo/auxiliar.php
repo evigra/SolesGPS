@@ -1443,7 +1443,7 @@
 														}
 													}
 													if($(\"input#auto_$campo".".{$this->sys_name}\").val()==\"\")
-													$(\"input#$campo".".{$this->sys_name}\").val(\"\")
+													$(\"input#$campo".".{$this->sys_name}\").val(\"\");
 												}				
 											});				            	
 								
@@ -2432,6 +2432,8 @@
 
 	            				$(\"font#create_$name\").click(function()
 	            				{
+	            					$(\"div#create_{{$template_option["class_field"]}} .{$template_option["class_field"]}\").val(\"\");	
+	            				
 	            					$(\"div#create_$name\")
 	            						.dialog({
 			        						open: function(event, ui){

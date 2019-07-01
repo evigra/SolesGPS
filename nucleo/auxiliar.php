@@ -1040,7 +1040,9 @@
 			if(!is_array($option))
 				$option=array(
 					"id"		=>"$option",
-					"section"	=>"write"					
+					"section"	=>"write",
+					"module"	=>$this->sys_object,
+										
 				);
 		
 			@$this->__PRINT_JS.="
@@ -1055,8 +1057,10 @@
 				
 					$(\"form\")
 						.attr(\"target\",\"_blank\")
+						.attr(\"action\",\"../{$option["module"]}/\")
 						.submit();
 					$(\"form\")
+						.attr(\"action\",\"\")
 						.removeAttr(\"target\");			
 						
 				 	$(\"#sys_section_{$this->sys_name}\").val(sys_section_{$this->sys_name});

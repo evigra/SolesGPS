@@ -1016,7 +1016,7 @@
 				$ruta=$carpeta.$path;
 				if(@file_exists($ruta."tcpdf_include.php")) 				
 				{
-					echo "encontrado";
+					echo "encontrado: $ruta ";
 					require_once($ruta.'config/tcpdf_config_alt.php');
 					require_once($ruta.'tcpdf_include.php');
 					break;

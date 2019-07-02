@@ -1009,10 +1009,10 @@
     	}
 		public function __PDF()
 		{				    
-			if(@file_exists("tcpdf/tcpdf_include.php")) 			require_once('tcpdf/tcpdf_include.php');
-			if(@file_exists("../tcpdf/tcpdf_include.php")) 			require_once('../tcpdf/tcpdf_include.php');
-			if(@file_exists("../../tcpdf/tcpdf_include.php")) 		require_once('../../tcpdf/tcpdf_include.php');
-			if(@file_exists("../../../tcpdf/tcpdf_include.php")) 	require_once('../../../tcpdf/tcpdf_include.php');
+			if(@file_exists("nucleo/tcpdf/tcpdf_include.php")) 				require_once('nucleo/tcpdf/tcpdf_include.php');
+			if(@file_exists("../nucleo/tcpdf/tcpdf_include.php")) 			require_once('../nucleo/tcpdf/tcpdf_include.php');
+			if(@file_exists("../../nucleo/tcpdf/tcpdf_include.php")) 		require_once('../../nucleo/tcpdf/tcpdf_include.php');
+			if(@file_exists("../../../nucleo/tcpdf/tcpdf_include.php")) 	require_once('../../../nucleo/tcpdf/tcpdf_include.php');
 
 			$pdf = new TCPDF(
 				$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], 

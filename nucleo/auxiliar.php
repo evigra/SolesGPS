@@ -373,7 +373,7 @@
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
 				if(!isset($words["sys_title"]))					$words["sys_title"]				=$this->words["module_title"];
-				if(!isset($words["sys_subtitle"]))				$words["sys_subtitle"]			=$this->words["module_subtitle"];
+				if(!isset($words["sys_subtitle"]))				$words["sys_subtitle"]			=@$this->words["module_subtitle"];
 				if(!isset($words["sys_asunto"]))				$words["sys_asunto"]			="";
 				if(!isset($words["sys_pie"]))					$words["sys_pie"]				="";
 				
@@ -402,12 +402,12 @@
 				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
 				
 				
-				if(!isset($_SESSION["pdf"]["PDF_system_ophp1"]))		$_SESSION["pdf"]["PDF_system_ophp1"]		=$words["system_ophp1"];   	
+				if(!isset($_SESSION["pdf"]["PDF_system_ophp1"]))		$_SESSION["pdf"]["PDF_system_ophp1"]		=@$words["system_ophp1"];   	
 				
 				if(!isset($_SESSION["pdf"]["save_name"]))				$_SESSION["pdf"]["save_name"]				=$_SESSION["pdf"]["subject"].".pdf";
 				if($_SESSION["pdf"]["save_name"]=="")					$_SESSION["pdf"]["save_name"]				=$_SESSION["pdf"]["title"].".pdf";			
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
-				$path				.="../$url";				
+				@$path				.="../$url";				
 				#header('Location:'.$path);
 				
 				$this->__PDF();		
@@ -1009,10 +1009,10 @@
     	}
 		public function __PDF()
 		{				    
-			if(@file_exists("tcpdf_include.php")) 			require_once('tcpdf_include.php');
-			if(@file_exists("../tcpdf_include.php")) 		require_once('../tcpdf_include.php');
-			if(@file_exists("../../tcpdf_include.php")) 	require_once('../../tcpdf_include.php');
-			if(@file_exists("../../../tcpdf_include.php")) 	require_once('../../../tcpdf_include.php');
+			if(@file_exists("tcpdf/tcpdf_include.php")) 			require_once('tcpdf/tcpdf_include.php');
+			if(@file_exists("../tcpdf/tcpdf_include.php")) 			require_once('../tcpdf/tcpdf_include.php');
+			if(@file_exists("../../tcpdf/tcpdf_include.php")) 		require_once('../../tcpdf/tcpdf_include.php');
+			if(@file_exists("../../../tcpdf/tcpdf_include.php")) 	require_once('../../../tcpdf/tcpdf_include.php');
 
 			$pdf = new TCPDF(
 				$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], 

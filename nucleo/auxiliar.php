@@ -1009,10 +1009,19 @@
     	}
 		public function __PDF()
 		{
-			if(@file_exists("nucleo/tcpdf/tcpdf_include.php")) 				require_once('nucleo/tcpdf/tcpdf_include.php');
-			if(@file_exists("../nucleo/tcpdf/tcpdf_include.php")) 			require_once('../nucleo/tcpdf/tcpdf_include.php');
-			if(@file_exists("../../nucleo/tcpdf/tcpdf_include.php")) 		require_once('../../nucleo/tcpdf/tcpdf_include.php');
-			if(@file_exists("../../../nucleo/tcpdf/tcpdf_include.php")) 	require_once('../../../nucleo/tcpdf/tcpdf_include.php');
+			$path="nucleo/tcpdf/";	
+			$carpeta="";
+			for($a=1;$a<10;$a++)
+			{
+				$ruta=$carpeta.$path;
+				if(@file_exists($ruta."tcpdf_include.php")) 				
+				{
+					require_once($ruta.'config/tcpdf_config_alt.php');
+					require_once($ruta.'tcpdf_include.php');
+					break;
+				}				
+				$carpeta.="../";				
+			}		
 
 			$pdf = new TCPDF(
 				$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"], 

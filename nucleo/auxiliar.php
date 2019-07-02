@@ -410,7 +410,7 @@
 				@$path				.="../$url";				
 				#header('Location:'.$path);
 				
-				$this->__PDF();		
+				#$this->__PDF();		
 				exit;
 			}			
 			echo $template;	
@@ -835,6 +835,7 @@
 				header("Cache-Control: max-age=0");		    
 		    	$sys_action							="print_report";
 		    }
+		    
 		    if(@$this->sys_private["action"]=="print_pdf")
 		    {
 		    	$sys_action							="print_report";
@@ -844,8 +845,6 @@
 		    if(file_exists($path.".html"))			
 		    {
 		        $template="$sys_action";
-		        #if(@$this->sys_private["action"]!="print_excel")
-			        #$words["system_js"]				="window.print();";
 		    }    		    
 		    
 		    $array  								=array("system_template"=> $this->__TEMPLATE("sitio_web/html/$template"));
@@ -1066,8 +1065,8 @@
 			$pdf->lastPage();
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-			#$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
-			echo "----->$html<-----";
+			$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
+			#echo "----->$html<-----";
 		}		
     	##############################################################################    
 		public function __VALOR($valor=NULL)
@@ -1798,25 +1797,7 @@
 		{
 			$this->__SYS_HISTORY();
 			$view   =$this->__TEMPLATE("$template");
-			$view	=$this->__VIEW_INPUTSECTION($view);
-
-		/*
-			<div class=\"ui-widget-header view_report_d1\" style=\"height: 35px;\">
-				<div class=\"view_report_d2\" style=\"width:100%; overflow-y:auto; overflow-x:hidden; padding:0px; margin:0px;\">
-					<table width=\"100%\" height=\"100%\" border=\"0\"><tr>	
-						<td>
-						</td>	
-						<td align=\"right\">
-							
-							<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"1\"><tr>	$options </tr></table>
-						</td>													
-					</tr></table>												
-				</div>
-			</div>										
-		
-		*/
-
-			
+			$view	=$this->__VIEW_INPUTSECTION($view);			
 			return $view;
 		}    	
 

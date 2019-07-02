@@ -1,6 +1,4 @@
 <?php
-	echo "-a1";	
-	/*
 	require_once("nucleo/sesion.php");
 	##############################################################################	
 	##  Propiedades	
@@ -36,5 +34,4 @@
 
 		header('Location:'.$_SESSION["var"]["vpath"]);		
 	}
-	#*/
 ?>

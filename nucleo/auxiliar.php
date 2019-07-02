@@ -410,7 +410,7 @@
 				@$path				.="../$url";				
 				#header('Location:'.$path);
 				
-				#$this->__PDF();		
+				$this->__PDF();		
 				exit;
 			}
 			else echo $template;

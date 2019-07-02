@@ -1061,12 +1061,13 @@
 			$pdf->AddPage();
 
 			$html = $_SESSION["pdf"]["template"];
-			unset($_SESSION["pdf"]["template"]);
+			#unset($_SESSION["pdf"]["template"]);
 			$pdf->writeHTML($html, true, 0, true, 0);
 			$pdf->lastPage();
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-			$pdf->Output("lalo", 'I');
+			#$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
+			echo "----->$html<-----";
 		}		
     	##############################################################################    
 		public function __VALOR($valor=NULL)

@@ -1018,8 +1018,9 @@
 				{
 					echo realpath('tcpdf.php');
 					echo "encontrado: $ruta ";
-					require_once($ruta.'config/tcpdf_config_alt.php');
 					require_once($ruta.'tcpdf_include.php');
+					#require_once($ruta.'config/tcpdf_config_alt.php');
+					
 					break;
 				}				
 				$carpeta.="../";				

@@ -304,7 +304,7 @@
 				#$this->__PRINT_R($_COOKIE);
 			}			
 			#*/
-			/*			
+			#/*			
 			$words["system_message"]				="";
 			$words["system_js"]						="";
 			$words["sys_date"]						=$_SESSION["var"]["datetime"];
@@ -415,7 +415,7 @@
 			}
 			else echo $template;
 			#*/	
-			echo "-aa-";
+			#echo "-aa-";
     	}
     	 
         ##############################################################################

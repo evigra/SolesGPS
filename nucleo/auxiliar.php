@@ -304,7 +304,7 @@
 				#$this->__PRINT_R($_COOKIE);
 			}			
 			#*/
-			
+			/*			
 			$words["system_message"]				="";
 			$words["system_js"]						="";
 			$words["sys_date"]						=$_SESSION["var"]["datetime"];
@@ -409,11 +409,13 @@
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				@$path				.="../$url";				
 				#header('Location:'.$path);
-				echo "-aa-";
+				
 				#$this->__PDF();		
 				exit;
-			}			
-			echo $template;	
+			}
+			else echo $template;
+			#*/	
+			echo "-aa-";
     	}
     	 
         ##############################################################################

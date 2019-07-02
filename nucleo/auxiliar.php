@@ -1057,8 +1057,8 @@
 				
 					$(\"form\")
 						.attr(\"target\",\"_blank\")
-						.attr(\"action\",\"../{$option["module"]}/\")
-						.submit();
+						.attr(\"action\",\"../{$option["module"]}/\");
+					////	.submit();
 					$(\"form\")
 						.attr(\"action\",\"\")
 						.removeAttr(\"target\");			

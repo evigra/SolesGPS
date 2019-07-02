@@ -29,9 +29,9 @@
 			parent::__CONSTRUCT($option);
 
 			$option=array(
-				"id"		=>$this->sys_fields["module"]["id"],
-				"section"	=>$this->sys_fields["module"]["section"],
-				"module"	=>$this->sys_fields["module"]["module"],									
+				"id"		=>$this->request["id"],
+				"section"	=>$this->request["section"],
+				"module"	=>$this->request["module"],									
 			);			
 			$this->PDF_PRINT($option);
 		}

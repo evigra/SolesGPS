@@ -2127,6 +2127,7 @@
 			$inicio			=$option["inicio"];
 			$fin			=$option["fin"];
 			$total			=$option["total"];
+			$view_head		="";
 			
         	if(@$this->sys_private["action"]=="print")	$view_head="";                	                                	
         	elseif(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	

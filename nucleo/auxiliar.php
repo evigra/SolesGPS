@@ -1008,7 +1008,7 @@
     		$this->sys_request=$return;    			
     	}
 		public function __PDF()
-		{				    
+
 			if(@file_exists("nucleo/tcpdf/tcpdf_include.php")) 				require_once('nucleo/tcpdf/tcpdf_include.php');
 			if(@file_exists("../nucleo/tcpdf/tcpdf_include.php")) 			require_once('../nucleo/tcpdf/tcpdf_include.php');
 			if(@file_exists("../../nucleo/tcpdf/tcpdf_include.php")) 		require_once('../../nucleo/tcpdf/tcpdf_include.php');

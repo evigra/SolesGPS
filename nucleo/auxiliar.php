@@ -1014,7 +1014,7 @@
 			for($a=1;$a<10;$a++)
 			{
 				$ruta=$carpeta.$path;
-				if(@file_exists($ruta."tcpdf_include.php")) 				
+				if(@file_exists($ruta."tcpdf_include.php") AND @file_exists($ruta."config/tcpdf_config_alt.php")) 				
 				{
 					echo "encontrado: $ruta ";
 					require_once($ruta.'config/tcpdf_config_alt.php');

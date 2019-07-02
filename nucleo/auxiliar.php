@@ -409,7 +409,7 @@
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				@$path				.="../$url";				
 				#header('Location:'.$path);
-				
+				echo "-aa-"
 				#$this->__PDF();		
 				exit;
 			}			

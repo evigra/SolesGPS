@@ -407,11 +407,11 @@
 				if($_SESSION["pdf"]["save_name"]=="")					$_SESSION["pdf"]["save_name"]				=$_SESSION["pdf"]["title"].".pdf";			
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				@$path				.="../$url";				
-				header('Location:'.$path);
+				#header('Location:'.$path);
 				#*/
 				
 				#include($url); 
-				#$this->__PDF();		
+				$this->__PDF();		
 				exit;
 			}
 			else echo $template;

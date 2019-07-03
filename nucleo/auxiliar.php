@@ -372,6 +372,7 @@
 						
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
+		    	/*
 				if(!isset($words["sys_title"]))					$words["sys_title"]				=$this->words["module_title"];
 				if(!isset($words["sys_subtitle"]))				$words["sys_subtitle"]			=@$this->words["module_subtitle"];
 				if(!isset($words["sys_asunto"]))				$words["sys_asunto"]			="";
@@ -391,8 +392,7 @@
 					@$template									=$this->__TEMPLATE("sitio_web/html/PDF_FORMATO");														
 					$template_lab              					=$this->__REPLACE($template,$words); 			
 					
-					$_SESSION["pdf"]["template"]				=$template_lab;
-					
+					$_SESSION["pdf"]["template"]				=$template_lab;					
 				}
 				if(!isset($_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]))	$_SESSION["pdf"]["PDF_PAGE_ORIENTATION"]	="P";   	# (P=portrait, L=landscape)
 				if(!isset($_SESSION["pdf"]["PDF_UNIT"]))				$_SESSION["pdf"]["PDF_UNIT"]				="mm";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
@@ -400,8 +400,7 @@
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO"]))			$_SESSION["pdf"]["PDF_HEADER_LOGO"]			="tcpdf_logo.jpg";   	# [pt=point, mm=millimeter, cm=centimeter, in=inch
 				if(!isset($_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]))	$_SESSION["pdf"]["PDF_HEADER_LOGO_WIDTH"]	=20;   	
 				if(!isset($_SESSION["pdf"]["PDF_MARGIN_TOP"]))			$_SESSION["pdf"]["PDF_MARGIN_TOP"]			=50;   	
-				
-				
+								
 				if(!isset($_SESSION["pdf"]["PDF_system_ophp1"]))		$_SESSION["pdf"]["PDF_system_ophp1"]		=@$words["system_ophp1"];   	
 				
 				if(!isset($_SESSION["pdf"]["save_name"]))				$_SESSION["pdf"]["save_name"]				=$_SESSION["pdf"]["subject"].".pdf";
@@ -409,7 +408,7 @@
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				@$path				.="../$url";				
 				#header('Location:'.$path);
-				
+				*/
 				$this->__PDF();		
 				exit;
 			}

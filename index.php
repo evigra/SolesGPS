@@ -1,6 +1,6 @@
 <?php
-	echo "lalo";
-	/*
+	#echo "lalo";
+	#/*
 	require_once("nucleo/sesion.php");
 	##############################################################################	
 	##  Propiedades	
@@ -36,5 +36,5 @@
 
 		header('Location:'.$_SESSION["var"]["vpath"]);		
 	}
-	*/
+	#*/
 ?>

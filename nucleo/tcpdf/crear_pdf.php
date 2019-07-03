@@ -33,6 +33,9 @@
 
 // Include the main TCPDF library (search for installation path).
 #$html=$_RECUEST[""];
+
+			$path="nucleo/tcpdf/";	
+			$carpeta="";
 			for($a=1;$a<10;$a++)
 			{
 				$ruta=$carpeta.$path;

@@ -69,10 +69,7 @@
 			break;
 			exit;
 		}
-		else
-		#*/ 
-		
-		if(@file_exists($pre_path	."nucleo/general.php"))
+		else if(@file_exists($pre_path	."nucleo/general.php"))
 		{
 			require_once($pre_path	."nucleo/basededatos.php");
 			require_once($pre_path	."nucleo/auxiliar.php");

@@ -1008,6 +1008,7 @@
     		}    	
     		$this->sys_request=$return;    			
     	}
+		##############################################################################    
 		public function __PDF()
 		{
 			$path="nucleo/tcpdf/";	
@@ -1067,8 +1068,9 @@
 			$pdf->lastPage();
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
+
 			$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
-			#echo "----->$html<-----";
+			exit;
 		}		
     	##############################################################################    
 		public function __VALOR($valor=NULL)
@@ -1106,7 +1108,6 @@
 					"id"		=>"$option",
 					"section"	=>"write",
 					"module"	=>$this->sys_object,
-										
 				);
 		
 			@$this->__PRINT_JS.="
@@ -3476,12 +3477,9 @@
 								AND ug.active=g.id
 								AND g.nivel<40
 							)
-						) 			
-	
+						) 				
 				";	
-				$option_conf=array();
-	
-
+				$option_conf			=array();	
 				$option_conf["open"]	=1;
 				$option_conf["close"]	=1;			
 				$data =$this->__EXECUTE($comando_sql,$option_conf);	
@@ -3500,8 +3498,7 @@
 			        			<td width=\"25\" rowspan=\"2\" class=\"event_device\"> - </td>
 			        		</tr>
 			        		<tr>
-			        			<td  valign=\"top\"><b>{$vehicle["placas"]}</b></td>
-			        			
+			        			<td  valign=\"top\"><b>{$vehicle["placas"]}</b></td>		        			
 			        		</tr>		        	
 			        	</table>
 			    	";			

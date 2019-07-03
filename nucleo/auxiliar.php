@@ -372,7 +372,7 @@
 						
 			if(@$this->sys_private["action"]=="print_pdf")
 		    {
-		    	/*
+		    	#/*
 				if(!isset($words["sys_title"]))					$words["sys_title"]				=$this->words["module_title"];
 				if(!isset($words["sys_subtitle"]))				$words["sys_subtitle"]			=@$this->words["module_subtitle"];
 				if(!isset($words["sys_asunto"]))				$words["sys_asunto"]			="";
@@ -407,9 +407,9 @@
 				if($_SESSION["pdf"]["save_name"]=="")					$_SESSION["pdf"]["save_name"]				=$_SESSION["pdf"]["title"].".pdf";			
 				$url 				= 'nucleo/tcpdf/crear_pdf.php';				
 				@$path				.="../$url";				
-				#header('Location:'.$path);
-				*/
-				$this->__PDF();		
+				header('Location:'.$path);
+				#*/
+				#$this->__PDF();		
 				exit;
 			}
 			else echo $template;

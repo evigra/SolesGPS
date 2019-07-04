@@ -33,6 +33,11 @@
 		GeoMarker1	=Array();
 	}
 	*/
+
+
+
+
+
 	$(document).ready(function()
 	{
     	if($("div#map").length>0) 

@@ -58,6 +58,7 @@
 			limpiar_real();	  			
 		}	    
 		
+		/*
     	if($("div#map").length>0) 
     	{
 			$("#map").click(function()
@@ -136,7 +137,8 @@
 					limpiar_real();				
 				}
 			);	    
-		}            
+		}
+		*/            
     });
     
     	

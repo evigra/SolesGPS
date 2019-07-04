@@ -19,13 +19,15 @@
 		{	
 			parent::__CONSTRUCT($option);		
 		}
+		##############################################################################
 		/*
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
-		}
+		}	
 		*/
+		##############################################################################
 		public function __CRON($option=NULL)		
     	{	
     		if(is_null($option))			$option				=array();
@@ -82,14 +84,19 @@
 								
 				$this->sys_private["id"]		="";
 				$this->__SAVE($rows);
+				
+				@$txt_WA="";
+				
 			}
-		}		
+		}
+		##############################################################################		
    		public function __VIEW_REPORT($option="")
     	{			    	
 			if($option=="")	$option=array();			
 			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
 			return parent::__VIEW_REPORT($option);
 		}							
+		##############################################################################
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")	$option=array();			

@@ -17,7 +17,6 @@
 		public function __CONSTRUCT($option=NULL)
 		{	
 			
-			
 			parent::__CONSTRUCT($option);		
 		}
 		##############################################################################

@@ -1,4 +1,4 @@
-
+	/*
 	function puntos(GeoMarker)
     {
 		var punto	=new String();
@@ -32,7 +32,7 @@
 		GeoMarker	=Array();
 		GeoMarker1	=Array();
 	}
-	
+	*/
 	$(document).ready(function()
 	{
     	if($("div#map").length>0) 
@@ -45,6 +45,7 @@
 			var object      ="map";
 		    
 		    CreateMap(iZoom,iMap,coordinates,object); 
+			/*
 			google.maps.event.addListener(map, 'click', function(event) 
 			{ 		   
 				location    =event.latLng;
@@ -55,7 +56,8 @@
 			});        
 		    
 			limpiar_virtual();
-			limpiar_real();	  			
+			limpiar_real();
+			*/	  			
 		}	    
 		
 		/*

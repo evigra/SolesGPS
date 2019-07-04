@@ -342,9 +342,9 @@
 
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
     		
-    		#$option["echo"]="GENERAL :: {$this->sys_object}";
-    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]))
+    		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND @$this->sys_private["action"]!="print_pdf")
     		{
+    		
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			}
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
@@ -764,14 +764,14 @@
     		
 	   		if(is_array($option))
     		{
-				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER" AND @$this->sys_private["action"]!="print_pdf")
 				{
 		        	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
 		        }	
     			if(isset($option["open"]))	
     			{    			
     				$this->abrir_conexion();
-    				if(isset($option["e_open"])  AND $this->sys_enviroments	=="DEVELOPER")
+    				if(isset($option["e_open"])  AND $this->sys_enviroments	=="DEVELOPER" AND @$this->sys_private["action"]!="print_pdf")
     					echo "<br><b>CONECCION ABIERTA</b><br>$comando_sql<br>{$option["e_open"]}";    				
     			}	
     		}
@@ -781,7 +781,7 @@
 			{
 				$resultado	= @$this->OPHP_conexion->query($comando_sql);
 				
-				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($this->OPHP_conexion->error) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND $this->OPHP_conexion->error!="" AND $this->sys_enviroments	=="DEVELOPER" AND @$this->sys_private["action"]!="print_pdf")
 				{					
 					echo "
 						<div class=\"echo\" style=\"display:none;\" title=\"ERROR {$this->sys_object}\">
@@ -795,7 +795,7 @@
 			else
 			{
 				$resultado=array();
-				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER")
+				if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER"  AND @$this->sys_private["action"]!="print_pdf")
 					echo "<div class=\"echo\" style=\"display:none;\" title=\"Coneccion\">Error en la conecion</div>";
 			}	
 
@@ -833,7 +833,7 @@
     			if(isset($option["close"]))	
     			{
     				$this->cerrar_conexion();
-    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]))
+    				    if(isset($option["e_close"]) AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND @$this->sys_private["action"]!="print_pdf")
     					echo "<br><b>CONECCION CERRADA</b><br>{$option["e_close"]}";
     			}	
     		}

@@ -230,15 +230,12 @@
 		}
 		public function __WA($data)
     	{    		    		    	
-			$sesion 			=array("apikey"=>"AO7K3A1BOEO8O0PX4KK4");
 			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
 			
-
-			$url 				="https://panel.apiwha.com/send_message.php";
+			$url 				="https://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			$vars["number"]		=$data["telefono"];
-			
-			
+						
 			#$vars["number"]		="5213414208060";
 			$vars["text"]		=$data["mensaje"];
 
@@ -3207,7 +3204,7 @@
 			        }
 			        
 			        	
-			        if($name=="action")    
+			        if(@$name=="action")    
 			        {
 			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        }	

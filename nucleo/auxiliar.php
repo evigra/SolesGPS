@@ -3189,6 +3189,7 @@
 		        			}
 		        			else
 		        			{
+		        				$text	="true";
 		        				$name	="$etiqueta";
 		        			}			        			
 

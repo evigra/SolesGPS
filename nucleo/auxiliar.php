@@ -3186,6 +3186,10 @@
 		        				$text	="true";
 		        				$action	="1";
 		        				$name	="$etiqueta";
+		        			}
+		        			else
+		        			{
+		        				$name	="$etiqueta";
 		        			}			        			
 
 			        		if(@$action=="1")	

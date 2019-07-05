@@ -76,11 +76,13 @@
 			require_once($pre_path	."nucleo/general.php");		
 	
 			$objeto					=new general();         
-			$objeto->__PDF();
+			
 			
 			
 			$comando_sql			="SELECT * FROM modulos ";		
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
+			
+			$objeto->__PDF();
 	
 			foreach($modulos as $modulo)
 			{

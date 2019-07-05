@@ -80,11 +80,11 @@
 			
 			
 			$comando_sql			="SELECT * FROM modulos ";
-			$comando_sql			="SELECT * FROM modulos LIMIT 1,5";				
+
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
 			
 			
-			$objeto->__PDF();
+			
 			#/*
 			foreach($modulos as $modulo)
 			{

@@ -717,6 +717,9 @@
 				$this->sys_private["section"]			=$valor;
 			elseif($campo=="sys_action_{$this->sys_name}" AND $this->sys_private["action"]=="")	
 				$this->sys_private["action"]			=$valor;			
+			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
+				$this->sys_private["id"]			=$valor;			
+
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
 				$this->sys_private["section"]			=$valor; 

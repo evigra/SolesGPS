@@ -76,7 +76,7 @@
 			require_once($pre_path	."nucleo/general.php");		
 	
 			$objeto					=new general();         
-			$objeto->__PDF();
+			
 			
 			
 			$comando_sql			="SELECT * FROM modulos ";		
@@ -87,7 +87,6 @@
 				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
 					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");	
 			}
-			#/*
 			if(@$_REQUEST["setting_company"]>0)
 			{
 				$comando_sql="
@@ -101,9 +100,9 @@
 				foreach($modulos as $modulo)
 					$_SESSION["company"]					=$modulo;
 			}
-			#*/
 			break;
 		}				
 		$pre_path.="../";
 	}
+	$objeto->__PDF();
 ?>

@@ -1065,10 +1065,10 @@
 			$pdf->writeHTML($html, true, 0, true, 0);
 			$pdf->lastPage();
 
-			#echo $html;
+			echo $html;
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
-			$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
+			#$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
 			exit;
 		}		
     	##############################################################################    

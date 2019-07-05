@@ -76,7 +76,7 @@
 			require_once($pre_path	."nucleo/general.php");		
 	
 			$objeto					=new general();         
-			
+			$objeto->__PDF();
 			
 			
 			$comando_sql			="SELECT * FROM modulos ";		
@@ -104,5 +104,4 @@
 		}				
 		$pre_path.="../";
 	}
-	$objeto->__PDF();
 ?>

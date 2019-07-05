@@ -1061,6 +1061,8 @@
 			$pdf->AddPage();
 
 			$html = $_SESSION["pdf"]["template"];
+			
+			$html ="LALo";
 			#unset($_SESSION["pdf"]["template"]);
 			$pdf->writeHTML($html, true, 0, true, 0);
 			$pdf->lastPage();

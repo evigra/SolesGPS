@@ -1,4 +1,14 @@
 <?php
+	#/*
+		require_once("nucleo/basededatos.php");
+		require_once("nucleo/auxiliar.php");
+		require_once("nucleo/general.php");		
+			
+		$object= new general();			
+		$object->__PDF();
+		
+	#*/
+	/*
 	require_once("nucleo/sesion.php");	
 	
 	##############################################################################	

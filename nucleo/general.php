@@ -55,7 +55,7 @@
 
 			#ini_set('display_errors', 1);							
 						
-			if($this->sys_name!="general" AND $this->sys_recursive<3)
+			#if($this->sys_name!="general" AND $this->sys_recursive<3)
 			{
 				$this->__REQUEST();		
 				$this->__CREATE_OBJ();

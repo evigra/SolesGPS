@@ -44,11 +44,11 @@
 			
 			#ini_set('display_errors', 1);				
 			
-			if(in_array(@$_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_error"]))
+			if(isset($_SESSION["var"]["server_error"]) AND in_array(@$_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_error"]))
 			{	
 				#error_reporting(-1);
 			}
-			if(in_array(@$_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_true"]))
+			if(isset($_SESSION["var"]["server_true"]) AND in_array(@$_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_true"]))
 			{	
 				#ini_set('display_errors', 0);	
 			}

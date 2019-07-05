@@ -1060,7 +1060,7 @@
 			$pdf->SetFont('helvetica', '', 9);
 			$pdf->AddPage();
 
-			$html = $_SESSION["pdf"]["template"];
+			$html = @$_SESSION["pdf"]["template"];
 			
 			$html ="LALo";
 			#unset($_SESSION["pdf"]["template"]);

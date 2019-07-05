@@ -78,7 +78,7 @@
 			$objeto					=new general();         
 			$objeto->__PDF();
 			
-			/*
+			
 			$comando_sql			="SELECT * FROM modulos ";		
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
 	
@@ -87,6 +87,7 @@
 				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
 					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");	
 			}
+			/*
 			if(@$_REQUEST["setting_company"]>0)
 			{
 				$comando_sql="

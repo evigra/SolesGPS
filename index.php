@@ -1,8 +1,5 @@
 <?php
-	#echo "lalo";
-	
-	require_once("nucleo/sesion.php");
-	
+	require_once("nucleo/sesion.php");	
 	
 	##############################################################################	
 	##  Propiedades	

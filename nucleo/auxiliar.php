@@ -1060,13 +1060,12 @@
 			$pdf->SetFont('helvetica', '', 9);
 			$pdf->AddPage();
 
-			$html = @$_SESSION["pdf"]["template"];
-			
+			$html = @$_SESSION["pdf"]["template"];			
 			unset($_SESSION["pdf"]["template"]);
+
 			$pdf->writeHTML($html, true, 0, true, 0);
 			$pdf->lastPage();
 
-			#echo $html;
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
 			$pdf->Output($_SESSION["pdf"]["save_name"], 'I');

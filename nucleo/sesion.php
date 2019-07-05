@@ -79,18 +79,19 @@
 			
 			
 			
-			$comando_sql			="SELECT * FROM modulos ";		
+			$comando_sql			="SELECT * FROM modulos ";
+			$comando_sql			="SELECT * FROM modulos LIMIT 1,5";				
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
 			
 			
 			$objeto->__PDF();
-			/*
+			#/*
 			foreach($modulos as $modulo)
 			{
 				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
 					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");	
 			}
-			*/
+			#*/
 			
 			if(@$_REQUEST["setting_company"]>0)
 			{

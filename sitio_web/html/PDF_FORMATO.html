@@ -1,29 +1,21 @@
 <table width="540" border="1" style="padding:0px; margin:0px;">
 	<tr>
-		<td width="100%" align="center" style="padding:auto; margin:auto;">
-			<table width="100%" border ="0" style="padding:auto; margin:auto;">					
-				<tr>
-					<td height="10" width="150" align="left" style="padding:5px;">
-						 {system_logo} 
-					</td>
-					<td align="left" width="520">
-						<font size="16"><b>{sys_empresa}</b></font><br>
-						<font size="13"><b>{sys_title}</b></font><br>
-						<font size="10"><b>{sys_subtitle}</b></font><br>			
-					</td>						
-				</tr>
-			</table>	
-			<table width="100%" border ="0" style="padding:auto; margin:auto;">					
-				<tr>
-					<td width="100%" height="700" align="center" style="padding:auto;">{sys_modulo}</td>										
-				</tr>
-				<tr>
-					<td width="100%" color="#ccc" align="center" style="padding:auto; margin:auto;">{system_domicilio}</td>
-				</tr>
-				<tr>
-					<td width="100%" color="#ccc" align="center" style="padding:auto; margin:auto;">{system_rs} {system_rfc} {system_email} {system_telefono}</td>															
-				</tr>
-			</table>				
+		<td height="10" width="150" align="left" style="padding:5px;">
+			 {system_logo} 
 		</td>
+		<td align="left">
+			<font size="16"><b>{sys_empresa}</b></font><br>
+			<font size="13"><b>{sys_title}</b></font><br>
+			<font size="10"><b>{sys_subtitle}</b></font><br>			
+		</td>						
 	</tr>
+	</tr>
+		<td colspan="2" height="740" align="center">{sys_modulo}</td>										
+	</tr>
+	<tr>
+		<td color="#ccc" align="center">{system_domicilio}</td>
+	</tr>
+	<tr>
+		<td color="#ccc" align="center">{system_rs} {system_rfc} {system_email} {system_telefono}</td>															
+	</tr>	
 </table>		

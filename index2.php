@@ -21,7 +21,7 @@
 	#print_r($objeto->getIssuerDN());
 	print_r($objeto->getDNProp(true));
 	print_r($objeto->getIssuerDN(true));
-	print_r($objeto->getPublicKey());
+	
 
 	
 
@@ -31,6 +31,7 @@
 
 	echo "</pre>";
 	#*/
+	echo $objeto->getPublicKey();
 
 
 

@@ -1995,8 +1995,8 @@
                                         	
                     	foreach($option["color"] as $color => $filter)
                     	{							
-                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
-                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
+                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_tr\"]='color:$color;';";
+                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_tr\"]='color:$color;';";
                     	}
                     	
                     	$eval.=$eval_color;

@@ -19,7 +19,7 @@
 	print_r($objeto->getDN(true));
 	#print_r($objeto->getIssuerDNProp('CN'));
 	#print_r($objeto->getIssuerDN());
-	print_r($objeto->getDNProp());
+	#print_r($objeto->getDNProp());
 	print_r($objeto->getIssuerDN(true));
 	print_r($objeto->getPublicKey());
 

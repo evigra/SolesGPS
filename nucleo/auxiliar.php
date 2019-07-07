@@ -1999,7 +1999,7 @@
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
 
-						echo $eval_color;                   	
+						#echo $eval_color;                   	
                     	$eval.=$eval_color;
                     	if(@eval($eval)===false)	
 				    		echo "";#$eval; ---------------------------";					

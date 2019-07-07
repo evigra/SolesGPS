@@ -1993,7 +1993,7 @@
                     	if(!isset($option["color"]))				$option["color"]=array();                    	
                     	#if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
                     	#if(!isset($option["color"]["red"]))		
-                    	$option["color"]["red"]="1==1";
+                    	$option["color"]["red"]="$"."row=['estatus']=1";
                                         	
                     	foreach($option["color"] as $color => $filter)
                     	{							

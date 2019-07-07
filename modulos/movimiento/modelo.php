@@ -209,9 +209,9 @@
    		public function REPORT($option="")
     	{			    	
 			if($option=="")					$option				=array();			
-			$option["color"]["red"]			="$"."row[\"estatus\"]=='0'";
+			$option["color"]["red"]			="$"."row[\"estatus\"]=='-1'";
 
-			return parent::__VIEW_REPORT($option);
+			return $this->__VIEW_REPORT($option);
 		}							
 		##############################################################################
    		public function __BROWSE($option="")

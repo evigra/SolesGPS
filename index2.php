@@ -10,8 +10,9 @@
 	echo "</pre>";
 	#*/
 	$cert = $x509->loadX509('...');
-
+/*
 	echo "<pre>";
 	print_R($cert);	
 	echo "</pre>";
+*/
 ?>

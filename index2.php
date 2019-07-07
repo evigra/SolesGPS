@@ -10,6 +10,7 @@
 	$objeto = new File_X509();	
 	$cert = $objeto->loadX509($data_file);
 	
+	echo $objeto->getPublicKey();	
 	/*
 	echo "<pre>";
 	print_R($cert);	
@@ -23,7 +24,9 @@
 	
 	$objeto = new Crypt_RSA();	
 	$cert = $objeto->loadKey($data_file);
+
 	
+
 	#/*
 	echo "<pre>";
 	print_R($data_file);	

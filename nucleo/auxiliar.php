@@ -1995,8 +1995,8 @@
                                         	
                     	foreach($option["color"] as $color => $filter)
                     	{							
-                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_tr\"]='color:$color;';";
-                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_tr\"]='color:$color;';";
+                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
+                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
                     	
                     	$eval.=$eval_color;
@@ -2046,7 +2046,7 @@
 				    	$html_template  =$this->__TEMPLATE("$template");
 				    	
 				    	if(@$this->sys_private["action"]=="print_pdf")				    	
-				    		$html_template	=str_replace("<td>", "<td style=\"{style_tr}\" >", $html_template);				    	
+				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    	else	
 				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    }	

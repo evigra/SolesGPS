@@ -8,7 +8,6 @@
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
 	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS();
-	#$objeto->words["html_head_css"]             	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 		
 	$module_left		="";	
 	$module_right		="";	
@@ -126,7 +125,7 @@
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option=array();	
-		$data										= $objeto->__VIEW_REPORT($option);		
+		$data										= $objeto->REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }

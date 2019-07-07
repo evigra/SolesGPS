@@ -206,6 +206,14 @@
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
 		}
 		##############################################################################
+   		public function REPORT($option="")
+    	{			    	
+			if($option=="")					$option				=array();			
+			$option["color"]["red"]			="$"."row[\"estatus\"]=='0'";
+
+			return parent::__VIEW_REPORT($option);
+		}							
+		##############################################################################
    		public function __BROWSE($option="")
     	{			    	
 			if($option=="")					$option				=array();			

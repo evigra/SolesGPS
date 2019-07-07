@@ -1998,7 +1998,8 @@
                     		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
                     		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
                     	}
-                    	
+
+						echo $eval_color;                   	
                     	$eval.=$eval_color;
                     	if(@eval($eval)===false)	
 				    		echo "";#$eval; ---------------------------";					

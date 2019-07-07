@@ -1993,6 +1993,7 @@
                     	if(!isset($option["color"]))				$option["color"]=array();                    	
                     	#if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
                     	
+                    	$colors["style_td"]="";
                     	#$option["color"]["red"]="$"."row=['estatus']=1";
                                         	
                         if(isset($option["color"]))

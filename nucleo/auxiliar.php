@@ -2049,9 +2049,9 @@
 				    	$html_template  =$this->__TEMPLATE("$template");
 				    	
 				    	if(@$this->sys_private["action"]=="print_pdf")				    	
-				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
+				    		$html_template	=str_replace("<td", "<td style=\"{style_td}\" ", $html_template);				    	
 				    	else	
-				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
+				    		$html_template	=str_replace("<td", "<td style=\"{style_td}\" ", $html_template);				    	
 				    }	
 				    $view   .=$html_template;
 				    $view	=$this->__REPLACE($view,$row);			

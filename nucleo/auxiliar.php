@@ -1992,15 +1992,17 @@
                     	$eval_color="";
                     	if(!isset($option["color"]))				$option["color"]=array();                    	
                     	#if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
-                    	#if(!isset($option["color"]["red"]))		
-                    	$option["color"]["red"]="$"."row=['estatus']=1";
+                    	
+                    	#$option["color"]["red"]="$"."row=['estatus']=1";
                                         	
-                    	foreach($option["color"] as $color => $filter)
-                    	{							
-                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
-                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
-                    	}
-
+                        if(isset($option["color"]))
+                        {
+		                	foreach($option["color"] as $color => $filter)
+		                	{							
+		                		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
+		                		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
+		                	}
+						}
 						#echo $eval_color;                   	
                     	$eval.=$eval_color;
                     	if(@eval($eval)===false)	

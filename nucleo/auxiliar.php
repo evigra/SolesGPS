@@ -1991,20 +1991,14 @@
                     	";
                     	$eval_color="";
                     	if(!isset($option["color"]))				$option["color"]=array();                    	
-                    	#if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
-                    	
-                    	$colors["style_td"]="";
-                    	#$option["color"]["red"]="$"."row=['estatus']=1";
+                    	if(!isset($option["color"]["black"]))		$option["color"]["black"]="1==1";
                                         	
-                        if(isset($option["color"]))
-                        {
-		                	foreach($option["color"] as $color => $filter)
-		                	{							
-		                		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
-		                		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
-		                	}
-						}
-						#echo $eval_color;                   	
+                    	foreach($option["color"] as $color => $filter)
+                    	{							
+                    		if($eval_color=="")	$eval_color="if({$option["color"]["$color"]}) 			$"."colors[\"style_td\"]='color:$color;';";
+                    		else 				$eval_color.="else if({$option["color"]["$color"]}) 	$"."colors[\"style_td\"]='color:$color;';";
+                    	}
+                    	
                     	$eval.=$eval_color;
                     	if(@eval($eval)===false)	
 				    		echo "";#$eval; ---------------------------";					
@@ -2052,9 +2046,9 @@
 				    	$html_template  =$this->__TEMPLATE("$template");
 				    	
 				    	if(@$this->sys_private["action"]=="print_pdf")				    	
-				    		$html_template	=str_replace("<td", "<td style=\"{style_td}\" ", $html_template);				    	
+				    		$html_template	=str_replace("<td>", "<td style=\"{style_tr}\" >", $html_template);				    	
 				    	else	
-				    		$html_template	=str_replace("<td", "<td style=\"{style_td}\" ", $html_template);				    	
+				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    }	
 				    $view   .=$html_template;
 				    $view	=$this->__REPLACE($view,$row);			

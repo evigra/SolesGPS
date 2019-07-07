@@ -27,6 +27,6 @@
 	echo "<pre>";
 	print_R($cert);	
 	echo "</pre>";
-	*/
+	#*/
 
 ?>

@@ -25,7 +25,8 @@
 	
 	#/*
 	echo "<pre>";
-	print_R($cert);	
+	print_R($objeto);	
+	#print_R($cert);
 	echo "</pre>";
 	#*/
 

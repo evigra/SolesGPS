@@ -345,7 +345,7 @@ class File_X509
     function __construct()
     {
         if (!class_exists('Math_BigInteger')) {
-            include_once '../Math/BigInteger.php';
+            include_once 'nucleo/cer/Math/BigInteger.php';
         }
 
         // Explicitly Tagged Module, 1988 Syntax

@@ -10,10 +10,25 @@
 	$objeto = new File_X509();	
 	$cert = $objeto->loadX509($data_file);
 	
-	echo $objeto->getPublicKey();	
-	/*
+	#/*
 	echo "<pre>";
-	print_R($cert);	
+	#print_R($cert);	
+
+	print_r($objeto->getDNProp('CN'));
+	print_r($objeto->getDN());
+	print_r($objeto->getDN(true));
+	print_r($objeto->getIssuerDNProp('CN'));
+	print_r($objeto->getIssuerDN());
+	print_r($objeto->getDNProp());
+	print_r($objeto->getIssuerDN(true));
+	print_r($objeto->getPublicKey());
+
+	
+
+
+
+
+
 	echo "</pre>";
 	#*/
 
@@ -29,9 +44,9 @@
 
 	#/*
 	echo "<pre>";
-	print_R($data_file);	
+	#print_R($data_file);	
 	#print_R($objeto);
-	print_R($cert);
+	#print_R($cert);
 	echo "</pre>";
 	#*/
 

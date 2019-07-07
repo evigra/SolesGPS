@@ -209,7 +209,7 @@
    		public function REPORT($option="")
     	{			    	
 			if($option=="")					$option				=array();			
-			$option["color"]["red"]			="$"."row[\"estatus\"]=='-1'";
+			$option["color"]["red"]			="$"."row[\"estatus\"]==-1";
 
 			return $this->__VIEW_REPORT($option);
 		}							

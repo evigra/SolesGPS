@@ -7,10 +7,9 @@
 	
 	
 	$pemca = file_get_contents('VIGE850830GKA.cer');	
-	$pemca = file_get_contents($cer);	
-
-	
 	$cert = $x509->loadX509($pemca);
+
+
 	
 
 	echo "<pre>";

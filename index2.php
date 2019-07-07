@@ -18,7 +18,7 @@
 
 
 
-	$data_file = file_get_contents('VIGE850830GKA.key');	
+	$data_file = file_get_contents('VIGE850830GKA.key.pem');	
 	
 	$objeto = new Crypt_RSA();	
 	$cert = $objeto->loadKey($data_file);

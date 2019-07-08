@@ -1471,6 +1471,7 @@
 										#$this->__PRINT_R($row_field);
 																														
 										#$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
+										$words[$campo.".$row_field"]  =@$valor["br"] .@$titulo_aux;
 									}
 									#*/
 					    			

@@ -1,4 +1,5 @@
 <?php
+/*
 	ini_set('display_errors', 1);				
 	
 	include('nucleo/cer/Crypt/RSA.php');
@@ -10,7 +11,7 @@
 	$objeto = new File_X509();	
 	$cert = $objeto->loadX509($data_file);
 	
-	#/*
+	
 	echo "<pre>";
 	#print_R($cert);	
 
@@ -30,7 +31,7 @@
 
 
 	echo "</pre>";
-	#*/
+	
 	echo $objeto->getPublicKey();
 
 

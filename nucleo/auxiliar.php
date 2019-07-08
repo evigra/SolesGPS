@@ -1461,8 +1461,11 @@
 					    		if(isset($this->sys_fields["$campo"]["values"]) AND count($this->sys_fields["$campo"]["values"])>0)
 					    		{
 					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];
+					    			
+					    			$this->__PRINT_R($this->sys_fields[$campo]["values"]);
 									foreach($this->sys_fields[$campo]["values"][0] as $row_field=>$row_value)
 									{
+									
 										$row["$campo.$row_field"]=$row_value;								
 									}
 					    			

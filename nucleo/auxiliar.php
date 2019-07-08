@@ -1466,9 +1466,11 @@
 					    			#/*
 									foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 									{
-										$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];										
-										$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
-										#$words[$campo."$row_field"]  =$row_value. @$valor["br"] . $titulo;																																		
+										$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
+
+										$this->__PRINT_R($row_field);
+																														
+										#$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
 									}
 									#*/
 					    			

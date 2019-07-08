@@ -1466,7 +1466,7 @@
 					    			#/*
 									foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 									{
-										if(!is_array($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]))
+										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND !is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
 										{
 											
 											#$this->__PRINT_R($this->sys_fields["$campo"]["values"][0][$row_field]);

@@ -1464,7 +1464,8 @@
 					    			$label=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];					    			
 									foreach($this->sys_fields[$campo]["values"][0] as $row_field=>$row_value)
 									{
-										$words[$campo."$row_field"]  =$row_value. @$valor["br"] . $titulo;																	
+										$words[$campo.".$row_field"]  =@$row_value. @$valor["br"] . @$titulo;
+										#$words[$campo."$row_field"]  =$row_value. @$valor["br"] . $titulo;																																		
 									}
 					    			
 					    		}	

@@ -1466,7 +1466,7 @@
 					    			#/*
 									foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 									{
-										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]))
+										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]))
 										{
 											$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
 

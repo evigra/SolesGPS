@@ -1466,13 +1466,14 @@
 					    			#/*
 									foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 									{
-										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]))
+										if(!is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
 										{
-											$this->__PRINT_R($this->sys_fields["$campo"]["values"][0][$row_field]);
+											
+											#$this->__PRINT_R($this->sys_fields["$campo"]["values"][0][$row_field]);
 												
-											#$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
+											$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
 
-											#$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
+											$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
 										}		
 									}
 									#*/

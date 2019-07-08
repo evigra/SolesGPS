@@ -1472,7 +1472,6 @@
 											#$this->__PRINT_R($this->sys_fields["$campo"]["values"][0][$row_field]);
 												
 											$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
-
 											$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
 										}		
 									}

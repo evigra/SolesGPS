@@ -17,16 +17,16 @@
 
 	###print_r($objeto->getDNProp('CN'));
 	###print_r($objeto->getDN());
-	#print_r($objeto->getDN(true));
+	print_r($objeto->getDN(true));
 	#print_r($objeto->getIssuerDNProp('CN'));
 	#print_r($objeto->getIssuerDN());
-	#print_r($objeto->getDNProp(true));
+	print_r($objeto->getDNProp(true));
 	#print_r($objeto->getIssuerDN(true));
 	echo "</pre>";	
-	#echo $objeto->getPublicKey();
+	echo $objeto->getPublicKey();
 
 #*/
-
+#/*
 	$privatekey = file_get_contents('VIGE850830GKA.key');	
 	
 	$privKey = new Crypt_RSA();
@@ -49,5 +49,5 @@
 	#print_r($objeto->getDNProp(true));
 	#print_r($objeto->getIssuerDN(true));
 	echo "</pre>";	
-	
+#*/	
 ?>

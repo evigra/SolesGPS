@@ -88,8 +88,9 @@
     	{    		
 			$return		=parent::__BROWSE($option);			
 			
-			if(isset($this->class_one))
-			{		
+			#if(isset($this->class_one))
+			{	
+					
 				$datas		=$return["data"];
 				
 				$subtotal=0;

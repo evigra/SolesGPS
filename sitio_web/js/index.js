@@ -225,8 +225,7 @@
 							if(enviar==true)
 							{
 								many2one_post(options);	
-							}		
-							
+							}									
 						}
 					}					
 				});

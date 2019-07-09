@@ -102,6 +102,7 @@
 				$total=$subtotal+$impuesto;
 	
 				$datas=array(
+					"lalo']"	=>"$subtotal",
 					"subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
 					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 					"total[name='{$this->class_one}_total']"		=>"$total"

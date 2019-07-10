@@ -924,11 +924,11 @@
 			//preparing attachment
 			if(isset($option["file"]))
 			{
-				$file=$option["file"];
+				$file	=$option["file"];
 				if(is_file($file))
 				{
 				
-					$message .= "--{$mime_boundary}n";
+					$message .= "--{$mime_boundary}\n";
 					$fp =    @fopen($file,"rb");
 					$data =  @fread($fp,filesize($file));
 

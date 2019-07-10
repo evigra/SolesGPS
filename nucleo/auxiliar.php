@@ -724,7 +724,7 @@
 				$this->sys_private["action"]			=$valor;			
 			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
 				$this->sys_private["id"]			=$valor;			
-			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
+			elseif($campo=="sys_pdf" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
 				$this->sys_private["pdf"]			=$valor;			
 
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)

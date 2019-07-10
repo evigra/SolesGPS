@@ -938,7 +938,7 @@
 			
 					$data	=file_get_contents($file);
 					
-					#$this->__PRINT_R($data);
+					$this->__PRINT_R($data);
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));

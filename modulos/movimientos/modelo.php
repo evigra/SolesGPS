@@ -88,7 +88,7 @@
     	{    		
 			$return		=parent::__VIEW_REPORT($option);			
 			
-			$this->__PRINT_R($return);	
+			#$this->__PRINT_R($return);	
 			
 			
 			#if(isset($this->class_one))

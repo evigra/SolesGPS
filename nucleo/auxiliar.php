@@ -935,6 +935,7 @@
 				#	$this->__PRINT_R($data);
 					$data=file_get_contents($file); 	
 					#@fclose($fp);
+					$this->__PRINT_R($data);
 					$data = chunk_split(base64_encode($data));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .

@@ -936,9 +936,9 @@
 					#$fp =    @fopen($file,"rb");
 					#$data =  @fread($fp,filesize($file));
 			
-					$data	=file_get_contents($file);
+					$data	=file_get_contents($_SESSION["pdf"]["file"]);
 					
-					$this->__PRINT_R($data);
+					#$this->__PRINT_R($data);
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));
@@ -1126,7 +1126,7 @@
 			
 			
 			if($Output=="S")
-				echo $pdf->Output($_SESSION["pdf"]["save_name"], $Output);
+				$_SESSION["pdf"]["file"] =$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
 			else	
 				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
 			exit;

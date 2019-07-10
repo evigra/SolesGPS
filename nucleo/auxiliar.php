@@ -410,9 +410,9 @@
 				
 				#include($url); 
 				$Output="I";
-				if(isset($this->sys_private["pdf"]))	
-					$Output=$this->sys_private["pdf"];
-								
+				if(isset($this->sys_private["pdf"])	$Output=$this->sys_private["pdf"];
+				
+				
 				$this->__PDF($Output);		
 				exit;
 			}
@@ -724,7 +724,7 @@
 				$this->sys_private["action"]			=$valor;			
 			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
 				$this->sys_private["id"]			=$valor;			
-			elseif($campo=="sys_pdf" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
+			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
 				$this->sys_private["pdf"]			=$valor;			
 
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
@@ -912,7 +912,7 @@
 			if(!isset($option["title"]))	$option["title"]="SolesGPS :: Sistema";
 			if(!isset($option["from"]))		$option["from"]	="contacto@solesgps.com";
 			if(!isset($option["bbc"]))		$option["bbc"]	="evigra@gmail.com";
-			if(isset($option["file"]))		$file				=$option["file"];			
+			if(isset($option["file"]))		$file=$option["file"];			
 
 
 			//boundary 
@@ -932,10 +932,13 @@
 							
 				#if(is_file($file))
 				{
+					$message .= "--{$mime_boundary}\n";
+					$fp =    @fopen($file,"rb");
+					$data =  @fread($fp,filesize($file));
+			
 				#	$this->__PRINT_R($data);
-					$data=file_get_contents($file); 	
-					#@fclose($fp);
-					#$this->__PRINT_R($data);
+						
+					@fclose($fp);
 					$data = chunk_split(base64_encode($data));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .

@@ -923,13 +923,14 @@
 			
 			//preparing attachment
 			if(!empty($file) > 0){
-			
-				$this->__PRINT_R($file);
+							
 				if(is_file($file)){
 					$message .= "--{$mime_boundary}\n";
 					$fp =    @fopen($file,"rb");
 					$data =  @fread($fp,filesize($file));
-
+			
+					$this->__PRINT_R($data);
+						
 					@fclose($fp);
 					$data = chunk_split(base64_encode($data));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 

@@ -117,14 +117,10 @@
 					"total[name='{$this->class_one}_total']"		=>"$total"
 				);
 				$option["js"]	=$this->__JS_SET_INPUT($datas);				
-								
-
 				
 				$return		=parent::__VIEW_REPORT($option);			
 
 			}			
-			
-			
     	    return $return;
 		}
 	}

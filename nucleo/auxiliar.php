@@ -922,8 +922,12 @@
 
 			
 			//preparing attachment
-			if(!empty($file) > 0){
-				if(is_file($file)){
+			if(isset($option["file"]))
+			{
+				$file=$option["file"];
+				if(is_file($file))
+				{
+				
 					$message .= "--{$mime_boundary}n";
 					$fp =    @fopen($file,"rb");
 					$data =  @fread($fp,filesize($file));
@@ -940,7 +944,7 @@
 			$returnpath = "-f" . $from;
 
 			//send email
-			$mail = @mail("evigra@gmail.com", $option["title"], $option["html"], $headers); 
+			$mail = @mail("evigra@gmail.com", $option["title"], $message, $headers); 
 
 
 ////

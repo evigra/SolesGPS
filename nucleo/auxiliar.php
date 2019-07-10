@@ -152,6 +152,8 @@
 									{
 										if($this->sys_recursive<3)
 										{
+										
+										
 											$eval="
 												$"."option=array();
 												$"."option[\"where\"]		=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
@@ -222,8 +224,7 @@
 				"error"		=>$error,
 				"return"	=>$resultado,				
 			);
-			
-			
+						
 			curl_close ($ch);
 			
 			return $return;

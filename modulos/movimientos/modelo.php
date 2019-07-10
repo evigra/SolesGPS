@@ -84,20 +84,25 @@
     	{    		
     	    return parent::__SAVE($datas,$option);
 		}
+		/*
+		public function __VIEW_REPORT($option)
+		{
+			if(!is_array($option))	$option=array();
+			$option["type_view"]="report";
+
+			return $this->__SYS_REPORT($option);
+		}
+		*/		
    		public function __VIEW_REPORT($option="")
     	{    		
 			$return		=parent::__VIEW_REPORT($option);			
-			
-			#$this->__PRINT_R($return);	
-			
-			
 			#if(isset($this->class_one))
 			{	
 					
 				$datas		=$return["data"];
 				
-				$subtotal=0;
-				$impuesto=0;
+				$subtotal	=0;
+				$impuesto	=0;
 				foreach($datas as $data)
 				{
 					$subtotal+=$data["subtotal"];
@@ -110,11 +115,12 @@
 					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 					"total[name='{$this->class_one}_total']"		=>"$total"
 				);
-				#$this->__PRINT_R($datas);			
-				
-				@$return["js"].=$this->__JS_SET_INPUT($datas);				
+				@$option["js"]=$this->__JS_SET_INPUT($datas);				
 								
-				#$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;
+
+				
+				$return		=parent::__VIEW_REPORT($option);			
+
 			}			
 			
 			

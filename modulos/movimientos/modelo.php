@@ -98,7 +98,7 @@
 			if(!is_array($option))	$option=array();
 
 			$return		=parent::__VIEW_REPORT($option);			
-			#if(isset($this->class_one))
+			if(isset($this->class_one))
 			{						
 				$datas		=$return["data"];
 				

@@ -2335,12 +2335,12 @@
 								if(isset($rows["auto_$field"]))	
 								{																		
 									$option["data"][$index][$field]=$rows["auto_$field"];																		
-									#unset($option["data"][$index]["auto_$field"]);
 								}	
 								if(substr($field,0,4)=="sys_")					unset($option["data"][$index][$field]);												
 							}					
 						}						
 					}
+					$browse=$_SESSION["SAVE"][$this->class_one]["$campo"];
 		    		$return["data"] =$option["data"];	
 																
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					
@@ -2351,7 +2351,9 @@
 		    		$browse 									=$this->__BROWSE($option);		
 		    		
 					if(isset($this->class_one) AND isset($this->sys_memory) AND isset($template_option["class_field"]) AND $_SESSION["var"]["modulo"]==$this->class_one)
+					{
 						$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;
+					}	
 					if(count($browse["data"])<=0)				$browse["data"]		=array();					
 					
 					##################################

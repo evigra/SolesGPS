@@ -112,8 +112,8 @@
 				);
 				#$this->__PRINT_R($datas);			
 				
-				$return["js"]=$this->__JS_SET_INPUT($datas);				
-				
+				@$return["js"].=$this->__JS_SET_INPUT($datas);				
+								
 				#$_SESSION["SAVE"][$this->class_one]["$campo"]=$browse;
 			}			
 			

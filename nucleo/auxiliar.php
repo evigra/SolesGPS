@@ -922,12 +922,8 @@
 
 			
 			//preparing attachment
-			if(isset($option["file"]))
-			{
-				$file	=$option["file"];
-				if(is_file($file))
-				{
-				
+			if(!empty($file) > 0){
+				if(is_file($file)){
 					$message .= "--{$mime_boundary}\n";
 					$fp =    @fopen($file,"rb");
 					$data =  @fread($fp,filesize($file));

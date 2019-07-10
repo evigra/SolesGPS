@@ -95,10 +95,11 @@
 		*/		
    		public function __VIEW_REPORT($option="")
     	{    		
+			if(!is_array($option))	$option=array();
+
 			$return		=parent::__VIEW_REPORT($option);			
 			#if(isset($this->class_one))
-			{	
-					
+			{						
 				$datas		=$return["data"];
 				
 				$subtotal	=0;
@@ -115,7 +116,7 @@
 					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 					"total[name='{$this->class_one}_total']"		=>"$total"
 				);
-				@$option["js"]=$this->__JS_SET_INPUT($datas);				
+				$option["js"]	=$this->__JS_SET_INPUT($datas);				
 								
 
 				

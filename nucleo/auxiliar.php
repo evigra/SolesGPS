@@ -2340,7 +2340,7 @@
 							}					
 						}						
 					}
-					$browse=$_SESSION["SAVE"][$this->class_one]["$campo"];
+					#$browse=$_SESSION["SAVE"][$this->class_one]["$campo"];
 		    		$return["data"] =$option["data"];	
 																
 					$this->sys_title		=$_SESSION["modules"][$this->sys_object]["title"];					

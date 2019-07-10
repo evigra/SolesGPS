@@ -410,7 +410,7 @@
 				
 				#include($url); 
 				$Output="I";
-				if(isset($this->sys_private["pdf"])	$Output=$this->sys_private["pdf"];
+				if(isset($this->sys_private["pdf"]))	$Output=$this->sys_private["pdf"];
 				
 				
 				$this->__PDF($Output);		

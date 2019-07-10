@@ -2501,6 +2501,7 @@
 							if($(\"font#create_$name\").length>0)
 							{	
 								{$browse["js"]}
+								{$option["js"]}
 							
 								$(\"font.show_form\").button({
 									icons: 	{primary:	\"ui-icon-extlink\"},

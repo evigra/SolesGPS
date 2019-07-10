@@ -1710,7 +1710,7 @@
 					$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT($"."option_report);
 
 					$"."obj_$campo"."words[\"many2one_report\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[$"."index];
-					$"."obj_$campo"."words[\"many2one_js\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[\"js\"];								
+					#####$"."obj_$campo"."words[\"many2one_js\"]		=$"."this->sys_fields[\"$campo\"][\"obj\"]->__VIEW_REPORT[\"js\"];								
 					#$"."this->__PRINT_R($"."obj_$campo"."words[\"many2one_report\"]);
 
 

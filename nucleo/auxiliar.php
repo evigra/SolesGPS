@@ -933,13 +933,15 @@
 				#if(is_file($file))
 				{
 					$message .= "--{$mime_boundary}\n";
-					$fp =    @fopen($file,"rb");
-					$data =  @fread($fp,filesize($file));
+					#$fp =    @fopen($file,"rb");
+					#$data =  @fread($fp,filesize($file));
 			
+					
+					
 				#	$this->__PRINT_R($data);
 						
-					@fclose($fp);
-					$data = chunk_split(base64_encode($data));
+					#@fclose($fp);
+					$data = chunk_split(base64_encode(file_get_contents($file)));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .
 					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS\"; size=".filesize($file).";\n" . 

@@ -936,9 +936,9 @@
 					#$fp =    @fopen($file,"rb");
 					#$data =  @fread($fp,filesize($file));
 			
-					$data	=file_get_contents($file)
+					$data	=file_get_contents($file);
 					
-					$this->__PRINT_R($data);
+					#$this->__PRINT_R($data);
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));

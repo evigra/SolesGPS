@@ -412,7 +412,7 @@
 				$Output="I";
 				if(isset($this->sys_private["pdf"]))	$Output=$this->sys_private["pdf"];
 				
-				
+										
 				$this->__PDF($Output);		
 				exit;
 			}
@@ -1121,7 +1121,12 @@
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
-			$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
+			
+			
+			if($Output=="S")
+				echo $pdf->Output($_SESSION["pdf"]["save_name"], $Output);
+			else	
+				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
 			exit;
 		}		
     	##############################################################################    

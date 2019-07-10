@@ -409,7 +409,11 @@
 				#*/
 				
 				#include($url); 
-				$this->__PDF();		
+				$Output="I";
+				if(isset($this->sys_private["pdf"])	$Output=$this->sys_private["pdf"];
+				
+				
+				$this->__PDF($Output);		
 				exit;
 			}
 			else echo $template;
@@ -720,6 +724,8 @@
 				$this->sys_private["action"]			=$valor;			
 			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
 				$this->sys_private["id"]			=$valor;			
+			elseif($campo=="sys_id" AND $_SESSION["var"]["modulo"]==$this->sys_object)	
+				$this->sys_private["pdf"]			=$valor;			
 
 			elseif($campo=="sys_section" AND $_SESSION["var"]["modulo"]==$this->sys_object)
 			{
@@ -930,7 +936,7 @@
 					$fp =    @fopen($file,"rb");
 					$data =  @fread($fp,filesize($file));
 			
-					$this->__PRINT_R($data);
+				#	$this->__PRINT_R($data);
 						
 					@fclose($fp);
 					$data = chunk_split(base64_encode($data));
@@ -1054,7 +1060,7 @@
     		$this->sys_request=$return;    			
     	}
 		##############################################################################    
-		public function __PDF()
+		public function __PDF($Output="I")
 		{
 			$path="nucleo/tcpdf/";	
 			$carpeta="";
@@ -1115,7 +1121,7 @@
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
 
-			$pdf->Output($_SESSION["pdf"]["save_name"], 'I');
+			$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
 			exit;
 		}		
     	##############################################################################    

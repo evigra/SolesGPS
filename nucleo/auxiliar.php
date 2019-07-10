@@ -2491,7 +2491,8 @@
 					{
 						$height_render	="";
 						$min_height		="";
-					}						
+					}			
+					if(!isset($option["js"]))			
 
 					$button_create_js="";
 					######### REPORTE HTML #############################################################

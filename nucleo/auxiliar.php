@@ -923,6 +923,8 @@
 			
 			//preparing attachment
 			if(!empty($file) > 0){
+			
+				$this->__PRINT_R($file);
 				if(is_file($file)){
 					$message .= "--{$mime_boundary}\n";
 					$fp =    @fopen($file,"rb");

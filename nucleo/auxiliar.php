@@ -938,7 +938,7 @@
 					$data = chunk_split(base64_encode($file));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .
-					"Content-Disposition: attachment;\n" . " filename=\"".basename($file)."\"; size=".filesize($file).";\n" . 
+					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS\"; size=".filesize($file).";\n" . 
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 				}
 			}

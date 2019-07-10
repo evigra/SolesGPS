@@ -949,7 +949,7 @@
 				}
 			}
 			$message .= "--{$mime_boundary}--";
-			$returnpath = "-f" . $from;
+			#$returnpath = "-f" . $from;
 
 			//send email
 			$mail = @mail("evigra@gmail.com", $option["title"], $message, $headers); 

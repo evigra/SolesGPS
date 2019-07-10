@@ -942,9 +942,9 @@
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));
-					$message .= "Content-Type: application/octet-stream; name=\"Archivo SolesGPS.zip\"\n" . 
+					$message .= "Content-Type: application/octet-stream; name=\"Archivo SolesGPS.pdf\"\n" . 
 					"Content-Description: Evigra\n" .
-					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS.zip\"; size=".filesize($file).";\n" . 
+					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS.pdf\"; size=".filesize($file).";\n" . 
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 				}
 			}

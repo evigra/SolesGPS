@@ -932,14 +932,10 @@
 							
 				#if(is_file($file))
 				{
-					$message .= "--{$mime_boundary}\n";
-					$fp =    @fopen($file,"rb");
-					$data =  @fread($fp,filesize($file));
-			
 				#	$this->__PRINT_R($data);
 						
 					@fclose($fp);
-					$data = chunk_split(base64_encode($data));
+					$data = chunk_split(base64_encode($file));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .
 					"Content-Disposition: attachment;\n" . " filename=\"".basename($file)."\"; size=".filesize($file).";\n" . 

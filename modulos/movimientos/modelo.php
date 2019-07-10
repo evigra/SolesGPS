@@ -110,7 +110,7 @@
 					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
 					"total[name='{$this->class_one}_total']"		=>"$total"
 				);
-				$this->__PRINT_R($datas);			
+				#$this->__PRINT_R($datas);			
 				
 				$return["js"]=$this->__JS_SET_INPUT($datas);				
 				

@@ -937,6 +937,7 @@
 					#$data =  @fread($fp,filesize($file));
 			
 					#$data	=file_get_contents($_SESSION["pdf"]["file"]);
+					$data	=file_get_contents($file);
 					$data	=$_SESSION["pdf"]["file"];
 					
 					#$this->__PRINT_R($data);

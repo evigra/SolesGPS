@@ -2492,7 +2492,7 @@
 						$height_render	="";
 						$min_height		="";
 					}			
-					if(!isset($option["js"]))			
+					if(!isset($option["js"]))		$option["js"]="";		
 
 					$button_create_js="";
 					######### REPORTE HTML #############################################################

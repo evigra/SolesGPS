@@ -936,7 +936,8 @@
 					#$fp =    @fopen($file,"rb");
 					#$data =  @fread($fp,filesize($file));
 			
-					$data	=file_get_contents($_SESSION["pdf"]["file"]);
+					#$data	=file_get_contents($_SESSION["pdf"]["file"]);
+					$data	=$_SESSION["pdf"]["file"];
 					
 					#$this->__PRINT_R($data);
 						
@@ -944,7 +945,7 @@
 					$data = chunk_split(base64_encode($data));
 					$message .= "Content-Type: application/octet-stream; name=\"Archivo SolesGPS.pdf\"\n" . 
 					"Content-Description: Evigra\n" .
-					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS.pdf\"; size=".filesize($file).";\n" . 
+					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS.pdf\";\n" . 
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 				}
 			}

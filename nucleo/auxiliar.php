@@ -914,7 +914,7 @@
 			$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
 
 			//headers for attachment 
-			$headers .= "nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary="{$mime_boundary}""; 
+			$headers .= "nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\""; 
 
 			//multipart boundary 
 			$message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .

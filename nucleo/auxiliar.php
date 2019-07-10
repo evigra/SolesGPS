@@ -943,7 +943,7 @@
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
-					"Content-Description: ".basename($files[$i])."\n" .
+					"Content-Description: Evigra\n" .
 					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS\"; size=".filesize($file).";\n" . 
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 				}

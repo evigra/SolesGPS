@@ -912,7 +912,7 @@
 			if(!isset($option["title"]))	$option["title"]="SolesGPS :: Sistema";
 			if(!isset($option["from"]))		$option["from"]	="contacto@solesgps.com";
 			if(!isset($option["bbc"]))		$option["bbc"]	="evigra@gmail.com";
-			if(isset($option["file"]))		$file=$option["file"];			
+			if(isset($option["file"]))		$file				=$option["file"];			
 
 
 			//boundary 
@@ -933,8 +933,8 @@
 				#if(is_file($file))
 				{
 				#	$this->__PRINT_R($data);
-						
-					@fclose($fp);
+					$data=file_get_contents($file); 	
+					#@fclose($fp);
 					$data = chunk_split(base64_encode($file));
 					$message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
 					"Content-Description: ".basename($files[$i])."\n" .

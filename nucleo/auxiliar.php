@@ -908,6 +908,7 @@
 			if(isset($option["file"]))		$file=$option["file"];			
 
 
+			if(isset($option["from"]))		$headers .= "From: <{$option["from"]}>\r\n";
 
 			if(!empty($file) > 0)
 			{							
@@ -926,10 +927,8 @@
 
 
 					$message .= "--{$mime_boundary}\n";
-					#$fp =    @fopen($file,"rb");
-					#$data =  @fread($fp,filesize($file));
 			
-					$data	=file_get_contents($file);
+					$data		=file_get_contents($file);
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));
@@ -953,31 +952,6 @@
 			else	
 				$boSend =  @mail("evigra@gmail.com", $option["title"], $message, $headers);
 
-
-////
-/*
-			if(!isset($option["title"]))	$option["title"]="SolesGPS :: Sistema";
-			if(!isset($option["from"]))		$option["from"]	="contacto@solesgps.com";
-			if(!isset($option["bbc"]))		$option["bbc"]	="evigra@gmail.com";
-			
-			#$headers = "MIME-Version: 1.0" . "\r\n";
-			#$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			
-			if(isset($option["from"]))		$headers .= "From: <{$option["from"]}>\r\n";
-			if(isset($option["cc"]))		$headers .= "Cc: {$option["cc"]}\r\n";
-			if(isset($option["bbc"]))		$headers .= "bbc: {$option["bbc"]}\r\n";
-			####if(isset($option["reply"]))		$headers .= "Reply-To: {$option["reply"]}\r\n";
-			
-			
-			$serv_propio=array("www.solesgps.com","solesgps.com","www.soluciones-satelitales.com","soluciones-satelitales.com");
-			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
-				$boSend =  @mail($option["to"], $option["title"], $option["html"], $headers);
-			else	
-				$boSend =  @mail("evigra@gmail.com", $option["title"], $option["html"], $headers);
-
-
-
-*/
 		}		
 		##############################################################################
 		public function __REPLACE($str,$words)

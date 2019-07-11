@@ -16,7 +16,7 @@
 			if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]			="es_MX";
 			
 			@$_SESSION["user"]["huso_h"]				=5;
-			#@$_SESSION["user"]["huso_h"]				=6;
+			#@$_SESSION["user"]["huso_h"]				=6F;
 						 
 			if(!is_array($option)) 						$option=array();
 						
@@ -513,37 +513,10 @@
 						}				
 						elseif(!isset($this->sys_fields["$campo"]["relation"]))
 						{
-								if(count(@$this->sys_fields["$campo"])>1 )
-								{
-									$fields	.="$campo='$valor',";
-								}
-
-
-							
-							/*
-							if(is_null(@$this->sys_private["field"]) OR @$this->sys_private["id"]=="") 
+							if(count(@$this->sys_fields["$campo"])>1 )
 							{
-								if(count(@$this->sys_fields["$campo"])>1 )
-								{
-									if(!is_array($valor))	
-										$fields	.="$campo='$valor',";
-								}
+								$fields	.="$campo='$valor',";
 							}
-							else
-							{
-								if(count(@$this->sys_fields["$campo"])>2 and @$this->sys_fields["$campo"]["type"]!='primary key')
-								{
-									if(!is_array($valor))	
-									{					
-										if(@$data_anterior["data"][0][$campo]!=$valor)		
-											@$modificados.=" 
-												<b>{$this->sys_fields["$campo"]["title"]}</b>= $valor
-											";
-										$fields	.="$campo='$valor',";
-									}	
-								}
-							}
-							*/	
 						}
 						else			$fields	.="$campo='$valor',";
 					}    
@@ -586,7 +559,6 @@
 						if(@$modificados!="")
 						{
 							$data_historicos="descripcion='<font>$user_name</font> <b>MODIFICO</b> los valores $modificados'";	
-							#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>MODIFICO</b> los valores $modificados'";	
 						}	
 					}	
 
@@ -606,15 +578,19 @@
 						$this->__MESSAGE_OPTION["title"]	=$option["title"];
 						$option["close"]=1;
 						
+						
+						if(isset($this->sys_private["id"]) AND $this->sys_private["id"]!="")
+							$return=$this->sys_private["id"];
 						if($insert==1)
 						{
 							$option["close"]	=1;
 						
 							$data = $this->__EXECUTE("SELECT LAST_INSERT_ID() AS ID",$option); 
 							unset($option["close"]);
-							$this->sys_private["id"]=$data[0]["ID"];
+							$return=$data[0]["ID"];
+							#$this->sys_private["id"]=$data[0]["ID"];
 						}	
-						$return=@$this->sys_private["id"];
+						#$return=@$this->sys_private["id"];
 						
 						foreach($many2one as $campo =>$valores)	
 						{										
@@ -650,7 +626,7 @@
 											if(isset($"."class_field_m))
 											{			
 												if(!(isset($"."valor_campo[$"."class_field_m]) AND @$"."valor_campo[$"."class_field_m]==\"\"))
-												 	$"."valor[$"."class_field_m]						=$"."this->sys_private[\"id\"];
+												 	$"."valor[$"."class_field_m]						=$"."return;
 											}
 											$"."primary_field					=@$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_private[\"field\"];
 											

@@ -51,7 +51,7 @@ Como características principales el sistema soles le ofrece las siguientes:<br>
     * Reporte de paradas, y duración de cada una de ellas.<br>
     * Visión Street view en tiempo real.<br>
     * Simulación de recorrido a manera de historial.<br>
-    * Reportes gráficos de historial.<br>
+    * Reportes gráficos de historial.<br><br>
 
 Ademas uno de los principales beneficios con los que cuenta con nosotros, es del desarrollo 
 a la medida, podemos generar la solución a cualquier necesidad operativa integrándolo a nuestro sistema para su servicio sin compromiso alguno<br>

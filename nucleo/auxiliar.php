@@ -1520,12 +1520,8 @@
 									{
 										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND !is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
 										{
-											
-											#$this->__PRINT_R($this->sys_fields["$campo"]["values"][0][$row_field]);
-												
 											$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
-											$titulo_aux="<font id=\"$campo\" style=\"color:gray;\">$titulo_aux</font>";
-											
+											$titulo_aux="<font id=\"$campo\" style=\"color:gray;\">$titulo_aux</font>";											
 											$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
 										}		
 									}
@@ -1673,7 +1669,26 @@
 					    if($valor["type"]=="img")	
 					    {
 					        $words["$campo"]  ="$titulo<img id=\"$campo\" name=\"$campo\" $attr src=\"{$valor["value"]}\">";
-					    }    
+					    }
+
+						if(isset($this->sys_fields[$campo]["obj"]))
+						{
+							foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
+							{
+								if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND !is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
+								{
+									$titulo_aux="";
+									if($this->sys_fields["$campo"]["class_name"]!="company")
+									{
+										$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
+										$titulo_aux=@$valor["br"]."<font id=\"$campo\" style=\"color:gray;\">$titulo_aux</font>";
+									}	
+									
+									$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$titulo_aux;
+								}		
+							}
+					    
+					     }   
 					}
 			        
 			    }

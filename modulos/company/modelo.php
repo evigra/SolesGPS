@@ -30,6 +30,7 @@
 			),
 			"nombre"	    	=>array(
 			    "title"             => "Nombre",
+			    "titleShow"         => "false",
 			    "title_filter"		=> "Nombre",
 			    "type"              => "input",
 			),			
@@ -69,6 +70,7 @@
 			),						
 			"img_files_id_med"	    =>array(
 			    "title"             => "Logo",
+			    "titleShow"         => "false",
 			    "type"              => "show_file",
 			),
 			"img_files_id_chi"	    =>array(

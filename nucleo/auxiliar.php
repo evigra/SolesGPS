@@ -694,22 +694,10 @@
 									\"memory\"			=>\"$campo\",
 									\"class_one\"		=>\"{$this->sys_name}\",
 								);													
-								$"."this->sys_fields[\"$campo\"][\"obj\"]   =new {$valor["class_name"]}($"."option"."_obj_$campo);
-								
-								#$"."sys_table			=$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_table;
+								$"."this->sys_fields[\"$campo\"][\"obj\"]   =new {$valor["class_name"]}($"."option"."_obj_$campo);								
 							";		
 							eval($eval);					
-/*
-							$comando_sql 			="CREATE TABLE IF NOT EXISTS temp_{$sys_table} LIKE {$sys_table};";						
-							$this->__EXECUTE($comando_sql);
-
-							$comando_sql 			="select * FROM temp_{$sys_table};";
-
-							$this->__PRINT_R($this->__EXECUTE($comando_sql));
-*/
 						}	
-
-
 					}
 				}
 			}	
@@ -2005,6 +1993,14 @@
 								$row["auto_".$field]	=$aux;
 							}
 						}
+						if(isset($this->sys_fields[$field]["relation"])  AND isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
+						{															
+							foreach($this->sys_fields[$field]["values"][0] as $row_field=>$row_value)
+							{
+								$row["$field.$row_field"]=$row_value;								
+							}
+						}
+
 					}			    
                     if($class=="odd")   
                     {

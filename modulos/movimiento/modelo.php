@@ -13,6 +13,8 @@
 			),
 			"company_id"	    =>array(
 			    "title"             => "empresa",
+			    "titleShow"         => "no",
+			    
 			    "description"       => "Responsable del dispositivo",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "__AUTOCOMPLETE",

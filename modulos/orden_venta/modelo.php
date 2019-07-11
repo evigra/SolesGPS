@@ -33,9 +33,7 @@
 					"title"	=>"SolesGPS :: Cotizacion",
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
 					"to"	=>"evigra@gmail.com,  contacto@solesgps.com",
-					"html"	=>"
-
-{$this->sys_fields["empresa_id"]["values"][0]["nombre"]} <br>
+					"html"	=>"{$this->sys_fields["empresa_id"]["values"][0]["nombre"]} <br>
 PRESENTE <br><br>
 
 Buenas día<br><br>
@@ -60,9 +58,9 @@ a la medida, podemos generar la solución a cualquier necesidad operativa integr
 
 Estamos a su completa disposición en caso de requerir mas información o resolución de dudas.<br><br>
 
-Sin mas por ahora, agradezco de antemano su atención, y le deseo que tenga un excelente día.<br><br>
+Sin mas por ahora, agradecemos de antemano su atención, y les deseamos que tengan un excelente día.<br><br>
 
-Saludos cordiales
+Saludos cordiales<br>
 Equipo SolesGPS	
 					",
 					"file"	=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S"

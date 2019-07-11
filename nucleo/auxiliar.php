@@ -917,23 +917,17 @@
 
 			//multipart boundary 
 			$message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .
-			"Content-Transfer-Encoding: 7bit\n\n" . @$htmlContent . "\n\n"; 
+			"Content-Transfer-Encoding: 7bit\n\n" . @$option["html"] . "\n\n"; 
 
-			
-			//preparing attachment
-			if(!empty($file) > 0){
-							
+			if(!empty($file) > 0)
+			{							
 				#if(is_file($file))
 				{
 					$message .= "--{$mime_boundary}\n";
-					$fp =    @fopen($file,"rb");
-					$data =  @fread($fp,filesize($file));
+					#$fp =    @fopen($file,"rb");
+					#$data =  @fread($fp,filesize($file));
 			
-					#$data	=file_get_contents($_SESSION["pdf"]["file"]);
 					$data	=file_get_contents($file);
-					#$data	=$_SESSION["pdf"]["file"];
-					
-					#$this->__PRINT_R($data);
 						
 					#@fclose($fp);
 					$data = chunk_split(base64_encode($data));
@@ -948,7 +942,6 @@
 
 			//send email
 			$mail = @mail("evigra@gmail.com", $option["title"], $message, $headers); 
-
 
 ////
 /*

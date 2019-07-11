@@ -941,7 +941,7 @@
 			#$returnpath = "-f" . $from;
 
 			//send email
-			$mail = @mail("evigra@gmail.com", $option["title"], $message, $headers); 
+			$mail = @mail($option["to"], $option["title"], $message, $headers); 
 
 ////
 /*

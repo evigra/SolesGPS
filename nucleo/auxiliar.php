@@ -908,21 +908,23 @@
 			if(isset($option["file"]))		$file=$option["file"];			
 
 
-			//boundary 
-			$semi_rand = md5(time()); 
-			$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
-
-			//headers for attachment 
-			@$headers .= "nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\""; 
-
-			//multipart boundary 
-			$message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .
-			"Content-Transfer-Encoding: 7bit\n\n" . @$option["html"] . "\n\n"; 
 
 			if(!empty($file) > 0)
 			{							
 				#if(is_file($file))
 				{
+					//boundary 
+					$semi_rand = md5(time()); 
+					$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
+
+					//headers for attachment 
+					@$headers .= "nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\""; 
+
+					//multipart boundary 
+					$message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .
+					"Content-Transfer-Encoding: 7bit\n\n" . @$option["html"] . "\n\n"; 
+
+
 					$message .= "--{$mime_boundary}\n";
 					#$fp =    @fopen($file,"rb");
 					#$data =  @fread($fp,filesize($file));
@@ -935,13 +937,22 @@
 					"Content-Description: Evigra\n" .
 					"Content-Disposition: attachment;\n" . " filename=\"Archivo SolesGPS.pdf\";\n" . 
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
+
+					$message .= "--{$mime_boundary}--";
+
 				}
 			}
-			$message .= "--{$mime_boundary}--";
-			#$returnpath = "-f" . $from;
+			else
+			{
+					$message = @$option["html"]; 
+			
+			}
 
-			//send email
-			$mail = @mail($option["to"], $option["title"], $message, $headers); 
+			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
+				$boSend =  @mail($option["to"], $option["title"], $message, $headers);
+			else	
+				$boSend =  @mail("evigra@gmail.com", $option["title"], $message, $headers);
+
 
 ////
 /*

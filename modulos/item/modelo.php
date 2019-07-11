@@ -207,7 +207,8 @@
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    $option["where"]    =array();
 			
-			$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			if(isset($_SESSION["company"]["id"]))
+				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
 			if($this->modulo!="")
 				$option["where"][]      ="modulo='{$this->modulo}'";
 									

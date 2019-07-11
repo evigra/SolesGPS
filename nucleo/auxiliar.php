@@ -59,6 +59,11 @@
 					}					
 				}			
 			}
+			//orden_venta/&sys_action=print_pdf&sys_section=write&sys_id=90&sys_pdf=S
+			if($this->sys_private["action"]=="print_pdf")
+			{
+				$redireccionar= "";
+			}
 			if($redireccionar!="")
 			{
 				$_SESSION=array();
@@ -933,12 +938,12 @@
 				#if(is_file($file))
 				{
 					$message .= "--{$mime_boundary}\n";
-					#$fp =    @fopen($file,"rb");
-					#$data =  @fread($fp,filesize($file));
+					$fp =    @fopen($file,"rb");
+					$data =  @fread($fp,filesize($file));
 			
 					#$data	=file_get_contents($_SESSION["pdf"]["file"]);
 					$data	=file_get_contents($file);
-					$data	=$_SESSION["pdf"]["file"];
+					#$data	=$_SESSION["pdf"]["file"];
 					
 					#$this->__PRINT_R($data);
 						
@@ -1128,7 +1133,7 @@
 			
 			
 			if($Output=="S")
-				$_SESSION["pdf"]["file"] =$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
+				$_SESSION["pdf"]["file"] =$pdf->Output("prueba.pdf", $Output);
 			else	
 				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
 			exit;

@@ -1,5 +1,7 @@
 <?php
-#/*
+
+
+/*
 	ini_set('display_errors', 1);				
 	
 	include('nucleo/cer/Crypt/RSA.php');
@@ -28,7 +30,7 @@
 	#echo $objeto->getPublicKey();
 
 #*/
-#/*
+/*
 	$privatekey = file_get_contents('VIGE850830GKA.key');		
 	$privKey = new Crypt_RSA();
 	#extract($privKey->createKey());

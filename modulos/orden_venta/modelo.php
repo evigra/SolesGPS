@@ -33,7 +33,38 @@
 					"title"	=>"SolesGPS :: Cotizacion",
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
 					"to"	=>"evigra@gmail.com",
-					"html"	=>"PRUEBA DE COTIZACION",
+					"html"	=>"
+
+{$this->sys_fields["empresa_id"]["values"][0]["nombre"]} \n
+PRESENTE \n\n
+
+Buenas día\n\n
+
+Le hacemos llegar la cotización solicitada.\n\n
+
+Nuestro servicio de rastreo lee permite a ustedes observar a cualquier hora del día la ubicación de sus unidades.\n
+Como características principales el sistema soles le ofrece las siguientes:\n\n
+
+    * Rastreo en tiempo real con reporte de actualización cada minuto.\n
+    * Geocercas, delimitar zonas geográficas de cualquier dimensión, \n
+    * Alertas e-mail de entrada o salida de geocercas, exceso de velocidad, horarios de servicio, etc.\n
+    * Paro de motor de forma remota.\n
+    * Trazado de rutas.\n
+    * Reporte de paradas, y duración de cada una de ellas.\n
+    * Visión Street view en tiempo real.\n
+    * Simulación de recorrido a manera de historial.\n
+    * Reportes gráficos de historial.\n\n
+
+Ademas uno de los principales beneficios con los que cuenta con nosotros, es del desarrollo 
+a la medida, podemos generar la solución a cualquier necesidad operativa integrándolo a nuestro sistema para su servicio sin compromiso alguno\n\n
+
+Estamos a su completa disposición en caso de requerir mas información o resolución de dudas.\n\n
+
+Sin mas por ahora, agradezco de antemano su atención, y le deseo que tenga un excelente día.\n\n
+
+Saludos cordiales
+Equipo SolesGPS	
+					",
 					"file"	=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S"
 				);			
 				

@@ -34,7 +34,7 @@
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
 					"to"	=>"evigra@gmail.com",
 					"html"	=>"PRUEBA DE COTIZACION",
-					"file"	=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id=90&sys_pdf=S"
+					"file"	=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S"
 				);			
 				
 				$this->send_mail($option);

@@ -32,7 +32,7 @@
 				$option=array(
 					"title"	=>"SolesGPS :: Cotizacion",
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
-					"to"	=>"evigra@gmail.com",
+					"to"	=>"evigra@gmail.com, contacto@solesgps.com",
 					"html"	=>"
 
 {$this->sys_fields["empresa_id"]["values"][0]["nombre"]} \n

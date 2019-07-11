@@ -948,7 +948,7 @@
 			
 			}
 
-			if(in_array($_SERVER["SERVER_NAME"],$serv_propio))	
+			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	
 				$boSend =  @mail($option["to"], $option["title"], $message, $headers);
 			else	
 				$boSend =  @mail("evigra@gmail.com", $option["title"], $message, $headers);

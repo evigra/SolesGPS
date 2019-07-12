@@ -83,6 +83,14 @@
     			$comando_sql="UPDATE tareas SET now_time=now() WHERE id=100";
 	    		$this->__EXECUTE($comando_sql);
     		}
+    		else
+    		{
+    			#### EXECUCION MANUAL###################################
+
+				$objeto				=new plantilla_venta();
+				$objeto->__CRON();
+    		
+    		}
 
     		$crons_data =array();    		
     		$option		=array();

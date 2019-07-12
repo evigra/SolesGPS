@@ -11,8 +11,6 @@
 	$objeto->showCrons();
 	
 	
-	$objeto				=new plantilla_venta();
-	#$objeto->__CRON();
 	
 	
 	echo "<br>FIN CRONS";

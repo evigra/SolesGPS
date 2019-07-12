@@ -78,6 +78,8 @@
 			$navegador="Terminal";
 			if(isset($_SERVER["HTTP_USER_AGENT"]))	$navegador	=$_SERVER["HTTP_USER_AGENT"];
     	
+    		$this->__PRINT_R($navegador);
+    	
     		if($navegador!="Wget/1.12 (linux-gnu)")
     		{
     			$comando_sql="UPDATE tareas SET now_time=now() WHERE id=100";

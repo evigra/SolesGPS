@@ -48,7 +48,7 @@
 			    "type"              => "select",
 			    "source"            => array(
 			    	"1"				=>"Vigente",
-			    	"0"				=>"Cancelado"
+			    	"0"				=>"Cancelado",
 			    	"-1"			=>"Suspendido",
 			    ),
 			),

@@ -377,10 +377,12 @@
 			#/*
 			$aux_descripcion="";
             foreach($position_data as $row)
-            {           
+            {
+            	/*           
             	echo "<br><br><br>#### POSICION {$row["pos_id"]} :: {$row["dispo"]} ########
             		{$row["event"]} :: 
             	";
+            	*/#
             	
             	$data_update	=array();
             	
@@ -856,7 +858,7 @@
 												
 				    	if($respueta=="DENTRO")
 				    	{   		        		
-				    		echo "<br>DENTRO {$row["name"]} >>>>>>>>> ";
+				    		#echo "<br>DENTRO {$row["name"]} >>>>>>>>> ";
 							$return="";					
 							if(count($devicegeofence_data)==0)
 							{
@@ -983,7 +985,7 @@
 				    	}
 				    	else if($respueta=="AFUERA")
 				    	{        		        		
-				    		echo "<br>AFUERA {$row["name"]} >>>>>>>>> ";							
+				    		#echo "<br>AFUERA {$row["name"]} >>>>>>>>> ";							
 							if(count($devicegeofence_data)>0)
 							{
 								print_r($devicegeofence_data);

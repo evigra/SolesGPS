@@ -12,7 +12,7 @@
 	
 	
 	$objeto				=new plantilla_venta();
-	$objeto->__CRON();
+	#$objeto->__CRON();
 	
 	
 	echo "<br>FIN CRONS";

@@ -89,8 +89,8 @@
     		{
     			#### EXECUCION MANUAL###################################
 
-				$objeto				=new plantilla_venta();
-				$objeto->__CRON();
+				#$objeto				=new plantilla_venta();
+				#$objeto->__CRON();
     		
     		
     		

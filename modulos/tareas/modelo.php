@@ -92,6 +92,8 @@
 				$objeto				=new plantilla_venta();
 				$objeto->__CRON();
     		
+    		
+    		
     		}
 
     		$crons_data =array();    		

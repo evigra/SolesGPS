@@ -938,15 +938,13 @@
 					"Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
 
 					$message .= "--{$mime_boundary}--";
-
 				}
 			}
 			else
 			{
 					$headers = "MIME-Version: 1.0" . "\r\n";
 					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n".$headers;				
-					$message = @$option["html"]; 
-			
+					$message = @$option["html"]; 			
 			}
 
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	

@@ -59,7 +59,7 @@
 		
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->sys_private["id"]				=$rows["id"];
+				$this->sys_private["id"]			=$rows["id"];
 				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);
 				
@@ -81,9 +81,25 @@
 					unset($rows["movimientos_ids"][$indice]["movimiento_id"]);
 					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
+				
+				
 								
 				$this->sys_private["id"]		="";
-				$this->__SAVE($rows);
+				$id=$this->__SAVE($rows);
+
+				$this->__WA(
+					array(
+						"telefono"=>"5213143520972", 
+						"mensaje"=>"Buen dia. \n\nEste es un atento recordatorio de su saldo pendiente.\n\n Sistema Automatico SolesGPS"
+					)
+				);
+				$this->__WA(
+					array(
+						"telefono"=>"5213143520972", 
+						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$id}&sys_pdf=S&a=.pdf"
+					)
+				);
+
 				
 				@$txt_WA="";
 				

@@ -54,8 +54,11 @@
 			$option["where"][]						="cron_cantidad>0";
 			$option["where"][]						="estatus=1";
 		
-		
+			$option["echo"]							="PLANTILLA VENTA echo";
 			$crons_data 							=$this->__BROWSE($option);			
+
+			$this->__PRINT_R($crons_data);
+
 		
 			foreach($crons_data["data"] as $rows)
 			{				

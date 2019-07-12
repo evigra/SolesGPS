@@ -1,86 +1,78 @@
-<div class="mainTable">
-    <div class="module_subtitle">Propiedades generales</div>
-            <table border="0">
+{tipo_company}
+<div class="mainTable">    
+             <table border="0" width="100%">
                 <tr>
-                    <td width="33%">
-                        {clave}
-                    </td>        
-                    <td colspan="4">
-                        {nombre}
-                    </td>        
+                    <td width="33%" rowspan="3" align="center">{img_files_id}</td>                        
+                    <td height="20" colspan="2">{nombre}</td>
+                    <td width="40">{cliente}</td>        
+                    <td width="40">{proveedor}</td>
                 </tr>          
                 <tr>
-                    <td>{rfc} </td>                        
-                     <td colspan="4">{razon_social}</td>        
+                	<td height="20">{estatus}</td>        
+                    <td width="17%">{telefono}</td>        
+                    <td width="40">{sms}</td>        
+                    <td width="40">{whatsapp}</td>                    
                 </tr>          
-                <tr>                        
-                     <td>{chat_whatsapp}</td>
-                     <td colspan="4">{domicilio_fiscal}</td>                
+                <tr>
+                	<td colspan="4"></td>        
                 </tr>          
 
-                <tr>
-                    <td width="33%">{email}</td>         
-                    <td width="17%">{telefono}</td>        
-                    <td width="16%">{extension}</td>                            
-                    <td width="17%">{cliente}</td>
-                    <td width="16%">{proveedor}</td>
-                </tr>          
-            </table>
-</div>            
-            <!--
-			<br>
+            </table> 
+
 			<div id="tabs" class="form">
 				<ul>
-					<li  class="form"><a href="#tabs-1">Contactos</a></li>
-					<li  class="form"><a href="#tabs-2">Sucursales</a></li>
+					<li  class="form"><a href="#tabs-1">Contacto</a></li>
+					<li  class="form"><a href="#tabs-2">Datos Fiscales</a></li>
+					<li  class="form"><a href="#tabs-3">Configuracion</a></li>
+					<li  class="form"><a href="#tabs-4">Empleados</a></li>
 				</ul>
 				<div id="tabs-1" class="form">
-				     <table border="0" width="100%" class="form">
+					<table border="0">
 				        <tr>
-				        	<td width="33%">{codigoPostal}</td>
-				            <td width="66%" colspan="2">{ciudad}</td>        
+				            <td width="33%">{email}</td>         
+				            <td width="17%">{telefono_contacto}</td>
+				            <td width="16%">{extension}</td>                            
+				            
+				            <td width="16%"></td>
 				        </tr>          
-				        <tr>
-				            <td>{puesto}</td>
-							<td colspan="2">{contacto}</td>        				            
-				        </tr>          
-				        <tr>
-				            <td>{telefono}</td>        
-				            <td colspan="2">{domicilio}</td>        
-				        </tr>         
-				    </table>			
+					</table> 
 				</div>
 				<div id="tabs-2"  class="form">
-
-				    <table border="0"  width="100%">
+				    <table border="0" width="100%">
 				        <tr>
-				            <td>{numAsientos}</td>        
-				            <td>{numPuertas}</td>        
-				            <td>{color}</td>        
+				            <td width="33%">{RFC} </td>                        
+				            <td colspan="2">{razonSocial}</td>        
+				                    					
 				        </tr>          
-				        <tr>
-				            <td>{image}</td>        
-				            <td>{telefono}		</td>        
-				            <td>  </td>        
+				        <tr>                        
+				             <td colspan="2">{domicilio_fiscal}</td>                
 				        </tr>          
-				        <tr>
-				            <td>
-				                <img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">
-				            </td>        
-				            <td colspan="2">
-				                 {file_id}                                             
-				            </td>        
-				        </tr>        				        
 				    </table>
 				</div>
+				<div id="tabs-3"  class="form">
+				    <table border="0" width="100%">
+				        <tr>
+				            <td width="33%">{web} </td>                        
+				            <td >{sistema_web}</td>        
+				            <td >{chat_whatsapp}</td>
+				        </tr>          
+				        <tr>                        
+				        	<td>{files_id}</td>                        
+				        	<td colspan="2">{lema}</td>
+				            
+				        </tr>            
+				    </table>
+				</div>
+				<div id="tabs-4"  class="form">
+					{trabajador_ids}
+				</div>
+
 			</div>
-
-
+			
+</div>            
   <script>
   $(function() {
     $( "#tabs" ).tabs();
   });
   </script>        
-	-->
-
 

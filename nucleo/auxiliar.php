@@ -238,7 +238,7 @@
     	{    		    		    	
 			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
 			
-			$url 				="https://panel.capiwha.com/send_message.php";
+			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			$vars["number"]		=$data["telefono"];
 						

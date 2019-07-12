@@ -90,7 +90,7 @@
     			#### EXECUCION MANUAL###################################
 
 				$objeto				=new plantilla_venta();
-				#$objeto->__CRON();
+				$objeto->__CRON();
     		
     		}
 

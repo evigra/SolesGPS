@@ -50,6 +50,7 @@
 					LEFT(caducidad,10)= LEFT(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10) 
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)='0000-00-00') 
 					OR (LEFT(caducidad,10)='0000-00-00' AND LEFT(fecha,10)=LEFT(now(),10)) 
+					OR (id=90) 
 				 )
 			";
 			$option["where"][]						="cron_cantidad>0";

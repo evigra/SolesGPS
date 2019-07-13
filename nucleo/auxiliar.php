@@ -1400,7 +1400,7 @@
 							    	{
 										$selected="ui-state-hover";
 										if($valor["value"]==$value) 										
-											$selected="ui-state-default";
+											$selected="ui-state-default ui-button ui-widget";
 										$options.="<td class=\"$selected\" style=\"padding-left:7px; padding-right:10px;\"><a date=\"$value\">$text</a></td>";			            
 							    	}
 							    }

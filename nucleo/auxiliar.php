@@ -1401,7 +1401,7 @@
 										$selected="ui-state-hover";
 										if($valor["value"]==$value) 										
 											$selected="ui-state-default";
-										$options.="<td class=\"$selected\" style=\"font-weight:normal; padding-left:7px; padding-right:10px;\"><a date=\"$value\">$text</a></td>";			            
+										$options.="<td class=\"$selected\" style=\"padding-left:7px; padding-right:10px;\"><a styhle=\"font-weight:normal; \" date=\"$value\">$text</a></td>";			            
 							    	}
 							    }
 								if(@$this->sys_private["section"]=="show")

@@ -25,6 +25,14 @@
     	    return $return;
 		}
 		##############################################################################
+   		public function action_cancelar()
+    	{
+    		$datas[]="";
+    		   
+    	    $return= parent::__SAVE($datas);
+    	    return $return;
+		}
+		##############################################################################
    		public function action_enviar()
     	{   
     		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")

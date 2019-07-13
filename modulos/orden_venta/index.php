@@ -72,6 +72,10 @@
 		{			
 			$objeto->action_enviar();
 		}
+	   	if($objeto->sys_private["action"]=="action_cancelar")
+		{			
+			$objeto->action_cancelar();
+		}
 
 				
     	$module_title								="";

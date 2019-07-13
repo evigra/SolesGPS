@@ -1408,7 +1408,7 @@
 									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 								else							    			            
 									$words["$campo"]  ="
-										<table style=\"border-color: #92a8d1;\" height=\"100%\" border=\"0\">
+										<table height=\"100%\" border=\"0\">
 											<tr>$options </tr>
 										</table>
 									";

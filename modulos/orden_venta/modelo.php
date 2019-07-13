@@ -27,8 +27,7 @@
 		##############################################################################
    		public function action_cancelar()
     	{
-    		$datas[]="";
-    		   
+    		$datas["estatus"]="-1";    		   
     	    $return= parent::__SAVE($datas);
     	    return $return;
 		}

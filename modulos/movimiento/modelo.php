@@ -121,7 +121,6 @@
 			    "title"             => "Estado",
 			    "type"              => "flow",
 			    "source"            => array(			    	
-			    	""     			=> "",
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",
 				    "flow3"  	   	=> "Presup. Confirmado",

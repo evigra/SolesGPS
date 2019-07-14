@@ -1920,6 +1920,7 @@
 			$view2="";
 			if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
 			{
+				$sys_class="";
 				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
 				{
 					$sys_class="modulo_principal";
@@ -2750,7 +2751,7 @@
 
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
 					{
-
+						$sys_class="";
 						if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
 						{
 							$sys_class="modulo_principal";

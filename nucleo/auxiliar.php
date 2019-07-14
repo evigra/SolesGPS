@@ -1924,8 +1924,7 @@
 				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
 				{
 					$sys_class="modulo_principal";
-				}			
-			
+				}						
 				$view2="
 					<input class=\"$sys_class\" id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
 					<input class=\"$sys_class\" id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">

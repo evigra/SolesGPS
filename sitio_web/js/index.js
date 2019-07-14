@@ -1689,7 +1689,7 @@ styles:
 
 				$(".modulo_principal").each(function()
 				{
-					str_get		="&" + $(this).attr("id") + "=" +$(this).val();			
+					str_get	+="&" + $(this).attr("id") + "=" +$(this).val();			
 				});
 
 				$("form")

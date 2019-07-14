@@ -2,12 +2,23 @@
 		<tr>
 			<td align="left" width="64%" colspan="4" style="padding:2;">
 				<table style="background-color:#ffffff; border-color:#cccccc; padding:2px;" border="1"  width="100%">
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" colspan="6" align="left">{empresa_id.razonSocial}</td></tr>
 					<tr>
-						<td style="background-color:#ffffff; border-color:#cccccc;" align="left" width="69%" height="28">{empresa_id.razonSocial}</td>
-						<td style="background-color:#ffffff; border-color:#cccccc;" align="left" width="30%">{empresa_id.RFC}</td>					
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="33%">{empresa_id.RFC}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="33%">{empresa_id.municipio}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="33%">{empresa_id.estado}</td>										
 					</tr>
-					<tr><td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left">{empresa_id.domicilio_fiscal}</td></tr>
-					<tr><td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left">{trabajador_id}</td></tr>
+
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="4" align="left">{empresa_id.colonia}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left">{empresa_id.cp}</td>					
+					</tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left">{empresa_id.colonia}</td></tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" colspan="4" align="left">{empresa_id.calle}</td></tr>
+
+
+
+					
 				</table>			
 			</td>                							
 			<td align="left" width="35%"  colspan="2">
@@ -15,6 +26,7 @@
 					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth" height="28"><b>{tipo}{folio.md5}</b></td></tr>
 					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{fecha}</td></tr>
 					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{caducidad}</td></tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{trabajador_id}</td></tr>
 				</table>
 				<br>&nbsp;				
 			</td>			

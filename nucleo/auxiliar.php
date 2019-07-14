@@ -1914,7 +1914,7 @@
 		public function __QR($option=null)
 		{			
 			$url="https://chart.googleapis.com/chart?chs=96x96&cht=qr&chl=" . urlencode($option);			
-			return "<img border=\"1\" src=\"$url\">";
+			return "<img border=\"0\" src=\"$url\">";
 		} 		
 
 		##############################################################################    

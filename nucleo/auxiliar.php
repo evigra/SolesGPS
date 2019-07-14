@@ -1913,7 +1913,7 @@
 
 		public function __QR($option=null)
 		{			
-			$url="https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=" . urlencode($option);			
+			$url="https://chart.googleapis.com/chart?chs=95x95&cht=qr&chl=" . urlencode($option);			
 			return "<img border=\"1\" src=\"$url\">";
 		} 		
 

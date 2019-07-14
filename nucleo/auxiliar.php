@@ -1222,20 +1222,34 @@
 					    	{			        	
 					    		$valor["title"]			=$this->sys_fields_l18n["$campo"];
 					    	}	
-
 							if($valor["type"]=="txt")	$titulo		="{$valor["title"]}";			        	
 							else						$titulo		="<font id=\"$campo\" style=\"color:gray;\">{$valor["title"]} </font>";
 					    }	
+
+
 					    
 					    if($valor["type"]=="input")	
 					    {			        						        
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
 					        {
 								if(@$this->sys_private["section"]=="show")
-									$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
-								else					        
-									$words["$campo"]  ="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";							}					        	
-					        else	$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";						        
+								{
+									$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	=md5($valor["value"])."{$valor["br"]}$titulo";
+								}	
+								else
+								{					        
+									$words["$campo"]  		="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"" . md5($valor["value"]) . "\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";
+								}					        										
+							}
+					        else	
+					        {
+					        	$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";    
+					        	$words["$campo.md5"]  	=md5($valor["value"])."{$valor["br"]}$titulo";
+					        }	
+					        
+					        
 					    } 
 
 					    if($valor["type"]=="date")	
@@ -1361,12 +1375,13 @@
 					    } 
 					    if($valor["type"]=="txt")	
 					    {
-					        $words["$campo"]  ="$titulo";
+					        $words["$campo"]  		="$titulo";					        
 					    } 
 
 					    if($valor["type"]=="value")	
 					    {
 					        $words["$campo"]  ="{$valor["value"]}";
+					        $words["$campo.md5"]	=md5($valor["value"]);
 					    } 
 					    
 					    if($valor["type"]=="textarea")	
@@ -1645,9 +1660,12 @@
 					    }    
 					    if($valor["type"]=="img")	
 					    {
-					        $words["$campo"]  ="$titulo<img id=\"$campo\" name=\"$campo\" $attr src=\"{$valor["value"]}\">";
+					        $words["$campo"]  		="$titulo<img id=\"$campo\" name=\"$campo\" $attr src=\"{$valor["value"]}\">";
 					    }
+					    
+					    
 
+						
 						if(isset($this->sys_fields[$campo]["obj"]))
 						{
 							foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
@@ -1661,8 +1679,11 @@
 										$titulo_aux=@$valor["br"]."<font id=\"$campo\" style=\"color:gray;\">$titulo_aux</font>";
 									}	
 									
-									$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$titulo_aux;
+									$words[$campo.".$row_field"]  		=@$this->sys_fields["$campo"]["values"][0][$row_field] . @$titulo_aux;
+									$words[$campo.".$row_field.md5"]  	=md5(@$this->sys_fields["$campo"]["values"][0][$row_field]) . @$titulo_aux;
+									
 								}		
+								
 							}
 					    
 					     }   
@@ -1971,10 +1992,12 @@
 							if(isset($this->sys_fields[$field]["values"][0]) AND isset($this->sys_fields[$field]["class_field_l"]) AND isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
 							{															
 								$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
+								/*
 								foreach($this->sys_fields[$field]["values"][0] as $row_field=>$row_value)
 								{
 									$row["$field.$row_field"]=$row_value;								
 								}
+								*/
 							}
 							#else $row[$field]="";
 			
@@ -2722,11 +2745,12 @@
 
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
 					{
+					
 						$view.="
-							<input name=\"sys_order_$name\" id=\"sys_order_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
-							<input name=\"sys_torder_$name\" id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
-							<input name=\"sys_page_$name\" id=\"sys_page_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_page\">
-							<input name=\"sys_row_$name\" id=\"sys_row_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_row\">
+							<input name=\"sys_order_$name\" 	id=\"sys_order_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
+							<input name=\"sys_torder_$name\" 	id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
+							<input name=\"sys_page_$name\" 		id=\"sys_page_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_page\">
+							<input name=\"sys_row_$name\" 		id=\"sys_row_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_row\">
 						";
 					}				
 					$filter_autocomplete="";

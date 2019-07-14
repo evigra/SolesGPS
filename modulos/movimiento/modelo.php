@@ -119,8 +119,7 @@
 			),
 			"flow"	    =>array(
 			    "title"             => "Estado",
-			    "type"              => "flow",
-			    "value"             => "flow1",			    
+			    "type"              => "flow",			    
 			    "source"            => array(			    	
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",

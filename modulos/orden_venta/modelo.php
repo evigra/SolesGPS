@@ -36,7 +36,6 @@
     	{   
 			$data			=array();
 			$data["flow"]	="flow2";
-			
 			$this->__SAVE($data);
     	
     		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")

@@ -131,6 +131,29 @@
 			    "title"             => "Domicilio Fiscal",
 			    "type"              => "input",
 			),			
+			"estado"	=>array(
+			    "title"             => "Estado",
+			    "type"              => "input",
+			),			
+			"municipio"	=>array(
+			    "title"             => "Municipio",
+			    "type"              => "input",
+			),			
+			"cp"	=>array(
+			    "title"             => "CP",
+			    "type"              => "input",
+			),			
+			"colonia"	=>array(
+			    "title"             => "Colonia",
+			    "type"              => "input",
+			),			
+			"calle"	=>array(
+			    "title"             => "Calle",
+			    "type"              => "input",
+			),			
+
+
+
 			"tipo_company"	=>array(
 			    "title"             => "TIPO",
 			    "type"              => "hidden",

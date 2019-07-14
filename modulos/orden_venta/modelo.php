@@ -34,6 +34,11 @@
 		##############################################################################
    		public function action_enviar()
     	{   
+			$data			=array();
+			$data["flow"]	="flow1";
+			
+			$this->__SAVE($data);
+    	
     		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
     		{
 				$option=array(
@@ -74,12 +79,7 @@ Equipo SolesGPS
 				);			
 				
 				$this->send_mail($option);
-				
-				$data			=array();
-				$data["flow"]	="flow1";
-				
-				$this->__SAVE($data);
-			
+							
 				$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
 			}   
 			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		

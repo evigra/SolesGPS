@@ -23,7 +23,7 @@
 				"field"=>"$field", 
 				"title"=>"{$data_field["title_filter"]}", 
 				"term"=>"{$_GET["term"]}", 
-				"value"=>"Buscar '{$this->request["term"]}' en el campo '{$data_field["title_filter"]}'");
+				"value"=>"Buscar '{$objeto->request["term"]}' en el campo '{$data_field["title_filter"]}'");
 	}
 	echo json_encode($data_json);
 	

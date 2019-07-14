@@ -1,4 +1,35 @@
 <?php
+	include('nucleo/sesion.php');
+	
+	$objeto											=new orden_venta();		
+	#$objeto->__SESSION();
+		
+	$option=array();
+
+	$vars["RFC"]					="VIGE850830GKA";
+	$vars["privateKeyPassword"]		="EvG30JiC";			
+	$vars["txtCertificate"]			="@VIGE850830GKA.cer";
+	$vars["txtPrivateKey"]			="@VIGE850830GKA.key";
+
+
+	$vars["tokenuuid"]					="YjIzMTAxYTUtZjA5Ni00M2Q2LTg3MDUtMzdhMzc2Y2YyNGE3";
+	$vars["token"]					="";
+	$vars["credentialsRequired"]					="CERT";
+	$vars["guid"]					="YjIzMTAxYTUtZjA5Ni00M2Q2LTg3MDUtMzdhMzc2Y2YyNGE3";
+	$vars["ks"]					="null";
+	$vars["seeder"]					="";
+	$vars["arc"]					="";
+	$vars["tan"]					="";
+	$vars["placer"]					="";
+	$vars["secuence"]					="";
+	$vars["urlApplet"]					="https://cfdiau.sat.gob.mx/nidp/app/login?id=SATx509Custom";
+	$vars["fert"]					="";
+
+	$url="https://cfdiau.sat.gob.mx/nidp/app/login?id=SATx509Custom&sid=0&option=credential&sid=0";
+	$option		=array("url"=>$url,"post"=>$vars);			
+
+	$objeto->__PRINT_R($objeto->__CURL($option))
+
 
 
 /*

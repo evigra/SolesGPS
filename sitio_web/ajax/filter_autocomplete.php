@@ -4,11 +4,11 @@
 	
 
 	$eval="
-		$"."option"."_obj_{$_REQUEST["class"]}	=array(
+		$"."option"."_obj_{$_GET["class"]}	=array(
 			\"recursive\"		=>2,
-			\"name\"			=>\"{$_REQUEST["class"]}"."_obj\",		
+			\"name\"			=>\"{$_GET["class"]}"."_obj\",		
 		);													
-		$"."objeto   	=new {$_REQUEST["class"]}($"."option"."_obj_{$_REQUEST["class"]});
+		$"."objeto   	=new {$_GET["class"]}($"."option"."_obj_{$_GET["class"]});
 	";		
 	eval($eval);		
 	
@@ -22,8 +22,8 @@
 			$data_json[]=array(
 				"field"=>"$field", 
 				"title"=>"{$data_field["title_filter"]}", 
-				"term"=>"{$_REQUEST["term"]}", 
-				"value"=>"Buscar '{$_REQUEST["term"]}' en el campo '{$data_field["title_filter"]}'");
+				"term"=>"{$_GET["term"]}", 
+				"value"=>"Buscar '{$_GET["term"]}' en el campo '{$data_field["title_filter"]}'");
 	}
 	echo json_encode($data_json);
 	

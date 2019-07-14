@@ -104,8 +104,8 @@
 			    "type"              => "date",
 			),
 			"folio"	    =>array(
-			    "title"             => "Folio",
-			    "title_filter"      => "Folio",
+			    "title"             => "Folio Interno",
+			    "title_filter"      => "Folio Interno",
 			    "type"              => "hidden",
 			),	
 			"estatus"	    =>array(

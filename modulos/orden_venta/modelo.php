@@ -74,7 +74,12 @@ Equipo SolesGPS
 				);			
 				
 				$this->send_mail($option);
-								
+				
+				$data			=array();
+				$data["flow"]	="flow1";
+				
+				$this->__SAVE($data);
+			
 				$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
 			}   
 			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		

@@ -123,7 +123,8 @@
 			    "source"            => array(			    	
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",
-				    "flow3"  	   	=> "Presup. Confirmado",				    
+				    "flow3"  	   	=> "Presup. Confirmado",
+				    "flow3"  	   	=> "Cancelado",
 				)
 			),			
 			"cron_cantidad"	    =>array(

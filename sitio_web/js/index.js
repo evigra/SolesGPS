@@ -1684,11 +1684,17 @@ styles:
 				var url		= location.href;		
 				var arrUrl 	= url.split("/");
 				
-				var clase	=arrUrl[ arrUrl.length -2 ];				
+				var clase	=arrUrl[ arrUrl.length -2 ];
+				var str_get	="";								
+
+				$(".modulo_principal").each(function()
+				{
+					str_get		="&" + $(this).attr("id") + "=" +$(this).val();			
+				}
 
 				$("form")
 					.attr("target","_blank")
-					.attr("action","&sys_action=print_pdf")
+					.attr("action","&sys_action=print_pdf"+str_get)
 					.submit();
 				$("form")
 					.attr("action","")

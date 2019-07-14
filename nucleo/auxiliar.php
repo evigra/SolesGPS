@@ -1920,10 +1920,15 @@
 			$view2="";
 			if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))	
 			{
+				if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
+				{
+					$sys_class="modulo_principal";
+				}			
+			
 				$view2="
-					<input id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
-					<input id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
-					<input id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
+					<input class=\"$sys_class\" id=\"sys_section_{$this->sys_name}\" system=\"yes\"  name=\"sys_section_{$this->sys_name}\" value=\"{$sys_section}\" type=\"hidden\">
+					<input class=\"$sys_class\" id=\"sys_action_{$this->sys_name}\" system=\"yes\" name=\"sys_action_{$this->sys_name}\" value=\"{$sys_action}\" type=\"hidden\">
+					<input class=\"$sys_class\" id=\"sys_id_{$this->sys_name}\" system=\"yes\" name=\"sys_id_{$this->sys_name}\" value=\"{$sys_id}\" type=\"hidden\">
 				";
 				if(!isset($option["input"]))	$option["input"]="true";
 			}
@@ -2745,12 +2750,17 @@
 
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
 					{
-					
+
+						if(@$_SESSION["var"]["vpath"]==$this->sys_name."/")
+						{
+							$sys_class="modulo_principal";
+						}
+
 						$view.="
-							<input name=\"sys_order_$name\" 	id=\"sys_order_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_order\">		
-							<input name=\"sys_torder_$name\" 	id=\"sys_torder_$name\" class=\"$name\" type=\"hidden\" value=\"$sys_torder\">
-							<input name=\"sys_page_$name\" 		id=\"sys_page_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_page\">
-							<input name=\"sys_row_$name\" 		id=\"sys_row_$name\" 	class=\"$name\" type=\"hidden\" value=\"$sys_row\">
+							<input name=\"sys_order_$name\" 	id=\"sys_order_$name\" 	class=\"$name $sys_class\" type=\"hidden\" value=\"$sys_order\">		
+							<input name=\"sys_torder_$name\" 	id=\"sys_torder_$name\" class=\"$name $sys_class\" type=\"hidden\" value=\"$sys_torder\">
+							<input name=\"sys_page_$name\" 		id=\"sys_page_$name\" 	class=\"$name $sys_class\" type=\"hidden\" value=\"$sys_page\">
+							<input name=\"sys_row_$name\" 		id=\"sys_row_$name\" 	class=\"$name $sys_class\" type=\"hidden\" value=\"$sys_row\">
 						";
 					}				
 					$filter_autocomplete="";

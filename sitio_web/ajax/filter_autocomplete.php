@@ -16,14 +16,14 @@
 	$data_json=array();
 	foreach($objeto->sys_fields as $field => $data_field)
 	{
-		#$objeto->__PRINT_R($data_field["title"]);
+		
 		
 		if(@$data_field["title_filter"]!="")
 			$data_json[]=array(
 				"field"=>"$field", 
 				"title"=>"{$data_field["title_filter"]}", 
 				"term"=>"{$_GET["term"]}", 
-				"value"=>"Buscar '{$_GET["term"]}' en el campo '{$data_field["title_filter"]}'");
+				"value"=>"Buscar '{$this->request["term"]}' en el campo '{$data_field["title_filter"]}'");
 	}
 	echo json_encode($data_json);
 	

@@ -124,7 +124,7 @@
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",
 				    "flow3"  	   	=> "Presup. Confirmado",
-				    "flow3"  	   	=> "Cancelado",
+				    "flow4"  	   	=> "Cancelado",
 				)
 			),			
 			"cron_cantidad"	    =>array(

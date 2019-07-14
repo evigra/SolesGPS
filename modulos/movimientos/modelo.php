@@ -22,7 +22,7 @@
 			    ),				
 			),
 			"item_id"	=>array(
-			    "title"             => "Articulo",
+			    "title"             => "ARTICULO",
 			    "description"       => "Encargado de supervisar distintos dispositivos",
 			    "type"              => "autocomplete",
 			    "procedure"       	=> "autocomplete_item",
@@ -35,21 +35,21 @@
 			),			
 
 			"cantidad"	    =>array(
-				"title"             => "Cantidad",			    
+				"title"             => "CANTIDAD",			    
 			    "type"              => "input",								
 			    "attr"             => array(						
 					"tabindex"		=>"1",			    	
 			    ),				
 			),
 			"precio"	    =>array(
-				"title"             => "Precio",			    
+				"title"             => "PRECIO",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 					"tabindex"		=>"1",			    	
 			    ),				
 			),
 			"subtotal"	    =>array(
-				"title"             => "Subtotal",			    
+				"title"             => "SUBTOTAL",			    
 			    "type"              => "input",								
 			    "attr"             => array(		
 					"tabindex"		=>"1",			    	
@@ -63,7 +63,7 @@
 			    ),				
 			),
 			"descuento"	    =>array(
-				"title"             => "Descuento",			        
+				"title"             => "DESCUENTO",			        
 			    "type"              => "input",								
 			    "attr"             => array(						
 					"tabindex"		=>"1",			    	

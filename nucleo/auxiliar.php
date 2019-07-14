@@ -1235,7 +1235,7 @@
 								if(@$this->sys_private["section"]=="show")
 								{
 									$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";
-									$words["$campo.md5"]  	=md5($valor["value"])."{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
 								}	
 								else
 								{					        
@@ -1246,7 +1246,7 @@
 					        else	
 					        {
 					        	$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";    
-					        	$words["$campo.md5"]  	=md5($valor["value"])."{$valor["br"]}$titulo";
+					        	$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
 					        }	
 					        
 					        
@@ -1381,7 +1381,7 @@
 					    if($valor["type"]=="value")	
 					    {
 					        $words["$campo"]  ="{$valor["value"]}";
-					        $words["$campo.md5"]	=md5($valor["value"]);
+					        $words["$campo.md5"]	=strtoupper(md5($valor["value"]));
 					    } 
 					    
 					    if($valor["type"]=="textarea")	
@@ -1680,7 +1680,7 @@
 									}	
 									
 									$words[$campo.".$row_field"]  		=@$this->sys_fields["$campo"]["values"][0][$row_field] . @$titulo_aux;
-									$words[$campo.".$row_field.md5"]  	=md5(@$this->sys_fields["$campo"]["values"][0][$row_field]) . @$titulo_aux;
+									$words[$campo.".$row_field.md5"]  	=strtoupper(md5(@$this->sys_fields["$campo"]["values"][0][$row_field])) . @$titulo_aux;
 									
 								}		
 								

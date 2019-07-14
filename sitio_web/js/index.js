@@ -1690,7 +1690,7 @@ styles:
 				$(".modulo_principal").each(function()
 				{
 					str_get		="&" + $(this).attr("id") + "=" +$(this).val();			
-				}
+				});
 
 				$("form")
 					.attr("target","_blank")

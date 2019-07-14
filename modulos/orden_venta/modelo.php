@@ -35,7 +35,7 @@
    		public function action_enviar()
     	{   
 			$data			=array();
-			$data["flow"]	="flow1";
+			$data["flow"]	="flow2";
 			
 			$this->__SAVE($data);
     	

@@ -68,6 +68,9 @@
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
+		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section_orden_venta=write&sys_action_orden_venta=&sys_id_orden_venta=101");
+
+
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{			
 			$objeto->action_enviar();

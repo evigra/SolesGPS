@@ -1910,6 +1910,13 @@
 			if(is_null($template))	$template=$this->sys_var["module_path"]."html/show";
 			return $this->__VIEW_FORM($template);
 		} 		
+
+		public function __QR($option=null)
+		{			
+			$url="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=" . urlencode($option);			
+			return "<img src=\"$url\">";
+		} 		
+
 		##############################################################################    
 		public function __VIEW_INPUTSECTION($view, $option=array())
 		{								

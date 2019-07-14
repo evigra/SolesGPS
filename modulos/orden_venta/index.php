@@ -55,7 +55,7 @@
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
-		$objeto->sys_fields["folio"]["type"]	="value";
+		$objeto->sys_fields["folio"]["type"]	="input";
 		
 		#BOTONES SECCION DERECHA
 		$module_right=array(

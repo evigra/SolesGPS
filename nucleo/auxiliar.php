@@ -2138,12 +2138,16 @@
                     
 				    if(@$html_template=="")  
 				    {
+				    	$dragable="";
+				    	if(isset($option["flow"]))
+				    		$dragable="dragable";
+				    	
 				    	$html_template  =$this->__TEMPLATE("$template");
 				    	
 				    	if(@$this->sys_private["action"]=="print_pdf")				    	
 				    		$html_template	=str_replace("<td>", "<td style=\"{style_tr}\" >", $html_template);				    	
 				    	else	
-				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
+				    		$html_template	=str_replace("<td>", "<td class=\"$dragable\" style=\"{style_td}\" >", $html_template);				    	
 				    }	
 				    
 				    $view_aux	=$html_template;
@@ -2657,7 +2661,16 @@
 					
 					if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					
 					{
+						$dragable="";	
+						if(isset($option["flow"]))
+						{
+							$dragable="
+								$(\".draggable\").draggable();
+							";
+						}
+
 						@$return["js"].="			
+								$dragable
 								$button_create_js
 								sys_report_memory();
 																				

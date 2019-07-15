@@ -120,7 +120,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option										=array();
 		#$option["flow"]								="flow";
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN();
+    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($option);
     }    
     else
     {    	

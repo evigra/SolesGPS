@@ -2338,7 +2338,7 @@
 			";		    	    
 		}
     	##############################################################################    
-		public function __VIEW_KANBAN()
+		public function __VIEW_KANBAN($option=array())
 		{
 			if(!is_array($option))	$option=array();
 			$option["type_view"]="kanban";

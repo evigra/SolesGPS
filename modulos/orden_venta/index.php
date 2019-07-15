@@ -119,6 +119,7 @@
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option										=array();
+		$option										=$objeto->__BROWSE_CUENTAS($option);
 		#$option["flow"]								="flow";
     	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($option);
     }    

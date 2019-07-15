@@ -2186,7 +2186,7 @@
 					$td.="<td>$flow_value</td>";
 				}
 				$view="
-					<table heigth=\"100%\">
+					<table border=\"1\" heigth=\"100%\">
 						<tr>$th</tr>
 						<tr>$td</tr>
 					</table>

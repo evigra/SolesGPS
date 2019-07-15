@@ -121,7 +121,8 @@
 		$option										=array();
 		$option										=$objeto->__BROWSE_CUENTAS($option);
 		#$option["flow"]								="flow";
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($option);
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }    
     else
     {    	

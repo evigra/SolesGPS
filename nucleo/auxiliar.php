@@ -2164,10 +2164,11 @@
 						$flow_row_value=$row[$option["flow"]];
 						foreach($this->sys_fields[$option["flow"]]["source"] as $flow_field=>$flow_value)
 						{
+							if($flow_views[$flow_field]==$flow_row_value)
+								$flow_views[$flow_field]="";
+
 							if($flow_row_value==$flow_value)
 							{
-								if($flow_views[$flow_field]==$flow_row_value)
-									$flow_views[$flow_field]="";
 								@$flow_views[$flow_field].=$view_aux;
 							}
 						}

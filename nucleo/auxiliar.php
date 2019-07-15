@@ -2338,21 +2338,21 @@
 			";		    	    
 		}
     	##############################################################################    
-		public function __VIEW_KANBAN($option)
+		public function __VIEW_KANBAN($option=array())
 		{
 			if(!is_array($option))	$option=array();
 			$option["type_view"]="kanban";
 			return $this->__SYS_REPORT($option);
         }				
 		###################################
-		public function __VIEW_REPORT($option)
+		public function __VIEW_REPORT($option=array())
 		{
 			if(!is_array($option))	$option=array();
 			$option["type_view"]="report";
 			return $this->__SYS_REPORT($option);
 		}
 		###################################
-		public function __SYS_REPORT($option)
+		public function __SYS_REPORT($option=array())
 		{
 			if($option["type_view"]=="report")
 			{

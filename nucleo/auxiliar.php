@@ -1984,8 +1984,7 @@
 			{
 				if(isset($option["flow"]))
 				{
-					$flow_views=$this->sys_fields[$option["flow"]]["source"];
-				
+					$flow_views=$this->sys_fields[$option["flow"]]["source"];			
 				}
 			    foreach($data as $row_id=>$row)			
 			    {
@@ -2167,6 +2166,8 @@
 						{
 							if($flow_row_value==$flow_value)
 							{
+								if($flow_views[$flow_field]==$flow_row_value)
+									$flow_views[$flow_field]="";
 								@$flow_views[$flow_field].=$view_aux;
 							}
 						}
@@ -2183,7 +2184,7 @@
 				{
 					$flow_title=$this->sys_fields[$option["flow"]]["source"][$flow_field];
 					$th.="<td>$flow_title</td>";	
-					$td.="<td valing=\"top\">$flow_value</td>";
+					$td.="<td valign=\"top\">$flow_value</td>";
 				}
 				$view="
 					<table border=\"1\" height=\"100%\">

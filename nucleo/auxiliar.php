@@ -2177,12 +2177,20 @@
 			}    
 			if(isset($flow_views))
 			{
-				$view="";
+				$td="";
+				$th="";
 				foreach($flow_views as $flow_field=>$flow_value)
 				{
-					$view.="<td>$flow_value</td>";
+					$flow_title=$this->sys_fields[$option["flow"]]["source"][$flow_field];
+					$th.="<td>$flow_title</td>";	
+					$td.="<td>$flow_value</td>";
 				}
-				$view="<table height=\"100%\"><tr>$view</tr></table>";
+				$view="
+					<table heigth=\"100%\">
+						<tr>$th</tr>
+						<tr>$td</tr>
+					</table>
+				";
 			}
 			
 			

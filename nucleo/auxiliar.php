@@ -1980,44 +1980,26 @@
 			
 			if(is_array($data))
 			{
-				$this->__PRINT_R($option);
+				if(isset($option["flow"]))
+				{
+					$flow_views=$this->sys_fields[$option["flow"]]["source"];
+				
+				}
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			
 					{														
 						if(isset($this->sys_private["field"]) AND $this->sys_private["field"]==$field)
-						{
-							$this->__FIND_FIELDS($fieldvalue);												
-						}									
-						
+							$this->__FIND_FIELDS($fieldvalue);																		
 						if(@$this->sys_fields[$field]["type"]=="select")
-						{										
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
-						}						
 						if(@$this->sys_fields[$field]["type"]=="flow")
-						{										
 							$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
-						}						
-
-						if(@$this->sys_fields[$field]["type"]=="check")
-						{										
-							#$row[$field]=@$this->sys_fields[$field]["source"]["$fieldvalue"];
-						}						
 
 						if(@$this->sys_fields[$field]["type"]=="autocomplete")
 						{		
 							if(isset($this->sys_fields[$field]["values"][0]) AND isset($this->sys_fields[$field]["class_field_l"]) AND isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
-							{															
-								$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];
-								/*
-								foreach($this->sys_fields[$field]["values"][0] as $row_field=>$row_value)
-								{
-									$row["$field.$row_field"]=$row_value;								
-								}
-								*/
-							}
-							#else $row[$field]="";
-			
+								$row[$field]=$this->sys_fields[$field]["values"][0][$this->sys_fields[$field]["class_field_l"]];			
 							if($row[$field]=="" AND isset($row["auto_".$field]))
 							{
 								$aux					=$row[$field];
@@ -2028,11 +2010,8 @@
 						if(isset($this->sys_fields[$field]["relation"])  AND isset($this->sys_fields[$field]["values"]) AND count($this->sys_fields[$field]["values"])>0)
 						{															
 							foreach($this->sys_fields[$field]["values"][0] as $row_field=>$row_value)
-							{
 								$row["$field.$row_field"]=$row_value;								
-							}
 						}
-
 					}			    
                     if($class=="odd")   
                     {
@@ -2047,10 +2026,8 @@
                     
                     $actions				=array();
                     $colors					=array();
-                    if(substr(@$this->sys_private["action"],0,5)!="print")	              
-	                    $actions["sys_class"]		=$class;
-	                else    
-	                    $actions["style_tr"]	=$style;
+                    if(substr(@$this->sys_private["action"],0,5)!="print")	    $actions["sys_class"]	=$class;
+	                else    								                    $actions["style_tr"]	=$style;
                                         				
                     if(isset($this->sys_memory) AND $this->sys_memory!="")
 					{
@@ -2167,8 +2144,22 @@
 				    	else	
 				    		$html_template	=str_replace("<td>", "<td style=\"{style_td}\" >", $html_template);				    	
 				    }	
-				    $view   .=$html_template;
-				    $view	=$this->__REPLACE($view,$row);			
+				    
+				    $view_aux	=$html_template;
+				    $view_aux	=$this->__REPLACE($view_aux,$row);			
+				    
+					if(isset($flow_views))
+					{
+						$this->__PRINT_R($row);
+					
+					
+					}
+					
+					
+								
+				    
+				    $view   .=$view_aux;
+				    
 			    }		
 
 	        	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n))	
@@ -2539,6 +2530,8 @@
 		    	{    
 		    	    $template       				=$option["template_body"];
 		    	    $option_kanban					=array();
+		    	    
+		    	    if(isset($option["flow"]))		$option_kanban["flow"]		=$option["flow"];		    	    
 		    	    if(isset($option["actions"]))	$option_kanban["actions"]	=$option["actions"];
 		    	    if(isset($option["color"]))		$option_kanban["color"]		=$option["color"];
 		    	    if(isset($option["name"]))		$option_kanban["name"]		=$name;

@@ -16,7 +16,7 @@
 		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
 		{	
-			if($datas["estatus"]=="-1")
+			if($this->sys_fields["flow"]["value"]=="-1")
 				$this->sys_fields["flow"]["source"]["flow4"]="Cancelado";
 				
 							

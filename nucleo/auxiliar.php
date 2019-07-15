@@ -2183,7 +2183,7 @@
 				{
 					$flow_title=$this->sys_fields[$option["flow"]]["source"][$flow_field];
 					$th.="<td>$flow_title</td>";	
-					$td.="<td>$flow_value</td>";
+					$td.="<td valing=\"top\">$flow_value</td>";
 				}
 				$view="
 					<table border=\"1\" height=\"100%\">

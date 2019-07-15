@@ -1,18 +1,37 @@
-
-	<div class="cKanban" style="float:left; margin:5px; background-color:white; border:1px; border-radius:5px 15px 5px 15px;     border-style: solid; border-width: 2px;">
-		<table border="0" height="150" width="350" style="margin:0px;">
+	<div class="cKanban" style="float:left; background-color:#fff; padding:5px; margin:10px; border:1px; border-radius:5px 15px 5px 15px;     border-style: solid; border-width: 2px; border-color:{color1}{color2}{color3};">
+		<table border="0" style="padding-right:8px; margin:0px;" height="70" width="236">
 		    <tr>
-		        <td rowspan="2" width="60" style="padding-right:8px ;" valign="middle" align="center">		 
-		        	<div style="height:140px; width:180px; overflow:hidden;">       
-		        		{img_files_id_med}
-		        	</div>
-		        </td>        
-		        <td>{nombre}</td>
-		        <td rowspan="2" width="10"> {actionsv}</td>		        
+		        <td colspan="6" height="50" align="center">
+		        	<b>{empresa_id}</b>
+		       	</td> 
+		    </tr>           
+		    <tr>
+		    	<td width="8" valign="top"></td>		    	
+		        <td width="80" align="center" colspan="2" valign="top" style="padding-right:10px; border-right: thick double #ccc; border-top: solid #ccc;">CARGO</td>
+		        <td width="80" align="center" colspan="2" valign="top" style="padding-right:10px; border-top: solid #ccc;">ABONO</td>
+		        <td width="8" valign="top"></td>
 		    </tr>    
-		    <tr><td>{email}</td></tr>                    
+		    <tr>
+		    	<td width="8" valign="top"></td>		    	
+		    	<td width="20" align="right" valign="top" style="padding-right:10px; border-top: solid #ccc;"> </td>
+		        <td width="80" align="right" valign="top" style="padding-right:10px; border-style: solid; border-right: thick double #ccc; border-top: solid #ccc;">{orden}</td>
+		        <td width="80" align="right" valign="top" style="padding-right:10px; border-style: solid; border-top: solid #ccc;">{pago}</td>
+		        <td width="20" align="right" valign="top" style="padding-right:10px; border-top: solid #ccc;"></td>
+		        <td width="8" valign="top"></td>
+		    </tr>    
 
-		    	   
+		    <tr>
+		        <td></td> 
+		        <td></td>
+		        <td height="25"  align="right" style="padding-right:10px;">
+		        	<b>{deudor}</a><b>
+		        </td> 
+		        <td height="25"  align="right" style="padding-right:10px;">
+		        	<b>{acreedor}<b>
+		        </td> 
+		        <td></td>
+		        <td></td> 
+		    </tr>           		    	   
 		</table>		
 	</div>
 

@@ -30,7 +30,7 @@
     	{
     		$datas			=array();
     		$datas["estatus"]="-1";    		   			
-			$datas["flow"]	="flow2";
+			$datas["flow"]	="flow4";
 
     	    $return= parent::__SAVE($datas);
     	    return $return;

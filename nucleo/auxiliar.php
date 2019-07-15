@@ -2149,32 +2149,44 @@
 				    
 				    $view_aux	=$html_template;
 				    $view_aux	=$this->__REPLACE($view_aux,$row);			
+
+			    	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n))	
+			    	{
+			    		#$actions_lang["actions_selected"]	=$this->sys_view_l18n["actions_selected"];
+			    		$actions_lang["actions_show"]		=$this->sys_view_l18n["actions_show"];
+			    		$actions_lang["actions_write"]		=$this->sys_view_l18n["actions_write"];
+			    		$actions_lang["actions_delete"]		=$this->sys_view_l18n["actions_delete"];
+			    				        		
+						$view_aux	=$this->__REPLACE($view_aux,$actions_lang);
+			    	}                                        			    
 				    
 					if(isset($flow_views))
 					{
-						$this->__PRINT_R($flow_views);
-					
-					
+						$flow_row_value=$row[$option["flow"]];
+						foreach($this->sys_fields[$option["flow"]]["source"] as $flow_field=>$flow_value)
+						{
+							if($flow_row_value==$flow_value)
+							{
+								$flow_views[$flow_field]=$view_aux;
+							}
+						}
 					}
-					
-					
-								
-				    
-				    $view .=$view_aux;
-				    
+				    $view .=$view_aux;				    
 			    }		
 
-	        	if(isset($this->sys_view_l18n) AND is_array($this->sys_view_l18n))	
-	        	{
-	        		#$actions_lang["actions_selected"]	=$this->sys_view_l18n["actions_selected"];
-	        		$actions_lang["actions_show"]		=$this->sys_view_l18n["actions_show"];
-	        		$actions_lang["actions_write"]		=$this->sys_view_l18n["actions_write"];
-	        		$actions_lang["actions_delete"]		=$this->sys_view_l18n["actions_delete"];
-	        				        		
-	        		#$row 	= array_merge($actions_lang, $row);
-					$view	=$this->__REPLACE($view,$actions_lang);
-	        	}                                        			    
 			}    
+			if(isset($flow_views))
+			{
+				$view="";
+				foreach($flow_views as $flow_field=>$flow_value)
+				{
+					$view.="<td>$flow_value</td>";
+				}
+				$view="<table height=\"100%\"><tr>$view</tr></table>";
+			}
+			
+			
+			
 			$view =$this->__VIEW_INPUTSECTION($view, $option);
 			return $view;
 		}    	

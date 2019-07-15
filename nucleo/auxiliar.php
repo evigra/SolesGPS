@@ -2167,7 +2167,7 @@
 						{
 							if($flow_row_value==$flow_value)
 							{
-								$flow_views[$flow_field]=$view_aux;
+								@$flow_views[$flow_field].=$view_aux;
 							}
 						}
 					}
@@ -2186,7 +2186,7 @@
 					$td.="<td>$flow_value</td>";
 				}
 				$view="
-					<table border=\"1\" heigth=\"100%\">
+					<table border=\"1\" height=\"100%\">
 						<tr>$th</tr>
 						<tr>$td</tr>
 					</table>

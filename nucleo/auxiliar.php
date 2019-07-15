@@ -2152,7 +2152,7 @@
 				    
 					if(isset($flow_views))
 					{
-						#$this->__PRINT_R($row);
+						$this->__PRINT_R($flow_views);
 					
 					
 					}

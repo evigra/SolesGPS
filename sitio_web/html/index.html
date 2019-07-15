@@ -24,18 +24,19 @@
         
     </head>
     <body style="margin:0px; padding:0px;">
-
-    	<form action=""  method="POST" enctype="multipart/form-data">	
-    		{system_message}
-			{system_template}  
-		</form>
-		<script id="script" type="text/javascript">
-			$(document).ready(function()
-			{
-				{system_js}
-			});	
-		</script>
-		<div id="script">
-		</div>		
+		<div style="position:absolute; left:0px; top:0px;">
+			<form action=""  method="POST" enctype="multipart/form-data">	
+				{system_message}
+				{system_template}  
+			</form>
+			<script id="script" type="text/javascript">
+				$(document).ready(function()
+				{
+					{system_js}
+				});	
+			</script>		
+			<div id="script">
+			</div>		
+		</div>
     </body>    
 </html>

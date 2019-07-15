@@ -112,7 +112,7 @@
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
+		    array("write"=>"Modificar"),
 		    #array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);

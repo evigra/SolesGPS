@@ -15,12 +15,9 @@
 		##  Metodos	
 		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
-		{	
-			if($this->sys_fields["flow"]["value"]=="-1")
-				$this->sys_fields["flow"]["source"]["flow4"]="Cancelado";
-				
-							
+		{								
 			parent::__CONSTRUCT($option);		
+		
 		}
 		##############################################################################
    		public function __SAVE($datas=NULL,$option=NULL)

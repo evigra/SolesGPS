@@ -38,6 +38,16 @@
 		##############################################################################
    		public function action_enviar()
     	{   
+    	
+			$this->__FIELDS();			
+			$opcion=array(
+				"message"=>"CORREO ENVIADO",
+			);
+					
+			$this->__SAVE($this->sys_request, $opcion);			
+    	
+    	
+    	
 			$data			=array();
 			$data["flow"]	="flow2";
 			$this->__SAVE($data);

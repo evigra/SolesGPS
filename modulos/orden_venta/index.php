@@ -73,7 +73,6 @@
 
 		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_action=&sys_id=101");
 
-
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{			
 			$objeto->action_enviar();
@@ -83,7 +82,6 @@
 			$objeto->action_cancelar();
 		}
 
-				
     	$module_title								="";
     }	
     elseif($objeto->sys_private["section"]=="show")

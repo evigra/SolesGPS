@@ -1968,6 +1968,10 @@
         ##############################################################################    
 		public function __VIEW_KANBAN2($template,$data,$option=NULL)
 		{			
+			/////////////////////////////////////////////
+			### GENERACION DE VISTA REPORT O KANBAN /////
+			/////////////////////////////////////////////
+						
 			$view="";
 			$class="even";
 
@@ -1975,7 +1979,8 @@
 			if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
 			
 			if(is_array($data))
-			{			
+			{
+				$this->__PRINT_R($option);
 			    foreach($data as $row_id=>$row)			
 			    {
 					foreach($row as $field=>$fieldvalue)			

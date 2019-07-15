@@ -2549,7 +2549,6 @@
 					{	
 						$view_body					=$this->__VIEW_KANBAN2($template,$return["data"],$option_kanban);
 					}
-					$this->__PRINT_R($view_body);
 		    	}    
                 #if(isset($inicio) AND $return["total"]>0)
                 {                     	           	

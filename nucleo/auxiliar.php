@@ -1978,6 +1978,8 @@
 			if(is_null($option))	$option=array();	
 			if(!array_key_exists("name",$option))   $option["name"]=$this->sys_name;
 			
+			
+			$this->__PRINT_R($option);
 			if(is_array($data))
 			{
 				if(isset($option["flow"]))

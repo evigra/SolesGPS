@@ -48,8 +48,6 @@
 		$flow_left=array(
 			array("action_enviar"		=>"Enviar por email"),
 			array("action_confirmar"	=>"Confirmar"),
-		    #array("action_pagar"		=>"PAGAR"),
-		    array("create_action"		=>"CREATE ACCION"),
 		    array("action_cancelar"		=>"Cancelar"),
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
@@ -73,6 +71,10 @@
 
 		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_action=&sys_id=101");
 
+	   	if($objeto->sys_private["action"]=="action_confirmar")
+		{			
+			$objeto->action_confirmar();
+		}
 	   	if($objeto->sys_private["action"]=="action_enviar")
 		{			
 			$objeto->action_enviar();

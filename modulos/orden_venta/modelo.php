@@ -15,7 +15,11 @@
 		##  Metodos	
 		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
-		{				
+		{	
+			if($datas["estatus"]=="-1")
+				$this->sys_fields["flow"]["source"]["flow4"]="Cancelado";
+				
+							
 			parent::__CONSTRUCT($option);		
 		}
 		##############################################################################
@@ -27,7 +31,10 @@
 		##############################################################################
    		public function action_cancelar()
     	{
-    		$datas["estatus"]="-1";    		   
+    		$datas			=array();
+    		$datas["estatus"]="-1";    		   			
+			$datas["flow"]	="flow2";
+
     	    $return= parent::__SAVE($datas);
     	    return $return;
 		}

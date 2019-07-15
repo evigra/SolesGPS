@@ -908,7 +908,7 @@
 			if(isset($option["file"]))		$file=$option["file"];			
 
 
-			if(isset($option["from"]))		$headers .= "From: <{$option["from"]}>\r\n";
+			if(isset($option["from"]))		$headers = "From: <{$option["from"]}>\r\n";
 
 			if(!empty($file) > 0)
 			{							

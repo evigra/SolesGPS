@@ -2671,14 +2671,10 @@
 								.sortable({
 								  revert: true
 								})
-								.draggable(
-									{
+								.draggable({
 										appendTo: '.dropArea',
 										connectToSortable: '.dropArea'
-						
-						
-									}								
-								);
+								});
 							";
 						}
 

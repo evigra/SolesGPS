@@ -2667,13 +2667,12 @@
 						if(isset($option["flow"]))
 						{
 							$dragable="
-								$(\"div.dragable\")
-								.sortable({
-								  revert: true
-								})
-								.draggable({
-
-										connectToSortable: '.dropArea'
+							
+							
+							
+							
+								$(\".dropArea\").sortable({
+								  connectWith: '.dropArea'
 								});
 							";
 						}

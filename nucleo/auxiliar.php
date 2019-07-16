@@ -2137,17 +2137,19 @@
                     $row = array_merge($colors, $row);
                     
 				    if(@$html_template=="")  
-				    {
+				    {				    	
+				    	$html_template  =$this->__TEMPLATE("$template");
+
 				    	$dragable="";
 				    	if(isset($option["flow"]))
-				    		$dragable="dragable";
-				    	
-				    	$html_template  =$this->__TEMPLATE("$template");
+				    		$dragable="dragable";				    
 				    	
 				    	if(@$this->sys_private["action"]=="print_pdf")				    	
 				    		$html_template	=str_replace("<td>", "<td style=\"{style_tr}\" >", $html_template);				    	
 				    	else	
 				    		$html_template	=str_replace("<td>", "<td class=\"$dragable\" style=\"{style_td}\" >", $html_template);				    	
+				    		
+				    	$html_template	=str_replace("class=\"kanban\"", "<td class=\"$dragable kanban\"", $html_template);	
 				    }	
 				    
 				    $view_aux	=$html_template;

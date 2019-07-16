@@ -2190,7 +2190,7 @@
 				foreach($flow_views as $flow_field=>$flow_value)
 				{
 					$flow_title=$this->sys_fields[$option["flow"]]["source"][$flow_field];
-					$th.="<td width=\"50\"><b size=\"15\">$flow_title</b></td>";	
+					$th.="<td width=\"50\"><b font-size=\"15\">$flow_title</b></td>";	
 					$td.="<td class=\"dropArea\" valign=\"top\">$flow_value</td>";
 				}
 				$view="

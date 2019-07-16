@@ -2149,7 +2149,7 @@
 				    	else	
 				    		$html_template	=str_replace("<td>", "<td class=\"$dragable\" style=\"{style_td}\" >", $html_template);				    	
 				    		
-				    	$html_template	=str_replace("class=\"kanban\"", "<td class=\"$dragable kanban\"", $html_template);	
+				    	$html_template	=str_replace("class=\"cKanban\"", "<td class=\"$dragable cKanban\"", $html_template);	
 				    }	
 				    
 				    $view_aux	=$html_template;

@@ -2667,7 +2667,7 @@
 						if(isset($option["flow"]))
 						{
 							$dragable="
-								$(\".draggable\").draggable();
+								$(\".dragable\").draggable();
 							";
 						}
 

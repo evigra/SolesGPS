@@ -2670,7 +2670,7 @@
 								$(\".dragable\").draggable(
 									{
 										appendTo: '.dropArea',
-										connectToSortable: ',dropArea'
+										connectToSortable: '.dropArea'
 						
 						
 									}								

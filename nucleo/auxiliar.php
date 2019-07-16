@@ -2669,7 +2669,8 @@
 							$dragable="
 								$(\".dragable\").draggable(
 									{
-										appendTo: '.dropArea'
+										appendTo: '.dropArea',
+										connectToSortable: ',dropArea'
 						
 						
 									}								

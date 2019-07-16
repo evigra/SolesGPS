@@ -2666,14 +2666,13 @@
 						$dragable="";	
 						if(isset($option["flow"]))
 						{
-							$dragable="
-							
-							
-							
-							
-								$(\".dropArea\").sortable({
-								  connectWith: '.dropArea'
-								});
+							$dragable="							
+							$(\".dropArea\").sortable({
+								connectWith: '.dropArea',
+								stop: function( event, ui ) {
+									alert('aaa');
+								}
+							});
 							";
 						}
 

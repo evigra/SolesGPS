@@ -2191,7 +2191,7 @@
 				{
 					$flow_title=$this->sys_fields[$option["flow"]]["source"][$flow_field];
 					$th.="<td>$flow_title</td>";	
-					$td.="<td valign=\"top\">$flow_value</td>";
+					$td.="<td class=\"dropArea\" valign=\"top\">$flow_value</td>";
 				}
 				$view="
 					<table border=\"1\" height=\"100%\">
@@ -2667,7 +2667,13 @@
 						if(isset($option["flow"]))
 						{
 							$dragable="
-								$(\".dragable\").draggable();
+								$(\".dragable\").draggable(
+									{
+										appendTo: '.dropArea'
+						
+						
+									}								
+								);
 							";
 						}
 

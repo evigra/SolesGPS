@@ -18,6 +18,9 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{  		    	    
+			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
+				$datas["company_id"]			=$_SESSION["company"]["id"];
+    	
     	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
     	   		$datas["tipo_company"]			=$this->company_type;    		    		
 

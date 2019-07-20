@@ -184,16 +184,6 @@
 		{						
 			return parent::__CONSTRUCT($option);
 		}
-		public function __SAVE($datas=NULL,$option=NULL)
-    	{    	
-			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
-				$datas["company_id"]			=$_SESSION["company"]["id"];
-    	    
-    	    if(!isset($datas["tipo_company"]) OR @$datas["tipo_company"]=="")	
-    	    	$datas["tipo_company"]			="COMPANY";
-
-    		parent::__SAVE($datas,$option);
-		}		
 		public function __BROWSE($option=NULL)
     	{    		
     		if(is_null($option))	$option=array();			
@@ -206,10 +196,6 @@
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,40,24)"]		="img_files_id_sup_chi";
 			$option["select"][]					="company.*";			
 
-			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
-				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
-			else if(isset($this->sys_id_company))	
-				$option["where"][]      		="company_id={$this->sys_id_company}";
 			$return 							=parent::__BROWSE($option);		
 		
 			return	$return;     	

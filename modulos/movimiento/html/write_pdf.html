@@ -1,0 +1,66 @@
+	<table border="0"  width="100%">
+		<tr>
+			<td align="left" width="62%" colspan="4" style="padding:2;">
+				<table style="background-color:#ffffff; border-color:#cccccc; padding:2px;" border="1"  width="98%">
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="6" align="left">{empresa_id.razonSocial}</td>
+					</tr>
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="33%">{empresa_id.RFC}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="33%">{empresa_id.municipio}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="34%">{empresa_id.estado}</td>
+					</tr>
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="4" align="left" width="66%">{empresa_id.colonia}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="34%">{empresa_id.cp}</td>					
+					</tr>
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="4" align="left" width="66%">{empresa_id.calle}</td>
+						<td style="background-color:#ffffff; border-color:#cccccc;" colspan="2" align="left" width="34%">{empresa_id.telefono}</td>
+					</tr>
+				</table>			
+			</td>                							
+			<td align="rigth" width="37%"  colspan="2">
+				<table style="background-color:#ffffff; border-color:#cccccc; padding:2px;" border="1"  width="100%">
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{tipo}{folio.md5}</td></tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{fecha}</td></tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{caducidad}</td></tr>
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;" align="rigth">{trabajador_id}</td></tr>
+				</table>
+				<br>&nbsp;				
+			</td>			
+		</tr>   
+
+		<tr>
+			<td height="440"  colspan="6"><br>
+				<table border="1" style="background-color:#ffffff; border-color:#cccccc;" width="100%">
+					<tr><td style="background-color:#ffffff; border-color:#cccccc;"  height="440" align="rigth">{movimientos_ids}</td></tr>
+				</table>				
+			</td>           
+		</tr>		   
+		<tr>
+			<td align="left" width="62%" colspan="4" style="padding:2;">
+				<br><br>
+				<table width="98%" border="1" style="background-color:#ffffff; border-color:#cccccc;">
+					<tr>
+						<td width="25%" style="background-color:#ffffff; border-color:#cccccc;" align="left">{qr}</td>           
+						<td width="75%" style="background-color:#ffffff; border-color:#cccccc;" align="right"></td>
+					</tr>   
+				</table>
+			</td>				
+			<td align="rigth" width="37%"  colspan="2">
+				<br><br>
+				<table width="100%" border="1" style=" padding:2px; background-color:#ffffff; border-color:#cccccc;">
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" align="right">{subtotal}</td>           
+					</tr>   
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" align="right">{iva}</td>           
+					</tr>   
+					<tr>
+						<td style="background-color:#ffffff; border-color:#cccccc;" align="right">{total}</td>           
+					</tr>   
+				</table>
+			</td>	
+		</tr>           		
+	</table>    		

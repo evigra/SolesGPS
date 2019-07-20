@@ -3,7 +3,7 @@
 
 	$objeto				=new map_speed();
 	
-		if($_REQUEST["device_active"]>0)
+		if($objeto->request["device_active"]>0)
 		$option["where"][]	="deviceid = {$objeto->request["device_active"]}";
 
 

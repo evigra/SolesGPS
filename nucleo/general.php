@@ -44,6 +44,8 @@
 			
 			#ini_set('display_errors', 1);				
 			
+			$this->__PRINT_R($_SERVER["SERVER_NAME"]);
+			
 			if(isset($_SESSION["var"]["server_error"]) AND in_array(@$_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_error"]))
 			{	
 				#error_reporting(-1);

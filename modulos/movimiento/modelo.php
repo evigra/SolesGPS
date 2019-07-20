@@ -284,10 +284,9 @@
    		public function __BROWSE_TOTALES($option="")
     	{			    	
 			if($option=="")					$option				=array();			
+			if(!isset($option["select"]))	$option["select"]	=array();
 			if(!isset($option["where"]))	$option["where"]	=array();
 			
-			if(!isset($option["select"]))	$option["select"]	=array();
-
 			$option["select"][]	="m1.*";
 			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
 			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";

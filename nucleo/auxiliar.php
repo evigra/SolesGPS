@@ -1286,7 +1286,7 @@
 							    $words["$campo"]  ="
 							    	<input id=\"$campo\" $style type=\"text\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\">{$valor["br"]}$titulo
 					    			<script>
-										$(\"input#$campo+".".{$this->sys_name}\").datetimepicker({
+										$(\"input#$campo".".{$this->sys_name}\").datetimepicker({
 											dateFormat: 	\"yy-mm-dd\",
 											timeFormat: 	\"HH:mm:ss\",
 											showSecond: 	false,

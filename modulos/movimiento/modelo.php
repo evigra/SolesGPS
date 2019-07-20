@@ -319,7 +319,10 @@
 						SUM(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
 						vc.id,company_id,IF(venta=1, 'VENTA','COMPRA'),registro,tipo,compra,venta,fecha,movimiento_id,folio,
 						caducidad,estatus,cron_cantidad,cron_unidad,trabajador_id,subtotal,iva,total,subtipo
-					FROM movimiento vc WHERE tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
+					FROM movimiento vc 
+					WHERE 
+						tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
+						AND estatus=1
 					GROUP BY tipo					
 				) m1
 			";

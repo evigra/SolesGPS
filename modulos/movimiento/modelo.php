@@ -123,7 +123,7 @@
 			    "source"            => array(			    	
 				    "flow1"     	=> "Presupuesto",
 				    "flow2"     	=> "Presup. Enviado",
-				    "flow3"  	   	=> "Presup. Confirmado",
+				    "flow3"  	   	=> "Confirmado",
 				    "flow4"  	   	=> "Cancelado",
 				)
 			),			

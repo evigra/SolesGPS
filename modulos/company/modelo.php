@@ -5,6 +5,7 @@
 		##  Propiedades	
 		##############################################################################
 		var $sys_enviroments	="DEVELOPER";
+		var $sys_table			="company";
 		var $sys_fields		=array(
 			"id"			=>array(
 			    "title"             => "id",
@@ -195,7 +196,6 @@
 		}		
 		public function __BROWSE($option=NULL)
     	{    		
-    		
     		if(is_null($option))	$option=array();			
 			if(!isset($option["where"]))    	$option["where"]	=array();
 			if(!isset($option["select"]))   	$option["select"]	=array();
@@ -206,8 +206,6 @@
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,40,24)"]		="img_files_id_sup_chi";
 			$option["select"][]					="company.*";			
 
-			$option["from"]						="company";			
-						
 			if(isset($_SESSION["company"]) AND isset($_SESSION["company"]["id"]))
 				$option["where"][]      		="company_id={$_SESSION["company"]["id"]}";
 			else if(isset($this->sys_id_company))	
@@ -225,5 +223,12 @@
 			$return 							=$this->__BROWSE($option);    				
 			return $return;			
 		}							
+		public function __REPORT_ACTIVO($option=NULL)
+    	{    		
+    		$this->sys_fields["estatus"]["filter"]="1";    		    		    		
+			$return 				=$this->__VIEW_REPORT($option);
+			return	$return;     	
+		}						
+		
 	}
 ?>

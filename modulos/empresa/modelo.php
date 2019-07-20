@@ -1,5 +1,5 @@
 <?php
-	class empresa extends company
+	class empresa extends company_system
 	{   
 		##############################################################################	
 		##  Propiedades	
@@ -8,10 +8,6 @@
 		var $sys_table			="company";
 		var $company_type		="COMPANY";	
 
-
-		##############################################################################	
-		##  Metodos	
-		##############################################################################&sys_action=__SAVE
 
 	}
 ?>

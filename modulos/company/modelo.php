@@ -23,8 +23,7 @@
 			    "class_name"       	=> "trabajador",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "company_id",				
-			),
-			
+			),			
 			"razonSocial"	    	=>array(
 			    "title"             => "Razon Social",
 			    "type"              => "input",
@@ -129,7 +128,7 @@
 			    "type"              => "input",
 			),			
 			"domicilio_fiscal"	=>array(
-			    "title"             => "Domicilio Fiscal",
+			    "title"             => "Lugar de entrega",
 			    "type"              => "input",
 			),			
 			"estado"	=>array(
@@ -152,9 +151,6 @@
 			    "title"             => "Calle",
 			    "type"              => "input",
 			),			
-
-
-
 			"tipo_company"	=>array(
 			    "title"             => "TIPO",
 			    "type"              => "hidden",

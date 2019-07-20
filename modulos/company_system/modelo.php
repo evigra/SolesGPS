@@ -33,6 +33,7 @@
 			if(!isset($option["select"]))   $option["select"]	=array();
 
 			$option["where"][]		="tipo_company='{$this->company_type}'";
+			$option["where"][]		="company_id='{$_SESSION["company"]["id"]}'";
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}						

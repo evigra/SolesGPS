@@ -4,7 +4,7 @@
 	$objeto				=new map_speed();
 	
 		if($_REQUEST["device_active"]>0)
-		$option["where"][]	="deviceid = {$_REQUEST["device_active"]}";
+		$option["where"][]	="deviceid = {$objeto->request["device_active"]}";
 
 
 	if(isset($objeto->sys_fields["start"]["value"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->sys_fields["start"]["value"]}'";

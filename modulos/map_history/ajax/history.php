@@ -15,7 +15,7 @@
 	if(isset($objeto->sys_fields["start"]["value"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->sys_fields["start"]["value"]}'";
 	if(isset($objeto->sys_fields["end"]["value"]))		$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<'{$objeto->sys_fields["end"]["value"]}'";
 
-	$option["where"][]	="d.id={$_REQUEST["device_active"]}";
+	$option["where"][]	="d.id={$this->request["device_active"]}";
 	$option["limit"]	="40000";
 	$option["order"]	="p.devicetime DESC";
 

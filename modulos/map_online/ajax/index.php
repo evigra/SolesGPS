@@ -1,23 +1,8 @@
 <?php
     require_once("../../../nucleo/sesion.php");
-    #require_once("../../../nucleo/general.php");
-    #require_once("../../../modulos/position/modelo.php");
-	#require_once("../modelo.php");
 
 	$objeto				=new position();
 
-/*	
-	$comando_sql        ="
-		update sesion set last_time={$objeto->sys_date} 
-		WHERE 1=1 
-			AND user_id={$_SESSION["sesion"]["user_id"]}
-			AND date={$_SESSION["sesion"]["date"]}
-			AND server_addr={$_SESSION["sesion"]["server_addr"]}
-			AND remote_addr={$_SESSION["sesion"]["remote_addr"]}			
-	";
-	#echo $comando_sql;
-	#$objeto->__EXECUTE($comando_sql, "AJAX POSITION");	
-*/
 	
 	$comando_sql        ="
 		select 

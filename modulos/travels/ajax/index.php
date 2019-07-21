@@ -3,16 +3,10 @@
 	$option				=array();	
 	$option["name"]		="p_txt";	
 	
-	$objeto				=new personal_txt($option);	
-	#$objeto->__PRINT_R($option);
-	#$objeto->__PRINT_R($objeto);
-
+	$objeto				=new travels($option);	
+	$datas				=$objeto->__VIAJE_HOY();
 	
-	$option["actions"]	="false";
-	$option["where"]	=array("trabajador_clave='{$_GET["matricula"]}'","dias LIKE '%/". date("n")."/%'");
-				
-	$data										= $objeto->__REPORT_SUSTITUTO($option);
+	$objeto->__PRINT_R($datas);
 	
-	echo $data["html"];
 	
 ?>

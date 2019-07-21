@@ -55,9 +55,7 @@
 			);
 					
 			$this->__SAVE($this->sys_request, $opcion);			
-    	
-    	
-    	
+    	    	
 			$data			=array();
 			$data["flow"]	="flow2";
 			$this->__SAVE($data);
@@ -107,6 +105,20 @@ Equipo SolesGPS
 			}   
 			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
 		}
+		##############################################################################
+   		public function __VIAJE_HOY($option="")
+    	{			    	
+			if($option=="")	$option=array();			
+			if(!isset($option["where"]))	$option["where"]=array();
+			
+			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
+			
+			$option["where"][]				="fecha>='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
+			$option["where"][]				="caducidad<='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
+						
+			$return= parent::__BROWSE($option);
+			return $return;
+		}							
 		##############################################################################
    		public function __BROWSE($option="")
     	{			    	

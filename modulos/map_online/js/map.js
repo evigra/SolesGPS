@@ -12,9 +12,9 @@
 		google.maps.event.addListener(map, 'zoom_changed',showGeofence);        
         
         
-        if(window.location.hostname=="pruebas.solesgps.com" || window.location.hostname=="localhost")
+        if(window.location.hostname=="developer.solesgps.com" || window.location.hostname=="localhost")
         {
-        	//ajax_positions_now("../modulos/travels/ajax/geocenfe.php",100);              
+        	ajax_positions_now("../modulos/travels/ajax/index.php",100);              
         }	
 
         ajax_positions_now("../modulos/geofences/ajax/index.php",100);

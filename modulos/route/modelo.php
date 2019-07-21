@@ -35,11 +35,22 @@
     	    $datas["type"]		=2;
     	    
     	    if($datas["long1"]=="")	unset($datas["long1"]);
-    	    $datas["se_vende"]=1;
-    	    $datas["se_compra"]=1;
+    	    $datas["se_vende"]		=1;
+    	    $datas["se_compra"]		=1;
     	    
     		parent::__SAVE($datas,$option);
-		}		
+		}				
+		public function __BROWSE($option=NULL)
+    	{    		
+    		if(is_null($option))	$option=array();			
+			if(!isset($option["where"]))    $option["where"]    =array();
 			
+			if($this->modulo!="")
+				$option["where"][]      ="modulo='{$this->modulo}'";
+									
+			$return 				=parent::__BROWSE($option);
+			return	$return;     	
+		}				
+		
 	}
 ?>

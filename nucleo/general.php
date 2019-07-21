@@ -110,7 +110,7 @@
     		{    			
     			$this->__FIND_FIELD_ID();
     			    			
-    			$id		=$option;
+    			$this->sys_private["id"]		=$option;
     			$option	=array();
 				
     			$option["where"]=array(    			

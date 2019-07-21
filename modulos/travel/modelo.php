@@ -16,7 +16,7 @@
 		##############################################################################        
 		public function __CONSTRUCT($option=NULL)
 		{
-			$this->sys_fields["movimientos_ids"]["class_name"]="travels";								
+			parent::sys_fields["movimientos_ids"]["class_name"]="travels";								
 				
 			parent::__CONSTRUCT($option);		
 		

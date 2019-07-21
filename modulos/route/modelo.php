@@ -32,9 +32,11 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
-    	    $datas["type"]		=2;
+    	    $datas["type"]			=2;
     	    
-    	    if($datas["long1"]=="")	unset($datas["long1"]);
+    	    if($datas["long1"]=="")		   	unset($datas["long1"]);
+    	    if($datas["campo1"]=="")		unset($datas["campo1"]);
+    	    	
     	    $datas["se_vende"]		=1;
     	    $datas["se_compra"]		=1;
     	    
@@ -51,6 +53,5 @@
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				
-		
 	}
 ?>

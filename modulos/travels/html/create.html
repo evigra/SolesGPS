@@ -1,48 +1,43 @@
 {venta}
 {compra}
 <div class="mainTable">
-				<table border="0"  width="100%">
+	<table border="0"  width="100%">
+		<tr>
+			<td colspan="4" align="left">{empresa_id}</td>
+			<td width="16%" align="left">{subtipo}</td>                							
+			<td width="17%" align="left"><b style="font-size:25px;">{tipo}{folio}</b><br>Folio</td>			
+		</tr>   
+		<tr>
+			<td colspan="2" width="33%"></td>                							
+			<td></td>
+			<td width="17%"></td>                							
+			<td></td>                							
+			<td width="17%" align="left">{fecha}</td>						
+		</tr>   
+		<tr>
+			<td colspan="4"></td>           
+			<td></td>
+			<td align="left">{caducidad}</td>						
+		</tr>   
+		<tr>
+			<td colspan="6">
+				<div class="form">{movimientos_ids}</div>
+			</td>           
+		</tr>   
+		<tr>
+			<td colspan="4" align="right">
+			</td>	
+			<td  colspan="2">
+				<table width="100%">
 					<tr>
-						<td width="17%" style="font-size:25px;">
-							<b>{tipo}{folio}</b>
-						</td>                							
-						<td width="40%">
-						
-						</td>
-						<td>
-						
-						</td>
-						<td width="20%">
-							{fecha}
-						</td>
+						<td>{subtotal}</td><td>{iva}</td>
 					</tr>   
 					<tr>
-						<td colspan="2">
-							{empresa_id}
-						</td>                							
-						<td>
-						
-						</td>
-						<td>
-							{caducidad}
-						</td>						
+						<td colspan="2">{total}</td>           
 					</tr>   
-					<tr>
-						<td colspan="2">
+				</table>
 
-						</td>                							
-						<td>
-						
-						</td>
-						<td>
-							{plazos_id}
-						</td>						
-					</tr>   
-
-				</table>    		
-			
-				<div id="tabs-2" class="form">
-					{movimientos_ids}
-				</div>
-	</table>
+			</td>	
+		</tr>           
+	</table>    		
 </div>

@@ -1,15 +1,13 @@
 <?php	
-	$objeto											=new travels();		
+	$objeto											=new orden_venta();		
 	$objeto->__SESSION();
-	#$objeto->__PRINT_R($_SESSION);
 	
 	# CARGANDO PLANTILLAS GENERALES
 	$objeto->words["system_body"]               	=$objeto->__TEMPLATE($objeto->sys_html."system_body"); 		
 	$objeto->words["system_module"]             	=$objeto->__TEMPLATE($objeto->sys_html."system_module");	
 	
 	# CARGANDO ARCHIVOS PARTICULARES		
-	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
-	#$objeto->words["html_head_css"]             	=$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
+	$objeto->words["html_head_js"]              	=$objeto->__FILE_JS();
 		
 	$module_left		="";	
 	$module_right		="";	
@@ -17,7 +15,7 @@
 	
 	$module_title									="";
 	
-    if($objeto->sys_section=="create")
+    if($objeto->sys_private["section"]=="create")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
@@ -32,28 +30,33 @@
 		    array("report"=>"Reporte"),
 		);
 		
-		$module_title								="Crear ";
-    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/create");	
+		$module_title								="Crear";
+    	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
     	
     }	
-    elseif($objeto->sys_section=="write")
+    elseif($objeto->sys_private["section"]=="write")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
-		    array("action"=>"Guardar"),
-		    array("cancel"=>"Cancelar"),
+		    array("action"				=>"Guardar"),
+		    array("cancel"				=>"Cancelar"),
 		);
 		
+		$module_center=array();
 
-		$module_center=array(
-		    array("action_pagar"=>"PAGAR"),
-		    array("action_abonar"=>"ABONAR"),
-		    array("action_cancelar"=>"CANCELAR"),
+		$flow_left=array(
+			array("action_enviar"		=>"Enviar por email"),
+			array("action_confirmar"	=>"Confirmar"),
+		    array("action_cancelar"		=>"Cancelar"),
 		);
+		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
 		$objeto->sys_fields["folio"]["type"]	="value";
+
+		if($objeto->sys_private["action"]=="print_pdf")
+			$objeto->sys_fields["folio"]["type"]	="input";
 		
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -62,22 +65,28 @@
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);		
-		#CARGANDO VISTA PARTICULAR Y CAMPOS
-
-		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/write");	
+		#CARGANDO VISTA PARTICULAR Y CAMPOS	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 
-		#$objeto->__PRINT_R($objeto->words["html_head_js"]);	
+		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_action=&sys_id=101");
 
-    		    							
-		
-		#$objeto->__GENERAR_PDF();
+	   	if($objeto->sys_private["action"]=="action_confirmar")
+		{			
+			$objeto->action_confirmar();
+		}
+	   	if($objeto->sys_private["action"]=="action_enviar")
+		{			
+			$objeto->action_enviar();
+		}
+	   	if($objeto->sys_private["action"]=="action_cancelar")
+		{			
+			$objeto->action_cancelar();
+		}
 
-		
-    	$module_title								="Modificar ";
+    	$module_title								="";
     }	
-    elseif($objeto->sys_section=="show")
+    elseif($objeto->sys_private["section"]=="show")
 	{
 		#BOTONES SECCION IZQUIERDA
 		$module_left=array(
@@ -92,31 +101,30 @@
 		    array("report"=>"Reporte"),
 		);		
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_module . "html/show");	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
     		    
-    	$module_title								="Formato ";
+    	$module_title								="Formato ";    	
     }	
 
-	elseif($objeto->sys_section=="kanban")
+	elseif($objeto->sys_private["section"]=="kanban")
 	{
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    #array("kanban"=>"Kanban"),
+		    array("write"=>"Modificar"),
+		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$template_body								=$objeto->sys_module . "html/kanban";
-	   	$data										=$objeto->__BROWSE();
-    	$objeto->words["module_body"]               =$objeto->__VIEW_KANBAN($template_body,$data["data"]);	
+		$option										=array();
+		$option["flow"]								="flow";
+		$data										=$objeto->__VIEW_KANBAN($option);		
+		$objeto->words["module_body"]				=$data["html"];
     }    
     else
-    {
-    	#$objeto->__CRON();
-    	#$objeto->__PRINT_R($_SESSION);
+    {    	
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
@@ -126,26 +134,22 @@
 		);
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$option["template_title"]	                = $objeto->sys_module . "html/report_title";
-		$option["template_body"]	                = $objeto->sys_module . "html/report_body";
-		
-				
+		$option										=array();
 		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }
-	$objeto->words["module_title"]              ="$module_title Plantilla";
+	$objeto->words["module_title"]              =$module_title . "Orden de Venta";
 	
-	$objeto->words["module_left"]               =$objeto->__BUTTON($module_left);
-	$objeto->words["module_center"]             =$objeto->__BUTTON($module_center);
-	$objeto->words["module_right"]              =$objeto->__BUTTON($module_right);    
+	$objeto->words["module_left"]           =$objeto->__BUTTON($module_left);
+	$objeto->words["module_center"]         =$objeto->__BUTTON($module_center);
+	$objeto->words["module_right"]          =$objeto->__BUTTON($module_right);    
     
-	$objeto->words["html_head_title"]		=	"SOLES GPS :: {$_SESSION["company"]["razonSocial"]} :: {$objeto->words["module_title"]}";
+	$objeto->words["html_head_title"]		=	"SOLES GPS :: " . @$_SESSION["company"]["razonSocial"]." :: {$objeto->words["module_title"]}";
 	
 	$objeto->words["html_head_description"]	=	"EN LA EMPRESA SOLESGPS, CONTAMOS CON UN MODULO PARA ADMINISTRAR EL REGISTRO DE DISPOSITIVOS GPS.";
 	$objeto->words["html_head_keywords"]	=	"GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
 	
     $objeto->html                       	=	$objeto->__VIEW_TEMPLATE("system", $objeto->words);
-    $objeto->__VIEW($objeto->html);
-    
+    $objeto->__VIEW($objeto->html);    
 ?>

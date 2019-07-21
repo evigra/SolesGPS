@@ -192,7 +192,6 @@
 		##  Metodos	
 		##############################################################################&sys_action=__SAVE
 
-
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    	    
 			if(isset($_SESSION["company"]["id"]))
@@ -200,8 +199,6 @@
 			if($this->modulo!="")    
 	    	    $datas["modulo"]			=$this->modulo;
     	    
-			#$this->files_obj	=new files();
-
     		parent::__SAVE($datas,$option);
 		}		
 		public function __BROWSE($option=NULL)
@@ -211,8 +208,6 @@
 			
 			if(isset($_SESSION["company"]["id"]))
 				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
-			#if($this->modulo!="")
-			#	$option["where"][]      ="modulo='{$this->modulo}'";
 									
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

@@ -1,40 +1,62 @@
-	function auto_empresa_id(ui)
+	function auto_item_id(ui)
 	{
-		$("input#empresa_id").val(ui.item.clave);					
-		$("input#auto_empresa_id").val(ui.item.label);
+		$("input#item_id[name='movimientos_ids_item_id']").val(ui.item.clave);					
+		$("input#auto_item_id[name='movimientos_ids_auto_item_id']").val(ui.item.label);
 		
+		var vende 	=$("input#venta").val();
+		var compra 	=$("input#compra").val();
+
+		var lista=1;
 		
-		$("input#venta").val(ui.item.cliente);
-		$("input#compra").val(ui.item.proveedor);
+		if(vende>0)
+		{ 	
+			lista=vende;
+			tipo="vende";
+		}
+		if(compra>0)
+		{ 	
+			lista=compra;
+			tipo="compra";
+		}
+		$("input#cantidad[name='movimientos_ids_cantidad']").val(1);			
+		$("input#precio[name='movimientos_ids_precio']").val(ui.item[tipo+lista]);					
+		subtotal();
 	}
-	$(document).ready(function()
-	{		
-		$("#action_pagar").click(function(){
+	function subtotal()
+	{
+		var cantidad	=0;
+		var precio		=0;
+		var descuento	=0;
+		var subtotal	=0;
+		var impuesto	=0;
 		
-			/*
-			var mod_destino	="pago_venta";
-			var mod_actual	="orden_venta";
-			var variables	="../"+mod_destino+"/";
-			variables		+="&sys_section_"+mod_destino+"=create";
-			variables		+="&sys_action_"+mod_destino+"=";
-			variables		+="&"+mod_destino+"_total=" + $("#total[name='"+mod_actual+"_total']").val();
-			variables		+="&"+mod_destino+"_fecha=" + $("#fecha[name='"+mod_actual+"_fecha']").val();
-			variables		+="&"+mod_destino+"_auto_empresa_id=" + $("#auto_empresa_id[name='"+mod_actual+"_auto_empresa_id']").val();
-			variables		+="&"+mod_destino+"_empresa_id=" + $("#empresa_id[name='"+mod_actual+"_empresa_id']").val();																
+		if(!isNaN(parseFloat($("#cantidad.movimientos").val())))	
+			cantidad=parseFloat($("#cantidad.movimientos").val());
+			
+		if(!isNaN(parseFloat($("#precio.movimientos").val())))	
+			precio=parseFloat($("#precio.movimientos").val());
+			
+		if(!isNaN(parseFloat($("#descuento.movimientos").val())))	
+			descuento=parseFloat($("#descuento.movimientos").val());
 
+		subtotal		=(cantidad*precio)-descuento;
+		impuesto		=subtotal*0.16;
 
-
-			$("form").attr({"action":variables});					
-			$("form").submit();
-			*/
-		});
-		$("#action_abonar").click(function(){
-			$("#sys_action_movimiento").val("__SAVE_abonar");
-			$("form").submit();
-		});
-		$("#action_pagar").click(function(){
-			$("#action_cancelar").val("__SAVE_cancelar");
-			$("form").submit();
-		});
-    });
-    // ###########################################################################
+		$("#subtotal.movimientos").val(subtotal);
+		$("#impuesto.movimientos").val(impuesto);
+	
+	}		
+	$(document).ready(function()
+	{
+		$("input.movimientos_ids")
+			.focusout(function(){subtotal();})
+			.on('keydown', function (e) 
+			{			
+				if (e.keyCode == 13) 
+				{						
+					subtotal();							
+				}	
+			});
+	});	
+		
+		

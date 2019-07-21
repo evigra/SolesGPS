@@ -116,7 +116,6 @@ Equipo SolesGPS
 			$option["where"][]				="fecha<='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
 			$option["where"][]				="caducidad>='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
 			
-			$option["echo"]="aaaa";			
 			$return= parent::__BROWSE($option);
 			return $return;
 		}							

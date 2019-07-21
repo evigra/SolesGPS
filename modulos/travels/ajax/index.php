@@ -2,7 +2,7 @@
 	require_once("../../../nucleo/sesion.php");	
 	$option				=array();	
 
-	$item				=new items($option);	
+	$item				=new item($option);	
 
 	
 	$objeto				=new travels($option);	

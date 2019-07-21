@@ -41,7 +41,7 @@
 					{
 						$js.="
 							waypts.push({
-								location: GeoMarker1[igeo],
+								location: LatLng({latitude:{$coord[1]},longitude:{$coord[0]}});,
 								stopover: true
 							});					
 						

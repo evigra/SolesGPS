@@ -203,12 +203,14 @@
 		}		
 		public function __BROWSE($option=NULL)
     	{    		
-    		if(is_null($option))	$option=array();			
-			if(!isset($option["where"]))    $option["where"]    =array();
-			
-			if(isset($_SESSION["company"]["id"]))
-				$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
-									
+    		if(is_null($option))	$option=array();	
+    		if(is_array($option))
+    		{		
+				if(!isset($option["where"]))    $option["where"]    =array();
+				
+				if(isset($_SESSION["company"]["id"]))
+					$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+			}									
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	
 		}				

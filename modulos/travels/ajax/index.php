@@ -12,7 +12,8 @@
 	{
 		foreach($OV["movimientos_ids"] as $travels)
 		{
-			$objeto->__PRINT_R($item->__BROWSE($travels["item_id"]));
+			#$objeto->__PRINT_R($item->__BROWSE($travels["item_id"]));
+			$objeto->__PRINT_R($travels["item_id"]);
 			
 	
 	

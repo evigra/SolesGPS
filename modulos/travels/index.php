@@ -1,5 +1,5 @@
 <?php	
-	$objeto											=new orden_venta();		
+	$objeto											=new travels();		
 	$objeto->__SESSION();
 	
 	# CARGANDO PLANTILLAS GENERALES

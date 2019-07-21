@@ -41,7 +41,7 @@
 					{
 						$js.="
 							waypts.push({
-								location: LatLng({latitude:{$coord[1]},longitude:{$coord[0]}});,
+								location: LatLng({latitude:{$coord[1]},longitude:{$coord[0]}}),
 								stopover: true
 							});					
 						

@@ -51,5 +51,9 @@
 			}			
 		}			
 	}
-	echo "$js";	
+	echo "
+	<script>
+	$js
+	</script>
+	";	
 ?>

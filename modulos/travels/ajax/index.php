@@ -27,11 +27,11 @@
 					$coord = explode(",",$punto);
 					if($index==0)
 					{					
-						$js.="origen=LatLng({latitude:{$coord[0]},longitude:{$coord[1]}});";
+						$js.="origen=LatLng({latitude:{$coord[1]},longitude:{$coord[0]}});";
 					}
 					else if($index==$total-2)
 					{
-						$js.="destino=LatLng({latitude:{$coord[0]},longitude:{$coord[1]}});";
+						$js.="destino=LatLng({latitude:{$coord[1]},longitude:{$coord[0]}});";
 					}
 					else if($index==$total-1)
 					{

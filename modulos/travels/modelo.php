@@ -113,8 +113,8 @@ Equipo SolesGPS
 			
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 			
-			$option["where"][]				="fecha>='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
-			$option["where"][]				="caducidad<='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
+			$option["where"][]				="fecha<='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
+			$option["where"][]				="caducidad>='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
 			
 			$option["echo"]="aaaa";			
 			$return= parent::__BROWSE($option);

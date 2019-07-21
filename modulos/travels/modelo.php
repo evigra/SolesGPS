@@ -1,9 +1,10 @@
 <?php
-	class travels extends movimientos
+	class travels extends general
 	{   
 		##############################################################################	
 		##  Propiedades	
 		##############################################################################
+		var $mod_menu=array();
 		var $sys_table			="movimientos";
 		var $sys_fields		=array( 
 			"id"	    =>array(
@@ -71,10 +72,56 @@
 
 			#######################################################################
 		);				
-		
 		##############################################################################	
 		##  Metodos	
-		##############################################################################		
-		
+		##############################################################################
+		public function __CONSTRUCT($option=array())
+		{	
+			parent::__CONSTRUCT($option);			
+			$this->words["html_head_js"]              	=$this->__FILE_JS();			
+		}
+   		public function __SAVE($datas=NULL,$option=NULL)
+    	{    		
+    	    return parent::__SAVE($datas,$option);
+		}
+		/*
+		public function __VIEW_REPORT($option)
+		{
+			if(!is_array($option))	$option=array();
+			$option["type_view"]="report";
+
+			return $this->__SYS_REPORT($option);
+		}
+		*/		
+   		public function __VIEW_REPORT($option="")
+    	{    		
+			if(!is_array($option))	$option=array();
+
+			$return		=parent::__VIEW_REPORT($option);			
+			if(isset($this->class_one))
+			{						
+				$datas		=$return["data"];
+				
+				$subtotal	=0;
+				$impuesto	=0;
+				foreach($datas as $data)
+				{
+					$subtotal+=$data["subtotal"];
+					$impuesto+=$data["impuesto"];
+				}
+				$total=$subtotal+$impuesto;
+				
+				$datas=array(
+					"subtotal[name='{$this->class_one}_subtotal']"	=>"$subtotal",
+					"iva[name='{$this->class_one}_iva']"			=>"$impuesto",
+					"total[name='{$this->class_one}_total']"		=>"$total"
+				);
+				$option["js"]	=$this->__JS_SET_INPUT($datas);				
+				
+				$return		=parent::__VIEW_REPORT($option);			
+
+			}			
+    	    return $return;
+		}
 	}
 ?>

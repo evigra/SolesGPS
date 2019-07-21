@@ -2,7 +2,7 @@
 
 	var map;
 	var geocoder;
-	var gMEvent				=undefined;
+	var gMEvent					=undefined;
 
 	var Polyline				=undefined;	
 	var Polygon					=undefined;	

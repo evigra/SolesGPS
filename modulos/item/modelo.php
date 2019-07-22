@@ -21,6 +21,11 @@
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "item_id",				
 			),
+			"item_id"	    =>array(
+				"title"             => "Item",			    
+			    "type"              => "input",								
+			),
+
 			"tipo"	    	=>array(
 			    "title"             => "tipo",
 			    "type"              => "hidden",

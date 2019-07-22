@@ -14,6 +14,13 @@
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),									
+			"item_ids"	    =>array(
+			    "type"              => "form",
+			    "relation"          => "one2many",
+			    "class_name"       	=> "item",			    
+			    "class_field_o"    	=> "id",
+			    "class_field_m"    	=> "item_id",				
+			),
 			"tipo"	    	=>array(
 			    "title"             => "tipo",
 			    "type"              => "hidden",

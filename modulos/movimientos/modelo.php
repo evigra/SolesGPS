@@ -72,7 +72,7 @@
 			"mercancias"	    =>array(
 			    "type"              => "form",
 			    "relation"          => "one2many",
-			    "class_name"       	=> "movimientos",			    
+			    "class_name"       	=> "movimientos_rec",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "movimiento_id",				
 			),

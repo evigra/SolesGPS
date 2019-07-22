@@ -222,6 +222,11 @@
 				
 				if(isset($_SESSION["company"]["id"]))
 					$option["where"][]      ="company_id={$_SESSION["company"]["id"]}";
+
+				if($this->modulo==""))
+					$option["where"][]      ="modulo IN('route','item','')";
+					
+					
 			}									
 			$return 				=parent::__BROWSE($option);
 			return	$return;     	

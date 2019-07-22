@@ -33,6 +33,13 @@
 			    "class_field_o"    	=> "item_id",
 			    "class_field_m"    	=> "id",			    
 			),			
+			"mercancia_ids"	    =>array(
+			    "type"              => "form",
+			    "relation"          => "one2many",
+			    "class_name"       	=> "item_compra",			    
+			    "class_field_o"    	=> "id",
+			    "class_field_m"    	=> "item_id",				
+			),
 
 			"cantidad"	    =>array(
 				"title"             => "CANTIDAD",			    

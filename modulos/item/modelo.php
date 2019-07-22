@@ -14,10 +14,10 @@
 			    "title"             => "Compania",
 			    "type"              => "input",
 			),									
-			"item_ids"	    =>array(
+			"item_compra_ids"	    =>array(
 			    "type"              => "form",
 			    "relation"          => "one2many",
-			    "class_name"       	=> "item",			    
+			    "class_name"       	=> "item_compra",			    
 			    "class_field_o"    	=> "id",
 			    "class_field_m"    	=> "item_id",				
 			),

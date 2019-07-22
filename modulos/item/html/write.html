@@ -1,23 +1,8 @@
 <div class="mainTable">
-            <table border="0" width="100%">
+            <table border="1" width="100%">
                 <tr>
-                    <td rowspan="3" align="center" width="150">
-                        {imagen}
-                    </td>        
-                    <td colspan="4">{nombre}</td>
-                    <td width="230"></td>
+                    <td colspan="6">{nombre}</td>
                 </tr>          
-                <tr>
-	                <td align="left"> {se_vende} </td>
-					<td width="100"></td>
-					<td></td>
-                </tr>          
-                <tr>
-					<td align="left"> {se_compra} </td>                
-					<td width="100"></td>
-					<td></td>
-                </tr>          
-
                 <tr>
                     <td colspan="6" width="100%">
 			 			<div id="tabs" class="form">
@@ -27,7 +12,28 @@
 								<li  class="form"><a href="#tabs-1">Compra</a></li>
 							</ul>
 							<div id="tabs-3" class="form">
-								 <table border="0" width="100%" class="form">
+								<table border="0" width="100%" class="form">
+
+									<tr>
+										<td rowspan="3" align="center"> {image} </td>
+										<td align="left"> {se_vende} </td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>          
+									<tr>
+										<td align="left"> {se_compra} </td>                
+										<td></td>
+										<td></td>
+									</tr>          
+
+
+
+
+
+
 									<tr>
 										<td width="350" align="left"> {type} </td>
 										<td></td>

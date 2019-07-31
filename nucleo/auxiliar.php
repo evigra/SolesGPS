@@ -106,6 +106,12 @@
 				}	
 			}	
     	}  
+    	/*
+    	public function __FIND_FIELDS($id=NULL)
+    	{
+    	
+    	}
+    	*/
 		public function __FIND_FIELDS($id=NULL)
 		{
 		 	# ASIGNA EL ROW CON EL $id enviado
@@ -128,7 +134,7 @@
 				}
 
 				
-				if(isset($id) and $id>=0)
+				if(isset($id) and $id>0)
 				{
 					#if(@$this->sys_private["action"]!="__SAVE")
 					{
@@ -157,7 +163,7 @@
 												$"."option=array();
 												$"."option[\"where\"]		=array(\"{$value["class_field_m"]}='{$datas[0][$value["class_field_o"]]}'\");
 												
-												$"."$field					=$"."this->sys_fields[\"$field\"][\"obj\"]->__FIND_FIELD_ID($"."option);
+												$"."$field					=$"."this->sys_fields[\"$field\"][\"obj\"]->__BROWSE($"."option);
 												$"."this->sys_fields[\"$field\"][\"values\"]		=\"\";
 												$"."this->sys_fields[\"$field\"][\"values\"]		=$"."$field"."[\"data\"];
 											";				
@@ -230,9 +236,8 @@
 		}
 		public function __WA($data)
     	{    		    		    	
-			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");	# 3143520972
-			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");	# 3141226423
-						
+			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
+			
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			$vars["number"]		=$data["telefono"];
@@ -1129,13 +1134,13 @@
 		}
     	##############################################################################    
 		public function PDF_PRINT($option=null)
-		{	
-			#$this->__PRINT_R($option);					
-			if(!is_array($option))				$option				=array("id"		=>"$option");
-			
-			if(!isset($option["section"]))		$option["section"]	="write";
-			if(!isset($option["module"]))		$option["module"]	=$this->sys_object;
-			
+		{						
+			if(!is_array($option))
+				$option=array(
+					"id"		=>"$option",
+					"section"	=>"write",
+					"module"	=>$this->sys_object,
+				);
 		
 			@$this->__PRINT_JS.="
 				setTimeout(function()
@@ -1149,8 +1154,8 @@
 				
 					$(\"form\")
 						.attr(\"target\",\"_blank\")
-						.attr(\"action\",\"../{$option["module"]}/\")
-						.submit();
+						.attr(\"action\",\"../{$option["module"]}/\");
+					////	.submit();
 					$(\"form\")
 						.attr(\"action\",\"\")
 						.removeAttr(\"target\");			

@@ -56,8 +56,7 @@
 					
 			$this->__SAVE($this->sys_request, $opcion);			
     	
-    	
-    	
+    	    	
 			$data			=array();
 			$data["flow"]	="flow2";
 			$this->__SAVE($data);
@@ -107,6 +106,35 @@ Equipo SolesGPS
 			}   
 			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
 		}
+		##############################################################################
+   		public function action_enviar_wa()
+    	{       	
+			$this->__FIELDS();			
+			$opcion=array(
+				"message"=>"WhatsApp ENVIADO",
+			);
+					
+			$this->__SAVE($this->sys_request, $opcion);			
+    	
+    	    	
+			$data			=array();
+			$data["flow"]	="flow2";
+			$this->__SAVE($data);
+    	
+    		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
+    		{
+				$this->__WA(
+					array(
+						"telefono"=>"523141182618", 
+						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S&a=.pdf"
+					)
+				);
+							
+				#$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
+			}   
+			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
+		}
+
 		##############################################################################
    		public function __BROWSE($option="")
     	{			    	

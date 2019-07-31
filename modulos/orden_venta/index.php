@@ -46,7 +46,8 @@
 		$module_center=array();
 
 		$flow_left=array(
-			array("action_enviar"		=>"Enviar por email"),
+			array("action_enviar"		=>"Enviar por Email"),
+			array("action_enviar_wa"	=>"Enviar por WA"),
 			array("action_confirmar"	=>"Confirmar"),
 		    array("action_cancelar"		=>"Cancelar"),
 		);

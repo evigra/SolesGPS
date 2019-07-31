@@ -121,7 +121,7 @@
 	    	if(!isset($option["name"]))    					$name							=@$this->sys_name;
 	    	else											$name							=$option["name"];
     	
-	    	if(!isset($option["js"]))    					$option["js"]					="";
+	    	if(!isset($option["js"]) AND is_array($option))    					$option["js"]					="";
             
 			if(isset($this->sys_private["order"]))	$option["sys_order_$name"]		=$this->sys_private["order"];
 			if(isset($this->sys_private["torder"]))	$option["sys_torder_$name"]		=$this->sys_private["torder"];
@@ -464,7 +464,7 @@
 
 				}
 			}
-			$return["js"]=$option["js"];	    		
+			$return["js"]=@$option["js"];	    		
     		return $return;    		
     	}		
 		##############################################################################		 		
@@ -541,7 +541,6 @@
 						remote_addr='{$_SERVER["REMOTE_ADDR"]}',												
 					";
 
-					
 					if(is_null(@$this->sys_private["id"]) OR @$this->sys_private["id"]=="") 
 					{
 						$insert=1;
@@ -552,17 +551,19 @@
 							})
 						";            
 						$data_historicos="descripcion='<font>$user_name</font> <b>CREO</b> El registro'";					
-						#$data_historicos="descripcion='{$_SESSION["user"]["matricula"]}<b>CREO</b> El registro'";					
 					}	
 					else 
-					{	
-						
+					{							
 						$this->sys_sql	="UPDATE {$this->sys_table} SET $fields WHERE {$this->sys_private["field"]}='{$this->sys_private["id"]}'";					
 						if(@$modificados!="")
 						{
 							$data_historicos="descripcion='<font>$user_name</font> <b>MODIFICO</b> los valores $modificados'";	
 						}	
-					}	
+					}
+					if(isset($option["echo"])  AND $this->sys_enviroments	=="DEVELOPER" AND @$this->sys_private["action"]!="print_pdf")
+					{
+				    	echo "<div class=\"echo\" style=\"display:none;\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
+				    }	
 
 					$option["open"]	=1;
 					#$option_conf["close"]	=1;
@@ -610,14 +611,12 @@
 										\"recursive\"	=>$recursive,
 										\"name\"		=>\"$campo"."_obj\",
 										\"object\"		=>\"{$valor_campo["class_name"]}\"									
-									);			
-									
+									);												
 									
 									$"."this->sys_fields[\"$campo\"][\"obj\"]	=new {$valor_campo["class_name"]}($"."option"."_obj_$campo);
 									
 									$"."memory						=@$"."this->sys_memory;
 									$"."class_one					=@$"."this->class_one;
-
 
 									if(isset($"."valor_campo[\"class_field_m\"]))			
 										$"."class_field_m			=@$"."valor_campo[\"class_field_m\"];	

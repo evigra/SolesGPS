@@ -49,8 +49,7 @@
 		);
 
 		$objeto->sys_fields["tipo"]["type"]		="value";
-		if(in_array(@$objeto->sys_private["action"],$_SESSION["var"]["print"]))
-			$objeto->sys_fields["folio"]["type"]	="value";
+		$objeto->sys_fields["folio"]["type"]	="value";
 		
 		
 		

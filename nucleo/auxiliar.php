@@ -230,8 +230,7 @@
 				"return"	=>$resultado,				
 			);
 						
-			curl_close ($ch);
-			
+			curl_close ($ch);			
 			return $return;
 		}
 		public function __WA($data)
@@ -255,9 +254,7 @@
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);			
-			$respuesta			=$this->__curl($option);	
-			
-					
+			return				=$this->__curl($option);	
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	

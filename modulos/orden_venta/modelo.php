@@ -125,7 +125,7 @@ Equipo SolesGPS
     		{
 				$this->__WA(
 					array(
-						"telefono"=>"523141182618", 
+						"telefono"=>"5213141182618", 
 						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S&a=.pdf"
 					)
 				);

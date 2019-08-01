@@ -23,7 +23,7 @@
 	);
 	$option["limit"]	="1000";
 	
-	#$option["echo"]		="POSITION";
+	$option["echo"]		="POSITION";
 	
 
 	if(!isset($option["having"]))	

@@ -254,7 +254,7 @@
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);			
-			return				=$this->__curl($option);	
+			return				$this->__curl($option);	
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	

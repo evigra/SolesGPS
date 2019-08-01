@@ -91,7 +91,7 @@
 								
 				$this->sys_private["id"]		="";
 				$id=$this->__SAVE($rows);
-
+/*
 				$this->__WA(
 					array(
 						"telefono"=>"523141182618", 
@@ -104,6 +104,7 @@
 						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$id}&sys_pdf=S&a=.pdf"
 					)
 				);
+				
 				$this->__WA(
 					array(
 						"telefono"=>"5213414208060", 
@@ -116,7 +117,7 @@
 						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$id}&sys_pdf=S&a=.pdf"   
 					)
 				);
-
+				*/
 				
 				@$txt_WA="";
 				

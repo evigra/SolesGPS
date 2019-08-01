@@ -80,6 +80,10 @@
 		{			
 			$objeto->action_enviar();
 		}
+	   	if($objeto->sys_private["action"]=="action_enviar_wa")
+		{			
+			$objeto->action_enviar_wa();
+		}
 	   	if($objeto->sys_private["action"]=="action_cancelar")
 		{			
 			$objeto->action_cancelar();

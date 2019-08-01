@@ -239,7 +239,7 @@
 			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
 			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");
 			
-			$url 				="https://panel.capiwha.com/send_message.php";
+			$url 				="http://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			
 						

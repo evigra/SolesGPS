@@ -2,8 +2,8 @@
     require_once("../../../nucleo/sesion.php");
 	$objeto				=new map_stop();
 	
-	if($_REQUEST["device_active"]>0)
-		$option["where"][]	="deviceid = {$_REQUEST["device_active"]}";
+	if($objeto->request["device_active"]>0)
+		$option["where"][]	="deviceid = {$objeto->request["device_active"]}";
 
 
 	if(isset($objeto->sys_fields["start"]["value"]))	$option["where"][]	="DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>'{$objeto->sys_fields["start"]["value"]}'";
@@ -23,7 +23,7 @@
 	);
 	$option["limit"]	="1000";
 	
-	$option["echo"]		="POSITION";
+	#$option["echo"]		="POSITION";
 	
 
 	if(!isset($option["having"]))	

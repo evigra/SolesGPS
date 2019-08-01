@@ -54,13 +54,9 @@
 				"message"=>"CORREO ENVIADO",
 			);
 					
+			$this->sys_request["flow"]	="flow2";					
 			$this->__SAVE($this->sys_request, $opcion);			
-    	
-    	    	
-			$data			=array();
-			$data["flow"]	="flow2";
-			$this->__SAVE($data);
-    	
+			    	
     		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
     		{
 				$option=array(
@@ -114,14 +110,12 @@ Equipo SolesGPS
 				"message"=>"WhatsApp ENVIADO",
 			);
 					
+			$this->sys_request["flow"]	="flow2";					
 			$this->__SAVE($this->sys_request, $opcion);			
     	
     	    	
-			$data			=array();
-			$data["flow"]	="flow2";
-			$this->__SAVE($data);
     	
-    		if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
+    		#if($this->sys_fields["empresa_id"]["values"][0]["email"]!="")
     		{
 				$this->__WA(
 					array(
@@ -130,9 +124,9 @@ Equipo SolesGPS
 					)
 				);
 							
-				#$this->__PRINT_R("CORREO ENVIADO"); 		    				    		
+				$this->__PRINT_R("WA ENVIADO"); 		    				    		
 			}   
-			else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
+			#else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
 		}
 
 		##############################################################################

@@ -241,13 +241,23 @@
 			
 			$url 				="https://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
-			$vars["number"]		=$data["telefono"];
+			
 						
-			$vars["number"]		="5213414208060";
+			
+			
+			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	
+				$vars["number"]		=$data["telefono"];
+			else	
+				$vars["number"]		="5213143520972";
+
+
+			
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array("url"=>$url,"post"=>$vars);			
-			$respuesta			=$this->__curl($option);			
+			$respuesta			=$this->__curl($option);	
+			
+					
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	

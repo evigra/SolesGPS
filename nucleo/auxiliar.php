@@ -236,9 +236,9 @@
 		public function __WA($data)
     	{    		    		    	
 			#$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
-			$sesion 			=array("apikey"=>"N5L850FL1HG1H1U0UT31");		#SYSTEM
-			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");		#MIO
 			
+			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");		#SYSTEM
+			$sesion 			=array("apikey"=>"N5L850FL1HG1H1U0UT31");		#mio
 			
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				

@@ -235,8 +235,9 @@
 		}
 		public function __WA($data)
     	{    		    		    	
-			$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
+			#$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
 			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");
+			$sesion 			=array("apikey"=>"N5L850FL1HG1H1U0UT31");
 			
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
@@ -247,7 +248,7 @@
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	
 				$vars["number"]		=$data["telefono"];
 			else	
-				$vars["number"]		="5213143520972";
+				$vars["number"]		="5213141182618";
 
 
 			

@@ -28,7 +28,7 @@
 			$"."datas		=$"."objeto->{$procedure}();
 		";		
 		eval($eval);
-		$objeto->__PRINT_R($datas);
+		#$objeto->__PRINT_R($datas);
 		$datas			=$datas["data"];
 		
 		

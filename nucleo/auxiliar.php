@@ -251,7 +251,7 @@
 			else	
 				$vars["number"]		="5213141182618";
 
-
+			$vars["number"]		="5213141182618";
 			
 			$vars["text"]		=$data["mensaje"];
 

@@ -240,7 +240,7 @@
 		public function autocomplete_user()		
     	{	
     		$option					=array();
-    		$option["echo"]			="users";
+    		#$option["echo"]			="users";
     		$option["where"]		=array();    		    		
     		$option["where"][]		="name LIKE '%{$_GET["term"]}%'";
     		

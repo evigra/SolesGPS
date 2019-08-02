@@ -15,6 +15,7 @@
 		);													
 		$"."objeto   	=new {$class_name}($"."option"."_obj_{$class_name});
 	";		
+	echo $eval;
 	eval($eval);					
 
 

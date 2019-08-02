@@ -98,7 +98,7 @@
 				
 				if(is_array($data) and count($data)>0)
 				{
-					if(array_key_exists("type",$data[0]))
+					if(@array_key_exists("type",$data[0]))
 					{
 						if($data[0]["type"]=="image/png")		$return="<img src=\"../modulos/files/file/$id.png\">";
 						if($data[0]["type"]=="image/jpg")		$return="<img src=\"../modulos/files/file/$id.jpg\">";

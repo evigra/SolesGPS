@@ -240,7 +240,7 @@
 			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");		#SYSTEM
 			$sesion 			=array("apikey"=>"ZUYJGBXXPZ4TBFDJSQZH");		#mio
 			
-			$url 				="https://panel.apiwha.com/send_message.php";
+			$url 				="https://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
 			
 						
@@ -251,7 +251,7 @@
 			else	
 				$vars["number"]		="5213141182618";
 
-			$vars["number"]		="5213141182618";
+			$vars["number"]		="5213143520972";
 			
 			$vars["text"]		=$data["mensaje"];
 

@@ -15,7 +15,7 @@
 		);													
 		$"."objeto   	=new {$class_name}($"."option"."_obj_{$class_name});
 	";		
-	echo $eval;
+	#echo $eval;
 	eval($eval);					
 
 
@@ -29,6 +29,8 @@
 		";		
 		eval($eval);
 		$datas			=$datas["data"];
+		
+		$objeto->__PRINT_R($datas["data"]);
 		
 		foreach($datas as $index => $data)
 		{

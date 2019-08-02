@@ -28,9 +28,10 @@
 			$"."datas		=$"."objeto->{$procedure}();
 		";		
 		eval($eval);
+		$objeto->__PRINT_R($datas);
 		$datas			=$datas["data"];
 		
-		$objeto->__PRINT_R($datas["data"]);
+		
 		
 		foreach($datas as $index => $data)
 		{

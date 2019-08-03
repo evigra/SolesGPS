@@ -259,6 +259,7 @@
 			
 			
 			$url_wa				="$url?apikey=$apikey&number=$number&text=" . urlencode($data["mensaje"]);
+			$url_wa				="$url?apikey=$apikey&number=$number&text=" . $data["mensaje"];
 			$data				=file_get_contents($url_wa);
 			
 			$this->__PRINT_R($url_wa);

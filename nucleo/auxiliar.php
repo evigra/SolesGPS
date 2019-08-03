@@ -251,7 +251,7 @@
 				$vars["number"]		="5213141182618";
 			$vars["text"]		=$data["mensaje"];
 
-			$number				="5213143520972";
+			$number				="5213141182618";
 			
 			$option				=array("url"=>$url,"post"=>$vars);			
 			#return				$this->__curl($option);	
@@ -260,6 +260,9 @@
 			
 			$url_wa				="$url?apikey=$apikey&number=$number&text=" . urlencode($data["mensaje"]);
 			$data				=file_get_contents($url_wa);
+			
+			$this->__PRINT_R($url_wa);
+			$this->__PRINT_R($data);
 			
     	}			
 		public function WS_TAECEL($data)

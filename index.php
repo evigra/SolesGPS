@@ -1,7 +1,7 @@
 <?php
 	require_once("nucleo/sesion.php");	
 	
-	PRINT_R($_SERVER);
+	#PRINT_R($_SERVER);
 
 	##############################################################################	
 	##  Propiedades	

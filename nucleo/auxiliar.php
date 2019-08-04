@@ -213,9 +213,9 @@
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, $option["referer"]);			# true or false
 			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, $option["service"]);		# true or false
 			if(isset($option["ip"]))				curl_setopt($ch,CURLOPT_HTTPHEADER, array(
-				"REMOTE_ADDR: $ip",
-                "X_FORWARDED_FOR: $ip")
-            );		# true or false			
+				"REMOTE_ADDR: {$option["ip"]}",
+                "X_FORWARDED_FOR: {$option["ip"]}")
+            );		
 			
 			
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
@@ -257,7 +257,11 @@
 
 			$number				="5213141182618";
 			
-			$option				=array("url"=>$url,"post"=>$vars);			
+			$option				=array(
+				"url"			=>$url,
+				"post"			=>$vars,
+				"ip"			=>$_SERVER["REMOTE_ADDR"]
+			);			
 			return				$this->__curl($option);	
 			
 			

@@ -246,7 +246,7 @@
     		 		    		    	
 			$sesion 			=array("apikey"=>"$apikey");		#mio
 			
-			$url 				="https://panel.apiwha.com/send_message.php";
+			$url 				="https://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
 						
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	
@@ -261,7 +261,7 @@
 			else if (array_key_exists('HTTP_CLIENT_IP', $_SERVER))		$ip= $_SERVER["HTTP_CLIENT_IP"]; 
 			else														$ip="204.79.197.212"; 
 			
-			$ip="204.79.197.212";
+			#$ip="204.79.197.212";
 			
 			$option				=array(
 				"url"			=>$url,

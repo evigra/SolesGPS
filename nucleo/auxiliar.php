@@ -241,9 +241,6 @@
     	{   
     		$apikey				="ZUYJGBXXPZ4TBFDJSQZH";		#mio
     		 		    		    	
-			#$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
-			
-			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");		#SYSTEM
 			$sesion 			=array("apikey"=>"$apikey");		#mio
 			
 			$url 				="https://panel.apiwha.com/send_message.php";
@@ -255,12 +252,12 @@
 				$vars["number"]		="5213141182618";
 			$vars["text"]		=$data["mensaje"];
 
-			$number				="5213141182618";
 			
 			$option				=array(
 				"url"			=>$url,
 				"post"			=>$vars,
-				"ip"			=>$_SERVER["REMOTE_ADDR"]
+				"ip"			=>$_SERVER["REMOTE_ADDR"],
+				"ip"			=>"123.123.123.123"
 			);			
 			return				$this->__curl($option);	
 			

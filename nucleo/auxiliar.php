@@ -215,6 +215,8 @@
 			if(isset($option["ip"]))				curl_setopt($ch,CURLOPT_HTTPHEADER, array(
 					"REMOTE_ADDR: {$option["ip"]}",
 		            "X_FORWARDED_FOR: {$option["ip"]}",
+		            "HTTP_X_REAL_IP: {$option["ip"]}",
+		            
                 )
             );		
 			
@@ -253,18 +255,19 @@
 				$vars["number"]		="5213141182618";
 			$vars["text"]		=$data["mensaje"];
 
+
+			if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER))		$ip= $_SERVER["HTTP_X_FORWARDED_FOR"];  
+			else if (array_key_exists('REMOTE_ADDR', $_SERVER)) 		$ip= $_SERVER["REMOTE_ADDR"]; 
+			else if (array_key_exists('HTTP_CLIENT_IP', $_SERVER))		$ip= $_SERVER["HTTP_CLIENT_IP"]; 
+			else														$ip="204.79.197.212"; 
 			
 			$option				=array(
 				"url"			=>$url,
 				"post"			=>$vars,
-				"ip"			=>$_SERVER["REMOTE_ADDR"],
-				"ip"			=>"123.123.123.123"
+				"ip"			=>"$ip"
 			);			
 			return				$this->__curl($option);	
-			
-			
-			
-			
+						
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	

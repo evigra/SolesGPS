@@ -235,12 +235,12 @@
 		}
 		public function __WA($data)
     	{   
-    		$apikey				="45UUTNA847W1QRC7INKW";		#mio
+    		$apikey				="ZUYJGBXXPZ4TBFDJSQZH";		#mio
     		 		    		    	
 			#$sesion 			=array("apikey"=>"NJQ6UF3POVNMC00SFEWL");
 			
 			$sesion 			=array("apikey"=>"SQ9CVE4AD6MVJ8BXRON6");		#SYSTEM
-			$sesion 			=array("apikey"=>"45UUTNA847W1QRC7INKW");		#mio
+			$sesion 			=array("apikey"=>"$apikey");		#mio
 			
 			$url 				="https://panel.capiwha.com/send_message.php";
 			$vars 				=$sesion;				
@@ -254,10 +254,10 @@
 			$number				="5213141182618";
 			
 			$option				=array("url"=>$url,"post"=>$vars);			
-			#return				$this->__curl($option);	
+			return				$this->__curl($option);	
 			
 			
-			
+			/*
 			$url_wa				="$url?apikey=$apikey&number=$number&text=" . htmlentities($data["mensaje"]);
 			$url_wa				="$url?apikey=$apikey&number=$number&text=aaaaaaaa";
 			#$url_wa				="$url?apikey=$apikey&number=$number&text=" . $data["mensaje"];
@@ -265,6 +265,7 @@
 			
 			$this->__PRINT_R($url_wa);
 			$this->__PRINT_R($data);
+			*/
 			
     	}			
 		public function WS_TAECEL($data)

@@ -202,7 +202,7 @@
 				curl_setopt($ch,CURLOPT_POSTFIELDS,$option["post"]);
 			}	
 			
-			if(isset($option["user"]))
+			if(isset($option["user"]) AND isset($option["pass"]))
 			{
 				curl_setopt($ch, CURLOPT_USERPWD, $option["user"].":".$option["pass"]);
 				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -212,6 +212,10 @@
 			if(isset($option["location"]))			curl_setopt($ch,CURLOPT_FOLLOWLOCATION, $option["location"]);	# true or false
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, $option["referer"]);			# true or false
 			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, $option["service"]);		# true or false
+			if(isset($option["ip"]))				curl_setopt($ch,CURLOPT_HTTPHEADER, array(
+				"REMOTE_ADDR: $ip",
+                "X_FORWARDED_FOR: $ip")
+            );		# true or false			
 			
 			
 			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
@@ -257,15 +261,7 @@
 			return				$this->__curl($option);	
 			
 			
-			/*
-			$url_wa				="$url?apikey=$apikey&number=$number&text=" . htmlentities($data["mensaje"]);
-			$url_wa				="$url?apikey=$apikey&number=$number&text=aaaaaaaa";
-			#$url_wa				="$url?apikey=$apikey&number=$number&text=" . $data["mensaje"];
-			$data				=file_get_contents($url_wa);
 			
-			$this->__PRINT_R($url_wa);
-			$this->__PRINT_R($data);
-			*/
 			
     	}			
 		public function WS_TAECEL($data)

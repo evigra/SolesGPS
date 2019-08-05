@@ -14,7 +14,7 @@
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");	
 	$files_js=array("maps","responsivevoice");
 	#$files_js=array("maps");
-	$files_js[]="../{$objeto->sys_module}js/map";
+	$files_js[]="../{$objeto->sys_module}/js/map";
 	
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
 	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/streetmap");	

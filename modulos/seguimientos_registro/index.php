@@ -11,11 +11,11 @@
 	#$objeto->words["system_module"]	=	$objeto->__TEMPLATE($objeto->sys_html."system_module");
 	
 	# CARGA DE ARCHIVOS EXTERNOS JS, CSS
-	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_module."js/index"));
+	$objeto->words["html_head_js"]	=	$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."/js/index"));
 
 		
 	# CARGANDO VISTA Y CARGANDO CAMPOS A LA VISTA
-	$objeto->words["system_module"]	=	$objeto->__VIEW_WRITE($objeto->sys_module."html/write");	    	
+	$objeto->words["system_module"]	=	$objeto->__VIEW_WRITE();	    	
 	$objeto->words               	=	$objeto->__INPUT($objeto->words,$objeto->sys_fields);
 	$objeto->tab_files();    	
 

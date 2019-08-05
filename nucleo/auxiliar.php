@@ -213,7 +213,7 @@
 			if(isset($option["referer"]))			curl_setopt($ch,CURLOPT_REFERER, $option["referer"]);			# true or false
 			if(isset($option["service"]))			curl_setopt($ch,CURLOPT_SERVICE_NAME, $option["service"]);		# true or false
 			if(isset($option["ip"]))				curl_setopt($ch,CURLOPT_HTTPHEADER, array(
-					#"REMOTE_ADDR: {$option["ip"]}",
+					"REMOTE_ADDR: {$option["ip"]}",
 		            "X_FORWARDED_FOR: {$option["ip"]}",
 		            "HTTP_X_REAL_IP: {$option["ip"]}",       
                 )

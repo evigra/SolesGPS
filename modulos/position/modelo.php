@@ -180,7 +180,19 @@
 				foreach($position_data as $row)
 				{					
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
-					#$row["TEL_COMPANY"]="5213143520972";
+					$row["TEL_COMPANY"]="5213141182618";
+										
+					$this->__WA(
+						array(
+							"telefono"=>$row["TEL_COMPANY"], 
+							"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nDetectada ausencia de senal. \n
+Puede apoyarse con el siguiente link
+					
+					http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+						
+								Sistema Automatico SolesGPS"
+						)
+					);					
 					
 					#$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
 					#$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));

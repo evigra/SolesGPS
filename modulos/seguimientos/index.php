@@ -2,14 +2,12 @@
 	require_once("nucleo/sesion.php");
 	#require_once("modulos/position/modelo.php");
 	
-	
 	$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
-	
 	
 	$objeto										=new seguimientos();
 	
 	$_SESSION["module"]=array();
-	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
+	$_SESSION["module"]["sys_section"]			=$objeto->sys_private["section"];
 	
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO

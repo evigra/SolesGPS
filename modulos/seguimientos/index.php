@@ -33,7 +33,7 @@
 	
     $objeto->words["html_head_description"] =   "Solicito su colaboracion, se han robado mi vehiculo.  ";
     $objeto->words["html_head_keywords"]    =   "GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
-    $objeto->words["html_head_title"]           ="NECESITO AYUDA :: SE ACABAN DE ROBAR MI VEHICULO";
+    $objeto->words["html_head_title"]           ="SOLESGPS :: LOCALIZACION VEHICULAR";
 
     $objeto->html                               =$objeto->__VIEW_TEMPLATE("front_end", $objeto->words);
     $objeto->__VIEW($objeto->html);

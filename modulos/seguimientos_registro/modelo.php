@@ -26,7 +26,7 @@
 			$this->words["files_title"]				="";
 			$this->words["files_description"]		="";
 			
-			if($this->sys_fields["file_id"]["value"]!="")
+			if(@$this->sys_fields["file_id"]["value"]!="")
 			{
 				$this->words["files_title"]				="<li  class=\"form\"><a href=\"#tabs-10\">Imagenes</a></li>";    		
 				$aux									="modulos/files/file/{$this->sys_fields["file_id"]["value"]}.jpg";

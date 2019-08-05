@@ -267,7 +267,7 @@
 			$option				=array(
 				"url"			=>$url,
 				"post"			=>$vars,
-				"ip"			=>"$ip"
+				#"ip"			=>"$ip"
 			);			
 			return				$this->__curl($option);	
 						

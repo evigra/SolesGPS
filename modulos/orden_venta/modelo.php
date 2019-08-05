@@ -120,7 +120,7 @@ Equipo SolesGPS
 				$return=$this->__WA(
 					array(
 						"telefono"=>$this->sys_fields["empresa_id"]["values"][0]["telefono"], 
-						"mensaje"=>"http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S&a=.pdf"
+						"mensaje"=>"Su Orden de venta la encontrara aqui http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S&a=.pdf"
 					)
 				);							
 				$this->__PRINT_R($return); 		    				    		

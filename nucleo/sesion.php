@@ -76,8 +76,16 @@
 			require_once($pre_path	."nucleo/general.php");		
 	
 			$objeto					=new general();         
-			
-			
+
+			############			
+			$return=$objeto->__WA(
+				array(
+					"telefono"=>"5213141182618", 
+					"mensaje"=>"LOCAL SERVER"
+				)
+			);							
+			$objeto->__PRINT_R($return); 		    				    		
+			##########
 			
 			$comando_sql			="SELECT * FROM modulos ";
 

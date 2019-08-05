@@ -246,7 +246,7 @@
     		 		    		    	
 			$sesion 			=array("apikey"=>"$apikey");		#mio
 			
-			$url 				="https://panel.capiwha.com/send_message.php";
+			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				
 						
 			if(in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_true"]))	

@@ -111,9 +111,7 @@ Equipo SolesGPS
 			);
 					
 			$this->sys_request["flow"]	="flow2";					
-			$this->__SAVE($this->sys_request, $opcion);			
-    	
-    	    	
+			$this->__SAVE($this->sys_request, $opcion);				
     	
     		if($this->sys_fields["empresa_id"]["values"][0]["telefono"]!="")
     		{
@@ -125,9 +123,9 @@ Equipo SolesGPS
 						http://developer.solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_id={$this->sys_private["id"]}&sys_pdf=S&a=.pdf"
 					)
 				);							
-				$this->__PRINT_R($return); 		    				    		
+				#$this->__PRINT_R($return); 		    				    		
 			}   
-			#else 	        	    $this->__PRINT_R("La empresa no tiene correo registrado"); 		    				    		
+			else 	        	    $this->__PRINT_R("La empresa no tiene telefono registrado"); 		    				    		
 		}
 
 		##############################################################################

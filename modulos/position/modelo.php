@@ -188,7 +188,7 @@
 							"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nDetectada ausencia de senal. \n
 Puede apoyarse con el siguiente link
 					
-					http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						
 								Sistema Automatico SolesGPS"
 						)

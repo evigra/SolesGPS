@@ -3,16 +3,11 @@
 	#require_once("modulos/position/modelo.php");
 	
 	
-	
 	$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
-	
-	#require_once("modelo.php");
-
 	
 	
 	$objeto										=new seguimientos();
-	#$objeto->__SESSION();
-
+	
 	$_SESSION["module"]=array();
 	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
@@ -24,7 +19,7 @@
 	$files_js[]="../{$objeto->sys_module}js/map";
 	
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
-	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/streetmap");	
+	$objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/streetmap");	
 	
 	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields); 

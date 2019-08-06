@@ -211,29 +211,39 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			
-			#$this->__PRINT_R($position_data);
 			if(count($position_data)>0)
-			{								
-				foreach($position_data as $row)
-				{					
-					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
-					$row["TEL_COMPANY"]="5213141182618";
-										
+			{							
+				if(count($position_data)<7)
+				{
+				
+					foreach($position_data as $row)
+					{					
+						$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
+						$row["TEL_COMPANY"]="5213141182618";
+											
+						$this->__WA(
+							array(
+								"telefono"=>$row["TEL_COMPANY"], 
+								"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nDetectada ausencia de senal. \n
+	Puede apoyarse con el siguiente link
+						
+	http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+							
+									Sistema Automatico SolesGPS"
+							)
+						);											
+					}
+				}
+				else
+				{
+					## ## POSIBLE TRACCAR DETENIDO
 					$this->__WA(
 						array(
-							"telefono"=>$row["TEL_COMPANY"], 
-							"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nDetectada ausencia de senal. \n
-Puede apoyarse con el siguiente link
-					
-http://solesgps.com/seguimientos/&a={$row["md5_id"]}
-						
-								Sistema Automatico SolesGPS"
+							"telefono"=>"5213143520972", 
+							"mensaje"=>"Muchas ausencias de senal...\n\nTracar posiblemente detenido"
 						)
 					);					
-					
-					#$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
-					#$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));
-				}
+				}					
 			}
 		}
 		##############################################################################

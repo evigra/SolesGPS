@@ -243,7 +243,7 @@
     	{   
     		$apikey				="ZUYJGBXXPZ4TBFDJSQZH";		#mio
     		 		    		    	
-			$sesion 			=array("apikey"=>"$apikey");		#mio
+			$sesion 			=array("apikey"=>"BQ0MZWAVJ1G0T3CMQ4TL");		#System
 			
 			$url 				="https://panel.apiwha.com/send_message.php";
 			$vars 				=$sesion;				

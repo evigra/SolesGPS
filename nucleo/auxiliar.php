@@ -1099,22 +1099,34 @@
 				$pdf->SetFooterMargin($_SESSION["pdf"]["PAGE"]);
 
 			$pdf->SetFont('helvetica', '', 9);
-			$pdf->AddPage();
 
-			$html = @$_SESSION["pdf"]["template"];			
-			unset($_SESSION["pdf"]["template"]);
+			if(!is_array($_SESSION["pdf"]["template"]))
+			{
+				$_SESSION["pdf"]["template"]			=array(
+					array(
+						"format"		=>"A4",					
+						"html"			=>$_SESSION["pdf"]["template"],					
+						"orientation"	=>"P",					
+					),			
+				);	
+			}	
+			$datos=$_SESSION["pdf"]["template"];
+			foreach($datos as $dato)
+			{
+				$pdf->AddPage($dato["orientation"],$dato["format"]);	
+				$pdf->writeHTML($dato["html"], true, 0, true, 0);
+			}
 
-			$pdf->writeHTML($html, true, 0, true, 0);
-			$pdf->lastPage();
+			$pdf->lastPage();			
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-
-			
 			
 			if($Output=="S")
 				$_SESSION["pdf"]["file"] =$pdf->Output("prueba.pdf", $Output);
 			else	
 				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
+				
+			unset($_SESSION["pdf"]);
 			exit;
 		}		
     	##############################################################################    

@@ -30,7 +30,6 @@
 		##############################################################################
 		public function __CRON($option=NULL)		
     	{	
-        	echo "<br><br><br>#### PLANTILLA VENTA ########      	";
     		if(is_null($option))			$option				=array();
     		if(is_null(@$option["select"]))	$option["select"]	=array();
     		if(is_null(@$option["where"]))	$option["where"]	=array();	
@@ -55,7 +54,7 @@
 			$option["where"][]						="cron_cantidad>0";
 			$option["where"][]						="estatus=1";
 		
-			$option["echo"]							="PLANTILLA VENTA echo";
+			#$option["echo"]							="PLANTILLA VENTA echo";
 			$crons_data 							=$this->__BROWSE($option);			
 
 			#$this->__PRINT_R($crons_data);

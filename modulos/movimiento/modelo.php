@@ -277,6 +277,7 @@
 					WHERE 
 						tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
 						AND estatus=1
+						AND flow='flow3'
 				) m1 
 			";
 			$option["group"]	="m1.empresa_id";

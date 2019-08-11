@@ -81,6 +81,16 @@
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);		
+
+		$flow_left=array(
+			array("action_enviar"		=>"Enviar por Email"),
+			array("action_enviar_wa"	=>"Enviar por WA"),
+			array("action_confirmar"	=>"Confirmar"),
+		    array("action_cancelar"		=>"Cancelar"),
+		);
+		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
+
+
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_var["module_path"] . "html/show");	
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);

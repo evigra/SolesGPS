@@ -21,6 +21,8 @@
 		}
    		public function __SAVE($datas=NULL,$option=NULL)
     	{    		
+    		if(!isset($datas["estatus"]))	$datas["estatus"]=1;	
+    	
     	    $return= parent::__SAVE($datas,$option);
     	    return $return;
 		}

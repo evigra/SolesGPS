@@ -8,7 +8,8 @@
 
 	$obj_x509 			=new File_X509();		
 	$obj_rsa 			=new Crypt_RSA();
-	
+
+#/*	
 $keys["privatekey"]="-----BEGIN RSA PRIVATE KEY-----
 MIICWwIBAAKBgQC8MggZqKWp+K8i5habZDj7mPopXRCmn5VsN2uoqF6TrVB77zFS
 yJxpNJfBRbOniugnmANZNkiqlqnqNXIdGszOymLZAruJIXgF46ks7SN1cpmxX4sm
@@ -28,12 +29,16 @@ T/0XTg9U7orCi8K64h0M8GsPgh/l+xDS23f2yEYUqA==
 	$obj_rsa->loadKey($keys["privatekey"]);
 	$obj_x509->setPrivateKey($obj_rsa);
 		
-	$firma 				=$obj_rsa->sign($doc_firmar);
+	#$firma 				=$obj_rsa->sign($doc_firmar);
+#*/
+	#$firma=base64_encode($firma);
 
-	#$firma="lVsBkdNRskw3R/8jQgewtUyzqO/ABjeeYB+3Agx3hA9Oe5M/2rUGEJIjCrhu4aokmBjXUcti3ZQ2oxircn6KmCl/vgDWoGN/rpKdSCNN781g4CALxHL808lYoRFt2JVkl0mqgtDV4lJ1sze6iV9Ob752jGOySIUmC9j/O4UzzmI=";
+	$firma="MMBYfdBU8+nQSmGAeWRPg8GGRF4ANLtCEOZ8cSyOuOKiXdsha05t/AJJD83Nm2zERfPBFGFUUQqW/iN2rxCYCRic+gp4DYh0YAzymHHUtPL1v/yV1Egu3T/xE/e6Drn894GAMgEJ6wV3WHtnU/tjQGrLyO2q6I0jDnqUIqEx9eg=";
+
+	#echo "#$firma#";	
+	$firma=base64_decode($firma);
 	
-	
-	$doc_firmar.="a";   ##### VERIFIACION DE DOCUMENTO
+	#$doc_firmar.="a";   ##### VERIFIACION DE DOCUMENTO
 
 	$keys["publickey"]="-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MggZqKWp+K8i5habZDj7mPop

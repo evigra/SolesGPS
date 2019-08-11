@@ -58,12 +58,12 @@
 			$option["echo"]							="PLANTILLA VENTA echo";
 			$crons_data 							=$this->__BROWSE($option);			
 
-			$this->__PRINT_R($crons_data);
+			#$this->__PRINT_R($crons_data);
 
 		
 			foreach($crons_data["data"] as $rows)
 			{				
-				$this->__PRINT_R($rows);
+				#$this->__PRINT_R($rows);
 				$this->sys_private["id"]			=$rows["id"];
 				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);

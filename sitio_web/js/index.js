@@ -1087,6 +1087,8 @@ styles:
 
 		if(vehicle["st"]==undefined)	vehicle["st"]="1";
 		if(vehicle["st"]=="")			vehicle["st"]="1"; 
+		if(vehicle["st"]=="-1")			vehicle["st"]="1"; 
+		
 	    //alert(vehicle["st"]);		
 		if(vehicle["st"]=="1")
 		{		

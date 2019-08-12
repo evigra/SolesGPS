@@ -361,6 +361,8 @@
 						    
 				    if(isset($_SESSION["company"]["razonSocial"]) AND isset($_SESSION["user"]["name"]))
 				    {
+					    $words["companys"]           	=@$this->__COMPANYS();
+
 					    $words["sys_empresa"]        	=$_SESSION["company"]["nombre"];
 					    $words["system_company"]       	=$_SESSION["company"]["nombre"];
 					    $words["system_domicilio"]     	=$_SESSION["company"]["domicilio_fiscal"];
@@ -372,7 +374,6 @@
 					    $words["system_logo"]           =$this->__SHOW_FILE($_SESSION["company"]["files_id"]);
 					    $words["system_img"]           	=$this->__HTML_USER();
 					    $words["sys_page"]           	=@$this->request["sys_page"];
-					    $words["companys"]           	=@$this->__COMPANYS();
 					}
 			    }
 			    else

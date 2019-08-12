@@ -1042,10 +1042,16 @@ styles:
 
         var tablero1="";
         var tablero2="";
+
+
         
         if(item["st"]=="-1")	//tiempo
-            tablero1= tablero1 + " :: Empresa boqueada :: ";
-        
+        {
+		    if(item["ni"]<=10)
+	            tablero1= tablero1 + " :: EMPRESA PRE-BLOQUEADA :: ";
+	        else
+	        	alert("EMPRESA PRE-BLOQUEADA"); 
+        }
                         
         if(!(item["ti"]==undefined || item["ti"]==false || item["ti"]=="false"))	//tiempo
             tablero1= tablero1 + item["ti"];

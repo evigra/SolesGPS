@@ -345,13 +345,10 @@
     		$this->sys_sql		="SELECT $select FROM $from $where  $group  $having $order $limit";
     		
     		if(isset($option["echo"])  AND in_array($_SERVER["SERVER_NAME"],$_SESSION["var"]["server_error"]) AND @$this->sys_private["action"]!="print_pdf")
-    		{
-    		
+    		{    		
              	echo "<div class=\"echo\" title=\"{$option["echo"]}\">".$this->sys_sql."</div>";
    			}
    			$return["data"] 	= $this->__EXECUTE($this->sys_sql);
-
-			
 
 			if(is_array(@$return["data"][0]))
 			{			
@@ -373,8 +370,7 @@
 						$html_title["$campo"]			=$__REPORT_TITLES["html"];					
 					}
 				}    			
-			}
-			
+			}			
 			
 			#if(!is_array(@$html_title))
 			{	

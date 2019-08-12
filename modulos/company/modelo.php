@@ -49,8 +49,7 @@
 			    "source"            => array(
 			    	"1"				=>"Vigente",
 			    	"-1"			=>"Suspendido",
-			    	"0"				=>"Cancelado",
-			    	
+			    	"0"				=>"Cancelado",			    	
 			    ),
 			),
 			"web"	    =>array(

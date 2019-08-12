@@ -47,6 +47,7 @@
 			    "title_filter"		=> "Estatus",
 			    "type"              => "select",
 			    "source"            => array(
+			    	""				=>"En proceso",
 			    	"1"				=>"Vigente",
 			    	"-1"			=>"Suspendido",
 			    	"0"				=>"Cancelado",			    	

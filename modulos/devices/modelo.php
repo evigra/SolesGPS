@@ -424,7 +424,7 @@
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND (bloqueo!=1 OR bloqueo is NULL)
-					AND c.estatus!=0
+					AND c.estatus=1
 					AND d.telcel=1
 					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL dias_recarga DAY)< now() )
 			";

@@ -1094,7 +1094,7 @@ styles:
 		//if(vehicle["st"]=="-1")			vehicle["st"]="1"; 
 		
 	    //alert(vehicle["st"]);		
-		if(vehicle["st"]=="1" OR vehicle["st"]=="-1")
+		if(vehicle["st"]=="1" || vehicle["st"]=="-1")
 		{		
 			var device_id=vehicle["de"];
 			

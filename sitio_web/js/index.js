@@ -1042,6 +1042,10 @@ styles:
 
         var tablero1="";
         var tablero2="";
+        
+        if(item["st"]=="-1")	//tiempo
+            tablero1= tablero1 + " :: Empresa boqueada :: ";
+        
                         
         if(!(item["ti"]==undefined || item["ti"]==false || item["ti"]=="false"))	//tiempo
             tablero1= tablero1 + item["ti"];
@@ -1087,10 +1091,10 @@ styles:
 
 		if(vehicle["st"]==undefined)	vehicle["st"]="1";
 		if(vehicle["st"]=="")			vehicle["st"]="1"; 
-		if(vehicle["st"]=="-1")			vehicle["st"]="1"; 
+		//if(vehicle["st"]=="-1")			vehicle["st"]="1"; 
 		
 	    //alert(vehicle["st"]);		
-		if(vehicle["st"]=="1")
+		if(vehicle["st"]=="1" OR vehicle["st"]=="-1")
 		{		
 			var device_id=vehicle["de"];
 			
@@ -1133,8 +1137,6 @@ styles:
 				
 				if(vehicle["sp"]<5 && vehicle["ty"]=="deviceOnline")	icon_status="stop.png";
 				if(vehicle["sp"]>5 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
-				
-				
 				
 				
 				if(icon_status!="")

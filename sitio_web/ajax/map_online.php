@@ -50,7 +50,11 @@
 						OR						
 						(
 							ug.user_id={$_SESSION["user"]["id"]}
-							AND g.nivel<40
+							AND (
+								g.nivel<40
+								OR
+								g.nivel<=10
+							)	
 						)
 					)						
 				)		

@@ -37,28 +37,23 @@
 					d.company_id=c.id,
 				groups g
 			where 	1=1
-				AND ug.active=g.id
 				AND 
 				(
-					(
-						g.nivel<=10
-					)
-					OR 				
- 					(
-		 				(d.bloqueo is NULL OR d.bloqueo =0)
-						AND 
-						(		
-							(
-								responsable_fisico_id={$_SESSION["user"]["id"]}
-								AND user_id=responsable_fisico_id								
-							)        
-							OR						
-							(
-								ug.user_id={$_SESSION["user"]["id"]}
-								AND g.nivel<40
-							)
-						)					
-					)
+		 			(d.bloqueo is NULL OR d.bloqueo =0)
+					AND 
+					(		
+						(
+							responsable_fisico_id={$_SESSION["user"]["id"]}
+							AND user_id=responsable_fisico_id
+							AND ug.active=g.id
+						)        
+						OR						
+						(
+							ug.user_id={$_SESSION["user"]["id"]}
+							AND ug.active=g.id
+							AND g.nivel<40
+						)
+					)						
 				)		
 		";
 		#echo $comando_sql;

@@ -37,6 +37,7 @@
 					d.company_id=c.id,
 				groups g
 			where 	1=1
+				AND ug.active=g.id
 				AND 
 				(
 					(
@@ -49,13 +50,11 @@
 						(		
 							(
 								responsable_fisico_id={$_SESSION["user"]["id"]}
-								AND user_id=responsable_fisico_id
-								AND ug.active=g.id
+								AND user_id=responsable_fisico_id								
 							)        
 							OR						
 							(
 								ug.user_id={$_SESSION["user"]["id"]}
-								AND ug.active=g.id
 								AND g.nivel<40
 							)
 						)					

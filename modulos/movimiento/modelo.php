@@ -159,6 +159,27 @@
 		{	
 			return parent::__CONSTRUCT($option);					
 		}
+   		public function action_confirmar()
+    	{
+    		$this->__FIELDS();			
+    		$datas			=array();
+    		$datas["estatus"]="1";    		   			
+			$datas["flow"]	="flow3";
+
+    	    $return= $this->__SAVE($datas);
+    	    return $return;
+		}
+		##############################################################################
+   		public function action_cancelar()
+    	{    	
+    		$datas			=array();
+    		$datas["estatus"]="-1";    		   			
+			$datas["flow"]	="flow4";
+
+    	    $return= $this->__SAVE($datas);
+    	    return $return;
+		}
+		
 		##############################################################################
    		public function __SAVE($datas=NULL,$option=NULL)
     	{

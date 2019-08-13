@@ -41,7 +41,7 @@
 				AND 
 				(
 					(
-						g.nivel<40
+						g.nivel<=10
 					)
 					OR 				
  					(

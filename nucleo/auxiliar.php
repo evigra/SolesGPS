@@ -3222,6 +3222,7 @@
 		
 		function cerrar_conexion()
 		{
+			
 		    $this->OPHP_conexion->close();
 		}	
 		

@@ -179,7 +179,7 @@
 				foreach($position_data as $row)
 				{					
 					$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
-					$row["TEL_COMPANY"]="5213141182618";
+					#$row["TEL_COMPANY"]="5213141182618";
 										
 					$this->__WA(
 						array(
@@ -192,9 +192,6 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 								Sistema Automatico SolesGPS"
 						)
 					);					
-					
-					#$this->__SMS("+{$row["TEL_COMPANY"]}", $mensaje, false, "");					
-					#$this->__WA(array("telefono"=>$row["TEL_COMPANY"], "mensaje"=>$mensaje));
 				}
 			}
 		}
@@ -207,7 +204,7 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 				WHERE 1=1
 					AND tipo_vehiculo='GPS'
 					AND reporto_hace>'00:30:00'
-					AND reporto_hace<'01:10:00'					
+					AND reporto_hace<'00:59:00'					
 			";
 			$position_data 		=$this->__EXECUTE($comando_sql);
 			
@@ -219,7 +216,7 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 					foreach($position_data as $row)
 					{					
 						$mensaje= "SolesGPS :: Detectada ausencia de senal de {$row["NOMBRE"]}, Tiempo ausente {$row["REPORTO_HACE"]}";
-						$row["TEL_COMPANY"]="5213141182618";
+						#$row["TEL_COMPANY"]="5213141182618";
 											
 						$this->__WA(
 							array(

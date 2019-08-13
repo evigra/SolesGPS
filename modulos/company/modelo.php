@@ -189,7 +189,7 @@
 			$option["select"]["FN_ImgFile('http://{$_SERVER["SERVER_NAME"]}/modulos/company/img/company2.png',files_id,0,0)"]		="img_files_id";
 			$option["select"]["FN_ImgFile('http://{$_SERVER["SERVER_NAME"]}/modulos/company/img/company2.png',files_id,300,300)"]	="img_files_id_med";				
 			$option["select"]["FN_ImgFile('http://{$_SERVER["SERVER_NAME"]}/modulos/company/img/company2.png',files_id,75,75)"]		="img_files_id_chi";
-			$option["select"]["FN_ImgFile('http://{$_SERVER["SERVER_NAME"]}/modulos/company/img/company2.png',files_id,40,24)"]		="img_files_id_sup_chi";
+			$option["select"]["FN_ImgFile('http://{$_SERVER["SERVER_NAME"]}/modulos/company/img/company2.png',files_id,24,24)"]		="img_files_id_sup_chi";
 			$option["select"][]					="company.*";			
 
 			$return 							=parent::__BROWSE($option);		

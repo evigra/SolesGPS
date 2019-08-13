@@ -1043,7 +1043,7 @@ styles:
         var tablero1="";
         var tablero2="";
 
-		/*        
+		///*        
         if(item["st"]=="-1")	//tiempo
         {
 		    if(item["ni"]<=10)
@@ -1051,7 +1051,7 @@ styles:
 	        else
 	        	alert("EMPRESA PRE-BLOQUEADA"); 
         }
-        */
+        //*/
                         
         if(!(item["ti"]==undefined || item["ti"]==false || item["ti"]=="false"))	//tiempo
             tablero1= tablero1 + item["ti"];

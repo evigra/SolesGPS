@@ -284,11 +284,25 @@
 					#WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
 				END
 			"]="deudor"; 
+			$option["select"]["			
+				CASE					
+					WHEN venta=1 THEN ''
+					WHEN compra=1 THEN ''
+				END
+			"]="modulo_deudor"; 
+
+
 			$option["select"]["				
 				CASE 
 					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN ''
 				END				
 			"]="acreedor";
+			$option["select"]["			
+				CASE					
+					WHEN venta=1 THEN '../pago_venta/'
+					WHEN compra=1 THEN '../compra_venta/'
+				END
+			"]="modulo_acreedor"; 
 			
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
 			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND VENTA=1, '#1bce54','')"]="color2";    

@@ -42,17 +42,6 @@
 		    array("action"=>"Guardar"),
 		    array("cancel"=>"Cancelar"),
 		);
-		
-
-		$module_center=array(
-		    array("action_pagar"=>"PAGAR"),
-		    array("action_abonar"=>"ABONAR"),
-		    array("action_cancelar"=>"CANCELAR"),
-		);
-
-		$objeto->sys_fields["tipo"]["type"]		="value";
-		$objeto->sys_fields["folio"]["type"]	="value";
-		
 		#BOTONES SECCION DERECHA
 		$module_right=array(
 		    array("create"=>"Crear"),
@@ -60,6 +49,11 @@
 		    array("kanban"=>"Kanban"),
 		    array("report"=>"Reporte"),
 		);		
+		$module_center=array();
+
+		$objeto->sys_fields["tipo"]["type"]		="value";
+		$objeto->sys_fields["folio"]["type"]	="value";
+		
 
 		$flow_left=array(
 			array("action_enviar"		=>"Enviar por Email"),
@@ -68,6 +62,16 @@
 		    array("action_cancelar"		=>"Cancelar"),
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
+		
+	   	if($objeto->sys_private["action"]=="action_confirmar")
+			$objeto->action_confirmar();
+	   	if($objeto->sys_private["action"]=="action_enviar")
+			$objeto->action_enviar();
+	   	if($objeto->sys_private["action"]=="action_enviar_wa")
+			$objeto->action_enviar_wa();
+	   	if($objeto->sys_private["action"]=="action_cancelar")
+			$objeto->action_cancelar();
+		
  
 		#CARGANDO VISTA PARTICULAR Y CAMPOS		
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	

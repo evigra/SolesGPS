@@ -90,6 +90,14 @@
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
 
+	   	if($objeto->sys_private["action"]=="action_confirmar")
+			$objeto->action_confirmar();
+	   	if($objeto->sys_private["action"]=="action_enviar")
+			$objeto->action_enviar();
+	   	if($objeto->sys_private["action"]=="action_enviar_wa")
+			$objeto->action_enviar_wa();
+	   	if($objeto->sys_private["action"]=="action_cancelar")
+			$objeto->action_cancelar();
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
     	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE($objeto->sys_var["module_path"] . "html/show");	

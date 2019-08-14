@@ -42,8 +42,26 @@
 		    array("action"				=>"Guardar"),
 		    array("cancel"				=>"Cancelar"),
 		);
-		
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    array("create"=>"Crear"),
+		    #array("write"=>"Modificar"),
+		    array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);				
 		$module_center=array();
+
+		$objeto->sys_fields["tipo"]["type"]		="value";
+		$objeto->sys_fields["folio"]["type"]	="value";
+
+		if($objeto->sys_private["action"]=="print_pdf")
+			$objeto->sys_fields["folio"]["type"]	="input";
+		
+		#CARGANDO VISTA PARTICULAR Y CAMPOS	
+    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
+    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
+
+		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_action=&sys_id=101");
 
 		$flow_left=array(
 			array("action_enviar"		=>"Enviar por Email"),
@@ -53,41 +71,14 @@
 		);
 		$objeto->words["flow_left"]         =$objeto->__BUTTON($flow_left);		
 
-		$objeto->sys_fields["tipo"]["type"]		="value";
-		$objeto->sys_fields["folio"]["type"]	="value";
-
-		if($objeto->sys_private["action"]=="print_pdf")
-			$objeto->sys_fields["folio"]["type"]	="input";
-		
-		#BOTONES SECCION DERECHA
-		$module_right=array(
-		    array("create"=>"Crear"),
-		    #array("write"=>"Modificar"),
-		    array("kanban"=>"Kanban"),
-		    array("report"=>"Reporte"),
-		);		
-		#CARGANDO VISTA PARTICULAR Y CAMPOS	
-    	$objeto->words["module_body"]               =$objeto->__VIEW_WRITE();	
-    	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);
-
-		$objeto->words["qr"]               =$objeto->__QR("http://solesgps.com/orden_venta/&sys_action=print_pdf&sys_section=write&sys_action=&sys_id=101");
-
 	   	if($objeto->sys_private["action"]=="action_confirmar")
-		{			
 			$objeto->action_confirmar();
-		}
 	   	if($objeto->sys_private["action"]=="action_enviar")
-		{			
 			$objeto->action_enviar();
-		}
 	   	if($objeto->sys_private["action"]=="action_enviar_wa")
-		{			
 			$objeto->action_enviar_wa();
-		}
 	   	if($objeto->sys_private["action"]=="action_cancelar")
-		{			
 			$objeto->action_cancelar();
-		}
 
     	$module_title								="";
     }	

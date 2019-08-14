@@ -26,27 +26,6 @@
     	    return $return;
 		}
 		##############################################################################
-   		public function action_confirmar()
-    	{
-    		$this->__FIELDS();			
-    		$datas			=array();
-    		$datas["estatus"]="1";    		   			
-			$datas["flow"]	="flow3";
-
-    	    $return= parent::__SAVE($datas);
-    	    return $return;
-		}
-		##############################################################################
-   		public function action_cancelar()
-    	{    	
-    		$datas			=array();
-    		$datas["estatus"]="-1";    		   			
-			$datas["flow"]	="flow4";
-
-    	    $return= parent::__SAVE($datas);
-    	    return $return;
-		}
-		##############################################################################
    		public function action_enviar()
     	{       	
 			$this->__FIELDS();			

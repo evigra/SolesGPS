@@ -252,6 +252,7 @@
 				$vars["number"]		=$data["telefono"];
 			else	
 				$vars["number"]		="5213141182618";
+	
 			$vars["text"]		=$data["mensaje"];
 
 			$option				=array(

@@ -184,8 +184,7 @@
 					$this->__WA(
 						array(
 							"telefono"=>$row["TEL_COMPANY"], 
-							"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nRecordatorio de ausencia de senal detectada. \n
-Puede apoyarse con el siguiente link
+							"mensaje"=>"[{$row["NOMBRE"]}] :: Recordatorio Ausencia \n\nTiempo ausente {$row["REPORTO_HACE"]}\n\nPuede apoyarse con el siguiente link
 					
 http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						
@@ -221,8 +220,7 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						$this->__WA(
 							array(
 								"telefono"=>$row["TEL_COMPANY"], 
-								"mensaje"=>"[{$row["NOMBRE"]}] :: {$row["REPORTO_HACE"]}\nDetectada ausencia de senal. \n
-	Puede apoyarse con el siguiente link
+								"mensaje"=>"[{$row["NOMBRE"]}] :: Detectada ausencia de senal\n\nTiempo ausente {$row["REPORTO_HACE"]}\n\nPuede apoyarse con el siguiente link
 						
 	http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 							
@@ -521,7 +519,6 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
-							#$this->__WA(array("telefono"=>$row["c_telefono"], "mensaje"=>$mensaje));
 							$this->__WA(
 								array(
 									"telefono"=>$row["c_telefono"], 

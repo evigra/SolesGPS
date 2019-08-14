@@ -1,23 +1,8 @@
 <div class="mainTable">
             <table border="0" width="100%">
                 <tr>
-                    <td rowspan="3" align="center" width="150">
-                        {imagen}
-                    </td>        
-                    <td colspan="4">{nombre}</td>
-                    <td width="230"></td>
+                    <td colspan="6">{nombre}</td>
                 </tr>          
-                <tr>
-	                <td align="left"> {se_vende} </td>
-					<td width="100"></td>
-					<td></td>
-                </tr>          
-                <tr>
-					<td align="left"> {se_compra} </td>                
-					<td width="100"></td>
-					<td></td>
-                </tr>          
-
                 <tr>
                     <td colspan="6" width="100%">
 			 			<div id="tabs" class="form">
@@ -26,28 +11,26 @@
 								<li  class="form"><a href="#tabs-2">Venta</a></li>
 								<li  class="form"><a href="#tabs-1">Compra</a></li>
 							</ul>
-
 							<div id="tabs-3" class="form">
-								 <table border="0" width="100%" class="form">
+								<table border="0" width="100%" class="form">
 									<tr>
-										<td width="350" align="left"> {type} </td>
-										<td>{descripcion_venta}</td>
-										<td width="150" align="left"> {vende1} </td>
+										<td width="150" align="center"> {image} </td>
+										<td width="30"></td>
+										<td rowspan="2" align="left" colspan="2"> {descripcion_venta} </td>
+										<td width="30"></td>
+										<td rowspan="2"align="left" colspan="2">{descripcion_compra}</td>
+									</tr>          									
+									<tr>
+										<td height="20" align="left"> {ref_interna} </td>
 									</tr>          
-									<tr>
-										<td width="350" align="left"> {ref_interna} </td>
+									<tr>										
+										<td align="left"> {type} </td>
+										<td width="30"></td>
+										<td align="left"> {vende1} </td>
+										<td align="left" width="80"> {se_vende} </td>
 										<td></td>
-										<td width="150" align="left"> {compra1} </td>
-									</tr>          
-									<tr>
-										<td align="left"> {c_barras} </td>
-										<td></td>
-										<td align="left">  </td>
-									</tr>          
-									<tr>
-										<td align="left"> {c_qr} </td>
-										<td></td>
-										<td align="left">  </td>
+										<td align="left"> {compra1} </td>
+										<td align="left" width="80"> {se_compra} </td>                
 									</tr>          
 								</table>			
 							</div>
@@ -58,11 +41,7 @@
 										<td align="left"> {vende3} </td>
 										<td align="left"> {vende4} </td>
 										<td align="left"> {vende5} </td>
-									</tr>          
-									<tr>
-										<td align="left" colspan="4"> {tax_venta_ids} </td>
 									</tr>          									
-									
 								</table>
 							</div>
 							<div id="tabs-1" class="form">
@@ -73,23 +52,15 @@
 										<td align="left"> {compra4} </td>
 										<td align="left"> {compra5} </td>
 									</tr>          
-									<tr>
-										<td align="left" colspan="4"> {tax_compra_ids1} </td>
-									</tr>          									
-
+									<tr>                                        				            
+										<td align="left" colspan="4">{item_compra_ids}</td>
+									</tr>          
 								</table>			
 							</div>
-
-
 						</div>
-
-                        
                     </td>        
                 </tr>          
-
 			</table>			
-
-
 </div>
 
   <script>

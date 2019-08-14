@@ -162,21 +162,21 @@
    		public function action_confirmar()
     	{
     		$this->__FIELDS();			
-    		$datas			=array();
-    		$datas["estatus"]="1";    		   			
-			$datas["flow"]	="flow3";
+    		$datas				=array();
+    		$datas["estatus"]	="1";    		   			
+			$datas["flow"]		="flow3";
 
-    	    $return= $this->__SAVE($datas);
+    	    $return				=$this->__SAVE($datas);
     	    return $return;
 		}
 		##############################################################################
    		public function action_cancelar()
     	{    	
-    		$datas			=array();
-    		$datas["estatus"]="-1";    		   			
-			$datas["flow"]	="flow4";
+    		$datas				=array();
+    		$datas["estatus"]	="-1";    		   			
+			$datas["flow"]		="flow4";
 
-    	    $return= $this->__SAVE($datas);
+    	    $return				=$this->__SAVE($datas);
     	    return $return;
 		}
 		
@@ -184,12 +184,12 @@
    		public function __SAVE($datas=NULL,$option=NULL)
     	{
   			if((!isset($datas["tipo"]) OR $datas["tipo"]=="") AND isset($this->tipo_movimiento) AND $this->tipo_movimiento!="")
-    			$datas["tipo"]						=$this->tipo_movimiento;								
+    			$datas["tipo"]					=$this->tipo_movimiento;								
     		    		
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{
-				$datas["iva"]				=0;				
-				$datas["total"]				=$datas["subtotal"];
+				$datas["iva"]					=0;				
+				$datas["total"]					=$datas["subtotal"];
 			}					
 			if($this->sys_private["section"]=="create")
 			{
@@ -199,11 +199,11 @@
 				$datas["folio"]					=$this->__FOLIOS($option_folios);
 			}				
 
-			$datas["registro"]				=$this->sys_date;
+			$datas["registro"]					=$this->sys_date;
 			if(isset($_SESSION["company"]["id"]))
-				$datas["company_id"]		=$_SESSION["company"]["id"];
+				$datas["company_id"]			=$_SESSION["company"]["id"];
 			if(!isset($datas["trabajador_id"])	OR $datas["trabajador_id"]=="")	
-				$datas["trabajador_id"]		=$_SESSION["user"]["trabajador_id"];		
+				$datas["trabajador_id"]			=$_SESSION["user"]["trabajador_id"];		
 
     	    return parent::__SAVE($datas,$option);
 		}

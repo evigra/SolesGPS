@@ -2,18 +2,18 @@
 		<table border="0" style="padding-right:8px; margin:0px;" height="70" width="236">
 		    <tr>
 		        <td colspan="6" height="50" align="center">
-		        	<b>{empresa_id}</b>
+		        	<b>{empresa_id.nombre}</b>
 		       	</td> 
 		    </tr>           
 		    <tr>
 		    	<td width="8" valign="top"></td>		    	
 		        <td width="80" align="center" colspan="2" valign="top" style="padding-right:10px; border-right: thick double #ccc; border-top: solid #ccc;">
-		        	<a href="{modulo_deudor}&total={deudor}&empresa_id={empresa_id.id}">
+		        	<a href="{modulo_deudor}&total={deudor}&empresa_id={empresa_id.id}&auto_empresa_id={empresa_id.nombre}">
 		        		CARGO
 		        	</a>
 		        </td>
 		        <td width="80" align="center" colspan="2" valign="top" style="padding-right:10px; border-top: solid #ccc;">
-		        	<a href="{modulo_acreedor}&total={deudor}&empresa_id={empresa_id.id}">
+		        	<a href="{modulo_acreedor}&total={deudor}&empresa_id={empresa_id.id}&auto_empresa_id={empresa_id.nombre}">
 		        		ABONO
 		        	</a>
 		        </td>

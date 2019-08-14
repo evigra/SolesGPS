@@ -300,7 +300,7 @@
 			$option["select"]["			
 				CASE					
 					WHEN venta=1 THEN '../pago_venta/'
-					WHEN compra=1 THEN '../compra_venta/'
+					WHEN compra=1 THEN '../pago_compra/'
 				END
 			"]="modulo_acreedor"; 
 			

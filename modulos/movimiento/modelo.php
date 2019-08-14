@@ -186,6 +186,12 @@
   			if((!isset($datas["tipo"]) OR $datas["tipo"]=="") AND isset($this->tipo_movimiento) AND $this->tipo_movimiento!="")
     			$datas["tipo"]					=$this->tipo_movimiento;								
     		    		
+			if(!isset($datas["estatus"]))
+    		{
+    			$datas["estatus"]	="1";    		   			
+				$datas["flow"]		="flow3";
+			}
+
 			if(isset($datas["subtipo"]) AND ($datas["subtipo"]=="SV" OR $datas["subtipo"]=="SC"))	
 			{
 				$datas["iva"]					=0;				

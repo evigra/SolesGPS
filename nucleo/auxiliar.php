@@ -782,13 +782,13 @@
 						
 						unset($_REQUEST["$request_campo"]);
 					}
-					else if(isset($_REQUEST["{$this->sys_name}_auto_$campo"]))
+					else if(isset($_REQUEST["auto_$campo"]))
 					{
 						$valor					=$_REQUEST["{$this->sys_name}_auto_$campo"];
 						
 						$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]]=$valor;
 
-						unset($_REQUEST["{$this->sys_name}_auto_$campo"]);
+						unset($_REQUEST["auto_$campo"]);
 					}
 
 					else if(isset($_REQUEST["sys_filter_". $request_campo]))

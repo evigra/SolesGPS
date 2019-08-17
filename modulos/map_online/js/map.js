@@ -14,7 +14,7 @@
         
         if(window.location.hostname=="developer.solesgps.com" || window.location.hostname=="localhost")
         {
-        	ajax_positions_now("../modulos/travels/ajax/index.php",100);              
+        	ajax_positions_now("../modulos/travel/ajax/index.php",100);              
         }	
 
         ajax_positions_now("../modulos/geofences/ajax/index.php",100);

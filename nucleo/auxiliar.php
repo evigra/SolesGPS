@@ -3697,7 +3697,7 @@
 				        <table class=\"select_devices\" device=\"{$vehicle["id"]}\" lat=\"\" lon=\"\" width=\"100%\" height=\"40\" border=\"0\">
 			        		<tr>
 				        		<td rowspan=\"2\"  width=\"50\" align=\"center\">
-				        			<a href=\"../map_espejo/&a={md5_id}\" target=\"_blank\">
+				        			<a href=\"../map_espejo/&a={$vehicle["md5_id"]}\" target=\"_blank\">
 			        				<img height=\"25\" src=\"../sitio_web/img/car/vehiculo_{$vehicle["image"]}/i135.png\">
 			        				</a>
 			        			</td>

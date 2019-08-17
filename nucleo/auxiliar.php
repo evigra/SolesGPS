@@ -3087,11 +3087,6 @@
 			$sData .='domainId=solesgps&';
 			$sData .='login=e.vizcaino@solesgps.com&';
 			$sData .='passwd=Vz4sPioUm7&';
-
-
-			#$sData .='domainId=test&';
-			#$sData .='login=e.vizcaino&';
-			#$sData .='passwd=r94uf43n&';
 			
 			//No es posible utilizar el remitente en América pero sí en España y Europa
 			$sData .='senderId='.$sSenderId.'&';
@@ -3101,6 +3096,8 @@
 
 			//Tiempo máximo de espera para conectar con el servidor = 5 seg
 			$timeOut = 5; 
+			
+			/*
 			$fp = fsockopen('www.altiria.net', 80, $errno, $errstr, $timeOut);
 			if (!$fp) 
 			{
@@ -3187,6 +3184,7 @@
 					return $output; 
 				}     
 			}
+			*/
 		}					
 		public function __NIVEL_SESION($nivel)
 		{  

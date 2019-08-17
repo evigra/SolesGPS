@@ -1,30 +1,31 @@
 <?php
-    require_once("../../nucleo/sesion.php");
-    #require_once("../../../nucleo/general.php");
-    #require_once("../../../modulos/position/modelo.php");
-	#require_once("../modelo.php");
-
-	$objeto				=new general();
+    require_once("../../../nucleo/sesion.php");
+	$objeto				=new position();
 	$ajax="";
-	
+
 	#if(isset($_SESSION["company"]["id"]))
 	{
 	
 		$comando_sql        ="
 			select 
 				d.id as d_id,
-				d.*,p.*,
+				d.*,p.*,c.*,g.*,
 				d.name as d_name,
 				p.attributes as p_attributes,
 				truncate((admin_soles37.extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
-				DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
+				DATE_SUB(p.devicetime,INTERVAL 5 HOUR) as devicetime
 			from 
 				positions p join 			
 		        devices d on 
-					p.deviceid=d.id
-					AND d.positionid=p.id
-			where 	1=1	
-				AND md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}' 						
+					p.deviceid=d.id 
+					
+					AND d.positionid=p.id join
+				user_group ug on 
+					ug.menu_id=2 join
+				company c on 				
+					d.company_id=c.id,
+				groups g
+			where 	1=1
 		";
 		#echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	
@@ -34,8 +35,6 @@
 		{
 			foreach($datas as $data)
 			{    
-				$_SESSION["seguimiento_id"]=$data["d_id"];
-				
 				$comando_sql        ="
 					select 					
 						CASE 
@@ -63,7 +62,7 @@
 					LIMIT 1
 				";
 
-				#$datas_event     =$objeto->__EXECUTE($comando_sql);	
+				$datas_event     =$objeto->__EXECUTE($comando_sql);	
 		
 				#$objeto->__PRINT_R($data);
 				if(!isset($datas_event[0]["type"]))		$datas_event[0]["type"]		="";
@@ -96,7 +95,6 @@
 					$ot="ot:\"\"";
 			
 				$ajax.="
-					
 			   		////////				        
 					var v 	={st:\"{$data["estatus"]}\",dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
 					locationsMap(v);				
@@ -106,10 +104,12 @@
 		}	
 	}
 	
+	
 		$ajax_positions="";
 		echo "
+			
 			<script>
-				device_active={$data["d_id"]};
+				device_active=7;
 		        if (typeof del_locations == 'function') {
 		            del_locations();
 		        }		

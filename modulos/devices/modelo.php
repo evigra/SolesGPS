@@ -34,8 +34,9 @@
 			    "type"              => "select",
 			    "source"			=>array(
 			    	"1"		=>	"Activa",
+			    	"2"		=>	"Servicio",
 			    	"0"		=>	"Inactiva",
-			    	"-1"	=>	"Servicio",
+			    	"-1"	=>	"Poca recepcion",
 			    ),	
 			),
 			"bloqueo"	    =>array(
@@ -234,6 +235,7 @@
 					"distinct(d.id)"																							=>"d_id",
 					"d.*",
 					"md5(d.id)"=>"attributes",					
+					"md5(CONCAT(CURDATE(),d.id))"=>"md5_id",
 					"IF(image!=0,CONCAT('../sitio_web/img/car/vehiculo_',image,'/i225.png'),'../modulos/device/img/cell.png')"	=>"file_id",
 					"IF(vehicle=1,'../modulos/device/img/car.png','../modulos/device/img/cell.png')"							=>"file_id1",
 			);

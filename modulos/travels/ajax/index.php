@@ -1,4 +1,5 @@
 <?php
+	/*
 	require_once("../../../nucleo/sesion.php");	
 	$option				=array();	
 	$option["name"]		="p_txt";	
@@ -14,5 +15,5 @@
 	$data										= $objeto->__REPORT_SUSTITUTO($option);
 	
 	echo $data["html"];
-	
+	*/
 ?>

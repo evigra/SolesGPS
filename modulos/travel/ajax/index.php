@@ -4,7 +4,7 @@
 
 	$item_obj				=new item($option);	
 	
-	$objeto				=new travels($option);	
+	$objeto				=new travel($option);	
 	$travels_datas		=$objeto->__VIAJE_HOY();
 	
 	$js="

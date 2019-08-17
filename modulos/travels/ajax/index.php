@@ -1,19 +1,33 @@
 <?php
-	/*
-	require_once("../../../nucleo/sesion.php");	
-	$option				=array();	
-	$option["name"]		="p_txt";	
+	require_once("../../../nucleo/sesion.php");
+	#require_once("../../../nucleo/general.php");
 	
-	$objeto				=new personal_txt($option);	
-	#$objeto->__PRINT_R($option);
-	#$objeto->__PRINT_R($objeto);
-
-	
-	$option["actions"]	="false";
-	$option["where"]	=array("trabajador_clave='{$_GET["matricula"]}'","dias LIKE '%/". date("n")."/%'");
-				
-	$data										= $objeto->__REPORT_SUSTITUTO($option);
-	
-	echo $data["html"];
-	*/
+	$objeto				=new general();	
+		
+	$retun=array();
+	$comando_sql        ="
+        select    r.*
+        from      travels t join route r on r.id=t.route_id
+        where  1=1
+			AND t.company_id={$_SESSION["company"]["id"]}
+			AND left(sysdate(),10) BETWEEN t.inicio AND t.fin	
+	";	
+	$data =$objeto->__EXECUTE($comando_sql);	
+	$routes="";
+	if(count($data)>0)
+	{
+		foreach($data as $row)
+		{
+			$routes.="		
+				var origen	=new google.maps.LatLng({$row["start"]});
+				var destino	=new google.maps.LatLng({$row["end"]});				
+				tracert(origen,destino);		
+			";	
+		}
+		echo "
+			<script>
+				$routes
+			</script> 	
+		";	
+	}
 ?>

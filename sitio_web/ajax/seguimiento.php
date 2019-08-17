@@ -7,8 +7,10 @@
 	$objeto				=new general();
 	$ajax="";
 	
+			
+
 	#if(isset($_SESSION["company"]["id"]))
-	{
+	{			
 	
 		$comando_sql        ="
 			select 
@@ -17,14 +19,19 @@
 				d.name as d_name,
 				p.attributes as p_attributes,
 				truncate((admin_soles37.extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
-				DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
+				DATE_SUB(p.devicetime,INTERVAL 6 HOUR) as devicetime
 			from 
 				positions p join 			
 		        devices d on 
 					p.deviceid=d.id
 					AND d.positionid=p.id
 			where 	1=1	
-				AND md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}' 						
+				AND 
+				(	
+					md5(d.id)='{$_SESSION["seguimiento_md5"]}' 					
+					OR 
+					md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}'	
+				)	
 		";
 		#echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	

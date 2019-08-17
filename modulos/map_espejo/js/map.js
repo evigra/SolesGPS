@@ -6,6 +6,7 @@
 	    var coordinates ={latitude:19.057522756727606,longitude:-104.29785901920393};
 	    coordinates ={};
 	    var object      ="map";
+
         
         CreateMap(iZoom,iMap,coordinates,object); 
         

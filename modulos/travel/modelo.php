@@ -20,6 +20,20 @@
 			parent::__CONSTRUCT($option);				
 		}
 		##############################################################################
+   		public function __VIAJE_HOY($option="")
+    	{			    	
+			if($option=="")	$option=array();			
+			if(!isset($option["where"]))	$option["where"]=array();
+			
+			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
+            $option["where"][]              ="fecha<='{$_SESSION["var"]["datetime"]}'";   # PL plantilla
+            $option["where"][]              ="caducidad>='{$_SESSION["var"]["datetime"]}'";   # PL plantilla			
+			if(!isset($this->sys_private["order"]) OR $this->sys_private["order"]=="")
+				$option["order"]="id desc";
+			
+			$return= $this->__BROWSE($option);
+			return $return;
+		}							
 							
 	}
 ?>

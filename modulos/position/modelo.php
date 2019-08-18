@@ -184,7 +184,7 @@
 					$this->__WA(
 						array(
 							"telefono"=>$row["TEL_COMPANY"], 
-							"mensaje"=>"[{$row["NOMBRE"]}] :: Recordatorio Ausencia \n\nTiempo ausente {$row["REPORTO_HACE"]}\n\nPuede apoyarse con el siguiente link
+							"mensaje"=>"[{$row["NOMBRE"]}] :: Recordatorio de Ausencia \n\nTiempo ausente {$row["REPORTO_HACE"]}\n\nPuede apoyarse con el siguiente link
 					
 http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						
@@ -360,6 +360,7 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 				select p.*,
 					p.id as pos_id,
 					d.id as dev_id,
+					md5(d.id) as md5_id,
 					c.id as com_id,
 					c.estatus as com_estatus,
 					c.*,
@@ -521,12 +522,15 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(
 								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: Exceso de velocidad
-									http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg
-									"
+									"telefono"=>$row["TEL_COMPANY"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Exceso de velocidad \n\nPuede apoyarse con el siguiente link
+							
+		http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+								
+										Sistema Automatico SolesGPS"
 								)
-							);							
+							);					
+							
 						}	
 					}	
             		else if($row["event"]=="ALERTA DE BATERIA")
@@ -552,23 +556,15 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(
 								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: {$row["devicetime"]}\nAlerta por falta de bateria \n
+									"telefono"=>$row["TEL_COMPANY"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Alerta por desconeccion de energia \n\nPuede apoyarse con el siguiente link
+							
+		http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+								
 										Sistema Automatico SolesGPS"
 								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
+							);					
+							
 						}	
 					}	
             		else if($row["event"]=="ALERTA SOS PRESIONADO")
@@ -592,23 +588,15 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(
 								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: {$row["devicetime"]}\nAlerta por boton de panico SOS \n
+									"telefono"=>$row["TEL_COMPANY"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Alert SOS presionado \n\nPuede apoyarse con el siguiente link
+							
+		http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+								
 										Sistema Automatico SolesGPS"
 								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
+							);					
+						
 					}	
             		else if($row["event"]=="ALERTA BATERIA BAJA")
             		{	# BATERIA BAJA
@@ -633,23 +621,15 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
 							$this->__WA(
 								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: {$row["devicetime"]}\nAlerta por bateria baja \n
+									"telefono"=>$row["TEL_COMPANY"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Alerta bateria baja \n\nPuede apoyarse con el siguiente link
+							
+		http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+								
 										Sistema Automatico SolesGPS"
 								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
+							);					
+							
 						}	
 					}	
 
@@ -674,26 +654,18 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 						#if($row["com_estatus"]==1)
 						{
 							$this->__SMS("+{$row["c_telefono"]}", $mensaje, false, "");					
+							
 							$this->__WA(
 								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"[{$row["dispo"]}] :: {$row["devicetime"]}\nSuceso desconocido {$row["event"]} \n
+									"telefono"=>$row["TEL_COMPANY"], 
+									"mensaje"=>"[{$row["dispo"]}] :: Evento desconocido \n\nPuede apoyarse con el siguiente link
+							
+		http://solesgps.com/seguimientos/&a={$row["md5_id"]}
+								
 										Sistema Automatico SolesGPS"
 								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
-							$this->__WA(
-								array(
-									"telefono"=>$row["c_telefono"], 
-									"mensaje"=>"http://maps.googleapis.com/maps/api/streetview?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&size=600x300&location={$row["latitude"]},{$row["longitude"]}&algo=.jpg"
-								)
-							);
-
+							);					
+							
 						}	
 								
 					}	
@@ -960,14 +932,6 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 												"
 											)
 										);
-										/*
-										$this->__WA(
-											array(
-												"telefono"=>$position["c_telefono"], 
-												"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
-											)
-										);
-										*/
 									}	
 									$descripcion	="
 										Esta es una alerta ingreso a geocerca
@@ -1050,14 +1014,6 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 											"
 										)
 									);
-									/*
-									$this->__WA(
-										array(
-											"telefono"=>$position["c_telefono"], 
-											"mensaje"=>"http://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7C{$position["latitude"]},{$position["longitude"]}&algo=.jpg"
-										)
-									);
-									*/
 								}
 
 								$return.="{$row["name"]}";

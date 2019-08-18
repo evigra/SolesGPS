@@ -252,15 +252,18 @@
 				$vars["number"]		=$data["telefono"];
 			else	
 				$vars["number"]		="5213141182618";
-	
-			$vars["text"]		=$data["mensaje"];
 
-			$option				=array(
-				"url"			=>$url,
-				"post"			=>$vars
-			);			
-			return				$this->__curl($option);	
-						
+			if($vars["number"]!="")
+			{	
+				$vars["text"]		=$data["mensaje"];
+
+				$option				=array(
+					"url"			=>$url,
+					"post"			=>$vars
+				);
+				return				$this->__curl($option);	
+			}
+			return	"Error";						
     	}			
 		public function WS_TAECEL($data)
     	{    		    		    	

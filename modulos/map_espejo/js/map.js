@@ -11,13 +11,14 @@
         CreateMap(iZoom,iMap,coordinates,object); 
         
 
-        ajax_positions_now("../sitio_web/ajax/seguimiento.php");
-        ajax_positions("../sitio_web/ajax/seguimiento.php");
 
         //if(window.location.hostname=="developer.solesgps.com" || window.location.hostname=="localhost")
         {
         	ajax_positions_now("../modulos/travel/ajax/index.php",100);              
         }	
+
+        ajax_positions_now("../sitio_web/ajax/seguimiento.php");
+        ajax_positions("../sitio_web/ajax/seguimiento.php");
 
 
         status_device();

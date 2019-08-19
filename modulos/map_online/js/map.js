@@ -12,7 +12,7 @@
 		google.maps.event.addListener(map, 'zoom_changed',showGeofence);        
         
         
-        if(window.location.hostname=="developer.solesgps.com" || window.location.hostname=="localhost")
+        //if(window.location.hostname=="developer.solesgps.com" || window.location.hostname=="localhost")
         {
         	ajax_positions_now("../modulos/travel/ajax/index.php",100);              
         }	

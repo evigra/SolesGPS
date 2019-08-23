@@ -22,17 +22,7 @@
 			echo "<br>SESION REASIGNADA-----";		
 			$_SESSION	=json_decode($_COOKIE['SolesGPS']);
 		}	
-	} 				
-	else
-	{
-		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
-		{
-			echo "<br>COOKIES REASIGNADA-----";		
-			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
-		}
-	}
 
-	
 	if(isset($_SESSION))
 	{
 		if(!isset($_SESSION["var"]))			$_SESSION["var"]					=array();
@@ -72,6 +62,19 @@
 			Header ("Location: $destino");			
 		}	
 	}
+
+
+	} 				
+	else
+	{
+		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
+		{
+			echo "<br>COOKIES REASIGNADA-----";		
+			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
+		}
+	}
+
+	
 	$pre_path="";
 	
 	for($a=0; $a<10; $a++)

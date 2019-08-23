@@ -23,6 +23,14 @@
 			$_SESSION	=json_decode($_COOKIE['SolesGPS']);
 		}	
 	} 				
+	else
+	{
+		if(isset($_SESSION["user"]))
+		{
+			echo "<br>COOKIES REASIGNADA-----";		
+			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
+		}
+	}
 
 	
 	if(isset($_SESSION))

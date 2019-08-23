@@ -15,12 +15,12 @@
 		if(isset($_SESSION["user"]))
 		{
 			echo "<br>COOKIES REASIGNADA-----";		
-			setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
+			setcookie('SolesGPS', json_encode($_SESSION_), time() + 31 * 24 * 60 * 60); 
 		}
 		else
 		{
 			echo "<br>SESION REASIGNADA-----";		
-			$_SESSION	=$_COOKIE['SolesGPS'];
+			$_SESSION	=json_decode($_COOKIE['SolesGPS']);
 		}	
 	} 				
 

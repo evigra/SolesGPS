@@ -12,7 +12,7 @@
 	{
 		echo "<br>COOKIES-----";
 		 
-		if(isset($_SESSION["user"]))
+		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
 		{
 			echo "<br>COOKIES REASIGNADA-----";		
 			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
@@ -25,7 +25,7 @@
 	} 				
 	else
 	{
-		if(isset($_SESSION["user"]))
+		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
 		{
 			echo "<br>COOKIES REASIGNADA-----";		
 			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 

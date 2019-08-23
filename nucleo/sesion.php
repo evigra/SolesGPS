@@ -9,11 +9,19 @@
 	if(!isset($_SESSION))		$_SESSION=array();
 
 	if(isset($_COOKIE['SolesGPS']))
-	{ 
-		if(isset($_SESSION["user"]))		
+	{
+		echo "<br>COOKIES-----";
+		 
+		if(isset($_SESSION["user"]))
+		{
+			echo "<br>COOKIES REASIGNADA-----";		
 			setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
+		}
 		else
+		{
+			echo "<br>SESION REASIGNADA-----";		
 			$_SESSION	=$_COOKIE['SolesGPS'];
+		}	
 	} 				
 
 	

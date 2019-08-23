@@ -16,6 +16,7 @@
 		if(@file_exists($path_instalacion . "index.php"))						$sys_location	="Location:instalacion/";
 		else
 		
+		
 		if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["server"]))		$sys_location	="Location:webHome/";							
 		else																	$sys_location	="Location:sesion/";
 		

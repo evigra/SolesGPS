@@ -175,7 +175,7 @@
 						    
 						    setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
 						    
-						    $this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
+						    #$this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
 						    $this->__SAVE_MESSAGE   		="";
 						    
 						    $this->words["mensaje_sesion"]	=	"

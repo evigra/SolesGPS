@@ -4,17 +4,18 @@
 		$usuarios_sesion						="PHPSESSID";
 		session_name($usuarios_sesion);
 		@session_start();
-		session_cache_limiter('nocache,private');			
-		
-		if(isset($_COOKIE['SolesGPS']))
-		{ 
-			if(isset($_SESSION["user"]))		
-				setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
-			else
-				$_SESSION	=$_COOKIE['SolesGPS'];
-		} 				
+		session_cache_limiter('nocache,private');					
 	}
 	if(!isset($_SESSION))		$_SESSION=array();
+
+	if(isset($_COOKIE['SolesGPS']))
+	{ 
+		if(isset($_SESSION["user"]))		
+			setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
+		else
+			$_SESSION	=$_COOKIE['SolesGPS'];
+	} 				
+
 	
 	if(isset($_SESSION))
 	{

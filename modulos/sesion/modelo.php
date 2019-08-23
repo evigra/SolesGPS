@@ -173,7 +173,7 @@
 						    if($user["sesion_start"]!="")   $locacion	=$user["sesion_start"];
 						    else							$locacion	="../map_online/&sys_menu=2";
 						    
-						    #setcookie("solesgps", $user["id"]);
+						    setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
 						    
 						    $this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
 						    $this->__SAVE_MESSAGE   		="";

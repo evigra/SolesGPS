@@ -5,10 +5,14 @@
 		session_name($usuarios_sesion);
 		@session_start();
 		session_cache_limiter('nocache,private');			
-		/*
-		if(count($_COOKIE) > 0 AND isset($_COOKIE["solesgps"])) 
-			$_SESSION=$_COOKIE["solesgps"];
-		*/		
+		
+		if(isset($_COOKIE['SolesGPS']))
+		{ 
+			if(isset($_SESSION["user"]))		
+				setcookie('SolesGPS', $_SESSION, time() + 31 * 24 * 60 * 60); 
+			else
+				$_SESSION	=$_COOKIE['SolesGPS'];
+		} 				
 	}
 	if(!isset($_SESSION))		$_SESSION=array();
 	
@@ -76,19 +80,7 @@
 			require_once($pre_path	."nucleo/general.php");		
 	
 			$objeto					=new general();         
-
-			/*
-			$return=$objeto->__WA(
-				array(
-					"telefono"=>"5213141182618", 
-					"mensaje"=>"LOCAL SERVER"
-				)
-			);							
-			$objeto->__PRINT_R($return); 		    				    		
-			########## */
-			
 			$comando_sql			="SELECT * FROM modulos ";
-
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
 			
 			
@@ -106,7 +98,7 @@
 				$comando_sql="
 					SELECT 
 						FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
-						FN_ImgFile('../modulos/user/img/user.png',files_id,180,0) as img_files_id_med, c.*		
+						FN_ImgFile('../modulos/user/img/user.png',files_id,130,0) as img_files_id_med, c.*		
 					FROM company c WHERE id={$_REQUEST["setting_company"]}
 				";		
 				$modulos 		=$objeto->__EXECUTE($comando_sql);    

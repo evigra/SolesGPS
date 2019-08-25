@@ -28,7 +28,7 @@
 		else																	
 			$sys_location	="Location:sesion/";
 		
-		header($sys_location);
+		#header($sys_location);
 		exit;
 	}
 	$folders=substr_count($_SESSION["var"]["vpath"], "/");

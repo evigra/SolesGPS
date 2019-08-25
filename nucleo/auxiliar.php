@@ -3252,10 +3252,8 @@
     	} 
     	public function __HTML_USER()
     	{
-    		#$this->__PRINT_R($_SESSION);
-    	    $return="";
-    	    #$img=@$_SESSION["user"]["img_files_id_min"];
-    	    $img=@$_SESSION["user"]["img_files_id_sup_chi"];
+    	    $return		="";
+    	    $img		=@$_SESSION["user"]["img_files_id_sup_chi"];
     	    $return="    
     	    	<!--	            	        
     	        <img src=\"../sitio_web/img/settings.png\" height=\"20\">
@@ -3264,8 +3262,6 @@
     	            {$img}
     	        </font>
     	    ";
-
-
     	    return  $return;
     	}
     	

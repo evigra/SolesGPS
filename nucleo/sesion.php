@@ -92,7 +92,7 @@
 				$comando_sql="
 					SELECT 
 						FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
-						FN_ImgFile('../modulos/user/img/user.png',files_id,90,0) as img_files_id_med, c.*		
+						FN_ImgFile('../modulos/user/img/user.png',files_id,50,0) as img_files_id_med, c.*		
 					FROM company c WHERE id={$_REQUEST["setting_company"]}
 				";		
 				$modulos 		=$objeto->__EXECUTE($comando_sql);    

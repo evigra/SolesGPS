@@ -100,9 +100,7 @@
 			break;
 		}				
 		$pre_path.="../";
-	}
-
-	
+	}	
 
 	if(!isset($_GET["sys_action"]) AND isset($_SESSION) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
 	{

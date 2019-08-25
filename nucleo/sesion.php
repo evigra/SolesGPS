@@ -104,9 +104,9 @@
 
 	
 
-	if(isset($_SESSION) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
+	if(!isset($_GET["sys_action"]) isset($_SESSION) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
 	{
-		$md5_id		=md5($_SESSION["user"]["md5_id"]); 
+		$md5_id		=$_SESSION["user"]["md5_id"]; 
 		setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));		
 	}
 ?>

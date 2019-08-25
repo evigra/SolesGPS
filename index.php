@@ -14,7 +14,7 @@
 		if(@file_exists($path_instalacion . "index.php"))						$sys_location	="Location:instalacion/";
 		else
 
-		/*
+		#/*
 		echo "<pre>";
 		print_r($_COOKIE);
 		print_r($_SESSION);

@@ -1,5 +1,10 @@
 <?php	
 	$objeto	=new sesion();
+	$objeto->words["mensaje_sesion"]				="
+		<font size='3'>
+			<b>SolesGPS tiene</b> las funciones mas interesantes.<br>
+			<b>Notificaciones</b> a su Smartphone, <b>para recibirlas con WhatsApp</b>
+		</font>";
 
 	$objeto->words["html_head_description"]			="SolesGPS desarrollo su propia plataforma de rastreo vehicular y celular, con la finalidad de satisfacer las nececidades de sus clientes";	
 	$objeto->words["html_head_keywords"] 			="GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";

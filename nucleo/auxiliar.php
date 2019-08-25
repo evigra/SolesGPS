@@ -3255,9 +3255,6 @@
     	    $return		="";
     	    $img		=@$_SESSION["user"]["img_files_id_sup_chi"];
     	    $return="    
-    	    	<!--	            	        
-    	        <img src=\"../sitio_web/img/settings.png\" height=\"20\">
-    	        -->
     	        <font id=\"setting\" title=\"Ajustes\">
     	            {$img}
     	        </font>

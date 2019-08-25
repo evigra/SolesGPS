@@ -44,6 +44,6 @@
 				$_SESSION["var"]["vpath"]	.="../";
 		$_SESSION["var"]["vpath"]			.="errores/";		
 
-		header('Location:'.$_SESSION["var"]["vpath"]);		
+		#header('Location:'.$_SESSION["var"]["vpath"]);		
 	}
 ?>

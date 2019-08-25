@@ -40,11 +40,11 @@
 		);
 		$_SESSION["var"]["server"]			=array_merge($_SESSION["var"]["server_true"], $_SESSION["var"]["server_error"]);
 
-		print_r($_GET);	
+		#print_r($_GET);	
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
-			print_r($_GET["sys_action"]);
+			print_r($_GET);
 			$_SESSION["var"]["action"]="cerrar_sesion";
 			unset($_SESSION["user"]);
 			unset($_SESSION["company"]);

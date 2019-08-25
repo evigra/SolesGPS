@@ -43,6 +43,7 @@
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
+			print_r($_GET["sys_action"]);
 			$_SESSION["var"]["action"]="cerrar_sesion";
 			unset($_SESSION["user"]);
 			unset($_SESSION["company"]);
@@ -50,7 +51,7 @@
 			setcookie('SolesGPS', '', time() - (60 * 60 * 24 * 365));
 			session_destroy();
 			$destino= "../sesion/";	
-			Header ("Location: $destino");			
+			#Header ("Location: $destino");			
 		}	
 	}
 	$pre_path="";

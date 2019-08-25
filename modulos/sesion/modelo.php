@@ -136,15 +136,11 @@
 		    else							$locacion	="../map_online/&sys_menu=2";
 		    
 		    $md5_id		=$user["md5_id"];
-		    #echo "<pre><br>$md5_id CREA Cookie--------";
-		    #$this->__PRINT_R($_SESSION["user"]["id"]);
 		    
 			setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));
-		
-		    echo "</pre>";
     	
 			#$this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
-			$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
+			#$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
 		}				
 		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)

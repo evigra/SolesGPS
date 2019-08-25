@@ -43,7 +43,9 @@
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
-			unset($_SESSION);
+			unset($_SESSION["user"]);
+			unset($_SESSION["company"]);
+			
 			setcookie('SolesGPS', '', time() - (60 * 60 * 24 * 365));
 			session_destroy();
 			$destino= "../sesion/";	

@@ -137,10 +137,11 @@
 		    
 		    $md5_id		=$user["md5_id"];
 		    
-			setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));
-    	
+			setcookie('SolesGPS', $md5_id, time() + (1.5 * 24 * 60 * 60));
+
+			    	
 			#$this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
-			#$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
+			$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
 		}				
 		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)

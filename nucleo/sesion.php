@@ -92,7 +92,7 @@
 				$comando_sql="
 					SELECT 
 						FN_ImgFile('../modulos/user/img/user.png',files_id,0,0) as img_files_id,
-						FN_ImgFile('../modulos/user/img/user.png',files_id,110,0) as img_files_id_med, c.*		
+						FN_ImgFile('../modulos/user/img/user.png',files_id,90,0) as img_files_id_med, c.*		
 					FROM company c WHERE id={$_REQUEST["setting_company"]}
 				";		
 				$modulos 		=$objeto->__EXECUTE($comando_sql);    
@@ -107,6 +107,6 @@
 	if(isset($_SESSION) AND !isset($_SESSION["var"]["action"]) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
 	{
 		$md5_id		=$_SESSION["user"]["md5_id"]; 
-		setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));		
+		setcookie('SolesGPS', $md5_id, time() + (1.5 * 24 * 60 * 60));		
 	}
 ?>

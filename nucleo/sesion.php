@@ -43,6 +43,8 @@
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
+			unset($_SESSION);
+			setcookie('SolesGPS', '', time() - (60 * 60 * 24 * 365));
 			session_destroy();
 			$destino= "../sesion/";	
 			Header ("Location: $destino");			
@@ -105,6 +107,4 @@
 		$md5_id		=md5($_SESSION["user"]["md5_id"]); 
 		setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));		
 	}
-	setcookie('SolesGPS', '', time() - 3600);
-	
 ?>

@@ -43,6 +43,7 @@
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
+			$_SESSION["var"]["action"]="cerrar_sesion";
 			unset($_SESSION["user"]);
 			unset($_SESSION["company"]);
 			
@@ -101,8 +102,7 @@
 		}				
 		$pre_path.="../";
 	}	
-
-	if(!isset($_GET["sys_action"]) AND isset($_SESSION) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
+	if(isset($_SESSION) AND !isset($_SESSION["var"]["action"]) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
 	{
 		$md5_id		=$_SESSION["user"]["md5_id"]; 
 		setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));		

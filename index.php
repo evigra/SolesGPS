@@ -21,7 +21,7 @@
 		echo "</pre>";
 		#*/
 		
-		if(isset($_COOKIE['SolesGPS']) AND !isset($_GET["sys_action"]))
+		if(isset($_COOKIE['SolesGPS']) AND !isset($_SESSION["var"]["action"]))
 			$sys_location	="Location:sesion/&cookie=1";
 		elseif(in_array($_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_true"]))	
 			$sys_location	="Location:webHome/";							

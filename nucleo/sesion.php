@@ -1,4 +1,4 @@
-<?php	
+<?php
 	if(!isset($_SESSION))
 	{
 		$usuarios_sesion						="PHPSESSID";
@@ -6,23 +6,9 @@
 		@session_start();
 		session_cache_limiter('nocache,private');					
 	}
+	
 	if(!isset($_SESSION))		$_SESSION=array();
-
-	if(isset($_COOKIE['SolesGPS']))
-	{
-		echo "<br>COOKIES-----";
-		 
-		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
-		{
-			echo "<br>COOKIES REASIGNADA-----";		
-			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
-		}
-		else
-		{
-			echo "<br>SESION REASIGNADA-----";		
-			$_SESSION	=json_decode($_COOKIE['SolesGPS']);
-		}	
-
+	
 	if(isset($_SESSION))
 	{
 		if(!isset($_SESSION["var"]))			$_SESSION["var"]					=array();
@@ -62,26 +48,11 @@
 			Header ("Location: $destino");			
 		}	
 	}
-
-
-	} 				
-	else
-	{
-		if(isset($_SESSION["user"]) AND isset($_SESSION["company"]) AND isset($_SESSION["session"]))
-		{
-			echo "<br>COOKIES REASIGNADA-----";		
-			setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
-		}
-	}
-
-	
 	$pre_path="";
 	
 	for($a=0; $a<10; $a++)
 	{
 		$path_instalacion="modulos/instalacion/";
-
-		#/*
 
 		if(@file_exists($path_instalacion . "index.php"))
 		{
@@ -103,15 +74,11 @@
 			$comando_sql			="SELECT * FROM modulos ";
 			$modulos 				=$objeto->__EXECUTE($comando_sql);    
 			
-			
-			
-			#/*
 			foreach($modulos as $modulo)
 			{
 				if(file_exists($pre_path	."modulos/{$modulo["clase"]}/modelo.php")) 				
 					require_once($pre_path	."modulos/{$modulo["clase"]}/modelo.php");	
 			}
-			#*/
 			
 			if(@$_REQUEST["setting_company"]>0)
 			{
@@ -130,4 +97,14 @@
 		}				
 		$pre_path.="../";
 	}
+
+	
+
+	if(isset($_SESSION) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
+	{
+		$md5_id		=md5($_SESSION["user"]["md5_id"]); 
+		setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));		
+	}
+	setcookie('SolesGPS', '', time() - 3600);
+	
 ?>

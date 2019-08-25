@@ -48,16 +48,9 @@
 		public function __SESSION()
 		{  
 			$redireccionar= "<script>window.location=\"../webHome/\";</script>";
-			if(is_array($_SESSION))
+			if(is_array($_SESSION) AND isset($_SESSION["user"]) AND is_array($_SESSION["user"]) AND isset($_SESSION["user"]["name"]))
 			{
-				if(array_key_exists("user",$_SESSION))
-				{
-					if(is_array($_SESSION["user"]))
-					{
-						if(array_key_exists("name",$_SESSION["user"]) AND $_SESSION["user"]["name"]!="")
-							$redireccionar= "";					
-					}					
-				}			
+				$redireccionar= "";					
 			}
 			//orden_venta/&sys_action=print_pdf&sys_section=write&sys_id=90&sys_pdf=S
 			if($this->sys_private["action"]=="print_pdf")
@@ -66,19 +59,13 @@
 			}
 			if($redireccionar!="")
 			{
-				$_SESSION=array();
-				$_SESSION["user"]="Invitado";
+				#$_SESSION=array();
+				#$_SESSION["user"]="Invitado";
 				echo $redireccionar;
 				exit();
 			}
 			
     	}
-    	/*    	
-		public function __SAVE_ALERT($option)
-		{  
-
-		} 
-		*/   	
 		public function __MENU_SEGUIMIENTO()
 		{  
 				$view			=$this->__TEMPLATE("sitio_web/html/menu_seguimiento");				

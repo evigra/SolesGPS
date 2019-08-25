@@ -8,12 +8,10 @@
 	$objeto->words["html_head_css"]					=$objeto->__FILE_CSS(array("../".$objeto->sys_var["module_path"]."css/index",));	
 	$objeto->words["html_head_js"] 					=$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."js/index"));	
 		
-		
 	$objeto->words["system_module"]					=$objeto->__VIEW_CREATE();		
 	$objeto->words                 					=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 	$objeto->words["system_menu"]   				=$objeto->__TEMPLATE($objeto->sys_html."system_menu");    
-	$view	="front_end";
-	
+	$view											="front_end";	
  		
 	$objeto->html                  					= $objeto->__VIEW_TEMPLATE($view, $objeto->words);
 	$objeto->words["module_title"]					="Sesiones registradas";

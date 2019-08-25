@@ -1,8 +1,6 @@
 <?php
 	require_once("nucleo/sesion.php");	
 	
-	#PRINT_R($_SERVER);
-
 	##############################################################################	
 	##  Propiedades	
 	##############################################################################
@@ -15,10 +13,20 @@
 		$path_instalacion="modulos/instalacion/";
 		if(@file_exists($path_instalacion . "index.php"))						$sys_location	="Location:instalacion/";
 		else
+
+		/*
+		echo "<pre>";
+		print_r($_COOKIE);
+		print_r($_SESSION);
+		echo "</pre>";
+		#*/
 		
-		
-		if(in_array($_SERVER["SERVER_NAME"],$_SESSION["obj"]["server"]))		$sys_location	="Location:webHome/";							
-		else																	$sys_location	="Location:sesion/";
+		if(isset($_COOKIE['SolesGPS']))
+			$sys_location	="Location:sesion/&cookie=1";
+		elseif(in_array($_SERVER["SERVER_NAME"],@$_SESSION["var"]["server_true"]))	
+			$sys_location	="Location:webHome/";							
+		else																	
+			$sys_location	="Location:sesion/";
 		
 		header($sys_location);
 		exit;
@@ -38,5 +46,4 @@
 
 		header('Location:'.$_SESSION["var"]["vpath"]);		
 	}
-	#*/
 ?>

@@ -60,10 +60,21 @@
 		##  Metodos	
 		##############################################################################
 		public function __CONSTRUCT($option=null)
-		{
+		{			
 			$return = parent::__CONSTRUCT($option);			
+
+			if(isset($_COOKIE['SolesGPS']))
+			{
+				$cookie_md5		=$_COOKIE['SolesGPS'];
+				$user			=$this->sys_fields["user"]["obj"]->session_cookie($cookie_md5);				
+											
+				#$this->__PRINT_R($user);							
+												
+				$this->__SET_SESSION($user);				
+			}				
 			return $return;
 		}        
+		##############################################################################
 		public function huso_horario($option)
 		{
 			$return=-5;
@@ -81,29 +92,61 @@
 			
 			return $return;
 		}        
-		
-		public function sesion($option=NULL)		
+		##############################################################################
+		public function __SET_SESSION($user)		
     	{	
-    		if(is_null($option))	$option=array();
-    		
-			$option["select"]	=array(				
-				"s.*",
-				"u.*",
-				"c.*",
-			);
-			$option["from"]		="
-				sesion s join
-				users u on s.user_id=u.id join
-				company c on c.id=u.company_id
-			";
-			$option["order"]		="date desc";
-			
-			if(!isset($option["where"]))
-				$option["where"]=" and u.company_id={$_SESSION["company"]["id"]} or u.id={$_SESSION["user"]["id"]}";
-			$return =$this->__VIEW_REPORT($option);    				
-			return $return;
-		}				
+			$comando_sql="
+				SELECT * 
+				FROM 
+					groups g join 
+					user_group ug on ug.active=g.id 
+				WHERE 1=1
+					AND user_id={$user["id"]}
+					AND active>0
+			";		
 
+			$option_conf					=array();
+
+			$option_conf["open"]			=1;
+			$option_conf["close"]			=1;
+		
+			$data_usergroup 				=$this->__EXECUTE($comando_sql,$option_conf);						
+			
+			$option_company					=array("where"=>array("id={$user["company_id"]}"));
+			$data_company					=$this->sys_fields["company"]["obj"]->__BROWSE($option_company);												
+	
+			$data_sesion					=array();
+			$data_sesion["user_id"]			=$user["id"];
+			$data_sesion["date"]			=$_SESSION["var"]["datetime"];
+			$data_sesion["server_addr"]		=$_SERVER["SERVER_ADDR"];
+			$data_sesion["remote_addr"]		=$_SERVER["REMOTE_ADDR"];
+			$data_sesion["http_user_agent"]	=$_SERVER["HTTP_USER_AGENT"];
+		
+			$option							=array("message"=>"");
+			parent::__SAVE($data_sesion,$option);
+		    $_SESSION["user"]       		=$user;		
+		    $_SESSION["session"]    		=@$data_sesion;						    						    						    						    
+		    $_SESSION["group"]				=@$data_usergroup;
+		    $_SESSION["company"]			=@$data_company["data"][0];
+		    
+		    if($_SESSION["user"]["sesion_start"]!="")	$sesion_start	=$_SESSION["user"]["sesion_start"];
+		    else										$sesion_start	="";
+		    
+		    if($user["sesion_start"]!="")   $locacion	=$user["sesion_start"];
+		    else							$locacion	="../map_online/&sys_menu=2";
+		    
+		    $md5_id		=$user["md5_id"];
+		    #echo "<pre><br>$md5_id CREA Cookie--------";
+		    #$this->__PRINT_R($_SESSION["user"]["id"]);
+		    
+			setcookie('SolesGPS', $md5_id, time() + (5 * 24 * 60 * 60));
+		
+		    echo "</pre>";
+    	
+			#$this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
+			$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
+		}				
+		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
 	   		$this->words["mensaje_sesion"]	= 	"
@@ -130,52 +173,9 @@
 					if($user["email"]==$datas["user"])
 					{
 						if($user["password"]==md5($datas["pass"]))						
-						{
-							$comando_sql="
-								SELECT * 
-								FROM 
-									groups g join 
-									user_group ug on ug.active=g.id 
-								WHERE 1=1
-									AND user_id={$user["id"]}
-									AND active>0
-							";		
-
-							$option_conf					=array();
-
-							$option_conf["open"]			=1;
-							$option_conf["close"]			=1;
-						
-							$data_usergroup 				=$this->__EXECUTE($comando_sql,$option_conf);						
-							
-							$option_company					=array("where"=>array("id={$user["company_id"]}"));
-							$data_company					=$this->sys_fields["company"]["obj"]->__BROWSE($option_company);												
-					
-							#$this->__PRINT_R($data_company);
-					
-							$data_sesion					=array();
-							$data_sesion["user_id"]			=$user["id"];
-							$data_sesion["date"]			=$_SESSION["var"]["datetime"];
-							$data_sesion["server_addr"]		=$_SERVER["SERVER_ADDR"];
-							$data_sesion["remote_addr"]		=$_SERVER["REMOTE_ADDR"];
-							$data_sesion["http_user_agent"]	=$_SERVER["HTTP_USER_AGENT"];
-						
-							$option							=array("message"=>"");
-							parent::__SAVE($data_sesion,$option);
-						    $_SESSION["user"]       		=$user;		
-						    $_SESSION["session"]    		=@$data_sesion;						    						    						    						    
-						    $_SESSION["group"]				=@$data_usergroup;
-						    $_SESSION["company"]			=@$data_company["data"][0];
-						    
-						    if($_SESSION["user"]["sesion_start"]!="")	$sesion_start	=$_SESSION["user"]["sesion_start"];
-						    else										$sesion_start	="";
-						    
-						    if($user["sesion_start"]!="")   $locacion	=$user["sesion_start"];
-						    else							$locacion	="../map_online/&sys_menu=2";
-						    
-						    setcookie('SolesGPS', json_encode($_SESSION), time() + 31 * 24 * 60 * 60); 
-						    
-						   $this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
+						{						
+							$this->__SET_SESSION($user);
+						   	
 						    $this->__SAVE_MESSAGE   		="";
 						    
 						    $this->words["mensaje_sesion"]	=	"

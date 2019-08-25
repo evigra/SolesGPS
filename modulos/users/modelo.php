@@ -200,6 +200,25 @@
 			return $this->words;
     	}
 
+		public function session_cookie($cookie_md5)
+    	{
+    	    $option=array(
+    	    	"where"=>
+			    	array(
+						"md5(id)='$cookie_md5'",
+						"status=1"
+			    	),
+    	    );
+    	    $data_user	=$this->users($option);    	        	    
+    	    if(is_array($data_user) AND array_key_exists("data",$data_user))
+    	    {    	    	
+    	    	if(count($data_user["data"])>0)	$return=$data_user["data"][0];
+    	    	else							$return=$data_user["data"];
+    	    }
+			return $return;
+		}		
+
+
 		public function session($user,$pass)
     	{
     	    $option=array(
@@ -219,23 +238,6 @@
     	    }
 			return $return;
 		}		
-		/*
-		public function session2($user)
-    	{
-    	    $option=array(
-    	    	"where"=>
-			    	array("email='$user'"),
-    	    );
-    	    $data_user	=$this->users($option);    	    
-    	    
-    	    if(is_array($data_user) AND array_key_exists("data",$data_user))
-    	    {    	    	
-    	    	if(count($data_user["data"])>0)	$return=$data_user["data"][0];
-    	    	else							$return=$data_user["data"];
-    	    }
-			return $return;
-		}
-		*/
 		//////////////////////////////////////////////////		
 		public function autocomplete_user()		
     	{	
@@ -262,18 +264,13 @@
     		if(!isset($option["select"]))	$option["select"]		=array();
     		if(!isset($option["where"]))	$option["where"]		=array();
     		
+    		$option["select"]["md5(u.id)"]														="md5_id";
+    		$option["select"][]																	="u.*";
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]		="img_files_id";
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,300,300)"]	="img_files_id_med";				
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,150,90)"]	="img_files_id_chi";
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,40,24)"]		="img_files_id_sup_chi";
     		
-			#$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]		="img_files_id";
-			#$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,300,300)"]	="img_files_id_med";				
-			#$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,150,90)"]	="img_files_id_chi";
-			#$option["select"]["admin_soles37.FN_ImgFile('../modulos/users/img/user.png',files_id,40,24)"]	="img_files_id_sup_chi";
-
-    		
-			$option["select"][]																="u.*";
 			$option["from"]		="users u";			
 
 			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))
@@ -281,6 +278,5 @@
 
 			return parent::__BROWSE($option);
 		}				
-
 	}
 ?>

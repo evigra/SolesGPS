@@ -33,9 +33,10 @@
 		$option["select"]["left(right(p.devicetime,8),5)"]	="devicetime";
 		$option["select"][]									="p.speed";
 
-		$option["where"][]									="left(now(),10)=left(p.devicetime,10)";
+		#$option["where"][]									="left(now(),10)=left(p.devicetime,10)";
+		$option["where"][]									="left('2019-08-31',10)=left(p.devicetime,10)";
 		$option["order"]									="devicetime ASC";
-		$option["limit"]									="1000";
+		#$option["limit"]									="1000";
 
 		$data												=$objeto->__VIEW_GRAPH($option);		
 		$objeto->words["module_body"]						=$data["html"];

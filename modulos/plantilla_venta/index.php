@@ -96,7 +96,7 @@
 		);
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		$option										=array();
+    	$option										=$objeto->__BROWSE_CUENTAS($option);
 		$data										=$objeto->__VIEW_KANBAN($option);		
 		$objeto->words["module_body"]				=$data["html"];
     }    

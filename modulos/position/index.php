@@ -30,10 +30,10 @@
 		
 		if(!isset($option["select"]))	$option["select"]	=array();
 
-		$option["select"][]		="devicetime";
-		$option["select"][]		="speed";
+		$option["select"][]		="p.devicetime";
+		$option["select"][]		="p.speed";
 
-		$option["where"][]		="left(now(),10)=left(devicetime,10)";
+		$option["where"][]		="left(now(),10)=left(p.devicetime,10)";
 
 		$data										=$objeto->__VIEW_GRAPH($option);		
 		$objeto->words["module_body"]				=$data;

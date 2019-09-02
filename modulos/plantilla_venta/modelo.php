@@ -54,15 +54,10 @@
 			$option["where"][]						="cron_cantidad>0";
 			$option["where"][]						="estatus=1";
 		
-			#$option["echo"]							="PLANTILLA VENTA echo";
 			$crons_data 							=$this->__BROWSE($option);			
-
-			#$this->__PRINT_R($crons_data);
-
 		
 			foreach($crons_data["data"] as $rows)
 			{				
-				#$this->__PRINT_R($rows);
 				$this->sys_private["id"]			=$rows["id"];
 				$rows["tipo"]						=$this->tipo_movimiento;
 				$this->__SAVE($rows);
@@ -85,11 +80,10 @@
 					unset($rows["movimientos_ids"][$indice]["movimiento_id"]);
 					unset($rows["movimientos_ids"][$indice]["id"]);
 				}
-				
-				
-								
+																
 				$this->sys_private["id"]		="";
 				$id=$this->__SAVE($rows);
+
 /*
 				$this->__WA(
 					array(

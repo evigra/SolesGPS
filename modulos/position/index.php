@@ -4,8 +4,8 @@
 	$objeto										=new position();
 	$objeto->__SESSION();
 	#$objeto->__PRINT_R($objeto);
-	$_SESSION["module"]=array();
-	$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
+	#$_SESSION["module"]=array();
+	#$_SESSION["module"]["sys_section"]			=$objeto->sys_section;
 	
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO

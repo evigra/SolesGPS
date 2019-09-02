@@ -35,7 +35,7 @@
 			$option["where"][]		="flow='flow3'";
 			$option["where"][]		="tipo IN ('PV','TV')";
 			$option["where"][]		="
-				AND (
+				(
 					left(now(),7)=left(caducidad,7)
 		            OR left(now(),7)=left(fecha,7)
 		        )			

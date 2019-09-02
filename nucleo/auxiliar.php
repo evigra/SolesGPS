@@ -2408,11 +2408,13 @@
 				foreach($row as $field=>$fieldvalue)			
 				{			
 					if($columna=="")	$columna	="'$fieldvalue'";			
-					else				$columna	.=",'$fieldvalue'";	
+					else				$columna	.=",$fieldvalue";	
 				}
 				if($fila=="")	$fila="[$columna]";				
 				else			$fila.=",[$columna]";
 			}	
+			
+			
 			if($fila!="")
 			{
 				

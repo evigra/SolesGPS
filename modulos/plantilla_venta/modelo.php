@@ -79,6 +79,7 @@
 				) m1 
 			";
 			$option["group"]	="m1.empresa_id";
+			$option["echo"]		="AAAAA";
 			return $option;
 		}
 

@@ -2432,6 +2432,8 @@
 						var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
 						chart.draw(data, options);
 					</script>			
+					<div id='chart_div' style='width: 100%; height: 500px;'></div>
+
 				";
 			
 			}

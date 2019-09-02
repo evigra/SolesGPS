@@ -26,14 +26,15 @@
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option				=array();			
-		if(!isset($option["where"]))	$option["where"]	=array();
-		
+		if(!isset($option["where"]))	$option["where"]	=array();		
 		if(!isset($option["select"]))	$option["select"]	=array();
+
+		$option["echo"]			="GRAPH";
 
 		$option["select"][]		="p.devicetime";
 		$option["select"][]		="p.speed";
 
-		$option["where"][]		="left(now(),10)=left(p.devicetime,10)";
+		$option["where"][]		="left(now(),7)=left(p.devicetime,7)";
 
 		$data										=$objeto->__VIEW_GRAPH($option);		
 		$objeto->words["module_body"]				=$data;

@@ -3279,7 +3279,7 @@
 						
 		    if(is_array($data))
 		    {
-		        foreach($data as $field=>$valor)
+		        foreach($data as $valor)
 				{    		    													   
 				    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
 				    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
@@ -3296,7 +3296,6 @@
 						<script type='text/javascript'>
 							google.charts.load('current', {'packages':['corechart']});
 							google.charts.setOnLoadCallback(drawChart);
-
 						</script>			
 				    ";    		    
 

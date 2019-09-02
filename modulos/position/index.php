@@ -35,7 +35,7 @@
 
 		$option["where"][]									="left(now(),10)=left(p.devicetime,10)";
 		$option["order"]									="devicetime ASC";
-		$option["limit"]									="10";
+		$option["limit"]									="100";
 
 		$data												=$objeto->__VIEW_GRAPH($option);		
 		$objeto->words["module_body"]						=$data["html"];

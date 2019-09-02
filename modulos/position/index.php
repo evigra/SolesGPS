@@ -25,7 +25,7 @@
 		);
 	
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
-		if($option=="")					$option				=array();			
+		$option				=array();			
 		if(!isset($option["where"]))	$option["where"]	=array();
 		
 		if(!isset($option["select"]))	$option["select"]	=array();

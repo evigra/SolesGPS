@@ -2414,10 +2414,11 @@
 				else			$fila.=",[$columna]";
 			}	
 			
+			$fila="['aa','aaaaa'],$fila";
+			
 			
 			if($fila!="")
-			{
-				
+			{				
 				$return=array(
 					"data"=>$fila,	
 					"html"=>"<div id='chart_div' style='width: 100%; height: 500px;'></div>"

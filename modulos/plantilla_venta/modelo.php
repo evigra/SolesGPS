@@ -27,59 +27,27 @@
 			
 			if(!isset($option["select"]))	$option["select"]	=array();
 
-			$option["select"][]	="m1.*";
-			$option["select"]["CASE WHEN SUM(m1.orden)>0 THEN SUM(m1.orden)	END"]	="orden";
-			$option["select"]["CASE WHEN SUM(m1.pago)>0 THEN SUM(m1.pago) END"]		="pago";
-			$option["select"]["			
-				CASE					
-					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.orden)-SUM(m1.pago)
-					WHEN venta=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.orden)-SUM(m1.pago)
-					WHEN venta=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
+			$option["select"]["SUM(total)"]	="total";
+			$option["select"][]				="tipo";
+			#$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
 
-					WHEN compra=1 AND SUM(m1.orden)-SUM(m1.pago)>0 THEN SUM(m1.pago)-SUM(m1.orden)
-					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN SUM(m1.pago)-SUM(m1.orden)
-					#WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)=0 THEN ''
-				END
-			"]="deudor"; 
-			$option["select"]["			
-				CASE					
-					WHEN venta=1 THEN ''
-					WHEN compra=1 THEN ''
-				END
-			"]="modulo_deudor"; 
-
-
-			$option["select"]["				
-				CASE 
-					WHEN compra=1 AND SUM(m1.pago)-SUM(m1.orden)>0 THEN ''
-				END				
-			"]="acreedor";
-			$option["select"]["			
-				CASE					
-					WHEN venta=1 THEN '../pago_venta/'
-					WHEN compra=1 THEN '../pago_compra/'
-				END
-			"]="modulo_acreedor"; 
-			
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND COMPRA=1, '#ff0000','')"]="color1";
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)!=0 AND VENTA=1, '#1bce54','')"]="color2";    
-			$option["select"]["IF(SUM(m1.orden)-SUM(m1.pago)=0, '#ccc','')"]="color3";
-
-			$option["from"]		="
-				(
-					SELECT  
-						(CASE WHEN tipo IN (\"PV\",\"OC\") then total else 0 end) as PAGO,
-						(CASE WHEN tipo IN (\"OV\",\"PC\") then total else 0 end) as ORDEN,		
-						m.*
-					FROM movimiento m 
-					WHERE 
-						tipo in (\"PV\", \"OV\",\"PC\", \"OC\")			
-						AND estatus=1
-						AND flow='flow3'
-				) m1 
+			$option["where"][]		="estatus=1";
+			$option["where"][]		="flow='flow3'";
+			$option["where"][]		="tipo IN ('PV','TV')";
+			$option["where"][]		="
+				AND (
+					left(now(),7)=left(caducidad,7)
+		            OR left(now(),7)=left(fecha,7)
+		        )			
 			";
-			$option["group"]	="m1.empresa_id";
-			$option["echo"]		="AAAAA";
+
+
+
+    
+
+
+
+			$option["group"]	="tipo";
 			return $option;
 		}
 

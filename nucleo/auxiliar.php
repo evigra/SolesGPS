@@ -2412,7 +2412,7 @@
 				if($fila=="")	$fila="[$columna]";				
 				else			$fila.="[$columna]";
 			}	
-			if($fila!="")
+			#if($fila!="")
 			{
 				$return="
 

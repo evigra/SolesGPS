@@ -13,6 +13,7 @@
 	$files_js=array("maps","responsivevoice");
 	$files_js=array("maps");
 
+/*
 	if($objeto->sys_section=="report")
 	{
 		$option=array();
@@ -68,14 +69,33 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     	//
     }
-     elseif($objeto->sys_section=="stop")
-    {   
-        $objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
-        $files_js[]="../{$objeto->sys_module}js/history";
-        $files_js[]="../{$objeto->sys_module}js/jquery-ui-timepicker-addon";
-        $objeto->words["module_body"]               =$objeto->__VIEW_CREATE($objeto->sys_module . "html/stop"); 
-        $objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);              
-    }  
+     else
+     */
+	if($objeto->sys_private["section"]=="graph")
+	{
+		#BOTONES SECCION DERECHA
+		$module_right=array(
+		    array("create"=>"Crear"),
+		    array("graph"=>"Grafica"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+	
+		#CARGANDO VISTA PARTICULAR Y CAMPOS
+		if($option=="")					$option				=array();			
+		if(!isset($option["where"]))	$option["where"]	=array();
+		
+		if(!isset($option["select"]))	$option["select"]	=array();
+
+		$option["select"][]		="devicetime";
+		$option["select"][]		="speed";
+
+		$option["where"][]		="left(now(),10)=left(devicetime,10)";
+
+		$data										=$objeto->__VIEW_GRAPH($option);		
+		$objeto->words["module_body"]				=$data["html"];
+    }    
     else // $objeto->sys_section=map
     {
 		$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");

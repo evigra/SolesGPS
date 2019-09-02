@@ -2395,6 +2395,50 @@
 			$option["type_view"]="kanban";
 			return $this->__SYS_REPORT($option);
         }				
+    	##############################################################################    
+		public function __VIEW_GRAPH($option=array())
+		{
+			$return		="";
+			$fila		="";
+			$datas 		=$this->__BROWSE($option);
+		    foreach($datas["data"] as $row_id=>$row)			
+		    {
+		    	$columna="";
+				foreach($row as $field=>$fieldvalue)			
+				{			
+					if($columna=="")	$columna	="'$fieldvalue'";			
+					else				$columna	.=",'$fieldvalue'";	
+				}
+				if($fila=="")	$fila="[$columna]";				
+				else			$fila.="[$columna]";
+			}	
+			if($fila!="")
+			{
+				$return="
+
+					<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+					<script type='text/javascript'>
+
+
+						var data = google.visualization.arrayToDataTable($fila);
+
+						var options = {
+						  title: 'Company Performance',
+						  hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+						  vAxis: {minValue: 0}
+						};
+
+						var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+						chart.draw(data, options);
+					</script>			
+				";
+			
+			}
+			
+			
+			return $return;
+		}    	
+
 		###################################
 		public function __VIEW_REPORT($option=array())
 		{
@@ -2410,7 +2454,7 @@
 				if(!isset($option["template_title"]))	$option["template_title"]	=$this->sys_var["module_path"]."html/report_title";
 				if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/report_body";			
 			}
-			else
+			elseif($option["type_view"]=="kanban")
 			{
 				if(!isset($option["template_body"]))	$option["template_body"]	=$this->sys_var["module_path"]."html/kanban";						
 			}
@@ -3349,6 +3393,7 @@
 			        		if(@$icon=="")
 			        		{
 			        			if($etiqueta=="create") 	$icon="ui-icon-document";
+			        			if($etiqueta=="graph") 		$icon="ui-icon-signal";
 			        			if($etiqueta=="write") 		$icon="ui-icon-pencil";
 			        			if($etiqueta=="report") 	$icon="ui-icon-note";			        		
 			        			if($etiqueta=="kanban") 	$icon="ui-icon-newwin";			        		
@@ -3358,13 +3403,13 @@
 			        			if($etiqueta=="import") 	$icon="ui-icon ui-icon-arrowthickstop-1-s";			        						        			
 			        		}
 			        		
-		        			if(in_array($etiqueta,array("create","write","report","kanban")))	
+		        			if(in_array($etiqueta,array("create","write","report","kanban","graph")))	
 		        			{	##### ICONO #################
 		        				$text	="false";
 		        				$action	="1";
 		        				$name	="$etiqueta";
 		        			}
-		        			elseif(in_array(substr($etiqueta,0,5),array("creat","write","repor","kanba","actio")))	
+		        			elseif(in_array(substr($etiqueta,0,5),array("creat","write","repor","kanba","actio","graph")))	
 		        			{	##### TEXTO #################
 		        				$text	="true";
 		        				$action	="1";
@@ -3396,7 +3441,7 @@
 			        {
 			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"__SAVE\");";
 			        }	
-			        elseif(in_array($etiqueta,array("create","write","report","kanban")))	
+			        elseif(in_array($etiqueta,array("create","write","report","kanban","graph")))	
 			        {
 			        	$sys_input.="
 							$(\"#sys_action_{$this->sys_name}\").val(\"__clean_session\");
@@ -3405,7 +3450,7 @@
 			        		$(\"input.{$this->sys_name}\").val(\"\");							
 			        	";
 			        }	
-					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio")))	    
+					elseif(in_array(substr($name,0,5),array("creat","write","repor","kanba","actio","graph")))	    
 			        {
 			        	$sys_input.="$(\"#sys_action_{$this->sys_name}\").val(\"$name\");";
 			        	

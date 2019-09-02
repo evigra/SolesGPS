@@ -30,7 +30,7 @@
 
 		#$option["echo"]			="GRAPH";
 
-		$option["select"]["left(right(p.devicetime,8),5)"]	="devicetime";
+		$option["select"]["left(right(DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),8),5)"]	="devicetime";
 		$option["select"][]									="p.speed";
 
 		#$option["where"][]									="left(now(),10)=left(DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";

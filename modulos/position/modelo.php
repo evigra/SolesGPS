@@ -1327,8 +1327,8 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 			if(isset($_SESSION["company"]["id"]))	
 				$option["where"][]	="d.company_id={$_SESSION["company"]["id"]}";
 			
-			if(!isset($option["order"]))
-				$option["order"]	="date DESC";			
+			#if(!isset($option["order"]))
+			#	$option["order"]	="date DESC";			
 				
 			return parent::__BROWSE($option);						
 		}

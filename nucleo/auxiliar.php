@@ -2413,14 +2413,13 @@
 				if($fila=="")	$fila="[$columna]";				
 				else			$fila.=",[$columna]";
 			}	
-			#if($fila!="")
+			if($fila!="")
 			{
-				$return="
-					<script>
 				
-					</script>
-					<div id='chart_div' style='width: 100%; height: 500px;'></div>
-				";			
+				$return=array(
+					"data"=>$fila,	
+					"html"=>"<div id='chart_div' style='width: 100%; height: 500px;'></div>"
+				);			
 			}
 			
 			
@@ -3266,12 +3265,12 @@
 						
 		    if(is_array($data))
 		    {
-		        foreach($data as $valor)
+		        foreach($data as $field=>$valor)
 				{    		    													   
 				    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
 				    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
 				    else if($valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
-				    else if($valor=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
+				    else if($field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
 				    else                                $file="$valor.js";
 				        		        		    
 				    $return.="<script src=\"$file\"></script>";    		        		    
@@ -3279,20 +3278,14 @@
 				    if($valor=="maps")	$return.="
 				    	<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
 				    ";    		    
-				    if($valor=="graph")	$return.="
+				    if($field=="graph")	$return.="
 						<script type='text/javascript'>
 							google.charts.load('current', {'packages':['corechart']});
 							google.charts.setOnLoadCallback(drawChart);
 							
 							function drawChart() 
 							{
-								var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2013',  1000,      400],
-          ['2014',  1170,      460],
-          ['2015',  660,       1120],
-          ['2016',  1030,      540]
-        ]);
+								var data = google.visualization.arrayToDataTable([$valor]);
 
 								var options = {
 									title: 'Company Performance',

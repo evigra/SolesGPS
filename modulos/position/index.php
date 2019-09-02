@@ -10,7 +10,7 @@
 
 	$objeto->words["system_body"]               =$objeto->__TEMPLATE($objeto->sys_html."system_body"); 			# TEMPLATES ELEJIDOS PARA EL MODULO
 	$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module");	
-	$files_js=array("graph");
+	
 
 
 
@@ -37,7 +37,8 @@
 		$option["order"]		="devicetime ASC";
 
 		$data										=$objeto->__VIEW_GRAPH($option);		
-		$objeto->words["module_body"]				=$data;
+		$objeto->words["module_body"]				=$data["html"];
+		$files_js=array("graph"=>$data["data"]);		
     }    
 
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO

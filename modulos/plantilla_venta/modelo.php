@@ -41,12 +41,6 @@
 		        )			
 			";
 
-
-
-    
-
-
-
 			$option["group"]	="tipo";
 			return $option;
 		}
@@ -151,7 +145,16 @@
    		public function __VIEW_REPORT($option="")
     	{			    	
 			if($option=="")	$option=array();			
+			if(!isset($option["where"]))	$option["where"]=array();
+			
 			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
+
+			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
+
+			if(!isset($this->sys_private["order"]))
+				$option["order"]="id desc";
+
+
 			return parent::__VIEW_REPORT($option);
 		}							
 		##############################################################################
@@ -160,10 +163,6 @@
 			if($option=="")	$option=array();			
 			if(!isset($option["where"]))	$option["where"]=array();
 			
-			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
-
-			if(!isset($this->sys_private["order"]))
-				$option["order"]="id desc";
 			
 			return parent::__BROWSE($option);
 		}							

@@ -2402,7 +2402,6 @@
 			$fila		="";
 			$datas 		=$this->__BROWSE($option);
 			
-			$this->__PRINT_R($datas);
 		    foreach($datas["data"] as $row_id=>$row)			
 		    {
 		    	$columna="";

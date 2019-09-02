@@ -2411,7 +2411,7 @@
 					else				$columna	.=",'$fieldvalue'";	
 				}
 				if($fila=="")	$fila="[$columna]";				
-				else			$fila.="[$columna]";
+				else			$fila.=",[$columna]";
 			}	
 			#if($fila!="")
 			{

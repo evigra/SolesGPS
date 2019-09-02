@@ -30,14 +30,14 @@
 
 		#$option["echo"]			="GRAPH";
 
-		$option["select"]["right(p.devicetime,8)"]	="devicetime";
-		$option["select"][]							="p.speed";
+		$option["select"]["left(right(p.devicetime,8),5)"]	="devicetime";
+		$option["select"][]									="p.speed";
 
-		$option["where"][]							="left(now(),10)=left(p.devicetime,10)";
-		$option["order"]							="devicetime ASC";
+		$option["where"][]									="left(now(),10)=left(p.devicetime,10)";
+		$option["order"]									="devicetime ASC";
 
-		$data										=$objeto->__VIEW_GRAPH($option);		
-		$objeto->words["module_body"]				=$data["html"];
+		$data												=$objeto->__VIEW_GRAPH($option);		
+		$objeto->words["module_body"]						=$data["html"];
 		$files_js=array("graph"=>$data["data"]);		
     }    
 

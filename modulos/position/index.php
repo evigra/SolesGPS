@@ -80,7 +80,7 @@
 		);
 
 
-	if($objeto->sys_private["section"]=="graph")
+	#if($objeto->sys_private["section"]=="graph")
 	{
 		#BOTONES SECCION DERECHA
 		$module_right=array(
@@ -105,6 +105,7 @@
 		$data										=$objeto->__VIEW_GRAPH($option);		
 		$objeto->words["module_body"]				=$data["html"];
     }    
+    /*
     else // $objeto->sys_section=map
     {
 		$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
@@ -114,6 +115,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     	//
     }
+    */
     
     $module_left=array(
         array(

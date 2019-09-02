@@ -103,7 +103,7 @@
 		$option["where"][]		="left(now(),10)=left(devicetime,10)";
 
 		$data										=$objeto->__VIEW_GRAPH($option);		
-		$objeto->words["module_body"]				=$data["html"];
+		$objeto->words["module_body"]				=$data;
     }    
     /*
     else // $objeto->sys_section=map

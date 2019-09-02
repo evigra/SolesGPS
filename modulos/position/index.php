@@ -71,6 +71,15 @@
     }
      else
      */
+		$module_right=array(
+		    array("create"=>"Crear"),
+		    array("graph"=>"Grafica"),
+		    #array("write"=>"Modificar"),
+		    #array("kanban"=>"Kanban"),
+		    array("report"=>"Reporte"),
+		);
+
+
 	if($objeto->sys_private["section"]=="graph")
 	{
 		#BOTONES SECCION DERECHA

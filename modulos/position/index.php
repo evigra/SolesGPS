@@ -45,8 +45,7 @@
 				"data"=>$data["data"],
 				"type"=>"PieChart",
 				"type"=>"BarChart",
-				"type"=>"AreaChart",
-								
+				"type"=>"AreaChart",								
 			)
 		);		
     }    

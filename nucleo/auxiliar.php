@@ -3290,8 +3290,8 @@
 				    	
 				    	if(is_array($valor))
 				    	{
-				    		if(isset($valor["datos"]))
-				    			$datos=$valor["datos"];
+				    		if(isset($valor["data"]))
+				    			$datos=$valor["data"];
 				    		if(isset($valor["type"]))	
 				    			$grafica=$valor["type"];
 				    	}

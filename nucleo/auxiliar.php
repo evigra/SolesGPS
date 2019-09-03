@@ -3281,27 +3281,41 @@
 				    if($valor=="maps")	$return.="
 				    	<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
 				    ";    		    
-				    if($field=="graph")	$return.="
-						<script type='text/javascript'>
-							google.charts.load('current', {'packages':['corechart']});
-							google.charts.setOnLoadCallback(drawChart);
-							
-							function drawChart() 
-							{
-								var data = google.visualization.arrayToDataTable([$valor]);
+				    if($field=="graph")	
+				    {
+				    	$grafica="AreaChart";
+				    	
+				    	if(is_array($valor))
+				    	{
+				    		if(isset($valor["datos"]))
+				    			$datos=$valor["datos"];
+				    		if(isset($valor["graph"])	
+				    			$grafica=$valor["graph"];
+				    	}
+				    	else
+				    		$datos=$valor
+				    
+						$return.="
+							<script type='text/javascript'>
+								google.charts.load('current', {'packages':['corechart']});
+								google.charts.setOnLoadCallback(drawChart);
+								
+								function drawChart() 
+								{
+									var data = google.visualization.arrayToDataTable([$datos]);
 
-								var options = {
-									title: 'Company Performance',
-									hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-									vAxis: {minValue: 0}
-								};
+									var options = {
+										title: 'Company Performance',
+										hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+										vAxis: {minValue: 0}
+									};
 
-								var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-								chart.draw(data, options);
-							}	
-							
-						</script>			
-				    ";    		    
+									var chart = new google.visualization.".$grafica."(document.getElementById('chart_div'));
+									chart.draw(data, options);
+								}									
+							</script>			
+						";
+				    }    		    
 				}		
 			}
 			return $return;

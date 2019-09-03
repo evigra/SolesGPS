@@ -2408,6 +2408,7 @@
 		    	$title="";
 				foreach($row as $field=>$fieldvalue)			
 				{			
+					echo " $field ";
 					if(isset($this->sys_fields[$field]["title"]) AND $fila=="")
 					{
 						if($title=="")	$title="'{$this->sys_fields[$field]["title"]}'";

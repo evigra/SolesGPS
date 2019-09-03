@@ -47,7 +47,8 @@
 				#"type"=>"BarChart",
 				"type"=>"ColumnChart",
 				
-				#"type"=>"AreaChart",								
+				#"type"=>"AreaChart",
+				"type"=>"LineChart",
 			)
 		);		
     }    

@@ -45,6 +45,8 @@
 				"data"=>$data["data"],
 				"type"=>"PieChart",
 				#"type"=>"BarChart",
+				"type"=>"ColumnChart",
+				
 				#"type"=>"AreaChart",								
 			)
 		);		

@@ -3273,14 +3273,17 @@
 				    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
 				    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
 				    else if($valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
-				    else if($field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
+				    #else if($field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
 				    else                                $file="$valor.js";
 				        		        		    
 				    $return.="<script src=\"$file\"></script>";    		        		    
 				        		    
-				    if($valor=="maps")	$return.="
-				    	<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
-				    ";    		    
+				    if($valor=="maps")	
+				    {
+				    	$return.="
+				    		<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
+				    	";    		    
+				    }
 				    if($field=="graph")	
 				    {
 				    	$grafica="AreaChart";
@@ -3293,28 +3296,30 @@
 				    			$grafica=$valor["graph"];
 				    	}
 				    	else
+				    	{
 				    		$datos=$valor;
 				    
-						$return.="
-							<script type='text/javascript'>
-								google.charts.load('current', {'packages':['corechart']});
-								google.charts.setOnLoadCallback(drawChart);
-								
-								function drawChart() 
-								{
-									var data = google.visualization.arrayToDataTable([$datos]);
+							$return.="
+								<script type='text/javascript'>
+									google.charts.load('current', {'packages':['corechart']});
+									google.charts.setOnLoadCallback(drawChart);
+									
+									function drawChart() 
+									{
+										var data = google.visualization.arrayToDataTable([$datos]);
 
-									var options = {
-										title: 'Company Performance',
-										hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-										vAxis: {minValue: 0}
-									};
+										var options = {
+											title: 'Company Performance',
+											hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+											vAxis: {minValue: 0}
+										};
 
-									var chart = new google.visualization.".$grafica."(document.getElementById('chart_div'));
-									chart.draw(data, options);
-								}									
-							</script>			
-						";
+										var chart = new google.visualization.".$grafica."(document.getElementById('chart_div'));
+										chart.draw(data, options);
+									}									
+								</script>			
+							";
+						}	
 				    }    		    
 				}		
 			}

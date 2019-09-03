@@ -3293,7 +3293,7 @@
 				    			$grafica=$valor["graph"];
 				    	}
 				    	else
-				    		$datos=$valor
+				    		$datos=$valor;
 				    
 						$return.="
 							<script type='text/javascript'>

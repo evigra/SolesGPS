@@ -2420,8 +2420,8 @@
 				if($fila=="")	$fila="[$columna]";				
 				else			$fila.=",[$columna]";
 			}	
-			
-			$fila="[$title],$fila";
+			if($title!="")
+				$fila="[$title],$fila";
 			
 			
 			if($fila!="")

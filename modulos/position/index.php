@@ -44,7 +44,7 @@
 			"graph"=>array(
 				"data"=>$data["data"],
 				"type"=>"PieChart",
-				"type"=>"BarChart",
+				#"type"=>"BarChart",
 				#"type"=>"AreaChart",								
 			)
 		);		

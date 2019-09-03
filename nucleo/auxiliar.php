@@ -2405,16 +2405,23 @@
 		    foreach($datas["data"] as $row_id=>$row)			
 		    {
 		    	$columna="";
+		    	$title="";
 				foreach($row as $field=>$fieldvalue)			
 				{			
+					if(isset($this->sys_fields[$field]["title"]) AND $fila=="")
+					{
+						if($title=="")	$title="'{$this->sys_fields[$field]["title"]}'";
+						else			$title.=",'{$this->sys_fields[$field]["title"]}'";
+					}										
 					if($columna=="")	$columna	="'$fieldvalue'";			
 					else				$columna	.=",$fieldvalue";	
 				}
+				
 				if($fila=="")	$fila="[$columna]";				
 				else			$fila.=",[$columna]";
 			}	
 			
-			$fila="['aa','aaaaa'],$fila";
+			$fila="[$title],$fila";
 			
 			
 			if($fila!="")

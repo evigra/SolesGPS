@@ -3292,8 +3292,8 @@
 				    	{
 				    		if(isset($valor["datos"]))
 				    			$datos=$valor["datos"];
-				    		if(isset($valor["graph"]))	
-				    			$grafica=$valor["graph"];
+				    		if(isset($valor["type"]))	
+				    			$grafica=$valor["type"];
 				    	}
 				    	else
 				    	

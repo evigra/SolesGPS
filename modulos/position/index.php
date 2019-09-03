@@ -43,8 +43,9 @@
 		$files_js=array(
 			"graph"=>array(
 				"data"=>$data["data"],
-				"graph"=>"PieChart",
-				
+				"type"=>"PieChart",
+				"type"=>"BarChart",
+								
 			)
 		);		
     }    

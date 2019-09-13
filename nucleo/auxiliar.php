@@ -3276,23 +3276,23 @@
 						
 		    if(is_array($data))
 		    {
+		    	#$this->__PRINT_R($data);
 		        foreach($data as $field=>$valor)
 				{    		    													   
-				    #if($valor=="maps")                  $file="http://maps.google.com/maps/api/js";
-				    if($valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
-				    else if($valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
-				    else if($field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
+				    if(is_string($valor) AND $valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
+				    elseif(is_string($valor) AND $valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
+				    elseif(is_string($field) AND $field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
 				    else                                $file="$valor.js";
 				        		        		    
 				    $return.="<script src=\"$file\"></script>";    		        		    
 				        		    
-				    if($valor=="maps")	
+				    if(is_string($valor) AND $valor=="maps")	
 				    {
 				    	$return.="
 				    		<script src=\"../sitio_web/js/maplabel-compiled.js\"></script>
 				    	";    		    
 				    }
-				    if($field=="graph")	
+				    if(is_string($field) AND $field=="graph")	
 				    {
 				    	$grafica="AreaChart";
 				    	
@@ -3303,31 +3303,26 @@
 				    		if(isset($valor["type"]))	
 				    			$grafica=$valor["type"];
 				    	}
-				    	else
-				    	
+				    	else				    	
 				    		$datos=$valor;
 				    
 						$return.="
 							<script type='text/javascript'>
 								google.charts.load('current', {'packages':['corechart']});
-								google.charts.setOnLoadCallback(drawChart);
-								
+								google.charts.setOnLoadCallback(drawChart);								
 								function drawChart() 
 								{
 									var data = google.visualization.arrayToDataTable([$datos]);
-
 									var options = {
 										title: 'Company Performance',
 										hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
 										vAxis: {minValue: 0}
 									};
-
 									var chart = new google.visualization.".$grafica."(document.getElementById('chart_div'));
 									chart.draw(data, options);
 								}									
 							</script>			
-						";
-							
+						";							
 				    }    		    
 				}		
 			}
@@ -3345,9 +3340,12 @@
     	    return  $return;
     	}
     	
-		public function __FILE_CSS($data)
+		public function __FILE_CSS($data=null)
 		{
-		    $return="";  
+			$return="";
+			if(is_null($data) AND isset($this->sys_var["module_path"]))
+				$data=array("../" . $this->sys_var["module_path"] . "css/index");
+		    
             foreach($data as $valor)
     		{    		
     		    $file="$valor.css";

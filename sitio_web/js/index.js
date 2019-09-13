@@ -1,5 +1,3 @@
-
-
 	var map;
 	var geocoder;
 	var gMEvent					=undefined;

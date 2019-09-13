@@ -10,8 +10,8 @@
 	$objeto->words["html_head_keywords"] 			="GPS, RASTREO, MANZANILLO, SATELITAL, CELULAR, VEHICULAR, VEHICULO, TRACTO, LOCALIZACION, COLIMA, SOLES, SATELITE, GEOCERCAS, STREET VIEW, MAPA";
 	$objeto->words["html_head_title"]           	="SOLES GPS :: Iniciar sesion";
 
-	$objeto->words["html_head_css"]					=$objeto->__FILE_CSS(array("../".$objeto->sys_var["module_path"]."css/index",));	
-	$objeto->words["html_head_js"] 					=$objeto->__FILE_JS(array("../".$objeto->sys_var["module_path"]."js/index"));	
+	$objeto->words["html_head_css"]					=$objeto->__FILE_CSS();	
+	$objeto->words["html_head_js"] 					=$objeto->__FILE_JS();	
 		
 	$objeto->words["system_module"]					=$objeto->__VIEW_CREATE();		
 	$objeto->words                 					=$objeto->__INPUT($objeto->words,$objeto->sys_fields);    

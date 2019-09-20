@@ -53,7 +53,7 @@ input[type=text]:focus, input[type=password]:focus {
 
 .login-submit {
   position: absolute;
-  top: 5px;
+  top: -6px;
   right: 0;
   width: 56px;
   height: 56px;

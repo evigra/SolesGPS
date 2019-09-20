@@ -424,7 +424,7 @@
 				
 										
 				$this->__PDF($Output);		
-				exit;
+				#exit;
 			}
 			else echo $template;
 			#*/	
@@ -1099,6 +1099,8 @@
 
 			$pdf->SetFont('helvetica', '', 9);
 
+			#$this->__PRINT_R($_SESSION["pdf"]);	
+			
 			if(!is_array($_SESSION["pdf"]["template"]))
 			{
 				$_SESSION["pdf"]["template"]			=array(
@@ -1119,12 +1121,13 @@
 			$pdf->lastPage();			
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-			
+			#/*
 			if($Output=="S")
 				$_SESSION["pdf"]["file"] =$pdf->Output("prueba.pdf", $Output);
 			else	
 				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
-				
+			#*/
+			
 			unset($_SESSION["pdf"]);
 			exit;
 		}		
@@ -1251,7 +1254,7 @@
 					    }	
 
 
-					    
+						################################					    
 					    if($valor["type"]=="input")	
 					    {			        						        
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
@@ -1275,7 +1278,7 @@
 					        
 					        
 					    } 
-
+					    ################################
 					    if($valor["type"]=="date")	
 					    {
 					    	$js_auto="";
@@ -1299,6 +1302,7 @@
 							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";	
 					    } 
+					    ################################
 					    if($valor["type"]=="datetime")	
 					    {
 					    	$js_auto="";
@@ -1329,7 +1333,7 @@
 							}					        	
 					        else	$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";	
 					    } 
-
+					    ################################
 					    if($valor["type"]=="multidate")	
 					    {
 					        #$words["$campo"]  ="$titulo<input id=\"$campo\" type=\"text\" name=\"$campo\" value=\"{$valor["value"]}\" placeholder=\"{$valor["holder"]}\" class=\"formulario\" >";
@@ -1365,7 +1369,7 @@
 						    }
 						    else	$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 					    } 
-					    
+					    ################################
 					    if($valor["type"]=="checkbox")	
 					    {
 					        //$words["$campo"]  ="<input id=\"$campo\" type=\"checkbox\" name=\"$campo\" class=\"formulario\">{$valor["br"]}$titulo";
@@ -1379,35 +1383,40 @@
 							</div>$titulo
 							{$valor["br"]}
 							";
-					    }      
+					    } 
+					    ################################     
 					    if($valor["type"]=="file")	
 					    {
 					        $words["$campo"]  ="$titulo<input id=\"$campo\" name=\"$campo\" type=\"file\" class=\"formulario\">";
 					        $words["$campo"]  ="<input id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" type=\"file\" class=\"formulario {$this->sys_name} $class\" >{$valor["br"]}$titulo";
-					    }    
+					    } 
+					    ################################   
 					    if($valor["type"]=="show_file")	
 					    {					    	
 					        $words["$campo"]  =$valor["value"];
-					    }    
+					    } 
+					    ################################   
 					    if($valor["type"]=="font")	
 					    {
 					        $words["$campo"]  ="$titulo<div id=\"$campo\" class=\"{$this->sys_name}\" $attr style=\"height:22px;\"> {$valor["value"]}</div>{$valor["br"]}&nbsp;";
 					    } 
+					    ################################
 					    if($valor["type"]=="title")	
 					    {
 					        $words["$campo"]  ="$titulo";
 					    } 
+					    ################################
 					    if($valor["type"]=="txt")	
 					    {
 					        $words["$campo"]  		="$titulo";					        
 					    } 
-
+					    ################################
 					    if($valor["type"]=="value")	
 					    {
 					        $words["$campo"]  ="{$valor["value"]}";
 					        $words["$campo.md5"]	=strtoupper(md5($valor["value"]));
 					    } 
-					    
+					    ################################
 					    if($valor["type"]=="textarea")	
 					    {
 							if($attr=="")	$attr="style=\"height:150px;\"";
@@ -1415,12 +1424,13 @@
 					    		$words["$campo"]  ="{$valor["value"]}{$valor["br"]}$titulo";
 					    	else							
 						        $words["$campo"]  ="<textarea id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr class=\"formulario {$this->sys_name} $class\">{$valor["value"]}</textarea>{$valor["br"]}$titulo";
-					    } 			           
+					    } 
+					    ################################			           
 					    if($valor["type"]=="html")	
 					    {
 					        $words["$campo"]  ="{$valor["value"]}";
 					    } 			           
-
+					    ################################
 					    if($valor["type"]=="password")	
 					    {					        
 					    	if(@$this->sys_private["section"]=="show")
@@ -1428,6 +1438,7 @@
 					    	else					    
 					        $words["$campo"]  ="<input type=\"password\" $style id=\"$campo\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} $class\">{$valor["br"]}$titulo";
 					    }    
+					    ################################
 					    if($valor["type"]=="flow")	
 					    {
 					        $options="";
@@ -1454,7 +1465,7 @@
 							}					        
 							else	$words["$campo"]  =@$text."{$valor["br"]}$titulo";
 					    }			        
-
+					    ################################
 					    if($valor["type"]=="select")	
 					    {
 					        $options="";
@@ -1479,8 +1490,32 @@
 							else	$words["$campo"]  =@$text."{$valor["br"]}$titulo";
 							
 					    }			        
+					    ################################
 					    if($valor["type"]=="autocomplete" AND $this->sys_recursive<3)	
 					    {
+/*
+					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
+					        {
+								if(@$this->sys_private["section"]=="show")
+								{
+									$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
+								}	
+								else
+								{					        
+									$words["$campo"]  		="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	="<input id=\"$campo\" $style autocomplete=\"off\" type=\"text\" $attr name=\"{$this->sys_name}_$campo\" value=\"" . md5($valor["value"]) . "\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">{$valor["br"]}$titulo";
+								}					        										
+							}
+					        else	
+					        {
+					        	$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";    
+					        	$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
+					        }	
+
+*/
+							
+
 					    	$words["$campo"]  ="";
 					    	if(!isset($fields["auto_$campo"]["value"]))	$fields["auto_$campo"]["value"]="";
 
@@ -1489,9 +1524,7 @@
 								$"."this->sys_fields[\"$campo\"][\"obj\"]->words  	=$"."this->sys_fields[\"$campo\"][\"obj\"]->__INPUT($"."this->sys_fields[\"$campo\"][\"obj\"]->words,$"."this->sys_fields[\"$campo\"][\"obj\"]->sys_fields);
 								
 								$"."words[\"create_auto_$campo\"]  	=$"."this->__REPLACE($"."view_auto,$"."this->sys_fields[\"$campo\"][\"obj\"]->words);
-
 							";	
-							#$"."this->obj_$campo
 							
 							if(@eval($eval)===false)	
 
@@ -1528,10 +1561,7 @@
 					    	{
 					    		if(isset($this->sys_fields["$campo"]["values"]) AND count($this->sys_fields["$campo"]["values"])>0)
 					    		{
-					    			#$this->__PRINT_R($this->sys_fields[$campo]["obj"]->sys_fields[$row_field]);
 					    			$label	=$this->sys_fields["$campo"]["values"][0][$this->sys_fields["$campo"]["class_field_l"]];					    			
-					    			
-					    			#/*
 									foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 									{
 										if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND !is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
@@ -1541,8 +1571,6 @@
 											$words[$campo.".$row_field"]  =@$this->sys_fields["$campo"]["values"][0][$row_field] . @$valor["br"] . @$titulo_aux;
 										}		
 									}
-									#*/
-					    			
 					    		}	
 					    	}
 					    	$js_auto="";
@@ -1620,13 +1648,14 @@
 							}					    
 							else
 							{
-								$words["$campo"]  ="$label{$valor["br"]}$titulo";
+								$words["$campo"]  ="$label"."{$valor["br"]}"."$titulo";
 							}
+							#$this->__PRINT_R($this->sys_var["module_path"]);
 					    }  
+					    ################################
 						#/*
 					    if($valor["type"]=="form")	
 					    {					    
-							#if(isset($valor["relation"]) AND $valor["relation"]=="many2one")
 							if(isset($valor["relation"]) AND $valor["relation"]=="one2many")
 							{			
 								if(!isset($valor["class_template"]))		$valor["class_template"]="many2one_standar";					
@@ -1671,6 +1700,7 @@
 							}
 						}	
 						#*/
+						################################
 					    if($valor["type"]=="hidden")	
 					    {
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
@@ -1682,16 +1712,16 @@
 							}					        	
 					        else	$words["$campo"]  ="";						           
 					    }    
+					    ################################
 					    if($valor["type"]=="img")	
 					    {
 					        $words["$campo"]  		="$titulo<img id=\"$campo\" name=\"$campo\" $attr src=\"{$valor["value"]}\">";
 					    }
-					    
-					    
+					    ################################
 
-						
 						if(isset($this->sys_fields[$campo]["obj"]))
 						{
+
 							foreach($this->sys_fields[$campo]["obj"]->sys_fields as $row_field=>$row_value)
 							{
 								if(isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND isset($this->sys_fields["$campo"]["values"][0][$row_field]) AND !is_array($this->sys_fields["$campo"]["values"][0][$row_field]))
@@ -1701,18 +1731,13 @@
 									{
 										$titulo_aux=@$this->sys_fields[$campo]["obj"]->sys_fields[$row_field]["title"];
 										$titulo_aux=@$valor["br"]."<font id=\"$campo\" style=\"color:gray;\">$titulo_aux</font>";
-									}	
-									
+									}										
 									$words[$campo.".$row_field"]  		=@$this->sys_fields["$campo"]["values"][0][$row_field] . @$titulo_aux;
-									$words[$campo.".$row_field.md5"]  	=strtoupper(md5(@$this->sys_fields["$campo"]["values"][0][$row_field])) . @$titulo_aux;
-									
-								}		
-								
-							}
-					    
+									$words[$campo.".$row_field.md5"]  	=strtoupper(md5(@$this->sys_fields["$campo"]["values"][0][$row_field])) . @$titulo_aux;				
+								}										
+							}					    
 					     }   
 					}
-			        
 			    }
 			}    
 			else $words="ERROR :: No se asigno el array de campos $"."this->sys_fields";
@@ -2396,44 +2421,57 @@
 			return $this->__SYS_REPORT($option);
         }				
     	##############################################################################    
-		public function __VIEW_GRAPH($option=array())
+    	/*
+		public function __VIEW_CREATE($template=null)
 		{
-			$return		="";
-			$fila		="";
-			$datas 		=$this->__BROWSE($option);
-			
-		    foreach($datas["data"] as $row_id=>$row)			
-		    {
-		    	$columna="";
-		    	$title="";
-				foreach($row as $field=>$fieldvalue)			
-				{			
-					echo " $field ";
-					if(isset($this->sys_fields[$field]["title"]) AND $fila=="")
-					{
-						if($title=="")	$title="'{$this->sys_fields[$field]["title"]}'";
-						else			$title.=",'{$this->sys_fields[$field]["title"]}'";
-					}										
-					if($columna=="")	$columna	="'$fieldvalue'";			
-					else				$columna	.=",$fieldvalue";	
-				}
+			if(is_null($template))	$template=$this->sys_var["module_path"]."html/create";
+			return $this->__VIEW_FORM($template);
+		} 
+		*/  
+    	##############################################################################    
+    	
+		public function __VIEW_GRAPH($option_graph=array(),$template=NULL)
+		{
+			$html="";
+			if(is_null($template))	$template=$this->sys_var["module_path"] . "html/graph";
+					
+			if(@file_exists($template.".html"))				
+				$template=$this->__TEMPLATE($template);
+						
+			$files_js	=array();
+			$return		=array();
+			$files_js["graph"]=array();
+			foreach($option_graph as $graph =>$option)
+			{
+				$fila		="";
+				$datas 		=$this->__BROWSE($option);
 				
-				if($fila=="")	$fila="[$columna]";				
-				else			$fila.=",[$columna]";
+				foreach($datas["data"] as $row_id=>$row)			
+				{
+					$columna="";
+					$title="";
+					foreach($row as $field=>$fieldvalue)			
+					{			
+						if($columna=="")									$columna	="'$fieldvalue'";			
+						elseif($graph=="Sankey" AND is_numeric($fieldvalue))	$columna	.=",$fieldvalue";
+						elseif($graph=="Sankey" AND is_string($fieldvalue))	$columna	.=",'$fieldvalue'";
+						else												$columna	.=",$fieldvalue";	
+					}
+					
+					if($fila=="")	$fila="[$columna]";				
+					else			$fila.=",[$columna]";
+				}	
+				$files_js["graph"][]=array(
+					"title"=>@$option["title"],
+					"label"=>@$option["label"],
+					"type"=>$graph,
+					"data"=>$fila,
+				);			    		
 			}	
-			if($title!="")
-				$fila="[$title],$fila";
+			if(!is_null($template))	$html=$template;
 			
-			
-			if($fila!="")
-			{				
-				$return=array(
-					"data"=>$fila,	
-					"html"=>"<div id='chart_div' style='width: 100%; height: 500px;'></div>"
-				);			
-			}
-			
-			
+			$return["html"]=$html;
+			$this->words["html_head_js"]              =$this->__FILE_JS($files_js);		
 			return $return;
 		}    	
 
@@ -3276,7 +3314,6 @@
 						
 		    if(is_array($data))
 		    {
-		    	#$this->__PRINT_R($data);
 		        foreach($data as $field=>$valor)
 				{    		    													   
 				    if(is_string($valor) AND $valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
@@ -3294,35 +3331,69 @@
 				    }
 				    if(is_string($field) AND $field=="graph")	
 				    {
-				    	$grafica="AreaChart";
-				    	
-				    	if(is_array($valor))
+				    	foreach($valor as $data_graph)
 				    	{
-				    		if(isset($valor["data"]))
-				    			$datos=$valor["data"];
-				    		if(isset($valor["type"]))	
-				    			$grafica=$valor["type"];
-				    	}
-				    	else				    	
-				    		$datos=$valor;
-				    
-						$return.="
-							<script type='text/javascript'>
-								google.charts.load('current', {'packages':['corechart']});
-								google.charts.setOnLoadCallback(drawChart);								
-								function drawChart() 
-								{
-									var data = google.visualization.arrayToDataTable([$datos]);
-									var options = {
-										title: 'Company Performance',
-										hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-										vAxis: {minValue: 0}
-									};
-									var chart = new google.visualization.".$grafica."(document.getElementById('chart_div'));
-									chart.draw(data, options);
-								}									
-							</script>			
-						";							
+							$grafica="AreaChart";
+							$title="";
+							$label="";
+							
+							if(is_array($data_graph))
+							{
+								if(isset($data_graph["data"]))
+									$datos=$data_graph["data"];
+								if(isset($data_graph["type"]))	
+									$type=$data_graph["type"];
+								if(isset($data_graph["title"]))	
+									$title=$data_graph["title"];
+								if(isset($data_graph["label"]))	
+									$label=$data_graph["label"];
+																
+								if(substr($type,0,9)=="AreaChart")		$grafica=substr($type,0,9);		
+								if(substr($type,0,8)=="PieChart")		$grafica=substr($type,0,8);
+								if(substr($type,0,11)=="ColumnChart")	$grafica=substr($type,0,11);
+								if(substr($type,0,8)=="BarChart")		$grafica=substr($type,0,8);
+								if(substr($type,0,9)=="LineChart")		$grafica=substr($type,0,9);
+								if(substr($type,0,6)=="Sankey")			$grafica=substr($type,0,6);								
+							}
+							else				    	
+								$datos=$data_graph;
+							
+							
+							if(substr($type,0,6)=="Sankey")
+							{
+								$packages="sankey";
+								$script="
+										var data = new google.visualization.DataTable();
+										data.addColumn('string', 'De');
+										data.addColumn('string', 'A');
+										data.addColumn('number', 'Cantidad');
+										data.addRows([ $datos ]);																			
+								";			
+							}
+							else
+							{
+								$packages="corechart";
+								$script="
+										var data = google.visualization.arrayToDataTable([$title"."$datos]);
+										options = {
+											title: '$label',
+										};
+								";										
+							}			
+							$return.="
+								<script type='text/javascript'>
+									google.charts.load('current', {'packages':['$packages']});
+									google.charts.setOnLoadCallback(drawChart);								
+									function drawChart() 
+									{
+										var options={};
+										$script
+										var chart = new google.visualization.".$grafica."(document.getElementById('$type'));
+										chart.draw(data, options);																		
+									}									
+								</script>			
+							";							
+						}
 				    }    		    
 				}		
 			}

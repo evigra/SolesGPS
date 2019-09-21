@@ -1,5 +1,5 @@
 <?php
-		
+	echo "LALO";	
 	$objeto	=new sesion();
 	$objeto->__PRINT_R($objeto);	
 	if(!isset($objeto->words["mensaje_sesion"]) OR @$objeto->words["mensaje_sesion"]=="")		

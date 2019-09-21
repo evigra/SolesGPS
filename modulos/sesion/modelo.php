@@ -163,14 +163,16 @@
     		
     		if(array_key_exists("user",$datas) AND array_key_exists("pass",$datas))
     		{
-				$user       								=$this->sys_fields["user"]["obj"]->session($datas["user"],$datas["pass"]);
+				$user       			=$this->sys_fields["user"]["obj"]->session($datas["user"],$datas["pass"]);
 					
 				if(count($user)>0)
 				{	
 					if($user["email"]==$datas["user"])
 					{
 						if($user["password"]==md5($datas["pass"]))						
-						{						
+						{				
+							$this->__PRINT_R($user);
+									
 							$this->__SET_SESSION($user);
 						   	
 						    $this->__SAVE_MESSAGE   		="";

@@ -146,7 +146,6 @@
 		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-    		$this->__PRINT_R($datas);
 	   		$this->words["mensaje_sesion"]	= 	"
     			<div id=\"messajeSesion\" class=\"messajeSesion borderRed\">
 					<table>

@@ -146,6 +146,7 @@
 		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
+    		$this->__PRINT_R($datas);
 	   		$this->words["mensaje_sesion"]	= 	"
     			<div id=\"messajeSesion\" class=\"messajeSesion borderRed\">
 					<table>
@@ -171,7 +172,7 @@
 					{
 						if($user["password"]==md5($datas["pass"]))						
 						{				
-							$this->__PRINT_R($user);
+							
 									
 							$this->__SET_SESSION($user);
 						   	

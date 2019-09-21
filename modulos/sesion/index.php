@@ -1,6 +1,7 @@
-<?php	
+<?php
+		
 	$objeto	=new sesion();
-	
+	$objeto->__PRINT_R($objeto);	
 	if(!isset($objeto->words["mensaje_sesion"]) OR @$objeto->words["mensaje_sesion"]=="")		
 		$objeto->words["mensaje_sesion"]				="
 			<font size='3'>

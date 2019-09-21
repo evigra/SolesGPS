@@ -171,9 +171,7 @@
 					if($user["email"]==$datas["user"])
 					{
 						if($user["password"]==md5($datas["pass"]))						
-						{				
-							
-									
+						{						
 							$this->__SET_SESSION($user);
 						   	
 						    $this->__SAVE_MESSAGE   		="";

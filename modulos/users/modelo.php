@@ -229,7 +229,7 @@
 						"status=1"
 			    	),
     	    );
-    	    #$option["echo"]="USERS sesion()";
+    	    $option["echo"]="USERS sesion()";
     	    $data_user	=$this->users($option);    	 
     	           	    
     	    $this->__PRINT_R($data_user);       	    

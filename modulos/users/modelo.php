@@ -230,7 +230,9 @@
 			    	),
     	    );
     	    #$option["echo"]="USERS sesion()";
-    	    $data_user	=$this->users($option);    	        	    
+    	    $data_user	=$this->users($option);    	 
+    	           	    
+    	    $this->__PRINT_R($data_user);       	    
     	    if(is_array($data_user) AND array_key_exists("data",$data_user))
     	    {    	    	
     	    	if(count($data_user["data"])>0)	$return=$data_user["data"][0];

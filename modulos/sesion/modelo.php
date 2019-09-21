@@ -165,8 +165,6 @@
     		if(array_key_exists("user",$datas) AND array_key_exists("pass",$datas))
     		{
 				$user       			=$this->sys_fields["user"]["obj"]->session($datas["user"],$datas["pass"]);
-			
-				$this->__PRINT_R($user);
 						
 				if(count($user)>0)
 				{	

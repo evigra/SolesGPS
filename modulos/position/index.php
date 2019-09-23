@@ -13,7 +13,7 @@
 	
 
 
-
+	/*
 	#if($objeto->sys_private["section"]=="graph")
 	{
 		#BOTONES SECCION DERECHA
@@ -52,7 +52,7 @@
 			)
 		);		
     }    
-
+	*/
 	$objeto->words["html_head_js"]              =$objeto->__FILE_JS($files_js);								# ARCHIVOS JS DEL MODULO
 #	$objeto->words["html_head_css"]              =$objeto->__FILE_CSS(array("../sitio_web/css/basicItems"));
 	

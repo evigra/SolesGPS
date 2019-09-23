@@ -28,6 +28,10 @@
 			"uniqueid"	    =>array(
 			    "title"             => "Imei",
 			    "type"              => "input",
+			    "attr"             => array(
+					"required",
+			    ),			    			    				
+
 			),	
 			"status"	    =>array(
 			    "title"             => "Alertas",

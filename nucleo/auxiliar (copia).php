@@ -501,13 +501,9 @@
 				
 				$datas_menu =$this->__EXECUTE($comando_sql, $option_conf);			
 			
-				$menu_principal="";
 				$menu_html								="";
 				foreach($datas_menu as $data_menu)
 				{
-					if($_SESSION["var"]["menu"]==$data_menu["id"])
-						$menu_principal=$data_menu["name"];
-				
 					$link								=$data_menu["link"]."&sys_menu=".$data_menu["id"] . $data_menu["variables"];				
 					$alertas="";
 					if($data_menu["c_menu_id"]>0)
@@ -516,21 +512,17 @@
 								<center>{$data_menu["c_menu_id"]}</center>	
 							</div>					
 						";				
-						@$option_html	.="
-							<li><a href=\"{$link}\">{$data_menu["name"]}</a></li>
-						";
+					$menu_html.="				
+						<a href=\"{$link}\">	
+						<div class = \"menuHorizontal\" style=\"margin-top:4px; float:left; padding:5px 10px 5px 10px;\">
+							<div style=\"float:left;\">
+							{$data_menu["name"]}
+							</div>
+							$alertas
+						</div>
+						</a>
+					";	
 				}
-				$menu_html="				
-					<li><a href=\"#\"><font size=\"4\"><b> {$menu_principal}</b></font></a>
-						<ul class=\"submenu\">
-							$option_html
-						</ul>
-					</li>					
-					<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </li>					
-
-				";	
-
-
 				$words["system_menu"]		    		=$menu_html;
 						
 				$sys_menu								=@$_SESSION["var"]["menu"];			
@@ -569,6 +561,18 @@
 								<center>{$data_submenu["c_submenu_id"]}</center>	
 							</div>					
 						";				
+
+					$submenu_html	="
+						$submenu_html
+						<div style=\"height:25px;\" class=\"submenu\" active=\"{$data_submenu["name"]}\">	
+							<div style=\"float:left;\">
+								<font style=\"padding-left:5px; color:SteelBlue; font-size:13; font-weight:bold;\">
+									{$data_submenu["name"]}
+								</font>
+							</div>
+							$alertas
+						</div>
+					";
 				
 					#$datas_opcion  						=$menu->opcion_sesion($data_submenu["id"]);
 				
@@ -606,15 +610,19 @@
 
 						$link			=$data_opcion["link"]."&sys_menu={$sys_menu}" . $data_opcion["variables"];
 						$option_html	.="
-							<li><a href=\"{$link}\">{$data_opcion["name"]}</a></li>
+							<a href=\"{$link}\">
+								<div class=\"submenu2\">
+									{$data_opcion["name"]}
+									$alertas
+								</div>
+							</a>
 						";
 					}	
-					$submenu_html	.="
-						<li><a href=\"#\"><b>{$data_submenu["name"]}</b></a>
-							<ul class=\"submenu\">
-								$option_html
-							</ul>
-						</li>					
+					$submenu_html	="
+						$submenu_html
+						<div class=\"option d_none\"  active=\"{$data_submenu["name"]}\">
+							$option_html
+						</div>
 					";
 				}
 				$words["system_submenu"]	    		=$submenu_html;

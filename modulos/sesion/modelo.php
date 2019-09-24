@@ -135,12 +135,10 @@
 		    if($user["sesion_start"]!="")   $locacion	=$user["sesion_start"];
 		    else							$locacion	="../map_online/&sys_menu=2";
 		    
-		    $md5_id		=$user["md5_id"];
+		    $md5_id							=$user["md5_id"];
 		    
 			setcookie('SolesGPS', $md5_id, time() + (1.5 * 24 * 60 * 60));
-
 			    	
-			#$this->__SAVE_JS        		=" window.location =\"$locacion\";  ";
 			$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
 		}				
 		##############################################################################

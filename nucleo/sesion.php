@@ -14,7 +14,8 @@
 		if(!isset($_SESSION["var"]))			$_SESSION["var"]					=array();
 		if(!isset($_SESSION["var"]["menu"]))	$_SESSION["var"]["menu"]			="";
 		if(isset($_REQUEST["sys_menu"]))		$_SESSION["var"]["menu"]			=$_REQUEST["sys_menu"];
-		if(isset($_REQUEST["sys_vpath"]))		$_SESSION["var"]["vpath"]			=@$_REQUEST["sys_vpath"];
+		if(isset($_REQUEST["sys_vpath"]))		$_SESSION["var"]["vpath"]			=@$_REQUEST["sys_vpath"];		
+		if($_SESSION["var"]["menu"]=="")		$_SESSION["var"]["menu"]			=2;
 						
 		$_SESSION["var"]["false"]			=array(0,"0","false", "no");
 		$_SESSION["var"]["true"]			=array(1,"1","true", "yes","si");
@@ -44,7 +45,6 @@
 
 		if(@$_GET["sys_action"]=="cerrar_sesion")
 		{
-			print_r($_GET);
 			$_SESSION["var"]["action"]="cerrar_sesion";
 			unset($_SESSION["user"]);
 			unset($_SESSION["company"]);

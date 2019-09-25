@@ -140,6 +140,8 @@
 			setcookie('SolesGPS', $md5_id, time() + (1.5 * 24 * 60 * 60));
 			    	
 			$this->__PRINT_JS				=" window.location =\"$locacion\";  ";
+			
+			
 		}				
 		##############################################################################
 		public function __SAVE($datas=NULL,$option=NULL)

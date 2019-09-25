@@ -521,15 +521,13 @@
 						";
 				}
 				$menu_html="				
-					<li><a href=\"#\"><font size=\"4\"><b> {$menu_principal}</b></font></a>
+					<li><a href=\"#\"><font size=\"4\" style=\"color:SteelBlue;\"><b> {$menu_principal}</b></font></a>
 						<ul class=\"submenu\">
 							$option_html
 						</ul>
 					</li>					
-					<li>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </li>					
-
+					<li>&nbsp; &nbsp; &nbsp; &nbsp; </li>					
 				";	
-
 
 				$words["system_menu"]		    		=$menu_html;
 						
@@ -2436,7 +2434,9 @@
 			foreach($option_graph as $graph =>$option)
 			{
 				$fila		="";
-				$datas 		=$this->__BROWSE($option);
+				
+				if(!isset($option["data"]))		$datas 				=$this->__BROWSE($option);
+				else							$datas["data"] 		=$option["data"];
 				
 				foreach($datas["data"] as $row_id=>$row)			
 				{
@@ -3784,8 +3784,7 @@
 				$vehicles            =$this->__VIEW_REPORT($option);
 				
 				$html="";
-				
-		
+						
 				$comando_sql        ="
 					select
 						distinct(d.id) as d_id, 
@@ -3839,7 +3838,6 @@
 			    	";			
 				}
 		    	$html="
-			    	<font style=\"padding-left:5px; color:SteelBlue; font-size:13; font-weight:bold;\"> Dispositivos </font>
 		        	<table  width=\"100%\" height=\"30\" border=\"0\">
 			        	<tr>
 		        			<td width=\"60\" align=\"center\" class=\"select_devices\" device=\"-1\">
@@ -3848,9 +3846,6 @@
 		        			<td valign=\"center\" style=\"padding-left:30px;\" class=\"select_devices\" device=\"0\"><b>VER TODOS</b></td>
 		        		</tr>			        	
 		        	</table>		    
-		        	<!-- BASE DE DATOS
-		        	<div id=\"devices_all\" style=\"overflow:auto; height:30px;\"> 
-		        	-->
 		        	<div id=\"devices_all\" style=\"overflow:auto; height:30px;\">
 			        	$html
 		    		</div>

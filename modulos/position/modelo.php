@@ -1388,5 +1388,60 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 			return $this->__BROWSE($option);						
 		}		
 		#################################################################################
+		public function __VIEW_GRAPH($option_graph=array(),$template=NULL)
+		{
+			$option				=array();	
+
+			$option["select"]["distinct(deviceid)"]				="deviceid";
+			$option["order"]				="deviceid ASC";
+			$datas_device					=$this->__BROWSE($option);
+
+			$data							=array();
+
+			foreach($datas_device["data"] as $row_device)
+			{
+				$option["select"]["left(right(DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),8),5)"]	="devicetime";
+				$option["select"][]				=" p.speed";
+				$option["where"][]				="left(DATE_SUB(now(),INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)=left(DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),10)";
+				$option["where"][]				="deviceid ='{$row_device["deviceid"]}'";				
+				
+				$option["order"]				="devicetime ASC";
+				$datas_speed 					=$this->__BROWSE($option);
+
+				foreach($datas_speed["data"] as $row_speed)
+				{
+					$devicetime		=$row_speed["devicetime"];
+					$deviceid		=$row_speed["deviceid"];
+					$speed			=$row_speed["speed"];
+					
+					if(!isset($data[$devicetime]))
+					{
+						$data[$devicetime]=array();
+						$data[$devicetime][$devicetime]	=$devicetime;
+						
+						foreach($datas_device["data"] as $row_device)
+						{
+						
+						}
+					}	
+					if(!isset($data[$devicetime][$deviceid]))
+					{					
+						$data[$devicetime][$deviceid]	=$speed;					
+					}	
+					
+				}
+			}			
+			
+						
+			$option["data"]				=$data;
+
+			#$option["echo"]	="['Hora','Vehiculo'],";
+			$option["title"]	="['Hora','Vehiculo','Vehiculo','Vehiculo','Vehiculo'],";
+			$option["label"]	="Velocidad del activo";
+			$option_graph["AreaChart"]	=$option;						
+
+			return parent::__VIEW_GRAPH($option_graph);
+		}
+		
 	}
 ?>

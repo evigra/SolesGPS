@@ -16,6 +16,10 @@
 			    "title"             => "Numero Economico",
 			    "title_filter"		=> "Dispositivo",
 			    "type"              => "input",
+			    "attr"             => array(
+					"required",
+			    ),			    			    				
+			    
 			),
 			"attributes"	    	=>array(
 			    "title"             => "atributos",
@@ -31,7 +35,6 @@
 			    "attr"             => array(
 					"required",
 			    ),			    			    				
-
 			),	
 			"status"	    =>array(
 			    "title"             => "Alertas",
@@ -84,6 +87,19 @@
 			    "title"             => "Fecha de Adquisicion",
 			    "type"              => "date",
 			),
+			"gps_fecha_adquisicion"   =>array(
+			    "title"             => "Fecha Adquisicion",
+			    "type"              => "date",
+			),
+			"gps_fecha_garantia"   =>array(
+			    "title"             => "Fecha garantia",
+			    "type"              => "date",
+			),
+			"gps_fecha_baja"   =>array(
+			    "title"             => "Fecha baja",
+			    "type"              => "date",
+			),
+
 			"valorCoche"   =>array(
 			    "title"             => "Costo",
 			    "type"              => "input",
@@ -169,6 +185,10 @@
 			    "title"             => "Placas",
 			    "title_filter"		=> "Placas",
 			    "type"              => "input",
+			    "attr"             => array(
+					"required",
+			    ),			    			    				
+			    
 			),
 			"speed_max"	    		=>array(
 			    "title"             => "Velocidad Maxima",
@@ -195,8 +215,8 @@
     	{   
     	    $datas["company_id"]		=@$_SESSION["company"]["id"];
 
-    	    $files_id					=$this->files_obj->__SAVE();    	    
-    	    if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
+    	    #$files_id					=$this->files_obj->__SAVE();    	    
+    	    #if(!is_null($files_id))		$datas["files_id"]			=$files_id;    	    
     	    
     		return parent::__SAVE($datas,$option);
 		}		

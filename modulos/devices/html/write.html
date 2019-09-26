@@ -1,30 +1,75 @@
 <div class="mainTable">
     <div class="module_subtitle">Propiedades generales</div>
-    <table border="0">
-        <tr>
-            <td width="33%">{name}</td>        
-            <td width="33%">{uniqueid}</td>        
-            <td>{telcel}</td>        
-            <td>{recargado}</td>        
-        </tr>          
-        <tr>
-            <td>{bloqueo}</td>        
-            <td>{status}</td>        
-            <td colspan="2">{vehicle}</td>        
-        </tr>          
-        
-        <tr>
-            <td>{image}</td>        
-            <td>{telefono}</td>        
-            <td colspan="2">{placas}</td>                            
-        </tr>          
-        <tr>
-            <td>
-                <img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">                     
-            </td>        
-            <td colspan="3">
-                 {file_id}                                             
-            </td>        
-        </tr>        
-    </table>
+            <table border="0" width="80%">
+                <tr>
+                    <td width="33%" colspan="2">  	{uniqueid}              </td>        
+                    <td width="33%" colspan="2">    {placas}                </td>        
+                    <td width="33%" colspan="2">    {name}   	            </td>      
+                </tr>          
+				<tr>
+					<td  colspan="2">{bloqueo}</td>        
+					<td colspan="2">{status}</td>        
+                    <td>{telcel}</td>        
+                    <td>{vehicle}</td>        
+				</tr>          
+            </table>
+			<br>
+			<div id="tabs" class="form">
+				<ul>
+					<li  class="form"><a href="#tabs-1">Opciones del motor</a></li>
+					<li  class="form"><a href="#tabs-2">Propiedades adicionales</a></li>
+				</ul>
+				<div id="tabs-1" class="form">
+					<table border="0">
+						<tr>
+							<td>{image}</td>  
+							<td width="33%" colspan="2">
+								{telefono}		
+							</td>                            
+							<td colspan="2">{recargado}</td>        
+							      
+						</tr>          
+						<tr>
+							<td>
+								<img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">                     
+							</td>        
+							<td colspan="3">
+								 {file_id}                                             
+							</td>        
+						</tr>        
+					</table>
+				</div>
+				<div id="tabs-2"  class="form">
+
+				    <table border="0"  width="100%">
+				        <tr>
+				            <td>{numAsientos}</td>        
+				            <td>{numPuertas}</td>        
+				            <td>{color}</td>        
+				        </tr>          
+				        <tr>
+				            <td>{image}</td>        
+				            
+				            <td>  </td>        
+				        </tr>          
+				        <tr>
+				            <td>
+				                <img id="image_device" src="../sitio_web/img/car/vehiculo_91/i135.png">
+				            </td>        
+				            <td colspan="2">
+				                 {file_id}                                             
+				            </td>        
+				        </tr>        				        
+				    </table>
+				</div>
+			</div>
+
+
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>        
+
+
 </div>

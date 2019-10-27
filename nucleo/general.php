@@ -16,7 +16,7 @@
 			if(!isset($_SESSION["user"]["l18n"])) 		@$_SESSION["user"]["l18n"]			="es_MX";
 			
 			@$_SESSION["user"]["huso_h"]				=5;
-			#@$_SESSION["user"]["huso_h"]				=6F;
+			@$_SESSION["user"]["huso_h"]				=6;
 						 
 			if(!is_array($option)) 						$option=array();
 						

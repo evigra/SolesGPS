@@ -394,10 +394,16 @@
 				if(!isset($_SESSION["pdf"]["subject"]))			$_SESSION["pdf"]["subject"]		=$this->words["html_head_title"];
 				if(!isset($_SESSION["pdf"]["template"]))				
 				{	
+					if(!isset($_SESSION["pdf"]["formato"]))		
+						$_SESSION["pdf"]["formato"]		="sitio_web/html/PDF_FORMATO";
+
 					$_SESSION["pdf"]["template"]				=$template;
 
-					$words										=array_merge(array("sys_modulo" => $template),$words);					
-					@$template									=$this->__TEMPLATE("sitio_web/html/PDF_FORMATO");														
+					$words										=array_merge(array("sys_modulo" => $template),$words);			
+					
+					if($_SESSION["pdf"]["formato"]=="")			@$template						="{sys_modulo}";
+					else										
+					@$template						=$this->__TEMPLATE($_SESSION["pdf"]["formato"]);
 					$template_lab              					=$this->__REPLACE($template,$words); 			
 					
 					$_SESSION["pdf"]["template"]				=$template_lab;					
@@ -1093,6 +1099,8 @@
 			
 			if(!is_array($_SESSION["pdf"]["template"]))
 			{
+				
+			
 				$_SESSION["pdf"]["template"]			=array(
 					array(
 						"format"		=>"A4",					
@@ -1111,12 +1119,11 @@
 			$pdf->lastPage();			
 
 			if(!isset($_SESSION["pdf"]["save_name"]))	$_SESSION["pdf"]["save_name"]=$_SESSION["pdf"]["title"];
-			#/*
+
 			if($Output=="S")
 				$_SESSION["pdf"]["file"] =$pdf->Output("prueba.pdf", $Output);
 			else	
 				$pdf->Output($_SESSION["pdf"]["save_name"], $Output);
-			#*/
 			
 			unset($_SESSION["pdf"]);
 			exit;
@@ -1171,8 +1178,8 @@
 				
 					$(\"form\")
 						.attr(\"target\",\"_blank\")
-						.attr(\"action\",\"../{$option["module"]}/\");
-					////	.submit();
+						.attr(\"action\",\"../{$option["module"]}/\")
+					.submit();
 					$(\"form\")
 						.attr(\"action\",\"\")
 						.removeAttr(\"target\");			
@@ -1245,7 +1252,7 @@
 
 
 						################################					    
-					    if($valor["type"]=="input")	
+					    if($valor["type"]=="input" OR $valor["type"]=="primary key")	
 					    {			        						        
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
 					        {
@@ -1265,8 +1272,6 @@
 					        	$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";    
 					        	$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
 					        }	
-					        
-					        
 					    } 
 					    ################################
 					    if($valor["type"]=="date")	
@@ -1696,11 +1701,22 @@
 					        if(!in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))					        
 					        {
 								if(@$this->sys_private["section"]=="show")
-									$words["$campo"]  ="";
-								else					        
-									$words["$campo"]  ="<input type=\"hidden\" id=\"$campo\" name=\"{$this->sys_name}_$campo\" $attr value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name}\">";
-							}					        	
-					        else	$words["$campo"]  ="";						           
+								{
+									$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";
+									$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
+								}	
+								else
+								{					        
+									$words["$campo"]  		="<input id=\"$campo\" $style autocomplete=\"off\" type=\"hidden\" $attr name=\"{$this->sys_name}_$campo\" value=\"{$valor["value"]}\" class=\"formulario {$this->sys_name} {$this->sys_object} $class\">";
+								}					        										
+							}
+					        else	
+					        {
+					        	$words["$campo"]  		="{$valor["value"]}{$valor["br"]}$titulo";    
+					        	$words["$campo.md5"]  	=strtoupper(md5($valor["value"]))."{$valor["br"]}$titulo";
+					        }	
+					    
+					    
 					    }    
 					    ################################
 					    if($valor["type"]=="img")	
@@ -1738,7 +1754,11 @@
     	##############################################################################    
 		public function __MANY2ONE($option)		
 		{
+			#$this->__PRINT_R($option);
+
+
 			$class_id			=@$option["class_id"];
+						
 			$class_one			=@$option["class_one"];
 			$class_one_id		=@$option["class_one_id"];
 			$class_section		=@$option["class_section"];
@@ -1819,7 +1839,8 @@
 
 
 					$"."words[\"$campo\"]  							=$"."this->__REPLACE($"."view,$"."obj_$campo"."words);												
-				";											
+				";							
+				#$this->__PRINT_R($eval);				
 				eval($eval);	
 			}
 			return $words;
@@ -2078,10 +2099,10 @@
 					}				
 					else	
 					{			
-						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
-						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
-						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={id}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
-						$check	="<input class=\"view_report\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"{id}\">";
+						$show	="<font data=\"&sys_section_{$this->sys_name}=show&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={{$this->sys_private["field"]}}\"  class=\"sys_report ui-icon ui-icon-contact\"></font>";
+						$write	="<font data=\"&sys_section_{$this->sys_name}=write&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={{$this->sys_private["field"]}}\"  class=\"sys_report ui-icon ui-icon-pencil\"></font>";
+						$delete	="<font data=\"&sys_section_{$this->sys_name}=delete&sys_action_{$this->sys_name}=&sys_id_{$this->sys_name}={{$this->sys_private["field"]}}\"  class=\"sys_report ui-icon ui-icon-trash\"></font>";
+						$check	="<input class=\"view_report\" type=\"checkbox\" id=\"{$option["name"]}\" name=\"{$option["name"]}[{id}]\" value=\"{{$this->sys_private["field"]}}\">";
 					}	
                     
                     if(!is_null($option))
@@ -2708,6 +2729,15 @@
 					if(isset($template_option) AND !in_array(@$this->sys_private["action"],$_SESSION["var"]["print"]))
 					{						
 						$button_create_js="
+							var options_$name={};
+
+							options_$name"."[\"class_one\"]			=\"{$template_option["class_one"]}\";
+							options_$name"."[\"class_field\"]		=\"{$template_option["class_field"]}\";												
+							options_$name"."[\"class_section\"]		=\"create\";
+							options_$name"."[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
+							options_$name"."[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
+						
+						
 							if($(\"font#create_$name\").length>0)
 							{	
 								{$browse["js"]}
@@ -2718,12 +2748,6 @@
 									text: 	false								
 								});
 
-								var options={};
-								options[\"class_one\"]			=\"{$template_option["class_one"]}\";
-								options[\"class_field\"]		=\"{$template_option["class_field"]}\";												
-								options[\"class_section\"]		=\"create\";
-								options[\"class_many\"]			=\"{$template_option["class_field_value"]["class_name"]}\";
-								options[\"object\"]				=\"{$template_option["class_field_value"]["class_name"]}\";
 
 	            				$(\"font#create_$name\").click(function()
 	            				{
@@ -2736,10 +2760,10 @@
 											},
 											buttons: {
 												\"Registrar\": function() {													
-													many2one_post(options);
+													many2one_post(options_$name);
 												},
 												\"Registrar y Cerrar\": function() {													
-													many2one_post(options);
+													many2one_post(options_$name);
 													$( this ).dialog(\"close\");
 												},
 												\"Cerrar\": function() {
@@ -3003,7 +3027,8 @@
 				$view_title     				=$this->__TEMPLATE($option["template_title"]);					//  HTML DEL REPORTE
 				$view_title						=str_replace("<td>", "<td class=\"title\">", $view_title);      // AGREGA la clase titulo
 				
-				$this->sys_title["style_tr"]	="background-color:#D5D5D5; heigth:60px;";
+				$this->sys_title["style_tr"]	="background-color:#b5b5b5; heigth:60px;";
+				$this->sys_title["style_tr"]	="background-color:#b5b5b5;";
 				#$this->sys_title["sys_class"]	="background-color:#D5D5D5; height:30px;";
 				
 				
@@ -3647,8 +3672,7 @@
 											.dialog(\"destroy\")
 											.hide();										
 								
-										var formData = new FormData($(\"form\")[0]);
-										
+										var formData = new FormData($(\"form\")[0]);										
 										var subiendo=datos;
 										
 										subiendo.url		='../sitio_web/ajax/general.php&seccion_import=subiendo_archivo&sys_name={$this->sys_name}&date=".date("YmdHis")."';
@@ -3666,21 +3690,21 @@
 											});				
 
 											var preparar=datos;
-											preparar.url		='../sitio_web/ajax/general.php&seccion_import=preparar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."';										
+											preparar.url		='../sitio_web/ajax/general.php&seccion_import=preparar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."';
 											preparar.success	=function (response) 
 											{
 												var html=$(\"#message\").html() + response;											
 												$(\"#message\").html(html);												
 												
 												var cargar=datos;
-												cargar.url		='../sitio_web/ajax/general.php&seccion_import=cargar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."&name='+obj.name;										
+												cargar.url		='../sitio_web/ajax/general.php&seccion_import=cargar_tabla&sys_name={$this->sys_name}&date=".date("YmdHis")."&name='+obj.name;
 												cargar.success	=function (response) 
 												{
 													var html=$(\"#message\").html() + response;											
 													$(\"#message\").html(html);												
 																										
 													var actualizar=datos;
-													actualizar.url		='../sitio_web/ajax/general.php&seccion_import=actualizando_datos&sys_name={$this->sys_name}&date=".date("YmdHis")."';										
+													actualizar.url		='../sitio_web/ajax/general.php&seccion_import=actualizando_datos&sys_name={$this->sys_name}&date=".date("YmdHis")."';
 													actualizar.success	=function (response) 
 													{
 														$(\"#import_pendiente\").html(response);												
@@ -3784,7 +3808,8 @@
 				$vehicles            =$this->__VIEW_REPORT($option);
 				
 				$html="";
-						
+				
+		
 				$comando_sql        ="
 					select
 						distinct(d.id) as d_id, 
@@ -3838,6 +3863,7 @@
 			    	";			
 				}
 		    	$html="
+			    	<font style=\"padding-left:5px; color:SteelBlue; font-size:13; font-weight:bold;\"> Dispositivos </font>
 		        	<table  width=\"100%\" height=\"30\" border=\"0\">
 			        	<tr>
 		        			<td width=\"60\" align=\"center\" class=\"select_devices\" device=\"-1\">
@@ -3846,6 +3872,9 @@
 		        			<td valign=\"center\" style=\"padding-left:30px;\" class=\"select_devices\" device=\"0\"><b>VER TODOS</b></td>
 		        		</tr>			        	
 		        	</table>		    
+		        	<!-- BASE DE DATOS
+		        	<div id=\"devices_all\" style=\"overflow:auto; height:30px;\"> 
+		        	-->
 		        	<div id=\"devices_all\" style=\"overflow:auto; height:30px;\">
 			        	$html
 		    		</div>
@@ -3856,6 +3885,405 @@
 				$html="";
 			}
 			return $html;
-		}					
+		}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	$numero=valor a retornar en letras.
+	$_moneda=1=Colones, 2=Dólares 3=Euros
+	Las siguientes funciones (unidad() hasta milmillon() forman parte de ésta función
+	*/
+
+	public function NUM_A_LETRA($numero,$_moneda)
+	{
+		switch($_moneda)
+		{
+			case 1:
+			$_nommoneda='PESOS';
+			break;
+			case 2:
+			$_nommoneda='DÓLARES';
+			break;
+			case 3:
+			$_nommoneda='EUROS';
+			break;
+		}
+		//***
+		$tempnum = explode('.',$numero);
+
+		if ($tempnum[0] !== ""){
+			$numf = $this->milmillon($tempnum[0]);
+			if ($numf == "UNO"){
+				$numf = substr($numf, 0, -1);
+			}
+
+			$TextEnd = $numf.' ';
+			$TextEnd .= $_nommoneda.' CON ';
+		}
+		if ($tempnum[1] == "" || $tempnum[1] >= 100)
+		{
+			$tempnum[1] = "00" ;
+		}
+		$TextEnd .= $tempnum[1] ;
+		$TextEnd .= "/100";
+		return $TextEnd;
+	}
+
+	public function unidad($numuero)
+	{
+		switch ($numuero)
+		{
+			case 9:
+			{
+			$numu = "NUEVE";
+			break;
+			}
+			case 8:
+			{
+			$numu = "OCHO";
+			break;
+			}
+			case 7:
+			{
+			$numu = "SIETE";
+			break;
+			}
+			case 6:
+			{
+			$numu = "SEIS";
+			break;
+			}
+			case 5:
+			{
+			$numu = "CINCO";
+			break;
+			}
+			case 4:
+			{
+			$numu = "CUATRO";
+			break;
+			}
+			case 3:
+			{
+			$numu = "TRES";
+			break;
+			}
+			case 2:
+			{
+			$numu = "DOS";
+			break;
+			}
+			case 1:
+			{
+			$numu = "UNO";
+			break;
+			}
+			case 0:
+			{
+			$numu = "";
+			break;
+			}
+		}
+		return $numu;
+	}
+	public function decena($numdero)
+	{
+		if ($numdero >= 90 && $numdero <= 99)
+		{
+		$numd = "NOVENTA ";
+		if ($numdero > 90)
+		$numd = $numd."Y ".($this->unidad($numdero - 90));
+		}
+		else if ($numdero >= 80 && $numdero <= 89)
+		{
+		$numd = "OCHENTA ";
+		if ($numdero > 80)
+		$numd = $numd."Y ".($this->unidad($numdero - 80));
+		}
+		else if ($numdero >= 70 && $numdero <= 79)
+		{
+		$numd = "SETENTA ";
+		if ($numdero > 70)
+		$numd = $numd."Y ".($this->unidad($numdero - 70));
+		}
+		else if ($numdero >= 60 && $numdero <= 69)
+		{
+		$numd = "SESENTA ";
+		if ($numdero > 60)
+		$numd = $numd."Y ".($this->unidad($numdero - 60));
+		}
+		else if ($numdero >= 50 && $numdero <= 59)
+		{
+		$numd = "CINCUENTA ";
+		if ($numdero > 50)
+		$numd = $numd."Y ".($this->unidad($numdero - 50));
+		}
+		else if ($numdero >= 40 && $numdero <= 49)
+		{
+		$numd = "CUARENTA ";
+		if ($numdero > 40)
+		$numd = $numd."Y ".($this->unidad($numdero - 40));
+		}
+		else if ($numdero >= 30 && $numdero <= 39)
+		{
+		$numd = "TREINTA ";
+		if ($numdero > 30)
+		$numd = $numd."Y ".($this->unidad($numdero - 30));
+		}
+		else if ($numdero >= 20 && $numdero <= 29)
+		{
+		if ($numdero == 20)
+		$numd = "VEINTE ";
+		else
+		$numd = "VEINTI".($this->unidad($numdero - 20));
+		}
+		else if ($numdero >= 10 && $numdero <= 19)
+		{
+		switch ($numdero){
+		case 10:
+		{
+		$numd = "DIEZ ";
+		break;
+		}
+		case 11:
+		{
+		$numd = "ONCE ";
+		break;
+		}
+		case 12:
+		{
+		$numd = "DOCE ";
+		break;
+		}
+		case 13:
+		{
+		$numd = "TRECE ";
+		break;
+		}
+		case 14:
+		{
+		$numd = "CATORCE ";
+		break;
+		}
+		case 15:
+		{
+		$numd = "QUINCE ";
+		break;
+		}
+		case 16:
+		{
+		$numd = "DIECISEIS ";
+		break;
+		}
+		case 17:
+		{
+		$numd = "DIECISIETE ";
+		break;
+		}
+		case 18:
+		{
+		$numd = "DIECIOCHO ";
+		break;
+		}
+		case 19:
+		{
+		$numd = "DIECINUEVE ";
+		break;
+		}
+		}
+		}
+		else
+		$numd = $this->unidad($numdero);
+		return $numd;
+		}
+
+		function centena($numc){
+		if ($numc >= 100)
+		{
+		if ($numc >= 900 && $numc <= 999)
+		{
+		$numce = "NOVECIENTOS ";
+		if ($numc > 900)
+		$numce = $numce.($this->decena($numc - 900));
+		}
+		else if ($numc >= 800 && $numc <= 899)
+		{
+		$numce = "OCHOCIENTOS ";
+		if ($numc > 800)
+		$numce = $numce.($this->decena($numc - 800));
+		}
+		else if ($numc >= 700 && $numc <= 799)
+		{
+		$numce = "SETECIENTOS ";
+		if ($numc > 700)
+		$numce = $numce.($this->decena($numc - 700));
+		}
+		else if ($numc >= 600 && $numc <= 699)
+		{
+		$numce = "SEISCIENTOS ";
+		if ($numc > 600)
+		$numce = $numce.($this->decena($numc - 600));
+		}
+		else if ($numc >= 500 && $numc <= 599)
+		{
+		$numce = "QUINIENTOS ";
+		if ($numc > 500)
+		$numce = $numce.($this->decena($numc - 500));
+		}
+		else if ($numc >= 400 && $numc <= 499)
+		{
+		$numce = "CUATROCIENTOS ";
+		if ($numc > 400)
+		$numce = $numce.($this->decena($numc - 400));
+		}
+		else if ($numc >= 300 && $numc <= 399)
+		{
+		$numce = "TRESCIENTOS ";
+		if ($numc > 300)
+		$numce = $numce.($this->decena($numc - 300));
+		}
+		else if ($numc >= 200 && $numc <= 299)
+		{
+		$numce = "DOSCIENTOS ";
+		if ($numc > 200)
+		$numce = $numce.($this->decena($numc - 200));
+		}
+		else if ($numc >= 100 && $numc <= 199)
+		{
+		if ($numc == 100)
+		$numce = "CIEN ";
+		else
+		$numce = "CIENTO ".($this->decena($numc - 100));
+		}
+		}
+		else
+		$numce = $this->decena($numc);
+
+		return $numce;
+		}
+
+		function miles($nummero){
+		if ($nummero >= 1000 && $nummero < 2000){
+		$numm = "MIL ".($this->centena($nummero%1000));
+		}
+		if ($nummero >= 2000 && $nummero <10000){
+		$numm = $this->unidad(Floor($nummero/1000))." MIL ".($this->centena($nummero%1000));
+		}
+		if ($nummero < 1000)
+		$numm = $this->centena($nummero);
+
+		return $numm;
+		}
+
+		function decmiles($numdmero){
+		if ($numdmero == 10000)
+		$numde = "DIEZ MIL";
+		if ($numdmero > 10000 && $numdmero <20000){
+		$numde = $this->decena(Floor($numdmero/1000))."MIL ".($this->centena($numdmero%1000));
+		}
+		if ($numdmero >= 20000 && $numdmero <100000){
+		$numde = $this->decena(Floor($numdmero/1000))." MIL ".($this->miles($numdmero%1000));
+		}
+		if ($numdmero < 10000)
+		$numde = $this->miles($numdmero);
+
+		return $numde;
+		}
+
+		function cienmiles($numcmero){
+		if ($numcmero == 100000)
+		$num_letracm = "CIEN MIL";
+		if ($numcmero >= 100000 && $numcmero <1000000){
+		$num_letracm = $this->centena(Floor($numcmero/1000))." MIL ".($this->centena($numcmero%1000));
+		}
+		if ($numcmero < 100000)
+		$num_letracm = $this->decmiles($numcmero);
+		return $num_letracm;
+		}
+
+		function millon($nummiero){
+		if ($nummiero >= 1000000 && $nummiero <2000000){
+		$num_letramm = "UN MILLON ".($this->cienmiles($nummiero%1000000));
+		}
+		if ($nummiero >= 2000000 && $nummiero <10000000){
+		$num_letramm = $this->unidad(Floor($nummiero/1000000))." MILLONES ".($this->cienmiles($nummiero%1000000));
+		}
+		if ($nummiero < 1000000)
+		$num_letramm = $this->cienmiles($nummiero);
+
+		return $num_letramm;
+		}
+
+		function decmillon($numerodm){
+		if ($numerodm == 10000000)
+		$num_letradmm = "DIEZ MILLONES";
+		if ($numerodm > 10000000 && $numerodm <20000000){
+		$num_letradmm = $this->decena(Floor($numerodm/1000000))."MILLONES ".($this->cienmiles($numerodm%1000000));
+		}
+		if ($numerodm >= 20000000 && $numerodm <100000000){
+		$num_letradmm = $this->decena(Floor($numerodm/1000000))." MILLONES ".($this->millon($numerodm%1000000));
+		}
+		if ($numerodm < 10000000)
+		$num_letradmm = $this->millon($numerodm);
+
+		return $num_letradmm;
+		}
+
+		public function cienmillon($numcmeros){
+		if ($numcmeros == 100000000)
+		$num_letracms = "CIEN MILLONES";
+		if ($numcmeros >= 100000000 && $numcmeros <1000000000){
+		$num_letracms = $this->centena(Floor($numcmeros/1000000))." MILLONES ".($this->millon($numcmeros%1000000));
+		}
+		if ($numcmeros < 100000000)
+		$num_letracms = $this->decmillon($numcmeros);
+		return $num_letracms;
+		}
+
+		public function milmillon($nummierod)
+		{
+			if ($nummierod >= 1000000000 && $nummierod <2000000000){
+			$num_letrammd = "MIL ".($this->cienmillon($nummierod%1000000000));
+			}
+			if ($nummierod >= 2000000000 && $nummierod <10000000000){
+			$num_letrammd = $this->unidad(Floor($nummierod/1000000000))." MIL ".($this->cienmillon($nummierod%1000000000));
+			}
+			if ($nummierod < 1000000000)
+			$num_letrammd = $this->cienmillon($nummierod);
+
+			return $num_letrammd;
+		} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						
 	}  	
 ?>

@@ -13,13 +13,6 @@
 		$path_instalacion="modulos/instalacion/";
 		if(@file_exists($path_instalacion . "index.php"))						$sys_location	="Location:instalacion/";
 		else
-
-		/*
-		echo "<pre>";
-		print_r($_COOKIE);
-		print_r($_SESSION);
-		echo "</pre>";
-		#*/
 		
 		if(isset($_COOKIE['SolesGPS']) AND !isset($_SESSION["var"]["action"]))
 			$sys_location	="Location:sesion/&cookie=1";

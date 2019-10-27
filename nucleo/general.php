@@ -102,6 +102,11 @@
 
 			$option_conf["open"]	=1;
 			$option_conf["close"]	=1;
+
+    		#####################
+    		if(!isset($option["from"]))	$from=	$this->sys_table;
+    		else						$from=	$option["from"];
+
     		
     		#####################
     		$retun				=array();
@@ -180,9 +185,6 @@
     				$select=$option["select"];
     			}	
     		}		
-    		#####################
-    		if(!isset($option["from"]))	$from=	$this->sys_table;
-    		else						$from=	$option["from"];
 			#####################
     		$where='WHERE 1=1';
     		

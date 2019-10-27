@@ -13,13 +13,16 @@
 	
 	if($_REQUEST["sys_section"]=="metodos")
 	{
-		$objeto->words["module_title"]	=	"Manual :: Metodos";
-		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/metodos");		
-	}
-	elseif($objeto->sys_private["section"]=="input")
-	{
 		$objeto->words["module_title"]	=	"Manual :: Input";
 		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/input");		
+
+	}
+	else
+	{	##### METODOS
+
+		$objeto->words["module_title"]	=	"Manual :: Metodos";
+		$objeto->words["module_body"]	=	$objeto->__VIEW_CREATE($objeto->sys_var["module_path"]."html/metodos");		
+
 	}
 		
 	$objeto->words["module_title"]	=	"$module_title Manual";

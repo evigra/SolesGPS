@@ -19,59 +19,27 @@
 		##############################################################################	
 		##  Metodos	
 		##############################################################################        
-		/*
+		#/*
 		public function __CONSTRUCT()
 		{
-			parent::__CONSTRUCT();
-			#$ultima_linea = passthru('/opt/traccar/bin/traccar status', $var);
-			#$ultima_linea = passthru('ls', $var);		
+			$url 				="solesgps.com/webHome/";
+			$url 				="https://cfdiau.sat.gob.mx/nidp/app/login?id=SATx509Custom&sid=1&option=credential&sid=1";
+			$option				=array("url"=>$url);
 			
-			#echo $var;	
+						
+			$respuesta			=$this->__curl($option);						
+			
+			$this->__PRINT_R($respuesta);
+			#$respuesta1			=json_decode($respuesta["return"]);
+
+
+
+			parent::__CONSTRUCT();
 		}
-		*/			
+		#*/			
 		public function saldo_correo()
     	{
-			$comando_sql		="
-				SELECT d.id,left(d.telefono,10) as referencia,  now() as actualizado, 'TEL030' as producto, 
-				d.recargado as 'ultima_recarga',
-				if(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL 8 DAY)< now(), 'AUTORIZADA','NEGADA' ) AS solicitud
-				FROM devices d join company c on c.id=d.company_id  
-				WHERE 1=1 
-					AND md5(d.id)='{$this->request["a"]}'
-			";
-			
-			$datas	=$this->__EXECUTE($comando_sql);
-						
-			foreach($datas as $row)
-			{
-				$this->__PRINT_R($row);
-			
-				if($row["solicitud"]=="AUTORIZADA")
-				{				
-					$respuesta=$this->WS_TAECEL($row);					
-					if($respuesta["mensaje2"]=="Recarga Exitosa" AND $respuesta["status"]=="Exitosa")
-					{
-						$comando_sql		="
-							UPDATE devices SET recargado='{$row["actualizado"]}'
 
-							WHERE 1=1 
-								AND id='{$row["id"]}'
-						";
-						$datas	=$this->__EXECUTE($comando_sql);
-						
-						$comando_sql		="
-							INSERT INTO taecel SET 
-								producto	='{$respuesta["producto"]}',
-								referencia	='{$respuesta["referencia"]}',
-								mensaje1	='{$respuesta["mensaje1"]}',
-								transID		='{$respuesta["transID"]}',
-								folio		='{$respuesta["folio"]}',
-								mensaje2	='{$respuesta["mensaje2"]}'							
-						";
-						$this->__EXECUTE($comando_sql);		
-					}
-				}
-			}
 		}		
 	}
 ?>

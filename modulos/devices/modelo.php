@@ -412,7 +412,6 @@
 				{
 					$comando_sql		="
 						UPDATE devices SET recargado='{$row["actualizado"]}'
-
 						WHERE 1=1 
 							AND id='{$row["id"]}'
 					";
@@ -450,7 +449,8 @@
 				FROM devices d join company c on c.id=d.company_id  
 				WHERE 1=1 
 					AND (bloqueo!=1 OR bloqueo is NULL)
-					AND c.estatus=1
+					AND left(d.telefono,10) !=''
+					AND c.estatus=1					
 					AND d.telcel=1
 					AND(d.recargado is null  OR DATE_ADD(d.recargado, INTERVAL dias_recarga DAY)< now() )
 			";
@@ -499,6 +499,7 @@
 			return count($datas) . " Dispositivos recargados";
     	}
 						
+		##### RETRASO DE 1 HRA, REALIZA RECARGA CUANDO TIENE MAS DE 21 DIAS DE SU ULTIMA RECARGA				
 		public function cron_saldo_retraso()
     	{    	    		
 			$url 				= "https://taecel.com/app/api/getSales";
@@ -514,9 +515,9 @@
 				SELECT ID as id, TELEFONO as referencia,now() as actualizado, 'TEL030' as producto
 				FROM V_ULTIMOREPORTE v 
 				WHERE 1=1
-					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >25
+					AND TIMESTAMPDIFF(SECOND,ultima_recarga,NOW())/24/60/60 >21
 					AND tipo_vehiculo='GPS'
-					AND reporto_hace>'00:15:00';    
+					AND reporto_hace>'01:00:00';    
 			";
 			$datas	=$this->__EXECUTE($comando_sql);
 

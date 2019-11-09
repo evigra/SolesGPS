@@ -143,7 +143,7 @@
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
 		$option=array();	
-		$data										= $objeto->REPORT($option);		
+		$data										= $objeto->__VIEW_REPORT($option);		
 		$objeto->words["module_body"]				=$data["html"];
 		$module_title								="Reporte de ";
     }

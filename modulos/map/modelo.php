@@ -7,6 +7,7 @@
 			$this->sys_module="map";
 			parent::__CONSTRUCT();
 		}	
+		/*
 		public function menu_vehicle()
     	{
     		if(isset($_SESSION["company"]["id"]))	
@@ -20,7 +21,8 @@
 						user_group ug,
 						groups g
 					where 
-						ug.menu_id=2
+						d.status!=0
+						AND ug.menu_id=2						
 						AND(		
 							(
 								responsable_fisico_id={$_SESSION["user"]["id"]}		
@@ -81,7 +83,8 @@
 				$html="";
 			}
 			return $html;
-
-		}		
+		
+		}
+		*/		
 	}
 ?>

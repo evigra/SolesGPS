@@ -9,10 +9,7 @@
         CreateMap(iZoom,iMap,coordinates,object); 
         
 		maxZoomService = new google.maps.MaxZoomService();
-        
-        
-        
-        
+           
         
         ajax_positions_now("../modulos/travels/ajax/index.php",100);
         ajax_positions_now("../sitio_web/ajax/map_online.php");

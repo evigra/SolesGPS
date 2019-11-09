@@ -1042,7 +1042,7 @@ styles:
         var tablero2="";
 
 		///*        
-        if(item["st"]=="-1")	//tiempo
+        if(item["st"]=="-1" && item["mo"]!="map")	//tiempo
         {
 		    if(item["ni"]<=10)
 	            tablero1= tablero1 + " :: EMPRESA PRE-BLOQUEADA :: ";
@@ -1095,8 +1095,9 @@ styles:
 
 		if(vehicle["st"]==undefined)	vehicle["st"]="1";
 		if(vehicle["st"]=="")			vehicle["st"]="1"; 
-		//if(vehicle["st"]=="-1")			vehicle["st"]="1"; 
+		if(vehicle["mo"]=="map")		vehicle["st"]="1";
 		
+		//alert(vehicle["mo"]);
 	    //alert(vehicle["st"]);		
 		if(vehicle["st"]=="1" || vehicle["st"]=="-1")
 		{		

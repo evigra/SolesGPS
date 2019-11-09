@@ -10,18 +10,18 @@
 		
 	# ARCHIVOS JS DEL MODULO
 	$files_js=array();
-	$files_js[]="../{$objeto->sys_module}js/jssor.slider-22.0.6.mini";
-	$files_js[]="../{$objeto->sys_module}js/index";	
+	$files_js[]="../{$objeto->sys_var["module_path"]}js/jssor.slider-22.0.6.mini";
+	$files_js[]="../{$objeto->sys_var["module_path"]}js/index";	
 	
 	$objeto->words["html_head_js"] =$objeto->__FILE_JS($files_js);
 
 	$files_css=array();
 
-	$files_css[]="../{$objeto->sys_module}css/estilo";
+	$files_css[]="../{$objeto->sys_var["module_path"]}css/estilo";
 
 	$objeto->words["html_head_css"] =$objeto->__FILE_CSS($files_css);		
 
-	$objeto->words["system_module"]             =$objeto->__VIEW_CREATE($objeto->sys_module . "html/show");	
+	$objeto->words["system_module"]             =$objeto->__VIEW_SHOW();	
 	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);    
 
 

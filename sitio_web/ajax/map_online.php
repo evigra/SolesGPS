@@ -10,7 +10,7 @@
 		
 		#$_SESSION["user"]["huso_h"]=6;
 	
-		if(@$_SESSION["module"]["name"]=="map/")
+		if(@$_SESSION["var"]["modulo"]=="map")
 		{
 			$compania="";
 		}
@@ -120,7 +120,7 @@
 			
 				$ajax.="
 			   		//////// $tiempo_dispo ## $tiempo				        
-					var v 	={st:\"{$data["estatus"]}\", te:\"{$data["d_telefono"]}\",   dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ho:\"{$icon_online}\" , ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
+					var v 	={mo:\"{$_SESSION["var"]["modulo"]}\", st:\"{$data["estatus"]}\", te:\"{$data["d_telefono"]}\",   dn:\"{$data["d_name"]}\",ty:\"{$datas_event[0]["type"]}\",na:\"{$data["name"]}\",de:\"{$data["deviceid"]}\",la:\"{$data["latitude"]}\",lo:\"{$data["longitude"]}\", co:{$data["course"]}, mi:\"{$data["milage"]}\", sp:\"{$data["speed"]}\", ba:\"{$data["batery"]}\", ti:\"{$data["devicetime"]}\", ho:\"{$icon_online}\" , ad:\"{$data["address"]}\", im:\"{$data["image"]}\", ev:\"{$data["event"]}\", ge:\"{$data["geofence"]}\", $ot, ni:\"{$data["nivel"]}\"};
 					locationsMap(v);				
 					$txt_streetview			
 				";

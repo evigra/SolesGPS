@@ -3798,6 +3798,18 @@
     	{
     		if(isset($_SESSION["company"]["id"]))	
     		{
+				$compania=" d.company_id={$_SESSION["company"]["id"]} AND ";
+				
+				#$_SESSION["user"]["huso_h"]=6;
+			
+				if(@$_SESSION["var"]["modulo"]=="map")
+				{
+					$compania="";
+				}
+    		
+    		
+    		
+    			/*
 				$option["select"]   =array( "d.*" );
 				$option["from"]		="devices d join positions p on p.deviceId=d.id";			
 				$option["where"]	=array(
@@ -3806,7 +3818,7 @@
 				$option["group"]	="deviceId";
 				
 				$vehicles            =$this->__VIEW_REPORT($option);
-				
+				*/
 				$html="";
 				
 		
@@ -3816,12 +3828,14 @@
 						md5(CONCAT(CURDATE(),d.id)) as md5_id,
 						d.*
 					from 	
-						devices d,
+						devices d join company c on d.company_id=c.id,
 						user_group ug,
 						groups g
-					where 	d.company_id={$_SESSION["company"]["id"]}
-						AND ug.menu_id=2
-						
+					where 						
+						$compania
+						ug.menu_id=2
+						AND d.status!=0						
+						AND c.estatus=1
 						AND(		
 							(
 								responsable_fisico_id={$_SESSION["user"]["id"]}		

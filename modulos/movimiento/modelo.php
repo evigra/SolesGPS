@@ -326,8 +326,7 @@ Equipo SolesGPS
    		public function REPORT($option="")
     	{			    	
 			if($option=="")					$option				=array();			
-			$option["color"]["red"]			="$"."row[\"estatus\"]==-1";
-
+			$option["color"]["red"]			="$"."row[\"flow\"]=='flow4'";
 			return $this->__VIEW_REPORT($option);
 		}							
 		##############################################################################

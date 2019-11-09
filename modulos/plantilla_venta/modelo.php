@@ -147,7 +147,7 @@
 			if($option=="")	$option=array();			
 			if(!isset($option["where"]))	$option["where"]=array();
 			
-			$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
+			//$option["color"]["red"]	="$"."row[\"estatus\"]=='0'";
 
 			$option["where"][]				="tipo='{$this->tipo_movimiento}'";   # PL plantilla
 

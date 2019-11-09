@@ -323,11 +323,11 @@ Equipo SolesGPS
     		$this->sys_fields["subtotal"]["value"]	=$this->sys_fields["subtotal"]["value"];
 		}
 		##############################################################################
-   		public function REPORT($option="")
+   		public function __VIEW_REPORT($option="")
     	{			    	
 			if($option=="")					$option				=array();			
 			$option["color"]["red"]			="$"."row[\"flow\"]=='flow4'";
-			return $this->__VIEW_REPORT($option);
+			return parent::__VIEW_REPORT($option);
 		}							
 		##############################################################################
    		public function __BROWSE($option="")

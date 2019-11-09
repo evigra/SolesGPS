@@ -327,7 +327,8 @@ Equipo SolesGPS
     	{			    	
 			if($option=="")					$option				=array();			
 			if(!isset($option["color"]))	$option["color"]	=array();		
-				
+			
+			$option["color"]["orange"]		="$"."row[\"status\"]=='Inactiva'";	
 			$option["color"]["red"]			="$"."row[\"flow\"]=='flow4'";
 			return parent::__VIEW_REPORT($option);
 		}							

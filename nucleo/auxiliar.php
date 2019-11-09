@@ -3835,7 +3835,7 @@
 						$compania
 						ug.menu_id=2
 						AND d.status!=0						
-						AND c.estatus=1
+						AND c.estatus IN (\"1\",\"-1\")
 						AND(		
 							(
 								responsable_fisico_id={$_SESSION["user"]["id"]}		

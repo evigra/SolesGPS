@@ -175,6 +175,7 @@
 					"title"	=>"SolesGPS :: Cotizacion",
 					"to"	=>$this->sys_fields["empresa_id"]["values"][0]["email"],
 					"to"	=>"evigra@gmail.com,contacto@solesgps.com",
+					"to"	=>"evigra@gmail.com",
 					"html"	=>"<b>{$this->sys_fields["empresa_id"]["values"][0]["nombre"]}</b> <br>
 PRESENTE <br><br>
 

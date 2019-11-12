@@ -110,7 +110,7 @@
 				#$comando_sql		="INSERT INTO logs SET text='RETARDO DE ". count($position_data) ."'";
 				#$this->__EXECUTE($comando_sql);
 				
-				$devices_tr			="<tr><td>Status</td><td>WA</td><td>Contacto</td><td>Dispositivo</td><td>Tiempo</td><td></td></tr>";			
+				$devices_tr			="<tr style=\"background-color:#ccc;\"><td>Status</td><td>WA</td><td>Contacto</td><td>Dispositivo</td><td>Tiempo</td><td></td></tr>";			
 				$retrasados=0;
 				foreach($position_data as $row)
 				{
@@ -134,7 +134,7 @@
 									<img src=\"http://solesgps.com/sitio_web/img/phone.png\">
 								</a></td>        
 								<td>{$row["NOMBRE"]}<br>{$row["EMPRESA"]}</td>
-								<td>{$row["REPORTO_HACE"]}<br>{$row["REPORTO_HACE"]}</td>
+								<td>{$row["REPORTO_HACE"]}<br><b>{$row["ULTIMA_RECARGA"]}</b></td>
 								<td><a href=\"http://solesgps.com/execute/&a={$row["md5_id"]}&sys_section_execute=saldo_correo\">
 									<img height=\"40\" src=\"http://solesgps.com/sitio_web/img/recarga.png\">
 								</a></td>

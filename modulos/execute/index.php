@@ -17,7 +17,8 @@
 	{
 		$module_title								="Crear ";
     	$objeto->words["module_body"]               =$objeto->log;	
-    }	    
+    }	
+    
     if($objeto->sys_private["section"]=="saldo_correo")
 	{
 	

@@ -1,4 +1,8 @@
 <?php
+
+#sudo wget -O - https://nightly.odoo.com/odoo.key | apt-key add - echo "deb http://nightly.odoo.com/11.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list
+#sudo apt-get update && apt-get install odoo
+
 	#if(file_exists("../device/modelo.php")) require_once("../device/modelo.php");	
 	class execute extends general
 	{   

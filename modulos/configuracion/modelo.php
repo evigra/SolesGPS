@@ -61,7 +61,8 @@
 		}
 		public function __SAVE($datas=NULL,$option=NULL)
     	{
-   	    	$datas["company_id"]=$_SESSION["company"]["id"];
+    	    if($_SESSION["company"]["id"]>0)
+       	    	$datas["company_id"]=$_SESSION["company"]["id"];
     		return parent::__SAVE($datas,$option);
 		}		
 		public function __BROWSE($option=NULL)

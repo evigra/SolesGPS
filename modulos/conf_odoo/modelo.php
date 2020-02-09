@@ -50,16 +50,16 @@
             $username = "admin";
             $password = <insert password for your admin user (default: admin)>;
             */
-            
-            $server.=":$port";
+            #$server="www.vauxoo.com";
+            #$server.=":$port";
             require_once('nucleo/ripcord/ripcord.php');
 
             $common = ripcord::client("$server/xmlrpc/2/common");            
-            
+            $common->version();
             
             
             #$uid = $common->authenticate($database, $user, $password, array());
-            $uid = $common->authenticate($database, $user, $password);
+            #$uid = $common->authenticate($database, $user, $password);
       
             #$this->__PRINT_R($uid);    
       

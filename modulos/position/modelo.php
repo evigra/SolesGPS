@@ -1388,7 +1388,8 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 			return $this->__BROWSE($option);						
 		}		
 		#################################################################################
-		public function __VIEW_GRAPH($option_graph=array(),$template=NULL)
+/*
+		public function __VIEW_SPEED($option_graph=array(),$template=NULL)
 		{
 			$option				=array();	
 
@@ -1440,8 +1441,9 @@ http://solesgps.com/seguimientos/&a={$row["md5_id"]}
 			$option["label"]	="Velocidad del activo";
 			$option_graph["AreaChart"]	=$option;						
 
-			return parent::__VIEW_GRAPH($option_graph);
+			return $this->__VIEW_GRAPH($option_graph);
 		}
-		
+*/
+
 	}
 ?>

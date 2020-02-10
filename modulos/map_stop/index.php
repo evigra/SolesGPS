@@ -31,8 +31,7 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     }    
     else // $objeto->sys_section=map
-    {
-    
+    {    
 */    
 		$objeto->words["system_module"]             =$objeto->__TEMPLATE($objeto->sys_html."system_module_not");
 		$files_js[]="../{$objeto->sys_var["module_path"]}js/map";
@@ -48,7 +47,6 @@
     	$objeto->words                              =$objeto->__INPUT($objeto->words,$objeto->sys_fields);      
     	
     	$objeto->words["form_map"]					=$form_map;
-
 
 /*    	//
     }

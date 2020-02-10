@@ -2440,7 +2440,6 @@
 		} 
 		*/  
     	##############################################################################    
-    	
 		public function __VIEW_GRAPH($option_graph=array(),$template=NULL)
 		{
 			$html="";
@@ -3336,6 +3335,7 @@
 				    #if(is_string($valor) AND $valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTDTeSJ3Uu3hHCy73RzGoJbx6vmKcmmUI";
 				    if(is_string($valor) AND $valor=="maps")                  $file="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHdbkivyRpHCuGZUbQ-DAM7MmHf_lLvwI";
 				    elseif(is_string($valor) AND $valor=="responsivevoice")  $file="https://code.responsivevoice.org/responsivevoice.js";
+				    elseif(is_string($valor) AND $valor=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
 				    elseif(is_string($field) AND $field=="graph")  			$file="https://www.gstatic.com/charts/loader.js";
 				    else                                $file="$valor.js";
 				        		        		    

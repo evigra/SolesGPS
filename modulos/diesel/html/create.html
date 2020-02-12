@@ -1,119 +1,17 @@
-<table class="mainTable">
-    <tr>
-        <td style="padding:10px;">
-
-
-            <div style="color:SteelBlue; font-size:25; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades generales</div>
-            <table border="0">
-                <tr>
-                    <td>                       
-                        {responsable}
-                    </td>        
-                    <td>                        
-                        {ubicacion}
-                    </td>        
-                    <td>
-                        {bastidor}
-                    </td>        
-                </tr>          
-                <tr>
-                    <td>
-                        Ultimo odometro<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Fecha de adquisicion<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Valor del coche<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-            </table>
-
-
-            <div style="color:SteelBlue; font-size:20; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;  ">Opciones del motor</div>
-            <table border="0">
-                <tr>
-                    <td>
-                        Transmision<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Tipo de combustible<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Emisiones de CO2<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-                <tr>
-                    <td>
-                        Caballos de potencia<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Fecha de adquisicion<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Valor del<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-            </table>
-        
-
-            <div style="color:SteelBlue; font-size:20; text-align:left; font-weight:bold; padding-top:25px; padding-bottom:10px;">Propiedades adicionales</div>
-            <table border="0">
-                <tr>
-                    <td>
-                        Numero de asientos<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Numero de puertas<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Color<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-                <tr>
-                    <td>
-                        Imei<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Imagen<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Telefono<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-                <tr>
-                    <td>
-                        Imei<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Imagen<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                    <td>
-                        Telefono<br>
-                        <input id="modelo" name="modelo" value="{input_modelo}" class="formulario">
-                    </td>        
-                </tr>          
-            </table>
-
-
-        
-        </td>
-    </tr>
-</table>
+{graph}
+<div id="form_map" style="float:left; display:none;" title="Filtros del sistema">
+    <table border="0"  width="600">
+        <tr>
+            <td width="33%">
+                {start}
+            </td>        
+            <td width="33%">                        
+                {end}
+            </td>        
+            <td width="33%">                        
+                {deviceid}
+            </td>                       
+        </tr>          
+    </table>
+    <font id="buscar_map" class="">BUSCAR</font>
+</div>            

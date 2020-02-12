@@ -26,7 +26,7 @@
 			),
 			"deviceid"	    =>array(
 			    "title"             => "Dispositivo",
-			    "type"              => "input",
+			    "type"              => "hidden",
 			),						
 			"latitude"	    =>array(
 			    "title"             => "Latitud",

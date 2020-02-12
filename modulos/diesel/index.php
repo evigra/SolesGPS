@@ -22,17 +22,18 @@
 	
 
 
-		$objeto->words["module_body"]   			=$objeto->__VIEW_CREATE($objeto->sys_var["module_path"] . "html/report_form");
+		$objeto->words["module_body"]   			=$objeto->__VIEW_CREATE();
 		$objeto->words								=$objeto->__INPUT($objeto->words,$objeto->sys_fields); 
 
-		$form_map									=$objeto->words["module_body"];
-		$objeto->words["module_body"]				="";
-
-		$data										=$objeto->__VIEW_GRAPH();		
-		$objeto->words["module_body"]				=$data["html"];
-
-    	$objeto->words["form_map"]					=$form_map;
-
+        #$objeto->__PRINT_R($objeto->sys_fields);
+    
+        if($objeto->sys_fields["deviceid"]["value"]>0)
+        {
+		    $data									=$objeto->__VIEW_GRAPH();		
+		    $objeto->words["graph"]				    =$data["html"];
+		}    
+		else    $objeto->words["graph"]				="";
+		
 
 
 		#CARGANDO VISTA PARTICULAR Y CAMPOS

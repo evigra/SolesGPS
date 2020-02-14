@@ -33,10 +33,10 @@
 		
 			$option				=array();	
 			#$option["select"]["left(right(DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),8),5)"]	="devicetime";
-			$option["select"]["right(left(devicetime,16),11)"]	="devicetime";
+			$option["select"]["right(left(DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR),16),11)"]	="devicetime";
 			$option["select"][]				="if(extract_JSON(p.attributes,'io3') is null ,0,round(avg(left(extract_JSON(p.attributes,'io3'),4)),2))";
-			$option["where"][]				="DATE_SUB('{$this->sys_fields["start"]["value"]}',INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)<=DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)";
-			$option["where"][]				="DATE_SUB('{$this->sys_fields["end"]["value"]}',INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)>=DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)";
+			$option["where"][]				="'{$this->sys_fields["start"]["value"]}'<=DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)";
+			$option["where"][]				="'{$this->sys_fields["end"]["value"]}'>=DATE_SUB(devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR)";
 			$option["where"][]				="deviceid ='{$this->sys_fields["deviceid"]["value"]}'";							
             $option["group"]	            ="left(devicetime,15)";
 			$option["order"]				="devicetime ASC";

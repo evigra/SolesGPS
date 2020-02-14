@@ -27,7 +27,7 @@
 
         #$objeto->__PRINT_R($objeto->sys_fields);
     
-        if($objeto->sys_fields["deviceid"]["value"]>0)
+        if(@$objeto->sys_fields["deviceid"]["value"]>0)
         {
 		    $data									=$objeto->__VIEW_GRAPH();		
 		    $objeto->words["graph"]				    =$data["html"];
@@ -39,7 +39,7 @@
 		#CARGANDO VISTA PARTICULAR Y CAMPOS
     }    
 
-    $objeto->words["html_head_js"]              .=$objeto->__FILE_JS();								# ARCHIVOS JS DEL MODULO
+    @$objeto->words["html_head_js"]              .=$objeto->__FILE_JS();								# ARCHIVOS JS DEL MODULO
 
     $objeto->words["system_submenu2"]           =$objeto->menu_vehicle();    	
 

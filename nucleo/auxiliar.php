@@ -3354,6 +3354,7 @@
 							$grafica="AreaChart";
 							$title="";
 							$label="";
+							$script="";
 							
 							if(is_array($data_graph))
 							{
@@ -3365,6 +3366,9 @@
 									$title=$data_graph["title"];
 								if(isset($data_graph["label"]))	
 									$label=$data_graph["label"];
+								if(isset($data_graph["script"]))	
+									$script=$data_graph["script"];
+
 																
 								if(substr($type,0,9)=="AreaChart")		$grafica=substr($type,0,9);		
 								if(substr($type,0,8)=="PieChart")		$grafica=substr($type,0,8);
@@ -3395,6 +3399,7 @@
 										var data = google.visualization.arrayToDataTable([$title"."$datos]);
 										options = {
 											title: '$label',
+											$script
 										};
 								";										
 							}			

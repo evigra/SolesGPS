@@ -19,7 +19,7 @@
 			select 
 				d.id as d_id,
 				d.*,p.*,c.*,g.*,
-				c.name as c_name,
+				c.nombre as c_name,
 				d.name as d_name,
 				d.telefono as d_telefono,
 				p.attributes as p_attributes,
@@ -95,6 +95,10 @@
 				if(@$_SESSION["module"]["name"]=="map/")
 				{
 					$data["estatus"]=1;
+				}
+				else
+				{
+				    $data["c_name"]		="";
 				}
 			
 				$txt_streetview="";

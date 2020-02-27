@@ -1063,7 +1063,7 @@ styles:
         if(!(item["ad"]==undefined || item["ad"]==false || item["ad"]=="false"))       
             tablero2= "UBICACION :: " + item["ad"] + tablero2;          
 
-        if(item["cn"]!=""))       
+        if(item["cn"]!="")       
             tablero2= "COMPANY :: " + item["cn"] + tablero2;          
 
                        

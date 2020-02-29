@@ -20,9 +20,9 @@
         
         $option_position			=array();
 
-        $objeto->__PRINT_R($objeto->sys_private);
-        #$objeto->__SAVE($data_update,$option_position);	
+        #$objeto->__PRINT_R($objeto->sys_private);
+        $objeto->__SAVE($data_update,$option_position);	
 	}
 		
-    #echo json_encode($data["data"]);
+    echo json_encode($data["data"]);
 ?>

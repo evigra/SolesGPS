@@ -9,20 +9,22 @@
 	#$option["where"][]  ="leido=0";
 	$option["where"][]  ="odoo!=1";
 	$option["order"]    ="devicetime";
-	#$option["echo"]     ="ODOO";
+	$option["echo"]     ="ODOO";
 	
 	$data               =$objeto->__BROWSE($option);
 	
+	
+	#$objeto->__PRINT_R($data);
+	#/*
 	foreach($data["data"] as $row)
 	{
         $objeto->sys_private["id"]		=$row["p_id"];
         $data_update["odoo"]		="1";
         
         $option_position			=array();
-
-        #$objeto->__PRINT_R($objeto->sys_private);
         $objeto->__SAVE($data_update,$option_position);	
 	}
 		
     echo json_encode($data["data"]);
+    #*/
 ?>

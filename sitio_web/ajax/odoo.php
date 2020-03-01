@@ -7,7 +7,7 @@
 	$option["select"]   ="d.uniqueid, p.*, d.*, p.id as p_id";
 	$option["where"]    =array();
 	#$option["where"][]  ="leido=0";
-	$option["where"][]  ="odoo=0";
+	$option["where"][]  ="odoo!=1";
 	$option["order"]    ="devicetime";
 	#$option["echo"]     ="ODOO";
 	

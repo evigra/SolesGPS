@@ -4,7 +4,7 @@
 	$objeto				=new position();
 
 	$option             =array();
-	$option["select"]   ="d.uniqueid, p.*, d.*, p.id as p_id";
+	$option["select"]   ="d.uniqueid, p.*, p.id as p_id";
 	$option["where"]    =array();
 	#$option["where"][]  ="leido=0";
 	$option["where"][]  ="odoo!=1";

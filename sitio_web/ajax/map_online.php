@@ -23,7 +23,7 @@
 				d.name as d_name,
 				d.telefono as d_telefono,
 				p.attributes as p_attributes,
-				truncate((admin_soles37.extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
+				truncate((extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
 				DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
 			from 
 				positions p join 			

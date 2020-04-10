@@ -17,6 +17,7 @@
 			
 			@$_SESSION["user"]["huso_h"]				=5;
 			#@$_SESSION["user"]["huso_h"]				=6;
+			#
 						 
 			if(!is_array($option)) 						$option=array();
 						

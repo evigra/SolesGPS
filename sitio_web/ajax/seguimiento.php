@@ -1,5 +1,7 @@
 <?php
     require_once("../../nucleo/sesion.php");
+  	$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
+
     #require_once("../../../nucleo/general.php");
     #require_once("../../../modulos/position/modelo.php");
 	#require_once("../modelo.php");
@@ -33,7 +35,7 @@
 					md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}'	
 				)	
 		";
-		#echo $comando_sql;
+
 		$datas              =$objeto->__EXECUTE($comando_sql);	
 		#https://www.facebook.com/foro.militar.esp/videos/vb.993885607353760/1039612849447702/?type=2&theater
 		

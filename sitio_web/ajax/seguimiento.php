@@ -1,6 +1,8 @@
 <?php
     require_once("../../nucleo/sesion.php");
-  	$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
+  	#$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
+
+    #print_r($_SESSION["seguimiento_md5"]);
 
     #require_once("../../../nucleo/general.php");
     #require_once("../../../modulos/position/modelo.php");
@@ -9,7 +11,7 @@
 	$objeto				=new general();
 	$ajax="";
 	
-			
+	#$objeto->__PRINT_R($objeto);		
 
 	#if(isset($_SESSION["company"]["id"]))
 	{			
@@ -20,7 +22,7 @@
 				d.*,p.*,
 				d.name as d_name,
 				p.attributes as p_attributes,
-				truncate((admin_soles37.extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
+				truncate((extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
 				DATE_SUB(p.devicetime,INTERVAL 6 HOUR) as devicetime
 			from 
 				positions p join 			
@@ -35,7 +37,7 @@
 					md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}'	
 				)	
 		";
-
+        echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	
 		#https://www.facebook.com/foro.militar.esp/videos/vb.993885607353760/1039612849447702/?type=2&theater
 		

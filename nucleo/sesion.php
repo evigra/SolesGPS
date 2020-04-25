@@ -1,4 +1,7 @@
 <?php
+
+    
+
 	if(!isset($_SESSION))
 	{
 		$usuarios_sesion						="PHPSESSID";
@@ -8,6 +11,9 @@
 	}
 	
 	if(!isset($_SESSION))		$_SESSION=array();
+	
+	
+	#print_r($_SESSION["seguimiento_md5"]);
 	
 	if(isset($_SESSION))
 	{
@@ -106,7 +112,7 @@
 	}	
 	if(isset($_SESSION) AND !isset($_SESSION["var"]["action"]) AND isset($_SESSION["user"]) AND isset($_SESSION["user"]["id"]) AND isset($_SESSION["company"]))
 	{
-		$md5_id		=$_SESSION["user"]["md5_id"]; 
+		$md5_id		=@$_SESSION["user"]["md5_id"]; 
 		setcookie('SolesGPS', $md5_id, time() + (1.5 * 24 * 60 * 60));		
 	}
 ?>

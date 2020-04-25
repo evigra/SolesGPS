@@ -1,6 +1,8 @@
 <?php
 	require_once("nucleo/sesion.php");
-	
+
+    #print_r($_REQUEST);
+    	
 	$_SESSION["seguimiento_md5"]=$_REQUEST["a"];		
 	
 	$objeto										=new map_espejo();

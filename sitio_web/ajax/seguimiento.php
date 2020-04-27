@@ -23,7 +23,7 @@
 				d.name as d_name,
 				p.attributes as p_attributes,
 				truncate((extract_JSON(p.attributes,'totalDistance') + d.odometro_inicial)/1000*1.007805,1) as milage, 
-				DATE_SUB(p.devicetime,INTERVAL 6 HOUR) as devicetime
+				DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime
 			from 
 				positions p join 			
 		        devices d on 
@@ -37,7 +37,7 @@
 					md5(CONCAT(CURDATE(),d.id))='{$_SESSION["seguimiento_md5"]}'	
 				)	
 		";
-        echo $comando_sql;
+        #echo $comando_sql;
 		$datas              =$objeto->__EXECUTE($comando_sql);	
 		#https://www.facebook.com/foro.militar.esp/videos/vb.993885607353760/1039612849447702/?type=2&theater
 		

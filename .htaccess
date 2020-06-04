@@ -25,11 +25,14 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule .+ - [L]
-#RewriteRule ^(.*)$ modulos/$1/index.php
-
-RewriteRule ^(.*)$ index.php?sys_vpath=$1
 
 RewriteCond %{HTTPS} !=on
 # This checks to make sure the connection is not already HTTPS
 
 RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+#RewriteRule ^(.*)$ modulos/$1/index.php
+
+RewriteRule ^(.*)$ index.php?sys_vpath=$1
+
+

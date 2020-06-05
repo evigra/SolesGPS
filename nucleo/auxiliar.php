@@ -298,7 +298,7 @@
     		if(count($datas)>0)
     		{
 				$data				=$datas[0];			
-				$return ="<img width=\"200\" src=\"../modulos/files/file/$id.{$data['extension']}lalo\">";
+				$return ="<img width=\"200\" src=\"../modulos/files/file/$id.{$data['extension']}\">";
 			}
 			return 	$return;
 		}

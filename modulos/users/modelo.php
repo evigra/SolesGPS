@@ -268,11 +268,12 @@
     		
     		$option["select"]["md5(u.id)"]														="md5_id";
     		$option["select"][]																	="u.*";
+/*
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,0,0)"]		="img_files_id";
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,300,160)"]	="img_files_id_med";				
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,150,80)"]	="img_files_id_chi";
 			$option["select"]["FN_ImgFile('../modulos/users/img/user.png',files_id,30,16)"]		="img_files_id_sup_chi";
-    		
+*/    		
 			$option["from"]		="users u";			
 
 			if(isset($_SESSION["company"]["id"]) AND isset($_SESSION["user"]["id"]))

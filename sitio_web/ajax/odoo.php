@@ -4,7 +4,12 @@
 	$objeto				=new position();
 
 	$option             =array();
-	$option["select"]   ="d.uniqueid, p.*, p.id as p_id";
+	$option["select"]   ="
+	    d.uniqueid, p.*, p.id as p_id, 
+	    DATE_SUB(p.devicetime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as devicetime,
+	    DATE_SUB(p.servertime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as servertime,
+	    DATE_SUB(p.fixtime,INTERVAL {$_SESSION["user"]["huso_h"]} HOUR) as fixtime    
+	";
 	$option["where"]    =array();
 	#$option["where"][]  ="leido=0";
 	$option["where"][]  ="odoo!=1";

@@ -1,5 +1,5 @@
 <?php
-    #print_r($_REQUEST);
+    print_r($_REQUEST);
 	require_once("nucleo/sesion.php");	
 	
 	##############################################################################	

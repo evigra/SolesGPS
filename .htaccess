@@ -28,9 +28,8 @@ RewriteRule .+ - [L]
 
 
 
-RewriteCond %{HTTPS} !=on
-# This checks to make sure the connection is not already HTTPS
-RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 
 
 

@@ -3300,11 +3300,14 @@
 			$OPHP_database=$this->__SYS_DB();
 			if($OPHP_database["type"]=="mysql")	        	
 			{			
-				#$this->OPHP_conexion = @mysqli_connect($OPHP_database["host"], $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();
 				$this->OPHP_conexion = @mysqli_connect($OPHP_database["host"], $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]) OR $this->reconexion();				
 			}
-		}
+			if($OPHP_database["type"]=="postgres")	        	
+			{			
+                $this->OPHP_conexion = @pg_connect("host={$OPHP_database["host"]} dbname={$OPHP_database["name"]} user={$OPHP_database["user"]} password={$OPHP_database["pass"]}") or $this->reconexion();
+			}
 
+		}
 		function reconexion()
 		{
 			$OPHP_database=$this->__SYS_DB();
@@ -3312,12 +3315,27 @@
 			{
 				$this->OPHP_conexion = @mysqli_connect("localhost", $OPHP_database["user"], $OPHP_database["pass"], $OPHP_database["name"]);
 			}
+			if($OPHP_database["type"]=="postgres")	        	
+			{			
+                $this->OPHP_conexion = @pg_connect("host={$OPHP_database["host"]} dbname={$OPHP_database["name"]} user={$OPHP_database["user"]} password={$OPHP_database["pass"]}") or $this->reconexion();
+			}
+
 		}
 		
 		function cerrar_conexion()
 		{
+		    $OPHP_database=$this->__SYS_DB();
+			if($OPHP_database["type"]=="mysql")	        	
+			{
+				$this->OPHP_conexion->close();
+			}
+			if($OPHP_database["type"]=="postgres")	        	
+			{			
+                #$this->OPHP_conexion = @pg_connect("host={$OPHP_database["host"]} dbname={$OPHP_database["name"]} user={$OPHP_database["user"]} password={$OPHP_database["pass"]}") or $this->reconexion();
+			}
+
 			
-		    $this->OPHP_conexion->close();
+		    
 		}	
 		
 		

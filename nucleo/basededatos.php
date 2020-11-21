@@ -6,10 +6,10 @@
 			return array(
 				"user"		=>"admin_evigra",
 				"pass"		=>"EvG30JiC06",
-				"name"		=>"admin_server",
-				"host"		=>"solesgps.com",
+				"name"		=>"solesgps",
+				"host"		=>"odoo.solesgps.com",
 				#"host"		=>"localhost",
-				"type"		=>"mysql",
+				"type"		=>"postgres",
 			);
 		}
 	}
